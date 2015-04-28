@@ -1,14 +1,32 @@
 {
   "name": "wxms",
-  "version": "1.0.0",
-  "description": "wx share",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "description": "微信分享工具",
+  "version": "0.0.1",
+  "author": "TVVT Team",
+  "license": "MIT",
+  "bin": {
+    "straw": "bin/wxms"
   },
-  "keywords": [
-    "wxms"
-  ],
-  "author": "toms",
-  "license": "MTk"
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "main": "wxms.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TVVT/wxms.git"
+  },
+  "preferGlobal": true,
+  "dependencies": {
+    "archiver": "^0.14.3",
+    "body-parser": "^1.12.2",
+    "cookie-parser": "^1.3.4",
+    "debug": "^2.1.3",
+    "ejs": "^2.3.1",
+    "express": "^4.12.3",
+    "fontmin": "0.4.8",
+    "morgan": "^1.5.2",
+    "multer": "^0.1.8",
+    "node-native-zip": "^1.1.0",
+    "serve-favicon": "^2.2.0"
+  }
 }
