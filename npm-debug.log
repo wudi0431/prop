@@ -1,0 +1,1552 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'i' ]
+2 info using npm@2.7.4
+3 info using node@v0.12.2
+4 warn package.json wxms@0.0.1 No bin file found at bin/wxms
+5 verbose install where, deps [ '/Users/wudi/Downloads/work/wxms',
+5 verbose install   [ 'archiver',
+5 verbose install     'body-parser',
+5 verbose install     'cookie-parser',
+5 verbose install     'debug',
+5 verbose install     'ejs',
+5 verbose install     'express',
+5 verbose install     'fontmin',
+5 verbose install     'morgan',
+5 verbose install     'multer',
+5 verbose install     'node-native-zip',
+5 verbose install     'serve-favicon' ] ]
+6 verbose install where, peers [ '/Users/wudi/Downloads/work/wxms', [] ]
+7 info preinstall wxms@0.0.1
+8 silly cache add args [ 'cookie-parser@^1.3.4', null ]
+9 verbose cache add spec cookie-parser@^1.3.4
+10 silly cache add parsed spec { raw: 'cookie-parser@^1.3.4',
+10 silly cache add   scope: null,
+10 silly cache add   name: 'cookie-parser',
+10 silly cache add   rawSpec: '^1.3.4',
+10 silly cache add   spec: '>=1.3.4 <2.0.0',
+10 silly cache add   type: 'range' }
+11 verbose addNamed cookie-parser@>=1.3.4 <2.0.0
+12 silly addNamed semver.valid null
+13 silly addNamed semver.validRange >=1.3.4 <2.0.0
+14 silly addNameRange { name: 'cookie-parser',
+14 silly addNameRange   range: '>=1.3.4 <2.0.0',
+14 silly addNameRange   hasData: false }
+15 silly mapToRegistry name cookie-parser
+16 silly mapToRegistry using default registry
+17 silly mapToRegistry registry https://registry.npmjs.org/
+18 silly mapToRegistry uri https://registry.npmjs.org/cookie-parser
+19 verbose addNameRange registry:https://registry.npmjs.org/cookie-parser not in flight; fetching
+20 silly cache add args [ 'body-parser@^1.12.2', null ]
+21 verbose cache add spec body-parser@^1.12.2
+22 silly cache add parsed spec { raw: 'body-parser@^1.12.2',
+22 silly cache add   scope: null,
+22 silly cache add   name: 'body-parser',
+22 silly cache add   rawSpec: '^1.12.2',
+22 silly cache add   spec: '>=1.12.2 <2.0.0',
+22 silly cache add   type: 'range' }
+23 verbose addNamed body-parser@>=1.12.2 <2.0.0
+24 silly addNamed semver.valid null
+25 silly addNamed semver.validRange >=1.12.2 <2.0.0
+26 silly addNameRange { name: 'body-parser', range: '>=1.12.2 <2.0.0', hasData: false }
+27 silly mapToRegistry name body-parser
+28 silly mapToRegistry using default registry
+29 silly mapToRegistry registry https://registry.npmjs.org/
+30 silly mapToRegistry uri https://registry.npmjs.org/body-parser
+31 verbose addNameRange registry:https://registry.npmjs.org/body-parser not in flight; fetching
+32 silly cache add args [ 'debug@^2.1.3', null ]
+33 verbose cache add spec debug@^2.1.3
+34 silly cache add parsed spec { raw: 'debug@^2.1.3',
+34 silly cache add   scope: null,
+34 silly cache add   name: 'debug',
+34 silly cache add   rawSpec: '^2.1.3',
+34 silly cache add   spec: '>=2.1.3 <3.0.0',
+34 silly cache add   type: 'range' }
+35 verbose addNamed debug@>=2.1.3 <3.0.0
+36 silly addNamed semver.valid null
+37 silly addNamed semver.validRange >=2.1.3 <3.0.0
+38 silly addNameRange { name: 'debug', range: '>=2.1.3 <3.0.0', hasData: false }
+39 silly mapToRegistry name debug
+40 silly mapToRegistry using default registry
+41 silly mapToRegistry registry https://registry.npmjs.org/
+42 silly mapToRegistry uri https://registry.npmjs.org/debug
+43 verbose addNameRange registry:https://registry.npmjs.org/debug not in flight; fetching
+44 silly cache add args [ 'ejs@^2.3.1', null ]
+45 verbose cache add spec ejs@^2.3.1
+46 silly cache add parsed spec { raw: 'ejs@^2.3.1',
+46 silly cache add   scope: null,
+46 silly cache add   name: 'ejs',
+46 silly cache add   rawSpec: '^2.3.1',
+46 silly cache add   spec: '>=2.3.1 <3.0.0',
+46 silly cache add   type: 'range' }
+47 verbose addNamed ejs@>=2.3.1 <3.0.0
+48 silly addNamed semver.valid null
+49 silly addNamed semver.validRange >=2.3.1 <3.0.0
+50 silly addNameRange { name: 'ejs', range: '>=2.3.1 <3.0.0', hasData: false }
+51 silly mapToRegistry name ejs
+52 silly mapToRegistry using default registry
+53 silly mapToRegistry registry https://registry.npmjs.org/
+54 silly mapToRegistry uri https://registry.npmjs.org/ejs
+55 verbose addNameRange registry:https://registry.npmjs.org/ejs not in flight; fetching
+56 silly cache add args [ 'express@^4.12.3', null ]
+57 verbose cache add spec express@^4.12.3
+58 silly cache add parsed spec { raw: 'express@^4.12.3',
+58 silly cache add   scope: null,
+58 silly cache add   name: 'express',
+58 silly cache add   rawSpec: '^4.12.3',
+58 silly cache add   spec: '>=4.12.3 <5.0.0',
+58 silly cache add   type: 'range' }
+59 verbose addNamed express@>=4.12.3 <5.0.0
+60 silly addNamed semver.valid null
+61 silly addNamed semver.validRange >=4.12.3 <5.0.0
+62 silly addNameRange { name: 'express', range: '>=4.12.3 <5.0.0', hasData: false }
+63 silly mapToRegistry name express
+64 silly mapToRegistry using default registry
+65 silly mapToRegistry registry https://registry.npmjs.org/
+66 silly mapToRegistry uri https://registry.npmjs.org/express
+67 verbose addNameRange registry:https://registry.npmjs.org/express not in flight; fetching
+68 silly cache add args [ 'fontmin@0.4.8', null ]
+69 verbose cache add spec fontmin@0.4.8
+70 silly cache add parsed spec { raw: 'fontmin@0.4.8',
+70 silly cache add   scope: null,
+70 silly cache add   name: 'fontmin',
+70 silly cache add   rawSpec: '0.4.8',
+70 silly cache add   spec: '0.4.8',
+70 silly cache add   type: 'version' }
+71 verbose addNamed fontmin@0.4.8
+72 silly addNamed semver.valid 0.4.8
+73 silly addNamed semver.validRange 0.4.8
+74 silly mapToRegistry name fontmin
+75 silly mapToRegistry using default registry
+76 silly mapToRegistry registry https://registry.npmjs.org/
+77 silly mapToRegistry uri https://registry.npmjs.org/fontmin
+78 verbose addNameVersion registry:https://registry.npmjs.org/fontmin not in flight; fetching
+79 silly cache add args [ 'morgan@^1.5.2', null ]
+80 verbose cache add spec morgan@^1.5.2
+81 silly cache add parsed spec { raw: 'morgan@^1.5.2',
+81 silly cache add   scope: null,
+81 silly cache add   name: 'morgan',
+81 silly cache add   rawSpec: '^1.5.2',
+81 silly cache add   spec: '>=1.5.2 <2.0.0',
+81 silly cache add   type: 'range' }
+82 verbose addNamed morgan@>=1.5.2 <2.0.0
+83 silly addNamed semver.valid null
+84 silly addNamed semver.validRange >=1.5.2 <2.0.0
+85 silly addNameRange { name: 'morgan', range: '>=1.5.2 <2.0.0', hasData: false }
+86 silly mapToRegistry name morgan
+87 silly mapToRegistry using default registry
+88 silly mapToRegistry registry https://registry.npmjs.org/
+89 silly mapToRegistry uri https://registry.npmjs.org/morgan
+90 verbose addNameRange registry:https://registry.npmjs.org/morgan not in flight; fetching
+91 silly cache add args [ 'multer@^0.1.8', null ]
+92 verbose cache add spec multer@^0.1.8
+93 silly cache add parsed spec { raw: 'multer@^0.1.8',
+93 silly cache add   scope: null,
+93 silly cache add   name: 'multer',
+93 silly cache add   rawSpec: '^0.1.8',
+93 silly cache add   spec: '>=0.1.8 <0.2.0',
+93 silly cache add   type: 'range' }
+94 verbose addNamed multer@>=0.1.8 <0.2.0
+95 silly addNamed semver.valid null
+96 silly addNamed semver.validRange >=0.1.8 <0.2.0
+97 silly addNameRange { name: 'multer', range: '>=0.1.8 <0.2.0', hasData: false }
+98 silly mapToRegistry name multer
+99 silly mapToRegistry using default registry
+100 silly mapToRegistry registry https://registry.npmjs.org/
+101 silly mapToRegistry uri https://registry.npmjs.org/multer
+102 verbose addNameRange registry:https://registry.npmjs.org/multer not in flight; fetching
+103 silly cache add args [ 'node-native-zip@^1.1.0', null ]
+104 verbose cache add spec node-native-zip@^1.1.0
+105 silly cache add parsed spec { raw: 'node-native-zip@^1.1.0',
+105 silly cache add   scope: null,
+105 silly cache add   name: 'node-native-zip',
+105 silly cache add   rawSpec: '^1.1.0',
+105 silly cache add   spec: '>=1.1.0 <2.0.0',
+105 silly cache add   type: 'range' }
+106 verbose addNamed node-native-zip@>=1.1.0 <2.0.0
+107 silly addNamed semver.valid null
+108 silly addNamed semver.validRange >=1.1.0 <2.0.0
+109 silly addNameRange { name: 'node-native-zip',
+109 silly addNameRange   range: '>=1.1.0 <2.0.0',
+109 silly addNameRange   hasData: false }
+110 silly mapToRegistry name node-native-zip
+111 silly mapToRegistry using default registry
+112 silly mapToRegistry registry https://registry.npmjs.org/
+113 silly mapToRegistry uri https://registry.npmjs.org/node-native-zip
+114 verbose addNameRange registry:https://registry.npmjs.org/node-native-zip not in flight; fetching
+115 silly cache add args [ 'serve-favicon@^2.2.0', null ]
+116 verbose cache add spec serve-favicon@^2.2.0
+117 silly cache add parsed spec { raw: 'serve-favicon@^2.2.0',
+117 silly cache add   scope: null,
+117 silly cache add   name: 'serve-favicon',
+117 silly cache add   rawSpec: '^2.2.0',
+117 silly cache add   spec: '>=2.2.0 <3.0.0',
+117 silly cache add   type: 'range' }
+118 verbose addNamed serve-favicon@>=2.2.0 <3.0.0
+119 silly addNamed semver.valid null
+120 silly addNamed semver.validRange >=2.2.0 <3.0.0
+121 silly addNameRange { name: 'serve-favicon',
+121 silly addNameRange   range: '>=2.2.0 <3.0.0',
+121 silly addNameRange   hasData: false }
+122 silly mapToRegistry name serve-favicon
+123 silly mapToRegistry using default registry
+124 silly mapToRegistry registry https://registry.npmjs.org/
+125 silly mapToRegistry uri https://registry.npmjs.org/serve-favicon
+126 verbose addNameRange registry:https://registry.npmjs.org/serve-favicon not in flight; fetching
+127 silly cache add args [ 'archiver@^0.14.3', null ]
+128 verbose cache add spec archiver@^0.14.3
+129 silly cache add parsed spec { raw: 'archiver@^0.14.3',
+129 silly cache add   scope: null,
+129 silly cache add   name: 'archiver',
+129 silly cache add   rawSpec: '^0.14.3',
+129 silly cache add   spec: '>=0.14.3 <0.15.0',
+129 silly cache add   type: 'range' }
+130 verbose addNamed archiver@>=0.14.3 <0.15.0
+131 silly addNamed semver.valid null
+132 silly addNamed semver.validRange >=0.14.3 <0.15.0
+133 silly addNameRange { name: 'archiver', range: '>=0.14.3 <0.15.0', hasData: false }
+134 silly mapToRegistry name archiver
+135 silly mapToRegistry using default registry
+136 silly mapToRegistry registry https://registry.npmjs.org/
+137 silly mapToRegistry uri https://registry.npmjs.org/archiver
+138 verbose addNameRange registry:https://registry.npmjs.org/archiver not in flight; fetching
+139 verbose request uri https://registry.npmjs.org/cookie-parser
+140 verbose request no auth needed
+141 info attempt registry request try #1 at 5:35:32 PM
+142 verbose request id be9eb69f37b8c320
+143 verbose etag "4ZJT67JAJLAND7AV4EZQONCEZ"
+144 http request GET https://registry.npmjs.org/cookie-parser
+145 verbose request uri https://registry.npmjs.org/debug
+146 verbose request no auth needed
+147 info attempt registry request try #1 at 5:35:32 PM
+148 verbose etag "9JP1IGS0OP0WFAZUQGHP93AVQ"
+149 http request GET https://registry.npmjs.org/debug
+150 verbose request uri https://registry.npmjs.org/body-parser
+151 verbose request no auth needed
+152 info attempt registry request try #1 at 5:35:32 PM
+153 verbose etag "3GKYNK5NUSDFRNWF2SIIP8M3T"
+154 http request GET https://registry.npmjs.org/body-parser
+155 verbose request uri https://registry.npmjs.org/ejs
+156 verbose request no auth needed
+157 info attempt registry request try #1 at 5:35:32 PM
+158 verbose etag "3V6RAL95CA3D1ZLWSX5FMHCOR"
+159 http request GET https://registry.npmjs.org/ejs
+160 verbose request uri https://registry.npmjs.org/fontmin
+161 verbose request no auth needed
+162 info attempt registry request try #1 at 5:35:32 PM
+163 verbose etag "6H899TL4QE55B310LUFE6R5GO"
+164 http request GET https://registry.npmjs.org/fontmin
+165 verbose request uri https://registry.npmjs.org/morgan
+166 verbose request no auth needed
+167 info attempt registry request try #1 at 5:35:32 PM
+168 verbose etag "ATERZF9JVGEOGU7A7CSOMAPGI"
+169 http request GET https://registry.npmjs.org/morgan
+170 verbose request uri https://registry.npmjs.org/multer
+171 verbose request no auth needed
+172 info attempt registry request try #1 at 5:35:32 PM
+173 verbose etag "1RS6L387TXDL2F3T6JD3P9TUQ"
+174 http request GET https://registry.npmjs.org/multer
+175 verbose request uri https://registry.npmjs.org/node-native-zip
+176 verbose request no auth needed
+177 info attempt registry request try #1 at 5:35:32 PM
+178 verbose etag "2RL7838P7UO1HJCMNI2L8FB4H"
+179 http request GET https://registry.npmjs.org/node-native-zip
+180 verbose request uri https://registry.npmjs.org/serve-favicon
+181 verbose request no auth needed
+182 info attempt registry request try #1 at 5:35:32 PM
+183 verbose etag "E5BSLOF3LLVN5Z1U3UXYTQLI9"
+184 http request GET https://registry.npmjs.org/serve-favicon
+185 verbose request uri https://registry.npmjs.org/archiver
+186 verbose request no auth needed
+187 info attempt registry request try #1 at 5:35:32 PM
+188 verbose etag "4L81W9XIADTPA890LSGQRLT0M"
+189 http request GET https://registry.npmjs.org/archiver
+190 verbose request uri https://registry.npmjs.org/express
+191 verbose request no auth needed
+192 info attempt registry request try #1 at 5:35:32 PM
+193 verbose etag "BNCFC1XVUU7UGT6BRTAUNBISS"
+194 http request GET https://registry.npmjs.org/express
+195 http 304 https://registry.npmjs.org/body-parser
+196 silly get cb [ 304,
+196 silly get   { date: 'Tue, 28 Apr 2015 09:35:34 GMT',
+196 silly get     server: 'Apache',
+196 silly get     via: '1.1 varnish',
+196 silly get     'last-modified': 'Tue, 28 Apr 2015 09:26:06 GMT',
+196 silly get     'cache-control': 'max-age=60',
+196 silly get     etag: '"3GKYNK5NUSDFRNWF2SIIP8M3T"',
+196 silly get     age: '44',
+196 silly get     'x-served-by': 'cache-nrt6125-NRT',
+196 silly get     'x-cache': 'HIT',
+196 silly get     'x-cache-hits': '48',
+196 silly get     'x-timer': 'S1430213734.014352,VS0,VE0',
+196 silly get     vary: 'Accept',
+196 silly get     'content-length': '0',
+196 silly get     'keep-alive': 'timeout=10, max=50',
+196 silly get     connection: 'Keep-Alive' } ]
+197 verbose etag https://registry.npmjs.org/body-parser from cache
+198 verbose get saving body-parser to /Users/wudi/.npm/registry.npmjs.org/body-parser/.cache.json
+199 http 304 https://registry.npmjs.org/morgan
+200 silly get cb [ 304,
+200 silly get   { date: 'Tue, 28 Apr 2015 09:35:34 GMT',
+200 silly get     server: 'Apache',
+200 silly get     via: '1.1 varnish',
+200 silly get     'last-modified': 'Tue, 28 Apr 2015 09:35:34 GMT',
+200 silly get     'cache-control': 'max-age=60',
+200 silly get     etag: '"ATERZF9JVGEOGU7A7CSOMAPGI"',
+200 silly get     age: '46',
+200 silly get     'x-served-by': 'cache-nrt6123-NRT',
+200 silly get     'x-cache': 'HIT',
+200 silly get     'x-cache-hits': '1',
+200 silly get     'x-timer': 'S1430213734.015030,VS0,VE1',
+200 silly get     vary: 'Accept',
+200 silly get     'content-length': '0',
+200 silly get     'keep-alive': 'timeout=10, max=50',
+200 silly get     connection: 'Keep-Alive' } ]
+201 verbose etag https://registry.npmjs.org/morgan from cache
+202 verbose get saving morgan to /Users/wudi/.npm/registry.npmjs.org/morgan/.cache.json
+203 http 304 https://registry.npmjs.org/cookie-parser
+204 silly get cb [ 304,
+204 silly get   { date: 'Tue, 28 Apr 2015 09:35:34 GMT',
+204 silly get     server: 'Apache',
+204 silly get     via: '1.1 varnish',
+204 silly get     'last-modified': 'Tue, 28 Apr 2015 09:35:34 GMT',
+204 silly get     'cache-control': 'max-age=60',
+204 silly get     etag: '"4ZJT67JAJLAND7AV4EZQONCEZ"',
+204 silly get     age: '38',
+204 silly get     'x-served-by': 'cache-nrt6132-NRT',
+204 silly get     'x-cache': 'HIT',
+204 silly get     'x-cache-hits': '1',
+204 silly get     'x-timer': 'S1430213734.032096,VS0,VE0',
+204 silly get     vary: 'Accept',
+204 silly get     'content-length': '0',
+204 silly get     'keep-alive': 'timeout=10, max=50',
+204 silly get     connection: 'Keep-Alive' } ]
+205 verbose etag https://registry.npmjs.org/cookie-parser from cache
+206 verbose get saving cookie-parser to /Users/wudi/.npm/registry.npmjs.org/cookie-parser/.cache.json
+207 silly addNameRange number 2 { name: 'body-parser', range: '>=1.12.2 <2.0.0', hasData: true }
+208 silly addNameRange versions [ 'body-parser',
+208 silly addNameRange   [ '1.0.0',
+208 silly addNameRange     '1.0.1',
+208 silly addNameRange     '1.0.2',
+208 silly addNameRange     '1.1.0',
+208 silly addNameRange     '1.1.1',
+208 silly addNameRange     '1.1.2',
+208 silly addNameRange     '1.2.0',
+208 silly addNameRange     '1.2.1',
+208 silly addNameRange     '1.2.2',
+208 silly addNameRange     '1.3.0',
+208 silly addNameRange     '1.3.1',
+208 silly addNameRange     '1.4.0',
+208 silly addNameRange     '1.4.1',
+208 silly addNameRange     '1.4.2',
+208 silly addNameRange     '1.4.3',
+208 silly addNameRange     '1.5.0',
+208 silly addNameRange     '1.5.1',
+208 silly addNameRange     '1.5.2',
+208 silly addNameRange     '1.6.0',
+208 silly addNameRange     '1.6.1',
+208 silly addNameRange     '1.6.2',
+208 silly addNameRange     '1.6.3',
+208 silly addNameRange     '1.6.4',
+208 silly addNameRange     '1.6.5',
+208 silly addNameRange     '1.6.6',
+208 silly addNameRange     '1.6.7',
+208 silly addNameRange     '1.7.0',
+208 silly addNameRange     '1.8.0',
+208 silly addNameRange     '1.8.1',
+208 silly addNameRange     '1.8.2',
+208 silly addNameRange     '1.8.3',
+208 silly addNameRange     '1.8.4',
+208 silly addNameRange     '1.9.0',
+208 silly addNameRange     '1.9.1',
+208 silly addNameRange     '1.9.2',
+208 silly addNameRange     '1.9.3',
+208 silly addNameRange     '1.10.0',
+208 silly addNameRange     '1.10.1',
+208 silly addNameRange     '1.10.2',
+208 silly addNameRange     '1.11.0',
+208 silly addNameRange     '1.12.0',
+208 silly addNameRange     '1.12.1',
+208 silly addNameRange     '1.12.2',
+208 silly addNameRange     '1.12.3' ] ]
+209 verbose addNamed body-parser@1.12.3
+210 silly addNamed semver.valid 1.12.3
+211 silly addNamed semver.validRange 1.12.3
+212 silly addNameRange number 2 { name: 'morgan', range: '>=1.5.2 <2.0.0', hasData: true }
+213 silly addNameRange versions [ 'morgan',
+213 silly addNameRange   [ '1.0.0',
+213 silly addNameRange     '1.0.1',
+213 silly addNameRange     '1.1.0',
+213 silly addNameRange     '1.1.1',
+213 silly addNameRange     '1.2.0',
+213 silly addNameRange     '1.2.1',
+213 silly addNameRange     '1.2.2',
+213 silly addNameRange     '1.2.3',
+213 silly addNameRange     '1.3.0',
+213 silly addNameRange     '1.3.1',
+213 silly addNameRange     '1.3.2',
+213 silly addNameRange     '1.4.0',
+213 silly addNameRange     '1.4.1',
+213 silly addNameRange     '1.5.0',
+213 silly addNameRange     '1.5.1',
+213 silly addNameRange     '1.5.2' ] ]
+214 verbose addNamed morgan@1.5.2
+215 silly addNamed semver.valid 1.5.2
+216 silly addNamed semver.validRange 1.5.2
+217 silly addNameRange number 2 { name: 'cookie-parser', range: '>=1.3.4 <2.0.0', hasData: true }
+218 silly addNameRange versions [ 'cookie-parser',
+218 silly addNameRange   [ '1.0.0',
+218 silly addNameRange     '1.0.1',
+218 silly addNameRange     '1.1.0',
+218 silly addNameRange     '1.2.0',
+218 silly addNameRange     '1.3.0',
+218 silly addNameRange     '1.3.1',
+218 silly addNameRange     '1.3.2',
+218 silly addNameRange     '1.3.3',
+218 silly addNameRange     '1.3.4' ] ]
+219 verbose addNamed cookie-parser@1.3.4
+220 silly addNamed semver.valid 1.3.4
+221 silly addNamed semver.validRange 1.3.4
+222 silly cache afterAdd body-parser@1.12.3
+223 verbose afterAdd /Users/wudi/.npm/body-parser/1.12.3/package/package.json not in flight; writing
+224 silly cache afterAdd morgan@1.5.2
+225 verbose afterAdd /Users/wudi/.npm/morgan/1.5.2/package/package.json not in flight; writing
+226 silly cache afterAdd cookie-parser@1.3.4
+227 verbose afterAdd /Users/wudi/.npm/cookie-parser/1.3.4/package/package.json not in flight; writing
+228 verbose afterAdd /Users/wudi/.npm/body-parser/1.12.3/package/package.json written
+229 verbose afterAdd /Users/wudi/.npm/morgan/1.5.2/package/package.json written
+230 verbose afterAdd /Users/wudi/.npm/cookie-parser/1.3.4/package/package.json written
+231 http 304 https://registry.npmjs.org/ejs
+232 silly get cb [ 304,
+232 silly get   { date: 'Tue, 28 Apr 2015 09:35:34 GMT',
+232 silly get     server: 'Apache',
+232 silly get     via: '1.1 varnish',
+232 silly get     'last-modified': 'Tue, 28 Apr 2015 09:35:34 GMT',
+232 silly get     'cache-control': 'max-age=60',
+232 silly get     etag: '"3V6RAL95CA3D1ZLWSX5FMHCOR"',
+232 silly get     age: '0',
+232 silly get     'x-served-by': 'cache-nrt6120-NRT',
+232 silly get     'x-cache': 'HIT',
+232 silly get     'x-cache-hits': '1',
+232 silly get     'x-timer': 'S1430213734.006702,VS0,VE114',
+232 silly get     vary: 'Accept',
+232 silly get     'content-length': '0',
+232 silly get     'keep-alive': 'timeout=10, max=50',
+232 silly get     connection: 'Keep-Alive' } ]
+233 verbose etag https://registry.npmjs.org/ejs from cache
+234 verbose get saving ejs to /Users/wudi/.npm/registry.npmjs.org/ejs/.cache.json
+235 silly addNameRange number 2 { name: 'ejs', range: '>=2.3.1 <3.0.0', hasData: true }
+236 silly addNameRange versions [ 'ejs',
+236 silly addNameRange   [ '0.0.1',
+236 silly addNameRange     '0.0.2',
+236 silly addNameRange     '0.0.3',
+236 silly addNameRange     '0.0.4',
+236 silly addNameRange     '0.1.0',
+236 silly addNameRange     '0.2.0',
+236 silly addNameRange     '0.2.1',
+236 silly addNameRange     '0.3.0',
+236 silly addNameRange     '0.3.1',
+236 silly addNameRange     '0.4.0',
+236 silly addNameRange     '0.4.1',
+236 silly addNameRange     '0.4.2',
+236 silly addNameRange     '0.4.3',
+236 silly addNameRange     '0.5.0',
+236 silly addNameRange     '0.6.0',
+236 silly addNameRange     '0.6.1',
+236 silly addNameRange     '0.7.0',
+236 silly addNameRange     '0.7.1',
+236 silly addNameRange     '0.7.2',
+236 silly addNameRange     '0.8.0',
+236 silly addNameRange     '0.8.1',
+236 silly addNameRange     '0.8.2',
+236 silly addNameRange     '0.8.3',
+236 silly addNameRange     '0.8.4',
+236 silly addNameRange     '0.8.5',
+236 silly addNameRange     '0.8.6',
+236 silly addNameRange     '0.8.8',
+236 silly addNameRange     '1.0.0',
+236 silly addNameRange     '2.0.2',
+236 silly addNameRange     '2.0.3',
+236 silly addNameRange     '2.0.4',
+236 silly addNameRange     '2.0.5',
+236 silly addNameRange     '2.0.6',
+236 silly addNameRange     '2.0.7',
+236 silly addNameRange     '2.0.8',
+236 silly addNameRange     '2.1.1',
+236 silly addNameRange     '2.1.2',
+236 silly addNameRange     '2.1.3',
+236 silly addNameRange     '2.1.4',
+236 silly addNameRange     '2.2.1',
+236 silly addNameRange     '2.2.2',
+236 silly addNameRange     '2.2.3',
+236 silly addNameRange     '2.2.4',
+236 silly addNameRange     '2.3.1' ] ]
+237 verbose addNamed ejs@2.3.1
+238 silly addNamed semver.valid 2.3.1
+239 silly addNamed semver.validRange 2.3.1
+240 silly cache afterAdd ejs@2.3.1
+241 verbose afterAdd /Users/wudi/.npm/ejs/2.3.1/package/package.json not in flight; writing
+242 verbose afterAdd /Users/wudi/.npm/ejs/2.3.1/package/package.json written
+243 http 304 https://registry.npmjs.org/node-native-zip
+244 silly get cb [ 304,
+244 silly get   { date: 'Tue, 28 Apr 2015 09:35:34 GMT',
+244 silly get     server: 'Apache',
+244 silly get     via: '1.1 varnish',
+244 silly get     'last-modified': 'Tue, 28 Apr 2015 09:35:34 GMT',
+244 silly get     'cache-control': 'max-age=60',
+244 silly get     etag: '"2RL7838P7UO1HJCMNI2L8FB4H"',
+244 silly get     age: '0',
+244 silly get     'x-served-by': 'cache-nrt6125-NRT',
+244 silly get     'x-cache': 'HIT',
+244 silly get     'x-cache-hits': '1',
+244 silly get     'x-timer': 'S1430213734.033256,VS0,VE101',
+244 silly get     vary: 'Accept',
+244 silly get     'content-length': '0',
+244 silly get     'keep-alive': 'timeout=10, max=50',
+244 silly get     connection: 'Keep-Alive' } ]
+245 verbose etag https://registry.npmjs.org/node-native-zip from cache
+246 verbose get saving node-native-zip to /Users/wudi/.npm/registry.npmjs.org/node-native-zip/.cache.json
+247 silly addNameRange number 2 { name: 'node-native-zip',
+247 silly addNameRange   range: '>=1.1.0 <2.0.0',
+247 silly addNameRange   hasData: true }
+248 silly addNameRange versions [ 'node-native-zip', [ '1.0.0', '1.0.1', '1.1.0' ] ]
+249 verbose addNamed node-native-zip@1.1.0
+250 silly addNamed semver.valid 1.1.0
+251 silly addNamed semver.validRange 1.1.0
+252 silly cache afterAdd node-native-zip@1.1.0
+253 verbose afterAdd /Users/wudi/.npm/node-native-zip/1.1.0/package/package.json not in flight; writing
+254 verbose afterAdd /Users/wudi/.npm/node-native-zip/1.1.0/package/package.json written
+255 http 304 https://registry.npmjs.org/serve-favicon
+256 silly get cb [ 304,
+256 silly get   { date: 'Tue, 28 Apr 2015 09:35:34 GMT',
+256 silly get     server: 'Apache',
+256 silly get     via: '1.1 varnish',
+256 silly get     'last-modified': 'Tue, 28 Apr 2015 09:35:34 GMT',
+256 silly get     'cache-control': 'max-age=60',
+256 silly get     etag: '"E5BSLOF3LLVN5Z1U3UXYTQLI9"',
+256 silly get     age: '46',
+256 silly get     'x-served-by': 'cache-nrt6123-NRT',
+256 silly get     'x-cache': 'HIT',
+256 silly get     'x-cache-hits': '1',
+256 silly get     'x-timer': 'S1430213734.290676,VS0,VE0',
+256 silly get     vary: 'Accept',
+256 silly get     'content-length': '0',
+256 silly get     'keep-alive': 'timeout=10, max=50',
+256 silly get     connection: 'Keep-Alive' } ]
+257 verbose etag https://registry.npmjs.org/serve-favicon from cache
+258 verbose get saving serve-favicon to /Users/wudi/.npm/registry.npmjs.org/serve-favicon/.cache.json
+259 silly addNameRange number 2 { name: 'serve-favicon', range: '>=2.2.0 <3.0.0', hasData: true }
+260 silly addNameRange versions [ 'serve-favicon',
+260 silly addNameRange   [ '2.0.0',
+260 silly addNameRange     '2.0.1',
+260 silly addNameRange     '2.1.0',
+260 silly addNameRange     '2.1.1',
+260 silly addNameRange     '2.1.2',
+260 silly addNameRange     '2.1.3',
+260 silly addNameRange     '2.1.4',
+260 silly addNameRange     '2.1.5',
+260 silly addNameRange     '2.1.6',
+260 silly addNameRange     '2.1.7',
+260 silly addNameRange     '2.2.0' ] ]
+261 verbose addNamed serve-favicon@2.2.0
+262 silly addNamed semver.valid 2.2.0
+263 silly addNamed semver.validRange 2.2.0
+264 silly cache afterAdd serve-favicon@2.2.0
+265 verbose afterAdd /Users/wudi/.npm/serve-favicon/2.2.0/package/package.json not in flight; writing
+266 verbose afterAdd /Users/wudi/.npm/serve-favicon/2.2.0/package/package.json written
+267 http 304 https://registry.npmjs.org/debug
+268 silly get cb [ 304,
+268 silly get   { date: 'Tue, 28 Apr 2015 09:35:34 GMT',
+268 silly get     server: 'Apache',
+268 silly get     via: '1.1 varnish',
+268 silly get     'last-modified': 'Tue, 28 Apr 2015 09:35:34 GMT',
+268 silly get     'cache-control': 'max-age=60',
+268 silly get     etag: '"9JP1IGS0OP0WFAZUQGHP93AVQ"',
+268 silly get     age: '13',
+268 silly get     'x-served-by': 'cache-nrt6134-NRT',
+268 silly get     'x-cache': 'HIT',
+268 silly get     'x-cache-hits': '1',
+268 silly get     'x-timer': 'S1430213734.022929,VS0,VE1',
+268 silly get     vary: 'Accept',
+268 silly get     'content-length': '0',
+268 silly get     'keep-alive': 'timeout=10, max=50',
+268 silly get     connection: 'Keep-Alive' } ]
+269 verbose etag https://registry.npmjs.org/debug from cache
+270 verbose get saving debug to /Users/wudi/.npm/registry.npmjs.org/debug/.cache.json
+271 silly addNameRange number 2 { name: 'debug', range: '>=2.1.3 <3.0.0', hasData: true }
+272 silly addNameRange versions [ 'debug',
+272 silly addNameRange   [ '0.0.1',
+272 silly addNameRange     '0.1.0',
+272 silly addNameRange     '0.2.0',
+272 silly addNameRange     '0.3.0',
+272 silly addNameRange     '0.4.0',
+272 silly addNameRange     '0.4.1',
+272 silly addNameRange     '0.5.0',
+272 silly addNameRange     '0.6.0',
+272 silly addNameRange     '0.7.0',
+272 silly addNameRange     '0.7.1',
+272 silly addNameRange     '0.7.2',
+272 silly addNameRange     '0.7.3',
+272 silly addNameRange     '0.7.4',
+272 silly addNameRange     '0.8.0',
+272 silly addNameRange     '0.8.1',
+272 silly addNameRange     '1.0.0',
+272 silly addNameRange     '1.0.1',
+272 silly addNameRange     '1.0.2',
+272 silly addNameRange     '1.0.3',
+272 silly addNameRange     '1.0.4',
+272 silly addNameRange     '2.0.0',
+272 silly addNameRange     '2.1.0',
+272 silly addNameRange     '2.1.1',
+272 silly addNameRange     '2.1.2',
+272 silly addNameRange     '2.1.3' ] ]
+273 verbose addNamed debug@2.1.3
+274 silly addNamed semver.valid 2.1.3
+275 silly addNamed semver.validRange 2.1.3
+276 silly cache afterAdd debug@2.1.3
+277 verbose afterAdd /Users/wudi/.npm/debug/2.1.3/package/package.json not in flight; writing
+278 verbose afterAdd /Users/wudi/.npm/debug/2.1.3/package/package.json written
+279 http 304 https://registry.npmjs.org/express
+280 silly get cb [ 304,
+280 silly get   { date: 'Tue, 28 Apr 2015 09:35:34 GMT',
+280 silly get     server: 'Apache',
+280 silly get     via: '1.1 varnish',
+280 silly get     'last-modified': 'Tue, 28 Apr 2015 09:35:34 GMT',
+280 silly get     'cache-control': 'max-age=60',
+280 silly get     etag: '"BNCFC1XVUU7UGT6BRTAUNBISS"',
+280 silly get     age: '53',
+280 silly get     'x-served-by': 'cache-nrt6125-NRT',
+280 silly get     'x-cache': 'HIT',
+280 silly get     'x-cache-hits': '1',
+280 silly get     'x-timer': 'S1430213734.024352,VS0,VE4',
+280 silly get     vary: 'Accept',
+280 silly get     'content-length': '0',
+280 silly get     'keep-alive': 'timeout=10, max=50',
+280 silly get     connection: 'Keep-Alive' } ]
+281 verbose etag https://registry.npmjs.org/express from cache
+282 verbose get saving express to /Users/wudi/.npm/registry.npmjs.org/express/.cache.json
+283 silly addNameRange number 2 { name: 'express', range: '>=4.12.3 <5.0.0', hasData: true }
+284 silly addNameRange versions [ 'express',
+284 silly addNameRange   [ '0.14.0',
+284 silly addNameRange     '0.14.1',
+284 silly addNameRange     '1.0.0',
+284 silly addNameRange     '1.0.1',
+284 silly addNameRange     '1.0.2',
+284 silly addNameRange     '1.0.3',
+284 silly addNameRange     '1.0.4',
+284 silly addNameRange     '1.0.5',
+284 silly addNameRange     '1.0.6',
+284 silly addNameRange     '1.0.7',
+284 silly addNameRange     '1.0.8',
+284 silly addNameRange     '2.0.0',
+284 silly addNameRange     '2.1.0',
+284 silly addNameRange     '2.1.1',
+284 silly addNameRange     '2.2.0',
+284 silly addNameRange     '2.2.1',
+284 silly addNameRange     '2.2.2',
+284 silly addNameRange     '2.3.0',
+284 silly addNameRange     '2.3.1',
+284 silly addNameRange     '2.3.2',
+284 silly addNameRange     '2.3.3',
+284 silly addNameRange     '2.3.4',
+284 silly addNameRange     '2.3.5',
+284 silly addNameRange     '2.3.6',
+284 silly addNameRange     '2.3.7',
+284 silly addNameRange     '2.3.8',
+284 silly addNameRange     '2.3.9',
+284 silly addNameRange     '2.3.10',
+284 silly addNameRange     '2.3.11',
+284 silly addNameRange     '2.3.12',
+284 silly addNameRange     '2.4.0',
+284 silly addNameRange     '2.4.1',
+284 silly addNameRange     '2.4.2',
+284 silly addNameRange     '2.4.3',
+284 silly addNameRange     '2.4.4',
+284 silly addNameRange     '2.4.5',
+284 silly addNameRange     '2.4.6',
+284 silly addNameRange     '2.4.7',
+284 silly addNameRange     '2.5.0',
+284 silly addNameRange     '2.5.1',
+284 silly addNameRange     '2.5.2',
+284 silly addNameRange     '2.5.3',
+284 silly addNameRange     '2.5.4',
+284 silly addNameRange     '2.5.5',
+284 silly addNameRange     '2.5.6',
+284 silly addNameRange     '2.5.7',
+284 silly addNameRange     '2.5.8',
+284 silly addNameRange     '2.5.9',
+284 silly addNameRange     '2.5.10',
+284 silly addNameRange     '2.5.11',
+284 silly addNameRange     '3.0.0',
+284 silly addNameRange     '3.0.1',
+284 silly addNameRange     '3.0.2',
+284 silly addNameRange     '3.0.3',
+284 silly addNameRange     '3.0.4',
+284 silly addNameRange     '3.0.5',
+284 silly addNameRange     '3.0.6',
+284 silly addNameRange     '3.1.0',
+284 silly addNameRange     '3.1.1',
+284 silly addNameRange     '3.1.2',
+284 silly addNameRange     '3.2.0',
+284 silly addNameRange     '3.2.1',
+284 silly addNameRange     '3.2.2',
+284 silly addNameRange     '3.2.3',
+284 silly addNameRange     '3.2.4',
+284 silly addNameRange     '3.2.5',
+284 silly addNameRange     '3.2.6',
+284 silly addNameRange     '3.3.0',
+284 silly addNameRange     '3.3.1',
+284 silly addNameRange     '3.3.2',
+284 silly addNameRange     '3.3.3',
+284 silly addNameRange     '3.3.4',
+284 silly addNameRange     '3.3.5',
+284 silly addNameRange     '3.3.6',
+284 silly addNameRange     '1.0.0-beta',
+284 silly addNameRange     '1.0.0-beta2',
+284 silly addNameRange     '1.0.0-rc',
+284 silly addNameRange     '1.0.0-rc2',
+284 silly addNameRange     '1.0.0-rc3',
+284 silly addNameRange     '1.0.0-rc4',
+284 silly addNameRange     '2.0.0-beta',
+284 silly addNameRange     '2.0.0-beta2',
+284 silly addNameRange     '2.0.0-beta3',
+284 silly addNameRange     '2.0.0-rc',
+284 silly addNameRange     '2.0.0-rc2',
+284 silly addNameRange     '2.0.0-rc3',
+284 silly addNameRange     '3.0.0-alpha1',
+284 silly addNameRange     '3.0.0-alpha2',
+284 silly addNameRange     '3.0.0-alpha3',
+284 silly addNameRange     '3.0.0-alpha4',
+284 silly addNameRange     '3.0.0-alpha5',
+284 silly addNameRange     '3.0.0-beta1',
+284 silly addNameRange     '3.0.0-beta2',
+284 silly addNameRange     '3.0.0-beta3',
+284 silly addNameRange     '3.0.0-beta4',
+284 silly addNameRange     '3.0.0-beta6',
+284 silly addNameRange     '3.0.0-beta7',
+284 silly addNameRange     '3.0.0-rc1',
+284 silly addNameRange     '3.0.0-rc2',
+284 silly addNameRange     '3.0.0-rc3',
+284 silly addNameRange     '3.0.0-rc4',
+284 silly addNameRange     '3.0.0-rc5',
+284 silly addNameRange     '3.3.7',
+284 silly addNameRange     '3.3.8',
+284 silly addNameRange     '3.4.0',
+284 silly addNameRange     '3.4.1',
+284 silly addNameRange     '3.4.2',
+284 silly addNameRange     '3.4.3',
+284 silly addNameRange     '3.4.4',
+284 silly addNameRange     '3.4.5',
+284 silly addNameRange     '3.4.6',
+284 silly addNameRange     '3.4.7',
+284 silly addNameRange     '3.4.8',
+284 silly addNameRange     '4.0.0-rc1',
+284 silly addNameRange     '4.0.0-rc2',
+284 silly addNameRange     '3.5.0',
+284 silly addNameRange     '4.0.0-rc3',
+284 silly addNameRange     '4.0.0-rc4',
+284 silly addNameRange     '3.5.1',
+284 silly addNameRange     '4.0.0',
+284 silly addNameRange     '3.5.2',
+284 silly addNameRange     '4.1.0',
+284 silly addNameRange     '4.1.1',
+284 silly addNameRange     '3.5.3',
+284 silly addNameRange     '4.1.2',
+284 silly addNameRange     '3.6.0',
+284 silly addNameRange     '4.2.0',
+284 silly addNameRange     '3.7.0',
+284 silly addNameRange     '3.8.0',
+284 silly addNameRange     '4.3.0',
+284 silly addNameRange     '4.3.1',
+284 silly addNameRange     '3.8.1',
+284 silly addNameRange     '4.3.2',
+284 silly addNameRange     '3.9.0',
+284 silly addNameRange     '4.4.0',
+284 silly addNameRange     '4.4.1',
+284 silly addNameRange     '3.10.0',
+284 silly addNameRange     '3.10.1',
+284 silly addNameRange     '3.10.2',
+284 silly addNameRange     '3.10.3',
+284 silly addNameRange     '3.10.4',
+284 silly addNameRange     '4.4.2',
+284 silly addNameRange     '3.10.5',
+284 silly addNameRange     '4.4.3',
+284 silly addNameRange     '3.11.0',
+284 silly addNameRange     '4.4.4',
+284 silly addNameRange     '3.12.0',
+284 silly addNameRange     '3.12.1',
+284 silly addNameRange     '4.4.5',
+284 silly addNameRange     '3.13.0',
+284 silly addNameRange     '4.5.0',
+284 silly addNameRange     '4.5.1',
+284 silly addNameRange     '3.14.0',
+284 silly addNameRange     '4.6.0',
+284 silly addNameRange     '4.6.1',
+284 silly addNameRange     '3.15.0',
+284 silly addNameRange     '4.7.0',
+284 silly addNameRange     '3.15.1',
+284 silly addNameRange     '4.7.1',
+284 silly addNameRange     '3.15.2',
+284 silly addNameRange     '4.7.2',
+284 silly addNameRange     '4.7.3',
+284 silly addNameRange     '3.15.3',
+284 silly addNameRange     '4.7.4',
+284 silly addNameRange     '3.16.0',
+284 silly addNameRange     '4.8.0',
+284 silly addNameRange     '3.16.1',
+284 silly addNameRange     '4.8.1',
+284 silly addNameRange     '3.16.2',
+284 silly addNameRange     '4.8.2',
+284 silly addNameRange     '3.16.3',
+284 silly addNameRange     '3.16.4',
+284 silly addNameRange     '4.8.3',
+284 silly addNameRange     '3.16.5',
+284 silly addNameRange     '3.16.6',
+284 silly addNameRange     '4.8.4',
+284 silly addNameRange     '3.16.7',
+284 silly addNameRange     '4.8.5',
+284 silly addNameRange     '3.16.8',
+284 silly addNameRange     '4.8.6',
+284 silly addNameRange     '3.16.9',
+284 silly addNameRange     '4.8.7',
+284 silly addNameRange     '3.16.10',
+284 silly addNameRange     '4.8.8',
+284 silly addNameRange     '3.17.0',
+284 silly addNameRange     '3.17.1',
+284 silly addNameRange     '4.9.0',
+284 silly addNameRange     '3.17.2',
+284 silly addNameRange     '4.9.1',
+284 silly addNameRange     '4.9.2',
+284 silly addNameRange     '3.17.3',
+284 silly addNameRange     '4.9.3',
+284 silly addNameRange     '3.17.4',
+284 silly addNameRange     '4.9.4',
+284 silly addNameRange     '3.17.5',
+284 silly addNameRange     '4.9.5',
+284 silly addNameRange     '3.17.6',
+284 silly addNameRange     '3.17.7',
+284 silly addNameRange     '4.9.6',
+284 silly addNameRange     '4.9.7',
+284 silly addNameRange     '3.17.8',
+284 silly addNameRange     '4.9.8',
+284 silly addNameRange     '3.18.0',
+284 silly addNameRange     '3.18.1',
+284 silly addNameRange     '4.10.0',
+284 silly addNameRange     '3.18.2',
+284 silly addNameRange     '4.10.1',
+284 silly addNameRange     '5.0.0-alpha.1',
+284 silly addNameRange     '3.18.3',
+284 silly addNameRange     '4.10.2',
+284 silly addNameRange     '3.18.4',
+284 silly addNameRange     '4.10.3',
+284 silly addNameRange     '4.10.4',
+284 silly addNameRange     '4.10.5',
+284 silly addNameRange     '3.18.5',
+284 silly addNameRange     '3.18.6',
+284 silly addNameRange     '4.10.6',
+284 silly addNameRange     '4.10.7',
+284 silly addNameRange     '3.19.0',
+284 silly addNameRange     '4.10.8',
+284 silly addNameRange     '4.11.0',
+284 silly addNameRange     '3.19.1',
+284 silly addNameRange     '4.11.1',
+284 silly addNameRange     '3.19.2',
+284 silly addNameRange     '4.11.2',
+284 silly addNameRange     '3.20.0',
+284 silly addNameRange     '4.12.0',
+284 silly addNameRange     '3.20.1',
+284 silly addNameRange     '4.12.1',
+284 silly addNameRange     '4.12.2',
+284 silly addNameRange     '3.20.2',
+284 silly addNameRange     '4.12.3' ] ]
+285 verbose addNamed express@4.12.3
+286 silly addNamed semver.valid 4.12.3
+287 silly addNamed semver.validRange 4.12.3
+288 silly cache afterAdd express@4.12.3
+289 verbose afterAdd /Users/wudi/.npm/express/4.12.3/package/package.json not in flight; writing
+290 verbose afterAdd /Users/wudi/.npm/express/4.12.3/package/package.json written
+291 http 304 https://registry.npmjs.org/fontmin
+292 silly get cb [ 304,
+292 silly get   { date: 'Tue, 28 Apr 2015 09:35:34 GMT',
+292 silly get     server: 'Apache',
+292 silly get     via: '1.1 varnish',
+292 silly get     'last-modified': 'Tue, 28 Apr 2015 09:35:34 GMT',
+292 silly get     'cache-control': 'max-age=60',
+292 silly get     etag: '"6H899TL4QE55B310LUFE6R5GO"',
+292 silly get     age: '0',
+292 silly get     'x-served-by': 'cache-nrt6130-NRT',
+292 silly get     'x-cache': 'HIT',
+292 silly get     'x-cache-hits': '1',
+292 silly get     'x-timer': 'S1430213734.010918,VS0,VE418',
+292 silly get     vary: 'Accept',
+292 silly get     'content-length': '0',
+292 silly get     'keep-alive': 'timeout=10, max=50',
+292 silly get     connection: 'Keep-Alive' } ]
+293 verbose etag https://registry.npmjs.org/fontmin from cache
+294 verbose get saving fontmin to /Users/wudi/.npm/registry.npmjs.org/fontmin/.cache.json
+295 silly cache afterAdd fontmin@0.4.8
+296 verbose afterAdd /Users/wudi/.npm/fontmin/0.4.8/package/package.json not in flight; writing
+297 verbose afterAdd /Users/wudi/.npm/fontmin/0.4.8/package/package.json written
+298 http 304 https://registry.npmjs.org/archiver
+299 silly get cb [ 304,
+299 silly get   { date: 'Tue, 28 Apr 2015 09:35:35 GMT',
+299 silly get     server: 'Apache',
+299 silly get     via: '1.1 varnish',
+299 silly get     'last-modified': 'Tue, 28 Apr 2015 09:35:35 GMT',
+299 silly get     'cache-control': 'max-age=60',
+299 silly get     etag: '"4L81W9XIADTPA890LSGQRLT0M"',
+299 silly get     age: '0',
+299 silly get     'x-served-by': 'cache-nrt6123-NRT',
+299 silly get     'x-cache': 'HIT',
+299 silly get     'x-cache-hits': '1',
+299 silly get     'x-timer': 'S1430213735.040561,VS0,VE749',
+299 silly get     vary: 'Accept',
+299 silly get     'content-length': '0',
+299 silly get     'keep-alive': 'timeout=10, max=50',
+299 silly get     connection: 'Keep-Alive' } ]
+300 verbose etag https://registry.npmjs.org/archiver from cache
+301 verbose get saving archiver to /Users/wudi/.npm/registry.npmjs.org/archiver/.cache.json
+302 silly addNameRange number 2 { name: 'archiver', range: '>=0.14.3 <0.15.0', hasData: true }
+303 silly addNameRange versions [ 'archiver',
+303 silly addNameRange   [ '0.1.0',
+303 silly addNameRange     '0.1.1',
+303 silly addNameRange     '0.2.0',
+303 silly addNameRange     '0.2.1',
+303 silly addNameRange     '0.2.2',
+303 silly addNameRange     '0.3.0',
+303 silly addNameRange     '0.4.0',
+303 silly addNameRange     '0.4.1',
+303 silly addNameRange     '0.4.2',
+303 silly addNameRange     '0.4.3',
+303 silly addNameRange     '0.4.4',
+303 silly addNameRange     '0.4.5',
+303 silly addNameRange     '0.4.6',
+303 silly addNameRange     '0.4.7',
+303 silly addNameRange     '0.4.8',
+303 silly addNameRange     '0.4.9',
+303 silly addNameRange     '0.4.10',
+303 silly addNameRange     '0.5.0-alpha',
+303 silly addNameRange     '0.5.0',
+303 silly addNameRange     '0.5.1',
+303 silly addNameRange     '0.5.2',
+303 silly addNameRange     '0.6.0',
+303 silly addNameRange     '0.6.1',
+303 silly addNameRange     '0.7.0',
+303 silly addNameRange     '0.7.1',
+303 silly addNameRange     '0.8.0',
+303 silly addNameRange     '0.8.1',
+303 silly addNameRange     '0.9.0',
+303 silly addNameRange     '0.9.1',
+303 silly addNameRange     '0.10.0-alpha',
+303 silly addNameRange     '0.10.0',
+303 silly addNameRange     '0.10.1',
+303 silly addNameRange     '0.11.0-alpha',
+303 silly addNameRange     '0.11.0',
+303 silly addNameRange     '0.12.0',
+303 silly addNameRange     '0.13.0',
+303 silly addNameRange     '0.13.1',
+303 silly addNameRange     '0.14.0',
+303 silly addNameRange     '0.14.1',
+303 silly addNameRange     '0.14.2',
+303 silly addNameRange     '0.14.3' ] ]
+304 verbose addNamed archiver@0.14.3
+305 silly addNamed semver.valid 0.14.3
+306 silly addNamed semver.validRange 0.14.3
+307 silly cache afterAdd archiver@0.14.3
+308 verbose afterAdd /Users/wudi/.npm/archiver/0.14.3/package/package.json not in flight; writing
+309 verbose afterAdd /Users/wudi/.npm/archiver/0.14.3/package/package.json written
+310 http 304 https://registry.npmjs.org/multer
+311 silly get cb [ 304,
+311 silly get   { date: 'Tue, 28 Apr 2015 09:35:35 GMT',
+311 silly get     server: 'Apache',
+311 silly get     via: '1.1 varnish',
+311 silly get     'last-modified': 'Tue, 28 Apr 2015 09:35:35 GMT',
+311 silly get     'cache-control': 'max-age=60',
+311 silly get     etag: '"1RS6L387TXDL2F3T6JD3P9TUQ"',
+311 silly get     age: '0',
+311 silly get     'x-served-by': 'cache-nrt6126-NRT',
+311 silly get     'x-cache': 'HIT',
+311 silly get     'x-cache-hits': '1',
+311 silly get     'x-timer': 'S1430213735.136305,VS0,VE727',
+311 silly get     vary: 'Accept',
+311 silly get     'content-length': '0',
+311 silly get     'keep-alive': 'timeout=10, max=50',
+311 silly get     connection: 'Keep-Alive' } ]
+312 verbose etag https://registry.npmjs.org/multer from cache
+313 verbose get saving multer to /Users/wudi/.npm/registry.npmjs.org/multer/.cache.json
+314 silly addNameRange number 2 { name: 'multer', range: '>=0.1.8 <0.2.0', hasData: true }
+315 silly addNameRange versions [ 'multer',
+315 silly addNameRange   [ '0.0.1',
+315 silly addNameRange     '0.0.2',
+315 silly addNameRange     '0.0.3',
+315 silly addNameRange     '0.0.4',
+315 silly addNameRange     '0.0.5',
+315 silly addNameRange     '0.0.6',
+315 silly addNameRange     '0.0.7',
+315 silly addNameRange     '0.1.0',
+315 silly addNameRange     '0.1.1',
+315 silly addNameRange     '0.1.2',
+315 silly addNameRange     '0.1.3',
+315 silly addNameRange     '0.1.4',
+315 silly addNameRange     '0.1.6',
+315 silly addNameRange     '0.1.7',
+315 silly addNameRange     '0.1.8' ] ]
+316 verbose addNamed multer@0.1.8
+317 silly addNamed semver.valid 0.1.8
+318 silly addNamed semver.validRange 0.1.8
+319 silly cache afterAdd multer@0.1.8
+320 verbose afterAdd /Users/wudi/.npm/multer/0.1.8/package/package.json not in flight; writing
+321 verbose afterAdd /Users/wudi/.npm/multer/0.1.8/package/package.json written
+322 silly install resolved [ { name: 'body-parser',
+322 silly install resolved     description: 'Node.js body parsing middleware',
+322 silly install resolved     version: '1.12.3',
+322 silly install resolved     contributors: [ [Object], [Object] ],
+322 silly install resolved     license: 'MIT',
+322 silly install resolved     repository: { type: 'git', url: 'https://github.com/expressjs/body-parser' },
+322 silly install resolved     dependencies:
+322 silly install resolved      { bytes: '1.0.0',
+322 silly install resolved        'content-type': '~1.0.1',
+322 silly install resolved        debug: '~2.1.3',
+322 silly install resolved        depd: '~1.0.1',
+322 silly install resolved        'iconv-lite': '0.4.8',
+322 silly install resolved        'on-finished': '~2.2.0',
+322 silly install resolved        qs: '2.4.1',
+322 silly install resolved        'raw-body': '1.3.4',
+322 silly install resolved        'type-is': '~1.6.1' },
+322 silly install resolved     devDependencies:
+322 silly install resolved      { istanbul: '0.3.9',
+322 silly install resolved        methods: '~1.1.1',
+322 silly install resolved        mocha: '~2.2.4',
+322 silly install resolved        supertest: '~0.15.0' },
+322 silly install resolved     files: [ 'lib/', 'LICENSE', 'HISTORY.md', 'index.js' ],
+322 silly install resolved     engines: { node: '>= 0.8' },
+322 silly install resolved     scripts:
+322 silly install resolved      { test: 'mocha --require test/support/env --reporter spec --check-leaks --bail test/',
+322 silly install resolved        'test-cov': 'istanbul cover node_modules/mocha/bin/_mocha -- --require test/support/env --reporter dot --check-leaks test/',
+322 silly install resolved        'test-travis': 'istanbul cover node_modules/mocha/bin/_mocha --report lcovonly -- --require test/support/env --reporter spec --check-leaks test/' },
+322 silly install resolved     gitHead: '5addd8e18e0a72795f9ab93e867d3e50f3429910',
+322 silly install resolved     bugs: { url: 'https://github.com/expressjs/body-parser/issues' },
+322 silly install resolved     homepage: 'https://github.com/expressjs/body-parser',
+322 silly install resolved     _id: 'body-parser@1.12.3',
+322 silly install resolved     _shasum: '5f40bf17e7823be6895d4d35582752e36cf97f71',
+322 silly install resolved     _from: 'body-parser@>=1.12.2 <2.0.0',
+322 silly install resolved     _npmVersion: '1.4.28',
+322 silly install resolved     _npmUser: { name: 'dougwilson', email: 'doug@somethingdoug.com' },
+322 silly install resolved     maintainers: [ [Object], [Object], [Object], [Object], [Object], [Object] ],
+322 silly install resolved     dist:
+322 silly install resolved      { shasum: '5f40bf17e7823be6895d4d35582752e36cf97f71',
+322 silly install resolved        tarball: 'http://registry.npmjs.org/body-parser/-/body-parser-1.12.3.tgz' },
+322 silly install resolved     directories: {},
+322 silly install resolved     _resolved: 'https://registry.npmjs.org/body-parser/-/body-parser-1.12.3.tgz',
+322 silly install resolved     readme: 'ERROR: No README data found!' },
+322 silly install resolved   { name: 'morgan',
+322 silly install resolved     description: 'HTTP request logger middleware for node.js',
+322 silly install resolved     version: '1.5.2',
+322 silly install resolved     contributors: [ [Object], [Object] ],
+322 silly install resolved     license: 'MIT',
+322 silly install resolved     repository: { type: 'git', url: 'https://github.com/expressjs/morgan' },
+322 silly install resolved     dependencies:
+322 silly install resolved      { 'basic-auth': '1.0.0',
+322 silly install resolved        debug: '~2.1.3',
+322 silly install resolved        depd: '~1.0.0',
+322 silly install resolved        'on-finished': '~2.2.0' },
+322 silly install resolved     devDependencies: { istanbul: '0.3.7', mocha: '~2.2.1', supertest: '~0.15.0' },
+322 silly install resolved     files: [ 'LICENSE', 'HISTORY.md', 'README.md', 'index.js' ],
+322 silly install resolved     engines: { node: '>= 0.8.0' },
+322 silly install resolved     scripts:
+322 silly install resolved      { test: 'mocha --check-leaks --reporter spec --bail',
+322 silly install resolved        'test-cov': 'istanbul cover node_modules/mocha/bin/_mocha -- --check-leaks --reporter dot',
+322 silly install resolved        'test-travis': 'istanbul cover node_modules/mocha/bin/_mocha --report lcovonly -- --check-leaks --reporter spec' },
+322 silly install resolved     gitHead: 'b08705a7dc059dabc671a7b58c4bf6d81fccce85',
+322 silly install resolved     bugs: { url: 'https://github.com/expressjs/morgan/issues' },
+322 silly install resolved     homepage: 'https://github.com/expressjs/morgan',
+322 silly install resolved     _id: 'morgan@1.5.2',
+322 silly install resolved     _shasum: '34c1a0e7c2d5ad3ed78f0ef3257b8ac7c35d7cff',
+322 silly install resolved     _from: 'morgan@>=1.5.2 <2.0.0',
+322 silly install resolved     _npmVersion: '1.4.28',
+322 silly install resolved     _npmUser: { name: 'dougwilson', email: 'doug@somethingdoug.com' },
+322 silly install resolved     maintainers: [ [Object], [Object], [Object], [Object], [Object], [Object] ],
+322 silly install resolved     dist:
+322 silly install resolved      { shasum: '34c1a0e7c2d5ad3ed78f0ef3257b8ac7c35d7cff',
+322 silly install resolved        tarball: 'http://registry.npmjs.org/morgan/-/morgan-1.5.2.tgz' },
+322 silly install resolved     directories: {},
+322 silly install resolved     _resolved: 'https://registry.npmjs.org/morgan/-/morgan-1.5.2.tgz',
+322 silly install resolved     readme: 'ERROR: No README data found!' },
+322 silly install resolved   { name: 'cookie-parser',
+322 silly install resolved     description: 'cookie parsing with signatures',
+322 silly install resolved     version: '1.3.4',
+322 silly install resolved     author:
+322 silly install resolved      { name: 'TJ Holowaychuk',
+322 silly install resolved        email: 'tj@vision-media.ca',
+322 silly install resolved        url: 'http://tjholowaychuk.com' },
+322 silly install resolved     licenses: 'MIT',
+322 silly install resolved     repository:
+322 silly install resolved      { type: 'git',
+322 silly install resolved        url: 'https://github.com/expressjs/cookie-parser' },
+322 silly install resolved     keywords: [ 'cookie', 'middleware' ],
+322 silly install resolved     dependencies: { cookie: '0.1.2', 'cookie-signature': '1.0.6' },
+322 silly install resolved     devDependencies: { istanbul: '0.3.5', mocha: '~2.1.0', supertest: '0.15.0' },
+322 silly install resolved     files: [ 'lib/', 'LICENSE', 'HISTORY.md', 'index.js' ],
+322 silly install resolved     engines: { node: '>= 0.8.0' },
+322 silly install resolved     scripts:
+322 silly install resolved      { test: 'mocha --reporter spec --bail --check-leaks test/',
+322 silly install resolved        'test-cov': 'istanbul cover node_modules/mocha/bin/_mocha -- --reporter dot --check-leaks test/',
+322 silly install resolved        'test-travis': 'istanbul cover node_modules/mocha/bin/_mocha --report lcovonly -- --reporter spec --check-leaks test/' },
+322 silly install resolved     gitHead: '94764a584c70f26049b14c6ad845c8b0ed0e478b',
+322 silly install resolved     bugs: { url: 'https://github.com/expressjs/cookie-parser/issues' },
+322 silly install resolved     homepage: 'https://github.com/expressjs/cookie-parser',
+322 silly install resolved     _id: 'cookie-parser@1.3.4',
+322 silly install resolved     _shasum: '193035a5be97117a21709b3aa737f6132717bda6',
+322 silly install resolved     _from: 'cookie-parser@>=1.3.4 <2.0.0',
+322 silly install resolved     _npmVersion: '1.4.28',
+322 silly install resolved     _npmUser: { name: 'dougwilson', email: 'doug@somethingdoug.com' },
+322 silly install resolved     maintainers: [ [Object], [Object] ],
+322 silly install resolved     dist:
+322 silly install resolved      { shasum: '193035a5be97117a21709b3aa737f6132717bda6',
+322 silly install resolved        tarball: 'http://registry.npmjs.org/cookie-parser/-/cookie-parser-1.3.4.tgz' },
+322 silly install resolved     directories: {},
+322 silly install resolved     _resolved: 'https://registry.npmjs.org/cookie-parser/-/cookie-parser-1.3.4.tgz',
+322 silly install resolved     readme: 'ERROR: No README data found!' },
+322 silly install resolved   { name: 'ejs',
+322 silly install resolved     description: 'Embedded JavaScript templates',
+322 silly install resolved     keywords: [ 'template', 'engine', 'ejs' ],
+322 silly install resolved     version: '2.3.1',
+322 silly install resolved     author:
+322 silly install resolved      { name: 'Matthew Eernisse',
+322 silly install resolved        email: 'mde@fleegix.org',
+322 silly install resolved        url: 'http://fleegix.org' },
+322 silly install resolved     contributors: [ [Object] ],
+322 silly install resolved     license: 'Apache-2.0',
+322 silly install resolved     main: './lib/ejs.js',
+322 silly install resolved     repository: { type: 'git', url: 'git://github.com/mde/ejs.git' },
+322 silly install resolved     bugs: { url: 'https://github.com/mde/ejs/issues' },
+322 silly install resolved     homepage: 'https://github.com/mde/ejs',
+322 silly install resolved     dependencies: {},
+322 silly install resolved     devDependencies:
+322 silly install resolved      { browserify: '^8.0.3',
+322 silly install resolved        istanbul: '~0.3.5',
+322 silly install resolved        jake: '^8.0.0',
+322 silly install resolved        jsdoc: '^3.3.0-beta1',
+322 silly install resolved        'lru-cache': '^2.5.0',
+322 silly install resolved        mocha: '^2.1.0',
+322 silly install resolved        rimraf: '^2.2.8',
+322 silly install resolved        'uglify-js': '^2.4.16' },
+322 silly install resolved     engines: { node: '>=0.10.0' },
+322 silly install resolved     scripts:
+322 silly install resolved      { test: 'mocha',
+322 silly install resolved        coverage: 'istanbul cover node_modules/mocha/bin/_mocha',
+322 silly install resolved        doc: 'rimraf out && jsdoc -c jsdoc.json lib/* docs/jsdoc/*',
+322 silly install resolved        devdoc: 'rimraf out && jsdoc -p -c jsdoc.json lib/* docs/jsdoc/*' },
+322 silly install resolved     _id: 'ejs@2.3.1',
+322 silly install resolved     _shasum: 'a697d98ac401e32a99c3deed92c60c19b6199a7f',
+322 silly install resolved     _resolved: 'https://registry.npmjs.org/ejs/-/ejs-2.3.1.tgz',
+322 silly install resolved     _from: 'ejs@>=2.3.1 <3.0.0',
+322 silly install resolved     _npmVersion: '2.1.11',
+322 silly install resolved     _nodeVersion: '0.10.33',
+322 silly install resolved     _npmUser: { name: 'mde', email: 'mde@fleegix.org' },
+322 silly install resolved     maintainers: [ [Object], [Object] ],
+322 silly install resolved     dist:
+322 silly install resolved      { shasum: 'a697d98ac401e32a99c3deed92c60c19b6199a7f',
+322 silly install resolved        tarball: 'http://registry.npmjs.org/ejs/-/ejs-2.3.1.tgz' },
+322 silly install resolved     directories: {},
+322 silly install resolved     readme: 'ERROR: No README data found!' },
+322 silly install resolved   { name: 'node-native-zip',
+322 silly install resolved     version: '1.1.0',
+322 silly install resolved     description: 'A ZIP library without external dependencies',
+322 silly install resolved     author: { name: 'Jan Jongboom', email: 'janjongboom@gmail.com' },
+322 silly install resolved     dependencies: {},
+322 silly install resolved     devDependencies: {},
+322 silly install resolved     engine: 'node >= 0.4.9',
+322 silly install resolved     _npmUser: { name: 'janjongboom', email: 'janjongboom@gmail.com' },
+322 silly install resolved     _id: 'node-native-zip@1.1.0',
+322 silly install resolved     scripts: { start: 'node server.js' },
+322 silly install resolved     engines: { node: '*' },
+322 silly install resolved     _engineSupported: true,
+322 silly install resolved     _npmVersion: '1.0.106',
+322 silly install resolved     _nodeVersion: 'v0.6.12',
+322 silly install resolved     _defaultsLoaded: true,
+322 silly install resolved     dist:
+322 silly install resolved      { shasum: '5b7b32288a502a24c5d5a7a4d61e3e02a31fb95d',
+322 silly install resolved        tarball: 'http://registry.npmjs.org/node-native-zip/-/node-native-zip-1.1.0.tgz' },
+322 silly install resolved     maintainers: [ [Object] ],
+322 silly install resolved     directories: {},
+322 silly install resolved     _shasum: '5b7b32288a502a24c5d5a7a4d61e3e02a31fb95d',
+322 silly install resolved     _resolved: 'https://registry.npmjs.org/node-native-zip/-/node-native-zip-1.1.0.tgz',
+322 silly install resolved     _from: 'node-native-zip@>=1.1.0 <2.0.0',
+322 silly install resolved     readme: 'ERROR: No README data found!' },
+322 silly install resolved   { name: 'serve-favicon',
+322 silly install resolved     description: 'favicon serving middleware with caching',
+322 silly install resolved     version: '2.2.0',
+322 silly install resolved     author:
+322 silly install resolved      { name: 'Douglas Christopher Wilson',
+322 silly install resolved        email: 'doug@somethingdoug.com' },
+322 silly install resolved     license: 'MIT',
+322 silly install resolved     keywords: [ 'express', 'favicon', 'middleware' ],
+322 silly install resolved     repository:
+322 silly install resolved      { type: 'git',
+322 silly install resolved        url: 'https://github.com/expressjs/serve-favicon' },
+322 silly install resolved     dependencies:
+322 silly install resolved      { etag: '~1.5.1',
+322 silly install resolved        fresh: '0.2.4',
+322 silly install resolved        ms: '0.7.0',
+322 silly install resolved        parseurl: '~1.3.0' },
+322 silly install resolved     devDependencies:
+322 silly install resolved      { istanbul: '0.3.5',
+322 silly install resolved        mocha: '~2.0.1',
+322 silly install resolved        proxyquire: '~1.2.0',
+322 silly install resolved        supertest: '~0.15.0' },
+322 silly install resolved     files: [ 'LICENSE', 'HISTORY.md', 'index.js' ],
+322 silly install resolved     engines: { node: '>= 0.8.0' },
+322 silly install resolved     scripts:
+322 silly install resolved      { test: 'mocha --reporter spec --bail --check-leaks test/',
+322 silly install resolved        'test-cov': 'istanbul cover node_modules/mocha/bin/_mocha -- --reporter dot --check-leaks test/',
+322 silly install resolved        'test-travis': 'istanbul cover node_modules/mocha/bin/_mocha --report lcovonly -- --reporter spec --check-leaks test/' },
+322 silly install resolved     gitHead: 'f34bf3992fb999894ce0c16353250e9eaafa7b56',
+322 silly install resolved     bugs: { url: 'https://github.com/expressjs/serve-favicon/issues' },
+322 silly install resolved     homepage: 'https://github.com/expressjs/serve-favicon',
+322 silly install resolved     _id: 'serve-favicon@2.2.0',
+322 silly install resolved     _shasum: 'a0c25ee8a652e1a638a67db46269cd52a8705858',
+322 silly install resolved     _from: 'serve-favicon@>=2.2.0 <3.0.0',
+322 silly install resolved     _npmVersion: '1.4.28',
+322 silly install resolved     _npmUser: { name: 'dougwilson', email: 'doug@somethingdoug.com' },
+322 silly install resolved     maintainers: [ [Object] ],
+322 silly install resolved     dist:
+322 silly install resolved      { shasum: 'a0c25ee8a652e1a638a67db46269cd52a8705858',
+322 silly install resolved        tarball: 'http://registry.npmjs.org/serve-favicon/-/serve-favicon-2.2.0.tgz' },
+322 silly install resolved     directories: {},
+322 silly install resolved     _resolved: 'https://registry.npmjs.org/serve-favicon/-/serve-favicon-2.2.0.tgz',
+322 silly install resolved     readme: 'ERROR: No README data found!' },
+322 silly install resolved   { name: 'debug',
+322 silly install resolved     version: '2.1.3',
+322 silly install resolved     repository: { type: 'git', url: 'git://github.com/visionmedia/debug.git' },
+322 silly install resolved     description: 'small debugging utility',
+322 silly install resolved     keywords: [ 'debug', 'log', 'debugger' ],
+322 silly install resolved     author: { name: 'TJ Holowaychuk', email: 'tj@vision-media.ca' },
+322 silly install resolved     contributors: [ [Object] ],
+322 silly install resolved     license: 'MIT',
+322 silly install resolved     dependencies: { ms: '0.7.0' },
+322 silly install resolved     devDependencies: { browserify: '9.0.3', mocha: '*' },
+322 silly install resolved     main: './node.js',
+322 silly install resolved     browser: './browser.js',
+322 silly install resolved     component: { scripts: [Object] },
+322 silly install resolved     gitHead: '0a8e4b7e0d2d1b55ef4e7422498ca24c677ae63a',
+322 silly install resolved     bugs: { url: 'https://github.com/visionmedia/debug/issues' },
+322 silly install resolved     homepage: 'https://github.com/visionmedia/debug',
+322 silly install resolved     _id: 'debug@2.1.3',
+322 silly install resolved     scripts: {},
+322 silly install resolved     _shasum: 'ce8ab1b5ee8fbee2bfa3b633cab93d366b63418e',
+322 silly install resolved     _from: 'debug@>=2.1.3 <3.0.0',
+322 silly install resolved     _npmVersion: '2.5.1',
+322 silly install resolved     _nodeVersion: '0.12.0',
+322 silly install resolved     _npmUser: { name: 'tootallnate', email: 'nathan@tootallnate.net' },
+322 silly install resolved     maintainers: [ [Object], [Object] ],
+322 silly install resolved     dist:
+322 silly install resolved      { shasum: 'ce8ab1b5ee8fbee2bfa3b633cab93d366b63418e',
+322 silly install resolved        tarball: 'http://registry.npmjs.org/debug/-/debug-2.1.3.tgz' },
+322 silly install resolved     directories: {},
+322 silly install resolved     _resolved: 'https://registry.npmjs.org/debug/-/debug-2.1.3.tgz',
+322 silly install resolved     readme: 'ERROR: No README data found!' },
+322 silly install resolved   { name: 'express',
+322 silly install resolved     description: 'Fast, unopinionated, minimalist web framework',
+322 silly install resolved     version: '4.12.3',
+322 silly install resolved     author: { name: 'TJ Holowaychuk', email: 'tj@vision-media.ca' },
+322 silly install resolved     contributors:
+322 silly install resolved      [ [Object],
+322 silly install resolved        [Object],
+322 silly install resolved        [Object],
+322 silly install resolved        [Object],
+322 silly install resolved        [Object],
+322 silly install resolved        [Object],
+322 silly install resolved        [Object] ],
+322 silly install resolved     license: 'MIT',
+322 silly install resolved     repository: { type: 'git', url: 'https://github.com/strongloop/express' },
+322 silly install resolved     homepage: 'http://expressjs.com/',
+322 silly install resolved     keywords:
+322 silly install resolved      [ 'express',
+322 silly install resolved        'framework',
+322 silly install resolved        'sinatra',
+322 silly install resolved        'web',
+322 silly install resolved        'rest',
+322 silly install resolved        'restful',
+322 silly install resolved        'router',
+322 silly install resolved        'app',
+322 silly install resolved        'api' ],
+322 silly install resolved     dependencies:
+322 silly install resolved      { accepts: '~1.2.5',
+322 silly install resolved        'content-disposition': '0.5.0',
+322 silly install resolved        'content-type': '~1.0.1',
+322 silly install resolved        cookie: '0.1.2',
+322 silly install resolved        'cookie-signature': '1.0.6',
+322 silly install resolved        debug: '~2.1.3',
+322 silly install resolved        depd: '~1.0.0',
+322 silly install resolved        'escape-html': '1.0.1',
+322 silly install resolved        etag: '~1.5.1',
+322 silly install resolved        finalhandler: '0.3.4',
+322 silly install resolved        fresh: '0.2.4',
+322 silly install resolved        'merge-descriptors': '1.0.0',
+322 silly install resolved        methods: '~1.1.1',
+322 silly install resolved        'on-finished': '~2.2.0',
+322 silly install resolved        parseurl: '~1.3.0',
+322 silly install resolved        'path-to-regexp': '0.1.3',
+322 silly install resolved        'proxy-addr': '~1.0.7',
+322 silly install resolved        qs: '2.4.1',
+322 silly install resolved        'range-parser': '~1.0.2',
+322 silly install resolved        send: '0.12.2',
+322 silly install resolved        'serve-static': '~1.9.2',
+322 silly install resolved        'type-is': '~1.6.1',
+322 silly install resolved        vary: '~1.0.0',
+322 silly install resolved        'utils-merge': '1.0.0' },
+322 silly install resolved     devDependencies:
+322 silly install resolved      { after: '0.8.1',
+322 silly install resolved        ejs: '2.3.1',
+322 silly install resolved        istanbul: '0.3.8',
+322 silly install resolved        marked: '0.3.3',
+322 silly install resolved        mocha: '~2.2.1',
+322 silly install resolved        should: '~5.2.0',
+322 silly install resolved        supertest: '~0.15.0',
+322 silly install resolved        'body-parser': '~1.12.2',
+322 silly install resolved        'connect-redis': '~2.2.0',
+322 silly install resolved        'cookie-parser': '~1.3.4',
+322 silly install resolved        'cookie-session': '~1.1.0',
+322 silly install resolved        'express-session': '~1.10.4',
+322 silly install resolved        jade: '~1.9.2',
+322 silly install resolved        'method-override': '~2.3.2',
+322 silly install resolved        morgan: '~1.5.2',
+322 silly install resolved        multiparty: '~4.1.1',
+322 silly install resolved        vhost: '~3.0.0' },
+322 silly install resolved     engines: { node: '>= 0.10.0' },
+322 silly install resolved     files: [ 'LICENSE', 'History.md', 'Readme.md', 'index.js', 'lib/' ],
+322 silly install resolved     scripts:
+322 silly install resolved      { test: 'mocha --require test/support/env --reporter spec --bail --check-leaks test/ test/acceptance/',
+322 silly install resolved        'test-ci': 'istanbul cover node_modules/mocha/bin/_mocha --report lcovonly -- --require test/support/env --reporter spec --check-leaks test/ test/acceptance/',
+322 silly install resolved        'test-cov': 'istanbul cover node_modules/mocha/bin/_mocha -- --require test/support/env --reporter dot --check-leaks test/ test/acceptance/',
+322 silly install resolved        'test-tap': 'mocha --require test/support/env --reporter tap --check-leaks test/ test/acceptance/' },
+322 silly install resolved     gitHead: 'f56463f8bf24015736978d0dc4d398fa22a9d758',
+322 silly install resolved     bugs: { url: 'https://github.com/strongloop/express/issues' },
+322 silly install resolved     _id: 'express@4.12.3',
+322 silly install resolved     _shasum: '6b9d94aec5ae03270d86d390c277a8c5a5ad0ee2',
+322 silly install resolved     _from: 'express@>=4.12.3 <5.0.0',
+322 silly install resolved     _npmVersion: '1.4.28',
+322 silly install resolved     _npmUser: { name: 'dougwilson', email: 'doug@somethingdoug.com' },
+322 silly install resolved     maintainers:
+322 silly install resolved      [ [Object],
+322 silly install resolved        [Object],
+322 silly install resolved        [Object],
+322 silly install resolved        [Object],
+322 silly install resolved        [Object],
+322 silly install resolved        [Object],
+322 silly install resolved        [Object] ],
+322 silly install resolved     dist:
+322 silly install resolved      { shasum: '6b9d94aec5ae03270d86d390c277a8c5a5ad0ee2',
+322 silly install resolved        tarball: 'http://registry.npmjs.org/express/-/express-4.12.3.tgz' },
+322 silly install resolved     directories: {},
+322 silly install resolved     _resolved: 'https://registry.npmjs.org/express/-/express-4.12.3.tgz',
+322 silly install resolved     readme: 'ERROR: No README data found!' },
+322 silly install resolved   { name: 'fontmin',
+322 silly install resolved     version: '0.4.8',
+322 silly install resolved     description: 'Minify font seamlessly, get required glyph from ttf, convert to ttf, eot, woff, svg',
+322 silly install resolved     main: 'index.js',
+322 silly install resolved     keywords:
+322 silly install resolved      [ 'font',
+322 silly install resolved        'font-face',
+322 silly install resolved        'compress',
+322 silly install resolved        'minify',
+322 silly install resolved        'font-cli',
+322 silly install resolved        'ttf',
+322 silly install resolved        'woff',
+322 silly install resolved        'eot',
+322 silly install resolved        'svg',
+322 silly install resolved        'ttf2eot',
+322 silly install resolved        'ttf2woff',
+322 silly install resolved        'ttf2svg' ],
+322 silly install resolved     author: { name: 'junmer' },
+322 silly install resolved     licenses: [ [Object] ],
+322 silly install resolved     repository: { type: 'git', url: 'https://github.com/ecomfe/fontmin' },
+322 silly install resolved     bin: { fontmin: 'cli.js' },
+322 silly install resolved     scripts: { test: 'mocha --timeout=50000' },
+322 silly install resolved     dependencies:
+322 silly install resolved      { b3b: '0.0.1',
+322 silly install resolved        'buffer-to-vinyl': '^1.0.0',
+322 silly install resolved        'concat-stream': '^1.4.6',
+322 silly install resolved        'fonteditor-ttf': '0.0.5',
+322 silly install resolved        'get-stdin': '^4.0.1',
+322 silly install resolved        'is-ttf': '^0.2.0',
+322 silly install resolved        lodash: '^3.2.0',
+322 silly install resolved        meow: '^3.0.0',
+322 silly install resolved        pako: '^0.2.5',
+322 silly install resolved        'replace-ext': '0.0.1',
+322 silly install resolved        'stream-combiner': '^0.2.1',
+322 silly install resolved        through2: '^0.6.1',
+322 silly install resolved        'vinyl-fs': '^1.0.0' },
+322 silly install resolved     devDependencies:
+322 silly install resolved      { chai: '^2.0.0',
+322 silly install resolved        'gulp-clean': '^0.3.1',
+322 silly install resolved        'is-eot': '^1.0.0',
+322 silly install resolved        'is-svg': '^1.0.1',
+322 silly install resolved        'is-woff': '^1.0.1',
+322 silly install resolved        mocha: '^2.1.0' },
+322 silly install resolved     gitHead: 'c8a1f4ab65f5167cf1712e5e7f3f4fb0c9bf2965',
+322 silly install resolved     bugs: { url: 'https://github.com/ecomfe/fontmin/issues' },
+322 silly install resolved     homepage: 'https://github.com/ecomfe/fontmin',
+322 silly install resolved     _id: 'fontmin@0.4.8',
+322 silly install resolved     _shasum: '7457fbdd3c748aa3a91954637ca58d532de13d14',
+322 silly install resolved     _from: 'fontmin@0.4.8',
+322 silly install resolved     _npmVersion: '2.5.1',
+322 silly install resolved     _nodeVersion: '0.12.0',
+322 silly install resolved     _npmUser: { name: 'junmer', email: 'junmer@foxmail.com' },
+322 silly install resolved     maintainers: [ [Object] ],
+322 silly install resolved     dist:
+322 silly install resolved      { shasum: '7457fbdd3c748aa3a91954637ca58d532de13d14',
+322 silly install resolved        tarball: 'http://registry.npmjs.org/fontmin/-/fontmin-0.4.8.tgz' },
+322 silly install resolved     directories: {},
+322 silly install resolved     _resolved: 'https://registry.npmjs.org/fontmin/-/fontmin-0.4.8.tgz',
+322 silly install resolved     readme: 'ERROR: No README data found!' },
+322 silly install resolved   { name: 'archiver',
+322 silly install resolved     version: '0.14.3',
+322 silly install resolved     description: 'a streaming interface for archive generation',
+322 silly install resolved     homepage: 'https://github.com/archiverjs/node-archiver',
+322 silly install resolved     author: { name: 'Chris Talkington', url: 'http://christalkington.com/' },
+322 silly install resolved     repository:
+322 silly install resolved      { type: 'git',
+322 silly install resolved        url: 'https://github.com/archiverjs/node-archiver.git' },
+322 silly install resolved     bugs: { url: 'https://github.com/archiverjs/node-archiver/issues' },
+322 silly install resolved     licenses: [ [Object] ],
+322 silly install resolved     main: 'lib/archiver.js',
+322 silly install resolved     files: [ 'lib', 'LICENSE-MIT' ],
+322 silly install resolved     engines: { node: '>= 0.10.0' },
+322 silly install resolved     scripts:
+322 silly install resolved      { test: 'mocha --reporter dot',
+322 silly install resolved        bencha: 'node benchmark/simple/pack-zip.js',
+322 silly install resolved        benchb: 'mocha --reporter list test/optional/bench.js' },
+322 silly install resolved     dependencies:
+322 silly install resolved      { async: '~0.9.0',
+322 silly install resolved        'buffer-crc32': '~0.2.1',
+322 silly install resolved        glob: '~4.3.0',
+322 silly install resolved        lazystream: '~0.1.0',
+322 silly install resolved        lodash: '~3.2.0',
+322 silly install resolved        'readable-stream': '~1.0.26',
+322 silly install resolved        'tar-stream': '~1.1.0',
+322 silly install resolved        'zip-stream': '~0.5.0' },
+322 silly install resolved     devDependencies:
+322 silly install resolved      { chai: '~2.0.0',
+322 silly install resolved        mocha: '~2.1.0',
+322 silly install resolved        rimraf: '~2.2.8',
+322 silly install resolved        mkdirp: '~0.5.0',
+322 silly install resolved        'stream-bench': '~0.1.2',
+322 silly install resolved        tar: '~1.0.3',
+322 silly install resolved        yauzl: '~2.2.1' },
+322 silly install resolved     keywords: [ 'archive', 'archiver', 'stream', 'zip', 'tar' ],
+322 silly install resolved     gitHead: 'c62a470d7a22a018e87bc9dc1d1e3adf07ddffc2',
+322 silly install resolved     _id: 'archiver@0.14.3',
+322 silly install resolved     _shasum: 'e265f2af74df8f24124c01cecccc0772f57f36fc',
+322 silly install resolved     _from: 'archiver@>=0.14.3 <0.15.0',
+322 silly install resolved     _npmVersion: '2.5.1',
+322 silly install resolved     _nodeVersion: '0.12.0',
+322 silly install resolved     _npmUser: { name: 'ctalkington', email: 'chris@christalkington.com' },
+322 silly install resolved     maintainers: [ [Object] ],
+322 silly install resolved     dist:
+322 silly install resolved      { shasum: 'e265f2af74df8f24124c01cecccc0772f57f36fc',
+322 silly install resolved        tarball: 'http://registry.npmjs.org/archiver/-/archiver-0.14.3.tgz' },
+322 silly install resolved     directories: {},
+322 silly install resolved     _resolved: 'https://registry.npmjs.org/archiver/-/archiver-0.14.3.tgz',
+322 silly install resolved     readme: 'ERROR: No README data found!' },
+322 silly install resolved   { name: 'multer',
+322 silly install resolved     description: 'Middleware for handling `multipart/form-data`.',
+322 silly install resolved     version: '0.1.8',
+322 silly install resolved     contributors: [ [Object], [Object] ],
+322 silly install resolved     license: 'MIT',
+322 silly install resolved     repository: { type: 'git', url: 'https://github.com/expressjs/multer' },
+322 silly install resolved     keywords:
+322 silly install resolved      [ 'form',
+322 silly install resolved        'post',
+322 silly install resolved        'multipart',
+322 silly install resolved        'form-data',
+322 silly install resolved        'formdata',
+322 silly install resolved        'express',
+322 silly install resolved        'middleware' ],
+322 silly install resolved     dependencies:
+322 silly install resolved      { busboy: '~0.2.9',
+322 silly install resolved        mkdirp: '~0.3.5',
+322 silly install resolved        qs: '~1.2.2',
+322 silly install resolved        'type-is': '~1.5.2' },
+322 silly install resolved     devDependencies:
+322 silly install resolved      { chai: '^1.9.1',
+322 silly install resolved        co: '^3.0.6',
+322 silly install resolved        express: '*',
+322 silly install resolved        mocha: '*',
+322 silly install resolved        rimraf: '^2.2.8',
+322 silly install resolved        supertest: '^0.13.0' },
+322 silly install resolved     engines: { node: '>= 0.10.0' },
+322 silly install resolved     files: [ 'LICENSE', 'index.js' ],
+322 silly install resolved     scripts: { test: 'mocha --reporter spec --bail --check-leaks' },
+322 silly install resolved     gitHead: '58ee463ab42accf3e910ceb6e095a90de6b41ae7',
+322 silly install resolved     bugs: { url: 'https://github.com/expressjs/multer/issues' },
+322 silly install resolved     homepage: 'https://github.com/expressjs/multer',
+322 silly install resolved     _id: 'multer@0.1.8',
+322 silly install resolved     _shasum: '551b8a6015093701bcacc964916b1ae06578f37b',
+322 silly install resolved     _from: 'multer@>=0.1.8 <0.2.0',
+322 silly install resolved     _npmVersion: '2.5.1',
+322 silly install resolved     _nodeVersion: '0.10.32',
+322 silly install resolved     _npmUser: { name: 'hacksparrow', email: 'captain@hacksparrow.com' },
+322 silly install resolved     maintainers: [ [Object], [Object] ],
+322 silly install resolved     dist:
+322 silly install resolved      { shasum: '551b8a6015093701bcacc964916b1ae06578f37b',
+322 silly install resolved        tarball: 'http://registry.npmjs.org/multer/-/multer-0.1.8.tgz' },
+322 silly install resolved     directories: {},
+322 silly install resolved     _resolved: 'https://registry.npmjs.org/multer/-/multer-0.1.8.tgz',
+322 silly install resolved     readme: 'ERROR: No README data found!' } ]
+323 info install body-parser@1.12.3 into /Users/wudi/Downloads/work/wxms
+324 info install morgan@1.5.2 into /Users/wudi/Downloads/work/wxms
+325 info install cookie-parser@1.3.4 into /Users/wudi/Downloads/work/wxms
+326 info install ejs@2.3.1 into /Users/wudi/Downloads/work/wxms
+327 info install node-native-zip@1.1.0 into /Users/wudi/Downloads/work/wxms
+328 info install serve-favicon@2.2.0 into /Users/wudi/Downloads/work/wxms
+329 info install debug@2.1.3 into /Users/wudi/Downloads/work/wxms
+330 info install express@4.12.3 into /Users/wudi/Downloads/work/wxms
+331 info install fontmin@0.4.8 into /Users/wudi/Downloads/work/wxms
+332 info install archiver@0.14.3 into /Users/wudi/Downloads/work/wxms
+333 info install multer@0.1.8 into /Users/wudi/Downloads/work/wxms
+334 info installOne body-parser@1.12.3
+335 verbose installOne of body-parser to /Users/wudi/Downloads/work/wxms not in flight; installing
+336 info installOne morgan@1.5.2
+337 verbose installOne of morgan to /Users/wudi/Downloads/work/wxms not in flight; installing
+338 info installOne cookie-parser@1.3.4
+339 verbose installOne of cookie-parser to /Users/wudi/Downloads/work/wxms not in flight; installing
+340 info installOne ejs@2.3.1
+341 verbose installOne of ejs to /Users/wudi/Downloads/work/wxms not in flight; installing
+342 info installOne node-native-zip@1.1.0
+343 verbose installOne of node-native-zip to /Users/wudi/Downloads/work/wxms not in flight; installing
+344 info installOne serve-favicon@2.2.0
+345 verbose installOne of serve-favicon to /Users/wudi/Downloads/work/wxms not in flight; installing
+346 info installOne debug@2.1.3
+347 verbose installOne of debug to /Users/wudi/Downloads/work/wxms not in flight; installing
+348 info installOne express@4.12.3
+349 verbose installOne of express to /Users/wudi/Downloads/work/wxms not in flight; installing
+350 info installOne fontmin@0.4.8
+351 verbose installOne of fontmin to /Users/wudi/Downloads/work/wxms not in flight; installing
+352 info installOne archiver@0.14.3
+353 verbose installOne of archiver to /Users/wudi/Downloads/work/wxms not in flight; installing
+354 info installOne multer@0.1.8
+355 verbose installOne of multer to /Users/wudi/Downloads/work/wxms not in flight; installing
+356 warn locking Error: EACCES, open '/Users/wudi/.npm/_locks/body-parser-7d45b9aa82a8eb70.lock'
+356 warn locking     at Error (native)
+356 warn locking  /Users/wudi/.npm/_locks/body-parser-7d45b9aa82a8eb70.lock failed { [Error: EACCES, open '/Users/wudi/.npm/_locks/body-parser-7d45b9aa82a8eb70.lock']
+356 warn locking   errno: -13,
+356 warn locking   code: 'EACCES',
+356 warn locking   path: '/Users/wudi/.npm/_locks/body-parser-7d45b9aa82a8eb70.lock' }
+357 verbose stack Error: Attempt to unlock /Users/wudi/Downloads/work/wxms/node_modules/body-parser, which hasn't been locked
+357 verbose stack     at unlock (/usr/local/lib/node_modules/npm/lib/utils/locker.js:66:11)
+357 verbose stack     at cb (/usr/local/lib/node_modules/npm/lib/install.js:1004:5)
+357 verbose stack     at /usr/local/lib/node_modules/npm/lib/install.js:1008:20
+357 verbose stack     at /usr/local/lib/node_modules/npm/lib/utils/locker.js:40:9
+357 verbose stack     at cb (/usr/local/lib/node_modules/npm/node_modules/lockfile/lockfile.js:149:38)
+357 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/lockfile/lockfile.js:177:38
+357 verbose stack     at FSReqWrap.oncomplete (fs.js:95:15)
+358 verbose cwd /Users/wudi/Downloads/work/wxms
+359 error Darwin 14.3.0
+360 error argv "node" "/usr/local/bin/npm" "i"
+361 error node v0.12.2
+362 error npm  v2.7.4
+363 error Attempt to unlock /Users/wudi/Downloads/work/wxms/node_modules/body-parser, which hasn't been locked
+364 error If you need help, you may report this error at:
+364 error     <https://github.com/npm/npm/issues>
+365 verbose exit [ 1, true ]

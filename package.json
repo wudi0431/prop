@@ -5,7 +5,7 @@
   "author": "TVVT Team",
   "license": "MIT",
   "bin": {
-    "straw": "bin/wxms"
+    "wxms": "bin/wxms"
   },
   "engines": {
     "node": ">= 0.8.0"
