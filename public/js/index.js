@@ -3,6 +3,37 @@
 
 require(['zepto', 'page', 'part'], function($, Page, Part) {
 
+var PAGES={};
+
+// 全局配置项，放置到window作用域的目的是
+// 在页面作为编辑入口的时候可以在取到已有数据的js中动态修改该配置项内容
+// 若不考虑编辑功能，可将该变量改为本作用域内
+window.SETTINGS = {
+    DEFAULT_INDEX : 1,
+    CURRENT_INDEX : -1,
+    CURRENT_STAGE : null,
+    CURRENT_PAGE: null,
+    STAGE_ARRAY : [],
+    STAGE_DATA : [],
+    SCALE: 0.375,
+    TRANSLIST: [
+        'noAnimate', 'movedown', 'moveup', 'moveright', 'moveleft', 'zoomin', 'zoomout', 'rotatein', 'rotateout',
+        // 整合animate.css
+        'mi-bounce', 'mi-flash', 'mi-pulse', 'mi-rubberBand', 'mi-shake', 'mi-swing', 'mi-tada', 'mi-wobble', 'mi-bounceIn', 'mi-bounceInDown', 'mi-bounceInLeft', 'mi-bounceInRight', 'mi-bounceInUp', 'mi-fadeIn', 'mi-fadeInDown', 'mi-fadeInDownBig', 'mi-fadeInLeft', 'mi-fadeInLeftBig', 'mi-fadeInRight', 'mi-fadeInRightBig', 'mi-fadeInUp', 'mi-fadeInUpBig', 'mi-flip', 'mi-flipInX', 'mi-flipInY', 'mi-lightSpeedIn', 'mi-rotateIn', 'mi-rotateInDownLeft', 'mi-rotateInDownRight', 'mi-rotateInUpLeft', 'mi-rotateInUpRight', 'mi-hinge', 'mi-rollIn', 'mi-zoomIn', 'mi-zoomInDown', 'mi-zoomInLeft', 'mi-zoomInRight', 'mi-zoomInUp', 'mi-slideInDown', 'mi-slideInLeft', 'mi-slideInRight', 'mi-slideInUp'
+    ]
+};
+ 
+  // Dom Elements
+    var $doc = $(document),
+        $createpage =$("#addPage"),
+        $createtext =$("#addtext"),
+        $createpimage =$("#addimage"),
+        $createbutton =$("#addbutton"),
+        $pageList=$('.page-list');
+
+
+
+
 	//TODO  暂不做处理 勿添加多个page
 	var curPage = null;
 
