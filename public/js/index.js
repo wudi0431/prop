@@ -31,7 +31,30 @@ window.SETTINGS = {
         $createbutton =$("#addbutton"),
         $pageList=$('.page-list');
 
+ /*
+     * ** 添加页面按钮点击事件 **
+     * 1、创建舞台元素
+     * 2、创建缩略图
+     * 3、更新序号
+     */
+     $createpage .on("click", function(ev){
+        // var tsb = tSet.find(".mi-set-bd");
+        if (pageList.find('.per-page').length >= maxPage) {
+            infoTip.show('warn', 'Oops，最多只支持添加' + maxPage + "个页面！");
+            return false;
+        }
+        PAGES.createPage();
 
+        // update index number
+        PAGES.updateIndex();
+        // edit stage
+        PAGES.edit('stage');
+        // SETTINGS.SCROLLBAR.reset();
+        setTimeout(function(){
+            $('#J_ScrollContainer').trigger('rollbar', [1, 0]);
+        }, 500);
+        PAGES.saveCurrentStage(null, $("#J_ReToken").val());
+    });
 
 
 	//TODO  暂不做处理 勿添加多个page
