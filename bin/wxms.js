@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 
-
 var app = require('../wxms.js');
 var debug = require('debug')('myapp:server');
 var http = require('http');
@@ -11,7 +10,7 @@ var numCPUs = require('os').cpus().length;
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '8989');
+var port = normalizePort(process.env.PORT || '9000');
 app.set('port', port);
 
 /**
