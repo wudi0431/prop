@@ -39,8 +39,8 @@ window.SETTINGS = {
      */
      $createpage .on("click", function(ev){
         // var tsb = tSet.find(".mi-set-bd");
-        if (pageList.find('.per-page').length >= maxPage) {
-            infoTip.show('warn', 'Oops，最多只支持添加' + maxPage + "个页面！");
+        if (pageList.find('.per-page').length >= 30) {
+            infoTip.show('warn', 'Oops，最多只支持添加' + 30 + "个页面！");
             return false;
         }
         PAGES.createPage();
@@ -49,7 +49,7 @@ window.SETTINGS = {
         PAGES.updateIndex();
         // edit stage
         PAGES.edit('stage');
-        // SETTINGS.SCROLLBAR.reset();
+        
         setTimeout(function(){
             $('#J_ScrollContainer').trigger('rollbar', [1, 0]);
         }, 500);
