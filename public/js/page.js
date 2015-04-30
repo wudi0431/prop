@@ -9,15 +9,19 @@ define(['FFF'], function (FFF) {
     Page.ATTRS = {
         boundingBox: {
             value: $('<div class="pages"></div>')
+        },
+        index:{
+        		value:0,
+        		changeFn:function(obj){
+        			
+        		}
         }
     };  
     F.extend(Page, Widget, {
         renderUI: function () {
             var that = this;
             
-            that.guid = 'page_'+that.guidGenerator();
-            
-            var html ='<div class="page-item j_page page-active" id="'+that.guid+'">'
+            var html ='<div class="page-item j_page page-active" data-index="' + that.getIndex() + '" data-id="opa_page_' + that.getIndex() + '">'
 						+'<div class="page-img-wrapper">'
 						+'	<div class="page-cont" style="background-color: rgb(240, 237, 240);"></div>'
 						+'</div>'
@@ -33,20 +37,13 @@ define(['FFF'], function (FFF) {
             
             var $dom =that.getBoundingBox();
             
-            var $reomve = $dom.find(".j_page_remove");
-            
-            
-            
-
+            that.$reomve = $dom.find(".j_page_remove");
+              that.$reomveActive =$dom.find('.page-item')
 
         },
-        
-		guidGenerator:function () {
-		    var S4 = function() {
-		       return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
-		    };
-		    return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
-		}
+		 removeActive:function(){
+		 	 this.$reomveActive.removeClass('page-active');
+		 }
     });
 
     return {
