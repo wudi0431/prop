@@ -39,6 +39,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.use('/',index);
+app.use('/index',index);
 app.use('/login', login);
 app.use('/logout', logout);
 
