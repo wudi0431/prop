@@ -8,14 +8,20 @@ filter.authorize = function(req, res, next) {
     res.redirect('/login');
 };
 filter.login = function(req, res, next) {
-    User.findByName('admin',function(err, user) {
+    var name = req.body.name;
+    var password = req.body.password;
+    User.checkUser(name, password, function(err, user) {
         console.log(err, user);
         if (err) {
             res.status('404');
             res.end('数据库错误');
         } else {
-            req.session.user = user;
-            res.send('登录成功');
+            if (user) {
+                req.session.user = user;
+                res.send('登录成功');
+            } else {
+                res.send('用户不存在');
+            }
         }
     });
 };
