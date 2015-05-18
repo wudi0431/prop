@@ -11,9 +11,8 @@ filter.login = function(req, res, next) {
     var name = req.body.name;
     var password = req.body.password;
     User.checkUser(name, password, function(err, user) {
-        console.log(err, user);
         if (err) {
-            res.send(500, {
+            res.status(500).send({
                 success: false,
                 model: {
                     error: '数据库错误'
@@ -22,11 +21,11 @@ filter.login = function(req, res, next) {
         } else {
             if (user) {
                 req.session.user = user;
-                res.send(200, {
+                res.status(200).send({
                     success: true
                 });
             } else {
-                res.send(500, {
+                res.status(500).send({
                     success: false,
                     model: {
                         error: '用户已存在'
@@ -39,14 +38,14 @@ filter.login = function(req, res, next) {
 filter.logout = function(req, res) {
     req.session.destroy(function(err) {
         if (err) {
-            res.send(500, {
+            res.status(500).send({
                 success: false,
                 model: {
                     error: '注销失败'
                 }
             });
         } else {
-            res.send(200, {
+            res.status(200).send({
                 success: true
             });
         }
