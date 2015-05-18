@@ -2,21 +2,23 @@ if (typeof exports === 'undefined') {
     exports = {};
 }
 exports.config = {
-    "name": "logout",
-    "desc": "用户注销",
+    "name": "getProject",
+    "desc": "获取单个项目详情",
     // 线上地址
-    "url": "http://xxx/logout",
+    "url": "http://xxx/getProject",
     // 日常地址
-    "urlDaily": "http://xxxx/logout",
+    "urlDaily": "http://xxxx/getProject",
     // 预发地址
-    "urlPrepub": "http://example.com/logout",
+    "urlPrepub": "http://example.com/getProject",
     // 支持的 Method 集合
     "method": ['GET']
 };
-exports.request = {};
+exports.request = {
+    name:"测试项目"
+};
 exports.response = {
     "success": true, // 标记成功
-    "model": {}
+    "model": ProjectSchema //db的project表
 };
 exports.responseError = {
     "success": false, // 标记失败

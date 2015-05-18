@@ -2,18 +2,18 @@ if (typeof exports === 'undefined') {
     exports = {};
 }
 exports.config = {
-    "name": "logout",
-    "desc": "用户注销",
+    "name": "addProject",
+    "desc": "新增单个项目",
     // 线上地址
-    "url": "http://xxx/logout",
+    "url": "http://xxx/addProject",
     // 日常地址
-    "urlDaily": "http://xxxx/logout",
+    "urlDaily": "http://xxxx/addProject",
     // 预发地址
-    "urlPrepub": "http://example.com/logout",
+    "urlPrepub": "http://example.com/addProject",
     // 支持的 Method 集合
-    "method": ['GET']
+    "method": ['POST']
 };
-exports.request = {};
+exports.request = ProjectSchema; //db的project表;
 exports.response = {
     "success": true, // 标记成功
     "model": {}
