@@ -13,14 +13,25 @@ filter.login = function(req, res, next) {
     User.checkUser(name, password, function(err, user) {
         console.log(err, user);
         if (err) {
-            res.status('404');
-            res.end('数据库错误');
+            res.send(500, {
+                success: false,
+                model: {
+                    error: '数据库错误'
+                }
+            });
         } else {
             if (user) {
                 req.session.user = user;
-                res.send('登录成功');
+                res.send(200, {
+                    success: true
+                });
             } else {
-                res.send('用户不存在');
+                res.send(500, {
+                    success: false,
+                    model: {
+                        error: '用户已存在'
+                    }
+                });
             }
         }
     });
@@ -28,9 +39,16 @@ filter.login = function(req, res, next) {
 filter.logout = function(req, res) {
     req.session.destroy(function(err) {
         if (err) {
-            console.log(err);
+            res.send(500, {
+                success: false,
+                model: {
+                    error: '注销失败'
+                }
+            });
         } else {
-            res.send('注销');
+            res.send(200, {
+                success: true
+            });
         }
     });
 };
