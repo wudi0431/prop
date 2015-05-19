@@ -2,14 +2,14 @@ if (typeof exports === 'undefined') {
     exports = {};
 }
 exports.config = {
-    "name": "updateImgs",
+    "name": "upLoadImgs",
     "desc": "长传图片",
     // 线上地址
-    "url": "http://xxx/updateImgs",
+    "url": "http://xxx/upLoadImgs",
     // 日常地址
-    "urlDaily": "http://xxxx/updateImgs",
+    "urlDaily": "http://xxxx/upLoadImgs",
     // 预发地址
-    "urlPrepub": "http://example.com/updateImgs",
+    "urlPrepub": "http://example.com/upLoadImgs",
     // 支持的 Method 集合
     "method": ['POST']
 };
