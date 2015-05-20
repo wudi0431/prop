@@ -11,11 +11,16 @@ var session = require('express-session');
 var flash = require('connect-flash');
 
 
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://wxms:wxms@192.168.112.94:27017/wxms');
+var MongoStore = require('connect-mongo')(session);
+
 app.use(session({
-    resave:true,
-    saveUninitialized:false,
-    secret: 'wxms',
-    key: 'wxms',//cookie name
+    resave: true,
+    saveUninitialized: true,
+    secret: 'wxmssession',
+    key: 'wxmssession',//cookie name
+    store: new MongoStore({mongooseConnection: mongoose.connection }),
     cookie: {maxAge: 1000 * 60 * 60 * 24 * 30}//30 days
 }));
 
@@ -39,6 +44,14 @@ var logout = require('./routes/user/logout');
 var getImgsByUser = require('./routes/imgs/getImgsByUser');
 var upLoadImgs = require('./routes/imgs/upLoadImgs');
 
+
+var addProject = require('./routes/project/addProject');
+var getProjectList = require('./routes/project/getProjectList');
+var deleteProject = require('./routes/project/deleteProject');
+var getProject = require('./routes/project/getProject');
+
+
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.engine('.html', ejs.__express);
@@ -61,6 +74,11 @@ app.use('/logout', logout);
 app.use('/getImgsByUser', getImgsByUser);
 app.use('/upLoadImgs', upLoadImgs);
 
+app.use('/addProject', addProject);
+app.use('/getProjectList', getProjectList);
+app.use('/deleteProject', deleteProject);
+app.use('/getProject', getProject);
+
 
 
 // catch 404 and forward to error handler
@@ -78,6 +96,5 @@ app.use(function (err, req, res, next) {
         error: {}
     });
 });
-var mongoose = require('mongoose');
-mongoose.connect('mongodb://wxms:wxms@192.168.112.94:27017/wxms');
+
 module.exports = app;

@@ -7,4 +7,12 @@ router.get('/', function(req, res, next) {
         res.render('index');
     })
 });
+
+
+//TODO 单元测试
+router.get('/test', function(req, res, next) {
+        res.render('test');
+});
+
+
 module.exports = router;

@@ -1,11 +1,16 @@
 var express = require('express');
 var router = express.Router();
-var Imgs = require('../../db/imgs');
 var filter = require('../../filter/filter');
-router.get('/', function(req, res, next) {
-    var userId =  req.session.user;
+var Project = require('../../db/project');
+/* GET home page. */
+router.get('/', function (req, res, next) {
+    res.redirect('/');
+});
+
+router.post('/', function (req, res, next) {
     filter.authorize(req, res, function (req, res) {
-        Imgs.getImgsByUser(userId,function (err, imgsEntity) {
+        var projectId = req.body.projectId;
+        Project.deleteProject(projectId,function (err, projectEntity) {
             if (err) {
                 res.status('500');
                 res.send({
@@ -17,13 +22,11 @@ router.get('/', function(req, res, next) {
             } else {
                 res.status('200');
                 res.send({
-                    success: true,
-                    model: imgsEntity
+                    success: true
                 });
             }
         });
     });
-
 });
 
 module.exports = router;

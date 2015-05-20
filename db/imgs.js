@@ -11,5 +11,12 @@ var ImgsSchema = new mongoose.Schema({
     }
 });
 
+ImgsSchema.static('getImgsByUser', function (userId,cb) {
+    return this.find({
+        user: userId
+    }, cb)
+});
+
+
 var ImgsModel = mongoose.model('Imgs', ImgsSchema);
 module.exports = ImgsModel;
