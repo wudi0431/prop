@@ -13,7 +13,10 @@ exports.config = {
     // 支持的 Method 集合
     "method": ['POST']
 };
-exports.request = BtnComSchema; //db的btncom表;
+exports.request = {
+    pageId:'1332edf',  //关联 pageid
+    btnCom:BtnComSchema //db的btncom表;
+};
 exports.response = {
     "success": true, // 标记成功
     "model": {}
