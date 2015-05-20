@@ -11,11 +11,16 @@ var session = require('express-session');
 var flash = require('connect-flash');
 
 
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://wxms:wxms@192.168.112.94:27017/wxms');
+var MongoStore = require('connect-mongo')(session);
+
 app.use(session({
-    resave:true,
-    saveUninitialized:false,
-    secret: 'wxms',
-    key: 'wxms',//cookie name
+    resave: true,
+    saveUninitialized: true,
+    secret: 'wxmssession',
+    key: 'wxmssession',//cookie name
+    store: new MongoStore({mongooseConnection: mongoose.connection }),
     cookie: {maxAge: 1000 * 60 * 60 * 24 * 30}//30 days
 }));
 
@@ -72,6 +77,5 @@ app.use(function (err, req, res, next) {
         error: {}
     });
 });
-var mongoose = require('mongoose');
-mongoose.connect('mongodb://wxms:wxms@192.168.112.94:27017/wxms');
+
 module.exports = app;
