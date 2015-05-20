@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var filter = require('../filter/filter')
+var filter = require('../../filter/filter')
 /* GET home page. */
 router.get('/', function(req, res, next) {
     if (req.session.user) {

@@ -21,8 +21,8 @@ app.use(session({
 
 
 var index = require('./routes/index');
-var login = require('./routes/login');
-var logout = require('./routes/logout');
+var login = require('./routes/user/login');
+var logout = require('./routes/user/logout');
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.engine('.html', ejs.__express);
