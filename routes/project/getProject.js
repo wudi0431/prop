@@ -8,11 +8,9 @@ router.get('/', function (req, res, next) {
 });
 
 router.post('/', function (req, res, next) {
+    var projectId = req.body.projectId;
     filter.authorize(req, res, function (req, res) {
-        req.body.user = req.session.user;
-        var project = new Project(req.body);
-
-        project.save(function (err, projectEntity) {
+        Project.getProject(projectId,function (err, projectEntity) {
             if (err) {
                 res.status('500');
                 res.send({

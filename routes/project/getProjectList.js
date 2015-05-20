@@ -4,15 +4,9 @@ var filter = require('../../filter/filter');
 var Project = require('../../db/project');
 /* GET home page. */
 router.get('/', function (req, res, next) {
-    res.redirect('/');
-});
-
-router.post('/', function (req, res, next) {
     filter.authorize(req, res, function (req, res) {
-        req.body.user = req.session.user;
-        var project = new Project(req.body);
-
-        project.save(function (err, projectEntity) {
+        var user = req.session.user;
+        Project.getProjectList(user._id, function (err, projectList) {
             if (err) {
                 res.status('500');
                 res.send({
@@ -25,11 +19,17 @@ router.post('/', function (req, res, next) {
                 res.status('200');
                 res.send({
                     success: true,
-                    model: projectEntity
+                    model: {
+                        projectList: projectList
+                    }
                 });
             }
         });
+
+
     });
+
 });
+
 
 module.exports = router;

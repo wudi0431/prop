@@ -25,6 +25,10 @@ var login = require('./routes/user/login');
 var logout = require('./routes/user/logout');
 
 var addProject = require('./routes/project/addProject');
+var getProjectList = require('./routes/project/getProjectList');
+var deleteProject = require('./routes/project/deleteProject');
+var getProject = require('./routes/project/getProject');
+
 
 
 // view engine setup
@@ -47,6 +51,10 @@ app.use('/', index);
 app.use('/login', login);
 app.use('/logout', logout);
 app.use('/addProject', addProject);
+app.use('/getProjectList', getProjectList);
+app.use('/deleteProject', deleteProject);
+app.use('/getProject', getProject);
+
 
 
 // catch 404 and forward to error handler
