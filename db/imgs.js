@@ -6,7 +6,7 @@ var ImgsSchema = new mongoose.Schema({
     category:Number,
     path:String,
     user: {
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     }
 });

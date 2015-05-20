@@ -20,9 +20,25 @@ app.use(session({
 }));
 
 
+app.use(multer({
+    dest:'./public/uploadimg/',
+    rename: function (fieldname, filename) {
+        return filename;
+    },
+    onFileUploadStart: function (file, data) {
+        console.log(file.originalname);
+    },
+    onFileUploadComplete: function (file) {
+        console.log(file.fieldname + ' uploaded to  ' + file.path);
+    }
+}));
+
 var index = require('./routes/index');
 var login = require('./routes/user/login');
 var logout = require('./routes/user/logout');
+var getImgsByUser = require('./routes/imgs/getImgsByUser');
+var upLoadImgs = require('./routes/imgs/upLoadImgs');
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.engine('.html', ejs.__express);
@@ -42,6 +58,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/login', login);
 app.use('/logout', logout);
+app.use('/getImgsByUser', getImgsByUser);
+app.use('/upLoadImgs', upLoadImgs);
+
 
 
 // catch 404 and forward to error handler
