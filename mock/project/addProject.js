@@ -13,7 +13,10 @@ exports.config = {
     // 支持的 Method 集合
     "method": ['POST']
 };
-exports.request = ProjectSchema; //db的project表;
+exports.request =  {
+    userId:'1asfsasfsasf',
+    page:ProjectSchema
+}; //db的project表;
 exports.response = {
     "success": true, // 标记成功
     "model": {}

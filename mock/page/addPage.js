@@ -13,7 +13,10 @@ exports.config = {
     // 支持的 Method 集合
     "method": ['POST']
 };
-exports.request = PageSchema; //db的page表;
+exports.request = {
+    projectId:'1asfsasfsasf',
+    page:PageSchema
+}; //db的page表;
 exports.response = {
     "success": true, // 标记成功
     "model": {}
