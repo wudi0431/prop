@@ -41,6 +41,8 @@ app.use(multer({
 var index = require('./routes/index');
 var login = require('./routes/user/login');
 var logout = require('./routes/user/logout');
+
+
 var getImgsByUser = require('./routes/imgs/getImgsByUser');
 var upLoadImgs = require('./routes/imgs/upLoadImgs');
 
@@ -49,6 +51,8 @@ var addProject = require('./routes/project/addProject');
 var getProjectList = require('./routes/project/getProjectList');
 var deleteProject = require('./routes/project/deleteProject');
 var getProject = require('./routes/project/getProject');
+
+var createHtml = require('./routes/view/createHtml');
 
 
 
@@ -78,6 +82,8 @@ app.use('/addProject', addProject);
 app.use('/getProjectList', getProjectList);
 app.use('/deleteProject', deleteProject);
 app.use('/getProject', getProject);
+
+app.use('/createHtml',createHtml);
 
 
 
