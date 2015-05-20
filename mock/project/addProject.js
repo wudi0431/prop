@@ -14,12 +14,13 @@ exports.config = {
     "method": ['POST']
 };
 exports.request =  {
-    userId:'1asfsasfsasf',
     page:ProjectSchema
 }; //db的project表;
 exports.response = {
     "success": true, // 标记成功
-    "model": {}
+    "model": {
+
+    }
 };
 exports.responseError = {
     "success": false, // 标记失败

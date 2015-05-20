@@ -1,12 +1,7 @@
 var mongoose = require('mongoose');
 
 var ProjectSchema = new mongoose.Schema({
-    name: {
-        type: String,
-        index: {
-            unique: true
-        }
-    },
+    name: String,
     description: String,
     updatetime: Date,
     user: {

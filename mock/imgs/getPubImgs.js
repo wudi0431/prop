@@ -2,25 +2,23 @@ if (typeof exports === 'undefined') {
     exports = {};
 }
 exports.config = {
-    "name": "searchImgcom",
-    "desc": "查询图片组件",
+    "name": "getPubImgs",
+    "desc": "获取公共图片列表",
     // 线上地址
-    "url": "http://xxx/searchImgcom",
+    "url": "http://xxx/getPubImgs",
     // 日常地址
-    "urlDaily": "http://xxxx/searchImgcom",
+    "urlDaily": "http://xxxx/getPubImgs",
     // 预发地址
-    "urlPrepub": "http://example.com/searchImgcom",
+    "urlPrepub": "http://example.com/getPubImgs",
     // 支持的 Method 集合
-    "method": ['POST']
+    "method": ['GET']
 };
-exports.request = {
-    "id" : "123"    // 如果不传ID,则查询所有图片组件
-};
+exports.request = {};
 exports.response = {
     "success": true, // 标记成功
     "model": {
-        ImgcomList:[
-            ImgcomSchema //db的imgcom表
+        ImgsList:[
+            ImgsSchema //db的imgs表
         ]
     }
 };

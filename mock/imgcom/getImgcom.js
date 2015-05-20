@@ -2,24 +2,23 @@ if (typeof exports === 'undefined') {
     exports = {};
 }
 exports.config = {
-    "name": "addBtncom",
-    "desc": "新增按钮组件",
+    "name": "getImgcom",
+    "desc": "查询图片组件",
     // 线上地址
-    "url": "http://xxx/addBtncom",
+    "url": "http://xxx/getImgcom",
     // 日常地址
-    "urlDaily": "http://xxxx/addBtncom",
+    "urlDaily": "http://xxxx/getImgcom",
     // 预发地址
-    "urlPrepub": "http://example.com/addBtncom",
+    "urlPrepub": "http://example.com/getImgcom",
     // 支持的 Method 集合
-    "method": ['POST']
+    "method": ['GET']
 };
 exports.request = {
-    pageId:'1332edf',  //关联 pageid
-    btnCom:BtnComSchema //db的btncom表;
+    "id" : "123"    // 如果不传ID,则查询所有图片组件
 };
 exports.response = {
     "success": true, // 标记成功
-    "model": BtnComSchema //db的btncom表;
+    "model":ImgcomSchema//db的imgcom表
 };
 exports.responseError = {
     "success": false, // 标记失败

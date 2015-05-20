@@ -11,14 +11,14 @@ exports.config = {
     // 预发地址
     "urlPrepub": "http://example.com/dowonLoadHtml",
     // 支持的 Method 集合
-    "method": ['POST']
+    "method": ['GET']
 };
 exports.request = {
     "projectid": "132"
 };
 exports.response = {
     "success": true, // 标记成功
-    "model": {}
+    "model": ViewSchema
 };
 exports.responseError = {
     "success": false, // 标记失败

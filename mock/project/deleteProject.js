@@ -14,7 +14,7 @@ exports.config = {
     "method": ['POST']
 };
 exports.request = {
-    name:"测试项目"
+    projectId:"2332323df"
 };
 exports.response = {
     "success": true, // 标记成功

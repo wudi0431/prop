@@ -19,7 +19,7 @@ exports.request = {
 }; //db的page表;
 exports.response = {
     "success": true, // 标记成功
-    "model": {}
+    "model": PageSchema
 };
 exports.responseError = {
     "success": false, // 标记失败

@@ -13,16 +13,10 @@ exports.config = {
     // 支持的 Method 集合
     "method": ['POST']
 };
-exports.request = {
-    "id" : "123"
-};
+exports.request = BtncomSchema;
 exports.response = {
     "success": true, // 标记成功
-    "model": {
-        BtncomList:[
-            BtncomSchema //db的btncom表
-        ]
-    }
+    "model": BtncomSchema  //db的btncom表
 };
 exports.responseError = {
     "success": false, // 标记失败

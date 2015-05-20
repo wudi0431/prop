@@ -2,27 +2,25 @@ if (typeof exports === 'undefined') {
     exports = {};
 }
 exports.config = {
-    "name": "getImgsList",
-    "desc": "获取图片列表",
+    "name": "getTplByUser",
+    "desc": "获取用户的模板",
     // 线上地址
-    "url": "http://xxx/getImgsList",
+    "url": "http://xxx/getTplByUser",
     // 日常地址
-    "urlDaily": "http://xxxx/getImgsList",
+    "urlDaily": "http://xxxx/getTplByUser",
     // 预发地址
-    "urlPrepub": "http://example.com/getImgsList",
+    "urlPrepub": "http://example.com/getTplByUser",
     // 支持的 Method 集合
     "method": ['GET']
 };
-exports.request = {
-    userId:'dfsdfsd'
-};
+exports.request ={};
 exports.response = {
     "success": true, // 标记成功
     "model": {
-        ImgsList:[
-            ImgsSchema //db的imgs表
-        ]
-    }
+    TemplateList:[
+        TemplateSchema //db的template表
+    ]
+}
 };
 exports.responseError = {
     "success": false, // 标记失败

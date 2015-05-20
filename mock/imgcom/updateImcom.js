@@ -13,16 +13,10 @@ exports.config = {
     // 支持的 Method 集合
     "method": ['POST']
 };
-exports.request = {
-    "id" : "123"
-};
+exports.request = ImgcomSchema;
 exports.response = {
     "success": true, // 标记成功
-    "model": {
-        ImgcomList:[
-            ImgcomSchema //db的imgcom表
-        ]
-    }
+    "model":ImgcomSchema //db的imgcom表
 };
 exports.responseError = {
     "success": false, // 标记失败

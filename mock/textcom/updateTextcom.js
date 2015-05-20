@@ -13,16 +13,10 @@ exports.config = {
     // 支持的 Method 集合
     "method": ['POST']
 };
-exports.request = {
-    "id" : "123"
-};
+exports.request = TextcomSchema;
 exports.response = {
     "success": true, // 标记成功
-    "model": {
-        BtncomList:[
-            TextcomSchema //db的Textcom表
-        ]
-    }
+    "model":TextcomSchema //db的Textcom表
 };
 exports.responseError = {
     "success": false, // 标记失败

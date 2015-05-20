@@ -13,10 +13,13 @@ exports.config = {
     // 支持的 Method 集合
     "method": ['POST']
 };
-exports.request = TextcomSchema; //db的Textcom表;
+exports.request ={
+    pageId:'fa23r23r',
+    textcom:TextcomSchema //db的Textcom表;
+} ;
 exports.response = {
     "success": true, // 标记成功
-    "model": {}
+    "model": TextcomSchema
 };
 exports.responseError = {
     "success": false, // 标记失败
