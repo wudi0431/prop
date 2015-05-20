@@ -23,6 +23,10 @@ app.use(session({
 var index = require('./routes/index');
 var login = require('./routes/user/login');
 var logout = require('./routes/user/logout');
+
+var addProject = require('./routes/project/addProject');
+
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.engine('.html', ejs.__express);
@@ -42,6 +46,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/login', login);
 app.use('/logout', logout);
+app.use('/addProject', addProject);
 
 
 // catch 404 and forward to error handler

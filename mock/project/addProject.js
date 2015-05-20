@@ -18,9 +18,7 @@ exports.request =  {
 }; //db的project表;
 exports.response = {
     "success": true, // 标记成功
-    "model": {
-
-    }
+    "model": ProjectSchema
 };
 exports.responseError = {
     "success": false, // 标记失败
