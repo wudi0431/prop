@@ -135,7 +135,7 @@ function getTextcom(){
         }).done(function (msg) {
             assert.equal(msg.model._id, textcomId, '获取单个文本组件成功');
             QUnit.start();
-            deleteTextcomById()
+            getTextcomListByPageId()
         }).fail(function (msg) {
             assert.ok(false, msg.responseText);
             QUnit.start();
@@ -143,6 +143,33 @@ function getTextcom(){
 
     });
 }
+
+
+    function getTextcomListByPageId(){
+
+        QUnit.asyncTest('getTextcomListByPageId--获取单个同一pageid的文本组件', function (assert) {
+            $.ajax({
+                method: "GET",
+                url: "/getTextcomListByPageId",
+                data: {
+                    pageId:pageId
+                }
+            }).done(function (msg) {
+                assert.equal(msg.model.page, pageId, '获取单个同一pageid的文本组件成功');
+                QUnit.start();
+                deleteTextcomById()
+            }).fail(function (msg) {
+                assert.ok(false, msg.responseText);
+                QUnit.start();
+            });
+
+        });
+    }
+
+
+
+
+
 
 function deleteTextcomById(){
 
@@ -165,20 +192,7 @@ function deleteTextcomById(){
 }
 
 
-//
-//QUnit.asyncTest('getProjectList--获取项目列表', function (assert) {
-//    $.ajax({
-//        method: "GET",
-//        url: "/getProjectList"
-//    }).done(function (msg) {
-//        assert.ok(msg.model.projectList.length > 0, '获取项目列表成功');
-//        QUnit.start();
-//    }).fail(function (msg) {
-//        assert.ok(false, msg.responseText);
-//        QUnit.start();
-//    });
-//
-//});
+
 });
 
 
