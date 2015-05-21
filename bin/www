@@ -7,9 +7,9 @@
 var app = require('../app');
 var http = require('http');
 var cluster = require('cluster');
-var numCPUs = 1;
+//var numCPUs = 1;
 //TODO 正式部署必须用下面的多线程
-//var numCPUs = require('os').cpus().length;
+var numCPUs = require('os').cpus().length;
 
 
 /**
