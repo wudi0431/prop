@@ -50,6 +50,13 @@ var getProjectList = require('./routes/project/getProjectList');
 var deleteProject = require('./routes/project/deleteProject');
 var getProject = require('./routes/project/getProject');
 
+var addPage = require('./routes/page/addPage');
+var deletePage = require('./routes/page/deletePage');
+var getPageList = require('./routes/page/getPageList');
+var updatePage = require('./routes/page/updatePage');
+var getPage = require('./routes/page/getPage');
+
+
 
 
 // view engine setup
@@ -78,6 +85,12 @@ app.use('/addProject', addProject);
 app.use('/getProjectList', getProjectList);
 app.use('/deleteProject', deleteProject);
 app.use('/getProject', getProject);
+
+app.use('/addPage', addPage);
+app.use('/deletePage', deletePage);
+app.use('/getPageList', getPageList);
+app.use('/updatePage', updatePage);
+app.use('/getPage', getPage);
 
 
 
