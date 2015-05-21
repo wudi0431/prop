@@ -6,8 +6,11 @@ var Textcom = require('../../db/textcom');
 router.post('/', function (req, res, next) {
     filter.authorize(req, res, function (req, res) {
         req.body.user = req.session.user;
+        var reqtext = req.body.textcom;
 
-        var textcom = new Textcom(req.body);
+        reqtext.page = req.body.pageId;
+
+        var textcom = new Textcom(reqtext);
 
         textcom.save(function (err, textcomEntity) {
             if (err) {

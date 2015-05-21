@@ -50,6 +50,21 @@ var TextComSchema = new mongoose.Schema({
     }
 });
 
+TextComSchema.static('deleteTextcom', function (textcomId,cb) {
+    return this.findByIdAndRemove(textcomId, cb)
+});
+
+TextComSchema.static('getTextcom', function (textcomId,cb) {
+    return this.findById(textcomId, cb)
+});
+
+TextComSchema.static('getTextcomListByPageId', function (pageId,cb) {
+    return this.find({
+        page: pageId
+    }, cb)
+});
+
+
 
 var TextComModel = mongoose.model('TextCom', TextComSchema);
 module.exports = TextComModel;

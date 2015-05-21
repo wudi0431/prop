@@ -1,6 +1,5 @@
 QUnit.asyncTest('createHtml--生成html', function (assert) {
     var testdata={
-        projectid:'12345',
         url:'http://localhost:9898/projectName.html'
     }
     $.ajax({

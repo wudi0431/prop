@@ -1,7 +1,56 @@
-var pageId = 'fsdfsdfdfs';
-
+var textcomId =null,projectIds=null,pageId=null;
 QUnit.asyncTest('addTextcom--新增单个文本组件', function (assert) {
 
+
+    var projectEntity = {
+        name: 'testPage',
+        description: '我是自动化测试',
+        updatetime: new Date()
+    };
+
+
+    $.ajax({
+        method: "POST",
+        url: "/addProject",
+        data: projectEntity
+    }).done(function (msg) {
+        projectIds = msg.model._id;
+        testAddPage(projectIds,assert);
+    }).fail(function (msg) {
+    });
+
+
+
+function testAddPage(projectId,assert) {
+
+    var pageEntity = {
+        name: 'testPage',
+        sortindex: 2,
+        background: '333'
+    };
+
+
+    $.ajax({
+        method: "POST",
+        url: "/addPage",
+        data: {
+            projectId: projectId,
+            page: pageEntity
+        }
+    }).done(function (msg) {
+        pageId = msg.model._id;
+        assert.equal(msg.model.name, pageEntity.name, '新增页面成功');
+        QUnit.start();
+        addTectcom(pageId,assert)
+    }).fail(function (msg) {
+        assert.ok(false, msg.responseText);
+        QUnit.start();
+    });
+
+}
+
+
+function addTectcom(pageId,assert){
     var textcomEntity = {
         context:'新增单个文本组件',
         texalign:'left',
@@ -52,59 +101,70 @@ QUnit.asyncTest('addTextcom--新增单个文本组件', function (assert) {
     $.ajax({
         method: "POST",
         url: "/addTextcom",
-        data: textcomEntity
+        data: {
+            pageId:pageId,
+            textcom:textcomEntity
+        }
     }).done(function (msg) {
         console.log(msg.model)
+        textcomId = msg.model._id
         assert.equal(msg.model.context, textcomEntity.context, '添加个文本组件成功');
         QUnit.start();
-       // test2();
+        getTextcom()
     }).fail(function (msg) {
         assert.ok(false, msg.responseText);
         QUnit.start();
     });
+}
 
-});
 
-//function test2(){
-//
-//    QUnit.asyncTest('getProject--获取单个项目详情', function (assert) {
-//        $.ajax({
-//            method: "POST",
-//            url: "/getProject",
-//            data: {
-//                projectId: projectId
-//            }
-//        }).done(function (msg) {
-//            assert.equal(msg.model._id, projectId, '获取单个项目详情成功');
-//            QUnit.start();
-//            test3()
-//        }).fail(function (msg) {
-//            assert.ok(false, msg.responseText);
-//            QUnit.start();
-//        });
-//
-//    });
-//}
-//
-//function test3(){
-//
-//    QUnit.asyncTest('deleteProject--删除单个项目', function (assert) {
-//        $.ajax({
-//            method: "POST",
-//            url: "/deleteProject",
-//            data: {
-//                projectId: projectId
-//            }
-//        }).done(function (msg) {
-//            assert.ok(msg.success, '删除单个项目成功');
-//            QUnit.start();
-//        }).fail(function (msg) {
-//            assert.ok(false, msg.responseText);
-//            QUnit.start();
-//        });
-//
-//    });
-//}
+
+
+
+
+
+function getTextcom(){
+
+    QUnit.asyncTest('getTextcom--获取单个项目详情', function (assert) {
+        $.ajax({
+            method: "GET",
+            url: "/getTextcom",
+            data: {
+                textcomId: textcomId
+            }
+        }).done(function (msg) {
+            assert.equal(msg.model._id, textcomId, '获取单个文本组件成功');
+            QUnit.start();
+            deleteTextcomById()
+        }).fail(function (msg) {
+            assert.ok(false, msg.responseText);
+            QUnit.start();
+        });
+
+    });
+}
+
+function deleteTextcomById(){
+
+    QUnit.asyncTest('deleteTextcom--删除单个文本组件', function (assert) {
+        $.ajax({
+            method: "POST",
+            url: "/deleteTextcom",
+            data: {
+                textcomId: textcomId
+            }
+        }).done(function (msg) {
+            assert.ok(msg.success, '删除单个文本组件成功');
+            QUnit.start();
+        }).fail(function (msg) {
+            assert.ok(false, msg.responseText);
+            QUnit.start();
+        });
+
+    });
+}
+
+
 //
 //QUnit.asyncTest('getProjectList--获取项目列表', function (assert) {
 //    $.ajax({
@@ -119,7 +179,7 @@ QUnit.asyncTest('addTextcom--新增单个文本组件', function (assert) {
 //    });
 //
 //});
-
+});
 
 
 

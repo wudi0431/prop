@@ -5,8 +5,8 @@ var Textcom = require('../../db/textcom');
 
 router.post('/', function (req, res, next) {
     filter.authorize(req, res, function (req, res) {
-        var projectId = req.body.projectId;
-        Project.deleteProject(projectId,function (err, projectEntity) {
+        var textcomId = req.body.textcomId;
+        Textcom.deleteTextcom(textcomId,function (err, textcomEntity) {
             if (err) {
                 res.status('500');
                 res.send({
