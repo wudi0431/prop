@@ -53,6 +53,7 @@ var deleteProject = require('./routes/project/deleteProject');
 var getProject = require('./routes/project/getProject');
 
 var createHtml = require('./routes/view/createHtml');
+var downLoadHtml = require('./routes/view/downLoadHtml');
 
 var addTextcom = require('./routes/textcom/addTextcom');
 var deleteTextcom = require('./routes/textcom/deleteTextcom');
@@ -105,6 +106,7 @@ app.use('/updatePage', updatePage);
 app.use('/getPage', getPage);
 
 app.use('/createHtml',createHtml);
+app.use('/downLoadHtml',downLoadHtml);
 
 app.use('/addTextcom',addTextcom);
 app.use('/deleteTextcom',deleteTextcom);

@@ -1,13 +1,15 @@
 var express = require('express');
 var router = express.Router();
 var filter = require('../../filter/filter');
-var CreateHtml = require('../../db/view');
+var DownLoadHtml = require('../../db/view');
 
-router.post('/', function(req, res, next) {
+router.get('/', function(req, res, next) {
     filter.authorize(req, res, function(req, res) {
-        var createHtml = new CreateHtml(req.body);
-            createHtml.uid= req.session.user._id;
-        createHtml.save(function (err, createHtmlEntity) {
+        var downLoadHtml = new DownLoadHtml();
+            downLoadHtml.uid= req.session.user._id;
+            downLoadHtml.url= req.query('url');d
+
+        downLoadHtml.save(function (err, downLoadHtmlEntity) {
         	if (err) {
                 res.status('500');
                 res.send({
@@ -20,7 +22,7 @@ router.post('/', function(req, res, next) {
                 res.status('200');
                 res.send({
                     success: true,
-                    model: createHtmlEntity
+                    model: downLoadHtmlEntity
                 });
             }
         });
