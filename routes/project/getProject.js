@@ -4,13 +4,9 @@ var filter = require('../../filter/filter');
 var Project = require('../../db/project');
 /* GET home page. */
 router.get('/', function (req, res, next) {
-    res.redirect('/');
-});
-
-router.post('/', function (req, res, next) {
-    var projectId = req.body.projectId;
+    var projectId = req.query.projectId;
     filter.authorize(req, res, function (req, res) {
-        Project.getProject(projectId,function (err, projectEntity) {
+        Project.getProject(projectId, function (err, projectEntity) {
             if (err) {
                 res.status('500');
                 res.send({
@@ -29,5 +25,6 @@ router.post('/', function (req, res, next) {
         });
     });
 });
+
 
 module.exports = router;

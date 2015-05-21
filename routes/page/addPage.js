@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var filter = require('../../filter/filter');
-var Project = require('../../db/project');
+var Page = require('../../db/page');
 /* GET home page. */
 router.get('/', function (req, res, next) {
     res.redirect('/');
@@ -9,10 +9,11 @@ router.get('/', function (req, res, next) {
 
 router.post('/', function (req, res, next) {
     filter.authorize(req, res, function (req, res) {
-        req.body.user = req.session.user;
-        var project = new Project(req.body);
+        var page = req.body.page;
+        page.project = req.body.projectId;
+        var newPage = new Page(page);
 
-        project.save(function (err, projectEntity) {
+        newPage.save(function (err, pageEntity) {
             if (err) {
                 res.status('500');
                 res.send({
@@ -25,7 +26,7 @@ router.post('/', function (req, res, next) {
                 res.status('200');
                 res.send({
                     success: true,
-                    model: projectEntity
+                    model: pageEntity
                 });
             }
         });

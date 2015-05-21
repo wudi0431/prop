@@ -1,9 +1,8 @@
-var projectId = null;
 
-QUnit.asyncTest('addProject--新增单个项目', function (assert) {
+QUnit.asyncTest('addPage--新增页面', function (assert) {
 
     var projectEntity = {
-        name: 'test',
+        name: 'testPage',
         description: '我是自动化测试',
         updatetime: new Date()
     };
@@ -14,71 +13,40 @@ QUnit.asyncTest('addProject--新增单个项目', function (assert) {
         url: "/addProject",
         data: projectEntity
     }).done(function (msg) {
-        projectId = msg.model._id;
-        assert.equal(msg.model.name, projectEntity.name, '用户添加成功');
-        QUnit.start();
-        test2();
+        var projectId = msg.model._id;
+        testAddPage(projectId,assert);
     }).fail(function (msg) {
-        assert.ok(false, msg.responseText);
-        QUnit.start();
     });
 
 });
 
-function test2(){
+function testAddPage(projectId,assert){
 
-    QUnit.asyncTest('getProject--获取单个项目详情', function (assert) {
-        $.ajax({
-            method: "POST",
-            url: "/getProject",
-            data: {
-                projectId: projectId
-            }
-        }).done(function (msg) {
-            assert.equal(msg.model._id, projectId, '获取单个项目详情成功');
-            QUnit.start();
-            test3()
-        }).fail(function (msg) {
-            assert.ok(false, msg.responseText);
-            QUnit.start();
-        });
+    var pageEntity = {
+        name: 'testPage',
+        sortindex: 2,
+        background:'333'
+    };
 
-    });
-}
 
-function test3(){
-
-    QUnit.asyncTest('deleteProject--删除单个项目', function (assert) {
-        $.ajax({
-            method: "POST",
-            url: "/deleteProject",
-            data: {
-                projectId: projectId
-            }
-        }).done(function (msg) {
-            assert.ok(msg.success, '删除单个项目成功');
-            QUnit.start();
-        }).fail(function (msg) {
-            assert.ok(false, msg.responseText);
-            QUnit.start();
-        });
-
-    });
-}
-
-QUnit.asyncTest('getProjectList--获取项目列表', function (assert) {
     $.ajax({
-        method: "GET",
-        url: "/getProjectList"
+        method: "POST",
+        url: "/addPage",
+        data: {
+            projectId:projectId,
+            page:pageEntity
+        }
     }).done(function (msg) {
-        assert.ok(msg.model.projectList.length > 0, '获取项目列表成功');
+        assert.equal(msg.model.name, pageEntity.name, '新增页面成功');
         QUnit.start();
     }).fail(function (msg) {
         assert.ok(false, msg.responseText);
         QUnit.start();
     });
 
-});
+}
+
+
 
 
 

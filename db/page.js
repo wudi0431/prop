@@ -1,6 +1,8 @@
 var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
-var PageSchema = new mongoose.Schema({
+
+var PageSchema = new Schema({
     name: String,
     sortindex: Number,//排序字段
     background: String,//页面背景

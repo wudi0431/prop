@@ -17,7 +17,7 @@ QUnit.asyncTest('addProject--新增单个项目', function (assert) {
         projectId = msg.model._id;
         assert.equal(msg.model.name, projectEntity.name, '用户添加成功');
         QUnit.start();
-        test2();
+        testGetProject();
     }).fail(function (msg) {
         assert.ok(false, msg.responseText);
         QUnit.start();
@@ -25,11 +25,11 @@ QUnit.asyncTest('addProject--新增单个项目', function (assert) {
 
 });
 
-function test2(){
+function testGetProject(){
 
     QUnit.asyncTest('getProject--获取单个项目详情', function (assert) {
         $.ajax({
-            method: "POST",
+            method: "GET",
             url: "/getProject",
             data: {
                 projectId: projectId
@@ -37,7 +37,7 @@ function test2(){
         }).done(function (msg) {
             assert.equal(msg.model._id, projectId, '获取单个项目详情成功');
             QUnit.start();
-            test3()
+            testDeleteProject();
         }).fail(function (msg) {
             assert.ok(false, msg.responseText);
             QUnit.start();
@@ -46,7 +46,7 @@ function test2(){
     });
 }
 
-function test3(){
+function testDeleteProject(){
 
     QUnit.asyncTest('deleteProject--删除单个项目', function (assert) {
         $.ajax({
