@@ -14,7 +14,7 @@ exports.config = {
     "method": ['POST']
 };
 exports.request = {
-    id:"12"
+    pageId:"12"
 }; 
 exports.response = {
     "success": true, // 标记成功

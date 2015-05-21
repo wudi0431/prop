@@ -3,7 +3,7 @@ if (typeof exports === 'undefined') {
 }
 exports.config = {
     "name": "getPageList",
-    "desc": "获取项目列表",
+    "desc": "获取页面列表",
     // 线上地址
     "url": "http://xxx/getPageList",
     // 日常地址
@@ -13,7 +13,9 @@ exports.config = {
     // 支持的 Method 集合
     "method": ['GET']
 };
-exports.request = {}; 
+exports.request = {
+    projectId:'121311'
+};
 exports.response = {
     "success": true, // 标记成功
     "model": {
