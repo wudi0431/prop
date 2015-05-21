@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var filter = require('../../filter/filter');
-var Project = require('../../db/project');
+var Page = require('../../db/page');
 /* GET home page. */
 router.get('/', function (req, res, next) {
     res.redirect('/');
@@ -9,8 +9,8 @@ router.get('/', function (req, res, next) {
 
 router.post('/', function (req, res, next) {
     filter.authorize(req, res, function (req, res) {
-        var projectId = req.body.projectId;
-        Project.deleteProject(projectId,function (err, projectEntity) {
+        var pageId = req.body.pageId;
+        Page.deletePage(pageId,function (err, projectEntity) {
             if (err) {
                 res.status('500');
                 res.send({

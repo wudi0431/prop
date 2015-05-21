@@ -1,12 +1,12 @@
 var express = require('express');
 var router = express.Router();
 var filter = require('../../filter/filter');
-var Project = require('../../db/project');
+var Page = require('../../db/page');
 /* GET home page. */
 router.get('/', function (req, res, next) {
     filter.authorize(req, res, function (req, res) {
-        var user = req.session.user;
-        Project.getProjectList(user._id, function (err, projectList) {
+        var projectId = req.query.projectId;
+        Page.getPageList(projectId, function (err, pageList) {
             if (err) {
                 res.status('500');
                 res.send({
@@ -20,7 +20,7 @@ router.get('/', function (req, res, next) {
                 res.send({
                     success: true,
                     model: {
-                        projectList: projectList
+                        pageList: pageList
                     }
                 });
             }

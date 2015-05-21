@@ -1,6 +1,5 @@
-var textcomId =null,projectIds=null,pageId=null;
+var textcomId =null;
 QUnit.asyncTest('addTextcom--新增单个文本组件', function (assert) {
-
 
     var projectEntity = {
         name: 'testPage',
@@ -14,14 +13,14 @@ QUnit.asyncTest('addTextcom--新增单个文本组件', function (assert) {
         url: "/addProject",
         data: projectEntity
     }).done(function (msg) {
-        projectIds = msg.model._id;
-        testAddPage(projectIds,assert);
+        var projectId = msg.model._id;
+        testTextAddPage(projectId, assert);
     }).fail(function (msg) {
     });
 
+});
 
-
-function testAddPage(projectId,assert) {
+function testTextAddPage(projectId,assert) {
 
     var pageEntity = {
         name: 'testPage',
@@ -38,13 +37,9 @@ function testAddPage(projectId,assert) {
             page: pageEntity
         }
     }).done(function (msg) {
-        pageId = msg.model._id;
-        assert.equal(msg.model.name, pageEntity.name, '新增页面成功');
-        QUnit.start();
+        var pageId = msg.model._id;
         addTectcom(pageId,assert)
     }).fail(function (msg) {
-        assert.ok(false, msg.responseText);
-        QUnit.start();
     });
 
 }
@@ -106,11 +101,11 @@ function addTectcom(pageId,assert){
             textcom:textcomEntity
         }
     }).done(function (msg) {
-        console.log(msg.model)
-        textcomId = msg.model._id
+        console.log(msg.model);
+        textcomId = msg.model._id;
         assert.equal(msg.model.context, textcomEntity.context, '添加个文本组件成功');
         QUnit.start();
-        getTextcom()
+        getTextcom();
     }).fail(function (msg) {
         assert.ok(false, msg.responseText);
         QUnit.start();
@@ -172,7 +167,6 @@ function getTextcom(){
 
 
 function deleteTextcomById(){
-
     QUnit.asyncTest('deleteTextcom--删除单个文本组件', function (assert) {
         $.ajax({
             method: "POST",
@@ -190,6 +184,8 @@ function deleteTextcomById(){
 
     });
 }
+
+
 
 
 

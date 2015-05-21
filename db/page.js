@@ -12,6 +12,30 @@ var PageSchema = new Schema({
     }
 });
 
+PageSchema.static('deletePage', function (pageId, cb) {
+    return this.findByIdAndRemove(pageId, cb)
+});
+
+PageSchema.static('getPage', function (pageId, cb) {
+    return this.findById(pageId, cb)
+});
+
+PageSchema.static('getPageList', function (projectId, cb) {
+    return this.find({
+        project: projectId
+    }, cb)
+});
+
+PageSchema.static('updatePage', function (page, cb) {
+    var pageId = page._id;
+    delete page._id;
+    delete page.__v;
+    delete page.project;
+    return this.findOneAndUpdate({
+        _id: pageId
+    }, page,{ 'new': true },cb)
+});
+
 
 var PageModel = mongoose.model('Page', PageSchema);
 module.exports = PageModel;
