@@ -26,7 +26,7 @@ app.use(session({
 
 
 app.use(multer({
-    dest:'./public/uploadimg/',
+    dest:__dirname +'./public/uploadimg/',
     rename: function (fieldname, filename) {
         return filename;
     },
@@ -53,6 +53,9 @@ var deleteProject = require('./routes/project/deleteProject');
 var getProject = require('./routes/project/getProject');
 
 var createHtml = require('./routes/view/createHtml');
+
+var addTextcom = require('./routes/textcom/addTextcom');
+
 
 
 
@@ -84,6 +87,8 @@ app.use('/deleteProject', deleteProject);
 app.use('/getProject', getProject);
 
 app.use('/createHtml',createHtml);
+
+app.use('/addTextcom',addTextcom);
 
 
 
