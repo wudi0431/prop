@@ -55,6 +55,14 @@ var getProject = require('./routes/project/getProject');
 var createHtml = require('./routes/view/createHtml');
 
 var addTextcom = require('./routes/textcom/addTextcom');
+var addPage = require('./routes/page/addPage');
+var deletePage = require('./routes/page/deletePage');
+var getPageList = require('./routes/page/getPageList');
+var updatePage = require('./routes/page/updatePage');
+var getPage = require('./routes/page/getPage');
+
+
+
 
 
 
@@ -68,7 +76,7 @@ app.use(flash());
 app.use(favicon(__dirname + '/public/wxms.ico'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
-    extended: false
+    extended: true
 }));
 app.use(cookieParser());
 app.use(multer());
@@ -85,6 +93,12 @@ app.use('/addProject', addProject);
 app.use('/getProjectList', getProjectList);
 app.use('/deleteProject', deleteProject);
 app.use('/getProject', getProject);
+
+app.use('/addPage', addPage);
+app.use('/deletePage', deletePage);
+app.use('/getPageList', getPageList);
+app.use('/updatePage', updatePage);
+app.use('/getPage', getPage);
 
 app.use('/createHtml',createHtml);
 

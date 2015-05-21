@@ -4,9 +4,9 @@ var filter = require('../../filter/filter');
 var Project = require('../../db/project');
 /* GET home page. */
 router.get('/', function (req, res, next) {
-    var projectId = req.query.projectId;
     filter.authorize(req, res, function (req, res) {
-        Project.getProject(projectId, function (err, projectEntity) {
+        var user = req.session.user;
+        Project.getProjectList(user._id, function (err, projectList) {
             if (err) {
                 res.status('500');
                 res.send({
@@ -19,11 +19,16 @@ router.get('/', function (req, res, next) {
                 res.status('200');
                 res.send({
                     success: true,
-                    model: projectEntity
+                    model: {
+                        projectList: projectList
+                    }
                 });
             }
         });
+
+
     });
+
 });
 
 
