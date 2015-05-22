@@ -1,4 +1,4 @@
-var textcomId =null;
+var imgcomId =null;
 QUnit.asyncTest('addTextcom--新增单个文本组件', function (assert) {
 
     var projectEntity = {

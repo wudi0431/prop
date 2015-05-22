@@ -5,8 +5,8 @@ var Textcom = require('../../db/textcom');
 
 router.post('/', function (req, res, next) {
     filter.authorize(req, res, function (req, res) {
-        var textcomId = req.body.textcomId;
-        Textcom.deleteTextcom(textcomId,function (err, textcomEntity) {
+        var imgcomId = req.body.imgcomId;
+        Textcom.deleteImgcom(imgcomId,function (err, imgcomEntity) {
             if (err) {
                 res.status('500');
                 res.send({

@@ -38,6 +38,9 @@ var ImgComSchema = new mongoose.Schema({
     }
 });
 
+TextComSchema.static('deleteImgcom', function (imgcomId,cb) {
+    return this.findByIdAndRemove(imgcomId, cb)
+});
 
 var ImgComModel = mongoose.model('ImgCom', ImgComSchema);
 module.exports = ImgComModel;
