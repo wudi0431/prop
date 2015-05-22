@@ -46,5 +46,11 @@ ImgComSchema.static('getImgcom', function (imgcomId,cb) {
     return this.findById(imgcomId, cb)
 });
 
+ImgComSchema.static('getImgcomListByPageId', function (pageId,cb) {
+    return this.find({
+        page: pageId
+    }, cb)
+});
+
 var ImgComModel = mongoose.model('ImgCom', ImgComSchema);
 module.exports = ImgComModel;

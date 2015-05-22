@@ -6,7 +6,7 @@ var Imgcom = require('../../db/imgcom');
 router.get('/', function (req, res, next) {
     var imgcomId = req.query.imgcomId;
     filter.authorize(req, res, function (req, res) {
-        Imgcom.getTextcom(imgcomId, function (err, imgcomEntity) {
+        Imgcom.getImgcom(imgcomId, function (err, imgcomEntity) {
             if (err) {
                 res.status('500');
                 res.send({
