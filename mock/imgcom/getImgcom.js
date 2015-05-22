@@ -14,7 +14,7 @@ exports.config = {
     "method": ['GET']
 };
 exports.request = {
-    "id" : "123"    // 如果不传ID,则查询所有图片组件
+    imgcomId : "123"    // 如果不传ID,则查询所有图片组件
 };
 exports.response = {
     "success": true, // 标记成功

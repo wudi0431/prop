@@ -1,11 +1,11 @@
 var express = require('express');
 var router = express.Router();
 var filter = require('../../filter/filter');
-var Textcom = require('../../db/textcom');
+var Imgcom = require('../../db/imgcom');
 router.get('/', function (req, res, next) {
     filter.authorize(req, res, function (req, res) {
         var pageId = req.body.pageId;
-        Textcom.getTextcomListByPageId(pageId, function (err, textcomtList) {
+        Imgcom.getImgcomListByPageId(pageId, function (err, imgcomtList) {
             if (err) {
                 res.status('500');
                 res.send({
@@ -19,7 +19,7 @@ router.get('/', function (req, res, next) {
                 res.send({
                     success: true,
                     model: {
-                        textcomtList: textcomtList
+                        imgcomtList: imgcomtList
                     }
                 });
             }
