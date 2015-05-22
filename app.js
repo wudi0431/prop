@@ -125,7 +125,7 @@ app.use('/addImgcom',addImgcom);
 app.use('/deleteImgcom',deleteImgcom);
 app.use('/getImgcom',getImgcom);
 app.use('/getImgcomListByPageId',getImgcomListByPageId);
-app.use('/updateImgcom',uascac);
+app.use('/updateImgcom',updateImgcom);
 
 
 
