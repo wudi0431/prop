@@ -94,7 +94,7 @@ function addImgcom(pageId,assert){
         imgcomId = msg.model._id;
         assert.equal(msg.model.imgurl, imgcomEntity.imgurl, '添加个图片组件成功');
         QUnit.start();
-        //getTextcom(pageId);
+        getImgcom(pageId);
     }).fail(function (msg) {
         assert.ok(false, msg.responseText);
         QUnit.start();
@@ -107,19 +107,19 @@ function addImgcom(pageId,assert){
 
 
 
-function getTextcom(pageId){
+function getImgcom(pageId){
 
-    QUnit.asyncTest('getTextcom--获取单个项目详情', function (assert) {
+    QUnit.asyncTest('getImgcom--查询图片组件', function (assert) {
         $.ajax({
             method: "GET",
-            url: "/getTextcom",
+            url: "/getImgcom",
             data: {
-                textcomId: textcomId
+                imgcomId: imgcomId
             }
         }).done(function (msg) {
-            assert.equal(msg.model._id, textcomId, '获取单个文本组件成功');
+            assert.equal(msg.model._id, imgcomId, '查询图片组件成功');
             QUnit.start();
-            getTextcomListByPageId(pageId,textcomId)
+            getImgcomListByPageId(pageId)
         }).fail(function (msg) {
             assert.ok(false, msg.responseText);
             QUnit.start();
@@ -129,20 +129,19 @@ function getTextcom(pageId){
 }
 
 
-    function getTextcomListByPageId(pageId,textcomId){
+    function getImgcomListByPageId(pageId){
 
-        QUnit.asyncTest('getTextcomListByPageId--获取单个同一pageid的文本组件', function (assert) {
+        QUnit.asyncTest('getImgcomListByPageId--查询同一pageid的图片组件', function (assert) {
             $.ajax({
                 method: "GET",
-                url: "/getTextcomListByPageId",
+                url: "/getImgcomListByPageId",
                 data: {
                     pageId:pageId
                 }
             }).done(function (msg) {
-                var lasttextcomId = msg.model.textcomtList[msg.model.textcomtList.length-1]._id;
-                assert.equal(0, 0, '获取单个同一pageid的文本组件成功');
+                assert.ok(true,'查询同一pageid的图片组件成功');
                 QUnit.start();
-                deleteTextcomById()
+                deleteImgcom()
             }).fail(function (msg) {
                 assert.ok(false, msg.responseText);
                 QUnit.start();
@@ -156,13 +155,13 @@ function getTextcom(pageId){
 
 
 
-function deleteTextcomById(){
-    QUnit.asyncTest('deleteTextcom--删除单个文本组件', function (assert) {
+function deleteImgcom(){
+    QUnit.asyncTest('deleteImgcom--删除单个文本组件', function (assert) {
         $.ajax({
             method: "POST",
-            url: "/deleteTextcom",
+            url: "/deleteImgcom",
             data: {
-                textcomId: textcomId
+                imgcomId: imgcomId
             }
         }).done(function (msg) {
             assert.ok(msg.success, '删除单个文本组件成功');
