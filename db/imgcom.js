@@ -52,5 +52,16 @@ ImgComSchema.static('getImgcomListByPageId', function (pageId,cb) {
     }, cb)
 });
 
+
+ImgComSchema.static('updateImgcom', function (imgcom, cb) {
+    var imgcomId = imgcom._id;
+    delete imgcom._id;
+    delete imgcom.__v;
+    delete imgcom.page;
+    return this.findOneAndUpdate({
+        _id: imgcomId
+    }, imgcom,{ 'new': true },cb)
+});
+
 var ImgComModel = mongoose.model('ImgCom', ImgComSchema);
 module.exports = ImgComModel;

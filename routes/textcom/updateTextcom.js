@@ -1,26 +1,33 @@
-if (typeof exports === 'undefined') {
-    exports = {};
-}
-exports.config = {
-    "name": "updateTextcom",
-    "desc": "更新文本组件",
-    // 线上地址
-    "url": "http://xxx/updateTextcom",
-    // 日常地址
-    "urlDaily": "http://xxxx/updateTextcom",
-    // 预发地址
-    "urlPrepub": "http://example.com/updateTextcom",
-    // 支持的 Method 集合
-    "method": ['POST']
-};
-exports.request = TextcomSchema;
-exports.response = {
-    "success": true, // 标记成功
-    "model":TextcomSchema //db的Textcom表
-};
-exports.responseError = {
-    "success": false, // 标记失败
-    "model": {
-        "error": "Error message"
-    }
-};
+var express = require('express');
+var router = express.Router();
+var filter = require('../../filter/filter');
+var Textcom = require('../../db/textcom');
+/* GET home page. */
+router.get('/', function (req, res, next) {
+    res.redirect('/');
+});
+
+router.post('/', function (req, res, next) {
+    filter.authorize(req, res, function (req, res) {
+        var textcom = req.body;
+        Textcom.updateTextcom(textcom, function (err, textcomEntity) {
+            if (err) {
+                res.status('500');
+                res.send({
+                    success: false, // 标记失败
+                    model: {
+                        error: '系统错误'
+                    }
+                });
+            } else {
+                res.status('200');
+                res.send({
+                    success: true,
+                    model: textcomEntity
+                });
+            }
+        });
+    });
+});
+
+module.exports = router;

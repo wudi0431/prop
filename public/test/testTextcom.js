@@ -121,7 +121,7 @@ function addTectcom(pageId,assert){
 
 function getTextcom(pageId){
 
-    QUnit.asyncTest('getTextcom--获取单个项目详情', function (assert) {
+    QUnit.asyncTest('getTextcom--获取单个文本组件详情', function (assert) {
         $.ajax({
             method: "GET",
             url: "/getTextcom",
@@ -132,6 +132,7 @@ function getTextcom(pageId){
             assert.equal(msg.model._id, textcomId, '获取单个文本组件成功');
             QUnit.start();
             getTextcomListByPageId(pageId,textcomId)
+            testUpdateTextcom(msg.model)
         }).fail(function (msg) {
             assert.ok(false, msg.responseText);
             QUnit.start();
@@ -164,7 +165,25 @@ function getTextcom(pageId){
     }
 
 
+    function testUpdateTextcom(textcomEntity) {
 
+        textcomEntity.context = '跟新单个文本组件';
+
+        QUnit.asyncTest('updateTextcom--更新单个文本组件', function (assert) {
+            $.ajax({
+                method: "POST",
+                url: "/updateTextcom",
+                data:textcomEntity
+            }).done(function (msg) {
+                assert.equal(msg.model.context, '跟新单个文本组件', '更新单个文本组件成功');
+                QUnit.start();
+            }).fail(function (msg) {
+                assert.ok(false, msg.responseText);
+                QUnit.start();
+            });
+
+        });
+    }
 
 
 

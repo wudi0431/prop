@@ -58,6 +58,7 @@ var downLoadHtml = require('./routes/view/downLoadHtml');
 var addTextcom = require('./routes/textcom/addTextcom');
 var deleteTextcom = require('./routes/textcom/deleteTextcom');
 var getTextcom = require('./routes/textcom/getTextcom');
+var updateTextcom = require('./routes/textcom/updateTextcom');
 var getTextcomListByPageId = require('./routes/textcom/getTextcomListByPageId');
 
 var addPage = require('./routes/page/addPage');
@@ -118,6 +119,7 @@ app.use('/downLoadHtml',downLoadHtml);
 app.use('/addTextcom',addTextcom);
 app.use('/deleteTextcom',deleteTextcom);
 app.use('/getTextcom',getTextcom);
+app.use('/updateTextcom',updateTextcom);
 app.use('/getTextcomListByPageId',getTextcomListByPageId);
 
 

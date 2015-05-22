@@ -119,6 +119,7 @@ function getImgcom(pageId){
         }).done(function (msg) {
             assert.equal(msg.model._id, imgcomId, '查询图片组件成功');
             QUnit.start();
+            testUpdateImgcom(msg.model);
             getImgcomListByPageId(pageId)
         }).fail(function (msg) {
             assert.ok(false, msg.responseText);
@@ -151,7 +152,25 @@ function getImgcom(pageId){
     }
 
 
+    function testUpdateImgcom(imgcomEntity) {
 
+        imgcomEntity.imgurl = 'http://img.yhd.com/test2';
+
+        QUnit.asyncTest('updateImgcom--更新单个图片组件', function (assert) {
+            $.ajax({
+                method: "POST",
+                url: "/updateImgcom",
+                data:imgcomEntity
+            }).done(function (msg) {
+                assert.equal(msg.model.imgurl, 'http://img.yhd.com/test2', '更新单个图片组件成功');
+                QUnit.start();
+            }).fail(function (msg) {
+                assert.ok(false, msg.responseText);
+                QUnit.start();
+            });
+
+        });
+    }
 
 
 

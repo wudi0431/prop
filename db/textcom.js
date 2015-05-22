@@ -65,6 +65,16 @@ TextComSchema.static('getTextcomListByPageId', function (pageId,cb) {
 });
 
 
+TextComSchema.static('updateTextcom', function (textcom, cb) {
+    var textcomId = textcom._id;
+    delete textcom._id;
+    delete textcom.__v;
+    delete textcom.page;
+    return this.findOneAndUpdate({
+        _id: textcomId
+    }, textcom,{ 'new': true },cb)
+});
+
 
 var TextComModel = mongoose.model('TextCom', TextComSchema);
 module.exports = TextComModel;

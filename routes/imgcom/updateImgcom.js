@@ -3,16 +3,14 @@ var router = express.Router();
 var filter = require('../../filter/filter');
 var Imgcom = require('../../db/imgcom');
 
+router.get('/', function (req, res, next) {
+    res.redirect('/');
+});
+
 router.post('/', function (req, res, next) {
     filter.authorize(req, res, function (req, res) {
-        req.body.user = req.session.user;
-        var reqtext = req.body.imgcom;
-
-        reqtext.page = req.body.pageId;
-
-        var imgcom = new Imgcom(reqtext);
-
-        imgcom.save(function (err, imgcomEntity) {
+        var imgcom = req.body;
+        Imgcom.updateImgcom(imgcom, function (err, imgcomEntity) {
             if (err) {
                 res.status('500');
                 res.send({
