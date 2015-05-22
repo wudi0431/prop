@@ -1,12 +1,12 @@
 var express = require('express');
 var router = express.Router();
 var filter = require('../../filter/filter');
-var Textcom = require('../../db/textcom');
+var Imgcom = require('../../db/imgcom');
 /* GET home page. */
 router.get('/', function (req, res, next) {
-    var textcomId = req.query.textcomId;
+    var imgcomId = req.query.imgcomId;
     filter.authorize(req, res, function (req, res) {
-        Textcom.getTextcom(textcomId, function (err, textcomEntity) {
+        Imgcom.getTextcom(imgcomId, function (err, imgcomEntity) {
             if (err) {
                 res.status('500');
                 res.send({
@@ -19,7 +19,7 @@ router.get('/', function (req, res, next) {
                 res.status('200');
                 res.send({
                     success: true,
-                    model: textcomEntity
+                    model: imgcomEntity
                 });
             }
         });

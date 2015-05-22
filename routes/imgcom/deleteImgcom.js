@@ -1,12 +1,12 @@
 var express = require('express');
 var router = express.Router();
 var filter = require('../../filter/filter');
-var Textcom = require('../../db/textcom');
+var Imgcom = require('../../db/imgcom');
 
 router.post('/', function (req, res, next) {
     filter.authorize(req, res, function (req, res) {
         var imgcomId = req.body.imgcomId;
-        Textcom.deleteImgcom(imgcomId,function (err, imgcomEntity) {
+        Imgcom.deleteImgcom(imgcomId,function (err, imgcomEntity) {
             if (err) {
                 res.status('500');
                 res.send({
