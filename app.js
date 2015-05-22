@@ -67,6 +67,13 @@ var updatePage = require('./routes/page/updatePage');
 var getPage = require('./routes/page/getPage');
 
 
+var addImgcom = require('./routes/imgcom/addImgcom');
+var deleteImgcom = require('./routes/imgcom/deleteImgcom');
+var getImgcom = require('./routes/imgcom/getImgcom');
+var getImgcomListByPageId = require('./routes/imgcom/getImgcomListByPageId');
+var updateImgcom = require('./routes/imgcom/updateImgcom');
+
+
 
 
 
@@ -112,6 +119,14 @@ app.use('/addTextcom',addTextcom);
 app.use('/deleteTextcom',deleteTextcom);
 app.use('/getTextcom',getTextcom);
 app.use('/getTextcomListByPageId',getTextcomListByPageId);
+
+
+app.use('/addImgcom',addImgcom);
+app.use('/deleteImgcom',deleteImgcom);
+app.use('/getImgcom',getImgcom);
+app.use('/getImgcomListByPageId',getImgcomListByPageId);
+app.use('/updateImgcom',uascac);
+
 
 
 
