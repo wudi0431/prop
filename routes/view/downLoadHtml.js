@@ -7,7 +7,7 @@ router.get('/', function(req, res, next) {
     filter.authorize(req, res, function(req, res) {
         var downLoadHtml = new DownLoadHtml();
             downLoadHtml.uid= req.session.user._id;
-            downLoadHtml.url= req.query('url');d
+            downLoadHtml.url= req.query.url;
 
         downLoadHtml.save(function (err, downLoadHtmlEntity) {
         	if (err) {
