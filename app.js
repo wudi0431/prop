@@ -42,6 +42,8 @@ var index = require('./routes/index');
 var login = require('./routes/user/login');
 var logout = require('./routes/user/logout');
 
+var addBtncom = require('./routes/btncom/addBtncom');
+var deleteBtncom = require('./routes/btncom/deleteBtncom');
 
 var getImgsByUser = require('./routes/imgs/getImgsByUser');
 var upLoadImgs = require('./routes/imgs/upLoadImgs');
@@ -102,6 +104,9 @@ app.use('/logout', logout);
 app.use('/getImgsByUser', getImgsByUser);
 app.use('/upLoadImgs', upLoadImgs);
 
+app.use('/addBtncom',addBtncom);
+app.use('/deleteBtncom',deleteBtncom);
+
 app.use('/addProject', addProject);
 app.use('/getProjectList', getProjectList);
 app.use('/deleteProject', deleteProject);
@@ -115,6 +120,7 @@ app.use('/getPage', getPage);
 
 app.use('/createHtml',createHtml);
 app.use('/downLoadHtml',downLoadHtml);
+
 
 app.use('/addTextcom',addTextcom);
 app.use('/deleteTextcom',deleteTextcom);

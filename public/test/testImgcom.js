@@ -175,7 +175,7 @@ function getImgcom(pageId){
 
 
 function deleteImgcom(){
-    QUnit.asyncTest('deleteImgcom--删除单个文本组件', function (assert) {
+    QUnit.asyncTest('deleteImgcom--删除单个图片组件', function (assert) {
         $.ajax({
             method: "POST",
             url: "/deleteImgcom",
@@ -183,7 +183,7 @@ function deleteImgcom(){
                 imgcomId: imgcomId
             }
         }).done(function (msg) {
-            assert.ok(msg.success, '删除单个文本组件成功');
+            assert.ok(msg.success, '删除单个图片组件成功');
             QUnit.start();
         }).fail(function (msg) {
             assert.ok(false, msg.responseText);

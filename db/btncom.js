@@ -32,11 +32,14 @@ var BtnComSchema = new mongoose.Schema({
     dataurl:String,
     datamapping:String,
     page: {
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'Page'
     }
 });
 
+BtnComSchema.static('deleteBtncom', function (btncomId,cb) {
+    return this.findByIdAndRemove(btncomId, cb);
+});
 
 var BtnComModel = mongoose.model('BtnCom', BtnComSchema);
 module.exports = BtnComModel;
