@@ -1,18 +1,18 @@
 var express = require('express');
 var router = express.Router();
 var filter = require('../../filter/filter');
-var Textcom = require('../../db/textcom');
+var Imgcom = require('../../db/imgcom');
 
 router.post('/', function (req, res, next) {
     filter.authorize(req, res, function (req, res) {
         req.body.user = req.session.user;
-        var reqtext = req.body.textcom;
+        var reqtext = req.body.imgcom;
 
         reqtext.page = req.body.pageId;
 
-        var textcom = new Textcom(reqtext);
+        var imgcom = new Imgcom(reqtext);
 
-        textcom.save(function (err, textcomEntity) {
+        imgcom.save(function (err, imgcomEntity) {
             if (err) {
                 res.status('500');
                 res.send({
@@ -25,7 +25,7 @@ router.post('/', function (req, res, next) {
                 res.status('200');
                 res.send({
                     success: true,
-                    model: textcomEntity
+                    model: imgcomEntity
                 });
             }
         });

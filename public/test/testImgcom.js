@@ -1,5 +1,5 @@
-var textcomId =null;
-QUnit.asyncTest('addTextcom--新增单个文本组件', function (assert) {
+var imgcomId =null;
+QUnit.asyncTest('addImgcom--新增单个图片组件', function (assert) {
 
     var projectEntity = {
         name: 'testPage',
@@ -14,14 +14,14 @@ QUnit.asyncTest('addTextcom--新增单个文本组件', function (assert) {
         data: projectEntity
     }).done(function (msg) {
         var projectId = msg.model._id;
-        testTextAddPage(projectId, assert);
+        testImgAddPage(projectId, assert);
     }).fail(function (msg) {
     });
 
 
 
 
-function testTextAddPage(projectId,assert) {
+function testImgAddPage(projectId,assert) {
 
     var pageEntity = {
         name: 'testPage',
@@ -39,34 +39,28 @@ function testTextAddPage(projectId,assert) {
         }
     }).done(function (msg) {
         var pageId = msg.model._id;
-        addTectcom(pageId,assert)
+        addImgcom(pageId,assert)
     }).fail(function (msg) {
     });
 
 }
 
 
-function addTectcom(pageId,assert){
-    var textcomEntity = {
-        context:'新增单个文本组件',
-        texalign:'left',
+function addImgcom(pageId,assert){
+    var imgcomEntity = {
+        imgurl:'http://img.yhd.com/test',
         zindex:1,
         top:'10px',
         left:'10px',
         width:'300px',
         height:'300px',
-        backgroundcolor:'rgba(255,255,0)',
         opcity:'0.5',
         transform:'rotate(-51deg)',
         bordercolo:'rgba(246,22,22,1.00)',
         borderwidth:'5px',
         borderstyle:'solid',
-        borderradius:'3',
+        borderradius:'3px',
         transformrotate:'-51',
-        textshadowcolor:'rgba(1,1,1,0.40)',
-        textshadowwidth:'5px',
-        textshadowblur:'5px',
-        textshadowdegree:'100',
         boxshadowcolor:'rgba(1,255,1,0.40)',
         boxshadowwidth:'10px',
         boxshadowblur:'10px',
@@ -80,12 +74,6 @@ function addTectcom(pageId,assert){
         animationduration:'10s',
         animationdelay:'2s',
         animationcount:'10',
-        fontstyle:'anima',
-        fontweight:'none',
-        fontfamily:'anima',
-        fontsize:'14px',
-        color:'rgba(1,255,1,0.40)',
-        lineheight:'300px',
         verticalalign:'moddloe',
         href:'#test',
         hreftype:'1',
@@ -96,17 +84,17 @@ function addTectcom(pageId,assert){
 
     $.ajax({
         method: "POST",
-        url: "/addTextcom",
+        url: "/addImgcom",
         data: {
             pageId:pageId,
-            textcom:textcomEntity
+            imgcom:imgcomEntity
         }
     }).done(function (msg) {
         console.log(msg.model);
-        textcomId = msg.model._id;
-        assert.equal(msg.model.context, textcomEntity.context, '添加个文本组件成功');
+        imgcomId = msg.model._id;
+        assert.equal(msg.model.imgurl, imgcomEntity.imgurl, '添加个图片组件成功');
         QUnit.start();
-        getTextcom(pageId);
+        //getTextcom(pageId);
     }).fail(function (msg) {
         assert.ok(false, msg.responseText);
         QUnit.start();

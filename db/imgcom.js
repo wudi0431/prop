@@ -33,7 +33,7 @@ var ImgComSchema = new mongoose.Schema({
     dataurl:String,
     datamapping:String,
     page: {
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'Page'
     }
 });
