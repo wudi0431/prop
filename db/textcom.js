@@ -6,6 +6,8 @@ var TextComSchema = new mongoose.Schema({
     zindex:Number,
     top:String,
     left:String,
+    right:String,
+    bottom:String,
     width:String,
     height:String,
     backgroundcolor:String,

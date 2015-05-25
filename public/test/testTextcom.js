@@ -53,6 +53,8 @@ function addTectcom(pageId,assert){
         zindex:1,
         top:'10px',
         left:'10px',
+        right:'10px',
+        bottom:'10px',
         width:'300px',
         height:'300px',
         backgroundcolor:'rgba(255,255,0)',
