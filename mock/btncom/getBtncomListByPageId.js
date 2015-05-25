@@ -2,14 +2,14 @@ if (typeof exports === 'undefined') {
     exports = {};
 }
 exports.config = {
-    "name": "getImgcomListByPageId",
-    "desc": "查询同一pageid的图片组件",
+    "name": "getBtncomListByPageId",
+    "desc": "查询同一pageid的按钮组件",
     // 线上地址
-    "url": "http://xxx/getImgcomListByPageId",
+    "url": "http://xxx/getBtncomListByPageId",
     // 日常地址
-    "urlDaily": "http://xxxx/getImgcomListByPageId",
+    "urlDaily": "http://xxxx/getBtncomListByPageId",
     // 预发地址
-    "urlPrepub": "http://example.com/getImgcomListByPageId",
+    "urlPrepub": "http://example.com/getBtncomListByPageId",
     // 支持的 Method 集合
     "method": ['GET']
 };
@@ -19,7 +19,7 @@ exports.request = {
 exports.response = {
     "success": true, // 标记成功
     "model": {
-        ImgcomList: [ImgComSchema] //db的imgcom表
+        BtncomList: [BtncomSchema] //db的btncom表
     }
 };
 exports.responseError = {
