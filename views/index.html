@@ -2,41 +2,62 @@
 <html>
 <head>
     <title>微信传播</title>
-    <script src="http://cdn.bootcss.com/zepto/1.1.6/zepto.min.js"></script>
-    <script>
-
-        $(function () {
-            $('#file_upload').on('click', function () {
-
-                var data = new FormData();
-                var files = $('#file')[0].files;
-                data.append('codecsv', files[0]);
-
-                $.ajax({
-                    cache: false,
-                    type: 'post',
-                    url: '/upLoadImgs',
-                    data: data,
-                    contentType: false,
-                    processData: false,
-                    success: function(data) {
-                        console.log(data)
-                    }
-                })
-
-
-            })
-        })
-
-
-
-
-    </script>
+    <link rel="stylesheet" href="/lib/jqueryui/jquery-ui.min.css"/>
+    <script src="http://192.168.112.94/fff/lib/require.js"></script>
+    <script src="http://image.yihaodianimg.com/mobile-ued/FFF/v0.1.2/yhd_mxc.js"></script>
 </head>
 <body>
-    我的实际
-    <img src="/images/add.png">
-    <input id='file_upload' type="button" name="file" class="button" value="上传">
-    <input id='file' type="file"  name="fontfile" size="30">
+<div id="draggable" class="ui-widget-content">
+    <p>请拖动我！</p>
+</div>
+<script>
+    require.config({
+        paths: {
+            jquery: '/lib/jqueryui/external/jquery/jquery',
+            jqui: '/lib/jqueryui/jquery-ui'
+        },
+        shim: {
+            'jqui': {
+                deps: ['jquery']
+            }
+        }
+    });
+</script>
+
+
+<script>
+    require(['FFF', 'zepto', 'jquery', 'jqui'], function (FFF, $, jq) {
+        var F = FFF.FFF;
+        var Widget = F.Widget;
+
+
+        jq("#draggable").draggable();
+
+        function Test() {
+            Widget.apply(this, arguments);
+        }
+
+        Test.ATTRS = {
+            testValue: {
+                value: 'test'
+            },
+            boundingBox: {
+                value: $('.last')
+            }
+        };
+
+        F.extend(Test, Widget, {
+            renderUI: function () {
+                this.getBoundingBox().append($('<a>1213133131</a>'));
+            }
+        });
+
+        //测试
+        var test = new Test();
+
+        test.render();
+
+    })
+</script>
 </body>
 </html>
