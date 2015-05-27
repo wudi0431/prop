@@ -5,7 +5,8 @@
 
 body {
     min-width: 1000px;
-    position: relative
+    position: relative;
+    color: #666;
 }
 
 hr {
@@ -400,7 +401,7 @@ body .cp-color-picker,body .colpick {
     background-color: #fff;
     height: 100%;
     left: 0;
-    width: 260px;
+    width: 275px;
 }
 
 .doc .setting {
@@ -801,6 +802,155 @@ body .cp-color-picker,body .colpick {
     position: relative;
     width: 100%
 }
+.add-page-list{
+    cursor: pointer;
+    width: 100%;
+    height: 50px;
+    background: rgb(36,36,36);
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    color: white;
+    line-height: 50px;
+    font-size: 50px;
+    text-align: center;
+}
+
+.page-list .page-item {
+    line-height: 40px;
+    height: 40px;
+    background-color: #ffffff;
+    border-bottom: solid 1px rgba(200,200,200,0.6);
+}
+
+
+.page-item a.sort-page {
+    background: #fff;
+    display: inline-block;
+    width: 6px;
+    height: 40px;
+    margin: 0 23px 0 0px;
+    vertical-align: top;
+    text-decoration: none;
+}
+.page-item a.cur-sort-page {
+    background: #f60;
+}
+
+.page-item span {
+    display: inline-block;
+    width: 145px;
+    line-height: 40px;
+    height: 40px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+.page-item .page-edit {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    padding-left: 15px;
+    margin-left: 5px;
+}
+.page-new, .page-edit {
+    line-height: 40px;
+    height: 40px;
+    background-color: #ffffff;
+    padding-left: 18px;
+    border-bottom: solid 1px rgba(200,200,200,0.6);
+    font-size: 14px;
+}
+
+
+
+.page-item a[data-role=btn-edit-cancel] {
+    margin-right: 39px!important
+}
+
+.page-item a[data-role=btn-edit-post] {
+    margin-right: 30px!important
+}
+
+.page-item a[data-role=scene-copy] {
+    magin-right: 0!important
+}
+
+.page-item span {
+    width: 145px!important
+}
+
+.page-item a.icon-nav-copy {
+    display: inline-block;
+    font-size: 25px;
+    visibility: hidden;
+    height: 40px;
+    line-height: 40px;
+    color: #737373;
+    text-decoration: none
+}
+
+.page-item .page-edit {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    padding-left: 15px;
+    margin-left: 5px
+}
+
+.page-item:hover a[data-role] {
+    visibility: visible
+}
+
+
+.plugin-page .page-edit input {
+    width: 145px;
+}
+
+.page-item a[data-role=btn-edit-cancel] {
+    margin-right: 39px!important;
+}
+.page-item a[data-role] {
+    margin-right: 10px!important;
+    float: right;
+    background-image: url(../img/scene-index-icon.png);
+    margin-top: 13px;
+    width: 14px;
+    height: 14px;
+    background-repeat: no-repeat;
+    background-size: auto 14px;
+    visibility: hidden;
+}
+
+
+.page-item a[data-role=btn-edit-post] {
+    margin-right: 30px!important;
+}
+.page-item .ico-del {
+    background-position-x: -42px;
+}
+.page-item .ico-right {
+    background-position-x: -56px;
+}
+.page-item .ico-copy {
+    background-position-x: -14px;
+}
+.page-item .ico-fav {
+    background-position-x: -70px;
+}
+.page-item .ico-edit {
+    background-position-x: -28px;
+}
+
+
 
 .dd-global-set h3 {
     font-weight: 700;
@@ -911,24 +1061,7 @@ body .cp-color-picker,body .colpick {
     margin: 30px 0 0
 }
 
-.page-list .page-item {
-    background-color: #fff;
-    cursor: pointer;
-    display: block;
-    height: 220px;
-    margin: 15px 0 15px 18px;
-    position: relative;
-    width: 140px;
-    z-index: 2
-}
 
-.page-list .page-img-wrapper {
-    border: 2px solid #ddd;
-    height: 220px;
-    overflow: hidden;
-    position: relative;
-    width: 140px
-}
 
 .showbox .page-img-wrapper {
     height: 504px;
@@ -1030,10 +1163,6 @@ body .cp-color-picker,body .colpick {
     height: 100%;
     overflow: hidden;
     width: 100%
-}
-
-.page-list .page-img-wrapper:hover,.page-list .page-active .page-img-wrapper {
-    border: 2px solid #f00
 }
 
 .dd-tmpl .dd-tmpl-nav a:hover,.dd-tmpl .dd-tmpl-nav a.act {
