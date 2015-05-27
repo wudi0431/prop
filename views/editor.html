@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>微信传播</title>
+    <link rel="stylesheet" href="/css/reset.css"/>
+    <link rel="stylesheet" href="/css/common.css"/>
+    <link rel="stylesheet" href="/css/fonts.css"/>
+    <link rel="stylesheet" href="/css/wxui.css"/>
+    <link rel="stylesheet" href="/css/editor.css"/>
+    <link rel="stylesheet" href="/lib/jqueryui/jquery-ui.min.css"/>
+    <link rel="stylesheet" href="/css/resetjqueryui.css"/>
+    <script src="http://192.168.112.94/fff/lib/require.js"></script>
+    <script src="http://image.yihaodianimg.com/mobile-ued/FFF/v0.1.2/yhd_mxc.js"></script>
+</head>
+<body class="flexbox flexbox-v">
+<div class="nav clearfix">
+    <a class="title fl" href="javascript:;"> <span class="name fl"></span> <span class="desc fl">编辑器</span> </a>
+
+    <div class="ppt fl dropdown j_tmpl_panel"></div>
+    <div class="cate fl">
+        <a class="ni nav-border"></a>
+        <a href="javascript:;" class="ni j_new_text" id="addtext"> <i class="fa fa-file-text"></i> <span>添加文本</span>
+        </a>
+        <a href="javascript:;" class="ni j_new_image" id="addimage"> <i class="fa fa-file-picture-o"></i>
+            <span>添加图片</span> </a>
+        <a href="javascript:;" class="ni j_new_button" id="addbutton"> <i class="fa fa-square"></i> <span>添加按钮</span>
+        </a>
+        <a class="ni nav-border"></a>
+    </div>
+    <div class="tool fr">
+        <div class="dropdown j_global_panel ti">
+            <a href="javascript:;" class="ti-a"> <i class="fa fa-save"></i> <span>保存</span> </a>
+        </div>
+        <div class="ti j_elem_preview">
+            <a href="javascript:;" class="ti-a j_preview_app"> <i class="fa fa-eye"></i> <span>预览</span> </a>
+        </div>
+    </div>
+</div>
+<div class="doc flexbox-1">
+    <div class="col minimap always-visible ps-container ps-active-y" id="minimap">
+        <div class="page-list"></div>
+    </div>
+    <div class="col sbox">
+        <div class="phone">
+            <div class="sbox-wrapper clearfix">
+                <div class="showbox" id="showbox" style="background-color: transparent;"></div>
+                <div class="stools">
+                    <a href="javascript:;" tooltips="复制当前页" class="j_tool_page_copy"> <i class="fa fa-copy"></i> </a>
+                    <a href="javascript:;" tooltips="删除当前页" class="j_tool_page_remove"><i class="fa fa-remove"></i> </a>
+                </div>
+                <div class="stools stools-bottom">
+                    <a href="javascript:;" tooltips="预览应用，预览前请保存应用" class="j_preview_app" target="previewpage"> <i class="fa fa-eye"></i> </a>
+                    <a href="javascript:;" tooltips="保存应用 或者 ctrl+s保存"> <i class="fa fa-save"></i> </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col setting">
+        <div class="set-wrapper j_page_set ps-container" style="display: block;"></div>
+    </div>
+</div>
+<div class="W_wx_pageWarp"></div>
+</body>
+</html>

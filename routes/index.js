@@ -14,5 +14,9 @@ router.get('/test', function(req, res, next) {
         res.render('test');
 });
 
+//TODO 编辑
+router.get('/editor', function(req, res, next) {
+    res.render('editor');
+});
 
 module.exports = router;
