@@ -108,8 +108,7 @@ function addBtncom(pageId,assert){
         btncomId = msg.model._id;
         assert.equal(msg.model.context, btncomEntity.context, '添加个按钮组件成功');
         QUnit.start();
-        deleteBtncom();
-        //getBtncom(pageId);
+        getBtncom(btncomId);
     }).fail(function (msg) {
         assert.ok(false, msg.responseText);
         QUnit.start();
@@ -122,70 +121,69 @@ function addBtncom(pageId,assert){
 
 
 
-// function getImgcom(pageId){
+function getBtncom(btncomId){
 
-//     QUnit.asyncTest('getImgcom--查询图片组件', function (assert) {
-//         $.ajax({
-//             method: "GET",
-//             url: "/getImgcom",
-//             data: {
-//                 imgcomId: imgcomId
-//             }
-//         }).done(function (msg) {
-//             assert.equal(msg.model._id, imgcomId, '查询图片组件成功');
-//             QUnit.start();
-//             testUpdateImgcom(msg.model);
-//             getImgcomListByPageId(pageId)
-//         }).fail(function (msg) {
-//             assert.ok(false, msg.responseText);
-//             QUnit.start();
-//         });
+    QUnit.asyncTest('getBtncom--查询按钮组件', function (assert) {
+        $.ajax({
+            method: "GET",
+            url: "/getBtncom",
+            data: {
+                btncomId: btncomId
+            }
+        }).done(function (msg) {
+            assert.equal(msg.success, true,'查询按钮组件成功');
+            QUnit.start();
+            // testUpdateBtncom(msg.model);
+            // getBtncomListByPageId(pageId);
+        }).fail(function (msg) {
+            assert.ok(false, msg.responseText);
+            QUnit.start();
+        });
 
-//     });
-// }
-
-
-//     function getImgcomListByPageId(pageId){
-
-//         QUnit.asyncTest('getImgcomListByPageId--查询同一pageid的图片组件', function (assert) {
-//             $.ajax({
-//                 method: "GET",
-//                 url: "/getImgcomListByPageId",
-//                 data: {
-//                     pageId:pageId
-//                 }
-//             }).done(function (msg) {
-//                 assert.ok(true,'查询同一pageid的图片组件成功');
-//                 QUnit.start();
-//                 deleteImgcom()
-//             }).fail(function (msg) {
-//                 assert.ok(false, msg.responseText);
-//                 QUnit.start();
-//             });
-
-//         });
-//     }
+    });
+}
 
 
-//     function testUpdateImgcom(imgcomEntity) {
+    function getBtncomListByPageId(pageId){
 
-//         imgcomEntity.imgurl = 'http://img.yhd.com/test2';
+        QUnit.asyncTest('getBtncomListByPageId--查询同一pageid的按钮组件', function (assert) {
+            $.ajax({
+                method: "GET",
+                url: "/getBtncomListByPageId",
+                data: {
+                    pageId:pageId
+                }
+            }).done(function (msg) {
+                assert.ok(true,'查询同一pageid的按钮组件成功');
+                QUnit.start();
+                deleteBtncom();
+            }).fail(function (msg) {
+                assert.ok(false, msg.responseText);
+                QUnit.start();
+            });
 
-//         QUnit.asyncTest('updateImgcom--更新单个图片组件', function (assert) {
-//             $.ajax({
-//                 method: "POST",
-//                 url: "/updateImgcom",
-//                 data:imgcomEntity
-//             }).done(function (msg) {
-//                 assert.equal(msg.model.imgurl, 'http://img.yhd.com/test2', '更新单个图片组件成功');
-//                 QUnit.start();
-//             }).fail(function (msg) {
-//                 assert.ok(false, msg.responseText);
-//                 QUnit.start();
-//             });
+        });
+    }
 
-//         });
-//     }
+
+    function updateBtncom(btncomEntity) {
+
+        QUnit.asyncTest('updateBtncom--更新单个按钮组件', function (assert) {
+            $.ajax({
+                method: "POST",
+                url: "/updateBtncom",
+                data:btncomEntity
+            }).done(function (msg) {
+                assert.equal(msg.model.btnurl, '更新单个按钮组件成功');
+                QUnit.start();
+                deleteBtncom();
+            }).fail(function (msg) {
+                assert.ok(false, msg.responseText);
+                QUnit.start();
+            });
+
+        });
+    }
 
 
 
@@ -207,10 +205,6 @@ function deleteBtncom(){
 
     });
 }
-
-
-
-
 
 });
 
