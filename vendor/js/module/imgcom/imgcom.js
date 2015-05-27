@@ -24,13 +24,9 @@ define(['FFF','zepto'], function(FFF,$) {
             that.$box.on('click', function(e) {
                 var $$curTarget = e.target;
                 if ($$curTarget === that.$boxContent[0]) {
-                    //右侧属性设置渲染
+                    $('#J_imgcomContent').show().siblings('.W_editIteam').hide();
                 } 
             });
-
-            F.on('setBtncomContent',function(){
-                console.log('===',arguments);
-            },that);
 
         }
     });
