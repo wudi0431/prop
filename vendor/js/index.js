@@ -29,7 +29,10 @@ require(['jquery', 'jqui'], function ($) {
         }).fail(function (msg) {
         });
     });
-    var str = '<li data-project="%_id%"><a href="javascript:;">%name%</a><a href="javascript:;">删除</a></li>';
+    var str = '<li data-project="%_id%">' +
+        '<a href="javascript:;" class="project">%name%</a>' +
+        '<a href="javascript:;" class="delete-project">删除</a>' +
+        '</li>';
 
     drawProjectList();
 
@@ -48,9 +51,36 @@ require(['jquery', 'jqui'], function ($) {
                     html += t;
                 });
                 $projectList.html('').html(html);
+            } else {
+                $projectList.html('');
             }
         }).fail(function (msg) {
             alert(msg);
         });
     }
-})
+
+    $projectList.on('click', '.delete-project', function () {
+        var $that = $(this);
+        var projectId = $that.parent('li').data('project');
+        $.ajax({
+            method: "POST",
+            url: "/deleteProject",
+            data: {
+                projectId: projectId
+            }
+        }).done(function (msg) {
+            drawProjectList();
+        }).fail(function (msg) {
+            alert(msg);
+        });
+    });
+
+
+    $projectList.on('click', '.project', function () {
+        var $that = $(this);
+        var projectId = $that.parent('li').data('project');
+        window.location.href = '/editor?projectId=' + projectId;
+    });
+
+
+});
