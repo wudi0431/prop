@@ -2,62 +2,32 @@
 <html>
 <head>
     <title>微信传播</title>
+    <link rel="stylesheet" href="/css/reset.css"/>
+    <link rel="stylesheet" href="/css/common.css"/>
+    <link rel="stylesheet" href="/css/fonts.css"/>
+    <link rel="stylesheet" href="/css/wxui.css"/>
+    <link rel="stylesheet" href="/css/editor.css"/>
     <link rel="stylesheet" href="/lib/jqueryui/jquery-ui.min.css"/>
+    <link rel="stylesheet" href="/css/resetjqueryui.css"/>
+    <link rel="stylesheet" href="/css/index.css"/>
     <script src="http://192.168.112.94/fff/lib/require.js"></script>
     <script src="http://image.yihaodianimg.com/mobile-ued/FFF/v0.1.2/yhd_mxc.js"></script>
+    <script src="/js/index.js"></script>
 </head>
 <body>
-<div id="draggable" class="ui-widget-content">
-    <p>请拖动我！</p>
+<div class="add-project">
+    <form id="projectForm">
+        <p><label>项目名:</label><input type="text" name="name"></p>
+
+        <p><label>项目简介:</label><textarea name="description"></textarea></p>
+
+        <p>
+            <button type="submite">确定</button>
+            <button type="reset">取消</button>
+        </p>
+    </form>
 </div>
-<script>
-    require.config({
-        paths: {
-            jquery: '/lib/jqueryui/external/jquery/jquery',
-            jqui: '/lib/jqueryui/jquery-ui'
-        },
-        shim: {
-            'jqui': {
-                deps: ['jquery']
-            }
-        }
-    });
-</script>
-
-
-<script>
-    require(['FFF', 'zepto', 'jquery', 'jqui'], function (FFF, $, jq) {
-        var F = FFF.FFF;
-        var Widget = F.Widget;
-
-
-        jq("#draggable").draggable();
-
-        function Test() {
-            Widget.apply(this, arguments);
-        }
-
-        Test.ATTRS = {
-            testValue: {
-                value: 'test'
-            },
-            boundingBox: {
-                value: $('.last')
-            }
-        };
-
-        F.extend(Test, Widget, {
-            renderUI: function () {
-                this.getBoundingBox().append($('<a>1213133131</a>'));
-            }
-        });
-
-        //测试
-        var test = new Test();
-
-        test.render();
-
-    })
-</script>
+<ul id="projectList" class="project-list">
+</ul>
 </body>
 </html>

@@ -10,6 +10,8 @@ router.get('/', function (req, res, next) {
 router.post('/', function (req, res, next) {
     filter.authorize(req, res, function (req, res) {
         req.body.user = req.session.user;
+        req.body.updatetime = new Date();
+
         var project = new Project(req.body);
 
         project.save(function (err, projectEntity) {
