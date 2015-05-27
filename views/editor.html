@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="/css/resetjqueryui.css"/>
     <script src="http://192.168.112.94/fff/lib/require.js"></script>
     <script src="http://image.yihaodianimg.com/mobile-ued/FFF/v0.1.2/yhd_mxc.js"></script>
+    <script src="/js/editor.js"></script>
 </head>
 <body class="flexbox flexbox-v">
 <div class="nav clearfix">
@@ -57,7 +58,10 @@
         </div>
     </div>
     <div class="col setting">
-        <div class="set-wrapper j_page_set ps-container" style="display: block;"></div>
+        <div class="set-wrapper j_page_set ps-container" style="display: block;">
+            <% include btncom_content.html %>
+            <% include imgcom_content.html %>
+        </div>
     </div>
 </div>
 <div class="W_wx_pageWarp"></div>

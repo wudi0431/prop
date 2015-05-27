@@ -4,7 +4,10 @@
 require.config({
     paths: {
         jquery: '/lib/jqueryui/external/jquery/jquery',
-        jqui: '/lib/jqueryui/jquery-ui'
+        jqui: '/lib/jqueryui/jquery-ui',
+        btncom:'/js/module/btncom/btncom',
+        btncom_content:'/js/module/btncom/btncom_content',
+        btncom_style:'/js/module/btncom/btncom_style'
     },
     shim: {
         'jqui': {
@@ -13,35 +16,7 @@ require.config({
     }
 });
 
-require(['FFF', 'zepto', 'jquery', 'jqui'], function (FFF, $, jq) {
-    var F = FFF.FFF;
-    var Widget = F.Widget;
-
-
-    jq("#draggable").draggable();
-
-    function Test() {
-        Widget.apply(this, arguments);
-    }
-
-    Test.ATTRS = {
-        testValue: {
-            value: 'test'
-        },
-        boundingBox: {
-            value: $('.last')
-        }
-    };
-
-    F.extend(Test, Widget, {
-        renderUI: function () {
-            this.getBoundingBox().append($('<a>1213133131</a>'));
-        }
-    });
-
-    //测试
-    var test = new Test();
-
-    test.render();
+require([ 'jquery','btncom', 'btncom_content','btncom_style','jqui'], function (jq) {
+        
 
 })

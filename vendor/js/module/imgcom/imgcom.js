@@ -2,22 +2,22 @@ define(['FFF','zepto'], function(FFF,$) {
     var F = FFF.FFF,
         Widget = F.Widget;
 
-    function Btncom() {
+    function Imgcom() {
         Widget.apply(this, arguments);
     }
-    Btncom.ATTRS = {
+    Imgcom.ATTRS = {
         boundingBox: {
             value: $('<div class="W_iteam"></div>')
         }
     };
-    F.extend(Btncom, Widget, {
+    F.extend(Imgcom, Widget, {
         renderUI: function() {
             var that = this;
             var $box = that.getBoundingBox();
-            var tpl = '<button type="button" class="W_btn">按钮文字</button>';
+            var tpl = '<img src="/img/xuanzhuan.ico" class="W_imgcom" />';
             $box.append(tpl);
             that.$box = $box;
-            that.$boxContent = $box.find('.W_btn');
+            that.$boxContent = $box.find('.W_imgcom');
         },
         bindUI: function() {
             var that = this;
@@ -35,6 +35,6 @@ define(['FFF','zepto'], function(FFF,$) {
         }
     });
     return {
-        Btncom: Btncom
+        Imgcom: Imgcom
     };
 });
