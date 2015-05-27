@@ -1,0 +1,23 @@
+.add-project{
+    height: 200px;
+    text-align: center;
+}
+
+.add-project p{
+   line-height: 40px;
+    padding: 10px 0 10px 0;
+}
+
+.project-list li a{
+    display: inline-flex;
+    width: 50%;
+    line-height: 30px;
+}
+
+.project-list li:nth-child(2n+1){
+    background-color: #00B7EE;
+}
+
+.project-list li:hover{
+    background-color: #47ee19;
+}

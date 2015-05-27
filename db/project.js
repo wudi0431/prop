@@ -14,7 +14,7 @@ var ProjectSchema = new Schema({
 ProjectSchema.static('getProjectList', function (userId,cb) {
     return this.find({
         user: userId
-    }, cb)
+    }).sort({updatetime:-1}).exec(cb);
 });
 
 ProjectSchema.static('deleteProject', function (projectId,cb) {
