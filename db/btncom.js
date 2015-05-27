@@ -51,5 +51,25 @@ BtnComSchema.static('deleteBtncom', function (btncomId,cb) {
     return this.findByIdAndRemove(btncomId, cb);
 });
 
+BtnComSchema.static('getBtncom', function (btncomId,cb) {
+    return this.findById(btncomId, cb);
+});
+
+BtnComSchema.static('getBtncomListByPageId', function (pageId,cb) {
+    return this.find({
+        page: pageId
+    }, cb);
+});
+
+BtnComSchema.static('updateBtncom', function (btncom, cb) {
+    var btncomId = btncom._id;
+    delete btncom._id;
+    delete btncom.__v;
+    delete btncom.page;
+    return this.findOneAndUpdate({
+        _id: btncomId
+    }, btncom,{ 'new': true },cb);
+});
+
 var BtnComModel = mongoose.model('BtnCom', BtnComSchema);
 module.exports = BtnComModel;

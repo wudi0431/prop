@@ -3,7 +3,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var multer = require('multer')
+var multer = require('multer');
 var app = express();
 var path = require('path');
 var ejs = require('ejs');
@@ -44,6 +44,9 @@ var logout = require('./routes/user/logout');
 
 var addBtncom = require('./routes/btncom/addBtncom');
 var deleteBtncom = require('./routes/btncom/deleteBtncom');
+var getBtncomListByPageId = require('./routes/btncom/getBtncomListByPageId');
+var getBtncom = require('./routes/btncom/getBtncom');
+var updateBtncom = require('./routes/btncom/updateBtncom');
 
 var getImgsByUser = require('./routes/imgs/getImgsByUser');
 var upLoadImgs = require('./routes/imgs/upLoadImgs');
@@ -107,6 +110,9 @@ app.use('/upLoadImgs', upLoadImgs);
 
 app.use('/addBtncom',addBtncom);
 app.use('/deleteBtncom',deleteBtncom);
+app.use('/getBtncomListByPageId',getBtncomListByPageId);
+app.use('/getBtncom',getBtncom);
+app.use('/updateBtncom',updateBtncom);
 
 app.use('/addProject', addProject);
 app.use('/getProjectList', getProjectList);

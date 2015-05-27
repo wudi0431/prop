@@ -1,20 +1,16 @@
 var express = require('express');
 var router = express.Router();
 var filter = require('../../filter/filter');
-var Project = require('../../db/project');
-/* GET home page. */
+var Btncom = require('../../db/btncom');
+
 router.get('/', function (req, res, next) {
     res.redirect('/');
 });
 
 router.post('/', function (req, res, next) {
     filter.authorize(req, res, function (req, res) {
-        req.body.user = req.session.user;
-        req.body.updatetime = new Date();
-
-        var project = new Project(req.body);
-
-        project.save(function (err, projectEntity) {
+        var btncom = req.body;
+        Btncom.updateBtncom(btncom, function (err, btncomEntity) {
             if (err) {
                 res.status('500');
                 res.send({
@@ -27,7 +23,7 @@ router.post('/', function (req, res, next) {
                 res.status('200');
                 res.send({
                     success: true,
-                    model: projectEntity
+                    model: btncomEntity
                 });
             }
         });
