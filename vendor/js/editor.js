@@ -7,7 +7,8 @@ require.config({
         btncom_style:'/js/module/btncom/btncom_style',
         imgcom:'/js/module/imgcom/imgcom',
         imgcom_content:'/js/module/imgcom/imgcom_content',
-        imgcom_style:'/js/module/imgcom/imgcom_style'
+        imgcom_style:'/js/module/imgcom/imgcom_style',
+        addpage:'/js/addpage'
     },
     shim: {
         'jqui': {
@@ -18,13 +19,22 @@ require.config({
 
 require(['zepto','jquery','btncom', 'imgcom', 
     'btncom_content','btncom_style','imgcom_content',
-    'imgcom_style','jqui'], function (zepto,$,Btncom,Imgcom) {
+    'imgcom_style','jqui','addpage'], function (zepto,$,Btncom,Imgcom,btncom_content,btncom_style,imgcom_content,imgcom_style,jqui,Page) {
+
+
         var Btncom = Btncom.Btncom;
         var Imgcom = Imgcom.Imgcom;
+        var page = new Page();
+            page.addPage();
+
 
         var addtext = $('#addtext');
         var addimage = $('#addimage');
         var addbutton = $('#addbutton');
+        var addpages = $('.add-page-list');
+        addpages.on('click',function(){
+            page.addPage();
+        });
         addimage.on('click',function(){
             var imgcom = new Imgcom();
             imgcom.render({
