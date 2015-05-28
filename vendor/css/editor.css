@@ -1190,83 +1190,14 @@ body .cp-color-picker,body .colpick {
     line-height: 35px
 }
 
-.page-list .page-item .icon,.elem .icon,.tmpl-item .tmpl-icon {
-    background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyhpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDIxIDc5LjE1NTc3MiwgMjAxNC8wMS8xMy0xOTo0NDowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTQgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QUJEMUMxN0RDQjIwMTFFNEJBNENGMTMxNDA4REQwNjMiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QUJEMUMxN0VDQjIwMTFFNEJBNENGMTMxNDA4REQwNjMiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpBQkQxQzE3QkNCMjAxMUU0QkE0Q0YxMzE0MDhERDA2MyIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpBQkQxQzE3Q0NCMjAxMUU0QkE0Q0YxMzE0MDhERDA2MyIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pomcvv0AAAFNSURBVHjapJPBSsNAEIZnxbSeLCQn8eIbGIlaPAqCB734IAafq4qnSivWg6cFG2IqvkLtQXuwIqTJYZ1ZZuO2JqI28CWb2Zl/Z/9shFIKFrmW6TYS3r+K19QYlkriNSREJPLOSI7V5pMFbcHqYB1pI37FoglyjCsPqWa+A1JvO8Gm73ZaIBqrX6vg2L25BKcZkPAVFteLSergGVziFFFpp6foymRfjRobmuw+1jGaoxzO1bW2gKRJXYDFWgQLsyiZEWQBaQRsD6bGJGrZo5Z3tnSXeZTA+OAE1NvENE65K1VfgTcufvqCuRnYAnGxevccnG0f8vgR8v6DHnvXF7axT2UmhjMm4v4LE9mTtHtrPAjLTKwjyeveoUp7d7ZhekzCL8E+vQ8495uJvzlIA+So6iBRYIiPJnKGRMgHE3Fsl3Mqj/Kffyax6O/8KcAAvmX19gLpAioAAAAASUVORK5CYII=") center no-repeat;
-    display: block;
-    display: none;
-    height: 16px;
-    position: absolute;
-    right: -11px;
-    top: -8px;
-    width: 16px;
-    z-index: 100
-}
 
-.contextmenu {
-    background-color: #fff;
-    border: 1px solid #999;
-    box-shadow: 3px 3px 3px #aaa;
-    left: 0;
-    padding: 15px 0;
-    position: fixed;
-    top: 0;
-    z-index: 10000
-}
 
-.contextmenu a {
-    display: block;
-    height: 30px;
-    line-height: 30px;
-    padding: 0 15px
-}
-
-.contextmenu hr {
-    margin: 5px 12px
-}
-
-.contextmenu a i,.contextmenu a span {
-    display: inline-block;
-    vertical-align: middle
-}
-
-.contextmenu a i {
-    margin-right: 15px
-}
 
 .elem .icon,.tmpl-item .tmpl-icon {
     right: 0;
     top: 0
 }
 
-.page-list .page-clone {
-    border: 1px solid #f00;
-    left: 0;
-    opacity: 0.2;
-    position: absolute;
-    top: 0;
-    z-index: 1
-}
-
-.page-list .page-dragging {
-    cursor: move;
-    z-index: 3
-}
-
-.page-list .page-clone {
-    left: 0;
-    position: absolute;
-    top: 0;
-    z-index: 1
-}
-
-.page-list .drop-active {
-    border-style: dashed;
-    border-color: #00f
-}
-
-.page-list .drop-target,.page-list .can-drop {
-    border-color: #f00
-}
 
 .ps-container > .ps-scrollbar-y-rail,.ps-container>.ps-scrollbar-y-rail>.ps-scrollbar-y {
     width: 4px
@@ -1281,18 +1212,7 @@ body .cp-color-picker,body .colpick {
     display: block
 }
 
-.page-list .page-item .page-cont {
-    height: 504px;
-    transform: scale(0.4375);
-    -webkit-transform: scale(0.4375);
-    transform-origin: 0 0;
-    -webkit-transform-origin: 0 0;
-    width: 320px
-}
 
-.page-list .page-item .page-img {
-    overflow: hidden
-}
 
 .always-visible.ps-container > .ps-scrollbar-y-rail {
     background-color: #eee;
@@ -1300,13 +1220,7 @@ body .cp-color-picker,body .colpick {
     opacity: 1
 }
 
-.page-list .page-item:hover .icon {
-    display: block
-}
 
-.page-list .page-item:hover .elem .icon {
-    display: none
-}
 
 
 
