@@ -51,5 +51,10 @@ require(['zepto','jquery','btncom', 'imgcom',
         });
 
 
+    $('#showbox').on('click','.W_iteam',function(){
+        var $that = $(this);
+        $that.addClass('select').siblings().removeClass('select');
+    });
+
         
 })
