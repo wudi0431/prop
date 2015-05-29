@@ -8,7 +8,10 @@ var index =0;
 
 var projectId =  getQueryString("projectId");
 
-function Page(){};
+function Page(){
+    this.index=index;
+    this.pageList=[];
+};
 
 Page.prototype={
     constructor:Page,

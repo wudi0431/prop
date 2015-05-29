@@ -8,7 +8,7 @@ require.config({
         imgcom:'/js/module/imgcom/imgcom',
         imgcom_content:'/js/module/imgcom/imgcom_content',
         imgcom_style:'/js/module/imgcom/imgcom_style',
-        addpage:'/js/addpage'
+        page:'/js/module/page/page'
     },
     shim: {
         'jqui': {
@@ -19,7 +19,7 @@ require.config({
 
 require(['zepto','jquery','btncom', 'imgcom', 
     'btncom_content','btncom_style','imgcom_content',
-    'imgcom_style','jqui','addpage'], function (zepto,$,Btncom,Imgcom,btncom_content,btncom_style,imgcom_content,imgcom_style,jqui,Page) {
+    'imgcom_style','jqui','page'], function (zepto,$,Btncom,Imgcom,btncom_content,btncom_style,imgcom_content,imgcom_style,jqui,Page) {
 
 
         var Btncom = Btncom.Btncom;
