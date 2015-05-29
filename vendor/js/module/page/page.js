@@ -53,7 +53,7 @@ Page.prototype={
 
         }
 
-        //this.savePage();
+        this.savePage();
         this.isfistadd=false;
     },
     savePage: function () {
