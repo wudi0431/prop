@@ -17,6 +17,7 @@ function Page(){
 Page.prototype={
     constructor:Page,
     addPage:function(){
+        var that =this;
         this.index = ++index;
         var  addpage =$('.add-page-list');
         var html=$('<div class="page-item ui-sortable-handle" data-index='+ this.index+'>'+
@@ -46,6 +47,7 @@ Page.prototype={
                 if($(this).attr('tmpl-index')==-1){
                     $addPageDailog.dialog( "close" );
                     addpage.before(html);
+                    that.clearIphone();
                 }
             });
 
@@ -74,7 +76,7 @@ Page.prototype={
             that.$items =$('.page-item');
             that.$pagelist =$('.page-list');
             that.bindUI();
-            that.clearIphone();
+
         }).fail(function (msg) {
             console.log(msg)
         });
