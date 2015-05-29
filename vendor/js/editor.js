@@ -25,7 +25,7 @@ require(['zepto','jquery','btncom', 'imgcom',
         var Btncom = Btncom.Btncom;
         var Imgcom = Imgcom.Imgcom;
         var page = new Page();
-            page.addPage();
+            page.initPage();
 
 
         var addtext = $('#addtext');

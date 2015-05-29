@@ -16,15 +16,72 @@ function Page(){
 
 Page.prototype={
     constructor:Page,
+    initPage:function(){
+        var that =this;
+        $.ajax({
+            method: "GET",
+            url: "/getPageList?projectId="+projectId
+        }).done(function (msg) {
+
+            if(msg.success){
+
+                if(msg.model.pageList.length===0){
+                    that.addFirstPage();
+                }else{
+                    that.isfistadd=false;
+                    msg.model.pageList.map(function(page){
+                        that.addPageTitle(page.sortindex,false,page.name);
+                        that.pageList.push(page);
+                    });
+                }
+
+            }
+        }).fail(function (msg) {
+            console.log(msg)
+        });
+    },
     addPage:function(){
         var that =this;
-        this.index = ++index;
-        var  addpage =$('.add-page-list');
+        var $addPageDailog =$('#addPageDailog').dialog({
+            resizable: false,
+            width:500,
+            height:600,
+            title:"选择模板",
+            modal: true,
+            dialogClass: "fasdfasdfasdfsd"
+        });
+
+        $(".tmpl-item").on('click',function(){
+            if($(this).attr('tmpl-index')==-1){
+                $addPageDailog.dialog( "close" );
+                that.addPageTitle(that.index,true)
+                that.clearIphone();
+                that.savePage();
+            }
+        });
+
+    },
+    addFirstPage:function(){
+        this.isfistadd && this.addPageTitle(index,true) ;
+        this.isfistadd=false;
+        this.savePage();
+    },
+    addPageTitle:function(index,isadd,name){
+        if(isadd) {
+            this.index = ++index;
+        }else{
+            this.index=index;
+        }
+        var defname ='第'+this.index+'页';
+        if(name){
+            defname=name;
+        }
+        this.addpage =$('.add-page-list');
         var html=$('<div class="page-item ui-sortable-handle" data-index='+ this.index+'>'+
             '<a data-set="selected" class="sort-page js-sort-page cur-sort-page" href="javascript:;"></a>'+
-            '<span data-set="selected" class="disp">第'+this.index+'页</span>'+
+            '<span data-set="selected" class="disp">'+defname+'</span>'+
             '<div class="page-edit" style="display: none;" data-role="title-edit">'+
-            '<input placeholder="请输入不超过100个字" maxlength="100" class="edit" type="text" value="第'+this.index+'页">'+
+            '<input placeholder="请输入不超过100个字" maxlength="100" class="edit" type="text" value="'+defname+'">'+
             '<a data-role="btn-edit-cancel" title="取消" class="ico-del" href="javascript:;" style="text-decoration: none;"></a>'+
             '<a data-role="btn-edit-post" title="确定" class="ico-right" href="javascript:;" style="text-decoration: none;"></a>'+
             '</div>'+
@@ -32,29 +89,8 @@ Page.prototype={
             ' <a data-role="scene-copy" title="复制" class="ico-copy" href="javascript:;"></a>'+
             '<a data-role="btn-edit-scene" title="修改" class="ico-edit" href="javascript:;"></a>'+
             '</div>');
-        this.isfistadd && addpage.before(html);
-        if(!this.isfistadd) {
-            var $addPageDailog =$('#addPageDailog').dialog({
-                resizable: false,
-                width:500,
-                height:600,
-                title:"选择模板",
-                modal: true,
-                dialogClass: "fasdfasdfasdfsd"
-            });
 
-            $(".tmpl-item").on('click',function(){
-                if($(this).attr('tmpl-index')==-1){
-                    $addPageDailog.dialog( "close" );
-                    addpage.before(html);
-                    that.clearIphone();
-                }
-            });
-
-        }
-
-        this.savePage();
-        this.isfistadd=false;
+        this.addpage.before(html);
     },
     savePage: function () {
         var that =this;
@@ -72,7 +108,7 @@ Page.prototype={
             }
         }).done(function (msg) {
             console.log(msg);
-            that.pageList.push(msg);
+            that.pageList.push(msg.model);
             that.$items =$('.page-item');
             that.$pagelist =$('.page-list');
             that.bindUI();
@@ -150,8 +186,8 @@ Page.prototype={
                     break;
                 case "btn-edit-post":
                     var title = $ed.find('.edit').val();
-                    curPageData.model.name = title;
-                    that.updataPage(curPageData.model);
+                    curPageData.name = title;
+                    that.updataPage(curPageData);
                     $ed.hide();
                     $ed.nextAll().removeClass("item-visible");
                     $ed.find('.edit').attr('value',title);
@@ -162,14 +198,15 @@ Page.prototype={
                     break;
                 case "btn-del-scene":
                     if(curPageData){
-                       that.deletePage(curPageData.model._id,pindex);
+                       that.deletePage(curPageData._id,pindex);
                         curitem.remove();
                         that.clearIphone();
                         that.delePageListByIndex(null,pageid);
                         if(that.pageList.length===0){
                             index =  that.pageList.length;
                             that.index =that.pageList.length;
-                            that.addPage();
+                            that.isfistadd=true;
+                            that.addFirstPage();
                         }else{
                             var nextpindex =pindex-1;
                             that.addSelectPage(nextpindex==0?1:nextpindex);
@@ -189,10 +226,10 @@ Page.prototype={
     getPageListByIndex:function(index,pageid){
         var onePagedata=null;
         this.pageList.map(function(item){
-            if(index && item.model.sortindex===index){
+            if(index && item.sortindex===index){
                 onePagedata=item;
             }
-            if(pageid && item.model._id===pageid){
+            if(pageid && item._id===pageid){
                 onePagedata=item;
             }
         });
@@ -200,10 +237,10 @@ Page.prototype={
     },
     delePageListByIndex: function (index,pageid) {
         for(var i=0;i<this.pageList.length;i++){
-            if(index && this.pageList[i].model.sortindex==index){
+            if(index && this.pageList[i].sortindex==index){
                 this.pageList.splice(i,1);
             }
-            if(pageid && this.pageList[i].model._id==pageid){
+            if(pageid && this.pageList[i]._id==pageid){
                 this.pageList.splice(i,1);
             }
         }
@@ -219,7 +256,7 @@ Page.prototype={
                 $a.removeClass('cur-sort-page');
             }else{
                 var curpage = that.getPageListByIndex(that.index);
-                curpage && $item.attr('data-pageid',curpage.model._id);
+                curpage && $item.attr('data-pageid',curpage._id);
             }
         });
     },
@@ -255,16 +292,16 @@ Page.prototype={
             var pageid =$(page).attr('data-pageid');
             var curpage = that.getPageListByIndex(null,pageid);
             var cindex = ++index;
-            curpage.model.sortindex=cindex;
+            curpage.sortindex=cindex;
             $(page).attr('data-index',cindex);
             var $title = $(page).find('.disp');
             if($title.text().indexOf('第')!=-1){
                 var n  ="第"+cindex+"页";
-                curpage.model.name=n;
+                curpage.name=n;
                 $title.text(n);
                 $(page).find('.edit').attr('value',n);
             }
-            that.updataPage(curpage.model)
+            that.updataPage(curpage)
 
         })
     }
