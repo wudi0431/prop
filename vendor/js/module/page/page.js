@@ -236,6 +236,18 @@ Page.prototype={
             }
         });
     },
+    getSelectPage:function(){
+        var that =this;
+        var pageId = null;
+        $.each(that.$items,function(index,item){
+            var $item = $(item),flag=true;
+            var $a = $item.children().first();
+            if($a.hasClass('cur-sort-page')){
+                pageId = $item.data('pageid');
+            }
+        });
+        return pageId;
+    },
     updateIndex: function () {
         var that =this;
         var $pageietm  =$('.page-item');

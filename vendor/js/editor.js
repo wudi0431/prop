@@ -43,8 +43,10 @@ require(['zepto','jquery','btncom', 'imgcom',
             
         });
         addbutton.on('click',function(){
-
-            var btncom = new Btncom();
+            var pageId = page.getSelectPage();
+            var btncom = new Btncom({
+                pageId:pageId
+            });
             btncom.render({
                 container:zepto('#showbox')
             });
