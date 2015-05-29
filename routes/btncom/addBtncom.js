@@ -8,7 +8,7 @@ router.post('/', function (req, res, next) {
         req.body.user = req.session.user;
         var reqtext = req.body.btncom;
 
-        reqtext.page = req.body.pageId;
+        reqtext.page = req.body.pageId||null;
 
         var btncom = new Btncom(reqtext);
 

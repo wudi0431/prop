@@ -1243,6 +1243,13 @@ body .cp-color-picker,body .colpick {
     display: none;
 }
 
+.W_iteam{
+    display: inline-flex;
+    padding: 5px 5px;
+}
+.W_iteam.select{
+    background-color: #2583E4;
+}
 
 
 
