@@ -8,7 +8,7 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
 
     Btncom.ATTRS = {
         boundingBox: {
-            value: $('<div class="W_iteam"></div>')
+            value: $('<div class="W_iteam" data-type="btncom"></div>')
         },
         data: {
             value: null
