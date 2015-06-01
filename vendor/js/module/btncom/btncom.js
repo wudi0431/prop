@@ -73,6 +73,22 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
             $box.append(tpl);
             that.$box = $box;
             that.$boxContent = $box.find('.W_btn');
+
+            //TODO  如何更合理 数据库直接对应 jquery?
+            Object.keys(data).forEach(function(key){
+                switch(key){
+                    case 'width':
+                        that.$box.width(data[key]);
+                        break;
+                    case 'height':
+                        that.$box.height(data[key]);
+                        break;
+                    case 'lineheight':
+                        that.$box.css('lineHeight',data[key]);
+                        break;
+                }
+            });
+
             next.call(that);
         },
 
