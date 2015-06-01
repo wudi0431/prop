@@ -58,9 +58,6 @@ hr {
     padding: 6px 12px 3px
 }
 
-[ms-controller],[ms-important] {
-    display: none
-}
 
 .nav {
     background: rgba(0,0,0,.7);

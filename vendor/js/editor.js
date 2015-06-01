@@ -24,6 +24,7 @@ require(['zepto','jquery','btncom', 'imgcom',
 
         var Btncom = Btncom.Btncom;
         var Imgcom = Imgcom.Imgcom;
+        $('#prototype-content').tabs();
         var page = new Page();
             page.initPage({Btncom:Btncom});
 
@@ -32,7 +33,7 @@ require(['zepto','jquery','btncom', 'imgcom',
         var addimage = $('#addimage');
         var addbutton = $('#addbutton');
         var addpages = $('.add-page-list');
-        $('#page-content').tabs();
+
         addpages.on('click',function(){
             page.addPage();
         });

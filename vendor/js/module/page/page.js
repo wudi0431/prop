@@ -40,13 +40,13 @@ Page.prototype={
                         }).done(function (msg) {
                             console.log(msg);
                             if(msg.success){
-                                if(ops.Btncom){
-                                    msg.model.BtncomList.map(function(btn){
-                                           new ops.Btncom({data:btn}).render({
-                                               container:zepto('#showbox')
-                                           });
-                                    });
-                                }
+                                //if(ops.Btncom){
+                                //    msg.model.BtncomList.map(function(btn){
+                                //           new ops.Btncom({data:btn}).render({
+                                //               container:zepto('#showbox')
+                                //           });
+                                //    });
+                                //}
                             }
                         }).fail(function (msg) {
                             console.log(msg)

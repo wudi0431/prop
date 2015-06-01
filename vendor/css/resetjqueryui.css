@@ -49,3 +49,29 @@
     bottom: -4px;
 }
 
+
+#prototype-content.ui-widget-content {
+    border: none;
+}
+
+
+#prototype-content.ui-widget {
+    font-size:14px;
+}
+
+#prototype-content.ui-tabs {
+    padding:0em;
+}
+
+#prototype-content.ui-widget-header {
+    border: none;
+    background-image: none;
+    background-color: rgba(0,0,0,.5);
+
+}
+.ui-widget-header {
+    border: none;
+    background: rgba(193, 193, 193, 0.5);
+    color: #222;
+    font-weight: bold;
+}
