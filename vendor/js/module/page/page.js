@@ -16,6 +16,7 @@ function Page(){
 
 Page.prototype={
     constructor:Page,
+    // 初始化page页面
     initPage:function(){
         var that =this;
         $.ajax({
@@ -32,6 +33,7 @@ Page.prototype={
                     msg.model.pageList.map(function(page){
                         that.addPageTitle(page.sortindex,false,page.name);
                         that.pageList.push(page);
+                        that.bindUI();
                     });
                 }
 
@@ -40,6 +42,7 @@ Page.prototype={
             console.log(msg)
         });
     },
+    // 添加页面
     addPage:function(){
         var that =this;
         var $addPageDailog =$('#addPageDailog').dialog({
@@ -61,11 +64,13 @@ Page.prototype={
         });
 
     },
+    // 默认添加页面
     addFirstPage:function(){
         this.isfistadd && this.addPageTitle(index,true) ;
         this.isfistadd=false;
         this.savePage();
     },
+    //页面模板
     addPageTitle:function(index,isadd,name){
         if(isadd) {
             this.index = ++index;
@@ -92,6 +97,7 @@ Page.prototype={
 
         this.addpage.before(html);
     },
+    //保存页面
     savePage: function () {
         var that =this;
         var pageEntity = {
@@ -109,8 +115,6 @@ Page.prototype={
         }).done(function (msg) {
             console.log(msg);
             that.pageList.push(msg.model);
-            that.$items =$('.page-item');
-            that.$pagelist =$('.page-list');
             that.bindUI();
 
         }).fail(function (msg) {
@@ -118,6 +122,7 @@ Page.prototype={
         });
 
     },
+    //更新页面
     updataPage:function(pageEntity){
         $.ajax({
             method: "POST",
@@ -130,6 +135,7 @@ Page.prototype={
         });
 
     },
+    //删除页面
     deletePage:function(pageId){
         var that =this;
         $.ajax({
@@ -148,17 +154,25 @@ Page.prototype={
         });
 
     },
+    //页面事件绑定
     bindUI:function(){
         var that =this;
+        that.$items =$('.page-item');
+        that.$pagelist =$('.page-list');
         that.deleteSelectPage();
-
         that.$pagelist.sortable({
             placeholder: "ui-state-highlight",
+            axis: 'y',
+            cancel:'div.add-page-list',
             stop: function( event, ui ) {
-                console.log(ui);
-                that.updateIndex();
+                if(!ui.item.prev('div').hasClass('add-page-list')){
+                    that.updateIndex();
+                }else{
+                    that.$pagelist.sortable( "cancel" );
+                }
             }
         });
+        that.addpage.removeClass('ui-sortable-handle');
         that.$pagelist.disableSelection();
 
         that.$items.on('click', function (e) {
@@ -167,10 +181,6 @@ Page.prototype={
             var pindex =+curitem.attr('data-index');
             var pageid =curitem.attr('data-pageid');
             var curPageData = that.getPageListByIndex(null,pageid);
-            that.addSelectPage(pindex);
-            if(e.target.dataset.set=="selected"){
-                curitem.children().first().addClass('cur-sort-page');
-            }
             var $ed = curitem.find('[data-role="title-edit"]');
             switch(e.target.dataset.role){
                 case "btn-edit-scene":
@@ -194,7 +204,7 @@ Page.prototype={
                     curitem.find('.disp').text(title);
                     break;
                 case "scene-copy":
-                    that.addPage();
+                    that.addpage.before($(this));
                     break;
                 case "btn-del-scene":
                     if(curPageData){
@@ -214,15 +224,17 @@ Page.prototype={
 
                     }
                     break;
-
+                default :
+                    that.addSelectPage(pindex);
+                    break;
             }
-            return false;
-
         })
     },
+    //清除iPhone的页面
     clearIphone:function(){
         $('#showbox').html("");
     },
+    //获得选中的page数据
     getPageListByIndex:function(index,pageid){
         var onePagedata=null;
         this.pageList.map(function(item){
@@ -235,6 +247,7 @@ Page.prototype={
         });
         return onePagedata;
     },
+    //删除page数据
     delePageListByIndex: function (index,pageid) {
         for(var i=0;i<this.pageList.length;i++){
             if(index && this.pageList[i].sortindex==index){
@@ -247,6 +260,7 @@ Page.prototype={
         index =  this.pageList.length;
         this.index =this.pageList.length;
     },
+    //删除页面
     deleteSelectPage: function () {
         var that =this;
         $.each(that.$items,function(index,item){
@@ -260,6 +274,7 @@ Page.prototype={
             }
         });
     },
+    //选中单个页面
     addSelectPage: function (pindex) {
         var that =this;
         $.each(that.$items,function(index,item){
@@ -273,6 +288,7 @@ Page.prototype={
             }
         });
     },
+    //获得被选中的pageid
     getSelectPage:function(){
         var that =this;
         var pageId = null;
@@ -285,6 +301,7 @@ Page.prototype={
         });
         return pageId;
     },
+    //更新page的排序
     updateIndex: function () {
         var that =this;
         var $pageietm  =$('.page-item');
@@ -306,7 +323,7 @@ Page.prototype={
         })
     }
 }
-
+//根据 url 的名字 获得 值
 function getQueryString(name){
     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
     var r = window.location.search.substr(1).match(reg);
