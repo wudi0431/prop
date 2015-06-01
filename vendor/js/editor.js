@@ -24,7 +24,8 @@ require(['zepto','jquery','btncom', 'imgcom',
 
         var Btncom = Btncom.Btncom;
         var Imgcom = Imgcom.Imgcom;
-        $('#prototype-content').tabs();
+        var procon =$('#prototype-content')
+            procon.tabs();
         var page = new Page();
             page.initPage({Btncom:Btncom});
 
@@ -69,8 +70,33 @@ require(['zepto','jquery','btncom', 'imgcom',
                 $(o).resizable( "destroy" );
             }
         });
-
     });
+
+
+    $('#showbox').on('click',function(e){
+        var $li = procon.children('ul').children('li');
+        var $jp = procon.find('#J_pageContent');
+        var $jb = procon.find('#J_btncomContent');
+        var $jm = procon.find('#J_imgcomContent');
+        if(e.target.className=='showbox'){
+            $li.first().show().siblings('li').addClass('item-visible');
+            $jp.show();
+            $jb.hide();
+            $jm.hide();
+        }else{
+            $li.siblings('li').removeClass('item-visible');
+            $jp.hide();
+            var type  = $(e.target).data('type');
+            if(type=='btncom'){
+                $jb.show();
+            }else if(type=='imgcom'){
+                $jm.show();
+            }
+        }
+    });
+
+
+
 
         
 });
