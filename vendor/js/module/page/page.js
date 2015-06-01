@@ -276,7 +276,7 @@ Page.prototype={
     getSelectPage:function(){
         var that =this;
         var pageId = null;
-        $.each(that.$items,function(index,item){
+        $.each(that.pageList,function(index,item){
             var $item = $(item),flag=true;
             var $a = $item.children().first();
             if($a.hasClass('cur-sort-page')){

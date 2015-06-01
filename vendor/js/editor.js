@@ -55,8 +55,20 @@ require(['zepto','jquery','btncom', 'imgcom',
 
     $('#showbox').on('click','.W_iteam',function(){
         var $that = $(this);
-        $that.addClass('select').siblings().removeClass('select');
+        var siblings = $that.siblings();
+        $that.addClass('select');
+        $that.draggable();
+        $that.resizable({
+            handles:' n, e, s, w, ne, se, sw, nw'
+        });
+        siblings.removeClass('select');
+        siblings.each(function(i,o){
+            if($(o).resizable( "instance" )){
+                $(o).resizable( "destroy" );
+            }
+        });
+
     });
 
         
-})
+});
