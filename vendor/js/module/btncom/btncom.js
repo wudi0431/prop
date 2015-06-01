@@ -8,10 +8,10 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
 
     Btncom.ATTRS = {
         boundingBox: {
-            value: $('<div class="W_iteam"></div>')
+            value: $('<div class="W_iteam" data-type="btncom"></div>')
         },
         data: {
-            value: []
+            value: null
         },
         pageId: {
             value: null
@@ -34,6 +34,7 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
     F.extend(Btncom, Widget, {
         renderUI: function () {
             var that = this;
+            console.dir(arguments);
             that._addBtncom(that._bindUI);
         },
 
@@ -75,8 +76,8 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
             that.$boxContent = $box.find('.W_btn');
 
             //TODO  如何更合理 数据库直接对应 jquery?
-            Object.keys(data).forEach(function(key){
-                switch(key){
+            Object.keys(data).forEach(function (key) {
+                switch (key) {
                     case 'width':
                         that.$box.width(data[key]);
                         break;
@@ -84,7 +85,7 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
                         that.$box.height(data[key]);
                         break;
                     case 'lineheight':
-                        that.$box.css('lineHeight',data[key]);
+                        that.$box.css('lineHeight', data[key]);
                         break;
                 }
             });
@@ -94,25 +95,30 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
 
         _addBtncom: function (next) {
             var that = this;
-            var pageId = that.getPageId();
-            var btncomEntity = {
-                context: '按钮'
-            };
+            if (that.getData()) {
+                that._renderBtncom(that.getData(), next);
+            } else {
+                var pageId = that.getPageId();
+                var btncomEntity = {
+                    context: '按钮'
+                };
 
-            jq.ajax({
-                method: "POST",
-                url: "/addBtncom",
-                data: {
-                    pageId: pageId,
-                    btncom: btncomEntity
-                }
-            }).done(function (msg) {
-                if (msg.success) {
-                    that.setData(msg.model);
-                    that._renderBtncom(msg.model, next);
-                }
-            }).fail(function (msg) {
-            });
+                jq.ajax({
+                    method: "POST",
+                    url: "/addBtncom",
+                    data: {
+                        pageId: pageId,
+                        btncom: btncomEntity
+                    }
+                }).done(function (msg) {
+                    if (msg.success) {
+                        that.setData(msg.model);
+                        that._renderBtncom(msg.model, next);
+                    }
+                }).fail(function (msg) {
+                });
+            }
+
         }
     });
     return {

@@ -7,7 +7,7 @@ define(['FFF','zepto'], function(FFF,$) {
     }
     Imgcom.ATTRS = {
         boundingBox: {
-            value: $('<div class="W_iteam"></div>')
+            value: $('<div class="W_iteam" data-type="imgcom"></div>')
         }
     };
     F.extend(Imgcom, Widget, {
