@@ -25,13 +25,14 @@ require(['zepto','jquery','btncom', 'imgcom',
         var Btncom = Btncom.Btncom;
         var Imgcom = Imgcom.Imgcom;
         var page = new Page();
-            page.initPage();
+            page.initPage({Btncom:Btncom});
 
 
         var addtext = $('#addtext');
         var addimage = $('#addimage');
         var addbutton = $('#addbutton');
         var addpages = $('.add-page-list');
+        $('#page-content').tabs();
         addpages.on('click',function(){
             page.addPage();
         });

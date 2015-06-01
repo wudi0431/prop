@@ -1,7 +1,7 @@
 /**
  * Created by wudi on 15/5/27.
  */
-define(['jquery','jqui'], function($,jqui) {
+define(['jquery','jqui','zepto'], function($,jqui,zepto) {
 
 
 var index =0;
@@ -17,7 +17,7 @@ function Page(){
 Page.prototype={
     constructor:Page,
     // 初始化page页面
-    initPage:function(){
+    initPage:function(ops){
         var that =this;
         $.ajax({
             method: "GET",
@@ -34,13 +34,34 @@ Page.prototype={
                         that.addPageTitle(page.sortindex,false,page.name);
                         that.pageList.push(page);
                         that.bindUI();
+                        $.ajax({
+                            method: "GET",
+                            url: "/getBtncomListByPageId?pageId="+page._id
+                        }).done(function (msg) {
+                            console.log(msg);
+                            if(msg.success){
+                                if(ops.Btncom){
+                                    msg.model.BtncomList.map(function(btn){
+                                           new ops.Btncom({data:btn}).render({
+                                               container:zepto('#showbox')
+                                           });
+                                    });
+                                }
+                            }
+                        }).fail(function (msg) {
+                            console.log(msg)
+                        });
+
                     });
                 }
+
 
             }
         }).fail(function (msg) {
             console.log(msg)
         });
+
+
     },
     // 添加页面
     addPage:function(){
