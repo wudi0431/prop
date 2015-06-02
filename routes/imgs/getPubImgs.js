@@ -17,7 +17,7 @@ router.get('/', function(req, res, next) {
                 res.status('200');
                 res.send({
                     success: true,
-                    model: imgsEntity
+                    model: {imgList:imgsEntity}
                 });
             }
         });

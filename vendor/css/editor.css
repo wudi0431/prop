@@ -1240,5 +1240,10 @@ body .cp-color-picker,body .colpick {
     width: 100%;
 }
 
+#imgWare li{
+    display: inline-flex;
+    margin: 5px 5px;
+}
+
 
 

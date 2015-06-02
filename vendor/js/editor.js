@@ -30,6 +30,10 @@ require(['zepto', 'jquery', 'btncom', 'imgcom',
     pagecom.initPage({Btncom: Btncom});
     var selectImgDialog = $('#selectImgDialog');
     selectImgDialog.tabs();
+    var imgWare = $('#imgWare');
+    var imgWareStr = '<li>' +
+        '<img src="/uploadimg/%name%" style="width:100px;height: 200px;">' +
+        '</li>';
 
 
     var addtext = $('#addtext');
@@ -52,7 +56,25 @@ require(['zepto', 'jquery', 'btncom', 'imgcom',
             title:"选择图片",
             modal: true
         });
-
+        $.ajax({
+            method: "GET",
+            url: "/getPubImgs"
+        }).done(function (msg) {
+            var imgList = msg.model.imgList||[];
+            var html = '';
+            if (imgList.length > 0) {
+                imgList.forEach(function (o, i) {
+                    var t = imgWareStr.replace(/(%(\w+)%)/g, function ($1, $2, $3) {
+                        return o[$3] ? o[$3] : '';
+                    });
+                    html += t;
+                });
+                imgWare.html('').html(html);
+            } else {
+                imgWare.html('');
+            }
+        }).fail(function (msg) {
+        });
 
     });
 
