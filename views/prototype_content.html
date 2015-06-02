@@ -1,11 +1,13 @@
 <ul>
     <li><a href="#content">内容</a></li>
-    <li><a href="#style">样式</a></li>
-    <li><a href="#animate">动画</a></li>
-    <li><a href="#datasource">数据源</a></li>
+    <li class="item-visible"><a href="#style">样式</a></li>
+    <li class="item-visible"><a href="#animate">动画</a></li>
+    <li class="item-visible"><a href="#datasource">数据源</a></li>
 </ul>
 <div id="content">
-1
+    <% include page_content.html %>
+    <% include btncom_content.html %>
+    <% include imgcom_content.html %>
 </div>
 
 <div id="style">

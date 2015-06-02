@@ -2,13 +2,13 @@ require.config({
     paths: {
         jquery: '/lib/jqueryui/external/jquery/jquery',
         jqui: '/lib/jqueryui/jquery-ui',
-        btncom: '/js/module/btncom/btncom',
-        btncom_content: '/js/module/btncom/btncom_content',
-        btncom_style: '/js/module/btncom/btncom_style',
-        imgcom: '/js/module/imgcom/imgcom',
-        imgcom_content: '/js/module/imgcom/imgcom_content',
-        imgcom_style: '/js/module/imgcom/imgcom_style',
-        page: '/js/module/page/page'
+        btncom:'/js/module/btncom/btncom',
+        btncom_content:'/js/module/btncom/btncom_content',
+        btncom_style:'/js/module/btncom/btncom_style',
+        imgcom:'/js/module/imgcom/imgcom',
+        imgcom_content:'/js/module/imgcom/imgcom_content',
+        imgcom_style:'/js/module/imgcom/imgcom_style',
+        pagecom:'/js/module/page/pagecom'
     },
     shim: {
         'jqui': {
@@ -17,42 +17,43 @@ require.config({
     }
 });
 
-require(['zepto', 'jquery', 'btncom', 'imgcom',
-    'btncom_content', 'btncom_style', 'imgcom_content',
-    'imgcom_style', 'jqui', 'page'], function (zepto, $, Btncom, Imgcom, btncom_content, btncom_style, imgcom_content, imgcom_style, jqui, Page) {
+require(['zepto','jquery','btncom', 'imgcom', 
+    'btncom_content','btncom_style','imgcom_content',
+    'imgcom_style','jqui','pagecom'], function (zepto,$,Btncom,Imgcom,btncom_content,btncom_style,imgcom_content,imgcom_style,jqui,Pagecom) {
 
 
-    var Btncom = Btncom.Btncom;
-    var Imgcom = Imgcom.Imgcom;
-    $('#prototype-content').tabs();
-    var page = new Page();
-    page.initPage({Btncom: Btncom});
+        var Btncom = Btncom.Btncom;
+        var Imgcom = Imgcom.Imgcom;
+        var procon =$('#prototype-content')
+            procon.tabs();
+        var pagecom = new Pagecom();
+            pagecom.initPage({Btncom:Btncom});
 
 
-    var addtext = $('#addtext');
-    var addimage = $('#addimage');
-    var addbutton = $('#addbutton');
-    var addpages = $('.add-page-list');
+        var addtext = $('#addtext');
+        var addimage = $('#addimage');
+        var addbutton = $('#addbutton');
+        var addpages = $('.add-page-list');
 
-    addpages.on('click', function () {
-        page.addPage();
-    });
-    addimage.on('click', function () {
-        var imgcom = new Imgcom();
-        imgcom.render({
-            container: zepto('#showbox')
+        addpages.on('click',function(){
+            pagecom.addPage();
         });
-
-    });
-    addbutton.on('click', function () {
-        var pageId = page.getSelectPage();
-        var btncom = new Btncom({
-            pageId: pageId
+        addimage.on('click',function(){
+            var imgcom = new Imgcom();
+            imgcom.render({
+                container:zepto('#showbox')
+            });
+            
         });
-        btncom.render({
-            container: zepto('#showbox')
+        addbutton.on('click',function(){
+            var pageId = page.getSelectPage();
+            var btncom = new Btncom({
+                pageId:pageId
+            });
+            btncom.render({
+                container:zepto('#showbox')
+            });
         });
-    });
 
 
     $('#showbox').on('click', '.W_iteam', function () {
@@ -82,7 +83,28 @@ require(['zepto', 'jquery', 'btncom', 'imgcom',
 
         });
 
+
+    $('#showbox').on('click',function(e){
+        var $li = procon.children('ul').children('li');
+        var $jp = procon.find('#J_pageContent');
+        var $jb = procon.find('#J_btncomContent');
+        var $jm = procon.find('#J_imgcomContent');
+        if(e.target.className=='showbox'){
+            $li.first().show().siblings('li').addClass('item-visible');
+            $jp.show();
+            $jb.hide();
+            $jm.hide();
+        }else{
+            $li.siblings('li').removeClass('item-visible');
+            $jp.hide();
+            var type  = $(e.target).data('type');
+            if(type=='btncom'){
+                $jb.show();
+            }else if(type=='imgcom'){
+                $jm.show();
+            }
+        }
     });
 
-
+        
 });
