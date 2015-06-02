@@ -28,6 +28,8 @@ require(['zepto', 'jquery', 'btncom', 'imgcom',
     procon.tabs();
     var pagecom = new Pagecom();
     pagecom.initPage({Btncom: Btncom});
+    var selectImgDialog = $('#selectImgDialog');
+    selectImgDialog.tabs();
 
 
     var addtext = $('#addtext');
@@ -39,10 +41,18 @@ require(['zepto', 'jquery', 'btncom', 'imgcom',
         pagecom.addPage();
     });
     addimage.on('click', function () {
-        var imgcom = new Imgcom();
-        imgcom.render({
-            container: zepto('#showbox')
+        //var imgcom = new Imgcom();
+        //imgcom.render({
+        //    container: zepto('#showbox')
+        //});
+        var $selectImgDialog =$('#selectImgDialog').dialog({
+            resizable: false,
+            width:500,
+            height:600,
+            title:"选择图片",
+            modal: true
         });
+
 
     });
     addbutton.on('click', function () {

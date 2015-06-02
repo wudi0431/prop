@@ -34,7 +34,6 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
     F.extend(Btncom, Widget, {
         renderUI: function () {
             var that = this;
-            console.dir(arguments);
             that._addBtncom(that._bindUI);
         },
 
