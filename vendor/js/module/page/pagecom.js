@@ -1,10 +1,12 @@
 /**
  * Created by wudi on 15/5/27.
  */
-define(['jquery','jqui','zepto'], function($,jqui,zepto) {
+define(['jquery','jqui','zepto','pagecom_content'], function($,jqui,zepto,pagecom_content) {
 
 
 var index =0;
+
+
 
 var projectId =  getQueryString("projectId");
 
@@ -30,6 +32,7 @@ Pagecom.prototype={
                     that.addFirstPage();
                 }else{
                     that.isfistadd=false;
+
                     msg.model.pageList.map(function(page){
                         that.addPageTitle(page.sortindex,false,page.name);
                         that.pageList.push(page);
@@ -56,8 +59,9 @@ Pagecom.prototype={
 
                     });
                 }
+                pagecom_content({curpage:that});
 
-
+                that.addSelectPage(1);
             }
         }).fail(function (msg) {
             console.log(msg)
@@ -106,7 +110,7 @@ Pagecom.prototype={
         }
         this.addpage =$('.add-page-list');
         var html=$('<div class="page-item ui-sortable-handle" data-index='+ this.index+'>'+
-            '<a data-set="selected" class="sort-page js-sort-page cur-sort-page" href="javascript:;"></a>'+
+            '<a data-set="selected" class="sort-page js-sort-page" href="javascript:;"></a>'+
             '<span data-set="selected" class="disp">'+defname+'</span>'+
             '<div class="page-edit" style="display: none;" data-role="title-edit">'+
             '<input placeholder="请输入不超过100个字" maxlength="100" class="edit" type="text" value="'+defname+'">'+
@@ -138,6 +142,7 @@ Pagecom.prototype={
         }).done(function (msg) {
             console.log(msg);
             that.pageList.push(msg.model);
+            that.addSelectPage(that.index);
             that.bindUI();
 
         }).fail(function (msg) {
@@ -294,6 +299,8 @@ Pagecom.prototype={
             }else{
                 var curpage = that.getPageListByIndex(that.index);
                 curpage && $item.attr('data-pageid',curpage._id);
+                $('#showbox').css({'background':curpage.background});
+
             }
         });
     },
@@ -305,6 +312,8 @@ Pagecom.prototype={
             var $a = $item.children().first();
             if($item.attr('data-index')== pindex && flag){
                 $a.addClass('cur-sort-page');
+                var curpage = that.getPageListByIndex(pindex);
+                $('#showbox').css({'background':curpage.background});
                 flag=false;
             }else{
                 $a.hasClass('cur-sort-page') &&  $a.removeClass('cur-sort-page');
@@ -344,6 +353,15 @@ Pagecom.prototype={
             that.updataPage(curpage)
 
         })
+    },
+    //获取所有page数据
+    getPageListData: function () {
+        return this.pageList || [];
+    },
+    //获取选中page数据
+    getSelectPageData: function () {
+        var curpageid  = this.getSelectPage();
+        return this.getPageListByIndex(null,curpageid);
     }
 }
 //根据 url 的名字 获得 值

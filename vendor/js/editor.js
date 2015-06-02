@@ -1,6 +1,7 @@
 require.config({
     paths: {
         jquery: '/lib/jqueryui/external/jquery/jquery',
+        spectrum: '/lib/jquerycolorpicker/spectrum',
         jqui: '/lib/jqueryui/jquery-ui',
         btncom:'/js/module/btncom/btncom',
         btncom_content:'/js/module/btncom/btncom_content',
@@ -8,18 +9,22 @@ require.config({
         imgcom:'/js/module/imgcom/imgcom',
         imgcom_content:'/js/module/imgcom/imgcom_content',
         imgcom_style:'/js/module/imgcom/imgcom_style',
-        pagecom:'/js/module/page/pagecom'
+        pagecom:'/js/module/page/pagecom',
+        pagecom_content:'/js/module/page/pagecom_content'
     },
     shim: {
         'jqui': {
+            deps: ['jquery']
+        },
+        'spectrum': {
             deps: ['jquery']
         }
     }
 });
 
-require(['zepto','jquery','btncom', 'imgcom', 
+require(['zepto','jquery','spectrum','btncom', 'imgcom',
     'btncom_content','btncom_style','imgcom_content',
-    'imgcom_style','jqui','pagecom'], function (zepto,$,Btncom,Imgcom,btncom_content,btncom_style,imgcom_content,imgcom_style,jqui,Pagecom) {
+    'imgcom_style','jqui','pagecom'], function (zepto,$,bigcolorpicker,Btncom,Imgcom,btncom_content,btncom_style,imgcom_content,imgcom_style,jqui,Pagecom) {
 
 
         var Btncom = Btncom.Btncom;
@@ -28,7 +33,6 @@ require(['zepto','jquery','btncom', 'imgcom',
             procon.tabs();
         var pagecom = new Pagecom();
             pagecom.initPage({Btncom:Btncom});
-
 
         var addtext = $('#addtext');
         var addimage = $('#addimage');

@@ -23,7 +23,7 @@ PageSchema.static('getPage', function (pageId, cb) {
 PageSchema.static('getPageList', function (projectId, cb) {
     return this.find({
         project: projectId
-    }, cb)
+    },null, {sort:{'sortindex':1}},cb);
 });
 
 PageSchema.static('updatePage', function (page, cb) {
