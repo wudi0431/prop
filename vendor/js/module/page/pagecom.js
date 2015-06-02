@@ -8,14 +8,14 @@ var index =0;
 
 var projectId =  getQueryString("projectId");
 
-function Page(){
+function Pagecom(){
     this.index=index;
     this.pageList=[];
     this.isfistadd=true;
 };
 
-Page.prototype={
-    constructor:Page,
+Pagecom.prototype={
+    constructor:Pagecom,
     // 初始化page页面
     initPage:function(ops){
         var that =this;
@@ -315,7 +315,7 @@ Page.prototype={
     getSelectPage:function(){
         var that =this;
         var pageId = null;
-        $.each(that.pageList,function(index,item){
+        $.each(that.$items,function(index,item){
             var $item = $(item),flag=true;
             var $a = $item.children().first();
             if($a.hasClass('cur-sort-page')){
@@ -353,7 +353,7 @@ function getQueryString(name){
     if(r!=null)return  unescape(r[2]); return null;
 }
 
-return Page;
+return Pagecom;
 
 
 });
