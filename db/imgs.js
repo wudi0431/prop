@@ -17,6 +17,10 @@ ImgsSchema.static('getImgsByUser', function (userId,cb) {
     }, cb)
 });
 
+ImgsSchema.static('getPubImgs', function (userId,cb) {
+    return this.find({}, cb)
+});
+
 
 var ImgsModel = mongoose.model('Imgs', ImgsSchema);
 module.exports = ImgsModel;

@@ -55,6 +55,30 @@ require(['zepto', 'jquery', 'btncom', 'imgcom',
 
 
     });
+
+    //TODO 测试用
+    $('#file_upload').on('click', function () {
+
+        var data = new FormData();
+        var files = $('#file')[0].files;
+        data.append('codecsv', files[0]);
+
+        $.ajax({
+            cache: false,
+            type: 'post',
+            url: '/upLoadImg',
+            data: data,
+            contentType: false,
+            processData: false,
+            success: function (data) {
+                alert(data)
+            }
+        })
+
+    });
+
+
+
     addbutton.on('click', function () {
         var pageId = page.getSelectPage();
         var btncom = new Btncom({

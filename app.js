@@ -26,7 +26,7 @@ app.use(session({
 
 
 app.use(multer({
-    dest:__dirname +'./public/uploadimg/',
+    dest:__dirname +'/public/uploadimg/',
     rename: function (fieldname, filename) {
         return filename;
     },
@@ -49,7 +49,8 @@ var getBtncom = require('./routes/btncom/getBtncom');
 var updateBtncom = require('./routes/btncom/updateBtncom');
 
 var getImgsByUser = require('./routes/imgs/getImgsByUser');
-var upLoadImgs = require('./routes/imgs/upLoadImgs');
+var upLoadImg = require('./routes/imgs/upLoadImg');
+var getPubImgs = require('./routes/imgs/getPubImgs');
 
 
 var addProject = require('./routes/project/addProject');
@@ -105,8 +106,11 @@ app.use(express.static(path.join(__dirname, 'vendor')));
 app.use('/', index);
 app.use('/login', login);
 app.use('/logout', logout);
+
 app.use('/getImgsByUser', getImgsByUser);
-app.use('/upLoadImgs', upLoadImgs);
+app.use('/upLoadImg', upLoadImg);
+app.use('/getPubImgs', getPubImgs);
+
 
 app.use('/addBtncom',addBtncom);
 app.use('/deleteBtncom',deleteBtncom);
