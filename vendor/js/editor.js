@@ -31,6 +31,7 @@ require(['zepto', 'jquery', 'btncom', 'imgcom',
     var selectImgDialog = $('#selectImgDialog');
     selectImgDialog.tabs();
     var imgWare = $('#imgWare');
+    var userWare = $('#userWare');
     var imgWareStr = '<li>' +
         '<img src="/uploadimg/%name%" style="width:100px;height: 200px;">' +
         '</li>';
@@ -72,6 +73,26 @@ require(['zepto', 'jquery', 'btncom', 'imgcom',
                 imgWare.html('').html(html);
             } else {
                 imgWare.html('');
+            }
+        }).fail(function (msg) {
+        });
+
+        $.ajax({
+            method: "GET",
+            url: "/getImgsByUser"
+        }).done(function (msg) {
+            var imgList = msg.model.imgList||[];
+            var html = '';
+            if (imgList.length > 0) {
+                imgList.forEach(function (o, i) {
+                    var t = imgWareStr.replace(/(%(\w+)%)/g, function ($1, $2, $3) {
+                        return o[$3] ? o[$3] : '';
+                    });
+                    html += t;
+                });
+                userWare.html('').html(html);
+            } else {
+                userWare.html('');
             }
         }).fail(function (msg) {
         });
