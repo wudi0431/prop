@@ -8,7 +8,7 @@ require.config({
         imgcom:'/js/module/imgcom/imgcom',
         imgcom_content:'/js/module/imgcom/imgcom_content',
         imgcom_style:'/js/module/imgcom/imgcom_style',
-        page:'/js/module/page/page'
+        pagecom:'/js/module/page/pagecom'
     },
     shim: {
         'jqui': {
@@ -19,15 +19,15 @@ require.config({
 
 require(['zepto','jquery','btncom', 'imgcom', 
     'btncom_content','btncom_style','imgcom_content',
-    'imgcom_style','jqui','page'], function (zepto,$,Btncom,Imgcom,btncom_content,btncom_style,imgcom_content,imgcom_style,jqui,Page) {
+    'imgcom_style','jqui','pagecom'], function (zepto,$,Btncom,Imgcom,btncom_content,btncom_style,imgcom_content,imgcom_style,jqui,Pagecom) {
 
 
         var Btncom = Btncom.Btncom;
         var Imgcom = Imgcom.Imgcom;
         var procon =$('#prototype-content')
             procon.tabs();
-        var page = new Page();
-            page.initPage({Btncom:Btncom});
+        var pagecom = new Pagecom();
+            pagecom.initPage({Btncom:Btncom});
 
 
         var addtext = $('#addtext');
@@ -36,7 +36,7 @@ require(['zepto','jquery','btncom', 'imgcom',
         var addpages = $('.add-page-list');
 
         addpages.on('click',function(){
-            page.addPage();
+            pagecom.addPage();
         });
         addimage.on('click',function(){
             var imgcom = new Imgcom();
