@@ -1230,14 +1230,18 @@ body .cp-color-picker,body .colpick {
 
 .W_iteam{
     display: inline-flex;
-    padding: 5px 5px;
 }
 .W_iteam.select{
-    background-color: #2583E4;
+    background-color: rgba(0,0,0,0);
 }
 
 .W_iteam button{
     width: 100%;
+}
+
+#imgWare li{
+    display: inline-flex;
+    margin: 5px 5px;
 }
 
 

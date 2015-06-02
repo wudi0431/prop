@@ -14,7 +14,6 @@ exports.config = {
     "method": ['GET']
 };
 exports.request = {
-    userId:'dfsdfsd'
 };
 exports.response = {
     "success": true, // 标记成功

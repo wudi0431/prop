@@ -14,7 +14,11 @@ var ImgsSchema = new mongoose.Schema({
 ImgsSchema.static('getImgsByUser', function (userId,cb) {
     return this.find({
         user: userId
-    }, cb)
+    }, cb);
+});
+
+ImgsSchema.static('getPubImgs', function (cb) {
+    return this.find({}, cb);
 });
 
 
