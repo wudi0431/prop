@@ -46,7 +46,7 @@ require(['zepto','jquery','btncom', 'imgcom',
             
         });
         addbutton.on('click',function(){
-            var pageId = page.getSelectPage();
+            var pageId = pagecom.getSelectPage();
             var btncom = new Btncom({
                 pageId:pageId
             });

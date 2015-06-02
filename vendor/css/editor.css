@@ -70,7 +70,7 @@ hr {
 
 .btn:hover {
     background-color: #F07601;
-    color: #fff
+    color: #ccc;
 }
 
 .btn:active {
