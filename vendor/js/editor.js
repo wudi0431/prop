@@ -26,13 +26,6 @@ require(['zepto','jquery','spectrum','btncom', 'imgcom',
     'btncom_content','btncom_style','imgcom_content',
     'imgcom_style','jqui','pagecom'], function (zepto,$,bigcolorpicker,Btncom,Imgcom,btncom_content,btncom_style,imgcom_content,imgcom_style,jqui,Pagecom) {
 
-
-        var Btncom = Btncom.Btncom;
-        var Imgcom = Imgcom.Imgcom;
-        var procon =$('#prototype-content')
-            procon.tabs();
-        var pagecom = new Pagecom();
-            pagecom.initPage({Btncom:Btncom});
     var Btncom = Btncom.Btncom;
     var Imgcom = Imgcom.Imgcom;
     var procon = $('#prototype-content');
