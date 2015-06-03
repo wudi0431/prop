@@ -8,6 +8,7 @@ require.config({
         imgcom: '/js/module/imgcom/imgcom',
         imgcom_content: '/js/module/imgcom/imgcom_content',
         imgcom_style: '/js/module/imgcom/imgcom_style',
+        imgs: '/js/module/imgs/imgs',
         pagecom: '/js/module/page/pagecom'
     },
     shim: {
@@ -19,7 +20,7 @@ require.config({
 
 require(['zepto', 'jquery', 'btncom', 'imgcom',
     'btncom_content', 'btncom_style', 'imgcom_content',
-    'imgcom_style', 'jqui', 'pagecom'], function (zepto, $, Btncom, Imgcom, btncom_content, btncom_style, imgcom_content, imgcom_style, jqui, Pagecom) {
+    'imgcom_style', 'jqui', 'pagecom','imgs'], function (zepto, $, Btncom, Imgcom, btncom_content, btncom_style, imgcom_content, imgcom_style, jqui, Pagecom,Imgs) {
 
 
     var Btncom = Btncom.Btncom;
@@ -30,11 +31,7 @@ require(['zepto', 'jquery', 'btncom', 'imgcom',
     pagecom.initPage({Btncom: Btncom});
     var selectImgDialog = $('#selectImgDialog');
     selectImgDialog.tabs();
-    var imgWare = $('#imgWare');
-    var userWare = $('#userWare');
-    var imgWareStr = '<li>' +
-        '<img src="/uploadimg/%name%" style="width:100px;height: 200px;">' +
-        '</li>';
+
 
 
     var addtext = $('#addtext');
@@ -50,80 +47,13 @@ require(['zepto', 'jquery', 'btncom', 'imgcom',
         //imgcom.render({
         //    container: zepto('#showbox')
         //});
-        var $selectImgDialog =$('#selectImgDialog').dialog({
-            resizable: false,
-            width:500,
-            height:600,
-            title:"选择图片",
-            modal: true
-        });
-        $.ajax({
-            method: "GET",
-            url: "/getPubImgs"
-        }).done(function (msg) {
-            var imgList = msg.model.imgList||[];
-            var html = '';
-            if (imgList.length > 0) {
-                imgList.forEach(function (o, i) {
-                    var t = imgWareStr.replace(/(%(\w+)%)/g, function ($1, $2, $3) {
-                        return o[$3] ? o[$3] : '';
-                    });
-                    html += t;
-                });
-                imgWare.html('').html(html);
-            } else {
-                imgWare.html('');
-            }
-        }).fail(function (msg) {
-        });
-
-        $.ajax({
-            method: "GET",
-            url: "/getImgsByUser"
-        }).done(function (msg) {
-            var imgList = msg.model.imgList||[];
-            var html = '';
-            if (imgList.length > 0) {
-                imgList.forEach(function (o, i) {
-                    var t = imgWareStr.replace(/(%(\w+)%)/g, function ($1, $2, $3) {
-                        return o[$3] ? o[$3] : '';
-                    });
-                    html += t;
-                });
-                userWare.html('').html(html);
-            } else {
-                userWare.html('');
-            }
-        }).fail(function (msg) {
-        });
+        Imgs.show();
 
     });
-
-    //TODO 测试用
-    $('#file_upload').on('click', function () {
-
-        var data = new FormData();
-        var files = $('#file')[0].files;
-        data.append('codecsv', files[0]);
-
-        $.ajax({
-            cache: false,
-            type: 'post',
-            url: '/upLoadImg',
-            data: data,
-            contentType: false,
-            processData: false,
-            success: function (data) {
-                alert(data)
-            }
-        })
-
-    });
-
 
 
     addbutton.on('click', function () {
-        var pageId = page.getSelectPage();
+        var pageId = pagecom.getSelectPage();
         var btncom = new Btncom({
             pageId: pageId
         });
