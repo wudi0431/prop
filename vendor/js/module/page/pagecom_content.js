@@ -1,4 +1,4 @@
-define(['jquery'], function ($) {
+define(['imgcut','jquery','imgs'], function (imgcut,$,Imgs) {
 
     function colorRgb(str){
         var reg = /^#([0-9a-fA-f]{3}|[0-9a-fA-f]{6})$/;
@@ -26,7 +26,15 @@ define(['jquery'], function ($) {
 
 
 
-    var $J_pageContent = $('#J_pageContent'), $showbox = $('#showbox'),curpagecom=null;
+    var $J_pageContent = $('#J_pageContent'),
+        $showbox = $('#showbox'),
+        curpagecom=null,
+        $j_crop_btns=$('.j_crop_btns'),
+        $j_remove_bg=$('.j_remove_bg'),
+        $j_choose_bg=$('.j_choose_bg'),
+        $j_bg_preview=$('.j_bg_preview'),
+        $j_choose_bg=$('.j_choose_bg'),
+        $j_crop_image=$('.j_crop_image');
 
 
 
@@ -92,6 +100,27 @@ define(['jquery'], function ($) {
 
     });
 
+    $j_crop_btns.on('click', function (e) {
+
+        Imgs.onImgSelect=function(imgSrc){
+
+            if($j_bg_preview.children('div').find('.img-wrapper')){
+                $j_bg_preview.children('div').find('.img-wrapper').remove();
+            }
+            var preview = '<div class="img-wrapper" style="width: 171px; height: 270px;"><canvas id="panel" width="171" height="270"></canvas></div>';
+
+            $j_bg_preview.append(preview);
+
+            imgcut.initImgCut(imgSrc);
+
+        };
+        Imgs.show();
+
+
+    });
+
+
+
     function updatePageStyle(ops){
         curpagecom = ops && ops.curpage;
     }
@@ -103,6 +132,12 @@ define(['jquery'], function ($) {
             curpagecom.updataPage(curpagedata);
         }
     }
+
+
+
+
+
+
 
 
 

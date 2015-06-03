@@ -9,9 +9,10 @@ require.config({
         imgcom:'/js/module/imgcom/imgcom',
         imgcom_content:'/js/module/imgcom/imgcom_content',
         imgcom_style:'/js/module/imgcom/imgcom_style',
-        pagecom:'/js/module/page/pagecom',
         imgs: '/js/module/imgs/imgs',
-        pagecom_content:'/js/module/page/pagecom_content'
+        pagecom:'/js/module/page/pagecom',
+        pagecom_content:'/js/module/page/pagecom_content',
+        imgcut:'/js/module/page/imgcut'
     },
     shim: {
         'jqui': {
