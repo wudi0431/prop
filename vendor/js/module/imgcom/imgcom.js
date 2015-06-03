@@ -6,6 +6,9 @@ define(['FFF','zepto'], function(FFF,$) {
         Widget.apply(this, arguments);
     }
     Imgcom.ATTRS = {
+        imgSrc:{
+          value:''
+        },
         boundingBox: {
             value: $('<div class="W_iteam" data-type="imgcom"></div>')
         }
@@ -13,10 +16,14 @@ define(['FFF','zepto'], function(FFF,$) {
     F.extend(Imgcom, Widget, {
         renderUI: function() {
             var that = this;
+            var imgSrc = that.getImgSrc();
             var $box = that.getBoundingBox();
-            var tpl = '<img src="/img/xuanzhuan.ico" class="W_imgcom" />';
+            var tpl = '<img src="'+imgSrc+'" class="W_imgcom"/>';
             $box.append(tpl);
             that.$box = $box;
+            that.$box.width(60);
+            that.$box.height(100);
+
             that.$boxContent = $box.find('.W_imgcom');
         },
         bindUI: function() {

@@ -1239,10 +1239,21 @@ body .cp-color-picker,body .colpick {
     width: 100%;
 }
 
+.W_iteam img{
+    width: 100%;
+}
+
 #imgWare li{
     display: inline-flex;
     margin: 5px 5px;
 }
 
+#userWareList li{
+    display: inline-flex;
+    margin: 5px 5px;
+}
+.imgWareHref:hover img{
+    opacity: 0.5;
+}
 
 

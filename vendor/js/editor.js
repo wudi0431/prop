@@ -10,6 +10,7 @@ require.config({
         imgcom_content:'/js/module/imgcom/imgcom_content',
         imgcom_style:'/js/module/imgcom/imgcom_style',
         pagecom:'/js/module/page/pagecom',
+        imgs: '/js/module/imgs/imgs',
         pagecom_content:'/js/module/page/pagecom_content'
     },
     shim: {
@@ -24,7 +25,7 @@ require.config({
 
 require(['zepto','jquery','spectrum','btncom', 'imgcom',
     'btncom_content','btncom_style','imgcom_content',
-    'imgcom_style','jqui','pagecom'], function (zepto,$,bigcolorpicker,Btncom,Imgcom,btncom_content,btncom_style,imgcom_content,imgcom_style,jqui,Pagecom) {
+    'imgcom_style','jqui','pagecom','imgs'], function (zepto,$,bigcolorpicker,Btncom,Imgcom,btncom_content,btncom_style,imgcom_content,imgcom_style,jqui,Pagecom,Imgs) {
 
     var Btncom = Btncom.Btncom;
     var Imgcom = Imgcom.Imgcom;
@@ -34,11 +35,7 @@ require(['zepto','jquery','spectrum','btncom', 'imgcom',
     pagecom.initPage({Btncom: Btncom});
     var selectImgDialog = $('#selectImgDialog');
     selectImgDialog.tabs();
-    var imgWare = $('#imgWare');
-    var userWare = $('#userWare');
-    var imgWareStr = '<li>' +
-        '<img src="/uploadimg/%name%" style="width:100px;height: 200px;">' +
-        '</li>';
+
 
 
     var addtext = $('#addtext');
@@ -50,80 +47,18 @@ require(['zepto','jquery','spectrum','btncom', 'imgcom',
         pagecom.addPage();
     });
     addimage.on('click', function () {
-        //var imgcom = new Imgcom();
-        //imgcom.render({
-        //    container: zepto('#showbox')
-        //});
-        var $selectImgDialog =$('#selectImgDialog').dialog({
-            resizable: false,
-            width:500,
-            height:600,
-            title:"选择图片",
-            modal: true
-        });
-        $.ajax({
-            method: "GET",
-            url: "/getPubImgs"
-        }).done(function (msg) {
-            var imgList = msg.model.imgList||[];
-            var html = '';
-            if (imgList.length > 0) {
-                imgList.forEach(function (o, i) {
-                    var t = imgWareStr.replace(/(%(\w+)%)/g, function ($1, $2, $3) {
-                        return o[$3] ? o[$3] : '';
-                    });
-                    html += t;
-                });
-                imgWare.html('').html(html);
-            } else {
-                imgWare.html('');
-            }
-        }).fail(function (msg) {
-        });
 
-        $.ajax({
-            method: "GET",
-            url: "/getImgsByUser"
-        }).done(function (msg) {
-            var imgList = msg.model.imgList||[];
-            var html = '';
-            if (imgList.length > 0) {
-                imgList.forEach(function (o, i) {
-                    var t = imgWareStr.replace(/(%(\w+)%)/g, function ($1, $2, $3) {
-                        return o[$3] ? o[$3] : '';
-                    });
-                    html += t;
-                });
-                userWare.html('').html(html);
-            } else {
-                userWare.html('');
-            }
-        }).fail(function (msg) {
-        });
+        Imgs.onImgSelect=function(imgSrc){
+            var imgcom = new Imgcom({
+                imgSrc:imgSrc
+            });
+            imgcom.render({
+                container: zepto('#showbox')
+            });
+        };
+        Imgs.show();
 
     });
-
-    //TODO 测试用
-    $('#file_upload').on('click', function () {
-
-        var data = new FormData();
-        var files = $('#file')[0].files;
-        data.append('codecsv', files[0]);
-
-        $.ajax({
-            cache: false,
-            type: 'post',
-            url: '/upLoadImg',
-            data: data,
-            contentType: false,
-            processData: false,
-            success: function (data) {
-                alert(data)
-            }
-        })
-
-    });
-
 
 
     addbutton.on('click', function () {
@@ -149,6 +84,7 @@ require(['zepto','jquery','spectrum','btncom', 'imgcom',
         $that.resizable({
             handles: ' n, e, s, w, ne, se, sw, nw',
             minWidth: 50,
+            maxHeight: 200,
             minHeight: 20
         });
         $that.disableSelection();
