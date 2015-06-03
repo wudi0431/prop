@@ -83,6 +83,7 @@ require(['zepto','jquery','spectrum','btncom', 'imgcom',
         });
         $that.resizable({
             handles: ' n, e, s, w, ne, se, sw, nw',
+            maxWidth: 300,
             minWidth: 50,
             maxHeight: 200,
             minHeight: 20
