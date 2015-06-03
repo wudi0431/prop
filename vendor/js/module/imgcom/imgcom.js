@@ -18,9 +18,12 @@ define(['FFF','zepto'], function(FFF,$) {
             var that = this;
             var imgSrc = that.getImgSrc();
             var $box = that.getBoundingBox();
-            var tpl = '<img src="'+imgSrc+'" class="W_imgcom" style="width:40px;height:60px" />';
+            var tpl = '<img src="'+imgSrc+'" class="W_imgcom"/>';
             $box.append(tpl);
             that.$box = $box;
+            that.$box.width(60);
+            that.$box.height(100);
+
             that.$boxContent = $box.find('.W_imgcom');
         },
         bindUI: function() {

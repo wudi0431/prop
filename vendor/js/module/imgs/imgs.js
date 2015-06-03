@@ -1,4 +1,4 @@
-define(['FFF', 'jquery'], function (FFF, $) {
+define(['FFF', 'jquery','jqui'], function (FFF, $) {
     var F = FFF.FFF;
 
     var Imgs = {};
@@ -105,11 +105,12 @@ define(['FFF', 'jquery'], function (FFF, $) {
 
     Imgs.show = function(){
         var that =this;
-        that.init();
+
         that.$selectImgDialog.dialog('open');
     };
 
 
+    Imgs.init();
 
 
     return Imgs;
