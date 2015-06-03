@@ -3,24 +3,57 @@ define(['FFF', 'jquery'], function (FFF, $) {
 
     var Imgs = {};
 
-    Imgs.show = function(){
-        var imgWare = $('#imgWare');
-        var userWare = $('#userWare');
-        var imgWareStr = '<li>' +
-            '<img src="/uploadimg/%name%" style="width:100px;height: 200px;">' +
-            '</li>';
 
 
 
+    Imgs.init = function(){
+        var that = this;
+        //文件上传
+        $('#file_upload').on('click', function () {
 
+            var data = new FormData();
+            var files = $('#file')[0].files;
+            data.append('codecsv', files[0]);
+            $.ajax({
+                cache: false,
+                type: 'post',
+                url: '/upLoadImg',
+                data: data,
+                contentType: false,
+                processData: false,
+                success: function (data) {
+                    that.getImgsByUser();
+                }
+            })
+        });
 
-        var $selectImgDialog =$('#selectImgDialog').dialog({
+        that.$selectImgDialog =$('#selectImgDialog').dialog({
+            autoOpen:false,
             resizable: false,
             width:500,
             height:600,
             title:"选择图片",
             modal: true
         });
+
+        that.getPubImgs();
+        that.getImgsByUser();
+
+        $('#selectImgDialog').on('click','.imgWareHref',function(){
+            var $that = $(this);
+            var img = $that.children('img');
+            if(that.onImgSelect){
+                that.onImgSelect(img.attr('src'));
+            }
+            that.$selectImgDialog.dialog('close');
+        });
+    };
+
+    Imgs.getPubImgs = function(){
+        var imgWare = $('#imgWare');
+        var imgWareStr = '<li><a class="imgWareHref" href="javascript:;">' +
+            '<img src="/uploadimg/%name%" style="width:100px;height: 200px;"></a>' +
+            '</li>';
         $.ajax({
             method: "GET",
             url: "/getPubImgs"
@@ -40,6 +73,14 @@ define(['FFF', 'jquery'], function (FFF, $) {
             }
         }).fail(function (msg) {
         });
+    };
+
+    Imgs.getImgsByUser = function(){
+        var userWare = $('#userWareList');
+        var imgWareStr = '<li><a class="imgWareHref" href="javascript:;">' +
+            '<img src="/uploadimg/%name%" style="width:100px;height: 200px;"></a>' +
+            '</li>';
+
 
         $.ajax({
             method: "GET",
@@ -60,28 +101,12 @@ define(['FFF', 'jquery'], function (FFF, $) {
             }
         }).fail(function (msg) {
         });
+    };
 
-
-        //TODO 测试用
-        $('#file_upload').on('click', function () {
-
-            var data = new FormData();
-            var files = $('#file')[0].files;
-            data.append('codecsv', files[0]);
-
-            $.ajax({
-                cache: false,
-                type: 'post',
-                url: '/upLoadImg',
-                data: data,
-                contentType: false,
-                processData: false,
-                success: function (data) {
-                    alert(data)
-                }
-            })
-
-        });
+    Imgs.show = function(){
+        var that =this;
+        that.init();
+        that.$selectImgDialog.dialog('open');
     };
 
 

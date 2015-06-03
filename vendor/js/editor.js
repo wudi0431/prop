@@ -47,10 +47,15 @@ require(['zepto','jquery','spectrum','btncom', 'imgcom',
         pagecom.addPage();
     });
     addimage.on('click', function () {
-        //var imgcom = new Imgcom();
-        //imgcom.render({
-        //    container: zepto('#showbox')
-        //});
+
+        Imgs.onImgSelect=function(imgSrc){
+            var imgcom = new Imgcom({
+                imgSrc:imgSrc
+            });
+            imgcom.render({
+                container: zepto('#showbox')
+            });
+        };
         Imgs.show();
 
     });

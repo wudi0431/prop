@@ -1244,5 +1244,12 @@ body .cp-color-picker,body .colpick {
     margin: 5px 5px;
 }
 
+#userWareList li{
+    display: inline-flex;
+    margin: 5px 5px;
+}
+.imgWareHref:hover img{
+    opacity: 0.5;
+}
 
 
