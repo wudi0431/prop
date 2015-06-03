@@ -127,7 +127,7 @@ require(['zepto','jquery','spectrum','btncom', 'imgcom',
 
 
     addbutton.on('click', function () {
-        var pageId = page.getSelectPage();
+        var pageId = pagecom.getSelectPage();
         var btncom = new Btncom({
             pageId: pageId
         });
@@ -136,9 +136,9 @@ require(['zepto','jquery','spectrum','btncom', 'imgcom',
         });
     });
 
-
-    $('#showbox').on('click', '.W_iteam', function () {
+    $('#showbox').on('click','.W_iteam',function (e) {
         var $that = $(this);
+        $('#J_pageContent').hide();
         var siblings = $that.siblings();
         $that.addClass('select');
         $that.draggable({
@@ -148,11 +148,10 @@ require(['zepto','jquery','spectrum','btncom', 'imgcom',
         });
         $that.resizable({
             handles: ' n, e, s, w, ne, se, sw, nw',
-            maxWidth: 300,
             minWidth: 50,
-            maxHeight: 50,
             minHeight: 20
         });
+        $that.disableSelection();
         siblings.removeClass('select');
         siblings.each(function (i, o) {
             if ($(o).resizable('instance')) {
@@ -164,28 +163,36 @@ require(['zepto','jquery','spectrum','btncom', 'imgcom',
 
         });
     });
-
-
-    $('#showbox').on('click', function (e) {
-        var $li = procon.children('ul').children('li');
-        var $jp = procon.find('#J_pageContent');
-        var $jb = procon.find('#J_btncomContent');
-        var $jm = procon.find('#J_imgcomContent');
-        if (e.target.className == 'showbox') {
-            $li.first().show().siblings('li').addClass('item-visible');
-            $jp.show();
-            $jb.hide();
-            $jm.hide();
-        } else {
-            $li.siblings('li').removeClass('item-visible');
-            $jp.hide();
-            var type = $(e.target).data('type');
-            if (type == 'btncom') {
-                $jb.show();
-            } else if (type == 'imgcom') {
-                $jm.show();
+    $('#showbox').on('click',function (e) {
+        var issWich = true;
+        var $Witem = $(e.target).children();
+        $.each($Witem,function(index,item){
+            if($(item).hasClass('select')){
+                $(item).removeClass('select').resizable('destroy');
             }
-        }
+          });
+        if(issWich){
+            var $li = procon.children('ul').children('li');
+            var $jp = procon.find('#J_pageContent');
+            var $jb = procon.find('#J_btncomContent');
+            var $jm = procon.find('#J_imgcomContent');
+            if (e.target.className == 'showbox') {
+                $li.first().show().siblings('li').addClass('item-visible');
+                $jp.show();
+                $jb.hide();
+                $jm.hide();
+            } else {
+                $li.siblings('li').removeClass('item-visible');
+                $jp.hide();
+                var type = $(e.target).data('type');
+                if (type == 'btncom') {
+                    $jb.show();
+                } else if (type == 'imgcom') {
+                    $jm.show();
+                }
+            }
+         }  
+        e.stopPropagation();
     });
 
 

@@ -4,7 +4,7 @@ var filter = require('../../filter/filter');
 var Btncom = require('../../db/btncom');
 router.get('/', function (req, res, next) {
     filter.authorize(req, res, function (req, res) {
-        var pageId = req.body.pageId;
+        var pageId = req.query.pageId;
         Btncom.getBtncomListByPageId(pageId, function (err, btncomtList) {
             if (err) {
                 res.status('500');
