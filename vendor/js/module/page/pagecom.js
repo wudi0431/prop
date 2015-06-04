@@ -1,26 +1,28 @@
 /**
  * Created by wudi on 15/5/27.
  */
-define(['jquery','jqui','zepto','pagecom_content'], function($,jqui,zepto,pagecom_content) {
+define(['jquery','jqui','zepto','pagecom_content','FFF'], function($,jqui,zepto,pagecom_content,FFF) {
 
 
-var index =0;
-
-
+var index = 0,
+    F = FFF.FFF;
 
 var projectId =  getQueryString("projectId");
 
 function Pagecom(){
     this.index=index;
     this.pageList=[];
+    this.btnComList=[];
+    this.imgComtList = [];
     this.isfistadd=true;
 };
-
 Pagecom.prototype={
     constructor:Pagecom,
     // 初始化page页面
     initPage:function(ops){
         var that =this;
+        that.ops=ops;
+        that.$showbox =$('#showbox');
         $.ajax({
             method: "GET",
             url: "/getPageList?projectId="+projectId
@@ -32,32 +34,12 @@ Pagecom.prototype={
                     that.addFirstPage();
                 }else{
                     that.isfistadd=false;
-
                     msg.model.pageList.map(function(page){
                         that.addPageTitle(page.sortindex,false,page.name);
                         that.pageList.push(page);
                         that.bindUI();
-                        $.ajax({
-                            method: "GET",
-                            url: "/getBtncomListByPageId?pageId="+page._id
-                        }).done(function (msg) {
-                            console.log(msg);
-                            if(msg.success){
-                                if(ops.Btncom){
-
-                                    msg.model.btncomtList.forEach(function(btn){
-                                        var newBtncom = new ops.Btncom({data:btn});
-                                        newBtncom.render({
-                                               container:zepto('#showbox')
-                                           });
-                                    });
-                                }
-                            }
-                        }).fail(function (msg) {
-                            console.log(msg)
-                        });
-
                     });
+                    that._initCom();
                 }
                 pagecom_content({curpage:that});
 
@@ -68,6 +50,98 @@ Pagecom.prototype={
         });
 
 
+    },
+    _initCom: function () {
+        var that =this;
+        that.pageList.forEach(function (page,index) {
+            $.ajax({
+                method: "GET",
+                url: "/getBtncomListByPageId?pageId="+page._id
+            }).done(function (msg) {
+                //console.log(msg);
+                if(msg.success && page.sortindex===1){
+                    if(that.ops.Btncom){
+                        msg.model.btncomtList.forEach(function(btn){
+                           new that.ops.Btncom({data:btn}).render({
+                                container:zepto('#showbox')
+                            });
+                            that.btnComList.push(btn);
+                        });
+                    }
+                }else{
+                    msg.model.btncomtList.forEach(function (btn) {
+                        that.btnComList.push(btn);
+                    });
+                }
+            }).fail(function (msg) {
+                console.log(msg)
+            });
+
+            $.ajax({
+                method: "GET",
+                url: "/getImgcomListByPageId?pageId="+page._id
+            }).done(function (msg) {
+                //console.log(msg);
+                if(msg.success && page.sortindex===1){
+                    if(that.ops.Imgcom){
+                        msg.model.imgcomtList.forEach(function(img){
+                            new that.ops.Imgcom({data:img}).render({
+                                container:zepto('#showbox')
+                            });
+                            that.imgComtList.push(img);
+                        });
+                    }
+                }else{
+                    msg.model.imgcomtList.forEach(function (img) {
+                        that.imgComtList.push(img);
+                    });
+                }
+            }).fail(function (msg) {
+                console.log(msg)
+            });
+
+        });
+    },
+    updateCom: function (obj) {
+        var that =this;
+        if(obj.type=='btncom'){
+            that.btnComList.forEach(function (btn,index) {
+                if(btn._id===obj.comData._id){
+                    btn=obj.comData;
+                    if(obj.isremove){
+                        that.btnComList.splice(1,index);
+                    }
+                }
+            });
+
+        }else if(obj.type=='imgcom'){
+            that.imgComtList.forEach(function (img) {
+                if(img._id===obj.comData._id){
+                    img=obj.comData;
+                    if(obj.isremove){
+                        that.btnComList.splice(1,index);
+                    }
+                }
+            });
+        }
+
+    },
+    _addCom: function (pageid) {
+        var that=this;
+        that.btnComList.forEach(function (btn) {
+            if(btn.page===pageid){
+                new that.ops.Btncom({data:btn}).render({
+                    container:zepto('#showbox')
+                });
+            }
+        });
+        that.imgComtList.forEach(function (img) {
+            if(btn.page===pageid){
+                new that.ops.Imgcom({data:img}).render({
+                    container:zepto('#showbox')
+                });
+            }
+        })
     },
     // 添加页面
     addPage:function(){
@@ -130,7 +204,8 @@ Pagecom.prototype={
         var pageEntity = {
             name: "第"+ this.index+"页",
             sortindex:this.index,
-            background:'#fff'
+            backgroundcolor:'#fff',
+            backgroundimage:""
         };
         $.ajax({
             method: "POST",
@@ -140,7 +215,7 @@ Pagecom.prototype={
                 page:pageEntity
             }
         }).done(function (msg) {
-            console.log(msg);
+            //console .log(msg);
             that.pageList.push(msg.model);
             that.addSelectPage(that.index);
             that.bindUI();
@@ -157,7 +232,7 @@ Pagecom.prototype={
             url: "/updatePage",
             data:pageEntity
         }).done(function (msg) {
-            console.log(msg)
+            //console.log(msg)
         }).fail(function (msg) {
             console.log(msg)
         });
@@ -257,6 +332,11 @@ Pagecom.prototype={
                     break;
             }
         })
+
+        F.on('comChange', function (obj) {
+            that.updateCom(obj);
+        });
+
     },
     //清除iPhone的页面
     clearIphone:function(){
@@ -290,8 +370,8 @@ Pagecom.prototype={
     },
     //删除页面
     deleteSelectPage: function () {
-        var that =this;
-        $.each(that.$items,function(index,item){
+        var that =this; 
+        $.each($('.page-item'),function(index,item){
             var $item = $(item);
             var $a = $item.children().first();
             if($item.attr('data-index')!= that.index){
@@ -299,21 +379,22 @@ Pagecom.prototype={
             }else{
                 var curpage = that.getPageListByIndex(that.index);
                 curpage && $item.attr('data-pageid',curpage._id);
-                $('#showbox').css({'background':curpage.background});
-
+                that.setPageStyle(curpage);
             }
         });
     },
     //选中单个页面
     addSelectPage: function (pindex) {
         var that =this;
-        $.each(that.$items,function(index,item){
+        $.each($('.page-item'),function(index,item){
             var $item = $(item),flag=true;
             var $a = $item.children().first();
             if($item.attr('data-index')== pindex && flag){
+                that.clearIphone();
                 $a.addClass('cur-sort-page');
                 var curpage = that.getPageListByIndex(pindex);
-                $('#showbox').css({'background':curpage.background});
+                that.setPageStyle(curpage);
+                that._addCom(curpage._id);
                 flag=false;
             }else{
                 $a.hasClass('cur-sort-page') &&  $a.removeClass('cur-sort-page');
@@ -362,6 +443,25 @@ Pagecom.prototype={
     getSelectPageData: function () {
         var curpageid  = this.getSelectPage();
         return this.getPageListByIndex(null,curpageid);
+    },
+    setPageStyle: function (curpage) {
+        var that =this;
+        if(curpage.backgroundcolor && curpage.backgroundcolor!=""){
+            that.$showbox.css({
+                "background-color":curpage.backgroundcolor
+            });
+            that.$showbox.attr('data-color',curpage.backgroundcolor);
+        }
+        if(curpage.backgroundimage && curpage.backgroundimage!=""){
+            that.$showbox.css({
+                "background-image":"url("+curpage.backgroundimage+")",
+                "background-size":"cover",
+                "background-position":"50% 50%"
+            });
+            that.$showbox.attr('data-image',curpage.backgroundimage);
+        }
+
+
     }
 }
 //根据 url 的名字 获得 值

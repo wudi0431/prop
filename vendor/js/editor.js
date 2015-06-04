@@ -9,9 +9,10 @@ require.config({
         imgcom:'/js/module/imgcom/imgcom',
         imgcom_content:'/js/module/imgcom/imgcom_content',
         imgcom_style:'/js/module/imgcom/imgcom_style',
-        pagecom:'/js/module/page/pagecom',
         imgs: '/js/module/imgs/imgs',
-        pagecom_content:'/js/module/page/pagecom_content'
+        pagecom:'/js/module/page/pagecom',
+        pagecom_content:'/js/module/page/pagecom_content',
+        imgcut:'/js/module/page/imgcut'
     },
     shim: {
         'jqui': {
@@ -32,7 +33,7 @@ require(['zepto','jquery','spectrum','btncom', 'imgcom',
     var procon = $('#prototype-content');
     procon.tabs();
     var pagecom = new Pagecom();
-    pagecom.initPage({Btncom: Btncom});
+    pagecom.initPage({Btncom: Btncom,Imgcom:Imgcom});
     var selectImgDialog = $('#selectImgDialog');
     selectImgDialog.tabs();
 
@@ -71,9 +72,9 @@ require(['zepto','jquery','spectrum','btncom', 'imgcom',
         });
     });
 
-
-    $('#showbox').on('click', '.W_iteam', function () {
+    $('#showbox').on('click','.W_iteam',function (e) {
         var $that = $(this);
+        $('#J_pageContent').hide();
         var siblings = $that.siblings();
         $that.addClass('select');
         $that.draggable({
@@ -88,6 +89,7 @@ require(['zepto','jquery','spectrum','btncom', 'imgcom',
             maxHeight: 200,
             minHeight: 20
         });
+        $that.disableSelection();
         siblings.removeClass('select');
         siblings.each(function (i, o) {
             if ($(o).resizable('instance')) {
@@ -99,28 +101,36 @@ require(['zepto','jquery','spectrum','btncom', 'imgcom',
 
         });
     });
-
-
-    $('#showbox').on('click', function (e) {
-        var $li = procon.children('ul').children('li');
-        var $jp = procon.find('#J_pageContent');
-        var $jb = procon.find('#J_btncomContent');
-        var $jm = procon.find('#J_imgcomContent');
-        if (e.target.className == 'showbox') {
-            $li.first().show().siblings('li').addClass('item-visible');
-            $jp.show();
-            $jb.hide();
-            $jm.hide();
-        } else {
-            $li.siblings('li').removeClass('item-visible');
-            $jp.hide();
-            var type = $(e.target).data('type');
-            if (type == 'btncom') {
-                $jb.show();
-            } else if (type == 'imgcom') {
-                $jm.show();
+    $('#showbox').on('click',function (e) {
+        var issWich = true;
+        var $Witem = $(e.target).children();
+        $.each($Witem,function(index,item){
+            if($(item).hasClass('select')){
+                $(item).removeClass('select').resizable('destroy');
             }
-        }
+          });
+        if(issWich){
+            var $li = procon.children('ul').children('li');
+            var $jp = procon.find('#J_pageContent');
+            var $jb = procon.find('#J_btncomContent');
+            var $jm = procon.find('#J_imgcomContent');
+            if (e.target.className == 'showbox') {
+                $li.first().show().siblings('li').addClass('item-visible');
+                $jp.show();
+                $jb.hide();
+                $jm.hide();
+            } else {
+                $li.siblings('li').removeClass('item-visible');
+                $jp.hide();
+                var type = $(e.target).data('type');
+                if (type == 'btncom') {
+                    $jb.show();
+                } else if (type == 'imgcom') {
+                    $jm.show();
+                }
+            }
+         }  
+        e.stopPropagation();
     });
 
 

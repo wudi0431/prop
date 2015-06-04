@@ -18,7 +18,7 @@ exports.request = {
 };
 exports.response = {
     "success": true, // 标记成功
-    "model": {}
+    "model": { _id: imgcomId}
 };
 exports.responseError = {
     "success": false, // 标记失败
