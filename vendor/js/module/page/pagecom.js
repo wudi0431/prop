@@ -22,6 +22,7 @@ Pagecom.prototype={
     initPage:function(ops){
         var that =this;
         that.ops=ops;
+        that.$showbox =$('#showbox');
         $.ajax({
             method: "GET",
             url: "/getPageList?projectId="+projectId
@@ -57,7 +58,7 @@ Pagecom.prototype={
                 method: "GET",
                 url: "/getBtncomListByPageId?pageId="+page._id
             }).done(function (msg) {
-                console.log(msg);
+                //console.log(msg);
                 if(msg.success && page.sortindex===1){
                     if(that.ops.Btncom){
                         msg.model.btncomtList.forEach(function(btn){
@@ -80,7 +81,7 @@ Pagecom.prototype={
                 method: "GET",
                 url: "/getImgcomListByPageId?pageId="+page._id
             }).done(function (msg) {
-                console.log(msg);
+                //console.log(msg);
                 if(msg.success && page.sortindex===1){
                     if(that.ops.Imgcom){
                         msg.model.imgcomtList.forEach(function(img){
@@ -203,7 +204,8 @@ Pagecom.prototype={
         var pageEntity = {
             name: "第"+ this.index+"页",
             sortindex:this.index,
-            background:'#fff'
+            backgroundcolor:'#fff',
+            backgroundimage:""
         };
         $.ajax({
             method: "POST",
@@ -213,7 +215,7 @@ Pagecom.prototype={
                 page:pageEntity
             }
         }).done(function (msg) {
-            console.log(msg);
+            //console .log(msg);
             that.pageList.push(msg.model);
             that.addSelectPage(that.index);
             that.bindUI();
@@ -230,7 +232,7 @@ Pagecom.prototype={
             url: "/updatePage",
             data:pageEntity
         }).done(function (msg) {
-            console.log(msg)
+            //console.log(msg)
         }).fail(function (msg) {
             console.log(msg)
         });
@@ -368,8 +370,8 @@ Pagecom.prototype={
     },
     //删除页面
     deleteSelectPage: function () {
-        var that =this;
-        $.each(that.$items,function(index,item){
+        var that =this; 
+        $.each($('.page-item'),function(index,item){
             var $item = $(item);
             var $a = $item.children().first();
             if($item.attr('data-index')!= that.index){
@@ -377,22 +379,21 @@ Pagecom.prototype={
             }else{
                 var curpage = that.getPageListByIndex(that.index);
                 curpage && $item.attr('data-pageid',curpage._id);
-                $('#showbox').css({'background':curpage.background});
-
+                that.setPageStyle(curpage);
             }
         });
     },
     //选中单个页面
     addSelectPage: function (pindex) {
         var that =this;
-        $.each(that.$items,function(index,item){
+        $.each($('.page-item'),function(index,item){
             var $item = $(item),flag=true;
             var $a = $item.children().first();
             if($item.attr('data-index')== pindex && flag){
                 that.clearIphone();
                 $a.addClass('cur-sort-page');
                 var curpage = that.getPageListByIndex(pindex);
-                $('#showbox').css({'background':curpage.background});
+                that.setPageStyle(curpage);
                 that._addCom(curpage._id);
                 flag=false;
             }else{
@@ -442,6 +443,25 @@ Pagecom.prototype={
     getSelectPageData: function () {
         var curpageid  = this.getSelectPage();
         return this.getPageListByIndex(null,curpageid);
+    },
+    setPageStyle: function (curpage) {
+        var that =this;
+        if(curpage.backgroundcolor && curpage.backgroundcolor!=""){
+            that.$showbox.css({
+                "background-color":curpage.backgroundcolor
+            });
+            that.$showbox.attr('data-color',curpage.backgroundcolor);
+        }
+        if(curpage.backgroundimage && curpage.backgroundimage!=""){
+            that.$showbox.css({
+                "background-image":"url("+curpage.backgroundimage+")",
+                "background-size":"cover",
+                "background-position":"50% 50%"
+            });
+            that.$showbox.attr('data-image',curpage.backgroundimage);
+        }
+
+
     }
 }
 //根据 url 的名字 获得 值

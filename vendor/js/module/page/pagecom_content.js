@@ -33,7 +33,7 @@ define(['imgcut','jquery','imgs'], function (imgcut,$,Imgs) {
         $j_remove_bg=$('.j_remove_bg'),
         $j_choose_bg=$('.j_choose_bg'),
         $j_bg_preview=$('.j_bg_preview'),
-        $j_choose_bg=$('.j_choose_bg'),
+        $j_select_bg=$('.j_select_bg'),
         $j_crop_image=$('.j_crop_image');
 
 
@@ -44,7 +44,9 @@ define(['imgcut','jquery','imgs'], function (imgcut,$,Imgs) {
 
             var color = colorRgb($(this).data('value'));
 
-            $showbox.css({'background':color});
+            $showbox.css({"background-color":color});
+
+            $showbox.attr('data-color',color+";");
 
             updataPageData();
 
@@ -71,7 +73,8 @@ define(['imgcut','jquery','imgs'], function (imgcut,$,Imgs) {
                 hide: function (color) {
                     console.log(color);
                     var dddc = 'rgba('+color._r.toFixed()+','+color._g.toFixed()+','+color._b.toFixed()+','+color._a+')';
-                    $showbox.attr('style',"background"+":"+dddc);
+                    $showbox.css({"background-color":dddc});
+                    $showbox.attr('data-color',dddc);
                     updataPageData();
                 }
                 //palette: [
@@ -96,21 +99,31 @@ define(['imgcut','jquery','imgs'], function (imgcut,$,Imgs) {
 
     });
 
-    $j_crop_btns.on('click', function (e) {
+    $j_select_bg.on('click', function (e) {
 
         Imgs.onImgSelect=function(imgSrc){
 
-            if($j_bg_preview.children('div').find('.img-wrapper')){
-                $j_bg_preview.children('div').find('.img-wrapper').remove();
+            if($j_bg_preview.children().eq(0).hasClass('img-wrapper')){
+                $j_bg_preview.children().remove();
             }
             var preview = '<div class="img-wrapper" style="width: 171px; height: 270px;"><canvas id="panel" width="171" height="270"></canvas></div>';
 
             $j_bg_preview.append(preview);
 
+            $showbox.css({
+                "background-image": "url("+imgSrc+")",
+                "background-size": "cover",
+                "background-position": "50% 50%"
+            });
+            $showbox.attr('data-image',imgSrc);
+
             imgcut.initImgCut(imgSrc);
+
+            updataPageData();
 
         };
         Imgs.show();
+        
 
 
     });
@@ -123,8 +136,11 @@ define(['imgcut','jquery','imgs'], function (imgcut,$,Imgs) {
     function updataPageData(){
         if(curpagecom){
             var curpagedata = curpagecom.getSelectPageData();
-            var curstyle= $showbox.attr('style');
-            curpagedata.background = $.trim(curstyle.split(":")[1].replace(';',''));
+            var curcolor= $showbox.attr('data-color')||"";
+            var curimage= $showbox.attr('data-image')|| "";
+            curpagedata.backgroundcolor = curcolor;
+            curpagedata.backgroundimage = curimage;
+
             curpagecom.updataPage(curpagedata);
         }
     }

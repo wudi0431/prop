@@ -5,7 +5,8 @@ var Schema = mongoose.Schema;
 var PageSchema = new Schema({
     name: String,
     sortindex: Number,//排序字段
-    background: String,//页面背景
+    backgroundcolor: String,//页面背景
+    backgroundimage: String,
     project: {
         type: Schema.Types.ObjectId,
         ref: 'Project'
