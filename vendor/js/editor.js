@@ -33,7 +33,7 @@ require(['zepto','jquery','spectrum','btncom', 'imgcom',
     var procon = $('#prototype-content');
     procon.tabs();
     var pagecom = new Pagecom();
-    pagecom.initPage({Btncom: Btncom});
+    pagecom.initPage({Btncom: Btncom,Imgcom:Imgcom});
     var selectImgDialog = $('#selectImgDialog');
     selectImgDialog.tabs();
 

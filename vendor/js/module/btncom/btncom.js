@@ -44,6 +44,11 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
                 method: "POST",
                 url: "/updateBtncom",
                 data: btncomEntity
+            }).done(function (msg) {
+                if (msg.success) {
+                    F.trigger('comChange',{type:'btncom',comData:msg.model});
+                }
+            }).fail(function (msg) {
             });
         },
         _bindUI: function () {
@@ -113,6 +118,7 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
                     if (msg.success) {
                         that.setData(msg.model);
                         that._renderBtncom(msg.model, next);
+                        F.trigger('comChange',{type:'btncom',comData:msg.model});
                     }
                 }).fail(function (msg) {
                 });

@@ -14,11 +14,11 @@ exports.config = {
     "method": ['POST']
 };
 exports.request = {
-    id:"12"
+    imgcomId:"12"
 };
 exports.response = {
     "success": true, // 标记成功
-    "model": {}
+    "model": { _id: imgcomId}
 };
 exports.responseError = {
     "success": false, // 标记失败
