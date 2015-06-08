@@ -1,7 +1,7 @@
 /**
  * Created by wudi on 15/5/27.
  */
-define(['jquery','jqui','zepto','pagecom_content','FFF'], function($,jqui,zepto,pagecom_content,FFF) {
+define(['jquery','jqui','zepto','pagecom_content','FFF','imgcut'], function($,jqui,zepto,pagecom_content,FFF,imgcut) {
 
 
 var index = 0,
@@ -379,7 +379,6 @@ Pagecom.prototype={
             }else{
                 var curpage = that.getPageListByIndex(that.index);
                 curpage && $item.attr('data-pageid',curpage._id);
-                that.setPageStyle(curpage);
             }
         });
     },
@@ -451,6 +450,11 @@ Pagecom.prototype={
                 "background-color":curpage.backgroundcolor
             });
             that.$showbox.attr('data-color',curpage.backgroundcolor);
+        }else{
+            that.$showbox.css({
+                "background-color":"#fff"
+            });
+            that.$showbox.attr('data-color','#fff');
         }
         if(curpage.backgroundimage && curpage.backgroundimage!=""){
             that.$showbox.css({
@@ -459,6 +463,13 @@ Pagecom.prototype={
                 "background-position":"50% 50%"
             });
             that.$showbox.attr('data-image',curpage.backgroundimage);
+        }else{
+            that.$showbox.css({
+                "background-image":"none",
+                "background-size":"cover",
+                "background-position":"50% 50%"
+            });
+            that.$showbox.attr('data-image','');
         }
 
 
