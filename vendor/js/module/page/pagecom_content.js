@@ -102,14 +102,6 @@ define(['imgcut','jquery','imgs'], function (imgcut,$,Imgs) {
     $j_select_bg.on('click', function (e) {
 
         Imgs.onImgSelect=function(imgSrc){
-
-            if($j_bg_preview.children().eq(0).hasClass('img-wrapper')){
-                $j_bg_preview.children().remove();
-            }
-            var preview = '<div class="img-wrapper" style="width: 171px; height: 270px;"><canvas id="panel" width="171" height="270"></canvas></div>';
-
-            $j_bg_preview.append(preview);
-
             $showbox.css({
                 "background-image": "url("+imgSrc+")",
                 "background-size": "cover",
@@ -128,6 +120,10 @@ define(['imgcut','jquery','imgs'], function (imgcut,$,Imgs) {
 
     });
 
+
+    $j_crop_image.on('click', function () {
+        imgcut.getResults();
+    });
 
 
     function updatePageStyle(ops){

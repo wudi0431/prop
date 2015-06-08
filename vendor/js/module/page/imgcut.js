@@ -74,35 +74,33 @@ define(['jquery'], function ($) {
         temp_ctx = temp_canvas.getContext('2d');
         temp_canvas.width = theSelection.w;
         temp_canvas.height = theSelection.h;
-        temp_ctx.drawImage(image, theSelection.x, theSelection.y, theSelection.w, theSelection.h, 0, 0, theSelection.w, theSelection.h);
-        var vData = temp_canvas.toDataURL();
 
-        var data=canvas.toDataURL();
+        var img_canvas = document.createElement('canvas');
+        var img_ctx = img_canvas.getContext('2d');
+        img_canvas.width=171;
+        img_canvas.height=270;
+        img_ctx.drawImage(image, 0, 0, img_canvas.width, img_canvas.height);
+        temp_ctx.drawImage(img_canvas, theSelection.x, theSelection.y, theSelection.w, theSelection.h, 0, 0, theSelection.w, theSelection.h);
+        var vdata = temp_canvas.toDataURL();
+
+        window.open(vdata);
 
         // dataURL 的格式为 “data:image/png;base64,****”,逗号之前都是一些说明性的文字，我们只需要逗号之后的就行了
-        data=data.split(',')[1];
-        data=window.atob(data);
-        var ia = new Uint8Array(data.length);
-        for (var i = 0; i < data.length; i++) {
-            ia[i] = data.charCodeAt(i);
-        };
-
-        // canvas.toDataURL 返回的默认格式就是 image/png
-        var blob=new Blob([ia], {type:"image/png"});
-
-        var fd=new FormData();
-
-        fd.append('file',blob);
+        vdata=vdata.split(',')[1];
+       var idata = {
+           "isbase64":true,
+           "imgData":vdata
+       };
         $.ajax({
-            url:"your.server.com",
-            type:"POST",
-            data:fd,
-            success:function(){}
+            cache: false,
+            type: 'post',
+            url: '/upLoadImg',
+            data: idata, 
+            success: function (data) {
+                console.log(data);
+            }
         });
 
-
-        $('#crop_result').attr('src', vData);
-        $('#results h2').text('Well done, we have prepared our cropped image, now you can save it if you wish');
     }
 
 

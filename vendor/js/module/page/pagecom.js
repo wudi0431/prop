@@ -463,6 +463,7 @@ Pagecom.prototype={
                 "background-position":"50% 50%"
             });
             that.$showbox.attr('data-image',curpage.backgroundimage);
+            imgcut.initImgCut(curpage.backgroundimage);
         }else{
             that.$showbox.css({
                 "background-image":"none",
