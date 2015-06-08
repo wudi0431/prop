@@ -38,7 +38,12 @@ define(['jquery'], function ($) {
 
         // draw part of original image
         if (this.w > 0 && this.h > 0) {
-            ctx.drawImage(image, this.x, this.y, this.w, this.h, this.x, this.y, this.w, this.h);
+            var temp_canvas = document.createElement('canvas');
+            var temp_ctx = temp_canvas.getContext('2d');
+            temp_canvas.width = 171;
+            temp_canvas.height = 270;
+            temp_ctx.drawImage(image, 0, 0, temp_canvas.width, temp_canvas.height);
+            ctx.drawImage(temp_canvas, this.x, this.y, this.w, this.h, this.x, this.y, this.w, this.h);
         }
 
         // draw resize cubes
