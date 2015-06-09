@@ -187,7 +187,7 @@ Pagecom.prototype={
             '<a data-set="selected" class="sort-page js-sort-page" href="javascript:;"></a>'+
             '<span data-set="selected" class="disp">'+defname+'</span>'+
             '<div class="page-edit" style="display: none;" data-role="title-edit">'+
-            '<input placeholder="请输入不超过100个字" maxlength="100" class="edit" type="text" value="'+defname+'">'+
+            '<input data-role="input" placeholder="请输入不超过100个字" maxlength="100" class="edit" type="text" value="'+defname+'">'+
             '<a data-role="btn-edit-cancel" title="取消" class="ico-del" href="javascript:;" style="text-decoration: none;"></a>'+
             '<a data-role="btn-edit-post" title="确定" class="ico-right" href="javascript:;" style="text-decoration: none;"></a>'+
             '</div>'+
@@ -280,8 +280,7 @@ Pagecom.prototype={
         that.addpage.removeClass('ui-sortable-handle');
         that.$pagelist.disableSelection();
 
-        that.$items.on('click', function (e) {
-            e.stopPropagation();
+        that.$items.on('click', function (e) { 
             var curitem =$(this);
             var pindex =+curitem.attr('data-index');
             var pageid =curitem.attr('data-pageid');
@@ -310,6 +309,9 @@ Pagecom.prototype={
                     break;
                 case "scene-copy":
                     that.addpage.before($(this));
+                    break;
+                case "input":
+                    $(e.target).focus();
                     break;
                 case "btn-del-scene":
                     if(curPageData){

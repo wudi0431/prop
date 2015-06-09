@@ -898,11 +898,11 @@ body .cp-color-picker,body .colpick {
 
 
 .page-item:hover a[data-role] {
-    visibility: visible
+   display: block;
 }
 
 .item-visible{
-    display: none;
+    display: none !important;
 }
 
 
@@ -926,7 +926,7 @@ body .cp-color-picker,body .colpick {
     height: 14px;
     background-repeat: no-repeat;
     background-size: auto 14px;
-    visibility: hidden;
+    display:none;
 }
 
 
