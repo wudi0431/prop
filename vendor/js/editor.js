@@ -72,7 +72,7 @@ require(['zepto','jquery','spectrum','btncom', 'imgcom',
         });
     });
 
-    $('#showbox').on('click','.W_iteam',function (e) {
+    $('#showbox').on('click','.W_item',function (e) {
         var $that = $(this);
         $('#J_pageContent').hide();
         var siblings = $that.siblings();

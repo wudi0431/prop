@@ -8,7 +8,7 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
 
     Btncom.ATTRS = {
         boundingBox: {
-            value: $('<div class="W_iteam" data-type="btncom"></div>')
+            value: $('<div class="W_item" data-type="btncom"></div>')
         },
         data: {
             value: null
@@ -46,7 +46,7 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
                 data: btncomEntity
             }).done(function (msg) {
                 if (msg.success) {
-                    F.trigger('comChange',{type:'btncom',comData:msg.model});
+                    F.trigger('comChange', {type: 'btncom', comData: msg.model});
                 }
             }).fail(function (msg) {
             });
@@ -60,6 +60,12 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
                     F.trigger('renderBtncomContent', that.getData());
                     F.trigger('renderBtncomStyle', that.getData());
                 }
+
+                if ($$curTarget === that.$boxDel[0]) {
+                        that.delSelf();
+                }
+
+
             });
 
             F.on('btncomContextChange', function (val) {
@@ -71,13 +77,33 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
 
         },
 
+
+        delSelf:function(){
+            var that = this;
+            var btncomEntity = that.getData();
+            jq.ajax({
+                method: "POST",
+                url: "/deleteBtncom",
+                data: {
+                    btncomId: btncomEntity._id
+                }
+            }).done(function (msg) {
+                that.destroy();
+            }).fail(function (msg) {
+                alert(msg);
+            });
+
+        },
+
         _renderBtncom: function (data, next) {
             var that = this;
             var $box = that.getBoundingBox();
             var tpl = '<button type="button" class="W_btn">' + data.context + '</button>';
+            tpl += '<i class="W_delItem">X</i>';
             $box.append(tpl);
             that.$box = $box;
             that.$boxContent = $box.find('.W_btn');
+            that.$boxDel = $box.find('.W_delItem');
 
             //TODO  如何更合理 数据库直接对应 jquery?
             Object.keys(data).forEach(function (key) {
@@ -118,7 +144,7 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
                     if (msg.success) {
                         that.setData(msg.model);
                         that._renderBtncom(msg.model, next);
-                        F.trigger('comChange',{type:'btncom',comData:msg.model});
+                        F.trigger('comChange', {type: 'btncom', comData: msg.model});
                     }
                 }).fail(function (msg) {
                 });
