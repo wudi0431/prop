@@ -1228,18 +1228,18 @@ body .cp-color-picker,body .colpick {
     display: none;
 }
 
-.W_iteam{
+.W_item {
     display: inline-flex;
 }
-.W_iteam.select{
+.W_item.select{
     background-color: rgba(0,0,0,0);
 }
 
-.W_iteam button{
+.W_item button{
     width: 100%;
 }
 
-.W_iteam img{
+.W_item img{
     width: 100%;
 }
 
@@ -1256,6 +1256,21 @@ body .cp-color-picker,body .colpick {
     opacity: 0.5;
 }
 
+.W_delItem{
+    display: none;
+    position: absolute;
+    color: #FB0202;
+    font-style: normal;
+    top: -5px;
+    right: 3px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.W_item.select .W_delItem{
+    display: block;
+}
+/*lb*/
 
 /*animate_content*/
 .mod_animate{
