@@ -46,7 +46,7 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
                 data: btncomEntity
             }).done(function (msg) {
                 if (msg.success) {
-                    F.trigger('comChange', {type: 'btncom', comData: msg.model,isUpdate:true});
+                    F.trigger('comChange', {type: 'btncom', comData: msg.model, isUpdate: true});
                 }
             }).fail(function (msg) {
             });
@@ -62,7 +62,7 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
                 }
 
                 if ($$curTarget === that.$boxDel[0]) {
-                        that.delSelf();
+                    that.delSelf();
                 }
 
 
@@ -78,7 +78,7 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
         },
 
 
-        delSelf:function(){
+        delSelf: function () {
             var that = this;
             var btncomEntity = that.getData();
             jq.ajax({
@@ -89,7 +89,7 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
                 }
             }).done(function (msg) {
                 that.destroy();
-                F.trigger('comChange', {type: 'btncom', comData: msg.model,isRemove:true});
+                F.trigger('comChange', {type: 'btncom', comData: msg.model, isRemove: true});
             }).fail(function (msg) {
                 alert(msg);
             });
@@ -115,9 +115,18 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
                     case 'height':
                         that.$box.height(data[key]);
                         break;
-                    case 'lineheight':
-                        that.$box.css('lineHeight', data[key]);
+                    //TODO  待处理
+                    case 'href':
                         break;
+                    case 'hrefType':
+                        break;
+                    case 'dataurl':
+                        break;
+                    case 'datamapping':
+                        break;
+                    default :
+                        that.$box.css(key, data[key]);
+                        break
                 }
             });
 
@@ -145,7 +154,7 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
                     if (msg.success) {
                         that.setData(msg.model);
                         that._renderBtncom(msg.model, next);
-                        F.trigger('comChange', {type: 'btncom', comData: msg.model,isAdd:true});
+                        F.trigger('comChange', {type: 'btncom', comData: msg.model, isAdd: true});
                     }
                 }).fail(function (msg) {
                 });
