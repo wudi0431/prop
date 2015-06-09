@@ -898,11 +898,11 @@ body .cp-color-picker,body .colpick {
 
 
 .page-item:hover a[data-role] {
-    visibility: visible
+   display: block;
 }
 
 .item-visible{
-    display: none;
+    display: none !important;
 }
 
 
@@ -926,7 +926,7 @@ body .cp-color-picker,body .colpick {
     height: 14px;
     background-repeat: no-repeat;
     background-size: auto 14px;
-    visibility: hidden;
+    display:none;
 }
 
 
@@ -1224,6 +1224,7 @@ body .cp-color-picker,body .colpick {
 
 
 /*lb*/
+<<<<<<< HEAD
 .ui-tabs .ui-tabs-panel{
     height:100%;
     box-sizing:border-box;
@@ -1248,17 +1249,25 @@ body .cp-color-picker,body .colpick {
 }
 
 .W_iteam{
+=======
+.W_editItem {
+    display: none;
+}
+
+.W_item {
+    position: absolute;
+>>>>>>> 3e7e5ea83e58037b9019bd3d06a05a4fbb6af6bf
     display: inline-flex;
 }
-.W_iteam.select{
+.W_item.select{
     background-color: rgba(0,0,0,0);
 }
 
-.W_iteam button{
+.W_item button{
     width: 100%;
 }
 
-.W_iteam img{
+.W_item img{
     width: 100%;
 }
 
@@ -1275,6 +1284,21 @@ body .cp-color-picker,body .colpick {
     opacity: 0.5;
 }
 
+.W_delItem{
+    display: none;
+    position: absolute;
+    color: #FB0202;
+    font-style: normal;
+    top: -5px;
+    right: 3px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.W_item.select .W_delItem{
+    display: block;
+}
+/*lb*/
 
 /*animate_content*/
 .mod_animate{
@@ -1386,4 +1410,14 @@ body .cp-color-picker,body .colpick {
     -webkit-transform:rotate(-45deg);
     -ms-transform:rotate(-45deg);
     transform:rotate(-45deg);
+<<<<<<< HEAD
 }
+=======
+}
+.animated{
+    -webkit-animation-duration:1s;
+    animation-duration:1s;
+    -webkit-animation-fill-mode:both;
+    animation-fill-mode:both;
+}
+>>>>>>> 3e7e5ea83e58037b9019bd3d06a05a4fbb6af6bf

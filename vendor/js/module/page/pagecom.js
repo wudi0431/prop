@@ -101,30 +101,41 @@ Pagecom.prototype={
             });
 
         });
+        F.on('comChange', function (obj) {
+            that.updateCom(obj);
+        });
     },
     updateCom: function (obj) {
         var that =this;
         if(obj.type=='btncom'){
-            that.btnComList.forEach(function (btn,index) {
-                if(btn._id===obj.comData._id){
-                    btn=obj.comData;
-                    if(obj.isremove){
-                        that.btnComList.splice(1,index);
+            if(obj.isAdd){
+                that.btnComList.push(obj.comData);
+            }else{
+                that.btnComList.forEach(function (btn,index) {
+                    if(btn._id===obj.comData._id){
+                        btn=obj.comData;
+                        if(obj.isRemove){
+                            that.btnComList.splice(index,1);
+                        }
                     }
-                }
-            });
+                });
+            }
 
-        }else if(obj.type=='imgcom'){
-            that.imgComtList.forEach(function (img) {
-                if(img._id===obj.comData._id){
-                    img=obj.comData;
-                    if(obj.isremove){
-                        that.btnComList.splice(1,index);
+
+        }else if(obj.type=='imgcom') {
+            if (obj.isAdd) {
+                that.imgComtList.push(obj.comData);
+            } else {
+                that.imgComtList.forEach(function (img,index) {
+                    if (img._id === obj.comData._id) {
+                        img = obj.comData;
+                        if (obj.isRemove) {
+                            that.btnComList.splice(index, 1);
+                        }
                     }
-                }
-            });
+                });
+            }
         }
-
     },
     _addCom: function (pageid) {
         var that=this;
@@ -155,12 +166,16 @@ Pagecom.prototype={
             dialogClass: "fasdfasdfasdfsd"
         });
 
-        $(".tmpl-item").on('click',function(){
+        $(".tmpl-item").on('click',function(e){
+            e.stopPropagation();
+            e.preventDefault();
             if($(this).attr('tmpl-index')==-1){
-                $addPageDailog.dialog( "close" );
-                that.addPageTitle(that.index,true)
-                that.clearIphone();
-                that.savePage();
+                if($addPageDailog.dialog( "isOpen" )){
+                    $addPageDailog.dialog( "close" );
+                    that.addPageTitle(that.index,true)
+                    that.clearIphone();
+                    that.savePage();
+                }
             }
         });
 
@@ -187,7 +202,7 @@ Pagecom.prototype={
             '<a data-set="selected" class="sort-page js-sort-page" href="javascript:;"></a>'+
             '<span data-set="selected" class="disp">'+defname+'</span>'+
             '<div class="page-edit" style="display: none;" data-role="title-edit">'+
-            '<input placeholder="请输入不超过100个字" maxlength="100" class="edit" type="text" value="'+defname+'">'+
+            '<input data-role="input" placeholder="请输入不超过100个字" maxlength="100" class="edit" type="text" value="'+defname+'">'+
             '<a data-role="btn-edit-cancel" title="取消" class="ico-del" href="javascript:;" style="text-decoration: none;"></a>'+
             '<a data-role="btn-edit-post" title="确定" class="ico-right" href="javascript:;" style="text-decoration: none;"></a>'+
             '</div>'+
@@ -226,13 +241,15 @@ Pagecom.prototype={
 
     },
     //更新页面
-    updataPage:function(pageEntity){
+    updataPage:function(pageEntity,isSetSytle){
+        var that =this;
         $.ajax({
             method: "POST",
             url: "/updatePage",
             data:pageEntity
         }).done(function (msg) {
-            //console.log(msg)
+            isSetSytle && that.setPageStyle(msg.model);
+
         }).fail(function (msg) {
             console.log(msg)
         });
@@ -278,8 +295,7 @@ Pagecom.prototype={
         that.addpage.removeClass('ui-sortable-handle');
         that.$pagelist.disableSelection();
 
-        that.$items.on('click', function (e) {
-            e.stopPropagation();
+        that.$items.on('click', function (e) { 
             var curitem =$(this);
             var pindex =+curitem.attr('data-index');
             var pageid =curitem.attr('data-pageid');
@@ -309,6 +325,9 @@ Pagecom.prototype={
                 case "scene-copy":
                     that.addpage.before($(this));
                     break;
+                case "input":
+                    $(e.target).focus();
+                    break;
                 case "btn-del-scene":
                     if(curPageData){
                        that.deletePage(curPageData._id,pindex);
@@ -333,9 +352,6 @@ Pagecom.prototype={
             }
         })
 
-        F.on('comChange', function (obj) {
-            that.updateCom(obj);
-        });
 
     },
     //清除iPhone的页面

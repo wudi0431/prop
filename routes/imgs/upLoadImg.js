@@ -39,12 +39,34 @@ router.post('/', function(req, res, next) {
             //接收前台POST过来的base64
                 var imgData = req.body.imgData;
                 var dataBuffer = new Buffer(imgData, 'base64');
-                fs.writeFile('/uploadimg/'+uuid(8,16)+".png", dataBuffer, function(err) {
+                var imgname = uuid(8,16)+'.png';
+                var imgpath =path.join(__dirname,'../../public/uploadimg/');
+                fs.writeFile(imgpath+imgname, dataBuffer, function(err) {
                     if(err){
                         res.send(err);
                     }else{
-
-                        res.send('ddd');
+                        img.name=imgname;
+                        img.updatetime=new Date();
+                        img.path=imgpath+imgname;
+                        img.category=1;
+                        img.user=req.session.user;
+                        img.save(function (err,imgEntity) {
+                            if (err) {
+                                res.status('500');
+                                res.send({
+                                    success: false, // 标记失败
+                                    model: {
+                                        error: '系统错误'
+                                    }
+                                });
+                            } else {
+                                res.status('200');
+                                res.send({
+                                    success: true,
+                                    model: imgEntity
+                                });
+                            }
+                        });
 
                     }
                 });
