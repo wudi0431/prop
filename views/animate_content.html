@@ -1,129 +1,261 @@
 <div class="mod_animate" id="J_animateContent">
-	<h3 class="cell_title">动画设置</h3>
-	<div class="animate_item">
-		<label>
-			<span class="title">持续时间</span>
-			<input type="range" min="0" max="20" value="0" class="animate_range" />
-			<input type="number" value="0" min="0" max="20" class="range_num" />s
-		</label>
-		<label>
-			<span class="title">延迟时间</span>
-			<input type="range" min="0" max="20" value="0" class="animate_range" />
-			<input type="number" value="0" min="0" max="20" class="range_num" />s
-		</label>
-		<label tooltips="当重复次数为0，为无限循环">
-			<span class="title">重复次数</span>
-			<input type="range" min="0" max="20" value="0" class="animate_range" />
-			<input type="number" value="0" min="0" max="20" class="range_num" />次
-		</label>
-	</div>
-	<h3 class="cell_title">动画类型选择(只能选择一个动画)</h3>
-	<div class="animate_item animate_eq">
-		<div class="animate_eq_con">
-			<div class="animate_list" data-name="noeffect">
-				<span class="animate_list_icon animated"></span>
-				<span class="animate_list_text">无效果</span>
+	<div class="animate_inner">
+		<h3 class="cell_title">动画设置</h3>
+		<div class="animate_item">
+			<label>
+				<span class="title">持续时间</span>
+				<input type="range" min="0" max="20" value="0" class="animate_range" />
+				<input type="number" value="0" min="0" max="20" class="range_num" />s
+			</label>
+			<label>
+				<span class="title">延迟时间</span>
+				<input type="range" min="0" max="20" value="0" class="animate_range" />
+				<input type="number" value="0" min="0" max="20" class="range_num" />s
+			</label>
+			<label tooltips="当重复次数为0，为无限循环">
+				<span class="title">重复次数</span>
+				<input type="range" min="0" max="20" value="0" class="animate_range" />
+				<input type="number" value="0" min="0" max="20" class="range_num" />次
+			</label>
+		</div>
+		<h3 class="cell_title">动画类型选择(只能选择一个动画)</h3>
+		<div class="animate_item animate_eq">
+			<div class="animate_eq_con">
+				<div class="animate_list" data-name="noeffect">
+					<span class="animate_list_icon animated"></span>
+					<span class="animate_list_text">无效果</span>
+				</div>
 			</div>
 		</div>
-	</div>
-	<div class="animate_item animate_eq">
-		<div class="animate_eq_title">出现动画<i class="more_icon"></i></div>
-		<div class="animate_eq_con">
-			<div class="animate_list" data-name="zoomIn">
-				<span class="animate_list_icon animated zoomIn"></span>
-				<span class="animate_list_text">放大进入</span>
+		<div class="animate_item animate_eq">
+			<div class="animate_eq_title">出现动画<i class="more_icon"></i></div>
+			<div class="animate_eq_con">
+				<div class="animate_list" data-name="zoomIn">
+					<span class="animate_list_icon animated"></span>
+					<span class="animate_list_text">放大进入</span>
+				</div>
+				<div class="animate_list" data-name="bounceIn">
+					<span class="animate_list_icon animated"></span>
+					<span class="animate_list_text">弹入</span>
+				</div>
+				<div class="animate_list" data-name="bounceInDown">
+					<span class="animate_list_icon animated"></span>
+					<span class="animate_list_text">从上弹入</span>
+				</div>
+				<div class="animate_list" data-name="bounceInUp">
+					<span class="animate_list_icon animated"></span>
+					<span class="animate_list_text">从下弹入</span>
+				</div>
+				<div class="animate_list" data-name="bounceInLeft">
+					<span class="animate_list_icon animated"></span>
+					<span class="animate_list_text">从左弹入</span>
+				</div>
+				<div class="animate_list" data-name="bounceInRight">
+					<span class="animate_list_icon animated"></span>
+					<span class="animate_list_text">从右弹入</span>
+				</div>
+				<div class="animate_list" data-name="fadeIn">
+					<span class="animate_list_icon animated"></span>
+					<span class="animate_list_text">淡入</span>
+				</div>
+				<div class="animate_list" data-name="fadeInUp">
+					<span class="animate_list_icon animated"></span>
+					<span class="animate_list_text">从下淡入</span>
+				</div>
+				<div class="animate_list" data-name="fadeInDown">
+					<span class="animate_list_icon animated"></span>
+					<span class="animate_list_text">从上淡入</span>
+				</div>
+				<div class="animate_list" data-name="fadeInLeft">
+					<span class="animate_list_icon animated"></span>
+					<span class="animate_list_text">从左淡入</span>
+				</div>
+				<div class="animate_list" data-name="fadeInRight">
+					<span class="animate_list_icon animated"></span>
+					<span class="animate_list_text">从右淡入</span>
+				</div>
+				<div class="animate_list" data-name="flipInX">
+					<span class="animate_list_icon animated"></span>
+					<span class="animate_list_text">X轴转入</span>
+				</div>
+				<div class="animate_list" data-name="flipInY">
+					<span class="animate_list_icon animated"></span>
+					<span class="animate_list_text">Y轴转入</span>
+				</div>
+				<div class="animate_list" data-name="lightSpeedIn">
+					<span class="animate_list_icon animated"></span>
+					<span class="animate_list_text">光速进入</span>
+				</div>
+				<div class="animate_list" data-name="rotateIn">
+					<span class="animate_list_icon animated"></span>
+					<span class="animate_list_text">旋转进入</span>
+				</div>
+				<div class="animate_list" data-name="rotateInDownLeft">
+					<span class="animate_list_icon animated"></span>
+					<span class="animate_list_text">左向下转</span>
+				</div>
+				<div class="animate_list" data-name="rotateInDownRight">
+					<span class="animate_list_icon animated"></span>
+					<span class="animate_list_text">右向下转</span>
+				</div>
+				<div class="animate_list" data-name="rotateInUpLeft">
+					<span class="animate_list_icon animated"></span>
+					<span class="animate_list_text">左向上转</span>
+				</div>
+				<div class="animate_list" data-name="rotateInUpRight">
+					<span class="animate_list_icon animated"></span>
+					<span class="animate_list_text">右向上转</span>
+				</div>
+				<div class="animate_list" data-name="slideInUp">
+					<span class="animate_list_icon animated"></span>
+					<span class="animate_list_text">从下滑入</span>
+				</div>
+				<div class="animate_list" data-name="slideInDown">
+					<span class="animate_list_icon animated"></span>
+					<span class="animate_list_text">从上滑入</span>
+				</div>
+				<div class="animate_list" data-name="slideInLeft">
+					<span class="animate_list_icon animated"></span>
+					<span class="animate_list_text">从左滑入</span>
+				</div>
+				<div class="animate_list" data-name="slideInRight">
+					<span class="animate_list_icon animated"></span>
+					<span class="animate_list_text">从右滑入</span>
+				</div>
+				<div class="animate_list" data-name="rollIn">
+					<span class="animate_list_icon animated"></span>
+					<span class="animate_list_text">滚入</span>
+				</div>
 			</div>
-			<div class="animate_list" data-name="bounceIn">
-				<span class="animate_list_icon animated bounceIn"></span>
-				<span class="animate_list_text">弹入</span>
+		</div>
+		<div class="animate_item animate_eq">
+			<div class="animate_eq_title">消失动画<i class="more_icon"></i></div>
+			<div class="animate_eq_con">
+				<div class="animate_list" data-name="zoomOut">
+					<span class="animate_list_icon animated"></span>
+					<span class="animate_list_text">放大退出</span>
+				</div>
+				<div class="animate_list" data-name="bounceOut">
+					<span class="animate_list_icon animated"></span>
+					<span class="animate_list_text">弹出</span>
+				</div>
+				<div class="animate_list" data-name="bounceOutDown">
+					<span class="animate_list_icon animated"></span>
+					<span class="animate_list_text">向下弹出</span>
+				</div>
+				<div class="animate_list" data-name="bounceOutUp">
+					<span class="animate_list_icon animated"></span>
+					<span class="animate_list_text">向上弹出</span>
+				</div>
+				<div class="animate_list" data-name="bounceOutRight">
+					<span class="animate_list_icon animated"></span>
+					<span class="animate_list_text">向右弹出</span>
+				</div>
+				<div class="animate_list" data-name="bounceOutLeft">
+					<span class="animate_list_icon animated"></span>
+					<span class="animate_list_text">向左弹出</span>
+				</div>
+				<div class="animate_list" data-name="fadeOut">
+					<span class="animate_list_icon animated"></span>
+					<span class="animate_list_text">淡出</span>
+				</div>
+				<div class="animate_list" data-name="fadeOutUp">
+					<span class="animate_list_icon animated"></span>
+					<span class="animate_list_text">从上淡出</span>
+				</div>
+				<div class="animate_list" data-name="fadeOutDown">
+					<span class="animate_list_icon animated"></span>
+					<span class="animate_list_text">从下淡出</span>
+				</div>
+				<div class="animate_list" data-name="fadeOutLeft">
+					<span class="animate_list_icon animated"></span>
+					<span class="animate_list_text">从左淡出</span>
+				</div>
+				<div class="animate_list" data-name="fadeOutRight">
+					<span class="animate_list_icon animated"></span>
+					<span class="animate_list_text">从右淡出</span>
+				</div>
+				<div class="animate_list" data-name="flipOutX">
+					<span class="animate_list_icon animated"></span>
+					<span class="animate_list_text">X轴转出</span>
+				</div>
+				<div class="animate_list" data-name="flipOutY">
+					<span class="animate_list_icon animated"></span>
+					<span class="animate_list_text">Y轴转出</span>
+				</div>
+				<div class="animate_list" data-name="lightSpeedOut">
+					<span class="animate_list_icon animated"></span>
+					<span class="animate_list_text">光速退出</span>
+				</div>
+				<div class="animate_list" data-name="rotateOut">
+					<span class="animate_list_icon animated"></span>
+					<span class="animate_list_text">旋转退出</span>
+				</div>
+				<div class="animate_list" data-name="slideOutUp">
+					<span class="animate_list_icon animated"></span>
+					<span class="animate_list_text">向上滑出</span>
+				</div>
+				<div class="animate_list" data-name="slideOutDown">
+					<span class="animate_list_icon animated"></span>
+					<span class="animate_list_text">向下滑出</span>
+				</div>
+				<div class="animate_list" data-name="slideOutLeft">
+					<span class="animate_list_icon animated"></span>
+					<span class="animate_list_text">从左滑出</span>
+				</div>
+				<div class="animate_list" data-name="slideOutRight">
+					<span class="animate_list_icon animated"></span>
+					<span class="animate_list_text">从右滑出</span>
+				</div>
 			</div>
-			<div class="animate_list" data-name="bounceInDown">
-				<span class="animate_list_icon animated bounceInDown"></span>
-				<span class="animate_list_text">从上弹入</span>
-			</div>
-			<div class="animate_list" data-name="bounceInUp">
-				<span class="animate_list_icon animated bounceInUp"></span>
-				<span class="animate_list_text">从下弹入</span>
-			</div>
-			<div class="animate_list" data-name="bounceInLeft">
-				<span class="animate_list_icon animated bounceInLeft"></span>
-				<span class="animate_list_text">从左弹入</span>
-			</div>
-			<div class="animate_list" data-name="bounceInRight">
-				<span class="animate_list_icon animated bounceInRight"></span>
-				<span class="animate_list_text">从右弹入</span>
-			</div>
-			<div class="animate_list" data-name="fadeIn">
-				<span class="animate_list_icon animated fadeIn"></span>
-				<span class="animate_list_text">淡入</span>
-			</div>
-			<div class="animate_list" data-name="fadeInUp">
-				<span class="animate_list_icon animated fadeInUp"></span>
-				<span class="animate_list_text">从下淡入</span>
-			</div>
-			<div class="animate_list" data-name="fadeInDown">
-				<span class="animate_list_icon animated fadeInDown"></span>
-				<span class="animate_list_text">从上淡入</span>
-			</div>
-			<div class="animate_list" data-name="fadeInLeft">
-				<span class="animate_list_icon animated fadeInLeft"></span>
-				<span class="animate_list_text">从左淡入</span>
-			</div>
-			<div class="animate_list" data-name="fadeInRight">
-				<span class="animate_list_icon animated fadeInRight"></span>
-				<span class="animate_list_text">从右淡入</span>
-			</div>
-			<div class="animate_list" data-name="flipInX">
-				<span class="animate_list_icon animated flipInX"></span>
-				<span class="animate_list_text">X轴转入</span>
-			</div>
-			<div class="animate_list" data-name="flipInY">
-				<span class="animate_list_icon animated flipInY"></span>
-				<span class="animate_list_text">Y轴转入</span>
-			</div>
-			<div class="animate_list" data-name="lightSpeedIn">
-				<span class="animate_list_icon animated lightSpeedIn"></span>
-				<span class="animate_list_text">光速进入</span>
-			</div>
-			<div class="animate_list" data-name="rotateIn">
-				<span class="animate_list_icon animated rotateIn"></span>
-				<span class="animate_list_text">旋转进入</span>
-			</div>
-			<div class="animate_list" data-name="rotateInDownLeft">
-				<span class="animate_list_icon animated rotateInDownLeft"></span>
-				<span class="animate_list_text">左向下转</span>
-			</div>
-			<div class="animate_list" data-name="rotateInDownRight">
-				<span class="animate_list_icon animated rotateInDownRight"></span>
-				<span class="animate_list_text">右向下转</span>
-			</div>
-			<div class="animate_list" data-name="rotateInUpLeft">
-				<span class="animate_list_icon animated rotateInUpLeft"></span>
-				<span class="animate_list_text">左向上转</span>
-			</div>
-			<div class="animate_list" data-name="rotateInUpRight">
-				<span class="animate_list_icon animated rotateInUpRight"></span>
-				<span class="animate_list_text">右向上转</span>
-			</div>
-			<div class="animate_list" data-name="slideInUp">
-				<span class="animate_list_icon animated slideInUp"></span>
-				<span class="animate_list_text">从下滑入</span>
-			</div>
-			<div class="animate_list" data-name="slideInDown">
-				<span class="animate_list_icon animated slideInDown"></span>
-				<span class="animate_list_text">从上滑入</span>
-			</div>
-			<div class="animate_list" data-name="slideInLeft">
-				<span class="animate_list_icon animated slideInLeft"></span>
-				<span class="animate_list_text">从左滑入</span>
-			</div>
-			<div class="animate_list" data-name="slideInRight">
-				<span class="animate_list_icon animated slideInRight"></span>
-				<span class="animate_list_text">从右滑入</span>
-			</div>
-			<div class="animate_list" data-name="rollIn">
-				<span class="animate_list_icon animated rollIn"></span>
-				<span class="animate_list_text">滚入</span>
+		</div>
+		<div class="animate_item animate_eq">
+			<div class="animate_eq_title">特效动画<i class="more_icon"></i></div>
+			<div class="animate_eq_con">
+				<div class="animate_list" data-name="circleRotate">
+					<span class="animate_list_icon animated"></span>
+					<span class="animate_list_text">转圈</span>
+				</div>
+				<div class="animate_list" data-name="swap">
+					<span class="animate_list_icon animated"></span>
+					<span class="animate_list_text">由远及近</span>
+				</div>
+				<div class="animate_list" data-name="bounce">
+					<span class="animate_list_icon animated"></span>
+					<span class="animate_list_text">弹跳</span>
+				</div>
+				<div class="animate_list" data-name="flash">
+					<span class="animate_list_icon animated"></span>
+					<span class="animate_list_text">闪烁</span>
+				</div>
+				<div class="animate_list" data-name="pulse">
+					<span class="animate_list_icon animated"></span>
+					<span class="animate_list_text">心跳</span>
+				</div>
+				<div class="animate_list" data-name="rubberBand">
+					<span class="animate_list_icon animated"></span>
+					<span class="animate_list_text">橡皮筋</span>
+				</div>
+				<div class="animate_list" data-name="shake">
+					<span class="animate_list_icon animated"></span>
+					<span class="animate_list_text">震动</span>
+				</div>
+				<div class="animate_list" data-name="swing">
+					<span class="animate_list_icon animated"></span>
+					<span class="animate_list_text">摇摆</span>
+				</div>
+				<div class="animate_list" data-name="wobble">
+					<span class="animate_list_icon animated"></span>
+					<span class="animate_list_text">摇晃</span>
+				</div>
+				<div class="animate_list" data-name="flip">
+					<span class="animate_list_icon animated"></span>
+					<span class="animate_list_text">翻转</span>
+				</div>
+				<div class="animate_list" data-name="hinge">
+					<span class="animate_list_icon animated"></span>
+					<span class="animate_list_text">摇摇欲坠</span>
+				</div>
 			</div>
 		</div>
 	</div>
