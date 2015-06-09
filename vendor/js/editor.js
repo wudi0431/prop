@@ -44,7 +44,8 @@ require(['zepto','jquery','spectrum','btncom', 'imgcom',
     var addbutton = $('#addbutton');
     var addpages = $('.add-page-list');
 
-    addpages.on('click', function () {
+    addpages.on('click', function (e) {
+        e.stopPropagation();
         pagecom.addPage();
     });
     addimage.on('click', function () {

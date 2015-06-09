@@ -166,12 +166,16 @@ Pagecom.prototype={
             dialogClass: "fasdfasdfasdfsd"
         });
 
-        $(".tmpl-item").on('click',function(){
+        $(".tmpl-item").on('click',function(e){
+            e.stopPropagation();
+            e.preventDefault();
             if($(this).attr('tmpl-index')==-1){
-                $addPageDailog.dialog( "close" );
-                that.addPageTitle(that.index,true)
-                that.clearIphone();
-                that.savePage();
+                if($addPageDailog.dialog( "isOpen" )){
+                    $addPageDailog.dialog( "close" );
+                    that.addPageTitle(that.index,true)
+                    that.clearIphone();
+                    that.savePage();
+                }
             }
         });
 
