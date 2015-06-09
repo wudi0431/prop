@@ -1224,11 +1224,12 @@ body .cp-color-picker,body .colpick {
 
 
 /*lb*/
-.W_editIteam{
+.W_editItem {
     display: none;
 }
 
 .W_item {
+    position: absolute;
     display: inline-flex;
 }
 .W_item.select{

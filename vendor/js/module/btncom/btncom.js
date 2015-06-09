@@ -53,10 +53,12 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
         },
         _bindUI: function () {
             var that = this;
+            var data = that.getData();
             that.$box.on('click', function (e) {
                 var $$curTarget = e.target;
                 if ($$curTarget === that.$boxContent[0]) {
                     $('#J_btncomContent').show().siblings('.W_editIteam').hide();
+                    $('#J_btncomStyle').show().siblings('.W_editIteam').hide();
                     F.trigger('renderBtncomContent', that.getData());
                     F.trigger('renderBtncomStyle', that.getData());
                 }
@@ -71,6 +73,16 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
             F.on('btncomContextChange', function (val) {
                 if (that.$box.hasClass('select')) {
                     that.setContext(val);
+                }
+            });
+
+
+            F.on('btncomStyleChange', function (obj) {
+                if (that.$box.hasClass('select')) {
+                    that.$box.css(obj.type, obj.value);
+                    data[obj.type] = obj.value;
+                    that.setData(data);
+                    that.update();
                 }
             });
 
