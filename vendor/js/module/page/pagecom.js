@@ -101,30 +101,41 @@ Pagecom.prototype={
             });
 
         });
+        F.on('comChange', function (obj) {
+            that.updateCom(obj);
+        });
     },
     updateCom: function (obj) {
         var that =this;
         if(obj.type=='btncom'){
-            that.btnComList.forEach(function (btn,index) {
-                if(btn._id===obj.comData._id){
-                    btn=obj.comData;
-                    if(obj.isRemove){
-                        that.btnComList.splice(index,1);
+            if(obj.isAdd){
+                that.btnComList.push(obj.comData);
+            }else{
+                that.btnComList.forEach(function (btn,index) {
+                    if(btn._id===obj.comData._id){
+                        btn=obj.comData;
+                        if(obj.isRemove){
+                            that.btnComList.splice(index,1);
+                        }
                     }
-                }
-            });
+                });
+            }
 
-        }else if(obj.type=='imgcom'){
-            that.imgComtList.forEach(function (img) {
-                if(img._id===obj.comData._id){
-                    img=obj.comData;
-                    if(obj.isRemove){
-                        that.btnComList.splice(index,1);
+
+        }else if(obj.type=='imgcom') {
+            if (obj.isAdd) {
+                that.imgComtList.push(obj.comData);
+            } else {
+                that.imgComtList.forEach(function (img,index) {
+                    if (img._id === obj.comData._id) {
+                        img = obj.comData;
+                        if (obj.isRemove) {
+                            that.btnComList.splice(index, 1);
+                        }
                     }
-                }
-            });
+                });
+            }
         }
-
     },
     _addCom: function (pageid) {
         var that=this;
@@ -337,9 +348,6 @@ Pagecom.prototype={
             }
         })
 
-        F.on('comChange', function (obj) {
-            that.updateCom(obj);
-        });
 
     },
     //清除iPhone的页面
