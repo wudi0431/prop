@@ -108,8 +108,8 @@ Pagecom.prototype={
             that.btnComList.forEach(function (btn,index) {
                 if(btn._id===obj.comData._id){
                     btn=obj.comData;
-                    if(obj.isremove){
-                        that.btnComList.splice(1,index);
+                    if(obj.isRemove){
+                        that.btnComList.splice(index,1);
                     }
                 }
             });
@@ -118,8 +118,8 @@ Pagecom.prototype={
             that.imgComtList.forEach(function (img) {
                 if(img._id===obj.comData._id){
                     img=obj.comData;
-                    if(obj.isremove){
-                        that.btnComList.splice(1,index);
+                    if(obj.isRemove){
+                        that.btnComList.splice(index,1);
                     }
                 }
             });

@@ -46,7 +46,7 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
                 data: btncomEntity
             }).done(function (msg) {
                 if (msg.success) {
-                    F.trigger('comChange', {type: 'btncom', comData: msg.model});
+                    F.trigger('comChange', {type: 'btncom', comData: msg.model,isUpdate:true});
                 }
             }).fail(function (msg) {
             });
@@ -89,7 +89,7 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
                 }
             }).done(function (msg) {
                 that.destroy();
-                F.trigger('comChange', {type: 'btncom', comData: msg.model});
+                F.trigger('comChange', {type: 'btncom', comData: msg.model,isRemove:true});
             }).fail(function (msg) {
                 alert(msg);
             });
@@ -145,7 +145,7 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
                     if (msg.success) {
                         that.setData(msg.model);
                         that._renderBtncom(msg.model, next);
-                        F.trigger('comChange', {type: 'btncom', comData: msg.model});
+                        F.trigger('comChange', {type: 'btncom', comData: msg.model,isAdd:true});
                     }
                 }).fail(function (msg) {
                 });
