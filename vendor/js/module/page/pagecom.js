@@ -226,13 +226,15 @@ Pagecom.prototype={
 
     },
     //更新页面
-    updataPage:function(pageEntity){
+    updataPage:function(pageEntity,isSetSytle){
+        var that =this;
         $.ajax({
             method: "POST",
             url: "/updatePage",
             data:pageEntity
         }).done(function (msg) {
-            //console.log(msg)
+            isSetSytle && that.setPageStyle(msg.model);
+
         }).fail(function (msg) {
             console.log(msg)
         });

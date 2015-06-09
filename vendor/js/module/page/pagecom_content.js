@@ -122,7 +122,7 @@ define(['imgcut','jquery','imgs'], function (imgcut,$,Imgs) {
 
 
     $j_crop_image.on('click', function () {
-        imgcut.getResults();
+        imgcut.getResults(curpagecom);
     });
 
 
