@@ -68,7 +68,7 @@ define(['jquery'], function ($) {
         theSelection.draw();
     }
 
-    function getResults() {
+    function getResults(curpagecom) {
         var temp_ctx, temp_canvas;
         temp_canvas = document.createElement('canvas');
         temp_ctx = temp_canvas.getContext('2d');
@@ -83,7 +83,7 @@ define(['jquery'], function ($) {
         temp_ctx.drawImage(img_canvas, theSelection.x, theSelection.y, theSelection.w, theSelection.h, 0, 0, theSelection.w, theSelection.h);
         var vdata = temp_canvas.toDataURL();
 
-        window.open(vdata);
+
 
         // dataURL 的格式为 “data:image/png;base64,****”,逗号之前都是一些说明性的文字，我们只需要逗号之后的就行了
         vdata=vdata.split(',')[1];
@@ -91,13 +91,17 @@ define(['jquery'], function ($) {
            "isbase64":true,
            "imgData":vdata
        };
+        var $showbox =$('#showbox');
         $.ajax({
             cache: false,
             type: 'post',
             url: '/upLoadImg',
             data: idata, 
-            success: function (data) {
-                console.log(data);
+            success: function (msg) {
+                var curpagedata = curpagecom.getSelectPageData();
+                curpagedata.backgroundimage='/uploadimg/'+msg.model.name;
+                curpagecom.updataPage(curpagedata,true);
+                initImgCut('/uploadimg/'+msg.model.name);
             }
         });
 

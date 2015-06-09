@@ -10,7 +10,7 @@ define(['FFF','zepto'], function(FFF,$) {
           value:''
         },
         boundingBox: {
-            value: $('<div class="W_iteam" data-type="imgcom"></div>')
+            value: $('<div class="W_item" data-type="imgcom"></div>')
         }
     };
     F.extend(Imgcom, Widget, {

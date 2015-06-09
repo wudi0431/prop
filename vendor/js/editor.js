@@ -44,7 +44,8 @@ require(['zepto','jquery','spectrum','btncom', 'imgcom',
     var addbutton = $('#addbutton');
     var addpages = $('.add-page-list');
 
-    addpages.on('click', function () {
+    addpages.on('click', function (e) {
+        e.stopPropagation();
         pagecom.addPage();
     });
     addimage.on('click', function () {
@@ -72,7 +73,7 @@ require(['zepto','jquery','spectrum','btncom', 'imgcom',
         });
     });
 
-    $('#showbox').on('click','.W_iteam',function (e) {
+    $('#showbox').on('click','.W_item',function (e) {
         var $that = $(this);
         $('#J_pageContent').hide();
         var siblings = $that.siblings();
