@@ -89,6 +89,7 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
                 }
             }).done(function (msg) {
                 that.destroy();
+                F.trigger('comChange', {type: 'btncom', comData: msg.model});
             }).fail(function (msg) {
                 alert(msg);
             });
