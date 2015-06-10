@@ -2,13 +2,13 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
     var F = FFF.FFF,
         Widget = F.Widget;
 
-    function Btncom() {
+    function Textcom() {
         Widget.apply(this, arguments);
     }
 
-    Btncom.ATTRS = {
+    Textcom.ATTRS = {
         boundingBox: {
-            value: $('<div class="W_item" data-type="btncom"></div>')
+            value: $('<div class="W_item" data-type="textcom"></div>')
         },
         data: {
             value: null
@@ -17,7 +17,7 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
             value: null
         },
         context: {
-            value: '按钮',
+            value: '请输入文字',
             changeFn: function (args) {
                 var that = this;
                 var data = that.getData();
@@ -31,22 +31,22 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
             }
         }
     };
-    F.extend(Btncom, Widget, {
+    F.extend(Textcom, Widget, {
         renderUI: function () {
             var that = this;
-            that._addBtncom(that._bindUI);
+            that._addTextcom(that._bindUI);
         },
 
         update: function () {
             var that = this;
-            var btncomEntity = that.getData();
+            var textcomEntity = that.getData();
             jq.ajax({
                 method: "POST",
-                url: "/updateBtncom",
-                data: btncomEntity
+                url: "/updateTextcom",
+                data: textcomEntity
             }).done(function (msg) {
                 if (msg.success) {
-                    F.trigger('comChange', {type: 'btncom', comData: msg.model, isUpdate: true});
+                    F.trigger('comChange', {type: 'textcom', comData: msg.model, isUpdate: true});
                 }
             }).fail(function (msg) {
             });
@@ -57,10 +57,10 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
             that.$box.on('click', function (e) {
                 var $$curTarget = e.target;
                 if ($$curTarget === that.$boxContent[0]) {
-                    $('#J_btncomContent').show().siblings('.W_editItem').hide();
-                    $('#J_btncomStyle').show().siblings('.W_editItem').hide();
-                    F.trigger('renderBtncomContent', that.getData());
-                    F.trigger('renderBtncomStyle', that.getData());
+                    $('#J_textcomContent').show().siblings('.W_editItem').hide();
+                    $('#J_textcomStyle').show().siblings('.W_editItem').hide();
+                    F.trigger('renderTextcomContent', that.getData());
+                    F.trigger('renderTextcomStyle', that.getData());
                 }
 
                 if ($$curTarget === that.$boxDel[0]) {
@@ -70,17 +70,6 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
 
             });
 
-
-            F.on('dragCom', function (val) {
-                if (that.$box.hasClass('select')) {
-                    that.$box.css('top', val.top);
-                    that.$box.css('left', val.left);
-                    data['top'] = val.top +'px';
-                    data['left'] = val.left+'px';
-                    that.setData(data);
-                    that.update();
-                }
-            });
 
             F.on('resizeCom', function (val) {
                 if (that.$box.hasClass('select')) {
@@ -93,16 +82,25 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
                 }
             });
 
+            F.on('dragCom', function (val) {
+                if (that.$box.hasClass('select')) {
+                    that.$box.css('top', val.top);
+                    that.$box.css('left', val.left);
+                    data['top'] = val.top +'px';
+                    data['left'] = val.left+'px';
+                    that.setData(data);
+                    that.update();
+                }
+            });
 
-
-            F.on('btncomContextChange', function (val) {
+            F.on('textcomContextChange', function (val) {
                 if (that.$box.hasClass('select')) {
                     that.setContext(val);
                 }
             });
 
 
-            F.on('btncomStyleChange', function (obj) {
+            F.on('textcomStyleChange', function (obj) {
                 if (that.$box.hasClass('select')) {
                     that.$box.css(obj.type, obj.value);
                     data[obj.type] = obj.value;
@@ -117,30 +115,30 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
 
         delSelf: function () {
             var that = this;
-            var btncomEntity = that.getData();
+            var textcomEntity = that.getData();
             jq.ajax({
                 method: "POST",
-                url: "/deleteBtncom",
+                url: "/deleteTextcom",
                 data: {
-                    btncomId: btncomEntity._id
+                    textcomId: textcomEntity._id
                 }
             }).done(function (msg) {
                 that.destroy();
-                F.trigger('comChange', {type: 'btncom', comData: msg.model, isRemove: true});
+                F.trigger('comChange', {type: 'textcom', comData: msg.model, isRemove: true});
             }).fail(function (msg) {
                 alert(msg);
             });
 
         },
 
-        _renderBtncom: function (data, next) {
+        _renderTextcom: function (data, next) {
             var that = this;
             var $box = that.getBoundingBox();
-            var tpl = '<button type="button" class="W_btn">' + data.context + '</button>';
+            var tpl = '<div class="W_text">' + data.context + '</div>';
             tpl += '<i class="W_delItem">X</i>';
             $box.append(tpl);
             that.$box = $box;
-            that.$boxContent = $box.find('.W_btn');
+            that.$boxContent = $box.find('.W_text');
             that.$boxDel = $box.find('.W_delItem');
 
             //TODO  如何更合理 数据库直接对应 jquery?
@@ -164,28 +162,28 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
             next.call(that);
         },
 
-        _addBtncom: function (next) {
+        _addTextcom: function (next) {
             var that = this;
             if (that.getData()) {
-                that._renderBtncom(that.getData(), next);
+                that._renderTextcom(that.getData(), next);
             } else {
                 var pageId = that.getPageId();
-                var btncomEntity = {
-                    context: '按钮'
+                var textcomEntity = {
+                    context: that.getContext()
                 };
 
                 jq.ajax({
                     method: "POST",
-                    url: "/addBtncom",
+                    url: "/addTextcom",
                     data: {
                         pageId: pageId,
-                        btncom: btncomEntity
+                        textcom: textcomEntity
                     }
                 }).done(function (msg) {
                     if (msg.success) {
                         that.setData(msg.model);
-                        that._renderBtncom(msg.model, next);
-                        F.trigger('comChange', {type: 'btncom', comData: msg.model, isAdd: true});
+                        that._renderTextcom(msg.model, next);
+                        F.trigger('comChange', {type: 'textcom', comData: msg.model, isAdd: true});
                     }
                 }).fail(function (msg) {
                 });
@@ -194,6 +192,6 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
         }
     });
     return {
-        Btncom: Btncom
+        Textcom: Textcom
     };
 });

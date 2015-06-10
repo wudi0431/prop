@@ -1,38 +1,38 @@
 define(['FFF', 'jquery'], function (FFF, $) {
     var F = FFF.FFF;
-    var J_imgcomStyle = $('#J_imgcomStyle');
+    var J_textcomStyle = $('#J_textcomStyle');
 
-    var J_imgcomWidth = $('#J_imgcomWidth');
-    var J_imgcomHeight = $('#J_imgcomHeight');
+    var J_textcomWidth = $('#J_textcomWidth');
+    var J_textcomHeight = $('#J_textcomHeight');
 
 
-    F.on('renderImgcomContent', function (data) {
+    F.on('renderTextcomContent', function (data) {
         Object.keys(data).forEach(function (o) {
             switch (o) {
                 case 'width':
-                    J_imgcomWidth.val(data[o]);
+                    J_textcomWidth.val(data[o]);
                     break;
                 case 'height':
-                    J_imgcomHeight.val(data[o]);
+                    J_textcomHeight.val(data[o]);
                     break;
             }
         });
     });
 
 
-    J_imgcomWidth.on('input', function () {
+    J_textcomWidth.on('input', function () {
         var $that = $(this);
         var value = $that.val();
-        F.trigger('imgcomStyleChange', {
+        F.trigger('textcomStyleChange', {
             type: 'width',
             value: value
         });
     });
 
-    J_imgcomHeight.on('input', function () {
+    J_textcomHeight.on('input', function () {
         var $that = $(this);
         var value = $that.val();
-        F.trigger('imgcomStyleChange', {
+        F.trigger('textcomStyleChange', {
             type: 'height',
             value: value
         });

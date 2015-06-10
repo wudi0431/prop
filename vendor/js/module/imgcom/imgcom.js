@@ -1,39 +1,173 @@
-define(['FFF','zepto'], function(FFF,$) {
+define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
     var F = FFF.FFF,
         Widget = F.Widget;
 
     function Imgcom() {
         Widget.apply(this, arguments);
     }
+
     Imgcom.ATTRS = {
-        imgSrc:{
-          value:''
-        },
         boundingBox: {
             value: $('<div class="W_item" data-type="imgcom"></div>')
+        },
+        data: {
+            value: null
+        },
+        pageId: {
+            value: null
+        },
+        imgSrc:{
+            value:''
         }
     };
     F.extend(Imgcom, Widget, {
-        renderUI: function() {
+        renderUI: function () {
             var that = this;
-            var imgSrc = that.getImgSrc();
-            var $box = that.getBoundingBox();
-            var tpl = '<img src="'+imgSrc+'" class="W_imgcom"/>';
-            $box.append(tpl);
-            that.$box = $box;
-            that.$box.width(60);
-            that.$box.height(100);
-
-            that.$boxContent = $box.find('.W_imgcom');
+            that._addImgcom(that._bindUI);
         },
-        bindUI: function() {
+
+        update: function () {
             var that = this;
-            that.$box.on('click', function(e) {
+            var imgcomEntity = that.getData();
+            jq.ajax({
+                method: "POST",
+                url: "/updateImgcom",
+                data: imgcomEntity
+            }).done(function (msg) {
+                if (msg.success) {
+                    F.trigger('comChange', {type: 'imgcom', comData: msg.model, isUpdate: true});
+                }
+            }).fail(function (msg) {
+            });
+        },
+        _bindUI: function () {
+            var that = this;
+            var data = that.getData();
+            that.$box.on('click', function (e) {
                 var $$curTarget = e.target;
                 if ($$curTarget === that.$boxContent[0]) {
-                    $('#J_imgcomContent').show().siblings('.W_editIteam').hide();
-                } 
+                    $('#J_imgcomContent').show().siblings('.W_editItem').hide();
+                    $('#J_imgcomStyle').show().siblings('.W_editItem').hide();
+                }
+
+                if ($$curTarget === that.$boxDel[0]) {
+                    that.delSelf();
+                }
+
+
             });
+
+            F.on('dragCom', function (val) {
+                if (that.$box.hasClass('select')) {
+                    that.$box.css('top', val.top);
+                    that.$box.css('left', val.left);
+                    data['top'] = val.top +'px';
+                    data['left'] = val.left+'px';
+                    that.setData(data);
+                    that.update();
+                }
+            });
+
+            F.on('resizeCom', function (val) {
+                if (that.$box.hasClass('select')) {
+                    that.$box.css('width', val.width);
+                    that.$box.css('height', val.height);
+                    data['width'] = val.width +'px';
+                    data['height'] = val.height+'px';
+                    that.setData(data);
+                    that.update();
+                }
+            });
+
+
+            F.on('imgcomStyleChange', function (obj) {
+                if (that.$box.hasClass('select')) {
+                    that.$box.css(obj.type, obj.value);
+                    data[obj.type] = obj.value;
+                    that.setData(data);
+                    that.update();
+                }
+            });
+
+
+        },
+
+
+        delSelf: function () {
+            var that = this;
+            var imgcomEntity = that.getData();
+            jq.ajax({
+                method: "POST",
+                url: "/deleteImgcom",
+                data: {
+                    imgcomId: imgcomEntity._id
+                }
+            }).done(function (msg) {
+                that.destroy();
+                F.trigger('comChange', {type: 'imgcom', comData: msg.model, isRemove: true});
+            }).fail(function (msg) {
+                alert(msg);
+            });
+
+        },
+
+        _renderImgcom: function (data, next) {
+            var that = this;
+            var $box = that.getBoundingBox();
+            var tpl = '<img class="W_imgcom" src="' + data.imgurl + '"/>';
+            tpl += '<i class="W_delItem">X</i>';
+            $box.append(tpl);
+            that.$box = $box;
+            that.$boxContent = $box.find('.W_imgcom');
+            that.$boxDel = $box.find('.W_delItem');
+
+            //TODO  如何更合理 数据库直接对应 jquery?
+            Object.keys(data).forEach(function (key) {
+                switch (key) {
+                    //TODO  待处理
+                    case 'href':
+                        break;
+                    case 'hrefType':
+                        break;
+                    case 'dataurl':
+                        break;
+                    case 'datamapping':
+                        break;
+                    default :
+                        that.$box.css(key, data[key]);
+                        break
+                }
+            });
+
+            next.call(that);
+        },
+
+        _addImgcom: function (next) {
+            var that = this;
+            if (that.getData()) {
+                that._renderImgcom(that.getData(), next);
+            } else {
+                var pageId = that.getPageId();
+                var imgcomEntity = {
+                    imgurl: that.getImgSrc()
+                };
+
+                jq.ajax({
+                    method: "POST",
+                    url: "/addImgcom",
+                    data: {
+                        pageId: pageId,
+                        imgcom: imgcomEntity
+                    }
+                }).done(function (msg) {
+                    if (msg.success) {
+                        that.setData(msg.model);
+                        that._renderImgcom(msg.model, next);
+                        F.trigger('comChange', {type: 'imgcom', comData: msg.model, isAdd: true});
+                    }
+                }).fail(function (msg) {
+                });
+            }
 
         }
     });

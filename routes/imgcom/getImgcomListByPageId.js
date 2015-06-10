@@ -4,7 +4,7 @@ var filter = require('../../filter/filter');
 var Imgcom = require('../../db/imgcom');
 router.get('/', function (req, res, next) {
     filter.authorize(req, res, function (req, res) {
-        var pageId = req.body.pageId;
+        var pageId = req.query.pageId;
         Imgcom.getImgcomListByPageId(pageId, function (err, imgcomtList) {
             if (err) {
                 res.status('500');
