@@ -1,24 +1,24 @@
 define(['FFF', 'jquery'], function (FFF, $) {
     var F = FFF.FFF;
-    var J_btncomContent = $('#J_btncomContent');
+    var J_textcomContent = $('#J_textcomContent');
 
-    var J_btncomContext = J_btncomContent.find('#J_btncomContext');
+    var J_textcomContext = J_textcomContent.find('#J_textcomContext');
 
 
-    F.on('renderBtncomContent', function (data) {
+    F.on('renderTextcomContent', function (data) {
         Object.keys(data).forEach(function (o) {
             switch (o) {
                 case 'context':
-                    J_btncomContext.val(data[o]);
+                    J_textcomContext.val(data[o]);
                     break;
             }
         });
     });
 
-    J_btncomContext.on('input',function(){
+    J_textcomContext.on('input',function(){
         var $that = $(this);
         var value = $that.val();
-        F.trigger('btncomContextChange', value);
+        F.trigger('textcomContextChange', value);
     });
 
 });

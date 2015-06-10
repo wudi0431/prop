@@ -57,8 +57,8 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
             that.$box.on('click', function (e) {
                 var $$curTarget = e.target;
                 if ($$curTarget === that.$boxContent[0]) {
-                    $('#J_btncomContent').show().siblings('.W_editIteam').hide();
-                    $('#J_btncomStyle').show().siblings('.W_editIteam').hide();
+                    $('#J_btncomContent').show().siblings('.W_editItem').hide();
+                    $('#J_btncomStyle').show().siblings('.W_editItem').hide();
                     F.trigger('renderBtncomContent', that.getData());
                     F.trigger('renderBtncomStyle', that.getData());
                 }

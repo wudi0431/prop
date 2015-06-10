@@ -1,38 +1,38 @@
 define(['FFF', 'jquery'], function (FFF, $) {
     var F = FFF.FFF;
-    var J_btncomStyle = $('#J_btncomStyle');
+    var J_textcomStyle = $('#J_textcomStyle');
 
-    var J_btncomWidth = $('#J_btncomWidth');
-    var J_btncomHeight = $('#J_btncomHeight');
+    var J_textcomWidth = $('#J_textcomWidth');
+    var J_textcomHeight = $('#J_textcomHeight');
 
 
-    F.on('renderBtncomContent', function (data) {
+    F.on('renderTextcomContent', function (data) {
         Object.keys(data).forEach(function (o) {
             switch (o) {
                 case 'width':
-                    J_btncomWidth.val(data[o]);
+                    J_textcomWidth.val(data[o]);
                     break;
                 case 'height':
-                    J_btncomHeight.val(data[o]);
+                    J_textcomHeight.val(data[o]);
                     break;
             }
         });
     });
 
 
-    J_btncomWidth.on('input', function () {
+    J_textcomWidth.on('input', function () {
         var $that = $(this);
         var value = $that.val();
-        F.trigger('btncomStyleChange', {
+        F.trigger('textcomStyleChange', {
             type: 'width',
             value: value
         });
     });
 
-    J_btncomHeight.on('input', function () {
+    J_textcomHeight.on('input', function () {
         var $that = $(this);
         var value = $that.val();
-        F.trigger('btncomStyleChange', {
+        F.trigger('textcomStyleChange', {
             type: 'height',
             value: value
         });
