@@ -47,7 +47,7 @@ define(['jquery'], function ($) {
         }
 
         // draw resize cubes
-        ctx.fillStyle = '#fff';
+        ctx.fillStyle = '#f00';
         ctx.fillRect(this.x - this.iCSize[0], this.y - this.iCSize[0], this.iCSize[0] * 2, this.iCSize[0] * 2);
         ctx.fillRect(this.x + this.w - this.iCSize[1], this.y - this.iCSize[1], this.iCSize[1] * 2, this.iCSize[1] * 2);
         ctx.fillRect(this.x + this.w - this.iCSize[2], this.y + this.h - this.iCSize[2], this.iCSize[2] * 2, this.iCSize[2] * 2);

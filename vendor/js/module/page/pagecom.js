@@ -323,7 +323,7 @@ Pagecom.prototype={
                     curitem.find('.disp').text(title);
                     break;
                 case "scene-copy":
-                    that.addpage.before($(this));
+                   // that.addpage.before($(this));
                     break;
                 case "input":
                     $(e.target).focus();
