@@ -51,7 +51,7 @@ require(['zepto', 'jquery', 'spectrum', 'btncom', 'imgcom', 'textcom',
         var addbutton = $('#addbutton');
         var addpages = $('.add-page-list');
 
-        addpages.on('click', function () {
+        addpages.on('click', function (e) {
             e.stopPropagation();
             pagecom.addPage();
         });
@@ -108,10 +108,11 @@ require(['zepto', 'jquery', 'spectrum', 'btncom', 'imgcom', 'textcom',
             });
             $that.resizable({
                 handles: ' n, e, s, w, ne, se, sw, nw',
-                maxWidth: 300,
                 minWidth: 50,
-                maxHeight: 200,
-                minHeight: 20
+                minHeight: 20,
+                stop:function(e,resize){
+                    F.trigger('resizeCom', resize.size);
+                }
             });
             $that.disableSelection();
             siblings.removeClass('select');

@@ -82,6 +82,17 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
                 }
             });
 
+            F.on('resizeCom', function (val) {
+                if (that.$box.hasClass('select')) {
+                    that.$box.css('width', val.width);
+                    that.$box.css('height', val.height);
+                    data['width'] = val.width +'px';
+                    data['height'] = val.height+'px';
+                    that.setData(data);
+                    that.update();
+                }
+            });
+
 
 
             F.on('btncomContextChange', function (val) {
@@ -135,12 +146,6 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
             //TODO  如何更合理 数据库直接对应 jquery?
             Object.keys(data).forEach(function (key) {
                 switch (key) {
-                    case 'width':
-                        that.$box.width(data[key]);
-                        break;
-                    case 'height':
-                        that.$box.height(data[key]);
-                        break;
                     //TODO  待处理
                     case 'href':
                         break;
