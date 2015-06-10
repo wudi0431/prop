@@ -81,7 +81,7 @@ Pagecom.prototype={
                 method: "GET",
                 url: "/getImgcomListByPageId?pageId="+page._id
             }).done(function (msg) {
-                //console.log(msg);
+                console.log(msg);
                 if(msg.success && page.sortindex===1){
                     if(that.ops.Imgcom){
                         msg.model.imgcomtList.forEach(function(img){
