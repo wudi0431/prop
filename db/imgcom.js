@@ -2,8 +2,8 @@ var mongoose = require('mongoose');
 
 var ImgComSchema = new mongoose.Schema({
     zIndex:Number,
-    top:String,
-    left:String,
+    top:{ type: String, default: '200px' },
+    left:{ type: String, default: '100px' },
     right:String,
     bottom:String,
     width:{ type: String, default: '200px' },
