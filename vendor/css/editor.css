@@ -1227,7 +1227,7 @@ body .cp-color-picker,body .colpick {
 .ui-tabs .ui-tabs-panel{
     height:100%;
     box-sizing:border-box;
-    -webkit-box-sizing:border-box;
+    -webkit-box-sizing: border-box;
 }
 .W_editIteam{
     display: none;
@@ -1235,11 +1235,11 @@ body .cp-color-picker,body .colpick {
 
 .mod_animate{
     width:100%;
-    height:100%;
-    padding-bottom:60px;
-    overflow-y: hidden;
-    overflow: scroll;
+    /* height:100%; */
+    /* overflow: scroll; */
+    /* padding: 0 0 35px 0; */
     -webkit-overflow-scrolling:touch;
+    margin-bottom: 30px;
 }
 .mod_animate::-webkit-scrollbar{display:none;}
 
@@ -1318,7 +1318,7 @@ body .cp-color-picker,body .colpick {
 
 .animate_item label .range_num{
     display:block;
-    width:35px;
+    width: 46px;
     height:16px;
     margin:0 10px;
     border:1px solid #777;
@@ -1381,9 +1381,17 @@ body .cp-color-picker,body .colpick {
     -webkit-transform-origin:50%;
     -ms-transform-origin:50%;
     transform-origin:50%;
+    cursor: pointer;
 }
 .animate_eq_title.active .icon{
     -webkit-transform:rotate(-45deg);
     -ms-transform:rotate(-45deg);
     transform:rotate(-45deg);
+}
+
+#animate{
+    overflow: auto;
+}
+.claraBtn{
+    border-bottom: none;
 }

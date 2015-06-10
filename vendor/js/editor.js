@@ -12,7 +12,8 @@ require.config({
         imgs: '/js/module/imgs/imgs',
         pagecom:'/js/module/page/pagecom',
         pagecom_content:'/js/module/page/pagecom_content',
-        imgcut:'/js/module/page/imgcut'
+        imgcut:'/js/module/page/imgcut',
+        animatecom:'/js/module/animate/animatecom'
     },
     shim: {
         'jqui': {
@@ -26,10 +27,12 @@ require.config({
 
 require(['zepto','jquery','spectrum','btncom', 'imgcom',
     'btncom_content','btncom_style','imgcom_content',
-    'imgcom_style','jqui','pagecom','imgs'], function (zepto,$,bigcolorpicker,Btncom,Imgcom,btncom_content,btncom_style,imgcom_content,imgcom_style,jqui,Pagecom,Imgs) {
+    'imgcom_style','jqui','pagecom','imgs','animatecom'], function (
+    zepto,$,bigcolorpicker,Btncom,Imgcom,btncom_content,btncom_style,imgcom_content,imgcom_style,jqui,Pagecom,Imgs,Animatecom) {
 
     var Btncom = Btncom.Btncom;
     var Imgcom = Imgcom.Imgcom;
+    var Animatecom = Animatecom.Animatecom;
     var procon = $('#prototype-content');
     procon.tabs();
     var pagecom = new Pagecom();
@@ -37,6 +40,9 @@ require(['zepto','jquery','spectrum','btncom', 'imgcom',
     var selectImgDialog = $('#selectImgDialog');
     selectImgDialog.tabs();
 
+    var animatecom = new Animatecom().render({
+        container: zepto('#J_animateContent')
+    });
 
 
     var addtext = $('#addtext');
@@ -61,8 +67,6 @@ require(['zepto','jquery','spectrum','btncom', 'imgcom',
         Imgs.show();
 
     });
-
-
     addbutton.on('click', function () {
         var pageId = pagecom.getSelectPage();
         var btncom = new Btncom({
