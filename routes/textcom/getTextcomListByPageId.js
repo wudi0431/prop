@@ -4,7 +4,7 @@ var filter = require('../../filter/filter');
 var Textcom = require('../../db/textcom');
 router.get('/', function (req, res, next) {
     filter.authorize(req, res, function (req, res) {
-        var pageId = req.body.pageId;
+        var pageId = req.query.pageId;
         Textcom.getTextcomListByPageId(pageId, function (err, textcomtList) {
             if (err) {
                 res.status('500');

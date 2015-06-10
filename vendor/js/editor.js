@@ -40,7 +40,7 @@ require(['zepto', 'jquery', 'spectrum', 'btncom', 'imgcom', 'textcom',
         var procon = $('#prototype-content');
         procon.tabs();
         var pagecom = new Pagecom();
-        pagecom.initPage({Btncom: Btncom, Imgcom: Imgcom});
+        pagecom.initPage({Btncom: Btncom, Imgcom: Imgcom,Textcom: Textcom});
         var selectImgDialog = $('#selectImgDialog');
         selectImgDialog.tabs();
 

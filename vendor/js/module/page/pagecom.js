@@ -14,6 +14,7 @@ function Pagecom(){
     this.pageList=[];
     this.btnComList=[];
     this.imgComtList = [];
+    this.textComtList = [];
     this.isfistadd=true;
 };
 Pagecom.prototype={
@@ -81,7 +82,6 @@ Pagecom.prototype={
                 method: "GET",
                 url: "/getImgcomListByPageId?pageId="+page._id
             }).done(function (msg) {
-                console.log(msg);
                 if(msg.success && page.sortindex===1){
                     if(that.ops.Imgcom){
                         msg.model.imgcomtList.forEach(function(img){
@@ -94,6 +94,28 @@ Pagecom.prototype={
                 }else{
                     msg.model.imgcomtList.forEach(function (img) {
                         that.imgComtList.push(img);
+                    });
+                }
+            }).fail(function (msg) {
+                console.log(msg)
+            });
+
+            $.ajax({
+                method: "GET",
+                url: "/getTextcomListByPageId?pageId="+page._id
+            }).done(function (msg) {
+                if(msg.success && page.sortindex===1){
+                    if(that.ops.Textcom){
+                        msg.model.textcomtList.forEach(function(text){
+                            new that.ops.Textcom({data:text}).render({
+                                container:zepto('#showbox')
+                            });
+                            that.textComtList.push(text);
+                        });
+                    }
+                }else{
+                    msg.model.textcomtList.forEach(function (text) {
+                        that.textComtList.push(text);
                     });
                 }
             }).fail(function (msg) {
@@ -135,6 +157,19 @@ Pagecom.prototype={
                     }
                 });
             }
+        }else if(obj.type=='textcom') {
+            if (obj.isAdd) {
+                that.textComtList.push(obj.comData);
+            } else {
+                that.textComtList.forEach(function (text,index) {
+                    if (text._id === obj.comData._id) {
+                        text = obj.comData;
+                        if (obj.isRemove) {
+                            that.textComList.splice(index, 1);
+                        }
+                    }
+                });
+            }
         }
     },
     _addCom: function (pageid) {
@@ -147,8 +182,15 @@ Pagecom.prototype={
             }
         });
         that.imgComtList.forEach(function (img) {
-            if(btn.page===pageid){
+            if(img.page===pageid){
                 new that.ops.Imgcom({data:img}).render({
+                    container:zepto('#showbox')
+                });
+            }
+        });
+        that.textComtList.forEach(function (text) {
+            if(text.page===pageid){
+                new that.ops.Textcom({data:text}).render({
                     container:zepto('#showbox')
                 });
             }
