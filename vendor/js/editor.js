@@ -51,6 +51,7 @@ require(['zepto', 'jquery', 'spectrum', 'btncom', 'imgcom', 'textcom',
         var addpages = $('.add-page-list');
 
         addpages.on('click', function () {
+            e.stopPropagation();
             pagecom.addPage();
         });
         addimage.on('click', function () {
