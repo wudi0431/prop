@@ -57,6 +57,7 @@ require(['zepto', 'jquery', 'spectrum', 'btncom', 'imgcom', 'textcom',
         addimage.on('click', function () {
 
             Imgs.onImgSelect = function (imgSrc) {
+                var pageId = pagecom.getSelectPage();
                 var imgcom = new Imgcom({
                     pageId: pageId,
                     imgSrc: imgSrc
