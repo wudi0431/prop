@@ -57,7 +57,16 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
 
             });
 
-
+            F.on('dragCom', function (val) {
+                if (that.$box.hasClass('select')) {
+                    that.$box.css('top', val.top);
+                    that.$box.css('left', val.left);
+                    data['top'] = val.top +'px';
+                    data['left'] = val.left+'px';
+                    that.setData(data);
+                    that.update();
+                }
+            });
 
 
             F.on('imgcomStyleChange', function (obj) {

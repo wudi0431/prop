@@ -29,10 +29,11 @@ require.config({
 
 require(['zepto', 'jquery', 'spectrum', 'btncom', 'imgcom', 'textcom',
         'btncom_content', 'btncom_style', 'imgcom_content',
-        'imgcom_style', 'textcom_content', 'textcom_style', 'jqui', 'pagecom', 'imgs'],
+        'imgcom_style', 'textcom_content', 'textcom_style', 'jqui', 'pagecom', 'imgs','FFF'],
     function (zepto, $, bigcolorpicker, Btncom, Imgcom, Textcom, btncom_content,
-              btncom_style, imgcom_content, imgcom_style, textcom_content, textcom_style, jqui, Pagecom, Imgs) {
+              btncom_style, imgcom_content, imgcom_style, textcom_content, textcom_style, jqui, Pagecom, Imgs,FFF) {
 
+        var F = FFF.FFF;
         var Btncom = Btncom.Btncom;
         var Imgcom = Imgcom.Imgcom;
         var Textcom = Textcom.Textcom;
@@ -100,7 +101,10 @@ require(['zepto', 'jquery', 'spectrum', 'btncom', 'imgcom', 'textcom',
             $that.draggable({
                 cursor: 'move',
                 containment: 'parent',
-                cancel: false
+                cancel: false,
+                stop:function(e,drag){
+                    F.trigger('dragCom', drag.position);
+                }
             });
             $that.resizable({
                 handles: ' n, e, s, w, ne, se, sw, nw',
