@@ -156,18 +156,26 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
                     that.setAnimateName(aname);
                 });
                 $animatelist.hover(function () {
-                    var aname = $(this).data('name');
+                    var aname = jq(this).data('name');
                     jq(this).children().eq(0).addClass(aname);
                 }, function () {
-                    var aname = $(this).data('name');
+                    var aname = jq(this).data('name');
                     jq(this).children().eq(0).removeClass(aname);
                 });
 
             });
             $.each(that.$moreIcons, function (index, moreIcon) {
                 $(moreIcon).on('click', function () {
-                     $(this).parent().next().eq(0).toggleClass('W_editIteam');
+                     $(this).parent().next().eq(0).toggleClass('W_editItem');
                 })
+            });
+
+            F.on('setAniMateDate', function (data) {
+                that.setAniMateDate(data);
+            });
+
+            F.on('getAniMateDate', function () {
+                that.getAniMateDate();
             });
 
         },
@@ -192,9 +200,36 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
                     +'<span class="animate_list_icon animated"></span>'
                     +'<span class="animate_list_text">'+item.des+'</span></div>'
             })
-            var headhtml ='<div class="animate_eq_title">'+typename+'<i class="more_icon"></i></div><div class="animate_eq_con W_editIteam">' +
+            var headhtml ='<div class="animate_eq_title">'+typename+'<i class="more_icon"></i></div><div class="animate_eq_con W_editItem">' +
                 typehtml+'</div>';
             return headhtml;
+        },
+        getAniMateDate:function(){
+            var that=this;
+            return {
+                animateDuration:that.getAnimateDuration(),
+                animateDelay:that.getAnimateDelay(),
+                animateCount:that.getAnimateCount(),
+                animateName:that.getAnimateName()
+            }
+        },
+        setAniMateDate:function(data){
+            var that=this;
+            that.setAnimateDuration(data.animationDuration);
+            that.setAnimateDelay(data.animationDelay);
+            that.setAnimateCount(data.animationCount);
+            that.setAnimateName(data.animationName);
+            that._expanded(data.animationName);
+        },
+        _expanded: function (animationName) {
+            $.each(this.$animatelists,function (index,item) {
+                var $item =$(item);
+                var aname = $item.data('name');
+                if(aname==animationName){
+                    $item.addClass('current');
+                    $item.parent().removeClass('W_editItem');
+                }
+            })
         }
     });
     return {
