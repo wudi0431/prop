@@ -54,6 +54,8 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
         _bindUI: function () {
             var that = this;
             var data = that.getData();
+            var $box = that.getBoundingBox();
+            that.$box=$box;
             that.$box.on('click', function (e) {
                 var $$curTarget = e.target;
                 if ($$curTarget === that.$boxContent[0]) {
@@ -61,7 +63,7 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
                     $('#J_btncomStyle').show().siblings('.W_editItem').hide();
                     F.trigger('renderBtncomContent', that.getData());
                     F.trigger('renderBtncomStyle', that.getData());
-                    F.trigger('setAniMateDate', that.getData());
+                    //F.trigger('setAniMateDate', that.getData());
                 }
 
                 if ($$curTarget === that.$boxDel[0]) {
@@ -74,12 +76,18 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
 
             F.on('getAniMateDate', function (val) {
                 if (that.$box.hasClass('select')) {
-                    that.$box.css('animateDuration', val.animateDuration);
-                    that.$box.css('animateDelay', val.animateDelay);
-                    that.$box.css('animateCount', val.animateCount);
-                    that.$box.css('animateName', val.animateName);
-                    data['animateDuration'] = val.animateDuration;
-                    data['animateDelay'] = val.animateDelay;
+                    that.$box.css({
+                        "animation-name":val.animateName,
+                        "-webkit-animation-name": val.animateName,
+                        "animation-duration": val.animateDuration+"s",
+                        "-webkit-animation-duration": val.animateDuration+"s",
+                        "animation-delay": val.animateDelay+"s",
+                        "-webkit-animation-delay": val.animateDelay+"s",
+                        "animation-iteration-count":val.animateCount,
+                        "-webkit-animation-iteration-count": val.animateCount
+                })
+                    data['animateDuration'] = val.animateDuration+"s";
+                    data['animateDelay'] = val.animateDelay+"s";
                     data['animateCount'] = val.animateCount;
                     data['animateName'] = val.animateName;
                     that.setData(data);

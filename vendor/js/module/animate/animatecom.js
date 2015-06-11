@@ -16,6 +16,7 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
         animateDuration: {
             value: "1.5",
             changeFn: function (args) {
+                args.value = args.value ? args.value : args.preValue;
                 var that = this;
                 F.trigger('getAniMateDate', that.getAniMateDate());
             }
@@ -24,6 +25,7 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
             value: "0.7",
             changeFn: function (args) {
                 var that = this;
+                args.value = args.value ? args.value : args.preValue;
                 F.trigger('getAniMateDate', that.getAniMateDate());
             }
         },
@@ -31,6 +33,7 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
             value: "1",
             changeFn: function (args) {
                 var that = this;
+                args.value = args.value ? args.value : args.preValue;
                 F.trigger('getAniMateDate', that.getAniMateDate());
             }
         },
@@ -38,6 +41,7 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
             value: '',
             changeFn: function (args) {
                 var that = this;
+                args.value = args.value ? args.value : args.preValue;
                 F.trigger('getAniMateDate', that.getAniMateDate());
             }
         },
