@@ -33,6 +33,13 @@ require(['zepto', 'jquery', 'spectrum', 'btncom', 'imgcom', 'textcom','btncom_co
     zepto, $, bigcolorpicker, Btncom, Imgcom, Textcom, btncom_content,
     btncom_style, imgcom_content, imgcom_style, textcom_content, textcom_style, jqui, Pagecom, Imgs,FFF,Animatecom) {
 
+    //根据 url 的名字 获得 值
+    function getQueryString(name){
+        var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if(r!=null)return  unescape(r[2]); return null;
+    }
+
     var F = FFF.FFF;
     var Btncom = Btncom.Btncom;
     var Imgcom = Imgcom.Imgcom;
@@ -41,6 +48,15 @@ require(['zepto', 'jquery', 'spectrum', 'btncom', 'imgcom', 'textcom','btncom_co
     var animatecom = new Animatecom().render({
         container: zepto('#J_animateContent')
     });
+
+    var projectId =  getQueryString("projectId");
+    var j_preview_app = $('.j_preview_app');
+    j_preview_app.on('click',function(){
+        window.open('/preview?projectId='+projectId);
+    });
+
+
+
     var procon = $('#prototype-content');
     procon.tabs();
     var pagecom = new Pagecom();
