@@ -80,6 +80,7 @@ var getImgcom = require('./routes/imgcom/getImgcom');
 var getImgcomListByPageId = require('./routes/imgcom/getImgcomListByPageId');
 var updateImgcom = require('./routes/imgcom/updateImgcom');
 
+var preview = require('./routes/preview');
 
 
 
@@ -146,7 +147,7 @@ app.use('/getImgcom',getImgcom);
 app.use('/getImgcomListByPageId',getImgcomListByPageId);
 app.use('/updateImgcom',updateImgcom);
 
-
+app.use('/preview',preview);
 
 
 // catch 404 and forward to error handler
