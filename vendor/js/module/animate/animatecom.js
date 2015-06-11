@@ -18,7 +18,9 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
             changeFn: function (args) {
                 args.value = args.value ? args.value : args.preValue;
                 var that = this;
-                F.trigger('getAniMateDate', that.getAniMateDate());
+                that.isgetAniMateDate && F.trigger('getAniMateDate', that.getAniMateDate());
+                that.$rangeInputs.eq(0).val(args.value);
+                that.$numberInputs.eq(0).val(args.value);
             }
         },
         animateDelay: {
@@ -26,7 +28,9 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
             changeFn: function (args) {
                 var that = this;
                 args.value = args.value ? args.value : args.preValue;
-                F.trigger('getAniMateDate', that.getAniMateDate());
+                that.isgetAniMateDate && F.trigger('getAniMateDate', that.getAniMateDate());
+                that.$rangeInputs.eq(1).val(args.value);
+                that.$numberInputs.eq(1).val(args.value);
             }
         },
         animateCount: {
@@ -34,11 +38,13 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
             changeFn: function (args) {
                 var that = this;
                 args.value = args.value ? args.value : args.preValue;
-                F.trigger('getAniMateDate', that.getAniMateDate());
+                that.isgetAniMateDate && F.trigger('getAniMateDate', that.getAniMateDate());
+                that.$rangeInputs.eq(2).val(args.value);
+                that.$numberInputs.eq(2).val(args.value);
             }
         },
         animateName: {
-            value: '',
+            value: 'noeffect',
             changeFn: function (args) {
                 var that = this;
                 args.value = args.value ? args.value : args.preValue;
@@ -130,6 +136,8 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
 
             that.$moreIcons = $box.find('.more_icon');
 
+            that.isgetAniMateDate=false;
+
         },
         bindUI: function () {
             var that = this;
@@ -161,6 +169,7 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
                     });
                     var aname = jq(this).data('name');
                     jq(this).addClass('current');
+                    that.isgetAniMateDate=true;
                     that.setAnimateName(aname);
                 });
                 $animatelist.hover(function () {
@@ -186,6 +195,7 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
         },
         _setProValue: function (typename, value) {
             var that = this;
+            that.isgetAniMateDate=true;
             switch (typename) {
                 case "animateDuration":
                     that.setAnimateDuration(value);
@@ -212,19 +222,20 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
         getAniMateDate:function(){
             var that=this;
             return {
-                animateDuration:that.getAnimateDuration(),
-                animateDelay:that.getAnimateDelay(),
+                animateDuration:that.getAnimateDuration()+"s",
+                animateDelay:that.getAnimateDelay()+"s",
                 animateCount:that.getAnimateCount(),
                 animateName:that.getAnimateName()
             }
         },
         setAniMateDate:function(data){
             var that=this;
-            that.setAnimateDuration(data.animationDuration);
-            that.setAnimateDelay(data.animationDelay);
-            that.setAnimateCount(data.animationCount);
-            that.setAnimateName(data.animationName);
-            that._expanded(data.animationName);
+            that.isgetAniMateDate=false;
+            data.animationDuration && that.setAnimateDuration(data.animationDuration.replace('s',''));
+            data.animationDelay&&  that.setAnimateDelay(data.animationDelay.replace('s',''));
+            data.animationCount && that.setAnimateCount(data.animationCount);
+            that.setAnimateName(data.animationName|| "noeffect");
+            that._expanded(data.animationName|| "noeffect");
         },
         _expanded: function (animationName) {
             $.each(this.$animatelists,function (index,item) {
