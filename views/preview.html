@@ -17,6 +17,12 @@
             position: relative;
             width: 320px;
         }
+
+        .W_item{
+            position: absolute;
+            display: inline-flex;
+        }
+
         .W_btn{
             width: 100%;
         }
@@ -32,21 +38,21 @@
 <% allPage.forEach(function(page){ %>
 <div class="page">
     <% page.btncomtList.forEach(function(btn){ %>
-        <div class="W_item" style="position: absolute;
+        <div class="W_item" style="
         width: <%= btn.width %>;height: <%= btn.height %>;top:<%= btn.top %>;
         left:<%= btn.left %>;">
             <button type="button" class="W_btn"><%= btn.context %></button>
         </div>
     <% }) %>
     <% page.imgcomList.forEach(function(img){ %>
-        <div class="W_item"  style="position: absolute;
+        <div class="W_item"  style="
         width: <%= img.width %>;height: <%= img.height %>;top:<%= img.top %>;
         left:<%= img.left %>;">
             <img class="W_imgcom" src="<%= img.imgurl %>"/>
         </div>
     <% }) %>
     <% page.textcomList.forEach(function(text){ %>
-        <div class="W_item" style="position: absolute;
+        <div class="W_item" style="
         width: <%= text.width %>;height: <%= text.height %>;top:<%= text.top %>;
         left:<%= text.left %>;">
             <div class="W_text"><%= text.context %></div>
