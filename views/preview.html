@@ -2,19 +2,65 @@
 <html>
 <head>
     <title>微信传播-预览页</title>
+    <link rel="stylesheet" href="/css/reset.css"/>
+    <style>
+        #qrcode{
+            position: absolute;
+        }
+
+        .page{
+            border: 1px solid #0000ff;
+            background-color: rgba(255, 255, 255, 0.57);
+            height: 504px;
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+            width: 320px;
+        }
+        .W_btn{
+            width: 100%;
+        }
+        .W_imgcom{
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
 
 <div id="qrcode"></div>
 
-
+<% allPage.forEach(function(page){ %>
+<div class="page">
+    <% page.btncomtList.forEach(function(btn){ %>
+        <div class="W_item" style="position: absolute;
+        width: <%= btn.width %>;height: <%= btn.height %>;top:<%= btn.top %>;
+        left:<%= btn.left %>;">
+            <button type="button" class="W_btn"><%= btn.context %></button>
+        </div>
+    <% }) %>
+    <% page.imgcomList.forEach(function(img){ %>
+        <div class="W_item"  style="position: absolute;
+        width: <%= img.width %>;height: <%= img.height %>;top:<%= img.top %>;
+        left:<%= img.left %>;">
+            <img class="W_imgcom" src="<%= img.imgurl %>"/>
+        </div>
+    <% }) %>
+    <% page.textcomList.forEach(function(text){ %>
+        <div class="W_item" style="position: absolute;
+        width: <%= text.width %>;height: <%= text.height %>;top:<%= text.top %>;
+        left:<%= text.left %>;">
+            <div class="W_text"><%= text.context %></div>
+        </div>
+    <% }) %>
+</div>
+<% }) %>
 
 
 <script type='text/javascript' src='http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js'></script>
 <script type="text/javascript" src="http://cdn.staticfile.org/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
 
 <script>
-    jQuery('#qrcode').qrcode("http://blog.wpjam.com");
+    jQuery('#qrcode').qrcode(window.location.href);
 </script>
 </body>
 </html>
