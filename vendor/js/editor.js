@@ -16,7 +16,8 @@ require.config({
         pagecom:'/js/module/page/pagecom',
         pagecom_content:'/js/module/page/pagecom_content',
         imgcut:'/js/module/page/imgcut',
-        animatecom:'/js/module/animate/animatecom'
+        animatecom:'/js/module/animate/animatecom',
+        datasourcecom:'/js/module/datasource/datasourcecom'
     },
     shim: {
         'jqui': {
@@ -29,9 +30,9 @@ require.config({
 });
 
 require(['zepto', 'jquery', 'spectrum', 'btncom', 'imgcom', 'textcom','btncom_content', 'btncom_style', 'imgcom_content',
-    'imgcom_style', 'textcom_content', 'textcom_style', 'jqui', 'pagecom', 'imgs','FFF','animatecom'], function (
+    'imgcom_style', 'textcom_content', 'textcom_style', 'jqui', 'pagecom', 'imgs','FFF','animatecom','datasourcecom'], function (
     zepto, $, bigcolorpicker, Btncom, Imgcom, Textcom, btncom_content,
-    btncom_style, imgcom_content, imgcom_style, textcom_content, textcom_style, jqui, Pagecom, Imgs,FFF,Animatecom) {
+    btncom_style, imgcom_content, imgcom_style, textcom_content, textcom_style, jqui, Pagecom, Imgs,FFF,Animatecom,Datasourcecom) {
 
     //根据 url 的名字 获得 值
     function getQueryString(name){
@@ -45,8 +46,12 @@ require(['zepto', 'jquery', 'spectrum', 'btncom', 'imgcom', 'textcom','btncom_co
     var Imgcom = Imgcom.Imgcom;
     var Textcom = Textcom.Textcom;
     var Animatecom = Animatecom.Animatecom;
+    var Datasourcecom = Datasourcecom.DataSourcecom;
     var animatecom = new Animatecom().render({
         container: zepto('#J_animateContent')
+    });
+    var datasourcecom = new Datasourcecom().render({
+        container: zepto('#J_datasourceContent')
     });
 
     var projectId =  getQueryString("projectId");
