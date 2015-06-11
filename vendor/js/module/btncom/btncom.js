@@ -61,6 +61,7 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
                     $('#J_btncomStyle').show().siblings('.W_editItem').hide();
                     F.trigger('renderBtncomContent', that.getData());
                     F.trigger('renderBtncomStyle', that.getData());
+                    F.trigger('setAniMateDate', that.getData());
                 }
 
                 if ($$curTarget === that.$boxDel[0]) {
@@ -68,6 +69,22 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
                 }
 
 
+            });
+
+
+            F.on('getAniMateDate', function (val) {
+                if (that.$box.hasClass('select')) {
+                    that.$box.css('animateDuration', val.animateDuration);
+                    that.$box.css('animateDelay', val.animateDelay);
+                    that.$box.css('animateCount', val.animateCount);
+                    that.$box.css('animateName', val.animateName);
+                    data['animateDuration'] = val.animateDuration;
+                    data['animateDelay'] = val.animateDelay;
+                    data['animateCount'] = val.animateCount;
+                    data['animateName'] = val.animateName;
+                    that.setData(data);
+                    that.update();
+                }
             });
 
 

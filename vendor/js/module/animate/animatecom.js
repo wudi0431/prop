@@ -16,25 +16,29 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
         animateDuration: {
             value: "1.5",
             changeFn: function (args) {
-
+                var that = this;
+                F.trigger('getAniMateDate', that.getAniMateDate());
             }
         },
         animateDelay: {
             value: "0.7",
             changeFn: function (args) {
-
+                var that = this;
+                F.trigger('getAniMateDate', that.getAniMateDate());
             }
         },
         animateCount: {
             value: "1",
             changeFn: function (args) {
-
+                var that = this;
+                F.trigger('getAniMateDate', that.getAniMateDate());
             }
         },
         animateName: {
             value: '',
             changeFn: function (args) {
-
+                var that = this;
+                F.trigger('getAniMateDate', that.getAniMateDate());
             }
         },
         outAniMateName: {
@@ -174,9 +178,6 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
                 that.setAniMateDate(data);
             });
 
-            F.on('getAniMateDate', function () {
-                that.getAniMateDate();
-            });
 
         },
         _setProValue: function (typename, value) {
