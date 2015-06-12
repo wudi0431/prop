@@ -503,6 +503,7 @@ Pagecom.prototype={
     },
     setPageStyle: function (curpage) {
         var that =this;
+        if(curpage ==undefined || curpage==null) return false;
         if(curpage.backgroundcolor && curpage.backgroundcolor!=""){
             that.$showbox.css({
                 "background-color":curpage.backgroundcolor
