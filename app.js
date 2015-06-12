@@ -80,7 +80,7 @@ var getImgcom = require('./routes/imgcom/getImgcom');
 var getImgcomListByPageId = require('./routes/imgcom/getImgcomListByPageId');
 var updateImgcom = require('./routes/imgcom/updateImgcom');
 
-var preview = require('./routes/preview');
+var preview = require('./routes/preview/preview');
 
 
 

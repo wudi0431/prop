@@ -3,14 +3,14 @@ var path = require('path');
 var ejs = require('ejs');
 var fs = require('fs');
 var router = express.Router();
-var filter = require('../filter/filter');
-var Project = require('../db/project');
-var Page = require('../db/page');
-var Btncom = require('../db/btncom');
-var Imgcom = require('../db/imgcom');
-var Textcom = require('../db/textcom');
-var View = require('../db/view');
-var previewPath = path.resolve(__dirname, '../public/preview');
+var filter = require('../../filter/filter');
+var Project = require('../../db/project');
+var Page = require('../../db/page');
+var Btncom = require('../../db/btncom');
+var Imgcom = require('../../db/imgcom');
+var Textcom = require('../../db/textcom');
+var View = require('../../db/view');
+var previewPath = path.resolve(__dirname, '../../public/preview');
 var previewTPL = path.resolve(__dirname, 'preview.html');
 
 /* GET home page. */
