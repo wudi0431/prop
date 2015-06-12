@@ -51,7 +51,7 @@ router.get('/', function (req, res, next) {
                                 }
 
                                 allPage.push(onePage);
-                                if (allPage.length === 2) {
+                                if (allPage.length === pageList.length) {
 
                                     res.render('preview', {allPage:allPage});
                                 }
