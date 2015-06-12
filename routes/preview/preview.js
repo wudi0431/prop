@@ -18,7 +18,6 @@ router.get('/', function (req, res, next) {
     filter.authorize(req, res, function (req, res) {
         var projectId = req.query.projectId;
         var allPage = [];
-        var previewSrc = '';
         Page.getPageList(projectId, function (err, pageList) {
 
             if (err) {
@@ -115,16 +114,16 @@ function createHTML(uid, projectId, allPage, res) {
     });
 
     function writeHTML() {
-        var newPreviewPath = path.join(previewPath, uid + '');
+        var newPreviewPath = path.join(previewPath, projectId + '');
         fs.mkdirSync(newPreviewPath);
         fs.writeFileSync(path.join(newPreviewPath, 'index.html'), html);
         var view = new View({
-            url: path.join(path.sep, 'preview', uid + '', 'index.html'),
+            url: path.join(path.sep, 'preview', projectId + '', 'index.html'),
             uid: uid,
             project: projectId
         });
         view.save();
-        return path.join(path.sep, 'preview', uid + '', 'index.html');
+        return path.join(path.sep, 'preview', projectId + '', 'index.html');
     }
 
 
