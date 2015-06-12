@@ -64,6 +64,7 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
                     F.trigger('renderBtncomContent', that.getData());
                     F.trigger('renderBtncomStyle', that.getData());
                     F.trigger('setAniMateDate', that.getData());
+                    F.trigger('setDataSouceData', that.getData());
                 }
 
                 if ($$curTarget === that.$boxDel[0]) {
@@ -93,6 +94,14 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
                 }
             });
 
+            F.on('getDataSouceData', function (val) {
+                if (that.$box.hasClass('select')) {
+                    data['dataurl'] = val.dataurl;
+                    data['datamapping'] = val.datamapping;
+                    that.setData(data);
+                    that.update();
+                }
+            });
 
             F.on('dragCom', function (val) {
                 if (that.$box.hasClass('select')) {

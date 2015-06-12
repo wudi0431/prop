@@ -16,7 +16,8 @@ require.config({
         pagecom:'/js/module/page/pagecom',
         pagecom_content:'/js/module/page/pagecom_content',
         imgcut:'/js/module/page/imgcut',
-        animatecom:'/js/module/animate/animatecom'
+        animatecom:'/js/module/animate/animatecom',
+        datasourcecom:'/js/module/datasource/datasourcecom'
     },
     shim: {
         'jqui': {
@@ -29,9 +30,9 @@ require.config({
 });
 
 require(['zepto', 'jquery', 'spectrum', 'btncom', 'imgcom', 'textcom','btncom_content', 'btncom_style', 'imgcom_content',
-    'imgcom_style', 'textcom_content', 'textcom_style', 'jqui', 'pagecom', 'imgs','FFF','animatecom'], function (
+    'imgcom_style', 'textcom_content', 'textcom_style', 'jqui', 'pagecom', 'imgs','FFF','animatecom','datasourcecom'], function (
     zepto, $, bigcolorpicker, Btncom, Imgcom, Textcom, btncom_content,
-    btncom_style, imgcom_content, imgcom_style, textcom_content, textcom_style, jqui, Pagecom, Imgs,FFF,Animatecom) {
+    btncom_style, imgcom_content, imgcom_style, textcom_content, textcom_style, jqui, Pagecom, Imgs,FFF,Animatecom,Datasourcecom) {
 
     //根据 url 的名字 获得 值
     function getQueryString(name){
@@ -45,8 +46,12 @@ require(['zepto', 'jquery', 'spectrum', 'btncom', 'imgcom', 'textcom','btncom_co
     var Imgcom = Imgcom.Imgcom;
     var Textcom = Textcom.Textcom;
     var Animatecom = Animatecom.Animatecom;
+    var Datasourcecom = Datasourcecom.DataSourcecom;
     var animatecom = new Animatecom().render({
         container: zepto('#J_animateContent')
+    });
+    var datasourcecom = new Datasourcecom().render({
+        container: zepto('#J_datasourceContent')
     });
 
     var projectId =  getQueryString("projectId");
@@ -63,6 +68,34 @@ require(['zepto', 'jquery', 'spectrum', 'btncom', 'imgcom', 'textcom','btncom_co
     pagecom.initPage({Btncom: Btncom, Imgcom: Imgcom,Textcom: Textcom});
     var selectImgDialog = $('#selectImgDialog');
     selectImgDialog.tabs();
+
+    $('#prototype-content').tabs({
+        beforeActivate: function( event, ui ) {
+            switch (selecttype){
+                case 'btncom':
+                    if(ui.newTab.attr('aria-controls')=="content-1"){
+                        $('#J_btncomContent').show();
+                    }else{
+                        $('#J_btncomContent').hide();
+                    }
+                    break;
+                case 'imgcom':
+                    if(ui.newTab.attr('aria-controls')=="content-1"){
+                        $('#J_imgcomContent').show();
+                    }else{
+                        $('#J_imgcomContent').hide();
+                    }
+                    break;
+                case 'textcom':
+                    if(ui.newTab.attr('aria-controls')=="content-1"){
+                        $('#J_textcomContent').show();
+                    }else{
+                        $('#J_textcomContent').hide();
+                    }
+                    break;
+            }
+        }
+    })
 
     var addtext = $('#addtext');
     var addimage = $('#addimage');
@@ -118,6 +151,7 @@ require(['zepto', 'jquery', 'spectrum', 'btncom', 'imgcom', 'textcom','btncom_co
 
 
     });
+    var selecttype=null;
     $('#showbox').on('click', '.W_item', function (e) {
         var $that = $(this);
         $('#J_pageContent').hide();
@@ -161,22 +195,35 @@ require(['zepto', 'jquery', 'spectrum', 'btncom', 'imgcom', 'textcom','btncom_co
         });
         if (issWich) {
             var $li = procon.children('ul').children('li');
+            var $div = procon.children('div');
             var $jp = procon.find('#J_pageContent');
             var $jb = procon.find('#J_btncomContent');
             var $jm = procon.find('#J_imgcomContent');
+            var $jt = procon.find('#J_textcomContent');
             if (e.target.className == 'showbox') {
-                $li.first().show().siblings('li').addClass('item-visible');
+                $li.eq(0).show().siblings('li').addClass('item-visible');
+                $div.eq(0).show().siblings('div').hide();
                 $jp.show();
                 $jb.hide();
                 $jm.hide();
+                $jt.hide();
+
             } else {
                 $li.siblings('li').removeClass('item-visible');
                 $jp.hide();
-                var type = $(e.target).data('type');
-                if (type == 'btncom') {
+                selectImgDialog.tabs( "option", "active",0);
+                var targetName = e.target.tagName.toLowerCase();;
+                if(targetName=="button" || targetName=="img" || targetName=="div" ){
+                    selecttype = $(e.target).parent('div').data('type');
+                }else{
+                    selecttype = $(e.target).data('type');
+                }
+                if (selecttype == 'btncom') {
                     $jb.show();
-                } else if (type == 'imgcom') {
+                } else if (selecttype == 'imgcom') {
                     $jm.show();
+                }else if (selecttype == 'textcom') {
+                    $jt.show();
                 }
             }
         }

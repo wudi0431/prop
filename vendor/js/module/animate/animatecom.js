@@ -48,7 +48,7 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
             changeFn: function (args) {
                 var that = this;
                 args.value = args.value ? args.value : args.preValue;
-                F.trigger('getAniMateDate', that.getAniMateDate());
+                that.isgetAniMateDate && F.trigger('getAniMateDate', that.getAniMateDate());
             }
         },
         outAniMateName: {
@@ -93,6 +93,7 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
     F.extend(Animatecom, Widget, {
         renderUI: function () {
             var that = this;
+            that.isgetAniMateDate=false;
             var $box = that.getBoundingBox();
             var titlename = '<h3 class="cell_title">动画设置</h3>';
             var rangbox = '<div class="animate_item">'
@@ -136,7 +137,7 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
 
             that.$moreIcons = $box.find('.more_icon');
 
-            that.isgetAniMateDate=false;
+
 
         },
         bindUI: function () {
@@ -221,10 +222,11 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
         },
         getAniMateDate:function(){
             var that=this;
+            var cont =that.getAnimateCount();
             return {
                 animateDuration:that.getAnimateDuration()+"s",
                 animateDelay:that.getAnimateDelay()+"s",
-                animateCount:that.getAnimateCount(),
+                animateCount:cont=="0" ? "infinite" :cont ,
                 animateName:that.getAnimateName()
             }
         },
