@@ -37,6 +37,8 @@
     <meta name="msapplication-tap-highlight" content="no">
     <!-- 适应移动端end -->
     <link rel="stylesheet" href="/css/reset.css"/>
+    <link rel="stylesheet" href="/css/animate.css"/>
+
     <style>
 
         .pageWrap{
@@ -69,21 +71,24 @@
 <% allPage.forEach(function(page){ %>
 <div class="page" style="background-color:<%= page.backgroundcolor %>; ">
     <% page.btncomtList.forEach(function(btn){ %>
-    <div class="W_item" style="
+    <div class="W_item" style="animation-name: <%= btn.animationName %>;animation-duration: <%= btn.animationDuration %>;
+    animation-delay: <%= btn.animationDelay %>;animation-count: <%= btn.animationCount %>;
         width: <%= btn.width %>;height: <%= btn.height %>;top:<%= btn.top %>;
         left:<%= btn.left %>;">
         <button type="button" class="W_btn"><%= btn.context %></button>
     </div>
     <% }) %>
     <% page.imgcomList.forEach(function(img){ %>
-    <div class="W_item"  style="
+    <div class="W_item"  style="animation-name: <%= img.animationName %>;animation-duration: <%= img.animationDuration %>;
+    animation-delay: <%= img.animationDelay %>;animation-count: <%= img.animationCount %>;
         width: <%= img.width %>;height: <%= img.height %>;top:<%= img.top %>;
         left:<%= img.left %>;">
         <img class="W_imgcom" src="<%= img.imgurl %>"/>
     </div>
     <% }) %>
     <% page.textcomList.forEach(function(text){ %>
-    <div class="W_item" style="
+    <div class="W_item" style="animation-name: <%= text.animationName %>;animation-duration: <%= text.animationDuration %>;
+    animation-delay: <%= text.animationDelay %>;animation-count: <%= text.animationCount %>;
         width: <%= text.width %>;height: <%= text.height %>;top:<%= text.top %>;
         left:<%= text.left %>;">
         <div class="W_text"><%= text.context %></div>
