@@ -48,6 +48,7 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
                 if ($$curTarget === that.$boxContent[0]) {
                     $('#J_imgcomContent').show().siblings('.W_editItem').hide();
                     $('#J_imgcomStyle').show().siblings('.W_editItem').hide();
+                    F.trigger('setAniMateDate', that.getData());
                 }
 
                 if ($$curTarget === that.$boxDel[0]) {
@@ -56,6 +57,29 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
 
 
             });
+
+
+            F.on('getAniMateDate', function (val) {
+                if (that.$box.hasClass('select')) {
+                    that.$box.css({
+                        "animation-name":val.animateName,
+                        "-webkit-animation-name": val.animateName,
+                        "animation-duration": val.animateDuration,
+                        "-webkit-animation-duration": val.animateDuration,
+                        "animation-delay": val.animateDelay,
+                        "-webkit-animation-delay": val.animateDelay,
+                        "animation-iteration-count":val.animateCount,
+                        "-webkit-animation-iteration-count": val.animateCount
+                    });
+                    data['animationDuration'] = val.animateDuration;
+                    data['animationDelay'] = val.animateDelay;
+                    data['animationCount'] = val.animateCount;
+                    data['animationName'] = val.animateName;
+                    that.setData(data);
+                    that.update();
+                }
+            });
+
 
             F.on('dragCom', function (val) {
                 if (that.$box.hasClass('select')) {
