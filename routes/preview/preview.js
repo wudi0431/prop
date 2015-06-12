@@ -27,7 +27,7 @@ router.get('/', function (req, res, next) {
 
             if (pageList) {
                 pageList.forEach(function (o) {
-                    var onePage = {};
+                    var onePage = o;
                     //Btncom
                     Btncom.getBtncomListByPageId(o._id, function (err, btncomList) {
 

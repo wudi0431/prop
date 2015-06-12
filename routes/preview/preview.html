@@ -39,6 +39,9 @@
     <link rel="stylesheet" href="/css/reset.css"/>
     <style>
 
+        .pageWrap{
+
+        }
 
         .page{
             background-color: rgba(255, 255, 255, 0.57);
@@ -62,9 +65,9 @@
 </head>
 <body>
 
-
+<div class="pageWrap">
 <% allPage.forEach(function(page){ %>
-<div class="page">
+<div class="page" style="background-color:<%= page.backgroundcolor %>; ">
     <% page.btncomtList.forEach(function(btn){ %>
     <div class="W_item" style="
         width: <%= btn.width %>;height: <%= btn.height %>;top:<%= btn.top %>;
@@ -88,7 +91,12 @@
     <% }) %>
 </div>
 <% }) %>
+</div>
 
-
+<script type='text/javascript' src='http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js'></script>
+<script>
+    var height = $(window).height();
+    $('.page').height(height);
+</script>
 </body>
 </html>

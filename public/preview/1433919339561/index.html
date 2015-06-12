@@ -39,6 +39,9 @@
     <link rel="stylesheet" href="/css/reset.css"/>
     <style>
 
+        .pageWrap{
+
+        }
 
         .page{
             background-color: rgba(255, 255, 255, 0.57);
@@ -62,15 +65,9 @@
 </head>
 <body>
 
+<div class="pageWrap">
 
-
-<div class="page">
-    
-    <div class="W_item" style="
-        width: 102px;height: 65px;top:200px;
-        left:100px;">
-        <button type="button" class="W_btn">按钮</button>
-    </div>
+<div class="page" style="background-color:rgba(0,187,187,1);; ">
     
     <div class="W_item" style="
         width: 174px;height: 69px;top:397px;
@@ -94,7 +91,7 @@
     
 </div>
 
-<div class="page">
+<div class="page" style="background-color:rgba(0,187,187,1);; ">
     
     
     <div class="W_item"  style="
@@ -112,7 +109,12 @@
     
 </div>
 
+</div>
 
-
+<script type='text/javascript' src='http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js'></script>
+<script>
+    var height = $(window).height();
+    $('.page').height(height);
+</script>
 </body>
 </html>
