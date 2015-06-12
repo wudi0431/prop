@@ -10,5 +10,11 @@ var ViewSchema = new mongoose.Schema({
 });
 
 
+ViewSchema.static('getView', function (uid,cb) {
+    return this.findOne({
+        uid:uid
+    }, cb)
+});
+
 var ViewModel = mongoose.model('View', ViewSchema);
 module.exports = ViewModel;
