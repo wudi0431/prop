@@ -1,188 +1,132 @@
-html, body {
+@charset "utf-8";body {
+    background-color: #fbfbfb
+}
+
+html,body {
     -webkit-user-select: none;
     -ms-user-select: none;
     user-select: none
 }
-a, img {
-    -webkit-touch-callout: none
-}
-body, input, a {
-    color: #000;
-    display: inline-block;
-    font-family: "Helvetica Neue", Helvetica, "Microsoft Yahei", STHeiTi, sans-serif;
-    font-size: 14px
-}
-a {
-    text-decoration: none
-}
-body, div, p {
-    margin: 0;
-    padding: 0
-}
-#touchBoxCt img {
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    user-select: none
-}
-#touchBoxCt>.touch-box-item {
-    display: none
-}
-#touchBoxCt>.touch-box-item .touch-box-bg-image {
+
+.preview-body-wrapper {
+    height: 700px;
+    left: 50%;
+    margin-left: -415px;
+    margin-top: -300px;
     position: absolute;
-    width: 100%;
-    z-index: 2
-}
-#touchBoxCt>.touch-box-item .touch-box-element-wrap {
-    position: absolute;
-    width: 100%
-}
-#touchBoxCt>.touch-box-item .touch-box-element {
-    overflow: hidden
-}
-#touchBoxCt>.touch-box-item .touch-box-element>.touch-box-element-text, #touchBoxCt>.touch-box-item .touch-box-element>.touch-box-element-html {
-    left: 0;
-    position: absolute;
-    right: 0;
     top: 50%;
-    -webkit-transform: translate(0, -50%);
-    -ms-transform: translate(0, -50%);
-    transform: translate(0, -50%)
+    width: 830px
 }
-#touchBoxCt>.touch-box-item .touch-box-element>.touch-box-element-image {
-    left: 0;
+
+.scroll-wrapper {
+    padding-top: 300px
+}
+
+.operate-wrapper {
+    margin-left: 105px;
+    margin-top: 40px
+}
+
+.iframe-wrapper iframe {
+    border: none;
+    height: 504px;
+    left: 17px;
     position: absolute;
-    top: 0
+    top: 81px;
+    width: 320px
 }
-#touchBoxCt>.touch-box-item .touch-box-element>.touch-box-element-mulittext {
-    bottom: 0;
-    left: 0;
+
+.exp-wrapper p {
+    line-height: 2em
+}
+
+.op-wrapper a {
+    background-color: #E07601;
+    padding: 10px
+}
+
+.preview-body-wrapper .iframe-wrapper {
+    position: relative
+}
+
+.iframe-wrapper .preview-big-bg {
+    left: -203px;
     position: absolute;
-    right: 0;
-    top: 0
+    top: 636px;
+    z-index: -1
 }
-#touchBoxCt>.touch-box-item .touch-box-element>.touch-box-element-text {
+
+.scroll-wrapper .ico {
+    cursor: pointer;
+    display: inline-block;
+    height: 85px;
+    margin-left: 15px;
+    margin-bottom: 15px;
+    width: 88px
+}
+
+.scroll-wrapper .ico-up {
+    background: url(../img/ico-up.png) no-repeat
+}
+
+.scroll-wrapper .ico-down {
+    background: url(../img/ico-down.png) no-repeat
+}
+
+.operate-wrapper .qrcode-wrapper {
+    background-color: #efefef;
+    margin-top: 70px;
+    padding: 15px
+}
+
+.qrcode-wrapper .qrcode-tips {
+    font-size: 16px;
+    font-weight: 700;
+    margin-top: 10px;
+    text-align: center
+}
+
+.operate-wrapper .find-us-wrapper {
+    background-color: #f3f3f3;
+    border-radius: 20px;
+    margin-top: 15px;
+    padding: 10px;
+    text-align: center
+}
+
+.find-us-wrapper .baomitu {
+    color: #ea7501;
+    font-size: 16px
+}
+
+.operate-wrapper .exp-wrapper,.operate-wrapper .op-wrapper {
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.operate-wrapper .exp-btn {
+    background-color: #ea7501;
+    font-size: 16px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    width: 225px
+}
+
+.operate-wrapper .exp-btn,.op-wrapper a {
+    border-radius: 5px;
+    color: #fff;
     display: inline-block
 }
-#touchBoxCt>.touch-box-item .touch-box-element>.touch-box-element-image, #touchBoxCt>.touch-box-item .touch-box-element>.touch-box-element-image>img, #touchBoxCt>.touch-box-item .touch-box-element>.touch-box-element-html {
-    display: block;
-    height: 100%;
-    width: 100%
+
+.op-wrapper a:hover {
+    background-color: #C85E05
 }
-#touchStyleLoading {
-    background-color: #fff;
-    bottom: 0;
-    display: block;
-    height: 100%;
-    left: 0;
-    opacity: 1;
-    position: fixed;
-    right: 0;
-    top: 0;
-    -webkit-transition: opacity .3s;
-    -ms-transition: opacity .3s;
-    transition: opacity .3s;
-    width: 100%;
-    z-index: 99999
-}
-#touchStyleLoading>.spinner {
-    -webkit-animation: loadingSpin .5s infinite linear;
-    -ms-animation: loadingSpin .5s infinite linear;
-    animation: loadingSpin .5s infinite linear;
-    background-color: #fff;
-    -webkit-border-radius: 60px;
-    border-radius: 60px;
-    border: 3px solid #888;
-    border-top-color: #2297bc;
-    -webkit-box-sizing: border-box;
-    -ms-box-sizing: border-box;
-    box-sizing: border-box;
-    height: 60px;
-    left: 50%;
-    margin-top: -30px;
-    margin-left: -30px;
-    position: absolute;
-    top: 50%;
-    width: 60px;
-    z-index: 1
-}
-#touchStyleLoading>.percent {
-    -webkit-box-sizing: border-box;
-    -ms-box-sizing: border-box;
-    box-sizing: border-box;
-    color: #333;
-    font-size: 13px;
-    height: 60px;
-    left: 50%;
-    line-height: 60px;
-    margin-top: -30px;
-    margin-left: -30px;
-    position: absolute;
-    text-align: center;
-    top: 50%;
-    width: 60px;
-    z-index: 2
-}
-@-webkit-keyframes loadingSpin {
-    0% {
-        -webkit-transform: rotate(0deg)
-    }
-    100% {
-        -webkit-transform: rotate(360deg)
-    }
-}
-@-ms-keyframes loadingSpin {
-    0% {
-        -ms-transform: rotate(0deg)
-    }
-    100% {
-        -ms-transform: rotate(360deg)
-    }
-}
-@keyframes loadingSpin {
-    0% {
-        transform: rotate(0deg)
-    }
-    100% {
-        transform: rotate(360deg)
-    }
-}
-#touchStyleWeixinShare {
-    background: url("http://p0.qhimg.com/t017d01d4f9b3faf004.png") top center no-repeat;
-    background-color: rgba(0, 0, 0, .8);
-    -webkit-background-size: 320px 250px;
-    background-size: 320px 250px;
-    bottom: 0;
-    color: #fff;
-    display: none;
-    font-size: 20px;
-    left: 0;
-    line-height: 32px;
-    padding-top: 185px;
-    position: fixed;
-    right: 0;
-    text-align: center;
-    top: 0;
-    z-index: 10000
-}
-#touchBoxCt .item-table {
-    border-collapse: collapse;
-    border-spacing: 0;
-    display: table;
-    height: 100%;
-    overflow: hidden;
-    width: 100%
-}
-#touchBoxCt .item-table-cell {
-    display: table-cell
-}
-#touchBoxCt .item-table-cell, #touchBoxCt .item-image-full, #touchBoxCt .item-text-full {
-    height: 100%;
-    width: 100%
-}
-#touchBoxCt .item-image-full {
-    line-height: 0
-}
-#touchBoxCt .item-image-full, #touchBoxCt .elem-wrapper {
-    overflow: hidden
+
+.operate-wrapper .qrcode-wrapper .qrcode-img {
+    background: #fff;
+    border: 1px solid #d0d0d0;
+    margin: 0 auto;
+    padding: 10px 5px 5px 10px;
+    width: 200px
 }

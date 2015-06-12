@@ -1,34 +1,62 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="initial-scale=1.0, maximum-scale=1.0" name="viewport">
     <title>微信传播-预览页</title>
     <link rel="stylesheet" href="/css/reset.css"/>
-    <link rel="stylesheet" href="/css/fa/font-awesome.css">
+    <link rel="stylesheet" href="/css/fonts.css">
     <link rel="stylesheet" href="/css/common.css">
     <link rel="stylesheet" href="/css/preview.css">
-    <style>
-        #qrcode{
-            width: 256px;
-            height: 256px;
-        }
-        iframe{
-            height: 504px;
-            width: 320px;
-        }
-    </style>
 </head>
 <body>
 
-<div id="qrcode"></div>
+<div class="preview-body-wrapper clearfix">
+    <div class="iframe-wrapper fl"><img src="/img/iphone.png" width="358" height="677" alt="预览背景">
+        <iframe src="<%= previewSrc %>" id="previewIframe"></iframe>
+    </div>
+    <div class="scroll-wrapper fl">
+        <p><i class="ico ico-up" data-double-click="0"></i></p>
 
-<iframe src="<%= previewSrc %>" scrolling="none" frameborder="0"></iframe>
-
-
+        <p><i class="ico ico-down" data-double-click="0"></i></p>
+    </div>
+    <div class="operate-wrapper fl">
+        <div class="qrcode-wrapper">
+            <div class="qrcode-img">
+            </div>
+            <p class="qrcode-tips">手机预览，请扫描二维码</p>
+        </div>
+        <div class="op-wrapper">
+            <a href="javascript:;">返回编辑</a>
+            <a style="margin-left: 45px"href="javascript:;">下载源码</a>
+        </div>
+    </div>
+</div>
 <script type='text/javascript' src='http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js'></script>
 <script type="text/javascript" src="http://cdn.staticfile.org/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
-
 <script>
-    jQuery('#qrcode').qrcode(window.location.origin+"<%= previewSrc %>");
+    $(function () {
+        'use strict';
+        var $body = $('body');
+        var iframeWindow = document.getElementById("previewIframe").contentWindow;
+        //生成二维码
+        $body.find('.qrcode-img').qrcode({
+            width: 195,
+            height: 195,
+            text: window.location.origin+"<%= previewSrc %>",
+            foreground: '#000000'
+        });
+        $(document.body).on({
+            '.ico-up': function () {
+                iframeWindow.touchStyleApp.box.prev();
+            },
+            '.ico-down': function () {
+                iframeWindow.touchStyleApp.box.next();
+            }
+        });
+    });
 </script>
 </body>
 </html>
