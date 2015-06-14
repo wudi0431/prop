@@ -69,7 +69,7 @@
 
 <div class="pageWrap">
 <% allPage.forEach(function(page){ %>
-<div class="page" style="background-color:<%= page.backgroundcolor %>; ">
+<div class="page" style="background-color:<%= page.backgroundcolor %>; background-image: <%= page.backgroundimage %>; background-size: cover; background-position: 50% 50%;">
     <% page.btncomtList.forEach(function(btn){ %>
     <div class="W_item" style="animation-name: <%= btn.animationName %>;animation-duration: <%= btn.animationDuration %>;
     animation-delay: <%= btn.animationDelay %>;animation-count: <%= btn.animationCount %>;
