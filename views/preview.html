@@ -38,7 +38,7 @@
 <script type="text/javascript" src="http://cdn.staticfile.org/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
 <script>
     $(function () {
-        'use strict';
+       debugger;
         var $body = $('body');
         var iframeWindow = document.getElementById("previewIframe").contentWindow;
         //生成二维码
@@ -48,13 +48,11 @@
             text: window.location.origin+"<%= previewSrc %>",
             foreground: '#000000'
         });
-        $(document.body).on({
-            '.ico-up': function () {
-                iframeWindow.touchStyleApp.box.prev();
-            },
-            '.ico-down': function () {
-                iframeWindow.touchStyleApp.box.next();
-            }
+        $('.ico-up').on('click',function () {
+                iframeWindow.boxer.prev();
+        });
+        $('.ico-down').on('click',function () {
+                iframeWindow.boxer.next();
         });
     });
 </script>

@@ -314,21 +314,70 @@
 </head>
 <body style="overflow: hidden;">
 
-<!--<div id="touchStyleLoading" style="background-color:#ffffff;">-->
-<!--<div class="percent" style="color:#333333;">0</div>-->
-<!--<div class="spinner" style="background-color:rgba(255, 255, 255, 0.3);border-color:rgba(136, 136, 136, 0.8);border-top-color:#2297bc;"></div>-->
-<!--</div>-->
+<div id="touchStyleLoading" style="background-color:#ffffff;">
+<div class="percent" style="color:#333333;">0</div>
+<div class="spinner" style="background-color:rgba(255, 255, 255, 0.3);border-color:rgba(136, 136, 136, 0.8);border-top-color:#2297bc;"></div>
+</div>
 
 <div id="touchBoxCt">
     <% allPage.forEach(function(page){ %>
     <div id="page_<%= page._id %>" class="page"
          style="background-color:<%= page.backgroundcolor %>; background-image:url(<%=page.backgroundimage%>); background-size: cover; background-position: 50% 50%;">
         <% page.imgcomList.forEach(function(img){ %>
-            <div id="image_<%=img._id %>" class="<%=img.animationName %> animated" style="position: absolute;left: <%=img.left %>; top: <%=img.top %>;width: <%=img.width %>; height: <%=img.height %>;>
-                <div style="transform:rotate(0deg);-webkit-transform:rotate(0deg);background-color:transparent;border-width:1px;border-style:none;border-color: #333333;-webkit-border-radius:5px;border-radius:5px;box-shadow:0px 0px 0px #dddddd;opacity:1;"
-                     class="item-image-full">
-                    <img src="<%=img.imgurl %>" width="100%" height="100%" style="-webkit-border-radius:5px;border-radius:5px;"></div>
+        <div id="image_<%=img._id %>" class="<%=img.animationName %> animated" style="position: absolute;
+            z-index: <%=img.zIndex %>;left: <%=img.left %>; right: <%=img.right %>; top: <%=img.top %>; bottom: <%=img.bottom %>;
+            width: <%=img.width %>; height: <%=img.height %>;
+           padding: <%=img.paddingTop %> <%=img.paddingRight %> <%=img.paddingBottom %> <%=img.paddingLeft %>;
+            -webkit-animation-duration: <%=img.animationDuration %>; animation-duration: <%=img.animationDuration %>; -webkit-animation-iteration-count: <%=img.animationCount %>;
+            animation-iteration-count: <%=img.animationCount %>; animation-delay:<%=img.animationDelay %>; -webkit-animation-delay:<%=img.animationDelay %>;  background-repeat: no-repeat;">
+            <div style="transform:<%=img.transform %>;-webkit-transform:<%=img.transform %>;background-color:transparent;
+                 border-color:<%=img.borderColor %>;border-style:<%=img.borderStyle %>;border-width: <%=img.borderWidth %>;border-radius: <%=img.borderRadius %> ;
+                 box-shadow-color:<%=img.boxShadowColor %> ;box-shadow-width:<%=img.boxShadowWidth %> ;box-shadow-blur:<%=img.boxShadowBlur %> ;
+            box-shadow-size:<%=img.boxShadowSize %> ;box-shadow-degree:<%=img.boxShadowDegree %> ;opacity:<%=img.opacity %>;"
+                 class="item-image-full">
+                <img src="<%=img.imgurl %>" width="100%" height="100%"
+                     style="-webkit-border-radius:<%=img.borderRadius %>;border-radius:<%=img.borderRadius %>;"></div>
+        </div>
+        <% }) %>
+        <% page.textcomList.forEach(function(txt){ %>
+        <div id="text_<%=txt._id %>" class="<%=txt.animationName %> animated"
+             style="position: absolute; width: <%=txt.width %>; height: <%=txt.height %>; font-style: <%=txt.fontStyle %>; font-weight: <%=txt.fontWeight %>; font-family: <%=txt.fontFamily %>;
+             font-size: <%=txt.fontSize %>; color:  <%=txt.color %>; text-align: <%=txt.textAlign%>; line-height:<%=txt.lineHeight%>;
+             box-shadow-color:<%=txt.boxShadowColor %> ;box-shadow-width:<%=txt.boxShadowWidth %> ;box-shadow-blur:<%=txt.boxShadowBlur %> ;
+            box-shadow-size:<%=txt.boxShadowSize %> ;box-shadow-degree:<%=txt.boxShadowDegree %> ;
+             z-index: <%=txt.zIndex %>;left: <%=txt.left %>; right: <%=txt.right %>; top: <%=txt.top %>; bottom: <%=txt.bottom %>; opacity: <%=txt.opacity %>;
+             -webkit-animation-duration: <%=txt.animationDuration %>; animation-duration: <%=txt.animationDuration %>; -webkit-animation-iteration-count: <%=txt.animationCount %>;
+            animation-iteration-count: <%=txt.animationCount %>; animation-delay:<%=txt.animationDelay %>; -webkit-animation-delay:<%=txt.animationDelay %>;
+            text-shadow-color:<%=txt.boxShadowColor %> ;text-shadow-width:<%=txt.boxShadowWidth %> ;text-shadow-blur:<%=txt.boxShadowBlur %> ;text-shadow-size:<%=txt.boxShadowSize %> ;text-shadow-degree:<%=txt.boxShadowDegree %>;background-repeat: no-repeat;">
+            <div style="transform:<%=txt.transform %>;-webkit-transform:<%=txt.transform %>;background-color:<%=txt.backgroundColor %>;
+                 border-color:<%=txt.borderColor %>;border-style:<%=txt.borderStyle %>;border-width: <%=txt.borderWidth %>;border-radius: <%=txt.borderRadius %> ;
+                 box-shadow-color:<%=txt.boxShadowColor %> ;box-shadow-width:<%=txt.boxShadowWidth %> ;box-shadow-blur:<%=txt.boxShadowBlur %> ;
+            box-shadow-size:<%=txt.boxShadowSize %> ;box-shadow-degree:<%=txt.boxShadowDegree %>;"
+                 class="item-text-full">
+                <div class="item-table">
+                    <div style="text-decoration:none;vertical-align:<%=txt.verticalAlign %>;color:<%=txt.color %>;" class="item-table-cell">
+                        <%=txt.context %>
+                    </div>
+                </div>
             </div>
+        </div>
+        <% }) %>
+        <% page.btncomtList.forEach(function(btn){ %>
+        <div id="button_<%= btn._id %>" class="<%= btn.animationName %> animated"
+             style="position: absolute;width: <%=btn.width %>; height: <%=btn.height %>; font-style: <%=btn.fontStyle %>; font-weight: <%=btn.fontWeight %>; font-family: <%=btn.fontFamily %>;
+             font-size: <%=btn.fontSize %>; color:  <%=btn.color %>; text-align: <%=btn.textAlign%>; line-height:<%=btn.lineHeight%>;
+             box-shadow-color:<%=btn.boxShadowColor %> ;box-shadow-width:<%=btn.boxShadowWidth %> ;box-shadow-blur:<%=btn.boxShadowBlur %> ;
+            box-shadow-size:<%=btn.boxShadowSize %> ;box-shadow-degree:<%=btn.boxShadowDegree %> ;
+             z-index: <%=btn.zIndex %>;left: <%=btn.left %>; right: <%=btn.right %>; top: <%=btn.top %>; bottom: <%=btn.bottom %>; opacity: <%=btn.opacity %>;
+             -webkit-animation-duration: <%=btn.animationDuration %>; animation-duration: <%=btn.animationDuration %>; -webkit-animation-iteration-count: <%=btn.animationCount %>;
+            animation-iteration-count: <%=btn.animationCount %>; animation-delay:<%=btn.animationDelay %>; -webkit-animation-delay:<%=btn.animationDelay %>; background-repeat: no-repeat;">
+            <div style="transform:<%=btn.transform %>;-webkit-transform:<%=btn.transform %>;background-color:<%=btn.backgroundColor %>;
+                 border-color:<%=btn.borderColor %>;border-style:<%=btn.borderStyle %>;border-width: <%=btn.borderWidth %>;border-radius: <%=btn.borderRadius %> ;
+                 box-shadow-color:<%=btn.boxShadowColor %> ;box-shadow-width:<%=btn.boxShadowWidth %> ;box-shadow-blur:<%=btn.boxShadowBlur %> ;
+            box-shadow-size:<%=btn.boxShadowSize %> ;box-shadow-degree:<%=btn.boxShadowDegree %>;" class="item-table">
+                <button type="button" class="W_btn"><%= btn.context %></button>
+            </div>
+        </div>
         <% }) %>
     </div>
     <% }) %>
@@ -369,36 +418,44 @@
 <script type='text/javascript' src='http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js'></script>
 <script src="/js/preview.js"></script>
 <script>
-    function resizeWindow() {
-        var height = $(window).height();
-        var width = $(window).width();
-        $('.page').css({
-            "width": width,
-            "height": height
-        });
-    }
-    resizeWindow();
 
-    var boxer = new TouchBox('#touchBoxCt', {
-        loop: false,
-        animation: 'slide'
-    });
-    boxer.on('touchstart', function (activeIndex) {
-        console.log('touchstart, ', 'current index:', activeIndex);
-    });
-    boxer.on('touchmove', function (activeIndex, offsetY) {
-        console.log('touchmove, ', 'current index:', activeIndex, ' offsetY:', offsetY);
-        //return activeIndex < 1 || offsetY > 0;
-    });
-    boxer.on('touchend', function (activeIndex, offsetY) {
-        console.log('touchend, ', 'current index:', activeIndex, ' offsetY:', offsetY);
-    });
-    boxer.on('beforeslide', function (toIndex, activeIndex) {
-        console.log('beforeslide, ', 'to index:', toIndex, ' current index:', activeIndex);
-    });
-    boxer.on('slide', function (activeIndex, oldIndex) {
-        console.log('slide, ', 'current index:', activeIndex, ' old index:', +oldIndex);
-    });
+    var touchStyleLoadingEl = document.getElementById('touchStyleLoading');
+
+    touchStyleLoadingEl.style.opacity = '0';
+    setTimeout(function() {
+        touchStyleLoadingEl.parentNode.removeChild(touchStyleLoadingEl);
+    }, 5e2);
+    setTimeout(initTouchStyleApp, 250);
+
+   function initTouchStyleApp(){
+       var boxer = new TouchBox('#touchBoxCt', {
+           loop: false,
+           animation: 'slide'
+       });
+
+       boxer.on('touchstart', function (activeIndex) {
+           console.log('touchstart, ', 'current index:', activeIndex);
+       });
+       boxer.on('touchmove', function (activeIndex, offsetY) {
+           console.log('touchmove, ', 'current index:', activeIndex, ' offsetY:', offsetY);
+           //return activeIndex < 1 || offsetY > 0;
+       });
+       boxer.on('touchend', function (activeIndex, offsetY) {
+           console.log('touchend, ', 'current index:', activeIndex, ' offsetY:', offsetY);
+       });
+       boxer.on('beforeslide', function (toIndex, activeIndex) {
+           console.log('beforeslide, ', 'to index:', toIndex, ' current index:', activeIndex);
+       });
+       boxer.on('slide', function (activeIndex, oldIndex) {
+           console.log('slide, ', 'current index:', activeIndex, ' old index:', +oldIndex);
+       });
+       window.boxer = boxer;
+   }
+
+
+
+
+
 </script>
 </body>
 </html>

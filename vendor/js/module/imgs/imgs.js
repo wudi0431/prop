@@ -13,6 +13,10 @@ define(['FFF', 'jquery','jqui'], function (FFF, $) {
 
             var data = new FormData();
             var files = $('#file')[0].files;
+            if(files.length===0){
+                alert('请选图片')
+                return false;
+            }
             data.append('codecsv', files[0]);
             $.ajax({
                 cache: false,
