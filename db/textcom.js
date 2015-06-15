@@ -56,6 +56,20 @@ TextComSchema.static('deleteTextcom', function (textcomId,cb) {
     return this.findByIdAndRemove(textcomId, cb)
 });
 
+
+TextComSchema.static('deleteTextcomByProject', function (pageId) {
+    return this.find({
+        page: pageId
+    }).exec(function(err,textcomList){
+        if(textcomList){
+            textcomList.forEach(function(textcom){
+                TextComModel.deleteTextcom(textcom._id);
+            });
+
+        }
+    });
+});
+
 TextComSchema.static('getTextcom', function (textcomId,cb) {
     return this.findById(textcomId, cb)
 });

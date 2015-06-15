@@ -51,6 +51,21 @@ BtnComSchema.static('deleteBtncom', function (btncomId,cb) {
     return this.findByIdAndRemove(btncomId, cb);
 });
 
+BtnComSchema.static('deleteBtncomByProject', function (pageId) {
+    return this.find({
+        page: pageId
+    }).exec(function(err,btncomList){
+        if(btncomList){
+            btncomList.forEach(function(btncom){
+                BtnComModel.deleteBtncom(btncom._id);
+            });
+
+        }
+    });
+});
+
+
+
 BtnComSchema.static('getBtncom', function (btncomId,cb) {
     return this.findById(btncomId, cb);
 });

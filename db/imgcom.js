@@ -43,6 +43,19 @@ ImgComSchema.static('deleteImgcom', function (imgcomId,cb) {
     return this.findByIdAndRemove(imgcomId, cb)
 });
 
+ImgComSchema.static('deleteImgcomByProject', function (pageId) {
+    return this.find({
+        page: pageId
+    }).exec(function(err,imgcomList){
+        if(imgcomList){
+            imgcomList.forEach(function(imgcom){
+                ImgComModel.deleteImgcom(imgcom._id);
+            });
+
+        }
+    });
+});
+
 ImgComSchema.static('getImgcom', function (imgcomId,cb) {
     return this.findById(imgcomId, cb)
 });
