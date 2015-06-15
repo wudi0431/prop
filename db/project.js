@@ -18,6 +18,15 @@ ProjectSchema.static('getProjectList', function (userId, cb) {
     }).sort({updatetime: -1}).exec(cb);
 });
 
+ProjectSchema.static('updateProjectTime', function (projectId) {
+    return this.findOneAndUpdate({
+        _id: projectId
+    }, {
+        updatetime: new Date()
+    }, {'new': true}).exec();
+});
+
+
 ProjectSchema.static('deleteProject', function (projectId, cb) {
     return this.findByIdAndRemove(projectId, function (err, projectEntity) {
             if (projectEntity) {

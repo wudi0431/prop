@@ -3,6 +3,7 @@ var Schema = mongoose.Schema;
 var Btncom = require('./btncom');
 var Textcom = require('./textcom');
 var Imgcom = require('./imgcom');
+var Project = require('./project');
 
 var PageSchema = new Schema({
     name: String,
@@ -21,6 +22,7 @@ PageSchema.static('deletePage', function (pageId, cb) {
             Btncom.deleteBtncomByProject(page._id);
             Textcom.deleteTextcomByProject(page._id);
             Imgcom.deleteImgcomByProject(page._id);
+            PageModel.updateProjectTime(page._id);
         }
     });
 });
@@ -56,7 +58,22 @@ PageSchema.static('updatePage', function (page, cb) {
     delete page.project;
     return this.findOneAndUpdate({
         _id: pageId
-    }, page, {'new': true}, cb)
+    }, page, {'new': true}, function (err, page) {
+        PageModel.updateProjectTime(page._id);
+        if (cb) {
+            cb(err, page);
+        }
+    })
+});
+
+PageSchema.static('updateProjectTime', function (pageId) {
+    return this.findOne({
+        _id: pageId
+    }).exec(function (err, page) {
+        if (page) {
+            Project.updateProjectTime(page.project);
+        }
+    });
 });
 
 
