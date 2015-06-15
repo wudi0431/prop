@@ -1,9 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-var Btncom = require('./btncom');
-var Textcom = require('./textcom');
-var Imgcom = require('./imgcom');
-var Project = require('./project');
+
 
 var PageSchema = new Schema({
     name: String,
@@ -79,3 +76,8 @@ PageSchema.static('updateProjectTime', function (pageId) {
 
 var PageModel = mongoose.model('Page', PageSchema);
 module.exports = PageModel;
+
+var Btncom = require('./btncom');
+var Textcom = require('./textcom');
+var Imgcom = require('./imgcom');
+var Project = require('./project');
