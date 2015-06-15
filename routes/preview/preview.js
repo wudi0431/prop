@@ -115,7 +115,9 @@ function createHTML(uid, projectId, allPage, res) {
 
     function writeHTML() {
         var newPreviewPath = path.join(previewPath, projectId + '');
-        fs.mkdirSync(newPreviewPath);
+        if (!fs.existsSync(newPreviewPath)) {
+            fs.mkdirSync(newPreviewPath);
+        }
         fs.writeFileSync(path.join(newPreviewPath, 'index.html'), html);
         var view = new View({
             url: path.join(path.sep, 'preview', projectId + '', 'index.html'),
