@@ -30,7 +30,7 @@ Pagecom.prototype={
         }).done(function (msg) {
 
             if(msg.success){
-                if(msg.model.pageList.length===1){
+                if(msg.model.pageList.length===0){
                     that.addFirstPage();
                 }else{
                     that.isfistadd=false;
