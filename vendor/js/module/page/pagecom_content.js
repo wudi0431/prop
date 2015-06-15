@@ -135,9 +135,8 @@ define(['imgcut','jquery','imgs'], function (imgcut,$,Imgs) {
             var curcolor= $showbox.attr('data-color')||"";
             var curimage= $showbox.attr('data-image')|| "";
             curpagedata.backgroundcolor = curcolor;
-            curpagedata.backgroundimage = curimage;
-
-            curpagecom.updataPage(curpagedata);
+            curpagedata.backgroundimage = curimage; 
+            curpagecom.updataPage(curpagedata,true);
         }
     }
 

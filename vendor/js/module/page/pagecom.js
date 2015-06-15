@@ -30,7 +30,7 @@ Pagecom.prototype={
         }).done(function (msg) {
 
             if(msg.success){
-                if(msg.model.pageList.length===1){
+                if(msg.model.pageList.length===0){
                     that.addFirstPage();
                 }else{
                     that.isfistadd=false;
@@ -449,8 +449,10 @@ Pagecom.prototype={
                 that.clearIphone();
                 $a.addClass('cur-sort-page');
                 var curpage = that.getPageListByIndex(pindex);
-                that.setPageStyle(curpage);
-                that._addCom(curpage._id);
+                if(curpage){
+                    that.setPageStyle(curpage);
+                    that._addCom(curpage._id);
+                } 
                 flag=false;
             }else{
                 $a.hasClass('cur-sort-page') &&  $a.removeClass('cur-sort-page');
