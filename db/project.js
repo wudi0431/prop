@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var Page = require('./page');
 
 var ProjectSchema = new Schema({
     name: String,
@@ -11,17 +12,33 @@ var ProjectSchema = new Schema({
     }
 });
 
-ProjectSchema.static('getProjectList', function (userId,cb) {
+ProjectSchema.static('getProjectList', function (userId, cb) {
     return this.find({
         user: userId
-    }).sort({updatetime:-1}).exec(cb);
+    }).sort({updatetime: -1}).exec(cb);
 });
 
-ProjectSchema.static('deleteProject', function (projectId,cb) {
-    return this.findByIdAndRemove(projectId, cb)
+ProjectSchema.static('updateProjectTime', function (projectId) {
+    return this.findOneAndUpdate({
+        _id: projectId
+    }, {
+        updatetime: new Date()
+    }, {'new': true}).exec();
 });
 
-ProjectSchema.static('getProject', function (projectId,cb) {
+
+ProjectSchema.static('deleteProject', function (projectId, cb) {
+    return this.findByIdAndRemove(projectId, function (err, projectEntity) {
+            if (projectEntity) {
+                Page.deletePageByProject(projectId);
+            }
+
+            cb(err, projectEntity);
+        }
+    )
+});
+
+ProjectSchema.static('getProject', function (projectId, cb) {
     return this.findById(projectId, cb)
 });
 
