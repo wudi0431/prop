@@ -98,7 +98,12 @@ function createHTML(uid, projectId, allPage, res) {
         }
     });
 
-    var html = ejs.render(str, {allPage: allPage});
+    var strAllPage = allPage.toString();
+    strAllPage = strAllPage.replace(/\r\n/g, '');
+    strAllPage = strAllPage.replace(/\n/g, '');
+    strAllPage = strAllPage.replace(/'/g, '"');
+
+    var html = ejs.render(str, {allPage: allPage, strAllPage: strAllPage});
     var isExists = fs.existsSync(previewPath);
     var previewSrc = '';
 
