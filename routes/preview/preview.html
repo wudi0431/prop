@@ -37,6 +37,7 @@
     <!-- 适应移动端end -->
     <link rel="stylesheet" href="/css/reset.css"/>
     <link rel="stylesheet" href="/css/animate.css"/>
+
     <style>
 
         .pageWrap {
@@ -359,6 +360,7 @@
             }
         }
     </style>
+    <script type='text/javascript' src='http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js'></script>
 </head>
 <body style="overflow: hidden;">
 
@@ -367,8 +369,12 @@
     <div class="spinner"
          style="background-color:rgba(255, 255, 255, 0.3);border-color:rgba(136, 136, 136, 0.8);border-top-color:#2297bc;"></div>
 </div>
+<script>
 
+</script>
+<%  console.dir(allPage)  %>
 <div id="touchBoxCt">
+
     <% allPage.forEach(function(page){ %>
     <div id="page_<%= page._id %>" class="page"
          style="background-color:<%= page.backgroundcolor %>; background-image:url(<%=page.backgroundimage%>); background-size: cover; background-position: 50% 50%;">
@@ -437,7 +443,7 @@
     animation-direction: initial; animation-fill-mode: initial; -webkit-animation-play-state: initial; animation-play-state: initial;
     animation-name: touchstyle-arrow-animate;"></div>
 
-<script type='text/javascript' src='http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js'></script>
+
 <script src="/js/preview.js"></script>
 <script>
 
@@ -450,26 +456,12 @@
     setTimeout(initTouchStyleApp, 250);
 
     function initTouchStyleApp() {
+        var  len = <%=allPage.length %>;
         var boxer = new TouchBox('#touchBoxCt', {
-            loop: false,
+            loop: len >= 3 ? true: false,
             animation: 'slide'
         });
-
-        boxer.on('touchstart', function (activeIndex) {
-            console.log('touchstart, ', 'current index:', activeIndex);
-        });
-        boxer.on('touchmove', function (activeIndex, offsetY) {
-            console.log('touchmove, ', 'current index:', activeIndex, ' offsetY:', offsetY);
-            //return activeIndex < 1 || offsetY > 0;
-        });
-        boxer.on('touchend', function (activeIndex, offsetY) {
-            console.log('touchend, ', 'current index:', activeIndex, ' offsetY:', offsetY);
-        });
-        boxer.on('beforeslide', function (toIndex, activeIndex) {
-            console.log('beforeslide, ', 'to index:', toIndex, ' current index:', activeIndex);
-        });
         boxer.on('slide', function (activeIndex, oldIndex) {
-            var  len = <%=allPage.length %>;
             if(len-1===activeIndex){
                 $('.touchstyle-arrowup').hide();
             }else{
@@ -480,6 +472,31 @@
         window.boxer = boxer;
     }
 
+
+    function initDataSource(){
+        pagedata.forEach(function(page){
+
+            page.imgcomList.forEach(function(img){
+                if(img.dataurl!="" && img.datamapping!=""){
+                    $.ajax({
+                        type: "GET",
+                        url: img.dataurl,
+                        dataType: "json",
+                        cache: false,
+                        async: false,
+                        success: function(msg){
+                            $("#image_"+img_id).find('img').attr('src',img.datamapping);
+                        }
+                    });
+                }
+            })
+
+
+        });
+
+    }
+
+    //initDataSource();
 
 </script>
 </body>

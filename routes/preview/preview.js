@@ -97,7 +97,7 @@ function createHTML(uid, projectId, allPage, res) {
             return -1;
         }
     });
-
+    var dd = allPage
     var html = ejs.render(str, {allPage: allPage});
     var isExists = fs.existsSync(previewPath);
     var previewSrc = '';
