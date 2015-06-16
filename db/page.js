@@ -45,7 +45,7 @@ PageSchema.static('getPage', function (pageId, cb) {
 PageSchema.static('getPageList', function (projectId, cb) {
     return this.find({
         project: projectId
-    }, null, {sort: {'sortindex': 1}}, cb);
+    }).sort({sortindex: 1}).exec(cb);
 });
 
 PageSchema.static('updatePage', function (page, cb) {
