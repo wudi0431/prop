@@ -310,13 +310,60 @@
         #touchBoxCt .item-image-full, #touchBoxCt .elem-wrapper {
             overflow: hidden
         }
+
+        .touchstyle-arrowup {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            z-index: 9999;
+            margin-left: -15px;
+            width: 34px;
+            height: 16px;
+            opacity: 0;
+        }
+
+        .touchstyle-arrowup:before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 4px;
+            left: 7px;
+            width: 18px;
+            height: 18px;
+            border:2px solid rgba(101, 98, 98, 0.9);
+            border-left-width: 0;
+            border-bottom-width: 0;
+            -webkit-transform: rotate(-45deg) skew(5deg, 5deg);
+        }
+
+        @-webkit-keyframes touchstyle-arrow-animate {
+            0% {
+                -webkit-transform: translateY(0);
+                opacity: 0;
+            }
+            33% {
+                opacity: .8;
+            }
+            50% {
+                -webkit-transform: translateY(-8px);
+                opacity: .8;
+            }
+            66% {
+                opacity: .8;
+            }
+            100% {
+                -webkit-transform: translateY(-16px);
+                opacity: 0;
+            }
+        }
     </style>
 </head>
 <body style="overflow: hidden;">
 
 <div id="touchStyleLoading" style="background-color:#ffffff;">
-<div class="percent" style="color:#333333;">0</div>
-<div class="spinner" style="background-color:rgba(255, 255, 255, 0.3);border-color:rgba(136, 136, 136, 0.8);border-top-color:#2297bc;"></div>
+    <div class="percent" style="color:#333333;">0</div>
+    <div class="spinner"
+         style="background-color:rgba(255, 255, 255, 0.3);border-color:rgba(136, 136, 136, 0.8);border-top-color:#2297bc;"></div>
 </div>
 
 <div id="touchBoxCt">
@@ -355,7 +402,8 @@
             box-shadow-size:<%=txt.boxShadowSize %> ;box-shadow-degree:<%=txt.boxShadowDegree %>;"
                  class="item-text-full">
                 <div class="item-table">
-                    <div style="text-decoration:none;vertical-align:<%=txt.verticalAlign %>;color:<%=txt.color %>;" class="item-table-cell">
+                    <div style="text-decoration:none;vertical-align:<%=txt.verticalAlign %>;color:<%=txt.color %>;"
+                         class="item-table-cell">
                         <%=txt.context %>
                     </div>
                 </div>
@@ -371,49 +419,21 @@
              z-index: <%=btn.zIndex %>;left: <%=btn.left %>; right: <%=btn.right %>; top: <%=btn.top %>; bottom: <%=btn.bottom %>; opacity: <%=btn.opacity %>;
              -webkit-animation-duration: <%=btn.animationDuration %>; animation-duration: <%=btn.animationDuration %>; -webkit-animation-iteration-count: <%=btn.animationCount %>;
             animation-iteration-count: <%=btn.animationCount %>; animation-delay:<%=btn.animationDelay %>; -webkit-animation-delay:<%=btn.animationDelay %>; background-repeat: no-repeat;">
-            <div style="transform:<%=btn.transform %>;-webkit-transform:<%=btn.transform %>;background-color:<%=btn.backgroundColor %>;
+            <div  class="item-table">
+                <button type="button" style="transform:<%=btn.transform %>;-webkit-transform:<%=btn.transform %>;background-color:<%=btn.backgroundColor %>;
                  border-color:<%=btn.borderColor %>;border-style:<%=btn.borderStyle %>;border-width: <%=btn.borderWidth %>;border-radius: <%=btn.borderRadius %> ;
                  box-shadow-color:<%=btn.boxShadowColor %> ;box-shadow-width:<%=btn.boxShadowWidth %> ;box-shadow-blur:<%=btn.boxShadowBlur %> ;
-            box-shadow-size:<%=btn.boxShadowSize %> ;box-shadow-degree:<%=btn.boxShadowDegree %>;" class="item-table">
-                <button type="button" class="W_btn"><%= btn.context %></button>
+            box-shadow-size:<%=btn.boxShadowSize %> ;box-shadow-degree:<%=btn.boxShadowDegree %>;" class="W_btn"><%= btn.context %></button>
             </div>
         </div>
         <% }) %>
     </div>
     <% }) %>
 </div>
-
-
-<!--<div class="pageWrap">-->
-<!--<% allPage.forEach(function(page){ %>-->
-<!--<div class="page" style="background-color:<%= page.backgroundcolor %>; background-image:url(<%=page.backgroundimage%>); background-size: cover; background-position: 50% 50%;">-->
-<!--<% page.btncomtList.forEach(function(btn){ %>-->
-<!--<div class="W_item" style="animation-name: <%= btn.animationName %>;animation-duration: <%= btn.animationDuration %>;-->
-<!--animation-delay: <%= btn.animationDelay %>;animation-count: <%= btn.animationCount %>;-->
-<!--width: <%= btn.width %>;height: <%= btn.height %>;top:<%= btn.top %>;-->
-<!--left:<%= btn.left %>;">-->
-<!--<button type="button" class="W_btn"><%= btn.context %></button>-->
-<!--</div>-->
-<!--<% }) %>-->
-<!--<% page.imgcomList.forEach(function(img){ %>-->
-<!--<div class="W_item"  style="animation-name: <%= img.animationName %>;animation-duration: <%= img.animationDuration %>;-->
-<!--animation-delay: <%= img.animationDelay %>;animation-count: <%= img.animationCount %>;-->
-<!--width: <%= img.width %>;height: <%= img.height %>;top:<%= img.top %>;-->
-<!--left:<%= img.left %>;">-->
-<!--<img class="W_imgcom" src="<%= img.imgurl %>"/>-->
-<!--</div>-->
-<!--<% }) %>-->
-<!--<% page.textcomList.forEach(function(text){ %>-->
-<!--<div class="W_item" style="animation-name: <%= text.animationName %>;animation-duration: <%= text.animationDuration %>;-->
-<!--animation-delay: <%= text.animationDelay %>;animation-count: <%= text.animationCount %>;-->
-<!--width: <%= text.width %>;height: <%= text.height %>;top:<%= text.top %>;-->
-<!--left:<%= text.left %>;">-->
-<!--<div class="W_text"><%= text.context %></div>-->
-<!--</div>-->
-<!--<% }) %>-->
-<!--</div>-->
-<!--<% }) %>-->
-<!--</div>-->
+<div class="touchstyle-arrowup" style="opacity: 0; -webkit-animation: touchstyle-arrow-animate 2s infinite;
+    animation-duration: 2s; animation-timing-function: initial; animation-delay: initial; animation-iteration-count: infinite;
+    animation-direction: initial; animation-fill-mode: initial; -webkit-animation-play-state: initial; animation-play-state: initial;
+    animation-name: touchstyle-arrow-animate;"></div>
 
 <script type='text/javascript' src='http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js'></script>
 <script src="/js/preview.js"></script>
@@ -422,38 +442,41 @@
     var touchStyleLoadingEl = document.getElementById('touchStyleLoading');
 
     touchStyleLoadingEl.style.opacity = '0';
-    setTimeout(function() {
+    setTimeout(function () {
         touchStyleLoadingEl.parentNode.removeChild(touchStyleLoadingEl);
     }, 5e2);
     setTimeout(initTouchStyleApp, 250);
 
-   function initTouchStyleApp(){
-       var boxer = new TouchBox('#touchBoxCt', {
-           loop: false,
-           animation: 'slide'
-       });
+    function initTouchStyleApp() {
+        var boxer = new TouchBox('#touchBoxCt', {
+            loop: false,
+            animation: 'slide'
+        });
 
-       boxer.on('touchstart', function (activeIndex) {
-           console.log('touchstart, ', 'current index:', activeIndex);
-       });
-       boxer.on('touchmove', function (activeIndex, offsetY) {
-           console.log('touchmove, ', 'current index:', activeIndex, ' offsetY:', offsetY);
-           //return activeIndex < 1 || offsetY > 0;
-       });
-       boxer.on('touchend', function (activeIndex, offsetY) {
-           console.log('touchend, ', 'current index:', activeIndex, ' offsetY:', offsetY);
-       });
-       boxer.on('beforeslide', function (toIndex, activeIndex) {
-           console.log('beforeslide, ', 'to index:', toIndex, ' current index:', activeIndex);
-       });
-       boxer.on('slide', function (activeIndex, oldIndex) {
-           console.log('slide, ', 'current index:', activeIndex, ' old index:', +oldIndex);
-       });
-       window.boxer = boxer;
-   }
-
-
-
+        boxer.on('touchstart', function (activeIndex) {
+            console.log('touchstart, ', 'current index:', activeIndex);
+        });
+        boxer.on('touchmove', function (activeIndex, offsetY) {
+            console.log('touchmove, ', 'current index:', activeIndex, ' offsetY:', offsetY);
+            //return activeIndex < 1 || offsetY > 0;
+        });
+        boxer.on('touchend', function (activeIndex, offsetY) {
+            console.log('touchend, ', 'current index:', activeIndex, ' offsetY:', offsetY);
+        });
+        boxer.on('beforeslide', function (toIndex, activeIndex) {
+            console.log('beforeslide, ', 'to index:', toIndex, ' current index:', activeIndex);
+        });
+        boxer.on('slide', function (activeIndex, oldIndex) {
+            var  len = <%=allPage.length %>;
+            if(len-1===activeIndex){
+                $('.touchstyle-arrowup').hide();
+            }else{
+                $('.touchstyle-arrowup').show();
+            }
+            console.log('slide, ', 'current index:', activeIndex, ' old index:', +oldIndex);
+        });
+        window.boxer = boxer;
+    }
 
 
 </script>

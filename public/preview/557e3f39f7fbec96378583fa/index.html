@@ -310,13 +310,60 @@
         #touchBoxCt .item-image-full, #touchBoxCt .elem-wrapper {
             overflow: hidden
         }
+
+        .touchstyle-arrowup {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            z-index: 9999;
+            margin-left: -15px;
+            width: 34px;
+            height: 16px;
+            opacity: 0;
+        }
+
+        .touchstyle-arrowup:before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 4px;
+            left: 7px;
+            width: 18px;
+            height: 18px;
+            border:2px solid rgba(101, 98, 98, 0.9);
+            border-left-width: 0;
+            border-bottom-width: 0;
+            -webkit-transform: rotate(-45deg) skew(5deg, 5deg);
+        }
+
+        @-webkit-keyframes touchstyle-arrow-animate {
+            0% {
+                -webkit-transform: translateY(0);
+                opacity: 0;
+            }
+            33% {
+                opacity: .8;
+            }
+            50% {
+                -webkit-transform: translateY(-8px);
+                opacity: .8;
+            }
+            66% {
+                opacity: .8;
+            }
+            100% {
+                -webkit-transform: translateY(-16px);
+                opacity: 0;
+            }
+        }
     </style>
 </head>
 <body style="overflow: hidden;">
 
 <div id="touchStyleLoading" style="background-color:#ffffff;">
-<div class="percent" style="color:#333333;">0</div>
-<div class="spinner" style="background-color:rgba(255, 255, 255, 0.3);border-color:rgba(136, 136, 136, 0.8);border-top-color:#2297bc;"></div>
+    <div class="percent" style="color:#333333;">0</div>
+    <div class="spinner"
+         style="background-color:rgba(255, 255, 255, 0.3);border-color:rgba(136, 136, 136, 0.8);border-top-color:#2297bc;"></div>
 </div>
 
 <div id="touchBoxCt">
@@ -325,7 +372,7 @@
          style="background-color:#fff; background-image:url(/uploadimg/index.png); background-size: cover; background-position: 50% 50%;">
         
         <div id="image_557e830c524e80264a71edd5" class="none animated" style="position: absolute;
-            z-index: 1;left: 58px; right: 0px; top: 103px; bottom: 0px;
+            z-index: 1;left: 33px; right: 0px; top: 72px; bottom: 0px;
             width: 226px; height: 285px;
            padding: 0px 0px 0px 0px;
             -webkit-animation-duration: 0s; animation-duration: 0s; -webkit-animation-iteration-count: 1;
@@ -340,12 +387,12 @@
         </div>
         
         
-        <div id="text_557e969813fe96774fe6c37e" class="none animated"
+        <div id="text_557e969813fe96774fe6c37e" class="bounceInDown animated"
              style="position: absolute; width: 110px; height: 25px; font-style: normal; font-weight: normal; font-family: Microsoft YaHei;
              font-size: 16px; color:  rgb(255, 255, 255); text-align: left; line-height:25px;
              box-shadow-color:rgb(255, 255, 255) ;box-shadow-width:0px ;box-shadow-blur:0px ;
             box-shadow-size:0px ;box-shadow-degree:0px ;
-             z-index: 1;left: 36px; right: 0px; top: 260px; bottom: 0px; opacity: 1;
+             z-index: 1;left: 86px; right: 0px; top: 246px; bottom: 0px; opacity: 1;
              -webkit-animation-duration: 0s; animation-duration: 0s; -webkit-animation-iteration-count: 1;
             animation-iteration-count: 1; animation-delay:0s; -webkit-animation-delay:0s;
             text-shadow-color:rgb(255, 255, 255) ;text-shadow-width:0px ;text-shadow-blur:0px ;text-shadow-size:0px ;text-shadow-degree:0px;background-repeat: no-repeat;">
@@ -355,7 +402,8 @@
             box-shadow-size:0px ;box-shadow-degree:0px;"
                  class="item-text-full">
                 <div class="item-table">
-                    <div style="text-decoration:none;vertical-align:middle;color:rgb(255, 255, 255);" class="item-table-cell">
+                    <div style="text-decoration:none;vertical-align:middle;color:rgb(255, 255, 255);"
+                         class="item-table-cell">
                         请输入文字
                     </div>
                 </div>
@@ -368,30 +416,30 @@
              font-size: 16px; color:  rgb(255, 255, 255); text-align: left; line-height:25px;
              box-shadow-color:rgb(221, 221, 221) ;box-shadow-width:0px ;box-shadow-blur:0px ;
             box-shadow-size:0px ;box-shadow-degree:0px ;
-             z-index: 1;left: 130px; right: 0px; top: 270px; bottom: 0px; opacity: 1;
+             z-index: 1;left: 33px; right: 0px; top: 72px; bottom: 0px; opacity: 1;
              -webkit-animation-duration: 0s; animation-duration: 0s; -webkit-animation-iteration-count: 1;
             animation-iteration-count: 1; animation-delay:0s; -webkit-animation-delay:0s; background-repeat: no-repeat;">
-            <div style="transform:rotate(0deg);-webkit-transform:rotate(0deg);background-color:rgb(68, 199, 103);
+            <div  class="item-table">
+                <button type="button" style="transform:rotate(0deg);-webkit-transform:rotate(0deg);background-color:rgb(68, 199, 103);
                  border-color:rgb(24, 171, 41);border-style:solid;border-width: 1px;border-radius: 20px; ;
                  box-shadow-color:rgb(221, 221, 221) ;box-shadow-width:0px ;box-shadow-blur:0px ;
-            box-shadow-size:0px ;box-shadow-degree:0px;" class="item-table">
-                <button type="button" class="W_btn">按钮</button>
+            box-shadow-size:0px ;box-shadow-degree:0px;" class="W_btn">按钮</button>
             </div>
         </div>
         
         <div id="button_557e969613fe96774fe6c37d" class="none animated"
-             style="position: absolute;width: 110px; height: 25px; font-style: normal; font-weight: bold; font-family: Microsoft YaHei;
+             style="position: absolute;width: 110px; height: 35px; font-style: normal; font-weight: bold; font-family: Microsoft YaHei;
              font-size: 16px; color:  rgb(255, 255, 255); text-align: left; line-height:25px;
              box-shadow-color:rgb(221, 221, 221) ;box-shadow-width:0px ;box-shadow-blur:0px ;
             box-shadow-size:0px ;box-shadow-degree:0px ;
-             z-index: 1;left: 100px; right: 0px; top: 200px; bottom: 0px; opacity: 1;
+             z-index: 1;left: 74px; right: 0px; top: 206px; bottom: 0px; opacity: 1;
              -webkit-animation-duration: 0s; animation-duration: 0s; -webkit-animation-iteration-count: 1;
             animation-iteration-count: 1; animation-delay:0s; -webkit-animation-delay:0s; background-repeat: no-repeat;">
-            <div style="transform:rotate(0deg);-webkit-transform:rotate(0deg);background-color:rgb(68, 199, 103);
+            <div  class="item-table">
+                <button type="button" style="transform:rotate(0deg);-webkit-transform:rotate(0deg);background-color:rgb(68, 199, 103);
                  border-color:rgb(24, 171, 41);border-style:solid;border-width: 1px;border-radius: 20px; ;
                  box-shadow-color:rgb(221, 221, 221) ;box-shadow-width:0px ;box-shadow-blur:0px ;
-            box-shadow-size:0px ;box-shadow-degree:0px;" class="item-table">
-                <button type="button" class="W_btn">按钮</button>
+            box-shadow-size:0px ;box-shadow-degree:0px;" class="W_btn">按钮</button>
             </div>
         </div>
         
@@ -417,107 +465,29 @@
         
         
         
-        <div id="button_557e96c603ca80764fe5a649" class="none animated"
-             style="position: absolute;width: 110px; height: 25px; font-style: normal; font-weight: bold; font-family: Microsoft YaHei;
-             font-size: 16px; color:  rgb(255, 255, 255); text-align: left; line-height:25px;
-             box-shadow-color:rgb(221, 221, 221) ;box-shadow-width:0px ;box-shadow-blur:0px ;
-            box-shadow-size:0px ;box-shadow-degree:0px ;
-             z-index: 1;left: 100px; right: 0px; top: 200px; bottom: 0px; opacity: 1;
-             -webkit-animation-duration: 0s; animation-duration: 0s; -webkit-animation-iteration-count: 1;
-            animation-iteration-count: 1; animation-delay:0s; -webkit-animation-delay:0s; background-repeat: no-repeat;">
-            <div style="transform:rotate(0deg);-webkit-transform:rotate(0deg);background-color:rgb(68, 199, 103);
-                 border-color:rgb(24, 171, 41);border-style:solid;border-width: 1px;border-radius: 20px; ;
-                 box-shadow-color:rgb(221, 221, 221) ;box-shadow-width:0px ;box-shadow-blur:0px ;
-            box-shadow-size:0px ;box-shadow-degree:0px;" class="item-table">
-                <button type="button" class="W_btn">按钮</button>
-            </div>
-        </div>
-        
         <div id="button_557e96c6eb3d62744f2e5747" class="none animated"
              style="position: absolute;width: 110px; height: 25px; font-style: normal; font-weight: bold; font-family: Microsoft YaHei;
              font-size: 16px; color:  rgb(255, 255, 255); text-align: left; line-height:25px;
              box-shadow-color:rgb(221, 221, 221) ;box-shadow-width:0px ;box-shadow-blur:0px ;
             box-shadow-size:0px ;box-shadow-degree:0px ;
-             z-index: 1;left: 100px; right: 0px; top: 200px; bottom: 0px; opacity: 1;
+             z-index: 1;left: 72px; right: 0px; top: 93px; bottom: 0px; opacity: 1;
              -webkit-animation-duration: 0s; animation-duration: 0s; -webkit-animation-iteration-count: 1;
             animation-iteration-count: 1; animation-delay:0s; -webkit-animation-delay:0s; background-repeat: no-repeat;">
-            <div style="transform:rotate(0deg);-webkit-transform:rotate(0deg);background-color:rgb(68, 199, 103);
+            <div  class="item-table">
+                <button type="button" style="transform:rotate(0deg);-webkit-transform:rotate(0deg);background-color:rgb(68, 199, 103);
                  border-color:rgb(24, 171, 41);border-style:solid;border-width: 1px;border-radius: 20px; ;
                  box-shadow-color:rgb(221, 221, 221) ;box-shadow-width:0px ;box-shadow-blur:0px ;
-            box-shadow-size:0px ;box-shadow-degree:0px;" class="item-table">
-                <button type="button" class="W_btn">按钮</button>
+            box-shadow-size:0px ;box-shadow-degree:0px;" class="W_btn">按钮</button>
             </div>
         </div>
         
     </div>
     
 </div>
-
-
-<!--<div class="pageWrap">-->
-<!---->
-<!--<div class="page" style="background-color:#fff; background-image:url(/uploadimg/index.png); background-size: cover; background-position: 50% 50%;">-->
-<!---->
-<!--<div class="W_item" style="animation-name: none;animation-duration: 0s;-->
-<!--animation-delay: 0s;animation-count: 1;-->
-<!--width: 110px;height: 25px;top:270px;-->
-<!--left:130px;">-->
-<!--<button type="button" class="W_btn">按钮</button>-->
-<!--</div>-->
-<!---->
-<!--<div class="W_item" style="animation-name: none;animation-duration: 0s;-->
-<!--animation-delay: 0s;animation-count: 1;-->
-<!--width: 110px;height: 25px;top:200px;-->
-<!--left:100px;">-->
-<!--<button type="button" class="W_btn">按钮</button>-->
-<!--</div>-->
-<!---->
-<!---->
-<!--<div class="W_item"  style="animation-name: none;animation-duration: 0s;-->
-<!--animation-delay: 0s;animation-count: 1;-->
-<!--width: 226px;height: 285px;top:103px;-->
-<!--left:58px;">-->
-<!--<img class="W_imgcom" src="/uploadimg/640x2.jpeg"/>-->
-<!--</div>-->
-<!---->
-<!---->
-<!--<div class="W_item" style="animation-name: none;animation-duration: 0s;-->
-<!--animation-delay: 0s;animation-count: 1;-->
-<!--width: 110px;height: 25px;top:260px;-->
-<!--left:36px;">-->
-<!--<div class="W_text">请输入文字</div>-->
-<!--</div>-->
-<!---->
-<!--</div>-->
-<!---->
-<!--<div class="page" style="background-color:#fff; background-image:url(); background-size: cover; background-position: 50% 50%;">-->
-<!---->
-<!--<div class="W_item" style="animation-name: none;animation-duration: 0s;-->
-<!--animation-delay: 0s;animation-count: 1;-->
-<!--width: 110px;height: 25px;top:200px;-->
-<!--left:100px;">-->
-<!--<button type="button" class="W_btn">按钮</button>-->
-<!--</div>-->
-<!---->
-<!--<div class="W_item" style="animation-name: none;animation-duration: 0s;-->
-<!--animation-delay: 0s;animation-count: 1;-->
-<!--width: 110px;height: 25px;top:200px;-->
-<!--left:100px;">-->
-<!--<button type="button" class="W_btn">按钮</button>-->
-<!--</div>-->
-<!---->
-<!---->
-<!--<div class="W_item"  style="animation-name: none;animation-duration: 0s;-->
-<!--animation-delay: 0s;animation-count: 1;-->
-<!--width: 200px;height: 150px;top:260px;-->
-<!--left:36px;">-->
-<!--<img class="W_imgcom" src="/uploadimg/640x2.jpeg"/>-->
-<!--</div>-->
-<!---->
-<!---->
-<!--</div>-->
-<!---->
-<!--</div>-->
+<div class="touchstyle-arrowup" style="opacity: 0; -webkit-animation: touchstyle-arrow-animate 2s infinite;
+    animation-duration: 2s; animation-timing-function: initial; animation-delay: initial; animation-iteration-count: infinite;
+    animation-direction: initial; animation-fill-mode: initial; -webkit-animation-play-state: initial; animation-play-state: initial;
+    animation-name: touchstyle-arrow-animate;"></div>
 
 <script type='text/javascript' src='http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js'></script>
 <script src="/js/preview.js"></script>
@@ -526,38 +496,41 @@
     var touchStyleLoadingEl = document.getElementById('touchStyleLoading');
 
     touchStyleLoadingEl.style.opacity = '0';
-    setTimeout(function() {
+    setTimeout(function () {
         touchStyleLoadingEl.parentNode.removeChild(touchStyleLoadingEl);
     }, 5e2);
     setTimeout(initTouchStyleApp, 250);
 
-   function initTouchStyleApp(){
-       var boxer = new TouchBox('#touchBoxCt', {
-           loop: false,
-           animation: 'slide'
-       });
+    function initTouchStyleApp() {
+        var boxer = new TouchBox('#touchBoxCt', {
+            loop: false,
+            animation: 'slide'
+        });
 
-       boxer.on('touchstart', function (activeIndex) {
-           console.log('touchstart, ', 'current index:', activeIndex);
-       });
-       boxer.on('touchmove', function (activeIndex, offsetY) {
-           console.log('touchmove, ', 'current index:', activeIndex, ' offsetY:', offsetY);
-           //return activeIndex < 1 || offsetY > 0;
-       });
-       boxer.on('touchend', function (activeIndex, offsetY) {
-           console.log('touchend, ', 'current index:', activeIndex, ' offsetY:', offsetY);
-       });
-       boxer.on('beforeslide', function (toIndex, activeIndex) {
-           console.log('beforeslide, ', 'to index:', toIndex, ' current index:', activeIndex);
-       });
-       boxer.on('slide', function (activeIndex, oldIndex) {
-           console.log('slide, ', 'current index:', activeIndex, ' old index:', +oldIndex);
-       });
-       window.boxer = boxer;
-   }
-
-
-
+        boxer.on('touchstart', function (activeIndex) {
+            console.log('touchstart, ', 'current index:', activeIndex);
+        });
+        boxer.on('touchmove', function (activeIndex, offsetY) {
+            console.log('touchmove, ', 'current index:', activeIndex, ' offsetY:', offsetY);
+            //return activeIndex < 1 || offsetY > 0;
+        });
+        boxer.on('touchend', function (activeIndex, offsetY) {
+            console.log('touchend, ', 'current index:', activeIndex, ' offsetY:', offsetY);
+        });
+        boxer.on('beforeslide', function (toIndex, activeIndex) {
+            console.log('beforeslide, ', 'to index:', toIndex, ' current index:', activeIndex);
+        });
+        boxer.on('slide', function (activeIndex, oldIndex) {
+            var  len = 2;
+            if(len-1===activeIndex){
+                $('.touchstyle-arrowup').hide();
+            }else{
+                $('.touchstyle-arrowup').show();
+            }
+            console.log('slide, ', 'current index:', activeIndex, ' old index:', +oldIndex);
+        });
+        window.boxer = boxer;
+    }
 
 
 </script>

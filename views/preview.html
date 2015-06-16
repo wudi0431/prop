@@ -29,7 +29,7 @@
             <p class="qrcode-tips">手机预览，请扫描二维码</p>
         </div>
         <div class="op-wrapper">
-            <a href="javascript:;">返回编辑</a>
+            <a id="back" href="javascript:;">返回编辑</a>
             <a style="margin-left: 45px"href="javascript:;">下载源码</a>
         </div>
     </div>
@@ -38,7 +38,6 @@
 <script type="text/javascript" src="http://cdn.staticfile.org/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
 <script>
     $(function () {
-       debugger;
         var $body = $('body');
         var iframeWindow = document.getElementById("previewIframe").contentWindow;
         //生成二维码
@@ -54,6 +53,7 @@
         $('.ico-down').on('click',function () {
                 iframeWindow.boxer.next();
         });
+        $('#back').attr('href','/editor?'+window.location.href.split("?")[1]);
     });
 </script>
 </body>
