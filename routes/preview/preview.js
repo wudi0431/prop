@@ -89,6 +89,15 @@ router.get('/', function (req, res, next) {
 
 function createHTML(uid, projectId, allPage, res) {
     var str = fs.readFileSync(previewTPL, {encoding: 'UTF-8'});
+
+    allPage.sort(function (a, b) {
+        if (a.sortindex > b.sortindex) {
+            return 1;
+        } else {
+            return -1;
+        }
+    });
+
     var html = ejs.render(str, {allPage: allPage});
     var isExists = fs.existsSync(previewPath);
     var previewSrc = '';
