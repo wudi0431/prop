@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>微信传播-预览页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
     <meta name="format-detection" content="telephone=no, email=no"/>
@@ -54,13 +55,10 @@
 
         .W_btn {
             width: 100%;
-            height: 100%;
         }
 
         .W_imgcom {
             width: 100%;
-            height: 100%;
-
         }
 
         html, body {
@@ -369,68 +367,122 @@
 </div>
 
 <div id="touchBoxCt">
-    <% allPage.forEach(function(page){ %>
-    <div id="page_<%= page._id %>" class="page"
-         style="background-color:<%= page.backgroundcolor %>; background-image:url(<%=page.backgroundimage%>); background-size: cover; background-position: 50% 50%;">
-        <% page.imgcomList.forEach(function(img){ %>
-        <div id="image_<%=img._id %>" class="<%=img.animationName %> animated" style="position: absolute;
-            z-index: <%=img.zIndex %>;left: <%=img.left %>; right: <%=img.right %>; top: <%=img.top %>; bottom: <%=img.bottom %>;
-            width: <%=img.width %>; height: <%=img.height %>;
-           padding: <%=img.paddingTop %> <%=img.paddingRight %> <%=img.paddingBottom %> <%=img.paddingLeft %>;
-            -webkit-animation-duration: <%=img.animationDuration %>; animation-duration: <%=img.animationDuration %>; -webkit-animation-iteration-count: <%=img.animationCount %>;
-            animation-iteration-count: <%=img.animationCount %>; animation-delay:<%=img.animationDelay %>; -webkit-animation-delay:<%=img.animationDelay %>;  background-repeat: no-repeat;">
-            <div style="transform:<%=img.transform %>;-webkit-transform:<%=img.transform %>;background-color:transparent;
-                 border-color:<%=img.borderColor %>;border-style:<%=img.borderStyle %>;border-width: <%=img.borderWidth %>;border-radius: <%=img.borderRadius %> ;
-                 box-shadow-color:<%=img.boxShadowColor %> ;box-shadow-width:<%=img.boxShadowWidth %> ;box-shadow-blur:<%=img.boxShadowBlur %> ;
-            box-shadow-size:<%=img.boxShadowSize %> ;box-shadow-degree:<%=img.boxShadowDegree %> ;opacity:<%=img.opacity %>;"
+    
+    <div id="page_557e6c8ebd000a1744e6f6d5" class="page"
+         style="background-color:#fff; background-image:url(/uploadimg/index.png); background-size: cover; background-position: 50% 50%;">
+        
+        <div id="image_557e830c524e80264a71edd5" class="none animated" style="position: absolute;
+            z-index: 1;left: 33px; right: 0px; top: 72px; bottom: 0px;
+            width: 226px; height: 285px;
+           padding: 0px 0px 0px 0px;
+            -webkit-animation-duration: 0s; animation-duration: 0s; -webkit-animation-iteration-count: 1;
+            animation-iteration-count: 1; animation-delay:0s; -webkit-animation-delay:0s;  background-repeat: no-repeat;">
+            <div style="transform:rotate(0deg);-webkit-transform:rotate(0deg);background-color:transparent;
+                 border-color:#ffffff;border-style:none;border-width: 4px;border-radius: 0px ;
+                 box-shadow-color:#000000 ;box-shadow-width:0px ;box-shadow-blur:0px ;
+            box-shadow-size:0px ;box-shadow-degree:0px ;opacity:1;"
                  class="item-image-full">
-                <img src="<%=img.imgurl %>" width="100%" height="100%"
-                     style="-webkit-border-radius:<%=img.borderRadius %>;border-radius:<%=img.borderRadius %>;"></div>
+                <img src="/uploadimg/640x2.jpeg" width="100%" height="100%"
+                     style="-webkit-border-radius:0px;border-radius:0px;"></div>
         </div>
-        <% }) %>
-        <% page.textcomList.forEach(function(txt){ %>
-        <div id="text_<%=txt._id %>" class="<%=txt.animationName %> animated"
-             style="position: absolute; width: <%=txt.width %>; height: <%=txt.height %>; font-style: <%=txt.fontStyle %>; font-weight: <%=txt.fontWeight %>; font-family: <%=txt.fontFamily %>;
-             font-size: <%=txt.fontSize %>; color:  <%=txt.color %>; text-align: <%=txt.textAlign%>; line-height:<%=txt.lineHeight%>;
-             box-shadow-color:<%=txt.boxShadowColor %> ;box-shadow-width:<%=txt.boxShadowWidth %> ;box-shadow-blur:<%=txt.boxShadowBlur %> ;
-            box-shadow-size:<%=txt.boxShadowSize %> ;box-shadow-degree:<%=txt.boxShadowDegree %> ;
-             z-index: <%=txt.zIndex %>;left: <%=txt.left %>; right: <%=txt.right %>; top: <%=txt.top %>; bottom: <%=txt.bottom %>; opacity: <%=txt.opacity %>;
-             -webkit-animation-duration: <%=txt.animationDuration %>; animation-duration: <%=txt.animationDuration %>; -webkit-animation-iteration-count: <%=txt.animationCount %>;
-            animation-iteration-count: <%=txt.animationCount %>; animation-delay:<%=txt.animationDelay %>; -webkit-animation-delay:<%=txt.animationDelay %>;
-            text-shadow-color:<%=txt.boxShadowColor %> ;text-shadow-width:<%=txt.boxShadowWidth %> ;text-shadow-blur:<%=txt.boxShadowBlur %> ;text-shadow-size:<%=txt.boxShadowSize %> ;text-shadow-degree:<%=txt.boxShadowDegree %>;background-repeat: no-repeat;">
-            <div style="transform:<%=txt.transform %>;-webkit-transform:<%=txt.transform %>;background-color:<%=txt.backgroundColor %>;
-                 border-color:<%=txt.borderColor %>;border-style:<%=txt.borderStyle %>;border-width: <%=txt.borderWidth %>;border-radius: <%=txt.borderRadius %> ;
-                 box-shadow-color:<%=txt.boxShadowColor %> ;box-shadow-width:<%=txt.boxShadowWidth %> ;box-shadow-blur:<%=txt.boxShadowBlur %> ;
-            box-shadow-size:<%=txt.boxShadowSize %> ;box-shadow-degree:<%=txt.boxShadowDegree %>;"
+        
+        
+        <div id="text_557e969813fe96774fe6c37e" class="bounceInDown animated"
+             style="position: absolute; width: 110px; height: 25px; font-style: normal; font-weight: normal; font-family: Microsoft YaHei;
+             font-size: 16px; color:  rgb(255, 255, 255); text-align: left; line-height:25px;
+             box-shadow-color:rgb(255, 255, 255) ;box-shadow-width:0px ;box-shadow-blur:0px ;
+            box-shadow-size:0px ;box-shadow-degree:0px ;
+             z-index: 1;left: 86px; right: 0px; top: 246px; bottom: 0px; opacity: 1;
+             -webkit-animation-duration: 0s; animation-duration: 0s; -webkit-animation-iteration-count: 1;
+            animation-iteration-count: 1; animation-delay:0s; -webkit-animation-delay:0s;
+            text-shadow-color:rgb(255, 255, 255) ;text-shadow-width:0px ;text-shadow-blur:0px ;text-shadow-size:0px ;text-shadow-degree:0px;background-repeat: no-repeat;">
+            <div style="transform:rotate(0deg);-webkit-transform:rotate(0deg);background-color:rgb(255, 255, 255);
+                 border-color:rgb(255, 255, 255);border-style:none;border-width: 0px;border-radius: 0px; ;
+                 box-shadow-color:rgb(255, 255, 255) ;box-shadow-width:0px ;box-shadow-blur:0px ;
+            box-shadow-size:0px ;box-shadow-degree:0px;"
                  class="item-text-full">
                 <div class="item-table">
-                    <div style="text-decoration:none;vertical-align:<%=txt.verticalAlign %>;color:<%=txt.color %>;"
+                    <div style="text-decoration:none;vertical-align:middle;color:rgb(255, 255, 255);"
                          class="item-table-cell">
-                        <%=txt.context %>
+                        请输入文字
                     </div>
                 </div>
             </div>
         </div>
-        <% }) %>
-        <% page.btncomtList.forEach(function(btn){ %>
-        <div id="button_<%= btn._id %>" class="<%= btn.animationName %> animated"
-             style="position: absolute;width: <%=btn.width %>; height: <%=btn.height %>; font-style: <%=btn.fontStyle %>; font-weight: <%=btn.fontWeight %>; font-family: <%=btn.fontFamily %>;
-             font-size: <%=btn.fontSize %>; color:  <%=btn.color %>; text-align: <%=btn.textAlign%>; line-height:<%=btn.lineHeight%>;
-             box-shadow-color:<%=btn.boxShadowColor %> ;box-shadow-width:<%=btn.boxShadowWidth %> ;box-shadow-blur:<%=btn.boxShadowBlur %> ;
-            box-shadow-size:<%=btn.boxShadowSize %> ;box-shadow-degree:<%=btn.boxShadowDegree %> ;
-             z-index: <%=btn.zIndex %>;left: <%=btn.left %>; right: <%=btn.right %>; top: <%=btn.top %>; bottom: <%=btn.bottom %>; opacity: <%=btn.opacity %>;
-             -webkit-animation-duration: <%=btn.animationDuration %>; animation-duration: <%=btn.animationDuration %>; -webkit-animation-iteration-count: <%=btn.animationCount %>;
-            animation-iteration-count: <%=btn.animationCount %>; animation-delay:<%=btn.animationDelay %>; -webkit-animation-delay:<%=btn.animationDelay %>; background-repeat: no-repeat;">
+        
+        
+        <div id="button_557e90e67742abb14d744bdd" class="none animated"
+             style="position: absolute;width: 110px; height: 25px; font-style: normal; font-weight: bold; font-family: Microsoft YaHei;
+             font-size: 16px; color:  rgb(255, 255, 255); text-align: left; line-height:25px;
+             box-shadow-color:rgb(221, 221, 221) ;box-shadow-width:0px ;box-shadow-blur:0px ;
+            box-shadow-size:0px ;box-shadow-degree:0px ;
+             z-index: 1;left: 33px; right: 0px; top: 72px; bottom: 0px; opacity: 1;
+             -webkit-animation-duration: 0s; animation-duration: 0s; -webkit-animation-iteration-count: 1;
+            animation-iteration-count: 1; animation-delay:0s; -webkit-animation-delay:0s; background-repeat: no-repeat;">
             <div  class="item-table">
-                <button type="button" style="transform:<%=btn.transform %>;-webkit-transform:<%=btn.transform %>;background-color:<%=btn.backgroundColor %>;
-                 border-color:<%=btn.borderColor %>;border-style:<%=btn.borderStyle %>;border-width: <%=btn.borderWidth %>;border-radius: <%=btn.borderRadius %> ;
-                 box-shadow-color:<%=btn.boxShadowColor %> ;box-shadow-width:<%=btn.boxShadowWidth %> ;box-shadow-blur:<%=btn.boxShadowBlur %> ;
-            box-shadow-size:<%=btn.boxShadowSize %> ;box-shadow-degree:<%=btn.boxShadowDegree %>;" class="W_btn"><%= btn.context %></button>
+                <button type="button" style="transform:rotate(0deg);-webkit-transform:rotate(0deg);background-color:rgb(68, 199, 103);
+                 border-color:rgb(24, 171, 41);border-style:solid;border-width: 1px;border-radius: 20px; ;
+                 box-shadow-color:rgb(221, 221, 221) ;box-shadow-width:0px ;box-shadow-blur:0px ;
+            box-shadow-size:0px ;box-shadow-degree:0px;" class="W_btn">按钮</button>
             </div>
         </div>
-        <% }) %>
+        
+        <div id="button_557e969613fe96774fe6c37d" class="none animated"
+             style="position: absolute;width: 110px; height: 35px; font-style: normal; font-weight: bold; font-family: Microsoft YaHei;
+             font-size: 16px; color:  rgb(255, 255, 255); text-align: left; line-height:25px;
+             box-shadow-color:rgb(221, 221, 221) ;box-shadow-width:0px ;box-shadow-blur:0px ;
+            box-shadow-size:0px ;box-shadow-degree:0px ;
+             z-index: 1;left: 74px; right: 0px; top: 206px; bottom: 0px; opacity: 1;
+             -webkit-animation-duration: 0s; animation-duration: 0s; -webkit-animation-iteration-count: 1;
+            animation-iteration-count: 1; animation-delay:0s; -webkit-animation-delay:0s; background-repeat: no-repeat;">
+            <div  class="item-table">
+                <button type="button" style="transform:rotate(0deg);-webkit-transform:rotate(0deg);background-color:rgb(68, 199, 103);
+                 border-color:rgb(24, 171, 41);border-style:solid;border-width: 1px;border-radius: 20px; ;
+                 box-shadow-color:rgb(221, 221, 221) ;box-shadow-width:0px ;box-shadow-blur:0px ;
+            box-shadow-size:0px ;box-shadow-degree:0px;" class="W_btn">按钮</button>
+            </div>
+        </div>
+        
     </div>
-    <% }) %>
+    
+    <div id="page_557e96c103ca80764fe5a648" class="page"
+         style="background-color:#fff; background-image:url(); background-size: cover; background-position: 50% 50%;">
+        
+        <div id="image_557e96c9eb3d62744f2e5748" class="none animated" style="position: absolute;
+            z-index: 1;left: 36px; right: 0px; top: 260px; bottom: 0px;
+            width: 200px; height: 150px;
+           padding: 0px 0px 0px 0px;
+            -webkit-animation-duration: 0s; animation-duration: 0s; -webkit-animation-iteration-count: 1;
+            animation-iteration-count: 1; animation-delay:0s; -webkit-animation-delay:0s;  background-repeat: no-repeat;">
+            <div style="transform:rotate(0deg);-webkit-transform:rotate(0deg);background-color:transparent;
+                 border-color:#ffffff;border-style:none;border-width: 4px;border-radius: 0px ;
+                 box-shadow-color:#000000 ;box-shadow-width:0px ;box-shadow-blur:0px ;
+            box-shadow-size:0px ;box-shadow-degree:0px ;opacity:1;"
+                 class="item-image-full">
+                <img src="/uploadimg/640x2.jpeg" width="100%" height="100%"
+                     style="-webkit-border-radius:0px;border-radius:0px;"></div>
+        </div>
+        
+        
+        
+        <div id="button_557e96c6eb3d62744f2e5747" class="none animated"
+             style="position: absolute;width: 110px; height: 25px; font-style: normal; font-weight: bold; font-family: Microsoft YaHei;
+             font-size: 16px; color:  rgb(255, 255, 255); text-align: left; line-height:25px;
+             box-shadow-color:rgb(221, 221, 221) ;box-shadow-width:0px ;box-shadow-blur:0px ;
+            box-shadow-size:0px ;box-shadow-degree:0px ;
+             z-index: 1;left: 72px; right: 0px; top: 93px; bottom: 0px; opacity: 1;
+             -webkit-animation-duration: 0s; animation-duration: 0s; -webkit-animation-iteration-count: 1;
+            animation-iteration-count: 1; animation-delay:0s; -webkit-animation-delay:0s; background-repeat: no-repeat;">
+            <div  class="item-table">
+                <button type="button" style="transform:rotate(0deg);-webkit-transform:rotate(0deg);background-color:rgb(68, 199, 103);
+                 border-color:rgb(24, 171, 41);border-style:solid;border-width: 1px;border-radius: 20px; ;
+                 box-shadow-color:rgb(221, 221, 221) ;box-shadow-width:0px ;box-shadow-blur:0px ;
+            box-shadow-size:0px ;box-shadow-degree:0px;" class="W_btn">按钮</button>
+            </div>
+        </div>
+        
+    </div>
+    
 </div>
 <div class="touchstyle-arrowup" style="opacity: 0; -webkit-animation: touchstyle-arrow-animate 2s infinite;
     animation-duration: 2s; animation-timing-function: initial; animation-delay: initial; animation-iteration-count: infinite;
@@ -469,7 +521,7 @@
             console.log('beforeslide, ', 'to index:', toIndex, ' current index:', activeIndex);
         });
         boxer.on('slide', function (activeIndex, oldIndex) {
-            var  len = <%=allPage.length %>;
+            var  len = 2;
             if(len-1===activeIndex){
                 $('.touchstyle-arrowup').hide();
             }else{
