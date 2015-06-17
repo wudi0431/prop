@@ -18,7 +18,10 @@ router.post('/', function (req, res, next) {
             } else {
                 res.status('200');
                 res.send({
-                    success: true
+                    success: true,
+                    model: {
+                        _id: textcomId
+                    }
                 });
             }
         });
