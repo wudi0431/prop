@@ -97,13 +97,8 @@ function createHTML(uid, projectId, allPage, res) {
             return -1;
         }
     });
-
-    var strAllPage = allPage.toString();
-    strAllPage = strAllPage.replace(/\r\n/g, '');
-    strAllPage = strAllPage.replace(/\n/g, '');
-    strAllPage = strAllPage.replace(/'/g, '"');
-
-    var html = ejs.render(str, {allPage: allPage, strAllPage: strAllPage});
+    var dd = allPage
+    var html = ejs.render(str, {allPage: allPage});
     var isExists = fs.existsSync(previewPath);
     var previewSrc = '';
 

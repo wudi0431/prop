@@ -49,6 +49,7 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
                     $('#J_imgcomContent').show().siblings('.W_editItem').hide();
                     $('#J_imgcomStyle').show().siblings('.W_editItem').hide();
                     F.trigger('setAniMateDate', that.getData());
+                    F.trigger('setDataSouceData', that.getData());
                 }
 
                 if ($$curTarget === that.$boxDel[0]) {
@@ -79,7 +80,14 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
                     that.update();
                 }
             });
-
+            F.on('getDataSouceData', function (val) {
+                if (that.$box.hasClass('select')) {
+                    data['dataurl'] = val.dataurl;
+                    data['datamapping'] = val.datamapping;
+                    that.setData(data);
+                    that.update();
+                }
+            });
 
             F.on('dragCom', function (val) {
                 if (that.$box.hasClass('select')) {
