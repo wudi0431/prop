@@ -48,10 +48,6 @@
             position: relative;
         }
 
-        .W_item {
-            position: absolute;
-            display: inline-flex;
-        }
 
         .W_btn {
             width: 100%;
@@ -372,7 +368,7 @@
 <script>
 
 </script>
-<%  console.dir(allPage)  %>
+
 <div id="touchBoxCt">
 
     <% allPage.forEach(function(page){ %>
@@ -390,7 +386,7 @@
                  box-shadow-color:<%=img.boxShadowColor %> ;box-shadow-width:<%=img.boxShadowWidth %> ;box-shadow-blur:<%=img.boxShadowBlur %> ;
             box-shadow-size:<%=img.boxShadowSize %> ;box-shadow-degree:<%=img.boxShadowDegree %> ;opacity:<%=img.opacity %>;"
                  class="item-image-full">
-                <img src="<%=img.imgurl %>" width="100%" height="100%"
+                <img  class="W_item" src="<%=img.imgurl %>"  data-dataurl="<%=img.dataurl %>" data-datamapping="<%=img.datamapping %>" width="100%" height="100%"
                      style="-webkit-border-radius:<%=img.borderRadius %>;border-radius:<%=img.borderRadius %>;"></div>
         </div>
         <% }) %>
@@ -411,7 +407,7 @@
                  class="item-text-full">
                 <div class="item-table">
                     <div style="text-decoration:none;vertical-align:<%=txt.verticalAlign %>;color:<%=txt.color %>;"
-                         class="item-table-cell">
+                         class="item-table-cell W_item"  data-dataurl="<%=txt.dataurl %>" data-datamapping="<%=txt.datamapping %>">
                         <%=txt.context %>
                     </div>
                 </div>
@@ -419,7 +415,7 @@
         </div>
         <% }) %>
         <% page.btncomtList.forEach(function(btn){ %>
-        <div id="button_<%= btn._id %>" class="<%= btn.animationName %> animated"
+        <div id="button_<%= btn._id %>" class="<%= btn.animationName %> animated W_item"
              style="position: absolute;width: <%=btn.width %>; height: <%=btn.height %>; font-style: <%=btn.fontStyle %>; font-weight: <%=btn.fontWeight %>; font-family: <%=btn.fontFamily %>;
              font-size: <%=btn.fontSize %>; color:  <%=btn.color %>; text-align: <%=btn.textAlign%>; line-height:<%=btn.lineHeight%>;
              box-shadow-color:<%=btn.boxShadowColor %> ;box-shadow-width:<%=btn.boxShadowWidth %> ;box-shadow-blur:<%=btn.boxShadowBlur %> ;
@@ -431,7 +427,7 @@
                 <button type="button" style="transform:<%=btn.transform %>;-webkit-transform:<%=btn.transform %>;background-color:<%=btn.backgroundColor %>;
                  border-color:<%=btn.borderColor %>;border-style:<%=btn.borderStyle %>;border-width: <%=btn.borderWidth %>;border-radius: <%=btn.borderRadius %> ;
                  box-shadow-color:<%=btn.boxShadowColor %> ;box-shadow-width:<%=btn.boxShadowWidth %> ;box-shadow-blur:<%=btn.boxShadowBlur %> ;
-            box-shadow-size:<%=btn.boxShadowSize %> ;box-shadow-degree:<%=btn.boxShadowDegree %>;" class="W_btn"><%= btn.context %></button>
+            box-shadow-size:<%=btn.boxShadowSize %> ;box-shadow-degree:<%=btn.boxShadowDegree %>;" class="W_btn W_item" data-dataurl="<%=btn.dataurl %>" data-datamapping="<%=btn.datamapping %>"><%= btn.context %></button>
             </div>
         </div>
         <% }) %>
@@ -474,29 +470,38 @@
 
 
     function initDataSource(){
-        pagedata.forEach(function(page){
+        var $witem =$('.W_item')
 
-            page.imgcomList.forEach(function(img){
-                if(img.dataurl!="" && img.datamapping!=""){
-                    $.ajax({
-                        type: "GET",
-                        url: img.dataurl,
-                        dataType: "json",
-                        cache: false,
-                        async: false,
-                        success: function(msg){
-                            $("#image_"+img_id).find('img').attr('src',img.datamapping);
-                        }
-                    });
-                }
-            })
+        $.each($witem, function (index,item) {
+            var $item = $(item)
+            var dataurl = $item.data('dataurl');
+            var datamap = $item.data('datamapping');
+            debugger
+            if(dataurl !="" && datamap !=""){
+                $.ajax({
+                    url:dataurl,
+                    method: "GET",
+                    cache: false,
+                    dataType: "json"
+                }).done(function(msg) {
+                    if($item.get(0).nodeName.toLocaleLowerCase()=='img'){
+                        $item.attr('src',eval(datamap));
+                    }else{
+                        $item.text(eval(datamap));
+                    }
+                }).fail(function(jqXHR, textStatus) {
+
+                });
 
 
-        });
+            }
 
+
+
+        })
     }
 
-    //initDataSource();
+    initDataSource();
 
 </script>
 </body>

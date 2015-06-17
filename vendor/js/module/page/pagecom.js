@@ -164,7 +164,7 @@ Pagecom.prototype={
                     if (text._id === obj.comData._id) {
                         text = obj.comData;
                         if (obj.isRemove) {
-                            that.textComList.splice(index, 1);
+                            that.textComtList.splice(index, 1);
                         }
                     }
                 });
@@ -531,6 +531,7 @@ Pagecom.prototype={
                 "background-position":"50% 50%"
             });
             that.$showbox.attr('data-image','');
+            imgcut.initImgCut(curpage.backgroundimage);
         }
 
 

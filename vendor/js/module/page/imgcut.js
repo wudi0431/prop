@@ -109,6 +109,17 @@ define(['jquery'], function ($) {
 
 
     function initImgCut(scr){
+
+        var canvas = $('<canvas id="panel" width="171" height="270"></canvas>');
+        var $canvas = $('#install-canvas');
+
+        if(!$('#panel').length){
+            $canvas.append(canvas);
+        }
+        if(scr==""){
+            $('#panel').remove()
+            return false ;
+        }
         // loading source image
         image = new Image();
         image.onload = function () {
@@ -252,7 +263,6 @@ define(['jquery'], function ($) {
         });
 
         drawScene();
-
 
     }
 
