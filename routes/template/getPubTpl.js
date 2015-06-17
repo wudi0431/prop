@@ -9,10 +9,22 @@ router.get('/', function (req, res, next) {
 
 router.post('/', function (req, res, next) {
     filter.authorize(req, res, function (req, res) {
-
-        res.status('200');
-        res.send({
-            success: true
+        Template.getPubTpl(function (err, templateList) {
+            if (err) {
+                res.status('500');
+                res.send({
+                    success: false, // 标记失败
+                    model: {
+                        error: '系统错误'
+                    }
+                });
+            } else {
+                res.status('200');
+                res.send({
+                    success: true,
+                    TemplateList:templateList
+                });
+            }
         });
 
     });
