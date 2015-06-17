@@ -227,7 +227,7 @@ require(['zepto', 'jquery', 'spectrum', 'btncom', 'imgcom', 'textcom','btncom_co
             } else {
                 $li.siblings('li').removeClass('item-visible');
                 $jp.hide();
-                selectImgDialog.tabs( "option", "active",0);
+                procon.tabs( "option", "active",0);
                 var targetName = e.target.tagName.toLowerCase();;
                 if(targetName=="button" || targetName=="img" || targetName=="div" ){
                     selecttype = $(e.target).parent('div').data('type');
