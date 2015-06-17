@@ -42,6 +42,10 @@ var BtnComSchema = new mongoose.Schema({
     hrefType: {type: String, default: ""},
     dataurl: {type: String, default: ""},
     datamapping: {type: String, default: ""},
+    template: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Template'
+    },
     page: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Page'

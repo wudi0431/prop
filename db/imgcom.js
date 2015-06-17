@@ -34,6 +34,10 @@ var ImgComSchema = new mongoose.Schema({
     dataurl: {type: String, default: ""},
     datamapping: {type: String, default: ""},
     imgurl: {type: String, default: ""},
+    template: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Template'
+    },
     page: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Page'

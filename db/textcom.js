@@ -46,6 +46,10 @@ var TextComSchema = new mongoose.Schema({
     textShadowWidth: {type: String, default: "0px"},
     textShadowBlur: {type: String, default: "0px"},
     textShadowDegree: {type: String, default: "0px"},
+    template: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Template'
+    },
     page: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Page'
