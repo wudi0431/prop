@@ -16,7 +16,9 @@ router.get('/test', function(req, res, next) {
 
 //TODO 编辑
 router.get('/editor', function(req, res, next) {
-    res.render('editor');
+    filter.authorize(req, res, function(req, res) {
+        res.render('editor');
+    });
 });
 
 module.exports = router;

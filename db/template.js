@@ -1,9 +1,10 @@
 var mongoose = require('mongoose');
 
 var TemplateSchema = new mongoose.Schema({
-    name:String,
-    updatetime:Date,
-    category:Number,
+    name: String,
+    backgroundcolor: String,//页面背景
+    backgroundimage: String,
+    category: Number,
     user: {
         type: Schema.Types.ObjectId,
         ref: 'User'
