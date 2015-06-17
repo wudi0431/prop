@@ -60,6 +60,22 @@ require(['zepto', 'jquery', 'spectrum', 'btncom', 'imgcom', 'textcom','btncom_co
         window.open('/preview?projectId='+projectId);
     });
 
+    var j_saveTpl = $('.j_saveTpl');
+    j_saveTpl.on('click',function(){
+        var pageId = pagecom.getSelectPage();
+        $.ajax({
+            method: "POST",
+            url: "/addTplByUser",
+            data: {
+                pageId: pageId
+            }
+        }).done(function (msg) {
+            if (msg.success) {
+
+            }
+        }).fail(function (msg) {
+        });
+    });
 
 
     var procon = $('#prototype-content');
