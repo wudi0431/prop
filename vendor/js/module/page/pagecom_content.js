@@ -111,7 +111,7 @@ define(['imgcut','jquery','imgs'], function (imgcut,$,Imgs) {
 
             imgcut.initImgCut(imgSrc);
 
-            updataPageData();
+            updataPageData(false);
 
         };
         Imgs.show();
@@ -125,17 +125,31 @@ define(['imgcut','jquery','imgs'], function (imgcut,$,Imgs) {
         imgcut.getResults(curpagecom);
     });
 
+    $j_remove_bg.on('click', function () {
+        $('#panel').remove();
+        $showbox.css({
+            "background-image": "nono",
+            "background-size": "cover",
+            "background-position": "50% 50%"
+        });
+        updataPageData(true)
+    });
+
 
     function updatePageStyle(ops){
         curpagecom = ops && ops.curpage;
     }
-    function updataPageData(){
-        if(curpagecom){
-            var curpagedata = curpagecom.getSelectPageData();
+    function updataPageData(isRemove){
+        var curpagedata = curpagecom.getSelectPageData();
+        if(curpagecom && !isRemove){
             var curcolor= $showbox.attr('data-color')||"";
             var curimage= $showbox.attr('data-image')|| "";
             curpagedata.backgroundcolor = curcolor;
             curpagedata.backgroundimage = curimage; 
+            curpagecom.updataPage(curpagedata,true);
+        }else{
+            $showbox.attr('data-image',"");
+            curpagedata.backgroundimage = "";
             curpagecom.updataPage(curpagedata,true);
         }
     }
