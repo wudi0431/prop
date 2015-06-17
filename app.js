@@ -80,6 +80,11 @@ var getImgcom = require('./routes/imgcom/getImgcom');
 var getImgcomListByPageId = require('./routes/imgcom/getImgcomListByPageId');
 var updateImgcom = require('./routes/imgcom/updateImgcom');
 
+var addPubTpl = require('./routes/template/addPubTpl');
+var addTplByUser = require('./routes/template/addTplByUser');
+var getPubTpl = require('./routes/template/getPubTpl');
+var getTplByUser = require('./routes/template/getTplByUser');
+
 var preview = require('./routes/preview/preview');
 
 
@@ -146,6 +151,12 @@ app.use('/deleteImgcom',deleteImgcom);
 app.use('/getImgcom',getImgcom);
 app.use('/getImgcomListByPageId',getImgcomListByPageId);
 app.use('/updateImgcom',updateImgcom);
+
+app.use('/addPubTpl',addPubTpl);
+app.use('/addTplByUser',addTplByUser);
+app.use('/getPubTpl',getPubTpl);
+app.use('/getTplByUser',getTplByUser);
+
 
 app.use('/preview',preview);
 
