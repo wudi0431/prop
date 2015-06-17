@@ -504,6 +504,9 @@ Pagecom.prototype={
     },
     setPageStyle: function (curpage) {
         var that =this;
+        var $cont = $('#conten-1');
+        $cont.children('div').hide().eq(0).show();
+        $('#prototype-content').tabs( "option", "active",0);
         if(curpage ==undefined || curpage==null) return false;
         if(curpage.backgroundcolor && curpage.backgroundcolor!=""){
             that.$showbox.css({

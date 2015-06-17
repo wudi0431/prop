@@ -188,7 +188,17 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
                     case 'datamapping':
                         break;
                     default :
-                        that.$box.css(key, data[key]);
+                        if(key=='transform' || key =='backgroundColor' ||
+                           key =='borderColor'|| key =='borderStyle'||
+                           key =='borderWidth'|| key =='borderRadius'||
+                           key =='boxShadowColor'|| key =='boxShadowWidth'||
+                           key =='boxShadowBlur'|| key =='boxShadowSize'||
+                           key =='boxShadowDegree'
+                        ){
+                            that.$box.children('button').css(key, data[key]);
+                        }else{
+                            that.$box.css(key, data[key]);
+                        }
                         break
                 }
             });
