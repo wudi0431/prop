@@ -115,7 +115,11 @@ define(['jquery'], function ($) {
 
         if(!$('#panel').length){
             $canvas.append(canvas);
-        } 
+        }
+        if(scr==""){
+            $('#panel').remove()
+            return false ;
+        }
         // loading source image
         image = new Image();
         image.onload = function () {

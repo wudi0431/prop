@@ -531,6 +531,7 @@ Pagecom.prototype={
                 "background-position":"50% 50%"
             });
             that.$showbox.attr('data-image','');
+            imgcut.initImgCut(curpage.backgroundimage);
         }
 
 

@@ -6,7 +6,7 @@ var TemplateSchema = new mongoose.Schema({
     backgroundimage: String,
     category: Number,
     user: {
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     }
 });
