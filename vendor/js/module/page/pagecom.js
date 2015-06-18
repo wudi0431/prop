@@ -228,7 +228,8 @@ Pagecom.prototype={
                 type: 'POST',
                 url: '/generationPage',
                 data:{
-                    allData:tplData
+                    allData:tplData,
+                    projectId:projectId
                 },
                 success: function (data) {
                    console.log(data);

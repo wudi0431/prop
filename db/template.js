@@ -186,40 +186,44 @@ function type(o) {
 }
 
 
-TemplateSchema.static('generationPage', function (allData, cb) {
+TemplateSchema.static('generationPage', function (projectId, allData, cb) {
+    allData.project = projectId;
     var newPage = new Page(allData);
+    return newPage.save(function (err, pageEntity) {
+        if (allData.btncomtList) {
+            allData.btncomtList.forEach(function (o) {
+                delete o._id;
+                delete o.__v;
+                delete o.template;
+                delete o.page;
+                o.page = pageEntity;
+                new Btncom(o).save();
+            });
+        }
 
-    if (allData.btncomtList) {
-        allData.btncomtList.forEach(function (o) {
-            delete o._id;
-            delete o.__v;
-            delete o.template;
-            delete o.page;
-            new Btncom(o).save();
-        });
-    }
+        if (allData.imgcomList) {
+            allData.imgcomList.forEach(function (o) {
+                delete o._id;
+                delete o.__v;
+                delete o.template;
+                delete o.page;
+                o.page = pageEntity;
+                new Imgcom(o).save();
+            });
+        }
 
-    if (allData.imgcomList) {
-        allData.imgcomList.forEach(function (o) {
-            delete o._id;
-            delete o.__v;
-            delete o.template;
-            delete o.page;
-            new Imgcom(o).save();
-        });
-    }
-
-    if (allData.textcomList) {
-        allData.textcomList.forEach(function (o) {
-            delete o._id;
-            delete o.__v;
-            delete o.template;
-            delete o.page;
-            new Textcom(o).save();
-        });
-    }
-
-    return newPage.save(cb);
+        if (allData.textcomList) {
+            allData.textcomList.forEach(function (o) {
+                delete o._id;
+                delete o.__v;
+                delete o.template;
+                delete o.page;
+                o.page = pageEntity;
+                new Textcom(o).save();
+            });
+        }
+        cb(err, pageEntity);
+    });
 });
 
 

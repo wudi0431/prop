@@ -12,8 +12,10 @@ router.get('/', function (req, res, next) {
 router.post('/', function (req, res, next) {
     filter.authorize(req, res, function (req, res) {
         var allData = req.body.allData;
+        var projectId = req.body.projectId;
 
-        Template.generationPage(allData,function (err, pageEntity) {
+
+        Template.generationPage(projectId, allData, function (err, pageEntity) {
             if (err) {
                 res.status('500');
                 res.send({
@@ -26,14 +28,13 @@ router.post('/', function (req, res, next) {
                 res.status('200');
                 res.send({
                     success: true,
-                    model:pageEntity
+                    model: pageEntity
                 });
             }
         });
 
     });
 });
-
 
 
 module.exports = router;
