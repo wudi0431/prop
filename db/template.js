@@ -7,6 +7,7 @@ var TemplateSchema = new Schema({
     backgroundcolor: String,//页面背景
     backgroundimage: String,
     category: Number,
+    imgUrl:String,
     user: {
         type: Schema.Types.ObjectId,
         ref: 'User'
@@ -14,12 +15,13 @@ var TemplateSchema = new Schema({
 });
 
 
-TemplateSchema.static('addTplByUser', function (pageId, user, cb) {
+TemplateSchema.static('addTplByUser', function (pageId, user,imgUrl, cb) {
     return Page.getPage(pageId, function (err, pageEntity) {
         if (pageEntity) {
             var tplEntity = mixObject(pageEntity);
 
             tplEntity.user = user;
+            tplEntity.imgUrl = imgUrl;
 
             var tpl = new TemplateModel(tplEntity);
             tpl.save(function (err, templateEntity) {
@@ -142,11 +144,12 @@ function getCom(data, cb) {
                         return;
                     }
                     if (textcomList) {
-                        oneTpl.imgcomList = imgcomList;
+                        oneTpl.textcomList = textcomList;
                     }
 
-
-                    allTpl.push(mixObject(oneTpl));
+                    var newTpl = mixObject(oneTpl);
+                    newTpl.uid = oneTpl.id;
+                    allTpl.push(newTpl);
                     if (allTpl.length === data.length) {
                         cb(err, allTpl);
                     }

@@ -199,6 +199,7 @@ Pagecom.prototype={
     // 添加页面
     addPage:function(){
         var that =this;
+
         //var $addPageDailog =$('#addPageDailog').dialog({
         //    resizable: false,
         //    width:500,
@@ -221,8 +222,9 @@ Pagecom.prototype={
         //    }
         //});
 
-        Template.onTplSelect = function (tpl) {
-
+        //TODO 模板数据处理
+        Template.onTplSelect = function (tplData) {
+                console.log(tplData);
         };
         Template.show();
 
