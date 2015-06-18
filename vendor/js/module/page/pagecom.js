@@ -52,79 +52,89 @@ Pagecom.prototype={
 
 
     },
-    _initCom: function () {
+    _initCom: function (isTpl) {
         var that =this;
-        that.pageList.forEach(function (page,index) {
-            $.ajax({
-                method: "GET",
-                url: "/getBtncomListByPageId?pageId="+page._id
-            }).done(function (msg) {
-                //console.log(msg);
-                if(msg.success && page.sortindex===1){
-                    if(that.ops.Btncom){
-                        msg.model.btncomtList.forEach(function(btn){
-                           new that.ops.Btncom({data:btn}).render({
-                                container:zepto('#showbox')
-                            });
-                            that.btnComList.push(btn);
+        if(isTpl){
+            var lastPageDate = that.pageList[that.pageList.length-1];
+            that._getComData(lastPageDate._id,lastPageDate.sortindex);
+        }else{
+            that.pageList.forEach(function (page,index) {
+                that._getComData(page._id,page.sortindex);
+            });
+            F.on('comChange', function (obj) {
+                that.updateCom(obj);
+            });
+        }
+
+
+    },
+    _getComData:function(id,index){
+        var that =this;
+        $.ajax({
+            method: "GET",
+            url: "/getBtncomListByPageId?pageId="+id
+        }).done(function (msg) {
+            //console.log(msg);
+            if(msg.success && index===1){
+                if(that.ops.Btncom){
+                    msg.model.btncomtList.forEach(function(btn){
+                        new that.ops.Btncom({data:btn}).render({
+                            container:zepto('#showbox')
                         });
-                    }
-                }else{
-                    msg.model.btncomtList.forEach(function (btn) {
                         that.btnComList.push(btn);
                     });
                 }
-            }).fail(function (msg) {
-                console.log(msg)
-            });
+            }else{
+                msg.model.btncomtList.forEach(function (btn) {
+                    that.btnComList.push(btn);
+                });
+            }
+        }).fail(function (msg) {
+            console.log(msg)
+        });
 
-            $.ajax({
-                method: "GET",
-                url: "/getImgcomListByPageId?pageId="+page._id
-            }).done(function (msg) {
-                if(msg.success && page.sortindex===1){
-                    if(that.ops.Imgcom){
-                        msg.model.imgcomtList.forEach(function(img){
-                            new that.ops.Imgcom({data:img}).render({
-                                container:zepto('#showbox')
-                            });
-                            that.imgComtList.push(img);
+        $.ajax({
+            method: "GET",
+            url: "/getImgcomListByPageId?pageId="+id
+        }).done(function (msg) {
+            if(msg.success && index===1){
+                if(that.ops.Imgcom){
+                    msg.model.imgcomtList.forEach(function(img){
+                        new that.ops.Imgcom({data:img}).render({
+                            container:zepto('#showbox')
                         });
-                    }
-                }else{
-                    msg.model.imgcomtList.forEach(function (img) {
                         that.imgComtList.push(img);
                     });
                 }
-            }).fail(function (msg) {
-                console.log(msg)
-            });
+            }else{
+                msg.model.imgcomtList.forEach(function (img) {
+                    that.imgComtList.push(img);
+                });
+            }
+        }).fail(function (msg) {
+            console.log(msg)
+        });
 
-            $.ajax({
-                method: "GET",
-                url: "/getTextcomListByPageId?pageId="+page._id
-            }).done(function (msg) {
-                if(msg.success && page.sortindex===1){
-                    if(that.ops.Textcom){
-                        msg.model.textcomtList.forEach(function(text){
-                            new that.ops.Textcom({data:text}).render({
-                                container:zepto('#showbox')
-                            });
-                            that.textComtList.push(text);
+        $.ajax({
+            method: "GET",
+            url: "/getTextcomListByPageId?pageId="+id
+        }).done(function (msg) {
+            if(msg.success && index===1){
+                if(that.ops.Textcom){
+                    msg.model.textcomtList.forEach(function(text){
+                        new that.ops.Textcom({data:text}).render({
+                            container:zepto('#showbox')
                         });
-                    }
-                }else{
-                    msg.model.textcomtList.forEach(function (text) {
                         that.textComtList.push(text);
                     });
                 }
-            }).fail(function (msg) {
-                console.log(msg)
-            });
-
-        });
-        F.on('comChange', function (obj) {
-            that.updateCom(obj);
+            }else{
+                msg.model.textcomtList.forEach(function (text) {
+                    that.textComtList.push(text);
+                });
+            }
+        }).fail(function (msg) {
+            console.log(msg)
         });
     },
     updateCom: function (obj) {
@@ -231,8 +241,17 @@ Pagecom.prototype={
                     allData:tplData,
                     projectId:projectId
                 },
-                success: function (data) {
-                   console.log(data);
+                success: function (msg) {
+                   console.log(msg);
+                    if(that.isfistadd){
+                        that.addPageTitle(that.index,true) ;
+                    }else{
+                        msg.model.sortindex =++that.index;
+                        that.addPageTitle(msg.model.sortindex);
+                        that.pageList.push(msg.model);
+                        that.bindUI();
+                        that._initCom(true);
+                    }
                 }
             });
         };
@@ -247,17 +266,18 @@ Pagecom.prototype={
     },
     //页面模板
     addPageTitle:function(index,isadd,name){
+        var that =this;
         if(isadd) {
-            this.index = ++index;
+            that.index = ++index;
         }else{
-            this.index=index;
+            that.index=index;
         }
-        var defname ='第'+this.index+'页';
+        var defname ='第'+that.index+'页';
         if(name){
             defname=name;
         }
-        this.addpage =$('.add-page-list');
-        var html=$('<div class="page-item ui-sortable-handle" data-index='+ this.index+'>'+
+        that.addpage =$('.add-page-list');
+        var html=$('<div class="page-item ui-sortable-handle" data-index='+ that.index+'>'+
             '<a data-set="selected" class="sort-page js-sort-page" href="javascript:;"></a>'+
             '<span data-set="selected" class="disp">'+defname+'</span>'+
             '<div class="page-edit" style="display: none;" data-role="title-edit">'+
@@ -270,7 +290,7 @@ Pagecom.prototype={
             '<a data-role="btn-edit-scene" title="修改" class="ico-edit" href="javascript:;"></a>'+
             '</div>');
 
-        this.addpage.before(html);
+        that.addpage.before(html);
     },
     //保存页面
     savePage: function () {
