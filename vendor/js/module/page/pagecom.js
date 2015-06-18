@@ -251,6 +251,9 @@ Pagecom.prototype={
                         that.pageList.push(msg.model);
                         that.bindUI();
                         that._initCom(true);
+                        setTimeout(function () {
+                            that.addSelectPage(msg.model.sortindex);
+                        },1000);
                     }
                 }
             });
