@@ -2,6 +2,7 @@ require.config({
     paths: {
         jquery: '/lib/jqueryui/external/jquery/jquery',
         spectrum: '/lib/jquerycolorpicker/spectrum',
+        html2canvas: '/lib/html2canvas',
         jqui: '/lib/jqueryui/jquery-ui',
         btncom: '/js/module/btncom/btncom',
         btncom_content: '/js/module/btncom/btncom_content',
@@ -13,32 +14,36 @@ require.config({
         textcom_content: '/js/module/textcom/textcom_content',
         textcom_style: '/js/module/textcom/textcom_style',
         imgs: '/js/module/imgs/imgs',
-        pagecom:'/js/module/page/pagecom',
-        pagecom_content:'/js/module/page/pagecom_content',
-        imgcut:'/js/module/page/imgcut',
-        animatecom:'/js/module/animate/animatecom',
-        datasourcecom:'/js/module/datasource/datasourcecom'
+        pagecom: '/js/module/page/pagecom',
+        pagecom_content: '/js/module/page/pagecom_content',
+        imgcut: '/js/module/page/imgcut',
+        animatecom: '/js/module/animate/animatecom',
+        datasourcecom: '/js/module/datasource/datasourcecom',
+        template: '/js/module/template/template'
     },
     shim: {
-        'jqui': {
+        html2canvas: {
+            exports: 'html2canvas'
+        },
+        jqui: {
             deps: ['jquery']
         },
-        'spectrum': {
+        spectrum: {
             deps: ['jquery']
         }
     }
 });
 
-require(['zepto', 'jquery', 'spectrum', 'btncom', 'imgcom', 'textcom','btncom_content', 'btncom_style', 'imgcom_content',
-    'imgcom_style', 'textcom_content', 'textcom_style', 'jqui', 'pagecom', 'imgs','FFF','animatecom','datasourcecom'], function (
-    zepto, $, bigcolorpicker, Btncom, Imgcom, Textcom, btncom_content,
-    btncom_style, imgcom_content, imgcom_style, textcom_content, textcom_style, jqui, Pagecom, Imgs,FFF,Animatecom,Datasourcecom) {
+require(['html2canvas', 'zepto', 'jquery', 'spectrum', 'btncom', 'imgcom', 'textcom', 'btncom_content', 'btncom_style', 'imgcom_content',
+    'imgcom_style', 'textcom_content', 'textcom_style', 'jqui', 'pagecom', 'imgs', 'FFF', 'animatecom', 'datasourcecom'], function (Html2canvas, zepto, $, bigcolorpicker, Btncom, Imgcom, Textcom, btncom_content,
+                                                                                                                                    btncom_style, imgcom_content, imgcom_style, textcom_content, textcom_style, jqui, Pagecom, Imgs, FFF, Animatecom, Datasourcecom) {
 
     //根据 url 的名字 获得 值
-    function getQueryString(name){
-        var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
         var r = window.location.search.substr(1).match(reg);
-        if(r!=null)return  unescape(r[2]); return null;
+        if (r != null)return unescape(r[2]);
+        return null;
     }
 
     var F = FFF.FFF;
@@ -54,58 +59,67 @@ require(['zepto', 'jquery', 'spectrum', 'btncom', 'imgcom', 'textcom','btncom_co
         container: zepto('#J_datasourceContent')
     });
 
-    var projectId =  getQueryString("projectId");
+    var projectId = getQueryString("projectId");
     var j_preview_app = $('.j_preview_app');
-    j_preview_app.on('click',function(){
-        window.open('/preview?projectId='+projectId);
+    j_preview_app.on('click', function () {
+        window.open('/preview?projectId=' + projectId);
     });
 
     var j_saveTpl = $('.j_saveTpl');
-    j_saveTpl.on('click',function(){
+    j_saveTpl.on('click', function () {
         var pageId = pagecom.getSelectPage();
-        $.ajax({
-            method: "POST",
-            url: "/addTplByUser",
-            data: {
-                pageId: pageId
-            }
-        }).done(function (msg) {
-            if (msg.success) {
 
+        Html2canvas($('#showbox'), {
+            onrendered: function (canvas) {
+                var imgData = canvas.toDataURL();
+                imgData=imgData.split(',')[1];
+                $.ajax({
+                    method: "POST",
+                    url: "/addTplByUser",
+                    data: {
+                        pageId: pageId,
+                        imgData:imgData
+                    }
+                }).done(function (msg) {
+                    if (msg.success) {
+
+                    }
+                }).fail(function (msg) {
+                });
             }
-        }).fail(function (msg) {
         });
+
     });
 
 
     var procon = $('#prototype-content');
     procon.tabs();
     var pagecom = new Pagecom();
-    pagecom.initPage({Btncom: Btncom, Imgcom: Imgcom,Textcom: Textcom});
+    pagecom.initPage({Btncom: Btncom, Imgcom: Imgcom, Textcom: Textcom});
     var selectImgDialog = $('#selectImgDialog');
     selectImgDialog.tabs();
 
     $('#prototype-content').tabs({
-        beforeActivate: function( event, ui ) {
-            switch (selecttype){
+        beforeActivate: function (event, ui) {
+            switch (selecttype) {
                 case 'btncom':
-                    if(ui.newTab.attr('aria-controls')=="content-1"){
+                    if (ui.newTab.attr('aria-controls') == "content-1") {
                         $('#J_btncomContent').show();
-                    }else{
+                    } else {
                         $('#J_btncomContent').hide();
                     }
                     break;
                 case 'imgcom':
-                    if(ui.newTab.attr('aria-controls')=="content-1"){
+                    if (ui.newTab.attr('aria-controls') == "content-1") {
                         $('#J_imgcomContent').show();
-                    }else{
+                    } else {
                         $('#J_imgcomContent').hide();
                     }
                     break;
                 case 'textcom':
-                    if(ui.newTab.attr('aria-controls')=="content-1"){
+                    if (ui.newTab.attr('aria-controls') == "content-1") {
                         $('#J_textcomContent').show();
-                    }else{
+                    } else {
                         $('#J_textcomContent').hide();
                     }
                     break;
@@ -119,32 +133,32 @@ require(['zepto', 'jquery', 'spectrum', 'btncom', 'imgcom', 'textcom','btncom_co
     var addpages = $('.add-page-list');
 
     addpages.on('click', function (e) {
-            e.stopPropagation();
-            pagecom.addPage();
+        e.stopPropagation();
+        pagecom.addPage();
     });
     addimage.on('click', function () {
 
-            Imgs.onImgSelect = function (imgSrc) {
-                var pageId = pagecom.getSelectPage();
-                var imgcom = new Imgcom({
-                    pageId: pageId,
-                    imgSrc: imgSrc
-                });
-                imgcom.render({
-                    container: zepto('#showbox')
-                });
-            };
-            Imgs.show();
-
-        });
-    addtext.on('click', function () {
+        Imgs.onImgSelect = function (imgSrc) {
             var pageId = pagecom.getSelectPage();
-            var textcom = new Textcom({
-                pageId: pageId
+            var imgcom = new Imgcom({
+                pageId: pageId,
+                imgSrc: imgSrc
             });
-            textcom.render({
+            imgcom.render({
                 container: zepto('#showbox')
             });
+        };
+        Imgs.show();
+
+    });
+    addtext.on('click', function () {
+        var pageId = pagecom.getSelectPage();
+        var textcom = new Textcom({
+            pageId: pageId
+        });
+        textcom.render({
+            container: zepto('#showbox')
+        });
 
     });
     addbutton.on('click', function () {
@@ -165,9 +179,8 @@ require(['zepto', 'jquery', 'spectrum', 'btncom', 'imgcom', 'textcom','btncom_co
         });
 
 
-
     });
-    var selecttype=null;
+    var selecttype = null;
     $('#showbox').on('click', '.W_item', function (e) {
         var $that = $(this);
         $('#J_pageContent').hide();
@@ -177,7 +190,7 @@ require(['zepto', 'jquery', 'spectrum', 'btncom', 'imgcom', 'textcom','btncom_co
             cursor: 'move',
             containment: 'parent',
             cancel: false,
-            stop:function(e,drag){
+            stop: function (e, drag) {
                 F.trigger('dragCom', drag.position);
             }
         });
@@ -185,7 +198,7 @@ require(['zepto', 'jquery', 'spectrum', 'btncom', 'imgcom', 'textcom','btncom_co
             handles: ' n, e, s, w, ne, se, sw, nw',
             minWidth: 50,
             minHeight: 20,
-            stop:function(e,resize){
+            stop: function (e, resize) {
                 F.trigger('resizeCom', resize.size);
             }
         });
@@ -227,18 +240,19 @@ require(['zepto', 'jquery', 'spectrum', 'btncom', 'imgcom', 'textcom','btncom_co
             } else {
                 $li.siblings('li').removeClass('item-visible');
                 $jp.hide();
-                procon.tabs( "option", "active",0);
-                var targetName = e.target.tagName.toLowerCase();;
-                if(targetName=="button" || targetName=="img" || targetName=="div" ){
+                procon.tabs("option", "active", 0);
+                var targetName = e.target.tagName.toLowerCase();
+                ;
+                if (targetName == "button" || targetName == "img" || targetName == "div") {
                     selecttype = $(e.target).parent('div').data('type');
-                }else{
+                } else {
                     selecttype = $(e.target).data('type');
                 }
                 if (selecttype == 'btncom') {
                     $jb.show();
                 } else if (selecttype == 'imgcom') {
                     $jm.show();
-                }else if (selecttype == 'textcom') {
+                } else if (selecttype == 'textcom') {
                     $jt.show();
                 }
             }

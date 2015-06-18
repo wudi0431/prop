@@ -7,6 +7,7 @@ var TemplateSchema = new Schema({
     backgroundcolor: String,//页面背景
     backgroundimage: String,
     category: Number,
+    imgUrl: String,
     user: {
         type: Schema.Types.ObjectId,
         ref: 'User'
@@ -14,12 +15,13 @@ var TemplateSchema = new Schema({
 });
 
 
-TemplateSchema.static('addTplByUser', function (pageId, user, cb) {
+TemplateSchema.static('addTplByUser', function (pageId, user, imgUrl, cb) {
     return Page.getPage(pageId, function (err, pageEntity) {
         if (pageEntity) {
             var tplEntity = mixObject(pageEntity);
 
             tplEntity.user = user;
+            tplEntity.imgUrl = imgUrl;
 
             var tpl = new TemplateModel(tplEntity);
             tpl.save(function (err, templateEntity) {
@@ -69,7 +71,7 @@ TemplateSchema.static('addTplByUser', function (pageId, user, cb) {
 function mixObject(obj) {
     var tmpObj = {};
     for (var key in obj) {
-        if (typeof obj[key] == 'string' || typeof obj[key] == 'number') {
+        if (type(obj[key]) == 'string' || type(obj[key]) == 'number' || type(obj[key]) == 'array') {
             tmpObj[key] = obj[key];
         }
     }
@@ -83,19 +85,143 @@ TemplateSchema.static('getPubTpl', function (cb) {
     return this.find({}).populate({
         path: 'user',
         select: 'name'
-    }).exec(function (err, obj) {
-        obj = obj.filter(function (o) {
-            return o.user.name === 'admin';
-        });
-        cb(err, obj);
+    }).exec(function (err, templateList) {
+
+        if (templateList) {
+            templateList = templateList.filter(function (o) {
+                return o.user.name === 'admin';
+            });
+            if (templateList.length > 0) {
+                getCom(templateList, cb);
+            } else {
+                cb(err, templateList);
+            }
+
+        }
+
     });
 });
 
-TemplateSchema.static('getPubTpl', function (user, cb) {
+TemplateSchema.static('getTplByUser', function (user, cb) {
     return this.find({
         user: user
-    }, cb);
+    }).exec(function (err, templateList) {
+        if (templateList) {
+            getCom(templateList, cb);
+        }
+    });
 });
+
+
+function getCom(data, cb) {
+    var allTpl = [];
+    data.forEach(function (o) {
+        var oneTpl = o;
+        //Btncom
+        Btncom.getBtncomListByTemplateId(o._id, function (err, btncomList) {
+
+            if (err) {
+
+                return;
+            }
+            if (btncomList) {
+                oneTpl.btncomtList = btncomList;
+            }
+
+            //Imgcom
+            Imgcom.getImgcomListByTemplateId(o._id, function (err, imgcomList) {
+                if (err) {
+
+                    return;
+                }
+                if (imgcomList) {
+                    oneTpl.imgcomList = imgcomList;
+                }
+                //Textcom
+                Textcom.getTextcomListByTemplateId(o._id, function (err, textcomList) {
+                    if (err) {
+
+                        return;
+                    }
+                    if (textcomList) {
+                        oneTpl.textcomList = textcomList;
+                    }
+
+                    var newTpl = mixObject(oneTpl);
+                    newTpl.uid = oneTpl.id;
+                    allTpl.push(newTpl);
+                    if (allTpl.length === data.length) {
+                        cb(err, allTpl);
+                    }
+
+                });
+                //Textcom End
+            });
+            //Imgcom End
+
+        });
+        //Btncom End
+
+    });
+}
+
+
+function type(o) {
+    var TYPES = {
+        'undefined': 'undefined',
+        'number': 'number',
+        'boolean': 'boolean',
+        'string': 'string',
+        '[object String]': 'string',
+        '[object Number]': 'number',
+        '[object Function]': 'function',
+        '[object RegExp]': 'regexp',
+        '[object Array]': 'array',
+        '[object Date]': 'date',
+        '[object Error]': 'error'
+    };
+
+    var TOSTRING = Object.prototype.toString;
+    return TYPES[typeof o] || TYPES[TOSTRING.call(o)] || (o ? 'object' : 'null');
+}
+
+
+TemplateSchema.static('generationPage', function (allData, cb) {
+    var newPage = new Page(allData);
+
+    if (allData.btncomtList) {
+        allData.btncomtList.forEach(function (o) {
+            delete o._id;
+            delete o.__v;
+            delete o.template;
+            delete o.page;
+            new Btncom(o).save();
+        });
+    }
+
+    if (allData.imgcomList) {
+        allData.imgcomList.forEach(function (o) {
+            delete o._id;
+            delete o.__v;
+            delete o.template;
+            delete o.page;
+            new Imgcom(o).save();
+        });
+    }
+
+    if (allData.textcomList) {
+        allData.textcomList.forEach(function (o) {
+            delete o._id;
+            delete o.__v;
+            delete o.template;
+            delete o.page;
+            new Textcom(o).save();
+        });
+    }
+
+    return newPage.save(cb);
+});
+
 
 var TemplateModel = mongoose.model('Template', TemplateSchema);
 module.exports = TemplateModel;

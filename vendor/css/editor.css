@@ -1297,6 +1297,20 @@ body .cp-color-picker,body .colpick {
 .W_item.select .W_delItem{
     display: block;
 }
+
+.W_tpl{
+    cursor: pointer;
+    width: 100px;
+    height: 200px;
+}
+
+.W_tpl:hover{
+    opacity: 0.5;
+}
+#selectTplDialog li{
+    display: inline-flex;
+    margin: 5px 5px;
+}
 /*lb*/
 
 /*animate_content*/

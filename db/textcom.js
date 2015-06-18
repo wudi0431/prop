@@ -89,6 +89,13 @@ TextComSchema.static('getTextcomListByPageId', function (pageId, cb) {
     }, cb)
 });
 
+TextComSchema.static('getTextcomListByTemplateId', function (templateId, cb) {
+    return this.find({
+        template: templateId
+    }, cb)
+});
+
+
 
 TextComSchema.static('updateTextcom', function (textcom, cb) {
     var textcomId = textcom._id;

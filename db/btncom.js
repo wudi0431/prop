@@ -85,6 +85,13 @@ BtnComSchema.static('getBtncomListByPageId', function (pageId, cb) {
     }, cb);
 });
 
+BtnComSchema.static('getBtncomListByTemplateId', function (templateId, cb) {
+    return this.find({
+        template: templateId
+    }, cb);
+});
+
+
 BtnComSchema.static('updateBtncom', function (btncom, cb) {
     var btncomId = btncom._id;
     delete btncom._id;
