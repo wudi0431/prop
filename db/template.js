@@ -69,7 +69,7 @@ TemplateSchema.static('addTplByUser', function (pageId, user, cb) {
 function mixObject(obj) {
     var tmpObj = {};
     for (var key in obj) {
-        if (typeof obj[key] == 'string' || typeof obj[key] == 'number') {
+        if (type(obj[key]) == 'string' || type(obj[key]) == 'number' || type(obj[key]) == 'array') {
             tmpObj[key] = obj[key];
         }
     }
@@ -89,7 +89,12 @@ TemplateSchema.static('getPubTpl', function (cb) {
             templateList = templateList.filter(function (o) {
                 return o.user.name === 'admin';
             });
-            getCom(templateList, cb);
+            if (templateList.length > 0) {
+                getCom(templateList, cb);
+            } else {
+                cb(err, templateList);
+            }
+
         }
 
     });
@@ -140,7 +145,8 @@ function getCom(data, cb) {
                         oneTpl.imgcomList = imgcomList;
                     }
 
-                    allTpl.push(oneTpl);
+
+                    allTpl.push(mixObject(oneTpl));
                     if (allTpl.length === data.length) {
                         cb(err, allTpl);
                     }
@@ -154,6 +160,26 @@ function getCom(data, cb) {
         //Btncom End
 
     });
+}
+
+
+function type(o) {
+    var TYPES = {
+        'undefined': 'undefined',
+        'number': 'number',
+        'boolean': 'boolean',
+        'string': 'string',
+        '[object String]': 'string',
+        '[object Number]': 'number',
+        '[object Function]': 'function',
+        '[object RegExp]': 'regexp',
+        '[object Array]': 'array',
+        '[object Date]': 'date',
+        '[object Error]': 'error'
+    };
+
+    var TOSTRING = Object.prototype.toString;
+    return TYPES[typeof o] || TYPES[TOSTRING.call(o)] || (o ? 'object' : 'null');
 }
 
 
