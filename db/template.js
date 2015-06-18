@@ -83,19 +83,79 @@ TemplateSchema.static('getPubTpl', function (cb) {
     return this.find({}).populate({
         path: 'user',
         select: 'name'
-    }).exec(function (err, obj) {
-        obj = obj.filter(function (o) {
-            return o.user.name === 'admin';
-        });
-        cb(err, obj);
+    }).exec(function (err, templateList) {
+
+        if (templateList) {
+            templateList = templateList.filter(function (o) {
+                return o.user.name === 'admin';
+            });
+            getCom(templateList, cb);
+        }
+
     });
 });
 
-TemplateSchema.static('getPubTpl', function (user, cb) {
+TemplateSchema.static('getTplByUser', function (user, cb) {
     return this.find({
         user: user
-    }, cb);
+    }).exec(function (err, templateList) {
+        if (templateList) {
+            getCom(templateList, cb);
+        }
+    });
 });
+
+
+function getCom(data, cb) {
+    var allTpl = [];
+    data.forEach(function (o) {
+        var oneTpl = o;
+        //Btncom
+        Btncom.getBtncomListByTemplateId(o._id, function (err, btncomList) {
+
+            if (err) {
+
+                return;
+            }
+            if (btncomList) {
+                oneTpl.btncomtList = btncomList;
+            }
+
+            //Imgcom
+            Imgcom.getImgcomListByTemplateId(o._id, function (err, imgcomList) {
+                if (err) {
+
+                    return;
+                }
+                if (imgcomList) {
+                    oneTpl.imgcomList = imgcomList;
+                }
+                //Textcom
+                Textcom.getTextcomListByTemplateId(o._id, function (err, textcomList) {
+                    if (err) {
+
+                        return;
+                    }
+                    if (textcomList) {
+                        oneTpl.imgcomList = imgcomList;
+                    }
+
+                    allTpl.push(oneTpl);
+                    if (allTpl.length === data.length) {
+                        cb(err, allTpl);
+                    }
+
+                });
+                //Textcom End
+            });
+            //Imgcom End
+
+        });
+        //Btncom End
+
+    });
+}
+
 
 var TemplateModel = mongoose.model('Template', TemplateSchema);
 module.exports = TemplateModel;

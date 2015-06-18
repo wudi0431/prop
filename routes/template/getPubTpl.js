@@ -7,7 +7,7 @@ router.get('/', function (req, res, next) {
     res.redirect('/');
 });
 
-router.post('/', function (req, res, next) {
+router.get('/', function (req, res, next) {
     filter.authorize(req, res, function (req, res) {
         Template.getPubTpl(function (err, templateList) {
             if (err) {

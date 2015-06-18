@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var Page = require('./page');
 
 var ImgComSchema = new mongoose.Schema({
-    zIndex: {type:Number,default:1},
+    zIndex: {type: Number, default: 1},
     top: {type: String, default: '200px'},
     left: {type: String, default: '100px'},
     right: {type: String, default: '0px'},
@@ -73,6 +73,12 @@ ImgComSchema.static('getImgcom', function (imgcomId, cb) {
 ImgComSchema.static('getImgcomListByPageId', function (pageId, cb) {
     return this.find({
         page: pageId
+    }, cb)
+});
+
+ImgComSchema.static('getImgcomListByTemplateId', function (templateId, cb) {
+    return this.find({
+        template: templateId
     }, cb)
 });
 

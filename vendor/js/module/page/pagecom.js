@@ -1,7 +1,8 @@
 /**
  * Created by wudi on 15/5/27.
  */
-define(['jquery','jqui','zepto','pagecom_content','FFF','imgcut'], function($,jqui,zepto,pagecom_content,FFF,imgcut) {
+define(['jquery','jqui','zepto','pagecom_content','FFF','imgcut','template'],
+    function($,jqui,zepto,pagecom_content,FFF,imgcut,Template) {
 
 
 var index = 0,
@@ -198,27 +199,32 @@ Pagecom.prototype={
     // 添加页面
     addPage:function(){
         var that =this;
-        var $addPageDailog =$('#addPageDailog').dialog({
-            resizable: false,
-            width:500,
-            height:600,
-            title:"选择模板",
-            modal: true,
-            dialogClass: "fasdfasdfasdfsd"
-        });
+        //var $addPageDailog =$('#addPageDailog').dialog({
+        //    resizable: false,
+        //    width:500,
+        //    height:600,
+        //    title:"选择模板",
+        //    modal: true,
+        //    dialogClass: "fasdfasdfasdfsd"
+        //});
+        //
+        //$(".tmpl-item").on('click',function(e){
+        //    e.stopPropagation();
+        //    e.preventDefault();
+        //    if($(this).attr('tmpl-index')==-1){
+        //        if($addPageDailog.dialog( "isOpen" )){
+        //            $addPageDailog.dialog( "close" );
+        //            that.addPageTitle(that.index,true)
+        //            that.clearIphone();
+        //            that.savePage();
+        //        }
+        //    }
+        //});
 
-        $(".tmpl-item").on('click',function(e){
-            e.stopPropagation();
-            e.preventDefault();
-            if($(this).attr('tmpl-index')==-1){
-                if($addPageDailog.dialog( "isOpen" )){
-                    $addPageDailog.dialog( "close" );
-                    that.addPageTitle(that.index,true)
-                    that.clearIphone();
-                    that.savePage();
-                }
-            }
-        });
+        Template.onTplSelect = function (tpl) {
+
+        };
+        Template.show();
 
     },
     // 默认添加页面

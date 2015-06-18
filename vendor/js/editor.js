@@ -17,7 +17,8 @@ require.config({
         pagecom_content:'/js/module/page/pagecom_content',
         imgcut:'/js/module/page/imgcut',
         animatecom:'/js/module/animate/animatecom',
-        datasourcecom:'/js/module/datasource/datasourcecom'
+        datasourcecom:'/js/module/datasource/datasourcecom',
+        template:'/js/module/template/template'
     },
     shim: {
         'jqui': {
