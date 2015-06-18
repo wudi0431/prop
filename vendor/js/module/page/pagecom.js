@@ -234,6 +234,12 @@ Pagecom.prototype={
 
         //TODO 模板数据处理
         Template.onTplSelect = function (tplData) {
+            var cindex =++that.index;
+
+            tplData.sortindex=cindex;
+
+            tplData.name ='第'+cindex+'页';
+
             $.ajax({
                 type: 'POST',
                 url: '/generationPage',
@@ -246,7 +252,6 @@ Pagecom.prototype={
                     if(that.isfistadd){
                         that.addPageTitle(that.index,true) ;
                     }else{
-                        msg.model.sortindex =++that.index;
                         that.addPageTitle(msg.model.sortindex);
                         that.pageList.push(msg.model);
                         that.bindUI();
