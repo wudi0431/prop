@@ -100,9 +100,12 @@ app.set('view engine', 'html');
 app.use(flash());
 // uncomment after placing your favicon in /public
 app.use(favicon(__dirname + '/public/wxms.ico'));
-app.use(bodyParser.json());
+app.use(bodyParser.json({
+    limit:'100mb'
+}));
 app.use(bodyParser.urlencoded({
-    extended: true
+    extended: true,
+    limit: '100mb'
 }));
 app.use(cookieParser());
 app.use(multer());
