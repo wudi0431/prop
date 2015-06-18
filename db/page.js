@@ -20,6 +20,9 @@ PageSchema.static('deletePage', function (pageId, cb) {
             Textcom.deleteTextcomByProject(page._id);
             Imgcom.deleteImgcomByProject(page._id);
             PageModel.updateProjectTime(page._id);
+            if (cb) {
+                cb(err, page);
+             }
         }
     });
 });

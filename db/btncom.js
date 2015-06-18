@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var Page = require('./page');
+
 
 var BtnComSchema = new mongoose.Schema({
     context: {type: String, default: '按钮'},
@@ -109,3 +109,6 @@ BtnComSchema.static('updateBtncom', function (btncom, cb) {
 
 var BtnComModel = mongoose.model('BtnCom', BtnComSchema);
 module.exports = BtnComModel;
+
+var Page = require('./page');
+

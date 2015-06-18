@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var Page = require('./page');
+
 
 var TextComSchema = new mongoose.Schema({
     context: {type: String, default: '这里是文本'},
@@ -115,3 +115,5 @@ TextComSchema.static('updateTextcom', function (textcom, cb) {
 
 var TextComModel = mongoose.model('TextCom', TextComSchema);
 module.exports = TextComModel;
+
+var Page = require('./page');

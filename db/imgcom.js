@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var Page = require('./page');
+
 
 var ImgComSchema = new mongoose.Schema({
     zIndex: {type: Number, default: 1},
@@ -100,3 +100,5 @@ ImgComSchema.static('updateImgcom', function (imgcom, cb) {
 
 var ImgComModel = mongoose.model('ImgCom', ImgComSchema);
 module.exports = ImgComModel;
+
+var Page = require('./page');
