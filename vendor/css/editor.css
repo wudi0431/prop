@@ -1231,7 +1231,7 @@ body .cp-color-picker,body .colpick {
 }
 .W_editItem{
     display: none;
-    margin: 10px;
+    /* margin: 0px; */
 }
 
 .mod_animate{
@@ -1423,4 +1423,34 @@ body .cp-color-picker,body .colpick {
     animation-duration:1s;
     -webkit-animation-fill-mode:both;
     animation-fill-mode:both;
+}
+#accordion_btncomStyle input.vs{
+     width: 60px!important;
+ 
+     /* height: 20px; */
+}
+#accordion_btncomStyle p{
+    float: left;
+    padding-bottom: 10px;
+}
+#accordion_btncomStyle p.leftp{
+    padding-left: 20px;
+}
+#accordion_btncomStyle .container {
+    display: table;
+}
+
+#accordion_btncomStyle .row {
+    display: table-row;
+    height: 35px;
+}
+
+#accordion_btncomStyle .leftcell {
+    display: table-cell;
+
+    text-align: right;
+}
+#accordion_btncomStyle .rightcell {
+    display: table-cell;
+    padding-right: 20px;
 }

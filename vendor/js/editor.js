@@ -245,4 +245,9 @@ require(['zepto', 'jquery', 'spectrum', 'btncom', 'imgcom', 'textcom','btncom_co
         }
         e.stopPropagation();
     });
+
+    $('#accordion_btncomStyle').accordion({
+        heightStyle: "content",
+        collapsible: true
+    });
 });

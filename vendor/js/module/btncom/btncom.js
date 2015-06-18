@@ -193,7 +193,7 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
                            key =='borderWidth'|| key =='borderRadius'||
                            key =='boxShadowColor'|| key =='boxShadowWidth'||
                            key =='boxShadowBlur'|| key =='boxShadowSize'||
-                           key =='boxShadowDegree'
+                           key =='boxShadowDegree' || key =='color'
                         ){
                             that.$box.children('button').css(key, data[key]);
                         }else{

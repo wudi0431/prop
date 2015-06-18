@@ -417,7 +417,7 @@
         <% page.btncomtList.forEach(function(btn){ %>
         <div id="button_<%= btn._id %>" class="<%= btn.animationName %> animated W_item"
              style="position: absolute;width: <%=btn.width %>; height: <%=btn.height %>; font-style: <%=btn.fontStyle %>; font-weight: <%=btn.fontWeight %>; font-family: <%=btn.fontFamily %>;
-             font-size: <%=btn.fontSize %>; color:  <%=btn.color %>; text-align: <%=btn.textAlign%>; line-height:<%=btn.lineHeight%>;
+             font-size: <%=btn.fontSize %>;  text-align: <%=btn.textAlign%>; line-height:<%=btn.lineHeight%>;
              box-shadow-color:<%=btn.boxShadowColor %> ;box-shadow-width:<%=btn.boxShadowWidth %> ;box-shadow-blur:<%=btn.boxShadowBlur %> ;
             box-shadow-size:<%=btn.boxShadowSize %> ;box-shadow-degree:<%=btn.boxShadowDegree %> ;
              z-index: <%=btn.zIndex %>;left: <%=btn.left %>; right: <%=btn.right %>; top: <%=btn.top %>; bottom: <%=btn.bottom %>; opacity: <%=btn.opacity %>;
@@ -427,7 +427,7 @@
                 <button type="button" style="transform:<%=btn.transform %>;-webkit-transform:<%=btn.transform %>;background-color:<%=btn.backgroundColor %>;
                  border-color:<%=btn.borderColor %>;border-style:<%=btn.borderStyle %>;border-width: <%=btn.borderWidth %>;border-radius: <%=btn.borderRadius %> ;
                  box-shadow-color:<%=btn.boxShadowColor %> ;box-shadow-width:<%=btn.boxShadowWidth %> ;box-shadow-blur:<%=btn.boxShadowBlur %> ;
-            box-shadow-size:<%=btn.boxShadowSize %> ;box-shadow-degree:<%=btn.boxShadowDegree %>;" class="W_btn W_item" data-dataurl="<%=btn.dataurl %>" data-datamapping="<%=btn.datamapping %>"><%= btn.context %></button>
+            box-shadow-size:<%=btn.boxShadowSize %> ;box-shadow-degree:<%=btn.boxShadowDegree %>;color:  <%=btn.color %>;" class="W_btn W_item" data-dataurl="<%=btn.dataurl %>" data-datamapping="<%=btn.datamapping %>"><%= btn.context %></button>
             </div>
         </div>
         <% }) %>
