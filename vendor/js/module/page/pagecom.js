@@ -224,7 +224,16 @@ Pagecom.prototype={
 
         //TODO 模板数据处理
         Template.onTplSelect = function (tplData) {
-                console.log(tplData);
+            $.ajax({
+                type: 'POST',
+                url: '/generationPage',
+                data:{
+                    allData:tplData
+                },
+                success: function (data) {
+                   console.log(data);
+                }
+            });
         };
         Template.show();
 

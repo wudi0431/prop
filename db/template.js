@@ -7,7 +7,7 @@ var TemplateSchema = new Schema({
     backgroundcolor: String,//页面背景
     backgroundimage: String,
     category: Number,
-    imgUrl:String,
+    imgUrl: String,
     user: {
         type: Schema.Types.ObjectId,
         ref: 'User'
@@ -15,7 +15,7 @@ var TemplateSchema = new Schema({
 });
 
 
-TemplateSchema.static('addTplByUser', function (pageId, user,imgUrl, cb) {
+TemplateSchema.static('addTplByUser', function (pageId, user, imgUrl, cb) {
     return Page.getPage(pageId, function (err, pageEntity) {
         if (pageEntity) {
             var tplEntity = mixObject(pageEntity);
@@ -184,6 +184,43 @@ function type(o) {
     var TOSTRING = Object.prototype.toString;
     return TYPES[typeof o] || TYPES[TOSTRING.call(o)] || (o ? 'object' : 'null');
 }
+
+
+TemplateSchema.static('generationPage', function (allData, cb) {
+    var newPage = new Page(allData);
+
+    if (allData.btncomtList) {
+        allData.btncomtList.forEach(function (o) {
+            delete o._id;
+            delete o.__v;
+            delete o.template;
+            delete o.page;
+            new Btncom(o).save();
+        });
+    }
+
+    if (allData.imgcomList) {
+        allData.imgcomList.forEach(function (o) {
+            delete o._id;
+            delete o.__v;
+            delete o.template;
+            delete o.page;
+            new Imgcom(o).save();
+        });
+    }
+
+    if (allData.textcomList) {
+        allData.textcomList.forEach(function (o) {
+            delete o._id;
+            delete o.__v;
+            delete o.template;
+            delete o.page;
+            new Textcom(o).save();
+        });
+    }
+
+    return newPage.save(cb);
+});
 
 
 var TemplateModel = mongoose.model('Template', TemplateSchema);
