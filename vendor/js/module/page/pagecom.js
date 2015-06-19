@@ -56,7 +56,7 @@ Pagecom.prototype={
         var that =this;
         if(isTpl){
             var lastPageDate = that.pageList[that.pageList.length-1];
-            that._getComData(lastPageDate._id,lastPageDate.sortindex);
+            that._getComData(lastPageDate._id,lastPageDate.sortindex,isTpl);
         }else{
             that.pageList.forEach(function (page,index) {
                 that._getComData(page._id,page.sortindex);
@@ -68,7 +68,7 @@ Pagecom.prototype={
 
 
     },
-    _getComData:function(id,index){
+    _getComData:function(id,index,isTpl){
         var that =this;
         $.ajax({
             method: "GET",
@@ -132,6 +132,9 @@ Pagecom.prototype={
                 msg.model.textcomtList.forEach(function (text) {
                     that.textComtList.push(text);
                 });
+                if(isTpl){
+                    that.addSelectPage(index);
+                }
             }
         }).fail(function (msg) {
             console.log(msg)
@@ -256,9 +259,6 @@ Pagecom.prototype={
                         that.pageList.push(msg.model);
                         that.bindUI();
                         that._initCom(true);
-                        setTimeout(function () {
-                            that.addSelectPage(msg.model.sortindex);
-                        },1000);
                     }
                 }
             });
