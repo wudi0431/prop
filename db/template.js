@@ -190,6 +190,7 @@ TemplateSchema.static('generationPage', function (projectId, allData, cb) {
     allData.project = projectId;
     var newPage = new Page(allData);
     return newPage.save(function (err, pageEntity) {
+        Page.updateProjectTime(pageEntity._id);
         if (allData.btncomtList) {
             allData.btncomtList.forEach(function (o) {
                 delete o._id;
