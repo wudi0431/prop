@@ -5,8 +5,6 @@ define(['FFF', 'jquery','spectrum'], function (FFF, $) {
     var J_btncomColor = $('#J_btncomColor');
     var J_btncomBKColor = $('#J_btncomBKColor');
 
-    var J_btncom = $('.J_btncom');
-
     J_btncomColor.spectrum({
         allowEmpty:true,
         color: "#ECC",
@@ -53,7 +51,7 @@ define(['FFF', 'jquery','spectrum'], function (FFF, $) {
 
 
     F.on('renderBtncomContent', function (data) {
-            $.each(J_btncom, function (index,btncom) {
+            $.each($('.J_btncom'), function (index,btncom) {
                 var $btncom  = $(btncom); 
                 var type = $btncom.data('type');
                 var value = data[type].replace('px','');
@@ -78,16 +76,36 @@ define(['FFF', 'jquery','spectrum'], function (FFF, $) {
                         if(value!="") J_btncomBKColor.spectrum("set",value)
                         J_btncomBKColor.val(value);
                         break;
+                    case 'transform':
+                        $btncom.val(value.match(/(\d+)/)[0]);
+                        break;
+                    case 'opacity':
+                        $btncom.val(value*100);
+                        break;
                 }
             });
 
     });
 
-    $.each(J_btncom, function (index,btncom) {
+    $.each($('.J_btncom'), function (index,btncom) {
         var $btncom =$(btncom);
-        var type = $btncom.data('type');
-        var value = $btncom.val()+'px';
-        _btncomStyleChange(value,type);
+        $btncom.on('change', function () {
+            var type = $btncom.data('type');
+            var value = $btncom.val();
+            switch(type){
+                case 'transform':
+                    $btncom.attr('deg',value)
+                    value='rotate('+value+'deg)';
+                    break;
+                case 'opacity':
+                    value=value/100;
+                    break;
+                default :
+                    value= value+'px';
+            }
+            _btncomStyleChange(value,type);
+        })
+
     })
 
     function _btncomStyleChange(value,type){

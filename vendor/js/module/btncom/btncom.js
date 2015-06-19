@@ -142,7 +142,7 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
                         key =='borderWidth'|| key =='borderRadius'||
                         key =='boxShadowColor'|| key =='boxShadowWidth'||
                         key =='boxShadowBlur'|| key =='boxShadowSize'||
-                        key =='boxShadowDegree' || key =='color'
+                        key =='boxShadowDegree' || key =='color' || key =='opacity'
                     ){
                         that.$box.children('button').css(key, obj.value);
                     }else{
@@ -204,7 +204,7 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
                            key =='borderWidth'|| key =='borderRadius'||
                            key =='boxShadowColor'|| key =='boxShadowWidth'||
                            key =='boxShadowBlur'|| key =='boxShadowSize'||
-                           key =='boxShadowDegree' || key =='color'
+                           key =='boxShadowDegree' || key =='color'|| key =='opacity'
                         ){
                             that.$box.children('button').css(key, data[key]);
                         }else{
