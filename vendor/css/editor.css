@@ -1438,8 +1438,8 @@ body .cp-color-picker,body .colpick {
     -webkit-animation-fill-mode:both;
     animation-fill-mode:both;
 }
-#accordion_btncomStyle input.vs{
-     width: 60px!important;
+#accordion_btncomStyle input.J_btncom{
+     width: 43px!important;
  
      /* height: 20px; */
 }
@@ -1463,6 +1463,7 @@ body .cp-color-picker,body .colpick {
     display: table-cell;
 
     text-align: right;
+    /* width: 64px; */
 }
 #accordion_btncomStyle .rightcell {
     display: table-cell;

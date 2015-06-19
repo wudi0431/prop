@@ -136,7 +136,18 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
 
             F.on('btncomStyleChange', function (obj) {
                 if (that.$box.hasClass('select')) {
-                    that.$box.css(obj.type, obj.value);
+                   var key = obj.type;
+                    if(key=='transform' || key =='backgroundColor' ||
+                        key =='borderColor'|| key =='borderStyle'||
+                        key =='borderWidth'|| key =='borderRadius'||
+                        key =='boxShadowColor'|| key =='boxShadowWidth'||
+                        key =='boxShadowBlur'|| key =='boxShadowSize'||
+                        key =='boxShadowDegree' || key =='color'
+                    ){
+                        that.$box.children('button').css(key, obj.value);
+                    }else{
+                        that.$box.css(key,obj.value);
+                    }
                     data[obj.type] = obj.value;
                     that.setData(data);
                     that.update();
