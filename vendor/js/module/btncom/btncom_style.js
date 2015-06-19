@@ -2,11 +2,6 @@ define(['FFF', 'jquery','spectrum'], function (FFF, $) {
     var F = FFF.FFF;
     var J_btncomStyle = $('#J_btncomStyle');
 
-    var J_btncomWidth = $('#J_btncomWidth');
-    var J_btncomHeight = $('#J_btncomHeight');
-    var J_btncomColor = $('#J_btncomColor');
-    var J_btncomLeft = $('#J_btncomLeft');
-    var J_btncomTop = $('#J_btncomTop');
     var J_btncomColor = $('#J_btncomColor');
     var J_btncomBKColor = $('#J_btncomBKColor');
 
@@ -31,13 +26,7 @@ define(['FFF', 'jquery','spectrum'], function (FFF, $) {
         hide: function (color) {
             console.log(color);
             var dddc = 'rgba('+color._r.toFixed()+','+color._g.toFixed()+','+color._b.toFixed()+','+color._a+')';
-            F.trigger('btncomStyleChange', {
-                type:'color',
-                value: dddc
-            });
-
-
-
+            _btncomStyleChange(dddc,'color');
         }
     });
 
@@ -53,67 +42,82 @@ define(['FFF', 'jquery','spectrum'], function (FFF, $) {
         maxPaletteSize: 10,
         preferredFormat: "hex",
         localStorageKey: "spectrum.demo",
-        show: function () {
-
-        },
-        beforeShow: function () {
-
-        },
         hide: function (color) {
             console.log(color);
             var dddc = 'rgba('+color._r.toFixed()+','+color._g.toFixed()+','+color._b.toFixed()+','+color._a+')';
-            F.trigger('btncomStyleChange', {
-                type:'color',
-                value: dddc
-            });
-
-
-
+            _btncomStyleChange(dddc,'backgroundColor');
         }
     });
 
 
     F.on('renderBtncomContent', function (data) {
-        Object.keys(data).forEach(function (o) {
-            switch (o) {
-                case 'width':
-                    J_btncomWidth.val(data[o]);
+            $.each($('.J_btncom'), function (index,btncom) {
+                var $btncom  = $(btncom); 
+                var type = $btncom.data('type');
+                var value = data[type];
+                if(value && value.indexOf('px')!=-1){
+                    value = value.replace('px','');
+                }
+                switch (type) {
+                    case 'width':
+                        $btncom.val(value);
+                        break;
+                    case 'height':
+                        $btncom.val(value);
+                        break;
+                    case 'top':
+                        $btncom.val(value);
+                        break;
+                    case 'right':
+                        $btncom.val(value);
+                        break;
+                    case 'bottom':
+                        $btncom.val(value);
+                        break;
+                    case 'left':
+                        $btncom.val(value);
+                        break;
+                    case 'color':
+                        if(value!="") J_btncomColor.spectrum("set",value)
+                        J_btncomColor.val(value);
+                        break;
+                    case 'backgroundColor':
+                        if(value!="") J_btncomBKColor.spectrum("set",value)
+                        J_btncomBKColor.val(value);
+                        break;
+                    case 'transform':
+                        $btncom.val(value.match(/(\d+)/)[0]);
+                        break;
+                    case 'opacity':
+                        $btncom.val(value*100);
+                        break;
+                }
+            });
+
+    });
+
+    $.each($('.J_btncom'), function (index,btncom) {
+        var $btncom =$(btncom);
+        $btncom.on('change', function () {
+            var type = $btncom.data('type');
+            var value = $btncom.val();
+            switch(type){
+                case 'transform':
+                    $btncom.attr('deg',value)
+                    value='rotate('+value+'deg)';
                     break;
-                case 'height':
-                    J_btncomHeight.val(data[o]);
+                case 'opacity':
+                    value=value/100;
                     break;
-                case 'left':
-                    J_btncomLeft.val(data[o]);
-                    break;
-                case 'top':
-                    J_btncomTop.val(data[o]);
-                    break;
-                case 'color':
-                    if(data[o]!="") J_btncomColor.spectrum("set",data[o])
-                    J_btncomColor.val(data[o]);
-                    break;
+                default :
+                    value= value+'px';
             }
-        });
-    });
+            _btncomStyleChange(value,type);
+        })
 
+    })
 
-    J_btncomWidth.on('input', function () {
-        _btncomStyleChange(this,'width');
-    });
-    J_btncomHeight.on('input', function () {
-        _btncomStyleChange(this,'height');
-    });
-    J_btncomLeft.on('input', function () {
-        _btncomStyleChange(this,'left');
-    });
-    J_btncomTop.on('input', function () {
-        _btncomStyleChange(this,'top');
-    });
-
-
-    function _btncomStyleChange(self,type){
-        var $that = $(self);
-        var value = $that.val();
+    function _btncomStyleChange(value,type){
         F.trigger('btncomStyleChange', {
             type: type,
             value: value
