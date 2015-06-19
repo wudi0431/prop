@@ -54,7 +54,10 @@ define(['FFF', 'jquery','spectrum'], function (FFF, $) {
             $.each($('.J_btncom'), function (index,btncom) {
                 var $btncom  = $(btncom); 
                 var type = $btncom.data('type');
-                var value = data[type].replace('px','');
+                var value = data[type];
+                if(value && value.indexOf('px')!=-1){
+                    value = value.replace('px','');
+                }
                 switch (type) {
                     case 'width':
                         $btncom.val(value);
@@ -62,10 +65,16 @@ define(['FFF', 'jquery','spectrum'], function (FFF, $) {
                     case 'height':
                         $btncom.val(value);
                         break;
-                    case 'left':
+                    case 'top':
                         $btncom.val(value);
                         break;
-                    case 'top':
+                    case 'right':
+                        $btncom.val(value);
+                        break;
+                    case 'bottom':
+                        $btncom.val(value);
+                        break;
+                    case 'left':
                         $btncom.val(value);
                         break;
                     case 'color':

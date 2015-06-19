@@ -1457,6 +1457,7 @@ body .cp-color-picker,body .colpick {
 #accordion_btncomStyle .row {
     display: table-row;
     height: 35px;
+    line-height: 35px;
 }
 
 #accordion_btncomStyle .leftcell {
@@ -1468,4 +1469,42 @@ body .cp-color-picker,body .colpick {
 #accordion_btncomStyle .rightcell {
     display: table-cell;
     padding-right: 20px;
+}
+#accordion_btncomStyle .aligncell {
+    display: inline-block;
+
+}
+
+#accordion_btncomStyle .button {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 10px 0 0;
+    border-width: 1px;
+    border-style: solid;
+    font-size: 12px;
+    font-weight: normal;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    outline: none;
+    box-sizing: content-box;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    padding: 0 15px;
+    height: 28px;
+    width: auto;
+    line-height: 28px;
+    background-color: #fff;
+    background-image: none;
+    border-color: #bcbcbc #bcbcbc #bcbcbc #bcbcbc;
+    color: #585858;
+    text-shadow: none;
+}
+#accordion_btncomStyle .button:hover {
+    background-color: #fff;
+    background-image: none;
+    border-color: #1a8fda #1a8fda #1a8fda #1a8fda;
+    color: #1a8fda;
+    text-shadow: none;
 }

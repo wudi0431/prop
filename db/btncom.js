@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 
 var BtnComSchema = new mongoose.Schema({
     context: {type: String, default: '按钮'},
-    textAlign: {type: String, default: 'left'},
+    textAlign: {type: String, default: 'center'},
     zIndex: {type:Number,default:1},
     top: {type: String, default: '200px'},
     left: {type: String, default: '100px'},
