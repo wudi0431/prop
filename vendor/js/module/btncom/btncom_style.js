@@ -55,6 +55,9 @@ define(['FFF', 'jquery','spectrum'], function (FFF, $) {
                 var $btncom  = $(btncom); 
                 var type = $btncom.data('type');
                 var value = data[type];
+                if(value =="" || value==undefined || value==null) {
+                    return false;
+                }
                 if(value && value.indexOf('px')!=-1){
                     value = value.replace('px','');
                 }
@@ -101,13 +104,17 @@ define(['FFF', 'jquery','spectrum'], function (FFF, $) {
         $btncom.on('change', function () {
             var type = $btncom.data('type');
             var value = $btncom.val();
+            if(value =="" || value==undefined || value==null) {
+                return false;
+            }
             switch(type){
                 case 'transform':
                     $btncom.attr('deg',value)
                     value='rotate('+value+'deg)';
                     break;
                 case 'opacity':
-                    value=value/100;
+                    value=parseInt(value)/100;
+                    value =value.toString();
                     break;
                 default :
                     value= value+'px';
