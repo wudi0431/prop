@@ -17,12 +17,6 @@ define(['FFF', 'jquery','spectrum'], function (FFF, $) {
         maxPaletteSize: 10,
         preferredFormat: "hex",
         localStorageKey: "spectrum.demo",
-        show: function () {
-
-        },
-        beforeShow: function () {
-
-        },
         hide: function (color) {
             console.log(color);
             var dddc = 'rgba('+color._r.toFixed()+','+color._g.toFixed()+','+color._b.toFixed()+','+color._a+')';
@@ -57,6 +51,9 @@ define(['FFF', 'jquery','spectrum'], function (FFF, $) {
                 var value = data[type];
                 if(value =="" || value==undefined || value==null) {
                     return false;
+                }
+                if(typeof value !='string'){
+                    value = value.toString();
                 }
                 if(value && value.indexOf('px')!=-1){
                     value = value.replace('px','');
