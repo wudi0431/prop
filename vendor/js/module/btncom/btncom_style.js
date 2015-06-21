@@ -86,7 +86,9 @@ define(['FFF', 'jquery','spectrum'], function (FFF, $) {
                         J_btncomBKColor.val(value);
                         break;
                     case 'transform':
-                        $btncom.val(value.match(/(\d+)/)[0]);
+                    if(value.indexOf('rotate')){
+                         $btncom.val(value.match(/(\d+)/)[0]);
+                    }
                         break;
                     case 'opacity':
                         $btncom.val(value*100);
