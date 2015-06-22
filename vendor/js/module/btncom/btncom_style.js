@@ -91,7 +91,8 @@ define(['FFF', 'jquery','spectrum'], function (FFF, $) {
                     }
                         break;
                     case 'opacity':
-                        $btncom.val(value*100);
+                        value = parseInt(value*100).toString();
+                        $btncom.val(value);
                         break;
                 }
             });
