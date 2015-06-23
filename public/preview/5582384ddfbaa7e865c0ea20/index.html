@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>微信传播-预览页</title>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="format-detection" content="telephone=no, email=no"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <!-- 删除苹果默认的工具栏和菜单栏 -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <!-- 设置苹果工具栏颜色 -->
+    <meta name="format-detection" content="telphone=no, email=no"/>
+    <!-- 忽略页面中的数字识别为电话，忽略email识别 -->
+    <!-- 启用360浏览器的极速模式(webkit) -->
+    <meta name="renderer" content="webkit">
+    <!-- 避免IE使用兼容模式 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 -->
+    <meta name="HandheldFriendly" content="true">
+    <!-- 微软的老式浏览器 -->
+    <meta name="MobileOptimized" content="320">
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true">
+    <!-- UC应用模式 -->
+    <meta name="browsermode" content="application">
+    <!-- QQ应用模式 -->
+    <meta name="x5-page-mode" content="app">
+    <!-- windows phone 点击无高光 -->
+    <meta name="msapplication-tap-highlight" content="no">
+    <!-- 适应移动端end -->
+    <link rel="stylesheet" href="/css/reset.css"/>
+    <link rel="stylesheet" href="/css/animate.css"/>
+
+    <style>
+
+        .pageWrap {
+
+        }
+
+        .page {
+            position: relative;
+        }
+
+
+        .W_btn {
+            width: 100%;
+            height: 100%;
+        }
+
+        .W_imgcom {
+            width: 100%;
+            height: 100%;
+
+        }
+
+        html, body {
+            -webkit-tap-highlight-color: transparent;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            user-select: none
+        }
+
+        a, img {
+            -webkit-touch-callout: none
+        }
+
+        body, input, a {
+            color: #000;
+            display: inline-block;
+            font-family: "Helvetica Neue", Helvetica, "Microsoft Yahei", STHeiTi, sans-serif;
+            font-size: 14px
+        }
+
+        a {
+            text-decoration: none
+        }
+
+        body, div, p {
+            margin: 0;
+            padding: 0
+        }
+
+        #touchBoxCt img {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            user-select: none
+        }
+
+        #touchBoxCt > .touch-box-item {
+            display: none
+        }
+
+        #touchBoxCt > .touch-box-item .touch-box-bg-image {
+            position: absolute;
+            width: 100%;
+            z-index: 2
+        }
+
+        #touchBoxCt > .touch-box-item .touch-box-element-wrap {
+            position: absolute;
+            width: 100%
+        }
+
+        #touchBoxCt > .touch-box-item .touch-box-element {
+            overflow: hidden
+        }
+
+        #touchBoxCt > .touch-box-item .touch-box-element > .touch-box-element-text, #touchBoxCt > .touch-box-item .touch-box-element > .touch-box-element-html {
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 50%;
+            -webkit-transform: translate(0, -50%);
+            -ms-transform: translate(0, -50%);
+            transform: translate(0, -50%)
+        }
+
+        #touchBoxCt > .touch-box-item .touch-box-element > .touch-box-element-image {
+            left: 0;
+            position: absolute;
+            top: 0
+        }
+
+        #touchBoxCt > .touch-box-item .touch-box-element > .touch-box-element-mulittext {
+            bottom: 0;
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0
+        }
+
+        #touchBoxCt > .touch-box-item .touch-box-element > .touch-box-element-text {
+            display: inline-block
+        }
+
+        #touchBoxCt > .touch-box-item .touch-box-element > .touch-box-element-image, #touchBoxCt > .touch-box-item .touch-box-element > .touch-box-element-image > img, #touchBoxCt > .touch-box-item .touch-box-element > .touch-box-element-html {
+            display: block;
+            height: 100%;
+            width: 100%
+        }
+
+        #touchStyleLoading {
+            background-color: #fff;
+            bottom: 0;
+            display: block;
+            height: 100%;
+            left: 0;
+            opacity: 1;
+            position: fixed;
+            right: 0;
+            top: 0;
+            -webkit-transition: opacity .3s;
+            -ms-transition: opacity .3s;
+            transition: opacity .3s;
+            width: 100%;
+            z-index: 99999;
+        }
+
+        #touchStyleLoading > .spinner {
+            -webkit-animation: loadingSpin .5s infinite linear;
+            -ms-animation: loadingSpin .5s infinite linear;
+            animation: loadingSpin .5s infinite linear;
+            background-color: #fff;
+            -webkit-border-radius: 60px;
+            border-radius: 60px;
+            border: 3px solid #888;
+            border-top-color: #2297bc;
+            -webkit-box-sizing: border-box;
+            -ms-box-sizing: border-box;
+            box-sizing: border-box;
+            height: 60px;
+            left: 50%;
+            margin-top: -30px;
+            margin-left: -30px;
+            position: absolute;
+            top: 50%;
+            width: 60px;
+            z-index: 1
+        }
+
+        #touchStyleLoading > .percent {
+            -webkit-box-sizing: border-box;
+            -ms-box-sizing: border-box;
+            box-sizing: border-box;
+            color: #333;
+            font-size: 13px;
+            height: 60px;
+            left: 50%;
+            line-height: 60px;
+            margin-top: -30px;
+            margin-left: -30px;
+            position: absolute;
+            text-align: center;
+            top: 50%;
+            width: 60px;
+            z-index: 2
+        }
+
+        @-webkit-keyframes loadingSpin {
+            0% {
+                -webkit-transform: rotate(0deg)
+            }
+            100% {
+                -webkit-transform: rotate(360deg)
+            }
+        }
+
+        @-ms-keyframes loadingSpin {
+            0% {
+                -ms-transform: rotate(0deg)
+            }
+            100% {
+                -ms-transform: rotate(360deg)
+            }
+        }
+
+        @keyframes loadingSpin {
+            0% {
+                transform: rotate(0deg)
+            }
+            100% {
+                transform: rotate(360deg)
+            }
+        }
+
+        #touchStyleWeixinShare, .video-wrapper {
+            background: url("http://p0.qhimg.com/t017d01d4f9b3faf004.png") top center no-repeat;
+            background-color: rgba(0, 0, 0, .8);
+            -webkit-background-size: 320px 250px;
+            background-size: 320px 250px;
+            bottom: 0;
+            color: #fff;
+            display: none;
+            font-size: 20px;
+            left: 0;
+            line-height: 32px;
+            padding-top: 185px;
+            position: fixed;
+            right: 0;
+            text-align: center;
+            top: 0;
+            z-index: 10000
+        }
+
+        .video-wrapper {
+            background: none;
+            background-color: rgba(0, 0, 0, .8);
+            -webkit-background-size: 320px 250px;
+            background-size: 320px 250px;
+            display: block
+        }
+
+        .video-wrapper .video-close-btn {
+            color: #fff;
+            display: inline-block;
+            font-size: 35px;
+            height: 50px;
+            line-height: 50px;
+            position: fixed;
+            right: 0;
+            text-align: center;
+            top: 0;
+            width: 50px
+        }
+
+        .video-wrapper .video-content {
+            height: 60%;
+            left: 0;
+            position: fixed;
+            top: 20%;
+            width: 100%
+        }
+
+        .video-wrapper .video-content iframe, .video-wrapper .video-content embed, .video-wrapper .video-content object {
+            height: 100%;
+            width: 98%
+        }
+
+        #touchBoxCt .item-table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            display: table;
+            height: 100%;
+            overflow: hidden;
+            width: 100%
+        }
+
+        #touchBoxCt .item-table-cell {
+            display: table-cell
+        }
+
+        #touchBoxCt .item-table-cell, #touchBoxCt .item-image-full, #touchBoxCt .item-text-full {
+            height: 100%;
+            width: 100%
+        }
+
+        #touchBoxCt .item-image-full {
+            line-height: 0
+        }
+
+        #touchBoxCt .item-image-full, #touchBoxCt .elem-wrapper {
+            overflow: hidden
+        }
+
+        .touchstyle-arrowup {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            z-index: 9999;
+            margin-left: -15px;
+            width: 34px;
+            height: 16px;
+            opacity: 0;
+        }
+
+        .touchstyle-arrowup:before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 4px;
+            left: 7px;
+            width: 18px;
+            height: 18px;
+            border:2px solid rgba(101, 98, 98, 0.9);
+            border-left-width: 0;
+            border-bottom-width: 0;
+            -webkit-transform: rotate(-45deg) skew(5deg, 5deg);
+        }
+
+        @-webkit-keyframes touchstyle-arrow-animate {
+            0% {
+                -webkit-transform: translateY(0);
+                opacity: 0;
+            }
+            33% {
+                opacity: .8;
+            }
+            50% {
+                -webkit-transform: translateY(-8px);
+                opacity: .8;
+            }
+            66% {
+                opacity: .8;
+            }
+            100% {
+                -webkit-transform: translateY(-16px);
+                opacity: 0;
+            }
+        }
+    </style>
+    <script type='text/javascript' src='http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js'></script>
+</head>
+<body style="overflow: hidden;">
+
+<div id="touchStyleLoading" style="background-color:#ffffff;">
+    <div class="percent" style="color:#333333;">0</div>
+    <div class="spinner"
+         style="background-color:rgba(255, 255, 255, 0.3);border-color:rgba(136, 136, 136, 0.8);border-top-color:#2297bc;"></div>
+</div>
+<script>
+
+</script>
+
+<div id="touchBoxCt">
+
+    
+    <div id="page_5582946c35267413a5a630f3" class="page"
+         style="background-color:rgba(187,0,0,1);; background-image:url(); background-size: cover; background-position: 50% 50%;">
+        
+        <div id="image_558294dd35267413a5a630f4" class="bounceInRight animated" style="position: absolute;
+            z-index: 1;left: 33px; right: 0px; top: 283px; bottom: 0px;
+            width: 200px; height: 150px;
+           padding: 0px 0px 0px 0px;
+            -webkit-animation-duration: 1.2s; animation-duration: 1.2s; -webkit-animation-iteration-count: 1;
+            animation-iteration-count: 1; animation-delay:01s; -webkit-animation-delay:01s;  background-repeat: no-repeat;">
+            <div style="transform:rotate(0deg);-webkit-transform:rotate(0deg);background-color:transparent;
+                 border-color:#ffffff;border-style:none;border-width: 4px;border-radius: 0px ;
+                 box-shadow-color:#000000 ;box-shadow-width:0px ;box-shadow-blur:0px ;
+            box-shadow-size:0px ;box-shadow-degree:0px ;opacity:1;"
+                 class="item-image-full">
+                <img  class="W_item" src="/uploadimg/640x3.jpeg"  data-dataurl="" data-datamapping="" width="100%" height="100%"
+                     style="-webkit-border-radius:0px;border-radius:0px;"></div>
+        </div>
+        
+        
+        <div id="text_5583a89f51f84f2dbfc1cf2c" class="none animated"
+             style="position: absolute; width: 110px; height: 25px; font-style: normal; font-weight: normal; font-family: Microsoft YaHei;
+             font-size: 16px; color:  rgb(255, 255, 255); text-align: left; line-height:25px;
+             box-shadow-color:rgb(255, 255, 255) ;box-shadow-width:0px ;box-shadow-blur:0px ;
+            box-shadow-size:0px ;box-shadow-degree:0px ;
+             z-index: 1;left: 49px; right: 0px; top: 210px; bottom: 0px; opacity: 1;
+             -webkit-animation-duration: 0s; animation-duration: 0s; -webkit-animation-iteration-count: 1;
+            animation-iteration-count: 1; animation-delay:0s; -webkit-animation-delay:0s;
+            text-shadow-color:rgb(255, 255, 255) ;text-shadow-width:0px ;text-shadow-blur:0px ;text-shadow-size:0px ;text-shadow-degree:0px;background-repeat: no-repeat;">
+            <div style="transform:rotate(0deg);-webkit-transform:rotate(0deg);background-color:transparent;
+                 border-color:rgb(255, 255, 255);border-style:none;border-width: 0px;border-radius: 0px; ;
+                 box-shadow-color:rgb(255, 255, 255) ;box-shadow-width:0px ;box-shadow-blur:0px ;
+            box-shadow-size:0px ;box-shadow-degree:0px;"
+                 class="item-text-full">
+                <div class="item-table">
+                    <div style="text-decoration:none;vertical-align:middle;color:rgb(255, 255, 255);"
+                         class="item-table-cell W_item"  data-dataurl="" data-datamapping="">
+                        请输入文字
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        <div id="button_558386f4ad6a05c4338c6512" class="none animated W_item"
+             style="position: absolute;width: 171px; height: 97px; font-style: normal; font-weight: bold; font-family: Microsoft YaHei;
+             font-size: 16px;  text-align: left; line-height:25px;
+             box-shadow-color:rgb(221, 221, 221) ;box-shadow-width:0px ;box-shadow-blur:0px ;
+            box-shadow-size:0px ;box-shadow-degree:0px ;
+             z-index: 1;left: 95px; right: 0px; top: 120px; bottom: 0px; opacity: 100%;
+             -webkit-animation-duration: 0s; animation-duration: 0s; -webkit-animation-iteration-count: 1;
+            animation-iteration-count: 1; animation-delay:0s; -webkit-animation-delay:0s; background-repeat: no-repeat;">
+            <div  class="item-table">
+                <button type="button" style="transform:rotate(0deg);-webkit-transform:rotate(0deg);background-color:rgb(68, 199, 103);
+                 border-color:rgb(24, 171, 41);border-style:solid;border-width: 1px;border-radius: 20px; ;
+                 box-shadow-color:rgb(221, 221, 221) ;box-shadow-width:0px ;box-shadow-blur:0px ;
+            box-shadow-size:0px ;box-shadow-degree:0px;color:  rgb(255, 255, 255);" class="W_btn W_item" data-dataurl="" data-datamapping="">按钮</button>
+            </div>
+        </div>
+        
+        <div id="button_558387a0f418cab83465719e" class="none animated W_item"
+             style="position: absolute;width: 106px; height: 46px; font-style: normal; font-weight: bold; font-family: Microsoft YaHei;
+             font-size: 16px;  text-align: left; line-height:25px;
+             box-shadow-color:rgb(221, 221, 221) ;box-shadow-width:0px ;box-shadow-blur:0px ;
+            box-shadow-size:0px ;box-shadow-degree:0px ;
+             z-index: 1;left: 114px; right: 0px; top: 59px; bottom: 0px; opacity: 100%;
+             -webkit-animation-duration: 0s; animation-duration: 0s; -webkit-animation-iteration-count: 1;
+            animation-iteration-count: 1; animation-delay:0s; -webkit-animation-delay:0s; background-repeat: no-repeat;">
+            <div  class="item-table">
+                <button type="button" style="transform:rotate(0deg);-webkit-transform:rotate(0deg);background-color:rgba(238,204,204,1);
+                 border-color:rgb(24, 171, 41);border-style:solid;border-width: 1px;border-radius: 20px; ;
+                 box-shadow-color:rgb(221, 221, 221) ;box-shadow-width:0px ;box-shadow-blur:0px ;
+            box-shadow-size:0px ;box-shadow-degree:0px;color:  rgba(255,255,0,1);" class="W_btn W_item" data-dataurl="" data-datamapping="">按钮</button>
+            </div>
+        </div>
+        
+        <div id="button_55838828f418cab83465719f" class="bounceInDown animated W_item"
+             style="position: absolute;width: 92px; height: 62px; font-style: normal; font-weight: bold; font-family: Microsoft YaHei;
+             font-size: 16px;  text-align: left; line-height:25px;
+             box-shadow-color:rgb(221, 221, 221) ;box-shadow-width:0px ;box-shadow-blur:0px ;
+            box-shadow-size:0px ;box-shadow-degree:0px ;
+             z-index: 1;left: 172px; right: 20px; top: 224px; bottom: 10px; opacity: 1;
+             -webkit-animation-duration: 01s; animation-duration: 01s; -webkit-animation-iteration-count: 1;
+            animation-iteration-count: 1; animation-delay:01s; -webkit-animation-delay:01s; background-repeat: no-repeat;">
+            <div  class="item-table">
+                <button type="button" style="transform:rotate(0deg);-webkit-transform:rotate(0deg);background-color:rgb(68, 199, 103);
+                 border-color:rgb(24, 171, 41);border-style:solid;border-width: 1px;border-radius: 20px; ;
+                 box-shadow-color:rgb(221, 221, 221) ;box-shadow-width:0px ;box-shadow-blur:0px ;
+            box-shadow-size:0px ;box-shadow-degree:0px;color:  rgba(212,59,59,1);" class="W_btn W_item" data-dataurl="" data-datamapping="">按钮</button>
+            </div>
+        </div>
+        
+    </div>
+    
+    <div id="page_558373972cfbdb9c1936d328" class="page"
+         style="background-color:rgba(255,0,0,1);; background-image:url(); background-size: cover; background-position: 50% 50%;">
+        
+        
+        <div id="text_558373972cfbdb9c1936d32a" class="none animated"
+             style="position: absolute; width: 170px; height: 33px; font-style: normal; font-weight: normal; font-family: Microsoft YaHei;
+             font-size: 16px; color:  rgb(255, 255, 255); text-align: left; line-height:25px;
+             box-shadow-color:rgb(255, 255, 255) ;box-shadow-width:0px ;box-shadow-blur:0px ;
+            box-shadow-size:0px ;box-shadow-degree:0px ;
+             z-index: 1;left: 80px; right: 0px; top: 237px; bottom: 0px; opacity: 1;
+             -webkit-animation-duration: 0s; animation-duration: 0s; -webkit-animation-iteration-count: 1;
+            animation-iteration-count: 1; animation-delay:0s; -webkit-animation-delay:0s;
+            text-shadow-color:rgb(255, 255, 255) ;text-shadow-width:0px ;text-shadow-blur:0px ;text-shadow-size:0px ;text-shadow-degree:0px;background-repeat: no-repeat;">
+            <div style="transform:rotate(0deg);-webkit-transform:rotate(0deg);background-color:transparent;
+                 border-color:rgb(255, 255, 255);border-style:none;border-width: 0px;border-radius: 0px; ;
+                 box-shadow-color:rgb(255, 255, 255) ;box-shadow-width:0px ;box-shadow-blur:0px ;
+            box-shadow-size:0px ;box-shadow-degree:0px;"
+                 class="item-text-full">
+                <div class="item-table">
+                    <div style="text-decoration:none;vertical-align:middle;color:rgb(255, 255, 255);"
+                         class="item-table-cell W_item"  data-dataurl="" data-datamapping="">
+                        请输入文字
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        <div id="button_558373972cfbdb9c1936d329" class="none animated W_item"
+             style="position: absolute;width: 110px; height: 25px; font-style: normal; font-weight: bold; font-family: Microsoft YaHei;
+             font-size: 16px;  text-align: left; line-height:25px;
+             box-shadow-color:rgb(221, 221, 221) ;box-shadow-width:0px ;box-shadow-blur:0px ;
+            box-shadow-size:0px ;box-shadow-degree:0px ;
+             z-index: 1;left: 114px; right: 0px; top: 154px; bottom: 0px; opacity: 1;
+             -webkit-animation-duration: 0s; animation-duration: 0s; -webkit-animation-iteration-count: 1;
+            animation-iteration-count: 1; animation-delay:0s; -webkit-animation-delay:0s; background-repeat: no-repeat;">
+            <div  class="item-table">
+                <button type="button" style="transform:rotate(0deg);-webkit-transform:rotate(0deg);background-color:rgba(221,221,221,1);
+                 border-color:rgb(24, 171, 41);border-style:solid;border-width: 1px;border-radius: 20px; ;
+                 box-shadow-color:rgb(221, 221, 221) ;box-shadow-width:0px ;box-shadow-blur:0px ;
+            box-shadow-size:0px ;box-shadow-degree:0px;color:  rgba(255,128,0,1);" class="W_btn W_item" data-dataurl="" data-datamapping="">按钮</button>
+            </div>
+        </div>
+        
+    </div>
+    
+    <div id="page_5583a9eb51f84f2dbfc1cf34" class="page"
+         style="background-color:rgba(187,0,0,1);; background-image:url(); background-size: cover; background-position: 50% 50%;">
+        
+        <div id="image_5583a9eb51f84f2dbfc1cf38" class="none animated" style="position: absolute;
+            z-index: 1;left: 33px; right: 0px; top: 283px; bottom: 0px;
+            width: 200px; height: 150px;
+           padding: 0px 0px 0px 0px;
+            -webkit-animation-duration: 0s; animation-duration: 0s; -webkit-animation-iteration-count: 1;
+            animation-iteration-count: 1; animation-delay:0s; -webkit-animation-delay:0s;  background-repeat: no-repeat;">
+            <div style="transform:rotate(0deg);-webkit-transform:rotate(0deg);background-color:transparent;
+                 border-color:#ffffff;border-style:none;border-width: 4px;border-radius: 0px ;
+                 box-shadow-color:#000000 ;box-shadow-width:0px ;box-shadow-blur:0px ;
+            box-shadow-size:0px ;box-shadow-degree:0px ;opacity:1;"
+                 class="item-image-full">
+                <img  class="W_item" src="/uploadimg/640x3.jpeg"  data-dataurl="" data-datamapping="" width="100%" height="100%"
+                     style="-webkit-border-radius:0px;border-radius:0px;"></div>
+        </div>
+        
+        
+        <div id="text_5583a9eb51f84f2dbfc1cf39" class="none animated"
+             style="position: absolute; width: 110px; height: 25px; font-style: normal; font-weight: normal; font-family: Microsoft YaHei;
+             font-size: 16px; color:  rgb(255, 255, 255); text-align: left; line-height:25px;
+             box-shadow-color:rgb(255, 255, 255) ;box-shadow-width:0px ;box-shadow-blur:0px ;
+            box-shadow-size:0px ;box-shadow-degree:0px ;
+             z-index: 1;left: 87px; right: 0px; top: 170px; bottom: 0px; opacity: 1;
+             -webkit-animation-duration: 0s; animation-duration: 0s; -webkit-animation-iteration-count: 1;
+            animation-iteration-count: 1; animation-delay:0s; -webkit-animation-delay:0s;
+            text-shadow-color:rgb(255, 255, 255) ;text-shadow-width:0px ;text-shadow-blur:0px ;text-shadow-size:0px ;text-shadow-degree:0px;background-repeat: no-repeat;">
+            <div style="transform:rotate(0deg);-webkit-transform:rotate(0deg);background-color:transparent;
+                 border-color:rgb(255, 255, 255);border-style:none;border-width: 0px;border-radius: 0px; ;
+                 box-shadow-color:rgb(255, 255, 255) ;box-shadow-width:0px ;box-shadow-blur:0px ;
+            box-shadow-size:0px ;box-shadow-degree:0px;"
+                 class="item-text-full">
+                <div class="item-table">
+                    <div style="text-decoration:none;vertical-align:middle;color:rgb(255, 255, 255);"
+                         class="item-table-cell W_item"  data-dataurl="" data-datamapping="">
+                        请输入文字
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        <div id="button_5583a9eb51f84f2dbfc1cf35" class="none animated W_item"
+             style="position: absolute;width: 110px; height: 25px; font-style: normal; font-weight: bold; font-family: Microsoft YaHei;
+             font-size: 16px;  text-align: left; line-height:25px;
+             box-shadow-color:rgb(221, 221, 221) ;box-shadow-width:0px ;box-shadow-blur:0px ;
+            box-shadow-size:0px ;box-shadow-degree:0px ;
+             z-index: 1;left: 53px; right: 0px; top: 246px; bottom: 0px; opacity: 100%;
+             -webkit-animation-duration: 0s; animation-duration: 0s; -webkit-animation-iteration-count: 1;
+            animation-iteration-count: 1; animation-delay:0s; -webkit-animation-delay:0s; background-repeat: no-repeat;">
+            <div  class="item-table">
+                <button type="button" style="transform:rotate(0deg);-webkit-transform:rotate(0deg);background-color:rgb(68, 199, 103);
+                 border-color:rgb(24, 171, 41);border-style:solid;border-width: 1px;border-radius: 20px; ;
+                 box-shadow-color:rgb(221, 221, 221) ;box-shadow-width:0px ;box-shadow-blur:0px ;
+            box-shadow-size:0px ;box-shadow-degree:0px;color:  rgb(255, 255, 255);" class="W_btn W_item" data-dataurl="" data-datamapping="">按钮</button>
+            </div>
+        </div>
+        
+        <div id="button_5583a9eb51f84f2dbfc1cf36" class="none animated W_item"
+             style="position: absolute;width: 160px; height: 78px; font-style: normal; font-weight: bold; font-family: Microsoft YaHei;
+             font-size: 16px;  text-align: left; line-height:25px;
+             box-shadow-color:rgb(221, 221, 221) ;box-shadow-width:0px ;box-shadow-blur:0px ;
+            box-shadow-size:0px ;box-shadow-degree:0px ;
+             z-index: 1;left: 82px; right: 0px; top: 112px; bottom: 0px; opacity: 100%;
+             -webkit-animation-duration: 0s; animation-duration: 0s; -webkit-animation-iteration-count: 1;
+            animation-iteration-count: 1; animation-delay:0s; -webkit-animation-delay:0s; background-repeat: no-repeat;">
+            <div  class="item-table">
+                <button type="button" style="transform:rotate(0deg);-webkit-transform:rotate(0deg);background-color:rgba(238,204,204,1);
+                 border-color:rgb(24, 171, 41);border-style:solid;border-width: 1px;border-radius: 20px; ;
+                 box-shadow-color:rgb(221, 221, 221) ;box-shadow-width:0px ;box-shadow-blur:0px ;
+            box-shadow-size:0px ;box-shadow-degree:0px;color:  rgba(255,255,0,1);" class="W_btn W_item" data-dataurl="" data-datamapping="">按钮</button>
+            </div>
+        </div>
+        
+        <div id="button_5583a9eb51f84f2dbfc1cf37" class="bounceInDown animated W_item"
+             style="position: absolute;width: 134px; height: 80px; font-style: normal; font-weight: bold; font-family: Microsoft YaHei;
+             font-size: 16px;  text-align: left; line-height:25px;
+             box-shadow-color:rgb(221, 221, 221) ;box-shadow-width:0px ;box-shadow-blur:0px ;
+            box-shadow-size:0px ;box-shadow-degree:0px ;
+             z-index: 1;left: 92px; right: 0px; top: 10px; bottom: 0px; opacity: 100%;
+             -webkit-animation-duration: 01s; animation-duration: 01s; -webkit-animation-iteration-count: 1;
+            animation-iteration-count: 1; animation-delay:01s; -webkit-animation-delay:01s; background-repeat: no-repeat;">
+            <div  class="item-table">
+                <button type="button" style="transform:rotate(0deg);-webkit-transform:rotate(0deg);background-color:rgb(68, 199, 103);
+                 border-color:rgb(24, 171, 41);border-style:solid;border-width: 1px;border-radius: 20px; ;
+                 box-shadow-color:rgb(221, 221, 221) ;box-shadow-width:0px ;box-shadow-blur:0px ;
+            box-shadow-size:0px ;box-shadow-degree:0px;color:  rgba(212,59,59,1);" class="W_btn W_item" data-dataurl="" data-datamapping="">按钮</button>
+            </div>
+        </div>
+        
+    </div>
+    
+    <div id="page_5583ca1a28e2e88bc4fa9f7c" class="page"
+         style="background-color:rgba(187,187,0,1);; background-image:url(); background-size: cover; background-position: 50% 50%;">
+        
+        <div id="image_5583ca1a28e2e88bc4fa9f7e" class="none animated" style="position: absolute;
+            z-index: 1;left: 45px; right: 0px; top: 82px; bottom: 0px;
+            width: 200px; height: 150px;
+           padding: 0px 0px 0px 0px;
+            -webkit-animation-duration: 0s; animation-duration: 0s; -webkit-animation-iteration-count: 1;
+            animation-iteration-count: 1; animation-delay:0s; -webkit-animation-delay:0s;  background-repeat: no-repeat;">
+            <div style="transform:rotate(0deg);-webkit-transform:rotate(0deg);background-color:transparent;
+                 border-color:#ffffff;border-style:none;border-width: 4px;border-radius: 0px ;
+                 box-shadow-color:#000000 ;box-shadow-width:0px ;box-shadow-blur:0px ;
+            box-shadow-size:0px ;box-shadow-degree:0px ;opacity:1;"
+                 class="item-image-full">
+                <img  class="W_item" src="/uploadimg/640x2.jpeg"  data-dataurl="" data-datamapping="" width="100%" height="100%"
+                     style="-webkit-border-radius:0px;border-radius:0px;"></div>
+        </div>
+        
+        
+        <div id="text_5583ca1a28e2e88bc4fa9f7f" class="fadeInUp animated"
+             style="position: absolute; width: 170px; height: 33px; font-style: normal; font-weight: normal; font-family: Microsoft YaHei;
+             font-size: 16px; color:  rgb(255, 255, 255); text-align: left; line-height:25px;
+             box-shadow-color:rgb(255, 255, 255) ;box-shadow-width:0px ;box-shadow-blur:0px ;
+            box-shadow-size:0px ;box-shadow-degree:0px ;
+             z-index: 1;left: 87px; right: 0px; top: 22px; bottom: 0px; opacity: 1;
+             -webkit-animation-duration: 1s; animation-duration: 1s; -webkit-animation-iteration-count: 1;
+            animation-iteration-count: 1; animation-delay:1s; -webkit-animation-delay:1s;
+            text-shadow-color:rgb(255, 255, 255) ;text-shadow-width:0px ;text-shadow-blur:0px ;text-shadow-size:0px ;text-shadow-degree:0px;background-repeat: no-repeat;">
+            <div style="transform:rotate(0deg);-webkit-transform:rotate(0deg);background-color:transparent;
+                 border-color:rgb(255, 255, 255);border-style:none;border-width: 0px;border-radius: 0px; ;
+                 box-shadow-color:rgb(255, 255, 255) ;box-shadow-width:0px ;box-shadow-blur:0px ;
+            box-shadow-size:0px ;box-shadow-degree:0px;"
+                 class="item-text-full">
+                <div class="item-table">
+                    <div style="text-decoration:none;vertical-align:middle;color:rgb(255, 255, 255);"
+                         class="item-table-cell W_item"  data-dataurl="" data-datamapping="">
+                        我的世界
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        <div id="button_5583ca1a28e2e88bc4fa9f7d" class="bounceInDown animated W_item"
+             style="position: absolute;width: 261px; height: 68px; font-style: normal; font-weight: bold; font-family: Microsoft YaHei;
+             font-size: 16px;  text-align: left; line-height:25px;
+             box-shadow-color:rgb(221, 221, 221) ;box-shadow-width:0px ;box-shadow-blur:0px ;
+            box-shadow-size:0px ;box-shadow-degree:0px ;
+             z-index: 1;left: 19px; right: 0px; top: 369px; bottom: 0px; opacity: 1;
+             -webkit-animation-duration: 1s; animation-duration: 1s; -webkit-animation-iteration-count: 1;
+            animation-iteration-count: 1; animation-delay:1s; -webkit-animation-delay:1s; background-repeat: no-repeat;">
+            <div  class="item-table">
+                <button type="button" style="transform:rotate(0deg);-webkit-transform:rotate(0deg);background-color:rgb(68, 199, 103);
+                 border-color:rgb(24, 171, 41);border-style:solid;border-width: 1px;border-radius: 20px; ;
+                 box-shadow-color:rgb(221, 221, 221) ;box-shadow-width:0px ;box-shadow-blur:0px ;
+            box-shadow-size:0px ;box-shadow-degree:0px;color:  rgb(255, 255, 255);" class="W_btn W_item" data-dataurl="" data-datamapping="">按钮</button>
+            </div>
+        </div>
+        
+    </div>
+    
+</div>
+<div class="touchstyle-arrowup" style="opacity: 0; -webkit-animation: touchstyle-arrow-animate 2s infinite;
+    animation-duration: 2s; animation-timing-function: initial; animation-delay: initial; animation-iteration-count: infinite;
+    animation-direction: initial; animation-fill-mode: initial; -webkit-animation-play-state: initial; animation-play-state: initial;
+    animation-name: touchstyle-arrow-animate;"></div>
+
+
+<script src="/js/preview.js"></script>
+<script>
+
+    var touchStyleLoadingEl = document.getElementById('touchStyleLoading');
+
+    touchStyleLoadingEl.style.opacity = '0';
+    setTimeout(function () {
+        touchStyleLoadingEl.parentNode.removeChild(touchStyleLoadingEl);
+    }, 5e2);
+    setTimeout(initTouchStyleApp, 250);
+
+    function initTouchStyleApp() {
+        var  len = 4;
+        var boxer = new TouchBox('#touchBoxCt', {
+            loop: len >= 3 ? true: false,
+            animation: 'slide'
+        });
+        boxer.on('slide', function (activeIndex, oldIndex) {
+            if(len-1===activeIndex){
+                $('.touchstyle-arrowup').hide();
+            }else{
+                $('.touchstyle-arrowup').show();
+            }
+            console.log('slide, ', 'current index:', activeIndex, ' old index:', +oldIndex);
+        });
+        window.boxer = boxer;
+    }
+
+
+    function initDataSource(){
+        var $witem =$('.W_item')
+
+        $.each($witem, function (index,item) {
+            var $item = $(item)
+            var dataurl = $item.data('dataurl');
+            var datamap = $item.data('datamapping');
+            debugger
+            if(dataurl !="" && datamap !=""){
+                $.ajax({
+                    url:dataurl,
+                    method: "GET",
+                    cache: false,
+                    dataType: "json"
+                }).done(function(msg) {
+                    if($item.get(0).nodeName.toLocaleLowerCase()=='img'){
+                        $item.attr('src',eval(datamap));
+                    }else{
+                        $item.text(eval(datamap));
+                    }
+                }).fail(function(jqXHR, textStatus) {
+
+                });
+
+
+            }
+
+
+
+        })
+    }
+
+    initDataSource();
+
+</script>
+</body>
+</html>
