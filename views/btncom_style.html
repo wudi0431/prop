@@ -40,6 +40,7 @@
             </div>
         </div>
         <h3>对齐</h3>
+
         <div>
             <div class="container" style="padding-left: 20px;">
                 <div class="row">
@@ -55,7 +56,7 @@
                 </div>
                 <div class="row">
                     <div class="aligncell">
-                        <a  data-type="tobottom" class="button cancel J_abtncom">居底对齐</a>
+                        <a data-type="tobottom" class="button cancel J_abtncom">居底对齐</a>
                     </div>
                     <div class="aligncell">
                         <a data-type="toright" class="button cancel J_abtncom">居右对齐</a>
@@ -67,6 +68,7 @@
             </div>
         </div>
         <h3>排列</h3>
+
         <div>
             <div class="container" style="padding-left: 20px;">
                 <div class="row">
@@ -89,12 +91,40 @@
         <h3>边框</h3>
 
         <div>
-            <p>
-                Cras dictum. Pellentesque habitant morbi tristique senectus et netus
-                et malesuada fames ac turpis egestas. Vestibulum ante ipsum primis in
-                faucibus orci luctus et ultrices posuere cubilia Curae; Aenean lacinia
-                mauris vel est.
-            </p>
+            <div class="container">
+                <div class="row">
+                    <div class="leftcell" style="  position: relative;top: -20px;">样式:</div>
+                    <div class="aligncell" style="position: relative;left: 10px;">
+                        <select name="speed" id="J_borderStyleSelect">
+                            <option value="none" selected="selected">无</option>
+                            <option value="solid">实线</option>
+                            <option value="double">双线</option>
+                            <option value="dotted">点线</option>
+                            <option value="dashed">线段</option>
+                            <option value="ridge">隆起</option>
+                            <option value="groove">凹陷</option>
+                            <option value="outset">3D外嵌</option>
+                            <option value="inset">3D内嵌</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="leftcell">颜色:</div>
+                    <div class="rightcell">
+                        <input type='text' class="J_btncom" id="J_btncomorderColor" data-type="borderColor"/>
+                    </div>
+                    <div class="leftcell">宽度:</div>
+                    <div class="rightcell">
+                        <input type='text' class="J_btncom" data-type="borderWidth"/>px
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="leftcell">弧度:</div>
+                    <div class="rightcell">
+                        <input type='text' class="J_btncom"  data-type="borderRadius"/>%
+                    </div>
+                </div>
+            </div>
         </div>
         <h3>文字投影</h3>
 

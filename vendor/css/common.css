@@ -148,8 +148,7 @@ a:hover {
     display: -ms-flex;
     display: -moz-flex;
     display: -webkit-flex;
-    display: flex
-}
+    display: flex}
 
 .flexbox-h {
     -moz-box-orient: horizontal;
@@ -166,8 +165,7 @@ a:hover {
     -ms-flex-direction: column;
     -moz-flex-direction: column;
     -webkit-flex-direction: column;
-    flex-direction: column
-}
+    flex-direction: column}
 
 .flexbox-1 {
     -moz-box-flex: 1;

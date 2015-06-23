@@ -1,9 +1,13 @@
-define(['FFF', 'jquery','spectrum'], function (FFF, $) {
+define(['FFF', 'jquery','spectrum','jqui'], function (FFF, $) {
     var F = FFF.FFF;
     var J_btncomStyle = $('#J_btncomStyle');
 
     var J_btncomColor = $('#J_btncomColor');
     var J_btncomBKColor = $('#J_btncomBKColor');
+
+    var J_borderStyleSelect = $('#J_borderStyleSelect');
+
+    var J_btncomorderColor = $('#J_btncomorderColor');
 
     var uitl = 'px';
 
@@ -44,6 +48,27 @@ define(['FFF', 'jquery','spectrum'], function (FFF, $) {
             _btncomStyleChange(dddc,'backgroundColor');
         }
     });
+
+    J_btncomorderColor.spectrum({
+        allowEmpty:true,
+        color: "#ECC",
+        showInput: true,
+        containerClassName: "full-spectrum",
+        showInitial: true,
+        showPalette: true,
+        showSelectionPalette: true,
+        showAlpha: true,
+        maxPaletteSize: 10,
+        preferredFormat: "hex",
+        localStorageKey: "spectrum.demo",
+        hide: function (color) {
+            console.log(color);
+            var dddc = 'rgba('+color._r.toFixed()+','+color._g.toFixed()+','+color._b.toFixed()+','+color._a+')';
+            _btncomStyleChange(dddc,'borderColor');
+        }
+    });
+
+    J_borderStyleSelect.selectmenu({width:120});
 
 
     F.on('renderBtncomContent', function (data) {
