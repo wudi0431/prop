@@ -135,6 +135,13 @@ define(['FFF', 'jquery','spectrum'], function (FFF, $) {
             var p = curcom.position();
             var f = curcom.attr('style');
             f=f.match(/\d+deg/)[0].replace('deg','');
+            var style = curcom.attr('style');
+            var index  = style.match(/z-index: \d/);
+            if(index){
+                index = +index[0].split(':')[1];
+            }else{
+                index=1;
+            }
             var h = getRotateSize(p.top, p.left,  p.left + w, p.top + h, f);
             if(value==undefined || value==null) {
                 return false;
@@ -164,8 +171,30 @@ define(['FFF', 'jquery','spectrum'], function (FFF, $) {
                     value = 160 - h.width / 2 - (h.left - p.left)+uitl;
                     type='left';
                     break;
+                case 'uptop':
+                    var indexs = getItemIndex()[0];
+                    value = indexs+1;
+                    type='zIndex';
+                    break;
+                case 'up':
+                    value=index+1;
+                    type='zIndex';
+                    break;
+                case 'down':
+                    value=index-1 || 1;
+                    type='zIndex';
+                    break;
+                case 'upbottom':
+                    var indexs = getItemIndex();
+                    indexs = indexs[indexs.length-1]-1;
+                    value = indexs || 1;
+                    type='zIndex';
+
+                    break;
             }
-            _btncomStyleChange(value,type);
+            if(value !="" && value!=undefined && value!=null){
+                _btncomStyleChange(value,type);
+            }
         })
     })
 
@@ -185,6 +214,23 @@ define(['FFF', 'jquery','spectrum'], function (FFF, $) {
             g = m - Math.abs(Math.min(o.x1, p.x1, q.x1, r.x1)), h = n - Math.abs(Math.max(o.y1, p.y1, q.y1, r.y1)), i = m + Math.abs(Math.max(o.x1, p.x1, q.x1, r.x1)), j = n + Math.abs(Math.min(o.y1, p.y1, q.y1, r.y1))
         }
         return {left: g,top: h,right: i,bottom: j,width: i - g,height: j - h}
+    }
+
+    function getItemIndex(){
+        var indexs=[];
+        $.each($('.W_item'), function (index,item) {
+            var $item = $(item)
+            var style =  $item.attr('style');
+            var index  = style.match(/z-index: \d/);
+            if(index){
+                index =+index[0].split(':')[1]
+                indexs.push(index);
+            }
+        })
+        indexs= indexs.sort(function (a,b) {
+            return  b-a
+        })
+        return indexs;
     }
 
 
