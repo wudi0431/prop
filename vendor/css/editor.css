@@ -1,6 +1,6 @@
 @charset "utf-8";html,body {
     height: 100%;
-    width: 100%
+    width: 100%;overflow-x: hidden;
 }
 
 body {
@@ -1464,7 +1464,7 @@ body .cp-color-picker,body .colpick {
     display: table-cell;
 
     text-align: right;
-    /* width: 64px; */
+    /* width: 124px; */
 }
 #accordion_btncomStyle .rightcell {
     display: table-cell;

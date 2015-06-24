@@ -56,6 +56,7 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
             var data = that.getData();
             var $box = that.getBoundingBox();
             that.$box=$box;
+            that.$curbtn = that.$box.children('button');
             that.$box.on('click', function (e) {
                 var $$curTarget = e.target;
                 if ($$curTarget === that.$boxContent[0]) {
@@ -137,14 +138,16 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
             F.on('btncomStyleChange', function (obj) {
                 if (that.$box.hasClass('select')) {
                    var key = obj.type;
-                    if(key=='transform' || key =='backgroundColor' ||
-                        key =='borderColor'|| key =='borderStyle'||
+                    if( key =='backgroundColor' || key =='borderColor'|| key =='borderStyle'||
                         key =='borderWidth'|| key =='borderRadius'||
                         key =='boxShadowColor'|| key =='boxShadowWidth'||
                         key =='boxShadowBlur'|| key =='boxShadowSize'||
                         key =='boxShadowDegree' || key =='color' || key =='opacity'
                     ){
-                        that.$box.children('button').css(key, obj.value);
+                        that.$curbtn.css(key, obj.value);
+                    }else if(key=='transform'){
+                        that.$box.css(key,obj.value);
+                        //that.$curbtn.css(key, obj.value);
                     }else{
                         that.$box.css(key,obj.value);
                     }
@@ -185,7 +188,7 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
             that.$box = $box;
             that.$boxContent = $box.find('.W_btn');
             that.$boxDel = $box.find('.W_delItem');
-
+            that.curbtn = that.$box.children('button');
             //TODO  如何更合理 数据库直接对应 jquery?
             Object.keys(data).forEach(function (key) {
                 switch (key) {
@@ -199,17 +202,19 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
                     case 'datamapping':
                         break;
                     default :
-                        if(key=='transform' || key =='backgroundColor' ||
-                           key =='borderColor'|| key =='borderStyle'||
+                        if( key =='backgroundColor' || key =='borderColor'|| key =='borderStyle'||
                            key =='borderWidth'|| key =='borderRadius'||
                            key =='boxShadowColor'|| key =='boxShadowWidth'||
                            key =='boxShadowBlur'|| key =='boxShadowSize'||
                            key =='boxShadowDegree' || key =='color'|| key =='opacity'
                         ){
-                            that.$box.children('button').css(key, data[key]);
-                        }else{
+                            that.curbtn.css(key, data[key]);
+                        }else if(key=='transform') {
                             that.$box.css(key, data[key]);
-                        }
+                            //that.curbtn.css(key, data[key]);
+                        }else{
+                          that.$box.css(key, data[key]);
+                    }
                         break
                 }
             });
