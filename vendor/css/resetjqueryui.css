@@ -94,3 +94,26 @@
 #accordion_btncomStyle .ui-widget-content{
     border: none;
 }
+
+.ui-rotatable{
+    position: relative;
+}
+
+.ui-rotatable-handle{
+    position: absolute;
+    font-size: 0.1px;
+    display: block;
+    -ms-touch-action: none;
+    touch-action: none;
+    background-color: #E8F4FB;
+    width: 10px;
+    height: 10px;
+    left: 50%;
+    top: -20px;
+    border: 1px;
+    margin-left: -5px;
+    border-radius: 5px;
+}
+.ui-rotatable-rotating{
+    background-color: #0000bb;
+}

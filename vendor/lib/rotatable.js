@@ -1,13 +1,7 @@
 (function (factory) {
-    if (typeof define === "function" && define.amd) {
 
-        // AMD. Register as an anonymous module.
-        define(factory);
-    } else {
+    factory(jQuery);
 
-        // Browser globals
-        factory(jQuery);
-    }
 }(function ($) {
 
     $.widget("ui.rotatable", $.ui.mouse, {
@@ -104,7 +98,7 @@
             };
 
 
-            _destroy(this.element);
+            _destroy(this.originalElement);
 
             return this;
         },
@@ -134,7 +128,7 @@
 
 
             cursor = $(".ui-rotatable-" + this.axis).css("cursor");
-            $("body").css("cursor", cursor == "auto" ? 'url(/img/mouserotate.ico), default' : cursor);
+            $("body").css("cursor", cursor == "auto" ? 'url(/img/mouserotate.ico),alias' : cursor);
 
             el.addClass("ui-rotatable-rotating");
             that._propagate("start", event);
@@ -147,7 +141,7 @@
 
             var change = that._change(event, that.origin);
 
-
+            that.deg = change;
             el.css({rotate: change + 'deg'});
             that._propagate("rotate", event);
 
@@ -189,7 +183,9 @@
 
         ui: function () {
             return {
-                element: this.element
+                element: this.element,
+                deg: this.deg
+
             };
         }
 
