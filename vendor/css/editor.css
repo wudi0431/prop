@@ -1439,10 +1439,8 @@ body .cp-color-picker,body .colpick {
     -webkit-animation-fill-mode:both;
     animation-fill-mode:both;
 }
-#accordion_btncomStyle input.J_btncom,#accordion_btncomStyle input.J_Bbtncom{
+#accordion_btncomStyle input.J_btncom,#accordion_btncomStyle input.J_Bbtncom,#accordion_btncomStyle input.J_Tbtncom{
      width: 43px!important;
- 
-     /* height: 20px; */
 }
 #accordion_btncomStyle p{
     float: left;
