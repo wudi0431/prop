@@ -1254,6 +1254,7 @@ body .cp-color-picker,body .colpick {
 }
 .W_item.select{
     background-color: rgba(0,0,0,0);
+    border: 1px solid #08A1EF!important;
 }
 
 .W_item button{

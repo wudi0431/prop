@@ -1634,8 +1634,11 @@ $.widget("ui.draggable", $.ui.mouse, {
 
 		this._blurActiveElement( event );
 
+		//TODO 扩展插件必须处理
 		// among others, prevent a drag on a resizable-handle
-		if (this.helper || o.disabled || $(event.target).closest(".ui-resizable-handle").length > 0) {
+		if (this.helper || o.disabled
+			|| $(event.target).closest(".ui-resizable-handle").length > 0
+			|| $(event.target).closest(".ui-rotatable-handle").length > 0) {
 			return false;
 		}
 

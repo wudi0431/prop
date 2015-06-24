@@ -19,7 +19,10 @@ require.config({
         imgcut: '/js/module/page/imgcut',
         animatecom: '/js/module/animate/animatecom',
         datasourcecom: '/js/module/datasource/datasourcecom',
-        template: '/js/module/template/template'
+        template: '/js/module/template/template',
+        rotatable: '/lib/rotatable',
+        transit: '/lib/jquery.transit'
+
     },
     shim: {
         html2canvas: {
@@ -30,12 +33,19 @@ require.config({
         },
         spectrum: {
             deps: ['jquery']
+        },
+        transit: {
+            deps: ['jquery']
+        },
+        rotatable: {
+            deps: ['jqui','transit']
         }
+
     }
 });
 
-require(['html2canvas', 'zepto', 'jquery', 'spectrum', 'btncom', 'imgcom', 'textcom', 'btncom_content', 'btncom_style', 'imgcom_content',
-    'imgcom_style', 'textcom_content', 'textcom_style', 'jqui', 'pagecom', 'imgs', 'FFF', 'animatecom', 'datasourcecom'], function (Html2canvas, zepto, $, bigcolorpicker, Btncom, Imgcom, Textcom, btncom_content,
+require(['rotatable','html2canvas', 'zepto', 'jquery', 'spectrum', 'btncom', 'imgcom', 'textcom', 'btncom_content', 'btncom_style', 'imgcom_content',
+    'imgcom_style', 'textcom_content', 'textcom_style', 'jqui', 'pagecom', 'imgs', 'FFF', 'animatecom', 'datasourcecom'], function (rotatable,Html2canvas, zepto, $, bigcolorpicker, Btncom, Imgcom, Textcom, btncom_content,
                                                                                                                                     btncom_style, imgcom_content, imgcom_style, textcom_content, textcom_style, jqui, Pagecom, Imgs, FFF, Animatecom, Datasourcecom) {
 
     //根据 url 的名字 获得 值
@@ -202,6 +212,13 @@ require(['html2canvas', 'zepto', 'jquery', 'spectrum', 'btncom', 'imgcom', 'text
                 F.trigger('resizeCom', resize.size);
             }
         });
+
+        $that.rotatable({
+            stop: function (e, rotate) {
+                F.trigger('rotateCom', rotate.deg);
+            }
+        });
+
         $that.disableSelection();
         siblings.removeClass('select');
         siblings.each(function (i, o) {
@@ -212,6 +229,10 @@ require(['html2canvas', 'zepto', 'jquery', 'spectrum', 'btncom', 'imgcom', 'text
                 $(o).draggable('destroy');
             }
 
+            if ($(o).rotatable('instance')) {
+                $(o).rotatable('destroy');
+            }
+
         });
     });
     $('#showbox').on('click', function (e) {
@@ -220,6 +241,7 @@ require(['html2canvas', 'zepto', 'jquery', 'spectrum', 'btncom', 'imgcom', 'text
         $.each($Witem, function (index, item) {
             if ($(item).hasClass('select')) {
                 $(item).removeClass('select').resizable('destroy');
+                $(item).removeClass('select').rotatable('destroy');
             }
         });
         if (issWich) {

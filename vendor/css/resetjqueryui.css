@@ -61,7 +61,7 @@
 
 #prototype-content.ui-tabs {
     height:100%;
-    padding:0em;
+    padding:0;
 }
 
 #prototype-content.ui-widget-header {
@@ -93,4 +93,36 @@
 }
 #accordion_btncomStyle .ui-widget-content{
     border: none;
+}
+
+.ui-rotatable{
+    position: relative;
+}
+
+.ui-rotatable-handle{
+    position: absolute;
+    font-size: 0.1px;
+    display: block;
+    -ms-touch-action: none;
+    touch-action: none;
+    background-color: #9AD64B;
+    width: 10px;
+    height: 10px;
+    left: 50%;
+    top: -28px;
+    border: none;
+    margin-left: -4px;
+    border-radius: 5px;
+}
+.ui-rotatable-rotating{
+}
+.ui-rotatable-handle:after{
+    content: '';
+    position: absolute;
+    background-color: #9AD64B;
+    width: 2px;
+    height: 18px;
+    top: 10px;
+    margin-left: 4px;
+    left: 0;
 }

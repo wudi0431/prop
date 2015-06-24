@@ -115,6 +115,14 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
                 }
             });
 
+            F.on('rotateCom', function (val) {
+                if (that.$box.hasClass('select')) {
+                    data['transform'] = 'rotate(' + val + 'deg)';
+                    that.setData(data);
+                    that.update();
+                }
+            });
+
             F.on('textcomContextChange', function (val) {
                 if (that.$box.hasClass('select')) {
                     that.setContext(val);

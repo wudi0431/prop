@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;;
+        }
+
+        #test{
+            width: 50px;
+            height: 50px;
+            margin: 50px 50px;
+            background-color: #F00;
+        }
+
+        .ui-rotatable{
+            position: relative;
+        }
+
+        .ui-rotatable-handle{
+            position: absolute;
+            font-size: 0.1px;
+            display: block;
+            -ms-touch-action: none;
+            touch-action: none;
+            background-color: #0000bb;
+            width: 20px;
+            height: 20px;
+            left: 0px;
+            top: -20px;
+        }
+        .ui-rotatable-rotating{
+
+        }
+    </style>
+</head>
+<body>
+<div id="test">
+
+</div>
+<script src="http://libs.useso.com/js/jquery/2.1.1-rc2/jquery.min.js"></script>
+<script src="/lib/jqueryui/jquery-ui.js"></script>
+<script src="/lib/jquery.transit.js"></script>
+<script src="/lib/rotatable.js"></script>
+
+<script>
+    $('#test').rotatable();
+</script>
+</body>
+</html>
