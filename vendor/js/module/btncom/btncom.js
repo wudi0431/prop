@@ -139,15 +139,13 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
                 if (that.$box.hasClass('select')) {
                    var key = obj.type;
                     if( key =='backgroundColor' || key =='borderColor'|| key =='borderStyle'||
-                        key =='borderWidth'|| key =='borderRadius'||
-                        key =='boxShadowColor'|| key =='boxShadowWidth'||
-                        key =='boxShadowBlur'|| key =='boxShadowSize'||
-                        key =='boxShadowDegree' || key =='color' || key =='opacity'
+                        key =='borderWidth'|| key =='borderRadius' || key =='color' || key =='opacity'
                     ){
                         that.$curbtn.css(key, obj.value);
-                    }else if(key=='transform'){
-                        that.$box.css(key,obj.value);
-                        //that.$curbtn.css(key, obj.value);
+                    }else if(key=='boxShadow'){
+                        that.$curbtn.css('box-shadow',obj.value);
+                    }else if(key=='textShadow'){
+                        that.$curbtn.css('text-shadow',obj.value);
                     }else{
                         that.$box.css(key,obj.value);
                     }
@@ -203,15 +201,13 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
                         break;
                     default :
                         if( key =='backgroundColor' || key =='borderColor'|| key =='borderStyle'||
-                           key =='borderWidth'|| key =='borderRadius'||
-                           key =='boxShadowColor'|| key =='boxShadowWidth'||
-                           key =='boxShadowBlur'|| key =='boxShadowSize'||
-                           key =='boxShadowDegree' || key =='color'|| key =='opacity'
+                           key =='borderWidth'|| key =='borderRadius' || key =='color'|| key =='opacity'
                         ){
                             that.curbtn.css(key, data[key]);
-                        }else if(key=='transform') {
-                            that.$box.css(key, data[key]);
-                            //that.curbtn.css(key, data[key]);
+                        }else if(key=='boxShadow') {
+                            that.curbtn.css('box-shadow', data[key]);
+                        }else if(key=='textShadow') {
+                            that.curbtn.css('text-shadow', data[key]);
                         }else{
                           that.$box.css(key, data[key]);
                     }

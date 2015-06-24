@@ -9,6 +9,8 @@ define(['FFF', 'jquery', 'spectrum', 'jqui'], function (FFF, $) {
 
     var J_btncomorderColor = $('#J_btncomorderColor');
 
+    var J_btncomboxShadowColor = $('#J_btncomboxShadowColor');
+
     var uitl = 'px';
 
     J_btncomColor.spectrum({
@@ -68,10 +70,29 @@ define(['FFF', 'jquery', 'spectrum', 'jqui'], function (FFF, $) {
         }
     });
 
+    J_btncomboxShadowColor.spectrum({
+        allowEmpty: true,
+        color: "#ECC",
+        showInput: true,
+        containerClassName: "full-spectrum",
+        showInitial: true,
+        showPalette: true,
+        showSelectionPalette: true,
+        showAlpha: true,
+        maxPaletteSize: 10,
+        preferredFormat: "hex",
+        localStorageKey: "spectrum.demo",
+        hide: function (color) {
+            console.log(color);
+            var dddc = 'rgba(' + color._r.toFixed() + ',' + color._g.toFixed() + ',' + color._b.toFixed() + ',' + color._a + ')';
+            setShadow('color', dddc)
+        }
+    });
+
     J_borderStyleSelect.selectmenu({
         width: 120,
         select: function (event, ui) {
-            _btncomStyleChange(ui.item.value||'none', 'borderStyle');
+            _btncomStyleChange(ui.item.value || 'none', 'borderStyle');
         }
     });
 
@@ -87,7 +108,7 @@ define(['FFF', 'jquery', 'spectrum', 'jqui'], function (FFF, $) {
             if (typeof value != 'string') {
                 value = value.toString();
             }
-            if (value && value.indexOf('px') != -1) {
+            if (value && value.indexOf('px') != -1 && type != "boxShadow" && type != "textShadow") {
                 value = value.replace('px', '');
             }
             switch (type) {
@@ -130,6 +151,16 @@ define(['FFF', 'jquery', 'spectrum', 'jqui'], function (FFF, $) {
                     value = parseInt(value * 100).toString();
                     $btncom.val(value);
                     break;
+                case 'boxShadow':
+                    var vals = value.split(' ')
+                    J_btncomboxShadowColor.spectrum("set", vals[4]);
+                    $("[data-type=boxShadowSP]").val(vals[1].replace('px',''));
+                    $("[data-type=boxShadowBL]").val(vals[2].replace('px',''));
+                    $("[data-type=boxShadowY]").val(vals[3].replace('px',''));
+                    var d =  $("[data-type=boxShadowX]").attr('deg');
+                    $("[data-type=boxShadowX]").val(d||0);
+                    $btncom.attr('boxshadow', value);
+                    break;
             }
         });
 
@@ -141,7 +172,8 @@ define(['FFF', 'jquery', 'spectrum', 'jqui'], function (FFF, $) {
             var type = $btncom.data('type');
             var value = $btncom.val();
             if (value == "" || value == undefined || value == null ||
-               type =='color' || type =='backgroundColor' || type=='borderColor'
+                type == 'color' || type == 'backgroundColor' || type == 'borderColor' || type == 'boxShadowColor'
+                || type == 'boxShadow' || type == 'textShadow'
             ) {
                 return false;
             }
@@ -234,6 +266,29 @@ define(['FFF', 'jquery', 'spectrum', 'jqui'], function (FFF, $) {
         })
     })
 
+    $.each($('.J_Bbtncom'), function (index, btncom) {
+        var $btncom = $(btncom);
+        $btncom.on('change', function () {
+            var type = $btncom.data('type');
+            var value = $btncom.val();
+            switch (type) {
+                case 'boxShadowSP':
+                    setShadow(type,value);
+                    break;
+                case 'boxShadowBL':
+                    setShadow(type,value);
+                    break;
+                case 'boxShadowY':
+                    setShadow(type,value);
+                    break;
+                case 'boxShadowX':
+                    setShadow(type,value);
+                    $btncom.attr('deg',value);
+                    break;
+            }
+        })
+    })
+
     function _btncomStyleChange(value, type) {
         F.trigger('btncomStyleChange', {
             type: type,
@@ -273,6 +328,46 @@ define(['FFF', 'jquery', 'spectrum', 'jqui'], function (FFF, $) {
         })
         return indexs;
     }
+
+    function setShadow(type, value) {
+        var allvalue = J_btncomboxShadowColor.attr('boxshadow');
+        if (allvalue) {
+            allvalue = allvalue.split(' ')
+        }
+        var a = allvalue[1].replace('px', ""),
+            b = allvalue[2].replace('px', ""),
+            c = allvalue[3].replace('px', ""),
+            d = allvalue[4],
+            e = allvalue[0].replace('px', "");
+        switch (type) {
+            case 'color':
+                d = value;
+                break;
+            case 'boxShadowSP':
+                a=value;
+                break;
+            case 'boxShadowBL':
+                b=value;
+                break;
+            case 'boxShadowY':
+                c=value;
+                break;
+            case 'boxShadowX':
+                e=value;
+                break;
+        }
+        var f = Math.sqrt(Math.pow(e, 2) / (1 + Math.pow(Math.tan((90 - a) * Math.PI / 180), 2))),
+            g = Math.sqrt(Math.pow(e, 2) - Math.pow(f, 2));
+            a > 0 && 90 >= a ? (f = f, g = 0 - g) : a > 90 && 180 >= a ? (f = f, g = g) : a > 180 && 270 >= a ? (f = 0 - f, g = g) : (f = 0 - f, g = 0 - g);
+
+        var va = Math.round(f) + "px " + Math.round(g) + "px " + b + "px " + c + "px " + d;
+        if (va != "" && va != undefined && va != null) {
+            _btncomStyleChange(va, 'boxShadow');
+        }
+        J_btncomboxShadowColor.attr('boxshadow', va);
+
+    }
+
 
 
 });
