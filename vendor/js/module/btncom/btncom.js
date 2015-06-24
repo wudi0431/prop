@@ -156,7 +156,7 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
                     }else{
                         that.$box.css(key,obj.value);
                     }
-                    data[obj.type] = obj.value;
+                    data[key] = obj.value;
                     that.setData(data);
                     that.update();
                 }
@@ -218,7 +218,7 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
                         }else{
                           that.$box.css(key, data[key]);
                     }
-                        break
+                        break;
                 }
             });
 

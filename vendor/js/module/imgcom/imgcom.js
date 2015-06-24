@@ -43,6 +43,9 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
         _bindUI: function () {
             var that = this;
             var data = that.getData();
+            var $box = that.getBoundingBox();
+            that.$box=$box;
+            that.$curimg = that.$box.children('img');
             that.$box.on('click', function (e) {
                 var $$curTarget = e.target;
                 if ($$curTarget === that.$boxContent[0]) {
@@ -122,8 +125,15 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
 
             F.on('imgcomStyleChange', function (obj) {
                 if (that.$box.hasClass('select')) {
-                    that.$box.css(obj.type, obj.value);
-                    data[obj.type] = obj.value;
+                    var key = obj.type;
+                    if( key =='borderColor'|| key =='borderStyle'|| key =='borderWidth'|| key =='borderRadius' || key =='opacity'){
+                        that.$curimg.css(key, obj.value);
+                    }else if(key=='boxShadow'){
+                        that.$curimg.css('box-shadow',obj.value);
+                    }else{
+                        that.$box.css(key,obj.value);
+                    }
+                    data[key] = obj.value;
                     that.setData(data);
                     that.update();
                 }
@@ -158,6 +168,7 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
             tpl += '<i class="W_delItem">X</i>';
             $box.append(tpl);
             that.$box = $box;
+            that.curimg = that.$box.children('img');
             that.$boxContent = $box.find('.W_imgcom');
             that.$boxDel = $box.find('.W_delItem');
 
@@ -174,8 +185,14 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
                     case 'datamapping':
                         break;
                     default :
-                        that.$box.css(key, data[key]);
-                        break
+                        if(key =='borderColor'|| key =='borderStyle'|| key =='borderWidth'|| key =='borderRadius'|| key =='opacity'){
+                            that.curimg.css(key, data[key]);
+                        }else if(key=='boxShadow') {
+                            that.curimg.css('box-shadow', data[key]);
+                        }else{
+                            that.$box.css(key, data[key]);
+                        }
+                        break;
                 }
             });
 

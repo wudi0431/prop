@@ -1439,42 +1439,44 @@ body .cp-color-picker,body .colpick {
     -webkit-animation-fill-mode:both;
     animation-fill-mode:both;
 }
-#accordion_btncomStyle input.J_btncom,#accordion_btncomStyle input.J_Bbtncom,#accordion_btncomStyle input.J_Tbtncom{
+#accordion_btncomStyle input.J_btncom,#accordion_btncomStyle input.J_Bbtncom,
+#accordion_btncomStyle input.J_Tbtncom,#accordion_imgcomStyle input.J_imgcom,#accordion_imgcomStyle input.J_Bimgcom,
+#accordion_imgcomStyle input.J_Timgcom{
      width: 43px!important;
 }
-#accordion_btncomStyle p{
+#accordion_btncomStyle p,#accordion_imgcomStyle p{
     float: left;
     padding-bottom: 10px;
 }
-#accordion_btncomStyle p.leftp{
+#accordion_btncomStyle p.leftp,#accordion_imgcomStyle p.leftp{
     padding-left: 20px;
 }
-#accordion_btncomStyle .container {
+#accordion_btncomStyle .container, #accordion_imgcomStyle .container{
     display: table;
 }
 
-#accordion_btncomStyle .row {
+#accordion_btncomStyle .row,#accordion_imgcomStyle .row {
     display: table-row;
     height: 35px;
     line-height: 35px;
 }
 
-#accordion_btncomStyle .leftcell {
+#accordion_btncomStyle .leftcell,#accordion_imgcomStyle .leftcell {
     display: table-cell;
 
     text-align: right;
     /* width: 124px; */
 }
-#accordion_btncomStyle .rightcell {
+#accordion_btncomStyle .rightcell,#accordion_imgcomStyle .rightcell {
     display: table-cell;
     padding-right: 20px;
 }
-#accordion_btncomStyle .aligncell {
+#accordion_btncomStyle .aligncell,#accordion_imgcomStyle .aligncell {
     display: inline-block;
 
 }
 
-#accordion_btncomStyle .button {
+#accordion_btncomStyle .button,#accordion_imgcomStyle .button  {
     display: inline-block;
     vertical-align: middle;
     margin: 0 10px 0 0;
@@ -1500,7 +1502,7 @@ body .cp-color-picker,body .colpick {
     color: #585858;
     text-shadow: none;
 }
-#accordion_btncomStyle .button:hover {
+#accordion_btncomStyle .button:hover,#accordion_imgcomStyle .button:hover {
     background-color: #fff;
     background-image: none;
     border-color: #1a8fda #1a8fda #1a8fda #1a8fda;

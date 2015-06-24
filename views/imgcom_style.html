@@ -1,9 +1,148 @@
 <div class="W_editItem" id="J_imgcomStyle">
-    <p>
-        <label>宽:<input type="text" id="J_imgcomWidth"></label>
-    </p>
+    <div id="accordion_imgcomStyle">
+        <h3>基础</h3>
+        <div>
+            <div class="container">
+                <div class="row">
+                    <div class="leftcell">宽:</div>
+                    <div class="rightcell"><input type="text" class="J_imgcom" data-type="width">px</div>
+                    <div class="leftcell">高:</div>
+                    <div class="rightcell"><input type="text" class="J_imgcom" data-type="height">px</div>
+                </div>
+                <div class="row">
+                    <div class="leftcell">顶:</div>
+                    <div class="rightcell"><input type="text" class="J_imgcom" data-type="top">px</div>
+                    <div class="leftcell">左:</div>
+                    <div class="rightcell"><input type="text" class="J_imgcom" data-type="left">px</div>
+                </div>
+                <div class="row">
+                    <div class="leftcell">旋转:</div>
+                    <div class="rightcell">
+                        <input type='text' class="J_imgcom" data-type="transform"/>度
+                    </div>
+                    <div class="leftcell">透明度:</div>
+                    <div class="rightcell">
+                        <input type='text' class="J_imgcom" data-type="opacity"/>%
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h3>对齐</h3>
+        <div>
+            <div class="container" style="padding-left: 20px;">
+                <div class="row">
+                    <div class="aligncell">
+                        <a data-type="totop" class="button cancel J_aimgcom">居顶对齐</a>
+                    </div>
+                    <div class="aligncell">
+                        <a data-type="toleft" class="button cancel J_aimgcom">居左对齐</a>
+                    </div>
+                    <div class="aligncell">
+                        <a data-type="tomiddle" class="button cancel J_aimgcom">垂直居中</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="aligncell">
+                        <a data-type="tobottom" class="button cancel J_aimgcom">居底对齐</a>
+                    </div>
+                    <div class="aligncell">
+                        <a data-type="toright" class="button cancel J_aimgcom">居右对齐</a>
+                    </div>
+                    <div class="aligncell">
+                        <a data-type="tocenter" class="button cancel J_aimgcom">水平居中</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h3>排列</h3>
+        <div>
+            <div class="container" style="padding-left: 20px;">
+                <div class="row">
+                    <div class="aligncell">
+                        <a data-type="uptop" class="button cancel J_aimgcom">置顶</a>
+                    </div>
+                    <div class="aligncell">
+                        <a data-type="up" class="button cancel J_aimgcom">上移一层</a>
+                    </div>
+                    <div class="aligncell">
+                        <a data-type="down" class="button cancel J_aimgcom">下移一层</a>
+                    </div>
+                    <div class="aligncell">
+                        <a data-type="upbottom" class="button cancel J_aimgcom">置底</a>
+                    </div>
+                </div>
 
-    <p>
-        <label>高:<input type="text" id="J_imgcomHeight"></label>
-    </p>
+            </div>
+        </div>
+        <h3>边框</h3>
+        <div>
+            <div class="container">
+                <div class="row">
+                    <div class="leftcell" style="position: relative;top: -20px;">样式:</div>
+                    <div class="aligncell" style="position: relative;left: 10px;">
+                        <select name="speed" id="J_imgcomborderStyleSelect">
+                            <option value="none" selected="selected">无</option>
+                            <option value="solid">实线</option>
+                            <option value="double">双线</option>
+                            <option value="dotted">点线</option>
+                            <option value="dashed">线段</option>
+                            <option value="ridge">隆起</option>
+                            <option value="groove">凹陷</option>
+                            <option value="outset">3D外嵌</option>
+                            <option value="inset">3D内嵌</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="leftcell">颜色:</div>
+                    <div class="rightcell">
+                        <input type='text' class="J_imgcom" id="J_imgcomorderColor" data-type="borderColor"/>
+                    </div>
+                    <div class="leftcell">宽度:</div>
+                    <div class="rightcell">
+                        <input type='text' class="J_imgcom" data-type="borderWidth"/>px
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="leftcell">弧度:</div>
+                    <div class="rightcell">
+                        <input type='text' class="J_imgcom" data-type="borderRadius"/>px
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h3>投影</h3>
+        <div>
+            <div class="container">
+                <div class="row">
+                    <div class="leftcell">颜色:</div>
+                    <div class="rightcell">
+                        <input type='text' class="J_imgcom" id="J_imgcomboxShadowColor" data-type="boxShadow"/>
+                    </div>
+                    <div class="leftcell">距离:</div>
+                    <div class="rightcell">
+                        <input type='text' class="J_Bimgcom"  data-type="boxShadowSP"/>px
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="leftcell">模糊:</div>
+                    <div class="rightcell">
+                        <input type='text' class="J_Bimgcom" data-type="boxShadowBL"/>px
+                    </div>
+                    <div class="leftcell">大小:</div>
+                    <div class="rightcell">
+                        <input type='text' class="J_Bimgcom"   data-type="boxShadowY"/>px
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="leftcell">方向:</div>
+                    <div class="rightcell">
+                        <input type='text' class="J_Bimgcom"  data-type="boxShadowX"/>度
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 </div>

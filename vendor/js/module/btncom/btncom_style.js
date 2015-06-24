@@ -5,13 +5,12 @@ define(['FFF', 'jquery', 'spectrum', 'jqui'], function (FFF, $) {
     var J_btncomColor = $('#J_btncomColor');
     var J_btncomBKColor = $('#J_btncomBKColor');
 
-    var J_borderStyleSelect = $('#J_borderStyleSelect');
+    var J_btncomborderStyleSelect = $('#J_btncomborderStyleSelect');
 
     var J_btncomorderColor = $('#J_btncomorderColor');
 
     var J_btncomboxShadowColor = $('#J_btncomboxShadowColor');
 
-    var J_btncomboxTextShadowColor = $('#J_btncomboxTextShadowColor');
 
 
     var uitl = 'px';
@@ -92,26 +91,9 @@ define(['FFF', 'jquery', 'spectrum', 'jqui'], function (FFF, $) {
         }
     });
 
-    J_btncomboxTextShadowColor.spectrum({
-        allowEmpty: true,
-        color: "#ECC",
-        showInput: true,
-        containerClassName: "full-spectrum",
-        showInitial: true,
-        showPalette: true,
-        showSelectionPalette: true,
-        showAlpha: true,
-        maxPaletteSize: 10,
-        preferredFormat: "hex",
-        localStorageKey: "spectrum.demo",
-        hide: function (color) {
-            console.log(color);
-            var dddc = 'rgba(' + color._r.toFixed() + ',' + color._g.toFixed() + ',' + color._b.toFixed() + ',' + color._a + ')';
-            setTextShadow('color', dddc)
-        }
-    });
 
-    J_borderStyleSelect.selectmenu({
+
+    J_btncomborderStyleSelect.selectmenu({
         width: 120,
         select: function (event, ui) {
             _btncomStyleChange(ui.item.value || 'none', 'borderStyle');
@@ -182,15 +164,6 @@ define(['FFF', 'jquery', 'spectrum', 'jqui'], function (FFF, $) {
                     var d =  $("[data-type=boxShadowX]").attr('deg');
                     $("[data-type=boxShadowX]").val(d||0);
                     $btncom.attr('boxshadow', value);
-                    break;
-                case 'textShadow':
-                    var vals = value.split(' ')
-                    J_btncomboxTextShadowColor.spectrum("set", vals[3]);
-                    $("[data-type=TextShadowSP]").val(Math.abs(vals[1].replace('px','')));
-                    $("[data-type=TextShadowBL]").val(Math.abs(vals[2].replace('px','')));
-                    var d =  $("[data-type=TextShadowX]").attr('deg');
-                    $("[data-type=TextShadowX]").val(d||0);
-                    $btncom.attr('textshadow', value);
                     break;
             }
         });
@@ -320,25 +293,7 @@ define(['FFF', 'jquery', 'spectrum', 'jqui'], function (FFF, $) {
         })
     })
 
-    $.each($('.J_Tbtncom'), function (index, btncom) {
-        var $btncom = $(btncom);
-        $btncom.on('change', function () {
-            var type = $btncom.data('type');
-            var value = $btncom.val();
-            switch (type) {
-                case 'TextShadowSP':
-                    setTextShadow(type,value);
-                    break;
-                case 'TextShadowBL':
-                    setTextShadow(type,value);
-                    break;
-                case 'TextShadowX':
-                    setTextShadow(type,value);
-                    $btncom.attr('deg',value);
-                    break;
-            }
-        })
-    })
+
 
     function _btncomStyleChange(value, type) {
         F.trigger('btncomStyleChange', {
@@ -419,39 +374,5 @@ define(['FFF', 'jquery', 'spectrum', 'jqui'], function (FFF, $) {
 
     }
 
-    function setTextShadow(type, value) {
-        var allvalue = J_btncomboxTextShadowColor.attr('textshadow');
-        if (allvalue) {
-            allvalue = allvalue.split(' ')
-        }
-        var a = allvalue[0].replace('px', ""),
-            b = allvalue[1].replace('px', ""),
-            c = allvalue[3],
-            d = allvalue[2].replace('px', "");
-        switch (type) {
-            case 'color':
-                c = value;
-                break;
-            case 'TextShadowSP':
-                d=value;
-                break;
-            case 'TextShadowBL':
-                b=value;
-                break;
-            case 'TextShadowX':
-                a=value;
-                break;
-        }
-        var e = Math.sqrt(Math.pow(d, 2) / (1 + Math.pow(Math.tan((90 - a) * Math.PI / 180), 2))),
-            f = Math.sqrt(Math.pow(d, 2) - Math.pow(e, 2));
-            a > 0 && 90 >= a ? (e = e, f = 0 - f) : a > 90 && 180 >= a ? (e = e, f = f) : a > 180 && 270 >= a ? (e = 0 - e, f = f) : (e = 0 - e, f = 0 - f);
-
-        var va= Math.round(e) + "px " + Math.round(f) + "px " + Math.abs(b) + "px " + c;
-        if (va != "" && va != undefined && va != null) {
-            _btncomStyleChange(va, 'textShadow');
-        }
-        J_btncomboxTextShadowColor.attr('textshadow', va);
-
-    }
 
 });
