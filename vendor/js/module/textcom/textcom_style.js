@@ -9,6 +9,8 @@ define(['FFF', 'jquery','spectrum', 'jqui'], function (FFF, $) {
 
     var J_textcomborderStyleSelect = $('#J_textcomborderStyleSelect');
 
+    var J_fontFamily = $('#J_fontFamily');
+
     var J_textcomorderColor = $('#J_textcomorderColor');
 
     var J_textcomboxShadowColor = $('#J_textcomboxShadowColor');
@@ -116,6 +118,12 @@ define(['FFF', 'jquery','spectrum', 'jqui'], function (FFF, $) {
         width: 120,
         select: function (event, ui) {
             _textcomStyleChange(ui.item.value || 'none', 'borderStyle');
+        }
+    });
+    J_fontFamily.selectmenu({
+        width: 120,
+        select: function (event, ui) {
+            _textcomStyleChange(ui.item.value || 'Microsoft YaHei', 'fontFamily');
         }
     });
 
