@@ -52,6 +52,7 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
                     $('#J_imgcomContent').show().siblings('.W_editItem').hide();
                     $('#J_imgcomStyle').show().siblings('.W_editItem').hide();
                     F.trigger('renderImgcomContent', that.getData());
+                    F.trigger('renderImgcomStyle', that.getData());
                     F.trigger('setAniMateDate', that.getData());
                     F.trigger('setDataSouceData', that.getData());
                 }
@@ -118,6 +119,16 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
             F.on('rotateCom', function (val) {
                 if (that.$box.hasClass('select')) {
                     data['transform'] = 'rotate(' + val + 'deg)';
+                    that.setData(data);
+                    that.update();
+                }
+            });
+
+
+            F.on('imgcomContextChange', function (val) {
+                if (that.$box.hasClass('select')) {
+                    that.$boxContent.attr('src',val);
+                    data.imgurl = val;
                     that.setData(data);
                     that.update();
                 }

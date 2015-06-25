@@ -1312,6 +1312,10 @@ body .cp-color-picker,body .colpick {
     display: inline-flex;
     margin: 5px 5px;
 }
+
+.bgImgcomWarp{
+    margin: 50px 0 0 0;
+}
 /*lb*/
 
 /*animate_content*/
