@@ -11,7 +11,7 @@ var TextComSchema = new mongoose.Schema({
     bottom: {type: String, default: '0px'},
     width: {type: String, default: '110px'},
     height: {type: String, default: '25px'},
-    backgroundColor: {type: String, default: 'transparent'},
+    backgroundColor: {type: String, default: 'rgba(221,221,221,1)'},
     opacity: {type: String, default: '1'},
     transform: {type: String, default: 'rotate(0deg)'},
     borderColor: {type: String, default: 'rgb(255, 255, 255)'},
