@@ -51,6 +51,7 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
                 if ($$curTarget === that.$boxContent[0]) {
                     $('#J_imgcomContent').show().siblings('.W_editItem').hide();
                     $('#J_imgcomStyle').show().siblings('.W_editItem').hide();
+                    F.trigger('renderImgcomContent', that.getData());
                     F.trigger('setAniMateDate', that.getData());
                     F.trigger('setDataSouceData', that.getData());
                 }
@@ -126,7 +127,8 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
             F.on('imgcomStyleChange', function (obj) {
                 if (that.$box.hasClass('select')) {
                     var key = obj.type;
-                    if( key =='borderColor'|| key =='borderStyle'|| key =='borderWidth'|| key =='borderRadius' || key =='opacity'){
+                    if( key =='borderColor'|| key =='borderStyle'|| key =='borderWidth'|| key =='borderRadius' || key =='opacity'
+                        || key =='paddingTop' || key =='paddingRight' || key =='paddingBottom' || key =='paddingLeft'){
                         that.$curimg.css(key, obj.value);
                     }else if(key=='boxShadow'){
                         that.$curimg.css('box-shadow',obj.value);
@@ -185,7 +187,8 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
                     case 'datamapping':
                         break;
                     default :
-                        if(key =='borderColor'|| key =='borderStyle'|| key =='borderWidth'|| key =='borderRadius'|| key =='opacity'){
+                        if(key =='borderColor'|| key =='borderStyle'|| key =='borderWidth'|| key =='borderRadius'|| key =='opacity'
+                            || key =='paddingTop' || key =='paddingRight' || key =='paddingBottom' || key =='paddingLeft'){
                             that.curimg.css(key, data[key]);
                         }else if(key=='boxShadow') {
                             that.curimg.css('box-shadow', data[key]);
