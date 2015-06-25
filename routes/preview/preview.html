@@ -378,16 +378,13 @@
         <div id="image_<%=img._id %>" class="<%=img.animationName %> animated" style="position: absolute;
             z-index: <%=img.zIndex %>;left: <%=img.left %>; right: <%=img.right %>; top: <%=img.top %>; bottom: <%=img.bottom %>;
             width: <%=img.width %>; height: <%=img.height %>;
-           padding: <%=img.paddingTop %> <%=img.paddingRight %> <%=img.paddingBottom %> <%=img.paddingLeft %>;
             -webkit-animation-duration: <%=img.animationDuration %>; animation-duration: <%=img.animationDuration %>; -webkit-animation-iteration-count: <%=img.animationCount %>;
             animation-iteration-count: <%=img.animationCount %>; animation-delay:<%=img.animationDelay %>; -webkit-animation-delay:<%=img.animationDelay %>;  background-repeat: no-repeat;">
-            <div style="transform:<%=img.transform %>;-webkit-transform:<%=img.transform %>;background-color:transparent;
-                 border-color:<%=img.borderColor %>;border-style:<%=img.borderStyle %>;border-width: <%=img.borderWidth %>;border-radius: <%=img.borderRadius %> ;
-                 box-shadow-color:<%=img.boxShadowColor %> ;box-shadow-width:<%=img.boxShadowWidth %> ;box-shadow-blur:<%=img.boxShadowBlur %> ;
-            box-shadow-size:<%=img.boxShadowSize %> ;box-shadow-degree:<%=img.boxShadowDegree %> ;opacity:<%=img.opacity %>;"
+            <div style="transform:<%=img.transform %>;-webkit-transform:<%=img.transform %>;background-color:transparent;"
                  class="item-image-full">
                 <img  class="W_item" src="<%=img.imgurl %>"  data-dataurl="<%=img.dataurl %>" data-datamapping="<%=img.datamapping %>" width="100%" height="100%"
-                     style="-webkit-border-radius:<%=img.borderRadius %>;border-radius:<%=img.borderRadius %>;"></div>
+                     style="-webkit-border-radius:<%=img.borderRadius %>;border-radius:<%=img.borderRadius %>; box-shadow:<%=img.boxShadow %>;opacity:<%=img.opacity %>;
+                     border-color:<%=img.borderColor %>;border-style:<%=img.borderStyle %>;border-width: <%=img.borderWidth %>;border-radius: <%=img.borderRadius %> ;padding: <%=img.paddingTop %> <%=img.paddingRight %> <%=img.paddingBottom %> <%=img.paddingLeft %>;"></div>
         </div>
         <% }) %>
         <% page.textcomList.forEach(function(txt){ %>

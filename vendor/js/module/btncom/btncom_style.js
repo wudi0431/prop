@@ -116,24 +116,6 @@ define(['FFF', 'jquery', 'spectrum', 'jqui'], function (FFF, $) {
                 value = value.replace('px', '');
             }
             switch (type) {
-                case 'width':
-                    $btncom.val(Math.round(value));
-                    break;
-                case 'height':
-                    $btncom.val(Math.round(value));
-                    break;
-                case 'top':
-                    $btncom.val(Math.round(value));
-                    break;
-                case 'right':
-                    $btncom.val(Math.round(value));
-                    break;
-                case 'bottom':
-                    $btncom.val(Math.round(value));
-                    break;
-                case 'left':
-                    $btncom.val(Math.round(value));
-                    break;
                 case 'color':
                     if (value != "") J_btncomColor.spectrum("set", value)
                     J_btncomColor.val(value);
@@ -164,6 +146,9 @@ define(['FFF', 'jquery', 'spectrum', 'jqui'], function (FFF, $) {
                     var d =  $("[data-type=boxShadowX]").attr('deg');
                     $("[data-type=boxShadowX]").val(d||0);
                     $btncom.attr('boxshadow', value);
+                    break;
+                default :
+                    $btncom.val(Math.round(value));
                     break;
             }
         });

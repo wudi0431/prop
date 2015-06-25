@@ -14,11 +14,7 @@ define(['FFF', 'jquery','spectrum', 'jqui'], function (FFF, $) {
 
     var J_imgcomboxTextShadowColor = $('#J_imgcomboxTextShadowColor');
 
-
-
     var uitl = 'px';
-
-
 
     J_imgcomorderColor.spectrum({
         allowEmpty: true,
@@ -100,24 +96,6 @@ define(['FFF', 'jquery','spectrum', 'jqui'], function (FFF, $) {
                 value = value.replace('px', '');
             }
             switch (type) {
-                case 'width':
-                    $imgcom.val(Math.round(value));
-                    break;
-                case 'height':
-                    $imgcom.val(Math.round(value));
-                    break;
-                case 'top':
-                    $imgcom.val(Math.round(value));
-                    break;
-                case 'right':
-                    $imgcom.val(Math.round(value));
-                    break;
-                case 'bottom':
-                    $imgcom.val(Math.round(value));
-                    break;
-                case 'left':
-                    $imgcom.val(Math.round(value));
-                    break;
                 case 'borderColor':
                     if (value != "") J_imgcomorderColor.spectrum("set", value)
                     J_imgcomorderColor.val(value);
@@ -149,6 +127,9 @@ define(['FFF', 'jquery','spectrum', 'jqui'], function (FFF, $) {
                     var d =  $("[data-type=TextShadowX]").attr('deg');
                     $("[data-type=TextShadowX]").val(d||0);
                     $imgcom.attr('textshadow', value);
+                    break;
+                default :
+                    $imgcom.val(Math.round(value));
                     break;
             }
         });
