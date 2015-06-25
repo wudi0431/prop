@@ -17,7 +17,18 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
             value: null
         },
         imgSrc:{
-            value:''
+            value:'',
+            changeFn: function (args) {
+                var that = this;
+                var data = that.getData();
+                if (args.value !== args.prevValue) {
+                    that.$boxContent.attr('src',args.value);
+                    data.imgurl = args.value;
+                    that.setData(data);
+                    that.update();
+                }
+
+            }
         }
     };
     F.extend(Imgcom, Widget, {
@@ -51,6 +62,8 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
                 if ($$curTarget === that.$boxContent[0]) {
                     $('#J_imgcomContent').show().siblings('.W_editItem').hide();
                     $('#J_imgcomStyle').show().siblings('.W_editItem').hide();
+                    F.trigger('renderImgcomContent', that.getData());
+                    F.trigger('renderImgcomStyle', that.getData());
                     F.trigger('setAniMateDate', that.getData());
                     F.trigger('setDataSouceData', that.getData());
                 }
@@ -119,6 +132,13 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
                     data['transform'] = 'rotate(' + val + 'deg)';
                     that.setData(data);
                     that.update();
+                }
+            });
+
+
+            F.on('imgcomContextChange', function (val) {
+                if (that.$box.hasClass('select')) {
+                    that.setImgSrc(val);
                 }
             });
 

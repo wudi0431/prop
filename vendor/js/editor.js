@@ -21,7 +21,9 @@ require.config({
         datasourcecom: '/js/module/datasource/datasourcecom',
         template: '/js/module/template/template',
         rotatable: '/lib/rotatable',
-        transit: '/lib/jquery.transit'
+        transit: '/lib/jquery.transit',
+        imgcom_cut: '/js/module/imgcom/imgcut'
+
 
     },
     shim: {
