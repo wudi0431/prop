@@ -62,7 +62,7 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
                 if ($$curTarget === that.$boxContent[0]) {
                     $('#J_textcomContent').show().siblings('.W_editItem').hide();
                     $('#J_textcomStyle').show().siblings('.W_editItem').hide();
-                    F.trigger(' ', that.getData());
+                    F.trigger('renderTextcomContent', that.getData());
                     F.trigger('renderTextcomStyle', that.getData());
                     F.trigger('setAniMateDate', that.getData());
                 }
