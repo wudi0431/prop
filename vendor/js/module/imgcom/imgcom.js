@@ -17,18 +17,7 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
             value: null
         },
         imgSrc:{
-            value:'',
-            changeFn: function (args) {
-                var that = this;
-                var data = that.getData();
-                if (args.value !== args.prevValue) {
-                    that.$boxContent.attr('src',args.value);
-                    data.imgurl = args.value;
-                    that.setData(data);
-                    that.update();
-                }
-
-            }
+            value:''
         }
     };
     F.extend(Imgcom, Widget, {
@@ -138,7 +127,10 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
 
             F.on('imgcomContextChange', function (val) {
                 if (that.$box.hasClass('select')) {
-                    that.setImgSrc(val);
+                    that.$boxContent.attr('src',val);
+                    data.imgurl = val;
+                    that.setData(data);
+                    that.update();
                 }
             });
 
