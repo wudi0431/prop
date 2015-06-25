@@ -120,7 +120,7 @@ define(['FFF', 'jquery','spectrum', 'jqui'], function (FFF, $) {
     });
 
 
-    F.on('renderTextcomContent', function (data) {
+    F.on('renderTextcomStyle', function (data) {
         $.each($('.J_textcom'), function (index, textcom) {
             var $textcom = $(textcom);
             var type = $textcom.data('type');

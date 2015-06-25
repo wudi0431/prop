@@ -118,7 +118,7 @@ define(['FFF', 'jquery', 'spectrum', 'jqui'], function (FFF, $) {
     });
 
 
-    F.on('renderBtncomContent', function (data) {
+    F.on('renderBtncomStyle', function (data) {
         $.each($('.J_btncom'), function (index, btncom) {
             var $btncom = $(btncom);
             var type = $btncom.data('type');
