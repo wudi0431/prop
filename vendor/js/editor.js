@@ -282,7 +282,7 @@ require(['rotatable','html2canvas', 'zepto', 'jquery', 'spectrum', 'btncom', 'im
         e.stopPropagation();
     });
 
-    $('#accordion_btncomStyle,#accordion_imgcomStyle').accordion({
+    $('#accordion_btncomStyle,#accordion_imgcomStyle,#accordion_textcomStyle').accordion({
         heightStyle: "content",
         collapsible: true
     });

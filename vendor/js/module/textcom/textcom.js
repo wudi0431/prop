@@ -54,6 +54,9 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
         _bindUI: function () {
             var that = this;
             var data = that.getData();
+            var $box = that.getBoundingBox();
+            that.$box=$box;
+            that.$boxContent = that.$box.children('div');
             that.$box.on('click', function (e) {
                 var $$curTarget = e.target;
                 if ($$curTarget === that.$boxContent[0]) {
@@ -132,8 +135,19 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
 
             F.on('textcomStyleChange', function (obj) {
                 if (that.$box.hasClass('select')) {
-                    that.$box.css(obj.type, obj.value);
-                    data[obj.type] = obj.value;
+                    var key = obj.type;
+                    if( key =='backgroundColor' || key =='borderColor'|| key =='borderStyle'||
+                        key =='borderWidth'|| key =='borderRadius' || key =='color' || key =='opacity'
+                    ){
+                        that.$boxContent.css(key, obj.value);
+                    }else if(key=='boxShadow'){
+                        that.$boxContent.css('box-shadow',obj.value);
+                    }else if(key=='textShadow'){
+                        that.$boxContent.css('text-shadow',obj.value);
+                    }else{
+                        that.$box.css(key,obj.value);
+                    }
+                    data[key] = obj.value;
                     that.setData(data);
                     that.update();
                 }
@@ -184,7 +198,17 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
                     case 'datamapping':
                         break;
                     default :
-                        that.$box.css(key, data[key]);
+                        if( key =='backgroundColor' || key =='borderColor'|| key =='borderStyle'||
+                            key =='borderWidth'|| key =='borderRadius' || key =='color'|| key =='opacity'
+                        ){
+                            that.$boxContent.css(key, data[key]);
+                        }else if(key=='boxShadow') {
+                            that.$boxContent.css('box-shadow', data[key]);
+                        }else if(key=='textShadow') {
+                            that.$boxContent.css('text-shadow', data[key]);
+                        }else{
+                            that.$box.css(key, data[key]);
+                        }
                         break
                 }
             });
