@@ -1532,7 +1532,7 @@ body .cp-color-picker, body .colpick {
 #accordion_textcomStyle .button:hover,
 #accordion_textcomStyle .selectBtnstyle,
 #accordion_btncomStyle .selectBtnstyle,
-#accordion_imgcomStyle .selectBtnstyle, {
+#accordion_imgcomStyle .selectBtnstyle {
     background-color: #fff;
     background-image: none;
     border-color: #1a8fda #1a8fda #1a8fda #1a8fda;
