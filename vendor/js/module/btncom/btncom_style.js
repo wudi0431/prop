@@ -140,7 +140,7 @@ define(['FFF', 'jquery', 'spectrum', 'jqui'], function (FFF, $) {
                 value = value.toString();
             }
             if (value && value.indexOf('px') != -1 && type != "boxShadow" && type != "textShadow") {
-                value = value.replace('px', '');
+                value = value.replace('px', '').replace(';', '');
             }
             switch (type) {
                 case 'color':
@@ -167,21 +167,20 @@ define(['FFF', 'jquery', 'spectrum', 'jqui'], function (FFF, $) {
                 case 'boxShadow':
                     var vals = value.split(' ')
                     J_btncomboxShadowColor.spectrum("set", vals[4]);
-                    $("[data-type=boxShadowSP]").val(vals[1].replace('px',''));
-                    $("[data-type=boxShadowBL]").val(vals[2].replace('px',''));
-                    $("[data-type=boxShadowY]").val(vals[3].replace('px',''));
-                    var d =  $("[data-type=boxShadowX]").attr('deg');
-                    if(d=="") d=0;
-                    $("[data-type=boxShadowX]").val(d||0);
+                    J_btncomStyle.find("[data-type=boxShadowSP]").val(vals[1].replace('px',''));
+                    J_btncomStyle.find("[data-type=boxShadowBL]").val(vals[2].replace('px',''));
+                    J_btncomStyle.find("[data-type=boxShadowY]").val(vals[3].replace('px',''));
+                    var d =  J_btncomStyle.find("[data-type=boxShadowX]").attr('deg');
+                    J_btncomStyle.find("[data-type=boxShadowX]").val(d||0);
                     $btncom.attr('boxshadow', value);
                     break;
                 case 'textShadow':
                     var vals = value.split(' ')
                     J_btncomboxTextShadowColor.spectrum("set", vals[3]);
-                    $("[data-type=TextShadowSP]").val(Math.abs(vals[1].replace('px','')));
-                    $("[data-type=TextShadowBL]").val(Math.abs(vals[2].replace('px','')));
-                    var d =  $("[data-type=TextShadowX]").attr('deg');
-                    $("[data-type=TextShadowX]").val(d||0);
+                    J_btncomStyle.find("[data-type=TextShadowSP]").val(Math.abs(vals[1].replace('px','')));
+                    J_btncomStyle.find("[data-type=TextShadowBL]").val(Math.abs(vals[2].replace('px','')));
+                    var d =  J_btncomStyle.find("[data-type=TextShadowX]").attr('deg');
+                    J_btncomStyle.find("[data-type=TextShadowX]").val(d||0);
                     $btncom.attr('textshadow', value);
                     break;
                 default :
