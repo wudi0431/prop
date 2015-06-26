@@ -371,60 +371,60 @@
 
 <div id="touchBoxCt">
 
-    <% allPage.forEach(function(page){ %>
-    <div id="page_<%= page._id %>" class="page"
-         style="background-color:<%= page.backgroundcolor %>; background-image:url(<%=page.backgroundimage%>); background-size: cover; background-position: 50% 50%;">
-        <% page.imgcomList.forEach(function(img){ %>
-        <div id="image_<%=img._id %>" class="<%=img.animationName %> animated" style="position: absolute;
-            z-index: <%=img.zIndex %>;left: <%=img.left %>; right: <%=img.right %>; top: <%=img.top %>; bottom: <%=img.bottom %>;
-            width: <%=img.width %>; height: <%=img.height %>;
-            -webkit-animation-duration: <%=img.animationDuration %>; animation-duration: <%=img.animationDuration %>; -webkit-animation-iteration-count: <%=img.animationCount %>;
-            animation-iteration-count: <%=img.animationCount %>; animation-delay:<%=img.animationDelay %>; -webkit-animation-delay:<%=img.animationDelay %>;  background-repeat: no-repeat;">
-            <div style="transform:<%=img.transform %>;-webkit-transform:<%=img.transform %>;background-color:transparent;"
+    
+    <div id="page_558cb99fb76439823eb76fc0" class="page"
+         style="background-color:rgba(187,0,0,1);; background-image:url(); background-size: cover; background-position: 50% 50%;">
+        
+        <div id="image_558cb9c2b76439823eb76fc4" class="none animated" style="position: absolute;
+            z-index: 1;left: 69px; right: 0px; top: 282px; bottom: 0px;
+            width: 200px; height: 150px;
+            -webkit-animation-duration: 0s; animation-duration: 0s; -webkit-animation-iteration-count: 1;
+            animation-iteration-count: 1; animation-delay:0s; -webkit-animation-delay:0s;  background-repeat: no-repeat;">
+            <div style="transform:rotate(0deg);-webkit-transform:rotate(0deg);background-color:transparent;"
                  class="item-image-full">
-                <img  class="W_item" src="<%=img.imgurl %>"  data-dataurl="<%=img.dataurl %>" data-datamapping="<%=img.datamapping %>" width="100%" height="100%"
-                     style="-webkit-border-radius:<%=img.borderRadius %>;border-radius:<%=img.borderRadius %>; box-shadow:<%=img.boxShadow %>;opacity:<%=img.opacity %>;
-                     border-color:<%=img.borderColor %>;border-style:<%=img.borderStyle %>;border-width: <%=img.borderWidth %>;border-radius: <%=img.borderRadius %> ;padding: <%=img.paddingTop %> <%=img.paddingRight %> <%=img.paddingBottom %> <%=img.paddingLeft %>;"></div>
+                <img  class="W_item" src="/uploadimg/640x0.jpeg"  data-dataurl="" data-datamapping="" width="100%" height="100%"
+                     style="-webkit-border-radius:0px;border-radius:0px; box-shadow:0px 0px 0px 0px rgb(221,221,221);opacity:1;
+                     border-color:#ffffff;border-style:none;border-width: 4px;border-radius: 0px ;padding: 0px 0px 0px 0px;"></div>
         </div>
-        <% }) %>
-        <% page.textcomList.forEach(function(txt){ %>
-        <div id="text_<%=txt._id %>" class="<%=txt.animationName %> animated"
-             style="position: absolute; display: table; width: <%=txt.width %>; height: <%=txt.height %>; font-style: <%=txt.fontStyle %>; font-weight: <%=txt.fontWeight %>; font-family: <%=txt.fontFamily %>;
-             font-size: <%=txt.fontSize %>; color:  <%=txt.color %>; text-align: <%=txt.textAlign%>; line-height:<%=txt.lineHeight%>;
-             box-shadow-color:<%=txt.boxShadowColor %> ;box-shadow-width:<%=txt.boxShadowWidth %> ;box-shadow-blur:<%=txt.boxShadowBlur %> ;
-            box-shadow-size:<%=txt.boxShadowSize %> ;box-shadow-degree:<%=txt.boxShadowDegree %> ;
-             z-index: <%=txt.zIndex %>;left: <%=txt.left %>; right: <%=txt.right %>; top: <%=txt.top %>; bottom: <%=txt.bottom %>; opacity: <%=txt.opacity %>;
-             -webkit-animation-duration: <%=txt.animationDuration %>; animation-duration: <%=txt.animationDuration %>; -webkit-animation-iteration-count: <%=txt.animationCount %>;
-            animation-iteration-count: <%=txt.animationCount %>; animation-delay:<%=txt.animationDelay %>; -webkit-animation-delay:<%=txt.animationDelay %>;
-            transform:<%=txt.transform %>;-webkit-transform:<%=txt.transform %>;>
+        
+        
+        <div id="text_558ce7228f7465737aad1b40" class="none animated"
+             style="position: absolute; display: table; width: 152px; height: 78px; font-style: italic; font-weight: bold; font-family: Microsoft YaHei;
+             font-size: 16px; color:  rgb(255, 255, 255); text-align: right; line-height:25px;
+             box-shadow-color: ;box-shadow-width: ;box-shadow-blur: ;
+            box-shadow-size: ;box-shadow-degree: ;
+             z-index: 1;left: 100px; right: 0px; top: 200px; bottom: 0px; opacity: 1;
+             -webkit-animation-duration: 0s; animation-duration: 0s; -webkit-animation-iteration-count: 1;
+            animation-iteration-count: 1; animation-delay:0s; -webkit-animation-delay:0s;
+            transform:rotate(0deg);-webkit-transform:rotate(0deg);>
                 <div class="item-table">
-                    <div style="display: table-cell;text-decoration:<%=txt.textDecoration %>;vertical-align:<%=txt.verticalAlign %>;color:<%=txt.color %>;
-                    box-shadow:<%=txt.boxShadow %> ; text-shadow:<%=txt.textShadow %>;background-color:<%=txt.backgroundColor %>;
-                 border-color:<%=txt.borderColor %>;border-style:<%=txt.borderStyle %>;border-width: <%=txt.borderWidth %>;border-radius: <%=txt.borderRadius %> ;"
-                         class="item-table-cell W_item"  data-dataurl="<%=txt.dataurl %>" data-datamapping="<%=txt.datamapping %>">
-                        <%=txt.context %>
+                    <div style="display: table-cell;text-decoration:none;vertical-align:middle;color:rgb(255, 255, 255);
+                    box-shadow:0px 0px 0px 0px rgb(221,221,221) ; text-shadow:0px 0px 0px rgb(221,221,221);background-color:rgba(221,221,221,1);
+                 border-color:rgb(255, 255, 255);border-style:none;border-width: 0px;border-radius: 0px; ;"
+                         class="item-table-cell W_item"  data-dataurl="" data-datamapping="">
+                        请输入文字
                     </div>
             </div>
         </div>
-        <% }) %>
-        <% page.btncomtList.forEach(function(btn){ %>
-        <div id="button_<%= btn._id %>" class="<%= btn.animationName %> animated W_item"
-             style="position: absolute;width: <%=btn.width %>; height: <%=btn.height %>; font-style: <%=btn.fontStyle %>; font-weight: <%=btn.fontWeight %>; font-family: <%=btn.fontFamily %>;
-             font-size: <%=btn.fontSize %>;  text-align: <%=btn.textAlign%>; line-height:<%=btn.lineHeight%>;
-             box-shadow-color:<%=btn.boxShadowColor %> ;box-shadow-width:<%=btn.boxShadowWidth %> ;box-shadow-blur:<%=btn.boxShadowBlur %> ;
-            box-shadow-size:<%=btn.boxShadowSize %> ;box-shadow-degree:<%=btn.boxShadowDegree %> ;
-             z-index: <%=btn.zIndex %>;left: <%=btn.left %>; right: <%=btn.right %>; top: <%=btn.top %>; bottom: <%=btn.bottom %>; opacity: <%=btn.opacity %>;
-             -webkit-animation-duration: <%=btn.animationDuration %>; animation-duration: <%=btn.animationDuration %>; -webkit-animation-iteration-count: <%=btn.animationCount %>;
-            animation-iteration-count: <%=btn.animationCount %>; animation-delay:<%=btn.animationDelay %>; -webkit-animation-delay:<%=btn.animationDelay %>; background-repeat: no-repeat;">
+        
+        
+        <div id="button_558cb9aab76439823eb76fc2" class="none animated W_item"
+             style="position: absolute;width: 110px; height: 25px; font-style: normal; font-weight: bold; font-family: Microsoft YaHei;
+             font-size: 16px;  text-align: center; line-height:25px;
+             box-shadow-color: ;box-shadow-width: ;box-shadow-blur: ;
+            box-shadow-size: ;box-shadow-degree: ;
+             z-index: 1;left: 119px; right: 0px; top: 296px; bottom: 0px; opacity: 1;
+             -webkit-animation-duration: 0s; animation-duration: 0s; -webkit-animation-iteration-count: 1;
+            animation-iteration-count: 1; animation-delay:0s; -webkit-animation-delay:0s; background-repeat: no-repeat;">
             <div  class="item-table">
-                <button type="button" style="transform:<%=btn.transform %>;-webkit-transform:<%=btn.transform %>;background-color:<%=btn.backgroundColor %>;
-                 border-color:<%=btn.borderColor %>;border-style:<%=btn.borderStyle %>;border-width: <%=btn.borderWidth %>;border-radius: <%=btn.borderRadius %> ;
-                 box-shadow:<%=btn.boxShadow %> ; text-shadow:<%=btn.textShadow %> ; color:  <%=btn.color %>;" class="W_btn W_item" data-dataurl="<%=btn.dataurl %>" data-datamapping="<%=btn.datamapping %>"><%= btn.context %></button>
+                <button type="button" style="transform:rotate(0deg);-webkit-transform:rotate(0deg);background-color:rgb(68,199,103);
+                 border-color:rgb(24,171,41);border-style:solid;border-width: 1px;border-radius: 20px; ;
+                 box-shadow:0px 0px 0px 0px rgb(221,221,221) ; text-shadow:0px 0px 0px rgb(221,221,221) ; color:  rgb(255,255,255);" class="W_btn W_item" data-dataurl="" data-datamapping="">按钮</button>
             </div>
         </div>
-        <% }) %>
+        
     </div>
-    <% }) %>
+    
 </div>
 <div class="touchstyle-arrowup" style="opacity: 0; -webkit-animation: touchstyle-arrow-animate 2s infinite;
     animation-duration: 2s; animation-timing-function: initial; animation-delay: initial; animation-iteration-count: infinite;
@@ -444,7 +444,7 @@
     setTimeout(initTouchStyleApp, 250);
 
     function initTouchStyleApp() {
-        var  len = <%=allPage.length %>;
+        var  len = 1;
         var boxer = new TouchBox('#touchBoxCt', {
             loop: len >= 3 ? true: false,
             animation: 'slide'

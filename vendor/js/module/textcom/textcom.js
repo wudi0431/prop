@@ -147,6 +147,10 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
                         that.$boxContent.css('box-shadow',obj.value);
                     }else if(key=='textShadow'){
                         that.$boxContent.css('text-shadow',obj.value);
+                    }else if(key=='verticalAlign') {
+                        that.$boxContent.css(key, obj.value);
+                        that.$box.css(key,obj.value);
+                        that.$box.css("display","table");
                     }else{
                         that.$box.css(key,obj.value);
                     }
@@ -209,6 +213,10 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
                             that.$boxContent.css('box-shadow', data[key]);
                         }else if(key=='textShadow') {
                             that.$boxContent.css('text-shadow', data[key]);
+                        }else if(key=='verticalAlign') {
+                            that.$boxContent.css(key, data[key]);
+                            that.$box.css(key, data[key]);
+                            that.$box.css("display","table");
                         }else{
                             that.$box.css(key, data[key]);
                         }

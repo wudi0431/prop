@@ -283,7 +283,51 @@ define(['FFF', 'jquery','spectrum', 'jqui'], function (FFF, $) {
                     indexs = indexs[indexs.length - 1] - 1;
                     value = indexs || 1;
                     type = 'zIndex';
-
+                    break;
+                case 'alignleft':
+                    value ='left';
+                    type = 'textAlign';
+                    break;
+                case 'aligncenter':
+                    value ='center';
+                    type = 'textAlign';
+                    break;
+                case 'alignright':
+                    value ='right';
+                    type = 'textAlign';
+                    break;
+                case 'valigntop':
+                    value ='top';
+                    type = 'verticalAlign';
+                    break;
+                case 'valignmiddle':
+                    value ='middle';
+                    type = 'verticalAlign';
+                    break;
+                case 'valignbottom':
+                    value ='bottom';
+                    type = 'verticalAlign';
+                    break;
+                case 'fontWeight':
+                    value ='bold';
+                    var res = isHasValue($textcom,type,value)
+                    if(!res){
+                        value ='normal';
+                    }
+                    break;
+                case 'fontStyle':
+                    value ='italic';
+                    var res = isHasValue($textcom,type,value)
+                    if(!res){
+                        value ='normal';
+                    }
+                    break;
+                case 'textDecoration':
+                    value ='underline';
+                    var res = isHasValue($textcom,type,value)
+                    if(!res){
+                        value ='none';
+                    }
                     break;
             }
             if (value != "" && value != undefined && value != null) {
@@ -451,7 +495,18 @@ define(['FFF', 'jquery','spectrum', 'jqui'], function (FFF, $) {
 
     }
 
-
+    function isHasValue(curdom,attr,value){
+          var curvalue = curdom.attr(attr);
+          if(value==curvalue){
+              curdom.removeClass('selectBtnstyle');
+              curdom.attr(attr,"");
+              return false;
+          }else{
+              curdom.addClass('selectBtnstyle');
+              curdom.attr(attr,value);
+              return true;
+          }
+    }
 
 
 

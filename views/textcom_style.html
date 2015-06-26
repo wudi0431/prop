@@ -37,25 +37,70 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="leftcell">字体:</div>
+                    <div class="leftcell">文字大小:</div>
                     <div class="rightcell">
-                        <select id="J_fontFamily">
-                            <option value="Microsoft YaHei">微软雅黑</option>
-                            <option value="SimSun">宋体</option>
-                            <option value="NSimSun">新宋体</option>
-                            <option value="FangSong">仿宋</option>
-                            <option value="KaiTi">楷体</option>
-                            <option value="FangSong_GB2312">仿宋_GB2312</option>
-                            <option value="KaiTi_GB2312">楷体_GB2312</option>
-                            <option value="Arial">Arial</option>
-                            <option value="Courier New">Courier New</option>
-                        </select>
+                        <input type='text' class="J_textcom" data-type="fontSize"/>px
                     </div>
+                    <div class="leftcell">行间距:</div>
+                    <div class="rightcell">
+                        <input type='text' class="J_textcom" data-type="lineHeight"/>px
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                字体:
+                <div style="display: inline-block; position: relative;top: 18px;">
+                    <select id="J_fontFamily">
+                        <option value="Microsoft YaHei">微软雅黑</option>
+                        <option value="SimSun">宋体</option>
+                        <option value="NSimSun">新宋体</option>
+                        <option value="FangSong">仿宋</option>
+                        <option value="KaiTi">楷体</option>
+                        <option value="FangSong_GB2312">仿宋_GB2312</option>
+                        <option value="KaiTi_GB2312">楷体_GB2312</option>
+                        <option value="Arial">Arial</option>
+                        <option value="Courier New">Courier New</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div>风格:</div>
+                <div class="aligncell">
+                    <a data-type="fontWeight" class="button cancel J_atextcom">加粗</a>
+                </div>
+                <div class="aligncell">
+                    <a data-type="fontStyle" class="button cancel J_atextcom">斜体</a>
+                </div>
+                <div class="aligncell">
+                    <a data-type="textDecoration" class="button cancel J_atextcom">下划线</a>
+                </div>
+            </div>
+            <div class="row">
+                <div>水平对齐:</div>
+                <div class="aligncell">
+                    <a data-type="alignleft" class="button cancel J_atextcom">居左对齐</a>
+                </div>
+                <div class="aligncell">
+                    <a data-type="aligncenter" class="button cancel J_atextcom">居中对齐</a>
+                </div>
+                <div class="aligncell">
+                    <a data-type="alignright" class="button cancel J_atextcom">居右对齐</a>
+                </div>
+            </div>
+            <div class="row">
+               <div>垂直对齐:</div>
+                <div class="aligncell">
+                    <a data-type="valigntop" class="button cancel J_atextcom">居顶对齐</a>
+                </div>
+                <div class="aligncell">
+                    <a data-type="valignmiddle" class="button cancel J_atextcom">居中对齐</a>
+                </div>
+                <div class="aligncell">
+                    <a data-type="valignbottom" class="button cancel J_atextcom">居底对齐</a>
                 </div>
             </div>
         </div>
         <h3>对齐</h3>
-
         <div>
             <div class="container" style="padding-left: 20px;">
                 <div class="row">

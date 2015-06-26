@@ -29,6 +29,7 @@ var TextComSchema = new mongoose.Schema({
     animationDelay: {type: String, default: '0s'},
     animationCount: {type: String, default: '1'},
     fontStyle: {type: String, default: 'normal'},
+    textDecoration: {type: String, default: 'none'},
     fontWeight: {type: String, default: 'normal'},
     fontFamily: {type: String, default: 'Microsoft YaHei'},
     fontSize: {type: String, default: '16px'},
