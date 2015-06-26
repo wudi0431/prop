@@ -9,6 +9,8 @@ define(['FFF', 'jquery','spectrum', 'jqui'], function (FFF, $) {
 
     var J_textcomborderStyleSelect = $('#J_textcomborderStyleSelect');
 
+    var J_fontFamily = $('#J_fontFamily');
+
     var J_textcomorderColor = $('#J_textcomorderColor');
 
     var J_textcomboxShadowColor = $('#J_textcomboxShadowColor');
@@ -118,9 +120,15 @@ define(['FFF', 'jquery','spectrum', 'jqui'], function (FFF, $) {
             _textcomStyleChange(ui.item.value || 'none', 'borderStyle');
         }
     });
+    J_fontFamily.selectmenu({
+        width: 120,
+        select: function (event, ui) {
+            _textcomStyleChange(ui.item.value || 'Microsoft YaHei', 'fontFamily');
+        }
+    });
 
 
-    F.on('renderTextcomContent', function (data) {
+    F.on('renderTextcomStyle', function (data) {
         $.each($('.J_textcom'), function (index, textcom) {
             var $textcom = $(textcom);
             var type = $textcom.data('type');
@@ -163,7 +171,8 @@ define(['FFF', 'jquery','spectrum', 'jqui'], function (FFF, $) {
                     $("[data-type=boxShadowBL]").val(vals[2].replace('px',''));
                     $("[data-type=boxShadowY]").val(vals[3].replace('px',''));
                     var d =  $("[data-type=boxShadowX]").attr('deg');
-                    $("[data-type=boxShadowX]").val(d||0);
+                    if(d=="") d=0;
+                    $("[data-type=boxShadowX]").val(d);
                     $textcom.attr('boxshadow', value);
                     break;
                 case 'textShadow':

@@ -101,6 +101,7 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
                     data['top'] = val.top +'px';
                     data['left'] = val.left+'px';
                     that.setData(data);
+                    F.trigger('renderImgcomStyle', that.getData());
                     that.update();
                 }
             });
@@ -112,6 +113,7 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
                     data['width'] = val.width +'px';
                     data['height'] = val.height+'px';
                     that.setData(data);
+                    F.trigger('renderImgcomStyle', that.getData());
                     that.update();
                 }
             });
@@ -120,6 +122,7 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
                 if (that.$box.hasClass('select')) {
                     data['transform'] = 'rotate(' + val + 'deg)';
                     that.setData(data);
+                    F.trigger('renderImgcomStyle', that.getData());
                     that.update();
                 }
             });

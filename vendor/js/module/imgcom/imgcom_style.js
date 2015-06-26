@@ -81,7 +81,7 @@ define(['FFF', 'jquery','spectrum', 'jqui'], function (FFF, $) {
     });
 
 
-    F.on('renderImgcomContent', function (data) {
+    F.on('renderImgcomStyle', function (data) {
         $.each($('.J_imgcom'), function (index, imgcom) {
             var $imgcom = $(imgcom);
             var type = $imgcom.data('type');

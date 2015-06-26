@@ -1,6 +1,7 @@
 <div class="W_editItem" id="J_textcomStyle">
     <div id="accordion_textcomStyle">
         <h3>基础</h3>
+
         <div>
             <div class="container">
                 <div class="row">
@@ -16,6 +17,16 @@
                     <div class="rightcell"><input type="text" class="J_textcom" data-type="left">px</div>
                 </div>
                 <div class="row">
+                    <div class="leftcell">文字颜色:</div>
+                    <div class="rightcell">
+                        <input type='text' class="J_textcom" id="J_textcomColor" data-type="color"/>
+                    </div>
+                    <div class="leftcell">背景颜色:</div>
+                    <div class="rightcell">
+                        <input type='text' class="J_textcom" id="J_textcomBKColor" data-type="backgroundColor"/>
+                    </div>
+                </div>
+                <div class="row">
                     <div class="leftcell">旋转:</div>
                     <div class="rightcell">
                         <input type='text' class="J_textcom" data-type="transform"/>度
@@ -25,9 +36,26 @@
                         <input type='text' class="J_textcom" data-type="opacity"/>%
                     </div>
                 </div>
+                <div class="row">
+                    <div class="leftcell">字体:</div>
+                    <div class="rightcell">
+                        <select id="J_fontFamily">
+                            <option value="Microsoft YaHei">微软雅黑</option>
+                            <option value="SimSun">宋体</option>
+                            <option value="NSimSun">新宋体</option>
+                            <option value="FangSong">仿宋</option>
+                            <option value="KaiTi">楷体</option>
+                            <option value="FangSong_GB2312">仿宋_GB2312</option>
+                            <option value="KaiTi_GB2312">楷体_GB2312</option>
+                            <option value="Arial">Arial</option>
+                            <option value="Courier New">Courier New</option>
+                        </select>
+                    </div>
+                </div>
             </div>
         </div>
         <h3>对齐</h3>
+
         <div>
             <div class="container" style="padding-left: 20px;">
                 <div class="row">
@@ -55,6 +83,7 @@
             </div>
         </div>
         <h3>排列</h3>
+
         <div>
             <div class="container" style="padding-left: 20px;">
                 <div class="row">
@@ -75,6 +104,7 @@
             </div>
         </div>
         <h3>边框</h3>
+
         <div>
             <div class="container">
                 <div class="row">
@@ -122,7 +152,7 @@
                     </div>
                     <div class="leftcell">距离:</div>
                     <div class="rightcell">
-                        <input type='text' class="J_Ttextcom"  data-type="TextShadowSP"/>px
+                        <input type='text' class="J_Ttextcom" data-type="TextShadowSP"/>px
                     </div>
                 </div>
                 <div class="row">
@@ -132,12 +162,13 @@
                     </div>
                     <div class="leftcell">方向:</div>
                     <div class="rightcell">
-                        <input type='text' class="J_Ttextcom"   data-type="TextShadowX"/>度
+                        <input type='text' class="J_Ttextcom" data-type="TextShadowX"/>度
                     </div>
                 </div>
             </div>
         </div>
         <h3>投影</h3>
+
         <div>
             <div class="container">
                 <div class="row">
@@ -147,7 +178,7 @@
                     </div>
                     <div class="leftcell">距离:</div>
                     <div class="rightcell">
-                        <input type='text' class="J_Btextcom"  data-type="boxShadowSP"/>px
+                        <input type='text' class="J_Btextcom" data-type="boxShadowSP"/>px
                     </div>
                 </div>
                 <div class="row">
@@ -157,18 +188,19 @@
                     </div>
                     <div class="leftcell">大小:</div>
                     <div class="rightcell">
-                        <input type='text' class="J_Btextcom"   data-type="boxShadowY"/>px
+                        <input type='text' class="J_Btextcom" data-type="boxShadowY"/>px
                     </div>
                 </div>
                 <div class="row">
                     <div class="leftcell">方向:</div>
                     <div class="rightcell">
-                        <input type='text' class="J_Btextcom"  data-type="boxShadowX"/>度
+                        <input type='text' class="J_Btextcom" data-type="boxShadowX"/>度
                     </div>
                 </div>
             </div>
         </div>
         <h3>内边距</h3>
+
         <div>
             <div class="container">
                 <div class="row">
@@ -187,5 +219,6 @@
                 </div>
             </div>
         </div>
+
     </div>
 </div>

@@ -118,7 +118,7 @@ define(['FFF', 'jquery', 'spectrum', 'jqui'], function (FFF, $) {
     });
 
 
-    F.on('renderBtncomContent', function (data) {
+    F.on('renderBtncomStyle', function (data) {
         $.each($('.J_btncom'), function (index, btncom) {
             var $btncom = $(btncom);
             var type = $btncom.data('type');
@@ -161,6 +161,7 @@ define(['FFF', 'jquery', 'spectrum', 'jqui'], function (FFF, $) {
                     $("[data-type=boxShadowBL]").val(vals[2].replace('px',''));
                     $("[data-type=boxShadowY]").val(vals[3].replace('px',''));
                     var d =  $("[data-type=boxShadowX]").attr('deg');
+                    if(d=="") d=0;
                     $("[data-type=boxShadowX]").val(d||0);
                     $btncom.attr('boxshadow', value);
                     break;
