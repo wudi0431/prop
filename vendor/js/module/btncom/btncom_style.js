@@ -9,6 +9,9 @@ define(['FFF', 'jquery', 'spectrum', 'jqui'], function (FFF, $) {
 
     var J_btncomorderColor = $('#J_btncomorderColor');
 
+    var J_BfontFamily = $('#J_BfontFamily');
+
+
     var J_btncomboxShadowColor = $('#J_btncomboxShadowColor');
 
     var J_btncomboxTextShadowColor = $('#J_btncomboxTextShadowColor');
@@ -114,6 +117,13 @@ define(['FFF', 'jquery', 'spectrum', 'jqui'], function (FFF, $) {
         width: 120,
         select: function (event, ui) {
             _btncomStyleChange(ui.item.value || 'none', 'borderStyle');
+        }
+    });
+
+    J_BfontFamily.selectmenu({
+        width: 120,
+        select: function (event, ui) {
+            _textcomStyleChange(ui.item.value || 'Microsoft YaHei', 'fontFamily');
         }
     });
 
@@ -273,7 +283,39 @@ define(['FFF', 'jquery', 'spectrum', 'jqui'], function (FFF, $) {
                     indexs = indexs[indexs.length - 1] - 1;
                     value = indexs || 1;
                     type = 'zIndex';
-
+                    break;
+                case 'alignleft':
+                    value ='left';
+                    type = 'textAlign';
+                    break;
+                case 'aligncenter':
+                    value ='center';
+                    type = 'textAlign';
+                    break;
+                case 'alignright':
+                    value ='right';
+                    type = 'textAlign';
+                    break;
+                case 'fontWeight':
+                    value ='bold';
+                    var res = isHasValue($btncom,type,value)
+                    if(!res){
+                        value ='normal';
+                    }
+                    break;
+                case 'fontStyle':
+                    value ='italic';
+                    var res = isHasValue($btncom,type,value)
+                    if(!res){
+                        value ='normal';
+                    }
+                    break;
+                case 'textDecoration':
+                    value ='underline';
+                    var res = isHasValue($btncom,type,value)
+                    if(!res){
+                        value ='none';
+                    }
                     break;
             }
             if (value != "" && value != undefined && value != null) {
@@ -441,5 +483,16 @@ define(['FFF', 'jquery', 'spectrum', 'jqui'], function (FFF, $) {
 
     }
 
-
+    function isHasValue(curdom,attr,value){
+        var curvalue = curdom.attr(attr);
+        if(value==curvalue){
+            curdom.removeClass('selectBtnstyle');
+            curdom.attr(attr,"");
+            return false;
+        }else{
+            curdom.addClass('selectBtnstyle');
+            curdom.attr(attr,value);
+            return true;
+        }
+    }
 });

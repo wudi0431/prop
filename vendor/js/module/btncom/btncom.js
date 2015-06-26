@@ -150,6 +150,8 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
                    var key = obj.type;
                     if( key =='backgroundColor' || key =='borderColor'|| key =='borderStyle'||
                         key =='borderWidth'|| key =='borderRadius' || key =='color' || key =='opacity'
+                        || key =='textAlign' || key =='fontStyle'|| key =='fontWeight'|| key =='fontFamily'
+                        || key =='fontSize'|| key =='textDecoration'|| key =='lineHeight'|| key =='lineHeight'
                     ){
                         that.$curbtn.css(key, obj.value);
                     }else if(key=='boxShadow'){
@@ -211,7 +213,9 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
                         break;
                     default :
                         if( key =='backgroundColor' || key =='borderColor'|| key =='borderStyle'||
-                           key =='borderWidth'|| key =='borderRadius' || key =='color'|| key =='opacity'
+                            key =='borderWidth'|| key =='borderRadius' || key =='color' || key =='opacity'
+                            || key =='textAlign' || key =='fontStyle'|| key =='fontWeight'|| key =='fontFamily'
+                            || key =='fontSize'|| key =='textDecoration'|| key =='lineHeight'|| key =='lineHeight'
                         ){
                             that.curbtn.css(key, data[key]);
                         }else if(key=='boxShadow') {

@@ -391,8 +391,6 @@
         <div id="text_<%=txt._id %>" class="<%=txt.animationName %> animated"
              style="position: absolute; display: table; width: <%=txt.width %>; height: <%=txt.height %>; font-style: <%=txt.fontStyle %>; font-weight: <%=txt.fontWeight %>; font-family: <%=txt.fontFamily %>;
              font-size: <%=txt.fontSize %>; color:  <%=txt.color %>; text-align: <%=txt.textAlign%>; line-height:<%=txt.lineHeight%>;
-             box-shadow-color:<%=txt.boxShadowColor %> ;box-shadow-width:<%=txt.boxShadowWidth %> ;box-shadow-blur:<%=txt.boxShadowBlur %> ;
-            box-shadow-size:<%=txt.boxShadowSize %> ;box-shadow-degree:<%=txt.boxShadowDegree %> ;
              z-index: <%=txt.zIndex %>;left: <%=txt.left %>; right: <%=txt.right %>; top: <%=txt.top %>; bottom: <%=txt.bottom %>; opacity: <%=txt.opacity %>;
              -webkit-animation-duration: <%=txt.animationDuration %>; animation-duration: <%=txt.animationDuration %>; -webkit-animation-iteration-count: <%=txt.animationCount %>;
             animation-iteration-count: <%=txt.animationCount %>; animation-delay:<%=txt.animationDelay %>; -webkit-animation-delay:<%=txt.animationDelay %>;
@@ -409,17 +407,14 @@
         <% }) %>
         <% page.btncomtList.forEach(function(btn){ %>
         <div id="button_<%= btn._id %>" class="<%= btn.animationName %> animated W_item"
-             style="position: absolute;width: <%=btn.width %>; height: <%=btn.height %>; font-style: <%=btn.fontStyle %>; font-weight: <%=btn.fontWeight %>; font-family: <%=btn.fontFamily %>;
-             font-size: <%=btn.fontSize %>;  text-align: <%=btn.textAlign%>; line-height:<%=btn.lineHeight%>;
-             box-shadow-color:<%=btn.boxShadowColor %> ;box-shadow-width:<%=btn.boxShadowWidth %> ;box-shadow-blur:<%=btn.boxShadowBlur %> ;
-            box-shadow-size:<%=btn.boxShadowSize %> ;box-shadow-degree:<%=btn.boxShadowDegree %> ;
-             z-index: <%=btn.zIndex %>;left: <%=btn.left %>; right: <%=btn.right %>; top: <%=btn.top %>; bottom: <%=btn.bottom %>; opacity: <%=btn.opacity %>;
+             style="position: absolute;width: <%=btn.width %>; height: <%=btn.height %>;z-index: <%=btn.zIndex %>;left: <%=btn.left %>; right: <%=btn.right %>; top: <%=btn.top %>; bottom: <%=btn.bottom %>;
              -webkit-animation-duration: <%=btn.animationDuration %>; animation-duration: <%=btn.animationDuration %>; -webkit-animation-iteration-count: <%=btn.animationCount %>;
             animation-iteration-count: <%=btn.animationCount %>; animation-delay:<%=btn.animationDelay %>; -webkit-animation-delay:<%=btn.animationDelay %>; background-repeat: no-repeat;">
             <div  class="item-table">
                 <button type="button" style="transform:<%=btn.transform %>;-webkit-transform:<%=btn.transform %>;background-color:<%=btn.backgroundColor %>;
                  border-color:<%=btn.borderColor %>;border-style:<%=btn.borderStyle %>;border-width: <%=btn.borderWidth %>;border-radius: <%=btn.borderRadius %> ;
-                 box-shadow:<%=btn.boxShadow %> ; text-shadow:<%=btn.textShadow %> ; color:  <%=btn.color %>;" class="W_btn W_item" data-dataurl="<%=btn.dataurl %>" data-datamapping="<%=btn.datamapping %>"><%= btn.context %></button>
+                 box-shadow:<%=btn.boxShadow %> ; text-shadow:<%=btn.textShadow %> ; color:  <%=btn.color %>;font-style: <%=btn.fontStyle %>; font-weight: <%=btn.fontWeight %>;
+                 font-family: <%=btn.fontFamily %>; font-size: <%=btn.fontSize %>;  text-align: <%=btn.textAlign%>; line-height:<%=btn.lineHeight%>;" class="W_btn W_item" data-dataurl="<%=btn.dataurl %>" data-datamapping="<%=btn.datamapping %>"><%= btn.context %></button>
             </div>
         </div>
         <% }) %>
