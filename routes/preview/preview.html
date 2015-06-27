@@ -441,7 +441,7 @@
     function initTouchStyleApp() {
         var  len = <%=allPage.length %>;
         var boxer = new TouchBox('#touchBoxCt', {
-            loop: len >= 3 ? true: false,
+            loop: false,//len >= 3 ? true: false,
             animation: 'slide'
         });
         boxer.on('slide', function (activeIndex, oldIndex) {
