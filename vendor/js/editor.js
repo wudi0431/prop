@@ -23,8 +23,6 @@ require.config({
         rotatable: '/lib/rotatable',
         transit: '/lib/jquery.transit',
         imgcom_cut: '/js/module/imgcom/imgcut'
-
-
     },
     shim: {
         html2canvas: {
