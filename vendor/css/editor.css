@@ -1224,9 +1224,9 @@ body .cp-color-picker, body .colpick {
     width: 100%;
     /* height:100%; */
     /* overflow: scroll; */
-    /* padding: 0 0 35px 0; */
+    padding: 0 0 35px 0;
     -webkit-overflow-scrolling: touch;
-    margin-bottom: 30px;
+    /* margin-bottom: 0px; */
 }
 
 .mod_animate::-webkit-scrollbar {
