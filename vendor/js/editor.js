@@ -205,6 +205,7 @@ require(['template', 'rotatable', 'html2canvas', 'zepto', 'jquery', 'spectrum', 
                 cancel: false,
                 stop: function (e, drag) {
                     F.trigger('dragCom', drag.position);
+                    return false;
                 }
             });
             $that.resizable({
@@ -213,12 +214,14 @@ require(['template', 'rotatable', 'html2canvas', 'zepto', 'jquery', 'spectrum', 
                 minHeight: 20,
                 stop: function (e, resize) {
                     F.trigger('resizeCom', resize.size);
+                    return false;
                 }
             });
 
             $that.rotatable({
                 stop: function (e, rotate) {
                     F.trigger('rotateCom', rotate.deg);
+                    return false;
                 }
             });
 
