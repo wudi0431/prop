@@ -21,7 +21,7 @@ var ImgComSchema = new mongoose.Schema({
     paddingRight: {type: String, default: '0px'},
     paddingBottom: {type: String, default: '0px'},
     animationName: {type: String, default: 'none'},
-    animationDuration: {type: String, default: '0s'},
+    animationDuration: {type: String, default: '1.3s'},
     animationDelay: {type: String, default: '0s'},
     animationCount: {type: String, default: '1'},
     verticalAlign: {type: String, default: 'middle'},

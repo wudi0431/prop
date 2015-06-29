@@ -1,6 +1,7 @@
-define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
+define(['FFF', 'zepto', 'jquery','stylecom'], function (FFF, $, jq,Stylecom) {
     var F = FFF.FFF,
-        Widget = F.Widget;
+        Widget = F.Widget,
+        Stylecom = Stylecom.Stylecom;
 
     function Imgcom() {
         Widget.apply(this, arguments);
@@ -44,6 +45,8 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
             var that = this;
             var data = that.getData();
             var $box = that.getBoundingBox();
+            var stylecom =  new Stylecom();
+            stylecom.render();
             that.$box=$box;
             that.$curimg = that.$box.children('img');
             that.$box.on('click', function (e) {
@@ -52,7 +55,7 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
                     $('#J_imgcomContent').show().siblings('.W_editItem').hide();
                     $('#J_imgcomStyle').show().siblings('.W_editItem').hide();
                     F.trigger('renderImgcomContent', that.getData());
-                    F.trigger('renderImgcomStyle', that.getData());
+                    stylecom.initStylecomData('imgcom','imgcomStyleChange',that.getData());
                     F.trigger('setAniMateDate', that.getData());
                     F.trigger('setDataSouceData', that.getData());
                 }
@@ -101,7 +104,7 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
                     data['top'] = val.top +'px';
                     data['left'] = val.left+'px';
                     that.setData(data);
-                    F.trigger('renderImgcomStyle', that.getData());
+                    stylecom.initStylecomData('imgcom','imgcomStyleChange',that.getData());
                     that.update();
                 }
             });
@@ -113,7 +116,7 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
                     data['width'] = val.width +'px';
                     data['height'] = val.height+'px';
                     that.setData(data);
-                    F.trigger('renderImgcomStyle', that.getData());
+                    stylecom.initStylecomData('imgcom','imgcomStyleChange',that.getData());
                     that.update();
                 }
             });
@@ -122,7 +125,7 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
                 if (that.$box.hasClass('select')) {
                     data['transform'] = 'rotate(' + val + 'deg)';
                     that.setData(data);
-                    F.trigger('renderImgcomStyle', that.getData());
+                    stylecom.initStylecomData('imgcom','imgcomStyleChange',that.getData());
                     that.update();
                 }
             });
@@ -136,7 +139,6 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
                     that.update();
                 }
             });
-
 
             F.on('imgcomStyleChange', function (obj) {
                 if (that.$box.hasClass('select')) {
