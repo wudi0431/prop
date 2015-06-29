@@ -210,31 +210,8 @@ Pagecom.prototype={
         })
     },
     // 添加页面
-    addPage:function(){
+    addPage:function(istpl){
         var that =this;
-
-        //var $addPageDailog =$('#addPageDailog').dialog({
-        //    resizable: false,
-        //    width:500,
-        //    height:600,
-        //    title:"选择模板",
-        //    modal: true,
-        //    dialogClass: "fasdfasdfasdfsd"
-        //});
-        //
-        //$(".tmpl-item").on('click',function(e){
-        //    e.stopPropagation();
-        //    e.preventDefault();
-        //    if($(this).attr('tmpl-index')==-1){
-        //        if($addPageDailog.dialog( "isOpen" )){
-        //            $addPageDailog.dialog( "close" );
-        //            that.addPageTitle(that.index,true)
-        //            that.clearIphone();
-        //            that.savePage();
-        //        }
-        //    }
-        //});
-
         //TODO 模板数据处理
         Template.onTplSelect = function (tplData) {
             var cindex =++that.index;
@@ -366,6 +343,8 @@ Pagecom.prototype={
         var that =this;
         that.$items =$('.page-item');
         that.$pagelist =$('.page-list');
+        that.facopy =$('.j_tool_page_copy');
+        that.faremove =$('.j_tool_page_remove');
         that.deleteSelectPage();
         that.$pagelist.sortable({
             placeholder: "ui-state-highlight",
@@ -382,7 +361,7 @@ Pagecom.prototype={
         that.addpage.removeClass('ui-sortable-handle');
         that.$pagelist.disableSelection();
 
-        that.$items.on('click', function (e) { 
+        that.$items.on('click', function (e) {
             var curitem =$(this);
             var pindex =+curitem.attr('data-index');
             var pageid =curitem.attr('data-pageid');
@@ -410,7 +389,7 @@ Pagecom.prototype={
                     curitem.find('.disp').text(title);
                     break;
                 case "scene-copy":
-                   // that.addpage.before($(this));
+                    that.copePage(curPageData);
                     break;
                 case "input":
                     $(e.target).focus();
@@ -438,6 +417,39 @@ Pagecom.prototype={
                     break;
             }
         })
+
+        that.facopy.on('click', function () {
+            var curpagedata = that.getSelectPageData();
+            that.copePage(curpagedata)
+        });
+
+        that.faremove.on('click', function () {
+            var curpagedata = that.getSelectPageData();
+            if(curpagedata){
+                that.deletePage(curpagedata._id,curpagedata.sortindex);
+                $.each(that.$items, function (index,item) {
+                    var curitem =$(item);
+                    var pageid =curitem.attr('data-pageid');
+                    if(pageid==curpagedata._id){
+                        curitem.remove();
+                    }
+                })
+                that.clearIphone();
+                that.delePageListByIndex(null,curpagedata._id);
+                if(that.pageList.length===0){
+                    index =  that.pageList.length;
+                    that.index =that.pageList.length;
+                    that.isfistadd=true;
+                    that.addFirstPage();
+                }else{
+                    var nextpindex =curpagedata.sortindex-1;
+                    that.addSelectPage(nextpindex==0?1:nextpindex);
+                }
+
+            }
+        });
+
+
 
 
     },
@@ -473,7 +485,7 @@ Pagecom.prototype={
     },
     //删除页面
     deleteSelectPage: function () {
-        var that =this; 
+        var that =this;
         $.each($('.page-item'),function(index,item){
             var $item = $(item);
             var $a = $item.children().first();
@@ -498,7 +510,7 @@ Pagecom.prototype={
                 if(curpage){
                     that.setPageStyle(curpage);
                     that._addCom(curpage._id);
-                } 
+                }
                 flag=false;
             }else{
                 $a.hasClass('cur-sort-page') &&  $a.removeClass('cur-sort-page');
@@ -548,6 +560,7 @@ Pagecom.prototype={
         var curpageid  = this.getSelectPage();
         return this.getPageListByIndex(null,curpageid);
     },
+    //设置page样式
     setPageStyle: function (curpage) {
         var that =this;
         var $cont = $('#conten-1');
@@ -584,7 +597,63 @@ Pagecom.prototype={
             that.$showbox.attr('data-image','');
             imgcut.initImgCut(curpage.backgroundimage);
         }
+    },
+    //复制页面
+    copePage: function (pagedata) {
+        var that=this,btncomtLis=[],imgcomList=[],textcomList=[];
+        var pageid = pagedata._id;
+        that.btnComList.forEach(function (btn) {
+            if(btn.page===pageid){
+                btncomtLis.push(btn)
+            }
+        });
+        that.imgComtList.forEach(function (img) {
+            if(img.page===pageid){
+                imgcomList.push(img)
+            }
+        });
+        that.textComtList.forEach(function (text) {
+            if(text.page===pageid){
+                textcomList.push(text)
+            }
+        })
 
+        var tpldata ={
+            backgroundcolor: pagedata.backgroundcolor,
+            backgroundimage: pagedata.backgroundimage ,
+            btncomtList: btncomtLis,
+            imgcomList:imgcomList,
+            name: pagedata.name,
+            textcomList:textcomList
+        }
+
+        var cindex =++that.index;
+
+        tpldata.sortindex=cindex;
+
+        if(tpldata.name.indexOf('第')!=-1){
+            var n  ="第"+cindex+"页";
+            tpldata.name=n;
+        }
+        $.ajax({
+            type: 'POST',
+            url: '/generationPage',
+            data:{
+                allData:tpldata,
+                projectId:projectId
+            },
+            success: function (msg) {
+                console.log(msg);
+                if(that.isfistadd){
+                    that.addPageTitle(cindex,true) ;
+                }else{
+                    that.addPageTitle(msg.model.sortindex);
+                    that.pageList.push(msg.model);
+                    that.bindUI();
+                    that._initCom(true);
+                }
+            }
+        });
 
     }
 }
