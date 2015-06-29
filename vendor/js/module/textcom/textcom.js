@@ -1,6 +1,7 @@
-define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
+define(['FFF', 'zepto', 'jquery','stylecom'], function (FFF, $, jq,Stylecom) {
     var F = FFF.FFF,
-        Widget = F.Widget;
+        Widget = F.Widget,
+       Stylecom = Stylecom.Stylecom;
 
     function Textcom() {
         Widget.apply(this, arguments);
@@ -55,6 +56,8 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
             var that = this;
             var data = that.getData();
             var $box = that.getBoundingBox();
+            var stylecom =  new Stylecom();
+            stylecom.render();
             that.$box=$box;
             that.$boxContent = that.$box.children('div');
             that.$box.on('click', function (e) {
@@ -63,8 +66,8 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
                     $('#J_textcomContent').show().siblings('.W_editItem').hide();
                     $('#J_textcomStyle').show().siblings('.W_editItem').hide();
                     F.trigger('renderTextcomContent', that.getData());
-                    F.trigger('renderTextcomStyle', that.getData());
-                    F.trigger('setAniMateDate', that.getData());
+                    stylecom.initStylecomData('textcom','textcomStyleChange',that.getData());
+                    F.trigger('setAniMateDate',that.getData());
                 }
 
                 if ($$curTarget === that.$boxDel[0]) {
@@ -103,7 +106,7 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
                     data['width'] = val.width +'px';
                     data['height'] = val.height+'px';
                     that.setData(data);
-                    F.trigger('renderTextcomStyle', that.getData());
+                    stylecom.initStylecomData('textcom','textcomStyleChange',that.getData());
                     that.update();
                 }
             });
@@ -115,7 +118,7 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
                     data['top'] = val.top +'px';
                     data['left'] = val.left+'px';
                     that.setData(data);
-                    F.trigger('renderTextcomStyle', that.getData());
+                    stylecom.initStylecomData('textcom','textcomStyleChange',that.getData());
                     that.update();
                 }
             });
@@ -124,7 +127,7 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
                 if (that.$box.hasClass('select')) {
                     data['transform'] = 'rotate(' + val + 'deg)';
                     that.setData(data);
-                    F.trigger('renderTextcomStyle', that.getData());
+                    stylecom.initStylecomData('textcom','textcomStyleChange',that.getData());
                     that.update();
                 }
             });

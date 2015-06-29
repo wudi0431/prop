@@ -1,57 +1,55 @@
-<div class="W_editItem" id="J_btncomStyle">
-    <div id="accordion_btncomStyle">
+<div class="W_editItem" id="J_textcomStyle">
+    <div id="accordion_textcomStyle">
         <h3>基础</h3>
-
-        <div>
-
+        <div id="root">
             <div class="container">
                 <div class="row">
                     <div class="leftcell">宽:</div>
-                    <div class="rightcell"><input type="text" class="J_btncom" data-type="width">px</div>
+                    <div class="rightcell"><input type="text" class="J_textcom" data-type="width">px</div>
                     <div class="leftcell">高:</div>
-                    <div class="rightcell"><input type="text" class="J_btncom" data-type="height">px</div>
+                    <div class="rightcell"><input type="text" class="J_textcom" data-type="height">px</div>
                 </div>
                 <div class="row">
                     <div class="leftcell">顶:</div>
-                    <div class="rightcell"><input type="text" class="J_btncom" data-type="top">px</div>
+                    <div class="rightcell"><input type="text" class="J_textcom" data-type="top">px</div>
                     <div class="leftcell">左:</div>
-                    <div class="rightcell"><input type="text" class="J_btncom" data-type="left">px</div>
+                    <div class="rightcell"><input type="text" class="J_textcom" data-type="left">px</div>
                 </div>
-                <div class="row">
+                <div class="row" id="fontcolors">
                     <div class="leftcell">文字颜色:</div>
                     <div class="rightcell">
-                        <input type='text' class="J_btncom" id="J_btncomColor" data-type="color"/>
+                        <input type='text' class="J_textcom" id="J_textcomColor" data-type="color"/>
                     </div>
                     <div class="leftcell">背景颜色:</div>
                     <div class="rightcell">
-                        <input type='text' class="J_btncom" id="J_btncomBKColor" data-type="backgroundColor"/>
+                        <input type='text' class="J_textcom" id="J_textcomBKColor" data-type="backgroundColor"/>
                     </div>
                 </div>
                 <div class="row">
                     <div class="leftcell">旋转:</div>
                     <div class="rightcell">
-                        <input type='text' class="J_btncom" data-type="transform"/>度
+                        <input type='text' class="J_textcom" data-type="transform"/>度
                     </div>
                     <div class="leftcell">透明度:</div>
                     <div class="rightcell">
-                        <input type='text' class="J_btncom" data-type="opacity"/>%
+                        <input type='text' class="J_textcom" data-type="opacity"/>%
                     </div>
                 </div>
-                <div class="row">
+                <div class="row" id="fontsizes">
                     <div class="leftcell">文字大小:</div>
                     <div class="rightcell">
-                        <input type='text' class="J_btncom" data-type="fontSize"/>px
+                        <input type='text' class="J_textcom" data-type="fontSize"/>px
                     </div>
                     <div class="leftcell">行间距:</div>
                     <div class="rightcell">
-                        <input type='text' class="J_btncom" data-type="lineHeight"/>px
+                        <input type='text' class="J_textcom" data-type="lineHeight"/>px
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row" id="fontfl">
                 字体:
                 <div style="display: inline-block; position: relative;top: 18px;">
-                    <select id="J_BfontFamily">
+                    <select id="J_fontFamily">
                         <option value="Microsoft YaHei">微软雅黑</option>
                         <option value="SimSun">宋体</option>
                         <option value="NSimSun">新宋体</option>
@@ -64,74 +62,87 @@
                     </select>
                 </div>
             </div>
-            <div class="row">
+            <div class="row" id="fontstyle">
                 <div>风格:</div>
                 <div class="aligncell">
-                    <a data-type="fontWeight" class="button cancel J_abtncom">加粗</a>
+                    <a data-type="fontWeight" class="button cancel J_atextcom">加粗</a>
                 </div>
                 <div class="aligncell">
-                    <a data-type="fontStyle" class="button cancel J_abtncom">斜体</a>
+                    <a data-type="fontStyle" class="button cancel J_atextcom">斜体</a>
                 </div>
                 <div class="aligncell">
-                    <a data-type="textDecoration" class="button cancel J_abtncom">下划线</a>
+                    <a data-type="textDecoration" class="button cancel J_atextcom">下划线</a>
                 </div>
             </div>
-            <div class="row">
+            <div class="row" id="halign">
                 <div>水平对齐:</div>
                 <div class="aligncell">
-                    <a data-type="alignleft" class="button cancel J_abtncom">居左对齐</a>
+                    <a data-type="alignleft" class="button cancel J_atextcom">居左对齐</a>
                 </div>
                 <div class="aligncell">
-                    <a data-type="aligncenter" class="button cancel J_abtncom">居中对齐</a>
+                    <a data-type="aligncenter" class="button cancel J_atextcom">居中对齐</a>
                 </div>
                 <div class="aligncell">
-                    <a data-type="alignright" class="button cancel J_abtncom">居右对齐</a>
+                    <a data-type="alignright" class="button cancel J_atextcom">居右对齐</a>
+                </div>
+            </div>
+            <div class="row" id="valign">
+                <div>垂直对齐:</div>
+                <div class="aligncell">
+                    <a data-type="valigntop" class="button cancel J_atextcom">居顶对齐</a>
+                </div>
+                <div class="aligncell">
+                    <a data-type="valignmiddle" class="button cancel J_atextcom">居中对齐</a>
+                </div>
+                <div class="aligncell">
+                    <a data-type="valignbottom" class="button cancel J_atextcom">居底对齐</a>
                 </div>
             </div>
         </div>
         <h3>对齐</h3>
-        <div>
+
+        <div id="duiqi">
             <div class="container" style="padding-left: 20px;">
                 <div class="row">
                     <div class="aligncell">
-                        <a data-type="totop" class="button cancel J_abtncom">居顶对齐</a>
+                        <a data-type="totop" class="button cancel J_atextcom">居顶对齐</a>
                     </div>
                     <div class="aligncell">
-                        <a data-type="toleft" class="button cancel J_abtncom">居左对齐</a>
+                        <a data-type="toleft" class="button cancel J_atextcom">居左对齐</a>
                     </div>
                     <div class="aligncell">
-                        <a data-type="tomiddle" class="button cancel J_abtncom">垂直居中</a>
+                        <a data-type="tomiddle" class="button cancel J_atextcom">垂直居中</a>
                     </div>
                 </div>
                 <div class="row">
                     <div class="aligncell">
-                        <a data-type="tobottom" class="button cancel J_abtncom">居底对齐</a>
+                        <a data-type="tobottom" class="button cancel J_atextcom">居底对齐</a>
                     </div>
                     <div class="aligncell">
-                        <a data-type="toright" class="button cancel J_abtncom">居右对齐</a>
+                        <a data-type="toright" class="button cancel J_atextcom">居右对齐</a>
                     </div>
                     <div class="aligncell">
-                        <a data-type="tocenter" class="button cancel J_abtncom">水平居中</a>
+                        <a data-type="tocenter" class="button cancel J_atextcom">水平居中</a>
                     </div>
                 </div>
             </div>
         </div>
         <h3>排列</h3>
 
-        <div>
+        <div id="pailie">
             <div class="container" style="padding-left: 20px;">
                 <div class="row">
                     <div class="aligncell">
-                        <a data-type="uptop" class="button cancel J_abtncom">置顶</a>
+                        <a data-type="uptop" class="button cancel J_atextcom">置顶</a>
                     </div>
                     <div class="aligncell">
-                        <a data-type="up" class="button cancel J_abtncom">上移一层</a>
+                        <a data-type="up" class="button cancel J_atextcom">上移一层</a>
                     </div>
                     <div class="aligncell">
-                        <a data-type="down" class="button cancel J_abtncom">下移一层</a>
+                        <a data-type="down" class="button cancel J_atextcom">下移一层</a>
                     </div>
                     <div class="aligncell">
-                        <a data-type="upbottom" class="button cancel J_abtncom">置底</a>
+                        <a data-type="upbottom" class="button cancel J_atextcom">置底</a>
                     </div>
                 </div>
 
@@ -139,12 +150,12 @@
         </div>
         <h3>边框</h3>
 
-        <div>
+        <div id="biankuang">
             <div class="container">
                 <div class="row">
                     <div class="leftcell" style="position: relative;top: -20px;">样式:</div>
                     <div class="aligncell" style="position: relative;left: 10px;">
-                        <select name="speed" id="J_btncomborderStyleSelect">
+                        <select name="speed" id="J_textcomborderStyleSelect">
                             <option value="none" selected="selected">无</option>
                             <option value="solid">实线</option>
                             <option value="double">双线</option>
@@ -160,99 +171,98 @@
                 <div class="row">
                     <div class="leftcell">颜色:</div>
                     <div class="rightcell">
-                        <input type='text' class="J_btncom" id="J_btncomorderColor" data-type="borderColor"/>
+                        <input type='text' class="J_textcom" id="J_textcomorderColor" data-type="borderColor"/>
                     </div>
                     <div class="leftcell">宽度:</div>
                     <div class="rightcell">
-                        <input type='text' class="J_btncom" data-type="borderWidth"/>px
+                        <input type='text' class="J_textcom" data-type="borderWidth"/>px
                     </div>
                 </div>
                 <div class="row">
                     <div class="leftcell">弧度:</div>
                     <div class="rightcell">
-                        <input type='text' class="J_btncom" data-type="borderRadius"/>px
+                        <input type='text' class="J_textcom" data-type="borderRadius"/>px
                     </div>
                 </div>
             </div>
         </div>
         <h3>文字投影</h3>
 
-        <div>
+        <div id="wenzi">
             <div class="container">
                 <div class="row">
                     <div class="leftcell">颜色:</div>
                     <div class="rightcell">
-                        <input type='text' class="J_btncom" id="J_btncomboxTextShadowColor" data-type="textShadow"/>
+                        <input type='text' class="J_textcom" id="J_textcomboxTextShadowColor" data-type="textShadow"/>
                     </div>
                     <div class="leftcell">距离:</div>
                     <div class="rightcell">
-                        <input type='text' class="J_Tbtncom"  data-type="TextShadowSP"/>px
+                        <input type='text' class="J_Ttextcom" data-type="TextShadowSP"/>px
                     </div>
                 </div>
                 <div class="row">
                     <div class="leftcell">模糊:</div>
                     <div class="rightcell">
-                        <input type='text' class="J_Tbtncom" data-type="TextShadowBL"/>px
+                        <input type='text' class="J_Ttextcom" data-type="TextShadowBL"/>px
                     </div>
                     <div class="leftcell">方向:</div>
                     <div class="rightcell">
-                        <input type='text' class="J_Tbtncom"   data-type="TextShadowX"/>度
+                        <input type='text' class="J_Ttextcom" data-type="TextShadowX"/>度
                     </div>
                 </div>
             </div>
         </div>
         <h3>投影</h3>
-        <div>
+
+        <div id="douying">
             <div class="container">
                 <div class="row">
                     <div class="leftcell">颜色:</div>
                     <div class="rightcell">
-                        <input type='text' class="J_btncom" id="J_btncomboxShadowColor" data-type="boxShadow"/>
+                        <input type='text' class="J_textcom" id="J_textcomboxShadowColor" data-type="boxShadow"/>
                     </div>
                     <div class="leftcell">距离:</div>
                     <div class="rightcell">
-                        <input type='text' class="J_Bbtncom"  data-type="boxShadowSP"/>px
+                        <input type='text' class="J_Btextcom" data-type="boxShadowSP"/>px
                     </div>
                 </div>
                 <div class="row">
                     <div class="leftcell">模糊:</div>
                     <div class="rightcell">
-                        <input type='text' class="J_Bbtncom" data-type="boxShadowBL"/>px
+                        <input type='text' class="J_Btextcom" data-type="boxShadowBL"/>px
                     </div>
                     <div class="leftcell">大小:</div>
                     <div class="rightcell">
-                        <input type='text' class="J_Bbtncom"   data-type="boxShadowY"/>px
+                        <input type='text' class="J_Btextcom" data-type="boxShadowY"/>px
                     </div>
                 </div>
                 <div class="row">
                     <div class="leftcell">方向:</div>
                     <div class="rightcell">
-                        <input type='text' class="J_Bbtncom"  data-type="boxShadowX"/>度
+                        <input type='text' class="J_Btextcom" data-type="boxShadowX"/>度
                     </div>
                 </div>
             </div>
         </div>
         <h3>内边距</h3>
-        <div>
+
+        <div id="bianju">
             <div class="container">
                 <div class="row">
                     <div class="row">
                         <div class="leftcell">顶:</div>
-                        <div class="rightcell"><input type="text" class="J_btncom" data-type="paddingTop">px</div>
+                        <div class="rightcell"><input type="text" class="J_textcom" data-type="paddingTop">px</div>
                         <div class="leftcell">右:</div>
-                        <div class="rightcell"><input type="text" class="J_btncom" data-type="paddingRight">px</div>
+                        <div class="rightcell"><input type="text" class="J_textcom" data-type="paddingRight">px</div>
                     </div>
                     <div class="row">
                         <div class="leftcell">底:</div>
-                        <div class="rightcell"><input type="text" class="J_btncom" data-type="paddingBottom">px</div>
+                        <div class="rightcell"><input type="text" class="J_textcom" data-type="paddingBottom">px</div>
                         <div class="leftcell">左:</div>
-                        <div class="rightcell"><input type="text" class="J_btncom" data-type="paddingLeft">px</div>
+                        <div class="rightcell"><input type="text" class="J_textcom" data-type="paddingLeft">px</div>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
-
-
 </div>

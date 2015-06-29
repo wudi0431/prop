@@ -19,6 +19,7 @@ require.config({
         imgcut: '/js/module/page/imgcut',
         animatecom: '/js/module/animate/animatecom',
         datasourcecom: '/js/module/datasource/datasourcecom',
+        stylecom: '/js/module/style/stylecom',
         template: '/js/module/template/template',
         rotatable: '/lib/rotatable',
         transit: '/lib/jquery.transit',
@@ -44,10 +45,10 @@ require.config({
     }
 });
 
-require(['template', 'rotatable', 'html2canvas', 'zepto', 'jquery', 'spectrum', 'btncom', 'imgcom', 'textcom', 'btncom_content', 'btncom_style', 'imgcom_content',
-        'imgcom_style', 'textcom_content', 'textcom_style', 'jqui', 'pagecom', 'imgs', 'FFF', 'animatecom', 'datasourcecom'],
+require(['template', 'rotatable', 'html2canvas', 'zepto', 'jquery', 'spectrum', 'btncom', 'imgcom', 'textcom', 'btncom_content', 'imgcom_content',
+        'textcom_content', 'jqui', 'pagecom', 'imgs', 'FFF', 'animatecom', 'datasourcecom'],
     function (Template, rotatable, Html2canvas, zepto, $, bigcolorpicker, Btncom, Imgcom, Textcom, btncom_content,
-              btncom_style, imgcom_content, imgcom_style, textcom_content, textcom_style, jqui, Pagecom, Imgs, FFF, Animatecom, Datasourcecom) {
+              imgcom_content,textcom_content, jqui, Pagecom, Imgs, FFF, Animatecom, Datasourcecom) {
 
         //根据 url 的名字 获得 值
         function getQueryString(name) {
