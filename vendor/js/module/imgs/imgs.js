@@ -1,19 +1,16 @@
-define(['FFF', 'jquery','jqui'], function (FFF, $) {
+define(['FFF', 'jquery', 'jqui'], function(FFF, $) {
     var F = FFF.FFF;
 
     var Imgs = {};
-
-
-
-
-    Imgs.init = function(){
+    
+    Imgs.init = function() {
         var that = this;
         //文件上传
-        $('#file_upload').on('click', function () {
+        $('#file_upload').on('click', function() {
 
             var data = new FormData();
             var files = $('#file')[0].files;
-            if(files.length===0){
+            if (files.length === 0) {
                 alert('请选图片')
                 return false;
             }
@@ -25,35 +22,35 @@ define(['FFF', 'jquery','jqui'], function (FFF, $) {
                 data: data,
                 contentType: false,
                 processData: false,
-                success: function (data) {
+                success: function(data) {
                     that.getImgsByUser();
                 }
             })
         });
 
-        that.$selectImgDialog =$('#selectImgDialog').dialog({
-            autoOpen:false,
+        that.$selectImgDialog = $('#selectImgDialog').dialog({
+            autoOpen: false,
             resizable: false,
-            width:500,
-            height:600,
-            title:"选择图片",
+            width: 500,
+            height: 600,
+            title: "选择图片",
             modal: true
         });
 
         that.getPubImgs();
         that.getImgsByUser();
 
-        $('#selectImgDialog').on('click','.imgWareHref',function(){
+        $('#selectImgDialog').on('click', '.imgWareHref', function() {
             var $that = $(this);
             var img = $that.children('img');
-            if(that.onImgSelect){
+            if (that.onImgSelect) {
                 that.onImgSelect(img.attr('src'));
             }
             that.$selectImgDialog.dialog('close');
         });
     };
 
-    Imgs.getPubImgs = function(){
+    Imgs.getPubImgs = function() {
         var imgWare = $('#imgWare');
         var imgWareStr = '<li><a class="imgWareHref" href="javascript:;">' +
             '<img src="/uploadimg/%name%" style="width:100px;height: 200px;"></a>' +
@@ -61,12 +58,12 @@ define(['FFF', 'jquery','jqui'], function (FFF, $) {
         $.ajax({
             method: "GET",
             url: "/getPubImgs"
-        }).done(function (msg) {
-            var imgList = msg.model.imgList||[];
+        }).done(function(msg) {
+            var imgList = msg.model.imgList || [];
             var html = '';
             if (imgList.length > 0) {
-                imgList.forEach(function (o, i) {
-                    var t = imgWareStr.replace(/(%(\w+)%)/g, function ($1, $2, $3) {
+                imgList.forEach(function(o, i) {
+                    var t = imgWareStr.replace(/(%(\w+)%)/g, function($1, $2, $3) {
                         return o[$3] ? o[$3] : '';
                     });
                     html += t;
@@ -75,11 +72,10 @@ define(['FFF', 'jquery','jqui'], function (FFF, $) {
             } else {
                 imgWare.html('');
             }
-        }).fail(function (msg) {
-        });
+        }).fail(function(msg) {});
     };
 
-    Imgs.getImgsByUser = function(){
+    Imgs.getImgsByUser = function() {
         var userWare = $('#userWareList');
         var imgWareStr = '<li><a class="imgWareHref" href="javascript:;">' +
             '<img src="/uploadimg/%name%" style="width:100px;height: 200px;"></a>' +
@@ -89,12 +85,12 @@ define(['FFF', 'jquery','jqui'], function (FFF, $) {
         $.ajax({
             method: "GET",
             url: "/getImgsByUser"
-        }).done(function (msg) {
-            var imgList = msg.model.imgList||[];
+        }).done(function(msg) {
+            var imgList = msg.model.imgList || [];
             var html = '';
             if (imgList.length > 0) {
-                imgList.forEach(function (o, i) {
-                    var t = imgWareStr.replace(/(%(\w+)%)/g, function ($1, $2, $3) {
+                imgList.forEach(function(o, i) {
+                    var t = imgWareStr.replace(/(%(\w+)%)/g, function($1, $2, $3) {
                         return o[$3] ? o[$3] : '';
                     });
                     html += t;
@@ -103,12 +99,11 @@ define(['FFF', 'jquery','jqui'], function (FFF, $) {
             } else {
                 userWare.html('');
             }
-        }).fail(function (msg) {
-        });
+        }).fail(function(msg) {});
     };
 
-    Imgs.show = function(){
-        var that =this;
+    Imgs.show = function() {
+        var that = this;
 
         that.$selectImgDialog.dialog('open');
     };
