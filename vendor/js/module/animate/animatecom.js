@@ -148,6 +148,9 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
                     var va = self.val();
                     self.next('input').val(va);
                     var typename = self.data('type');
+                    if(typename == "animateCount" && va==0){
+                        va="infinite";
+                    }
                     that._setProValue(typename, va)
                 })
             });
@@ -158,6 +161,9 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
                     var va = self.val();
                     self.prev('input').val(va);
                     var typename = self.data('type');
+                    if(typename == "animateCount" && va==0){
+                        va="infinite";
+                    }
                     that._setProValue(typename, va)
                 })
             });
