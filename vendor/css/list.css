@@ -1,0 +1,152 @@
+html {
+    font-size: 10px;
+}
+body {
+    font-size: 14px;
+    background-color: #f3f3f3;
+}
+.img {
+    width: 100%;
+}
+.container {
+    min-width: 1100px;
+}
+.login_info {
+    float: right;
+}
+.header {
+    height: 90px;
+    background-color: #3db39e;
+    text-align: center;
+}
+.header_main {
+    height: 100%;
+    width: 60%;
+    margin: 0 auto;
+    background-image: url("../img/list_header_bg.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    color: #ffffff;
+}
+.header_main a {
+    color: #ffffff;
+}
+.contain {
+    width: 60%;
+    margin: 0 auto;
+    margin-top: 2%;
+}
+.list_img_project_add {
+    width: 20%;
+    cursor: pointer;
+}
+.contain_main {
+    background-color: #ffffff;
+    padding: 25px;
+}
+.list_main {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    height: 126px;
+    border-bottom: 1px solid #D6D3D3;
+}
+
+.list_img_main {
+    margin-top: 1%;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    width: 100%;
+}
+.list_project_img {
+    width: 100%;
+}
+.list_info_main {
+    padding: 10px;
+    -webkit-box-flex: 6;
+    -webkit-flex: 6;
+    -ms-flex: 6;
+    flex: 6;
+    width: 100%;
+}
+.list_btn_main {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    width: 100%;
+}
+.list_info_title {
+    font-size: 1.4rem;
+    color: #212121;
+    font-weight: bold;
+    margin-top: 4%;
+}
+.list_info_intro {
+    color: #757575;
+    font-size: 0.7rem;
+    margin-top: 2%;
+    border-right: 1px solid #CCCACA;
+}
+.list_info_time {
+    color: #bbbbbb;
+    font-size: 0.7rem;
+    margin-top: 5%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+.list_info_time_create {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    width: 100%;
+}
+.list_info_time_change {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    width: 100%;
+}
+.list_project_btn {
+    margin-top: 41%;
+    opacity: 0.5;
+}
+.list_main_btn_main img:hover{
+    opacity: 1;
+}
+
+#projectForm fieldset {
+    border: medium none !important;
+    margin: 0 0 10px;
+    min-width: 100%;
+    padding: 0;
+    width: 100%;
+}
+#projectForm textarea {
+    border: 1px solid #CCC;
+    background: #FFF;
+    margin: 0 0 5px;
+    padding: 10px;
+    resize: none;
+    outline: none;
+}
+#projectForm input{
+    border: 1px solid #CCC;
+    background: #FFF;
+    margin: 0 0 5px;
+    padding: 10px;
+    outline: none;
+}
+#projectForm input:focus,#projectForm textarea:focus{
+    border: 1px solid #3db39e;
+}
+#projectForm .eorr{
+    border: 1px solid red;
+}

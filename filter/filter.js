@@ -21,10 +21,10 @@ filter.login = function(req, res, next) {
         } else {
             if (user) {
                 req.session.user = user;
-                // res.status(200).send({
-                //     success: true
-                // });
-                res.redirect('/');
+                 res.status(200).send({
+                     success: true
+                 });
+                //res.redirect('/index');
             } else {
                 res.status(500).send({
                     success: false,

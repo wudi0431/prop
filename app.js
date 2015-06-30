@@ -12,7 +12,7 @@ var flash = require('connect-flash');
 
 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://127.0.0.1:27017/wxms');
+mongoose.connect('mongodb://wxms:wxms@192.168.112.94:27017/wxms');
 var MongoStore = require('connect-mongo')(session);
 
 app.use(session({
@@ -114,6 +114,7 @@ app.use(express.static(path.join(__dirname, 'vendor')));
 
 
 app.use('/', index);
+app.use('/index', index);
 app.use('/login', login);
 app.use('/logout', logout);
 
