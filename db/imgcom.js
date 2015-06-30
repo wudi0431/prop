@@ -62,6 +62,20 @@ ImgComSchema.static('deleteImgcomByProject', function (pageId) {
     });
 });
 
+ImgComSchema.static('deleteImgcomByTemplate', function (templateId) {
+    return this.find({
+        template: templateId
+    }).exec(function (err, imgcomList) {
+        if (imgcomList) {
+            imgcomList.forEach(function (imgcom) {
+                ImgComModel.deleteImgcom(imgcom._id);
+            });
+
+        }
+    });
+});
+
+
 ImgComSchema.static('getImgcom', function (imgcomId, cb) {
     return this.findById(imgcomId, cb)
 });

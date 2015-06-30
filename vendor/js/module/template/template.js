@@ -2,6 +2,7 @@ define(['FFF', 'jquery', 'jqui'], function (FFF, $) {
 
     var Template = {};
     var str = '<li><img class="W_tpl" data-uid="%uid%" src="%realImgUrl%"></li>';
+    var userStr = '<li><img class="W_tpl" data-uid="%uid%" src="%realImgUrl%"></li>';
 
 
     Template.init = function () {
@@ -92,7 +93,7 @@ define(['FFF', 'jquery', 'jqui'], function (FFF, $) {
                     that.userTplList = tplList;
                     tplList.forEach(function (o) {
                         o.realImgUrl = '/uploadimg/'+ o.imgUrl;
-                        var t = str.replace(/(%(\w+)%)/g, function ($1, $2, $3) {
+                        var t = userStr.replace(/(%(\w+)%)/g, function ($1, $2, $3) {
                             return o[$3] ? o[$3] : '';
                         });
                         html += t;

@@ -84,6 +84,8 @@ var addTplByUser = require('./routes/template/addTplByUser');
 var getPubTpl = require('./routes/template/getPubTpl');
 var getTplByUser = require('./routes/template/getTplByUser');
 var generationPage = require('./routes/template/generationPage');
+var deleteTemplate = require('./routes/template/deleteTemplate');
+
 
 
 var preview = require('./routes/preview/preview');
@@ -159,7 +161,7 @@ app.use('/updateImgcom',updateImgcom);
 app.use('/addTplByUser',addTplByUser);
 app.use('/getPubTpl',getPubTpl);
 app.use('/getTplByUser',getTplByUser);
-
+app.use('/deleteTemplate',deleteTemplate);
 app.use('/generationPage',generationPage);
 
 

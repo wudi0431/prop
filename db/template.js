@@ -228,6 +228,21 @@ TemplateSchema.static('generationPage', function (projectId, allData, cb) {
 });
 
 
+
+TemplateSchema.static('deleteTemplate', function (templateId, cb) {
+    return this.findByIdAndRemove(templateId).exec(function (err, template) {
+        if (template) {
+            Btncom.deleteBtncomByTemplate(template._id);
+            Textcom.deleteTextcomByTemplate(template._id);
+            Imgcom.deleteImgcomByTemplate(template._id);
+            if (cb) {
+                cb(err, template);
+            }
+        }
+    });
+});
+
+
 var TemplateModel = mongoose.model('Template', TemplateSchema);
 module.exports = TemplateModel;
 
