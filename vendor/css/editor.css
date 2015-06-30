@@ -1299,6 +1299,11 @@ body .cp-color-picker, body .colpick {
     display: block;
 }
 
+.W_tplHover .W_delItem {
+    display: block;
+    top:-3px;
+}
+
 .W_tpl {
     cursor: pointer;
     width: 100px;
@@ -1310,6 +1315,7 @@ body .cp-color-picker, body .colpick {
 }
 
 #selectTplDialog li {
+    position: relative;
     display: inline-flex;
     margin: 5px 5px;
 }
