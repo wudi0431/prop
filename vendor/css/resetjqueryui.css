@@ -79,6 +79,7 @@
 
 .ui-tabs .ui-tabs-panel {
     padding: 10px;
+    overflow: auto;
 }
 .ui-accordion .ui-accordion-content {
     padding:10px}

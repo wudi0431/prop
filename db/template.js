@@ -193,10 +193,10 @@ TemplateSchema.static('generationPage', function (projectId, allData, cb) {
         Page.updateProjectTime(pageEntity._id);
         if (allData.btncomtList) {
             allData.btncomtList.forEach(function (o) {
-                delete o._id;
-                delete o.__v;
-                delete o.template;
-                delete o.page;
+                o._id && delete o._id;
+                o.__v && delete o.__v;
+                o.template && delete o.template;
+                o.page && delete o.page;
                 o.page = pageEntity;
                 new Btncom(o).save();
             });
@@ -204,10 +204,10 @@ TemplateSchema.static('generationPage', function (projectId, allData, cb) {
 
         if (allData.imgcomList) {
             allData.imgcomList.forEach(function (o) {
-                delete o._id;
-                delete o.__v;
-                delete o.template;
-                delete o.page;
+                o._id && delete o._id;
+                o.__v && delete o.__v;
+                o.template && delete o.template;
+                o.page && delete o.page;
                 o.page = pageEntity;
                 new Imgcom(o).save();
             });
@@ -215,10 +215,10 @@ TemplateSchema.static('generationPage', function (projectId, allData, cb) {
 
         if (allData.textcomList) {
             allData.textcomList.forEach(function (o) {
-                delete o._id;
-                delete o.__v;
-                delete o.template;
-                delete o.page;
+                o._id && delete o._id;
+                o.__v && delete o.__v;
+                o.template && delete o.template;
+                o.page && delete o.page;
                 o.page = pageEntity;
                 new Textcom(o).save();
             });

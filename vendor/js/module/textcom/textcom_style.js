@@ -140,7 +140,7 @@ define(['FFF', 'jquery','spectrum', 'jqui'], function (FFF, $) {
                 value = value.toString();
             }
             if (value && value.indexOf('px') != -1 && type != "boxShadow" && type != "textShadow") {
-                value = value.replace('px', '');
+                value = value.replace('px', '').replace(';', '');
             }
             switch (type) {
                 case 'color':
@@ -167,21 +167,20 @@ define(['FFF', 'jquery','spectrum', 'jqui'], function (FFF, $) {
                 case 'boxShadow':
                     var vals = value.split(' ')
                     J_textcomboxShadowColor.spectrum("set", vals[4]);
-                    $("[data-type=boxShadowSP]").val(vals[1].replace('px',''));
-                    $("[data-type=boxShadowBL]").val(vals[2].replace('px',''));
-                    $("[data-type=boxShadowY]").val(vals[3].replace('px',''));
-                    var d =  $("[data-type=boxShadowX]").attr('deg');
-                    if(d=="") d=0;
-                    $("[data-type=boxShadowX]").val(d);
+                    J_textcomStyle.find("[data-type=boxShadowSP]").val(vals[1].replace('px',''));
+                    J_textcomStyle.find("[data-type=boxShadowBL]").val(vals[2].replace('px',''));
+                    J_textcomStyle.find("[data-type=boxShadowY]").val(vals[3].replace('px',''));
+                    var d =  J_textcomStyle.find("[data-type=boxShadowX]").attr('deg');
+                    J_textcomStyle.find("[data-type=boxShadowX]").val(d||0);
                     $textcom.attr('boxshadow', value);
                     break;
                 case 'textShadow':
                     var vals = value.split(' ')
                     J_textcomboxTextShadowColor.spectrum("set", vals[3]);
-                    $("[data-type=TextShadowSP]").val(Math.abs(vals[1].replace('px','')));
-                    $("[data-type=TextShadowBL]").val(Math.abs(vals[2].replace('px','')));
-                    var d =  $("[data-type=TextShadowX]").attr('deg');
-                    $("[data-type=TextShadowX]").val(d||0);
+                    J_textcomStyle.find("[data-type=TextShadowSP]").val(Math.abs(vals[1].replace('px','')));
+                    J_textcomStyle.find("[data-type=TextShadowBL]").val(Math.abs(vals[2].replace('px','')));
+                    var d =  J_textcomStyle.find("[data-type=TextShadowX]").attr('deg');
+                    J_textcomStyle.find("[data-type=TextShadowX]").val(d||0);
                     $textcom.attr('textshadow', value);
                     break;
                 default :
@@ -283,7 +282,51 @@ define(['FFF', 'jquery','spectrum', 'jqui'], function (FFF, $) {
                     indexs = indexs[indexs.length - 1] - 1;
                     value = indexs || 1;
                     type = 'zIndex';
-
+                    break;
+                case 'alignleft':
+                    value ='left';
+                    type = 'textAlign';
+                    break;
+                case 'aligncenter':
+                    value ='center';
+                    type = 'textAlign';
+                    break;
+                case 'alignright':
+                    value ='right';
+                    type = 'textAlign';
+                    break;
+                case 'valigntop':
+                    value ='top';
+                    type = 'verticalAlign';
+                    break;
+                case 'valignmiddle':
+                    value ='middle';
+                    type = 'verticalAlign';
+                    break;
+                case 'valignbottom':
+                    value ='bottom';
+                    type = 'verticalAlign';
+                    break;
+                case 'fontWeight':
+                    value ='bold';
+                    var res = isHasValue($textcom,type,value)
+                    if(!res){
+                        value ='normal';
+                    }
+                    break;
+                case 'fontStyle':
+                    value ='italic';
+                    var res = isHasValue($textcom,type,value)
+                    if(!res){
+                        value ='normal';
+                    }
+                    break;
+                case 'textDecoration':
+                    value ='underline';
+                    var res = isHasValue($textcom,type,value)
+                    if(!res){
+                        value ='none';
+                    }
                     break;
             }
             if (value != "" && value != undefined && value != null) {
@@ -451,7 +494,18 @@ define(['FFF', 'jquery','spectrum', 'jqui'], function (FFF, $) {
 
     }
 
-
+    function isHasValue(curdom,attr,value){
+          var curvalue = curdom.attr(attr);
+          if(value==curvalue){
+              curdom.removeClass('selectBtnstyle');
+              curdom.attr(attr,"");
+              return false;
+          }else{
+              curdom.addClass('selectBtnstyle');
+              curdom.attr(attr,value);
+              return true;
+          }
+    }
 
 
 
