@@ -90,7 +90,7 @@ require(['jquery', 'jqui'], function ($) {
         });
         submit.on('click', function (event) {
             event.preventDefault();
-            var flag =false;
+            var flag = false;
             var name = username.val();
             var pd = password.val();
             if (name == '') {
@@ -103,23 +103,23 @@ require(['jquery', 'jqui'], function ($) {
             } else {
                 pdiv.removeAttr('errr');
             }
-            if(name!="" && pd!=""){
-                flag=true;
+            if (name != "" && pd != "") {
+                flag = true;
             }
-            if(flag){
+            if (flag) {
                 $.ajax({
                     method: "POST",
                     url: "/login",
                     data: {
                         name: name,
-                        password:pd
+                        password: pd
                     }
                 }).done(function (msg) {
-                    if(msg.success){
+                    if (msg.success) {
                         window.location.href = '/index';
                     }
                 }).fail(function (msg) {
-                    if(!msg.responseJSON.success){
+                    if (!msg.responseJSON.success) {
                         udiv.attr('errr', '');
                         erroru.text('用户名错误')
                         pdiv.attr('errr', '');
@@ -129,11 +129,6 @@ require(['jquery', 'jqui'], function ($) {
             }
         });
     });
-
-
-
-
-
 
 
 });
