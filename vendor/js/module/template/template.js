@@ -2,7 +2,7 @@ define(['FFF', 'jquery', 'jqui'], function (FFF, $) {
 
     var Template = {};
     var str = '<li><img class="W_tpl" data-uid="%uid%" src="%realImgUrl%"></li>';
-    var userStr = '<li><img class="W_tpl" data-uid="%uid%" src="%realImgUrl%"></li>';
+    var userStr = '<li><img class="W_tpl" data-uid="%uid%" src="%realImgUrl%"><i class="W_delItem">X</i></li>';
 
 
     Template.init = function () {
@@ -29,17 +29,17 @@ define(['FFF', 'jquery', 'jqui'], function (FFF, $) {
             var $that = $(this);
             var allData = that.pubTplList.concat(that.userTplList);
             var uid = $that.data('uid');
-            var curTpl = allData.filter(function(tpl){
-                if(tpl.uid == uid){
+            var curTpl = allData.filter(function (tpl) {
+                if (tpl.uid == uid) {
                     return true;
-                }else{
+                } else {
                     return false;
                 }
             });
 
-            if(curTpl.length>0){
+            if (curTpl.length > 0) {
                 curTpl = curTpl[0];
-            }else{
+            } else {
                 curTpl = null;
             }
 
@@ -48,6 +48,36 @@ define(['FFF', 'jquery', 'jqui'], function (FFF, $) {
             }
             that.$selectTplDialog.dialog('close');
         });
+
+        $('#userTplWare').on('mousemove', 'li', function () {
+            $(this).addClass('W_tplHover');
+        }).on('mouseout', 'li', function () {
+            $(this).removeClass('W_tplHover');
+        });
+
+        $('#selectTplDialog').on('click', '.W_delItem', function () {
+            var $that = $(this);
+            var $tpl = $that.parent('li');
+            var $img = $that.prev('.W_tpl');
+            var uid = $img.data('uid');
+            that.delTpl(uid, $tpl);
+        });
+    };
+
+
+    Template.delTpl = function (templateId, $tpl) {
+        $.ajax({
+            method: "POST",
+            url: "/deleteTemplate",
+            data: {
+                templateId: templateId
+            }
+        }).done(function (msg) {
+            $tpl.remove();
+        }).fail(function (msg) {
+            alert(msg);
+        });
+
     };
 
     Template.drawPubTpl = function () {
@@ -59,12 +89,12 @@ define(['FFF', 'jquery', 'jqui'], function (FFF, $) {
             type: 'GET',
             url: '/getPubTpl',
             success: function (data) {
-                var tplList = data.TemplateList||[];
+                var tplList = data.TemplateList || [];
                 var html = '';
                 if (tplList.length > 0) {
                     that.pubTplList = tplList;
                     tplList.forEach(function (o) {
-                        o.realImgUrl = '/uploadimg/'+ o.imgUrl;
+                        o.realImgUrl = '/uploadimg/' + o.imgUrl;
                         var t = str.replace(/(%(\w+)%)/g, function ($1, $2, $3) {
                             return o[$3] ? o[$3] : '';
                         });
@@ -87,12 +117,12 @@ define(['FFF', 'jquery', 'jqui'], function (FFF, $) {
             type: 'GET',
             url: '/getTplByUser',
             success: function (data) {
-                var tplList = data.TemplateList||[];
+                var tplList = data.TemplateList || [];
                 var html = '';
                 if (tplList.length > 0) {
                     that.userTplList = tplList;
                     tplList.forEach(function (o) {
-                        o.realImgUrl = '/uploadimg/'+ o.imgUrl;
+                        o.realImgUrl = '/uploadimg/' + o.imgUrl;
                         var t = userStr.replace(/(%(\w+)%)/g, function ($1, $2, $3) {
                             return o[$3] ? o[$3] : '';
                         });
@@ -106,8 +136,6 @@ define(['FFF', 'jquery', 'jqui'], function (FFF, $) {
         })
 
     };
-
-
 
 
     Template.show = function () {
