@@ -20,13 +20,13 @@ app.use(session({
     saveUninitialized: true,
     secret: 'wxmssession',
     key: 'wxmssession',//cookie name
-    store: new MongoStore({mongooseConnection: mongoose.connection }),
+    store: new MongoStore({mongooseConnection: mongoose.connection}),
     cookie: {maxAge: 1000 * 60 * 60 * 24 * 30}//30 days
 }));
 
 
 app.use(multer({
-    dest:__dirname +'/public/uploadimg/',
+    dest: __dirname + '/public/uploadimg/',
     rename: function (fieldname, filename) {
         return filename;
     },
@@ -89,10 +89,6 @@ var generationPage = require('./routes/template/generationPage');
 var preview = require('./routes/preview/preview');
 
 
-
-
-
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.engine('.html', ejs.__express);
@@ -101,7 +97,7 @@ app.use(flash());
 // uncomment after placing your favicon in /public
 app.use(favicon(__dirname + '/public/wxms.ico'));
 app.use(bodyParser.json({
-    limit:'100mb'
+    limit: '100mb'
 }));
 app.use(bodyParser.urlencoded({
     extended: true,
@@ -123,11 +119,11 @@ app.use('/upLoadImg', upLoadImg);
 app.use('/getPubImgs', getPubImgs);
 
 
-app.use('/addBtncom',addBtncom);
-app.use('/deleteBtncom',deleteBtncom);
-app.use('/getBtncomListByPageId',getBtncomListByPageId);
-app.use('/getBtncom',getBtncom);
-app.use('/updateBtncom',updateBtncom);
+app.use('/addBtncom', addBtncom);
+app.use('/deleteBtncom', deleteBtncom);
+app.use('/getBtncomListByPageId', getBtncomListByPageId);
+app.use('/getBtncom', getBtncom);
+app.use('/updateBtncom', updateBtncom);
 
 app.use('/addProject', addProject);
 app.use('/getProjectList', getProjectList);
@@ -140,31 +136,31 @@ app.use('/getPageList', getPageList);
 app.use('/updatePage', updatePage);
 app.use('/getPage', getPage);
 
-app.use('/createHtml',createHtml);
-app.use('/downLoadHtml',downLoadHtml);
+app.use('/createHtml', createHtml);
+app.use('/downLoadHtml', downLoadHtml);
 
 
-app.use('/addTextcom',addTextcom);
-app.use('/deleteTextcom',deleteTextcom);
-app.use('/getTextcom',getTextcom);
-app.use('/updateTextcom',updateTextcom);
-app.use('/getTextcomListByPageId',getTextcomListByPageId);
+app.use('/addTextcom', addTextcom);
+app.use('/deleteTextcom', deleteTextcom);
+app.use('/getTextcom', getTextcom);
+app.use('/updateTextcom', updateTextcom);
+app.use('/getTextcomListByPageId', getTextcomListByPageId);
 
 
-app.use('/addImgcom',addImgcom);
-app.use('/deleteImgcom',deleteImgcom);
-app.use('/getImgcom',getImgcom);
-app.use('/getImgcomListByPageId',getImgcomListByPageId);
-app.use('/updateImgcom',updateImgcom);
+app.use('/addImgcom', addImgcom);
+app.use('/deleteImgcom', deleteImgcom);
+app.use('/getImgcom', getImgcom);
+app.use('/getImgcomListByPageId', getImgcomListByPageId);
+app.use('/updateImgcom', updateImgcom);
 
-app.use('/addTplByUser',addTplByUser);
-app.use('/getPubTpl',getPubTpl);
-app.use('/getTplByUser',getTplByUser);
+app.use('/addTplByUser', addTplByUser);
+app.use('/getPubTpl', getPubTpl);
+app.use('/getTplByUser', getTplByUser);
 
-app.use('/generationPage',generationPage);
+app.use('/generationPage', generationPage);
 
 
-app.use('/preview',preview);
+app.use('/preview', preview);
 
 
 // catch 404 and forward to error handler
