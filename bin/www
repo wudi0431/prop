@@ -29,26 +29,30 @@ var server = http.createServer(app);
  * Listen on provided port, on all network interfaces.
  */
 
-//if (cluster.isMaster) {
-//   console.log('[master] ' + "start master...");
-//
-//   for (var i = 0; i < numCPUs; i++) {
-//       cluster.fork();
-//   }
-//
-//   cluster.on('listening', function(worker, address) {
-//       console.log('[master] ' + 'listening: worker' + worker.id + ',pid:' + worker.process.pid + ', Address:' + address.address + ":" + address.port);
-//   });
-//
-//} else if (cluster.isWorker) {
-//   console.log('[worker] ' + "start worker ..." + cluster.worker.id);
-//    server.listen(port, function() {
-//     console.log('worker' + cluster.worker.id);
-//      console.log(Date.now(), 'Express server listening on port ' + app.get('port'));
-//    });
-//   server.on('error', onError);
-//}
-    server.listen(port, function() {});
+if (process.env.NODE_ENV == 'dev') {
+    server.listen(port, function () {
+    });
+} else {
+    if (cluster.isMaster) {
+        console.log('[master] ' + "start master...");
+
+        for (var i = 0; i < numCPUs; i++) {
+            cluster.fork();
+        }
+
+        cluster.on('listening', function (worker, address) {
+            console.log('[master] ' + 'listening: worker' + worker.id + ',pid:' + worker.process.pid + ', Address:' + address.address + ":" + address.port);
+        });
+
+    } else if (cluster.isWorker) {
+        console.log('[worker] ' + "start worker ..." + cluster.worker.id);
+        server.listen(port, function () {
+            console.log('worker' + cluster.worker.id);
+            console.log(Date.now(), 'Express server listening on port ' + app.get('port'));
+        });
+        server.on('error', onError);
+    }
+}
 
 
 /**
@@ -56,19 +60,19 @@ var server = http.createServer(app);
  */
 
 function normalizePort(val) {
-  var port = parseInt(val, 10);
+    var port = parseInt(val, 10);
 
-  if (isNaN(port)) {
-    // named pipe
-    return val;
-  }
+    if (isNaN(port)) {
+        // named pipe
+        return val;
+    }
 
-  if (port >= 0) {
-    // port number
-    return port;
-  }
+    if (port >= 0) {
+        // port number
+        return port;
+    }
 
-  return false;
+    return false;
 }
 
 /**
@@ -76,27 +80,27 @@ function normalizePort(val) {
  */
 
 function onError(error) {
-  if (error.syscall !== 'listen') {
-    throw error;
-  }
+    if (error.syscall !== 'listen') {
+        throw error;
+    }
 
-  var bind = typeof port === 'string'
-    ? 'Pipe ' + port
-    : 'Port ' + port;
+    var bind = typeof port === 'string'
+        ? 'Pipe ' + port
+        : 'Port ' + port;
 
-  // handle specific listen errors with friendly messages
-  switch (error.code) {
-    case 'EACCES':
-      console.error(bind + ' requires elevated privileges');
-      process.exit(1);
-      break;
-    case 'EADDRINUSE':
-      console.error(bind + ' is already in use');
-      process.exit(1);
-      break;
-    default:
-      throw error;
-  }
+    // handle specific listen errors with friendly messages
+    switch (error.code) {
+        case 'EACCES':
+            console.error(bind + ' requires elevated privileges');
+            process.exit(1);
+            break;
+        case 'EADDRINUSE':
+            console.error(bind + ' is already in use');
+            process.exit(1);
+            break;
+        default:
+            throw error;
+    }
 }
 
 

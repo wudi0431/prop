@@ -12,7 +12,11 @@ var flash = require('connect-flash');
 
 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://wxms:wxms@192.168.112.94:27017/wxms');
+if (process.env.NODE_ENV == 'dev') {
+    mongoose.connect('mongodb://wxms:wxms@192.168.112.94:27017/wxms');
+} else {
+    mongoose.connect('mongodb://127.0.0.1:27017/wxms');
+}
 var MongoStore = require('connect-mongo')(session);
 
 app.use(session({
