@@ -108,7 +108,7 @@ define(['FFF', 'jquery','spectrum','jqui'], function (FFF, $) {
                 var type = $textcom.data('type');
                 var value = data[type];
                 if (value == "" || value == undefined || value == null) {
-                    return false;
+                    return;
                 }
                 if (typeof value != 'string') {
                     value = value.toString();
