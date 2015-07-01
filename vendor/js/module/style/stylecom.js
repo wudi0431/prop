@@ -89,7 +89,7 @@ define(['FFF', 'jquery','spectrum','jqui'], function (FFF, $) {
                     fontcolors.hide();
                     fontsizes.hide();
                     fontfl.hide();
-                    wenzi.show();
+                    wenzi.hide();
                     wenzi.prev('h3').hide();
                     break;
             };
