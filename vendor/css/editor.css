@@ -1464,7 +1464,7 @@ body .cp-color-picker, body .colpick {
 #accordion_btncomStyle input.J_btncom, #accordion_btncomStyle input.J_Bbtncom, #accordion_btncomStyle input.J_Tbtncom,
 #accordion_imgcomStyle input.J_imgcom, #accordion_imgcomStyle input.J_Bimgcom, #accordion_imgcomStyle input.J_Timgcom,
 #accordion_textcomStyle input.J_textcom, #accordion_textcomStyle input.J_Btextcom, #accordion_textcomStyle input.J_Ttextcom {
-    width: 43px !important;
+    width: 37px !important;
 }
 
 #accordion_btncomStyle .container,
