@@ -1293,6 +1293,8 @@ body .cp-color-picker, body .colpick {
     right: 3px;
     cursor: pointer;
     font-size: 12px;
+    width: 10px;
+    height: 10px;
 }
 
 .W_item.select .W_delItem {
@@ -1302,16 +1304,21 @@ body .cp-color-picker, body .colpick {
 .W_tplHover .W_delItem {
     display: block;
     top:-3px;
+
 }
+
+ 
 
 .W_tpl {
     cursor: pointer;
     width: 100px;
     height: 200px;
+    opacity: 0.5;
+    border:1px #3db39e solid;
 }
 
 .W_tpl:hover {
-    opacity: 0.5;
+    opacity: 1; 
 }
 
 #selectTplDialog li {

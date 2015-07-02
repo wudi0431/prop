@@ -204,7 +204,8 @@ require(['template', 'rotatable', 'html2canvas', 'zepto', 'jquery', 'spectrum', 
                 containment: 'parent',
                 cancel: false,
                 stop: function (e, drag) {
-                    F.trigger('dragCom', drag.position);
+                    var type = $(e.target).data('type');
+                    F.trigger('dragCom', {position:drag.position,type:type});
                     return false;
                 }
             });
@@ -213,14 +214,16 @@ require(['template', 'rotatable', 'html2canvas', 'zepto', 'jquery', 'spectrum', 
                 minWidth: 50,
                 minHeight: 20,
                 stop: function (e, resize) {
-                    F.trigger('resizeCom', resize.size);
+                    var type = $(e.target).data('type');
+                    F.trigger('resizeCom', {size:resize.size,type:type});
                     return false;
                 }
             });
 
             $that.rotatable({
                 stop: function (e, rotate) {
-                    F.trigger('rotateCom', rotate.deg);
+                    var type = $(e.target).data('type');
+                    F.trigger('rotateCom', {deg:rotate.deg,type:type});
                     return false;
                 }
             });
