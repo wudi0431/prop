@@ -18,10 +18,15 @@ ImgsSchema.static('getImgsByUser', function (user, cb) {
 });
 
 ImgsSchema.static('getPubImgs', function (cb) {
-    return this.find({}).exec(function (err, obj) {
-        obj = obj.filter(function (o) {
-            return o.user.name === 'admin';
-        });
+    return this.find({}).populate({
+        path: 'user',
+        select: 'name'
+    }).exec(function (err, obj) {
+        if(obj){
+            obj = obj.filter(function (o) {
+                return o.user.name === 'admin';
+            });
+        }
         cb(err, obj);
     });
 });

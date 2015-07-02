@@ -100,11 +100,11 @@ define(['FFF', 'zepto', 'jquery','stylecom'], function (FFF, $, jq,Stylecom) {
             });
 
             F.on('resizeCom', function (val) {
-                if (that.$box.hasClass('select')) {
-                    that.$box.css('width', val.width);
-                    that.$box.css('height', val.height);
-                    data['width'] = val.width +'px';
-                    data['height'] = val.height+'px';
+                if (that.$box.hasClass('select') && val.type=='textcom') {
+                    that.$box.css('width', val.size.width);
+                    that.$box.css('height', val.size.height);
+                    data['width'] = val.size.width +'px';
+                    data['height'] = val.size.height+'px';
                     that.setData(data);
                     stylecom.initStylecomData('textcom','textcomStyleChange',that.getData());
                     that.update();
@@ -112,11 +112,11 @@ define(['FFF', 'zepto', 'jquery','stylecom'], function (FFF, $, jq,Stylecom) {
             });
 
             F.on('dragCom', function (val) {
-                if (that.$box.hasClass('select')) {
-                    that.$box.css('top', val.top);
-                    that.$box.css('left', val.left);
-                    data['top'] = val.top +'px';
-                    data['left'] = val.left+'px';
+                if (that.$box.hasClass('select') && val.type=='textcom') {
+                    that.$box.css('top', val.position.top);
+                    that.$box.css('left', val.position.left);
+                    data['top'] = val.position.top +'px';
+                    data['left'] = val.position.left+'px';
                     that.setData(data);
                     stylecom.initStylecomData('textcom','textcomStyleChange',that.getData());
                     that.update();
@@ -124,8 +124,8 @@ define(['FFF', 'zepto', 'jquery','stylecom'], function (FFF, $, jq,Stylecom) {
             });
 
             F.on('rotateCom', function (val) {
-                if (that.$box.hasClass('select')) {
-                    data['transform'] = 'rotate(' + val + 'deg)';
+                if (that.$box.hasClass('select') && val.type=='textcom') {
+                    data['transform'] = 'rotate(' + val.deg + 'deg)';
                     that.setData(data);
                     stylecom.initStylecomData('textcom','textcomStyleChange',that.getData());
                     that.update();
