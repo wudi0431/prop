@@ -7,14 +7,14 @@ var ProjectSchema = new Schema({
     description: String,
     updatetime: Date,
     user: {
-        type: Schema.Types.ObjectId,
-        ref: 'User'
+        id: String,
+        name: String
     }
 });
 
-ProjectSchema.static('getProjectList', function (userId, cb) {
+ProjectSchema.static('getProjectList', function (user, cb) {
     return this.find({
-        user: userId
+        user: user
     }).sort({updatetime: -1}).exec(cb);
 });
 

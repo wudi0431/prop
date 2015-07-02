@@ -109,11 +109,7 @@ require(['jquery', 'jqui'], function ($) {
             if (flag) {
                 $.ajax({
                     method: "POST",
-                    url: "/login",
-                    data: {
-                        name: name,
-                        password: pd
-                    }
+                    url: "/login"
                 }).done(function (msg) {
                     if (msg.success) {
                         window.location.href = '/index';

@@ -6,22 +6,19 @@ var ImgsSchema = new mongoose.Schema({
     category: Number,
     path: String,
     user: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
+        id: String,
+        name: String
     }
 });
 
-ImgsSchema.static('getImgsByUser', function (userId, cb) {
+ImgsSchema.static('getImgsByUser', function (user, cb) {
     return this.find({
-        user: userId
+        user: user
     }, cb);
 });
 
 ImgsSchema.static('getPubImgs', function (cb) {
-    return this.find({}).populate({
-        path: 'user',
-        select: 'name'
-    }).exec(function (err, obj) {
+    return this.find({}).exec(function (err, obj) {
         obj = obj.filter(function (o) {
             return o.user.name === 'admin';
         });

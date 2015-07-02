@@ -1,15 +1,11 @@
 var express = require('express');
 var router = express.Router();
-var filter = require('../../filter/filter')
+var filter = require('../passport.js');
 /* GET home page. */
-router.get('/', function (req, res, next) {
-    if (req.session.user) {
+router.get('/', function (req, res) {
+    filter.authorize(req, res,function(){
         res.redirect('/');
-    } else {
-        res.render('login');
-    }
+    });
 });
-router.post('/', function (req, res, next) {
-    filter.login(req, res, next);
-});
+
 module.exports = router;

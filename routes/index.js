@@ -1,6 +1,17 @@
 var express = require('express');
 var router = express.Router();
-var filter = require('../filter/filter')
+var config = require('../config');
+
+//passport初始化
+var filter = require('./passport.js');
+filter.init(router, {
+    passport: config.passport,
+    backUrl: filter.getIP(config.port)
+});
+
+
+
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
     var username='登录',islogin=false;

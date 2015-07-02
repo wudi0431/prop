@@ -9,8 +9,8 @@ var TemplateSchema = new Schema({
     category: Number,
     imgUrl: String,
     user: {
-        type: Schema.Types.ObjectId,
-        ref: 'User'
+        id: String,
+        name: String
     }
 });
 
@@ -82,10 +82,7 @@ function mixObject(obj) {
 
 
 TemplateSchema.static('getPubTpl', function (cb) {
-    return this.find({}).populate({
-        path: 'user',
-        select: 'name'
-    }).exec(function (err, templateList) {
+    return this.find({}).exec(function (err, templateList) {
 
         if (templateList) {
             templateList = templateList.filter(function (o) {
@@ -226,7 +223,6 @@ TemplateSchema.static('generationPage', function (projectId, allData, cb) {
         cb(err, pageEntity);
     });
 });
-
 
 
 TemplateSchema.static('deleteTemplate', function (templateId, cb) {

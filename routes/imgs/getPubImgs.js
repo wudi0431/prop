@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var Imgs = require('../../db/imgs');
-var filter = require('../../filter/filter');
+var filter = require('../passport.js');
 router.get('/', function(req, res, next) {
     filter.authorize(req, res, function (req, res) {
         Imgs.getPubImgs(function (err, imgsEntity) {

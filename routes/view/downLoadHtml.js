@@ -1,12 +1,12 @@
 var express = require('express');
 var router = express.Router();
-var filter = require('../../filter/filter');
+var filter = require('../passport.js');
 var DownLoadHtml = require('../../db/view');
 
 router.get('/', function(req, res, next) {
     filter.authorize(req, res, function(req, res) {
         var downLoadHtml = new DownLoadHtml();
-            downLoadHtml.uid= req.session.user._id;
+            downLoadHtml.uid= req.session.user.id;
             downLoadHtml.url= req.query.url;
 
         downLoadHtml.save(function (err, downLoadHtmlEntity) {

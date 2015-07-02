@@ -1,12 +1,12 @@
 var express = require('express');
 var router = express.Router();
-var filter = require('../../filter/filter');
+var filter = require('../passport.js');
 var Project = require('../../db/project');
 /* GET home page. */
 router.get('/', function (req, res, next) {
     filter.authorize(req, res, function (req, res) {
         var user = req.session.user;
-        Project.getProjectList(user._id, function (err, projectList) {
+        Project.getProjectList(user, function (err, projectList) {
             if (err) {
                 res.status('500');
                 res.send({

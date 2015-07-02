@@ -1,12 +1,12 @@
 var express = require('express');
 var router = express.Router();
-var filter = require('../../filter/filter');
+var filter = require('../passport.js');
 var CreateHtml = require('../../db/view');
 
 router.post('/', function(req, res, next) {
     filter.authorize(req, res, function(req, res) {
         var createHtml = new CreateHtml(req.body);
-            createHtml.uid= req.session.user._id;
+            createHtml.uid= req.session.user.id;
         createHtml.save(function (err, createHtmlEntity) {
         	if (err) {
                 res.status('500');

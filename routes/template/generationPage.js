@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var fs = require('fs');
 var path = require('path');
-var filter = require('../../filter/filter');
+var filter = require('../passport.js');
 var Template = require('../../db/template');
 /* GET home page. */
 router.get('/', function (req, res, next) {

@@ -1,5 +1,5 @@
 var express = require('express');
-var filter = require('../../filter/filter');
+var filter = require('../passport.js');
 var router = express.Router();
 var Imgs = require('../../db/imgs');
 var fs=require('fs');

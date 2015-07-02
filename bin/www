@@ -7,6 +7,7 @@
 var app = require('../app');
 var http = require('http');
 var cluster = require('cluster');
+var config = require('../config');
 //var numCPUs = 1;
 //TODO 正式部署必须用下面的多线程
 var numCPUs = require('os').cpus().length;
@@ -15,8 +16,7 @@ var numCPUs = require('os').cpus().length;
 /**
  * Get port from environment and store in Express.
  */
-
-var port = normalizePort(process.env.PORT || '9898');
+var port = normalizePort(config.port || '9898');
 app.set('port', port);
 
 /**

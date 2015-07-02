@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var filter = require('../../filter/filter');
+var filter = require('../passport.js');
 var Textcom = require('../../db/textcom');
 router.get('/', function (req, res, next) {
     filter.authorize(req, res, function (req, res) {

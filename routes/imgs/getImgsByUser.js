@@ -1,11 +1,11 @@
 var express = require('express');
 var router = express.Router();
 var Imgs = require('../../db/imgs');
-var filter = require('../../filter/filter');
+var filter = require('../passport.js');
 router.get('/', function(req, res, next) {
-    var userId =  req.session.user;
+    var user =  req.session.user;
     filter.authorize(req, res, function (req, res) {
-        Imgs.getImgsByUser(userId,function (err, imgsEntity) {
+        Imgs.getImgsByUser(user,function (err, imgsEntity) {
             if (err) {
                 res.status('500');
                 res.send({
