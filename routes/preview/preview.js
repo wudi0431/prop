@@ -162,47 +162,20 @@ router.get('/jsonp', function (req, res, next) {
                 //Btncom
                 Btncom.getBtncomListByPageId(o._id, function (err, btncomList) {
 
-                    if (err || !btncomList.length) {
-                        res.status('404');
-                        res.send({
-                            success: false, // 标记失败
-                            model: {
-                                error: '系统错误'
-                            }
-                        });
-                        return;
-                    }
+
                     if (btncomList) {
                         onePage.btncomtList = btncomList;
                     }
 
                     //Imgcom
                     Imgcom.getImgcomListByPageId(o._id, function (err, imgcomList) {
-                        if (err || !imgcomList.length) {
-                            res.status('404');
-                            res.send({
-                                success: false, // 标记失败
-                                model: {
-                                    error: '系统错误'
-                                }
-                            });
-                            return;
-                        }
+
                         if (imgcomList) {
                             onePage.imgcomList = imgcomList;
                         }
                         //Textcom
                         Textcom.getTextcomListByPageId(o._id, function (err, textcomList) {
-                            if (err || !textcomList.length) {
-                                res.status('404');
-                                res.send({
-                                    success: false, // 标记失败
-                                    model: {
-                                        error: '系统错误'
-                                    }
-                                });
-                                return;
-                            }
+
                             if (textcomList) {
                                 onePage.textcomList = textcomList;
                             }
