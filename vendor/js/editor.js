@@ -80,9 +80,7 @@ require(['template', 'rotatable', 'html2canvas', 'zepto', 'jquery', 'spectrum', 
         var j_saveTpl = $('.j_saveTpl');
         j_saveTpl.on('click', function () {
             var pageId = pagecom.getSelectPage();
-
-            Html2canvas($('#showbox'), {
-                onrendered: function (canvas) {
+            Html2canvas($('#showbox')).then(function (canvas) {
                     var imgData = canvas.toDataURL();
                     imgData = imgData.split(',')[1];
                     $.ajax({
@@ -100,7 +98,7 @@ require(['template', 'rotatable', 'html2canvas', 'zepto', 'jquery', 'spectrum', 
                     }).fail(function (msg) {
                     });
                 }
-            });
+            );
 
         });
 
