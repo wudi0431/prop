@@ -140,4 +140,94 @@ function createHTML(uid, projectId, allPage, res) {
 }
 
 
+/* GET home page. */
+router.get('/jsonp', function (req, res, next) {
+    var projectId = req.query.projectId;
+    var allPage = [];
+    Page.getPageList(projectId, function (err, pageList) {
+        if (err || !pageList.length) {
+            res.status('404');
+            res.send({
+                success: false, // 标记失败
+                model: {
+                    error: '系统错误'
+                }
+            });
+            return;
+        }
+
+        if (pageList) {
+            pageList.forEach(function (o) {
+                var onePage = o;
+                //Btncom
+                Btncom.getBtncomListByPageId(o._id, function (err, btncomList) {
+
+                    if (err || !btncomList.length) {
+                        res.status('404');
+                        res.send({
+                            success: false, // 标记失败
+                            model: {
+                                error: '系统错误'
+                            }
+                        });
+                        return;
+                    }
+                    if (btncomList) {
+                        onePage.btncomtList = btncomList;
+                    }
+
+                    //Imgcom
+                    Imgcom.getImgcomListByPageId(o._id, function (err, imgcomList) {
+                        if (err || !imgcomList.length) {
+                            res.status('404');
+                            res.send({
+                                success: false, // 标记失败
+                                model: {
+                                    error: '系统错误'
+                                }
+                            });
+                            return;
+                        }
+                        if (imgcomList) {
+                            onePage.imgcomList = imgcomList;
+                        }
+                        //Textcom
+                        Textcom.getTextcomListByPageId(o._id, function (err, textcomList) {
+                            if (err || !textcomList.length) {
+                                res.status('404');
+                                res.send({
+                                    success: false, // 标记失败
+                                    model: {
+                                        error: '系统错误'
+                                    }
+                                });
+                                return;
+                            }
+                            if (textcomList) {
+                                onePage.textcomList = textcomList;
+                            }
+
+                            allPage.push(onePage);
+                            if (allPage.length === pageList.length) {
+                                res.status('200');
+                                res.jsonp(allPage);
+                            }
+                        });
+                        //Textcom End
+                    });
+                    //Imgcom End
+
+                });
+                //Btncom End
+
+            });
+        }
+
+
+    });
+
+
+});
+
+
 module.exports = router;
