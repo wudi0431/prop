@@ -186,6 +186,13 @@ router.get('/jsonp', function (req, res, next) {
 
                             allPage.push(onePage);
                             if (allPage.length === pageList.length) {
+                                allPage.sort(function (a, b) {
+                                    if (a.sortindex > b.sortindex) {
+                                        return 1;
+                                    } else {
+                                        return -1;
+                                    }
+                                });
                                 res.status('200');
                                 res.jsonp(allPage);
                             }
