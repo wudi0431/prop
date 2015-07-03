@@ -2,75 +2,93 @@ var express = require('express');
 var filter = require('../passport.js');
 var router = express.Router();
 var Imgs = require('../../db/imgs');
-var fs=require('fs');
+var fs = require('fs');
 var path = require('path');
-router.post('/', function(req, res, next) {
+var os = require('os');
+var config = require('../../config');
+var domain = config.domain || getIpAddress(config.port);
+
+function getIpAddress(port) {
+    var ifaces = os.networkInterfaces();
+    var ipAddress = 'localhost';
+    for (var dev in ifaces) {
+        ifaces[dev].forEach(function (details) {
+            if (details.family == 'IPv4' && !details.internal) {
+                ipAddress = details.address;
+            }
+        });
+    }
+    var link = 'http://' + ipAddress + ':' + port;
+    return link;
+}
+
+router.post('/', function (req, res, next) {
     filter.authorize(req, res, function (req, res) {
 
         var isbase64 = req.body.isbase64 || false;
 
         req.body.user = req.session.user;
         var img = new Imgs();
-            if(!isbase64){
-                img.name=req.files.codecsv.name;
-                img.updatetime=new Date();
-                img.path=req.files.codecsv.path;
-                img.category=1;
-                img.user=req.session.user;
+        if (!isbase64) {
+            img.name = req.files.codecsv.name;
+            img.updatetime = new Date();
+            img.path = domain + '/uploadimg/' + img.name;
+            img.category = 1;
+            img.user = req.session.user;
 
-                img.save(function (err,imgEntity) {
-                    if (err) {
-                        res.status('500');
-                        res.send({
-                            success: false, // 标记失败
-                            model: {
-                                error: '系统错误'
-                            }
-                        });
-                    } else {
-                        res.status('200');
-                        res.send({
-                            success: true,
-                            model: imgEntity
-                        });
-                    }
-                });
-            }else{
+            img.save(function (err, imgEntity) {
+                if (err) {
+                    res.status('500');
+                    res.send({
+                        success: false, // 标记失败
+                        model: {
+                            error: '系统错误'
+                        }
+                    });
+                } else {
+                    res.status('200');
+                    res.send({
+                        success: true,
+                        model: imgEntity
+                    });
+                }
+            });
+        } else {
             //接收前台POST过来的base64
-                var imgData = req.body.imgData;
-                var dataBuffer = new Buffer(imgData, 'base64');
-                var imgname = uuid(8,16)+'.png';
-                var imgpath =path.join(__dirname,'../../public/uploadimg/');
-                fs.writeFile(imgpath+imgname, dataBuffer, function(err) {
-                    if(err){
-                        res.send(err);
-                    }else{
-                        img.name=imgname;
-                        img.updatetime=new Date();
-                        img.path=imgpath+imgname;
-                        img.category=1;
-                        img.user=req.session.user;
-                        img.save(function (err,imgEntity) {
-                            if (err) {
-                                res.status('500');
-                                res.send({
-                                    success: false, // 标记失败
-                                    model: {
-                                        error: '系统错误'
-                                    }
-                                });
-                            } else {
-                                res.status('200');
-                                res.send({
-                                    success: true,
-                                    model: imgEntity
-                                });
-                            }
-                        });
+            var imgData = req.body.imgData;
+            var dataBuffer = new Buffer(imgData, 'base64');
+            var imgname = uuid(8, 16) + '.png';
+            var imgpath = path.join(__dirname, '../../public/uploadimg/');
+            fs.writeFile(imgpath + imgname, dataBuffer, function (err) {
+                if (err) {
+                    res.send(err);
+                } else {
+                    img.name = imgname;
+                    img.updatetime = new Date();
+                    img.path = domain + '/uploadimg/' + img.name;
+                    img.category = 1;
+                    img.user = req.session.user;
+                    img.save(function (err, imgEntity) {
+                        if (err) {
+                            res.status('500');
+                            res.send({
+                                success: false, // 标记失败
+                                model: {
+                                    error: '系统错误'
+                                }
+                            });
+                        } else {
+                            res.status('200');
+                            res.send({
+                                success: true,
+                                model: imgEntity
+                            });
+                        }
+                    });
 
-                    }
-                });
-            }
+                }
+            });
+        }
 
     });
 });
@@ -83,7 +101,7 @@ function uuid(len, radix) {
 
     if (len) {
         // Compact form
-        for (i = 0; i < len; i++) uuid[i] = chars[0 | Math.random()*radix];
+        for (i = 0; i < len; i++) uuid[i] = chars[0 | Math.random() * radix];
     } else {
         // rfc4122, version 4 form
         var r;
@@ -96,7 +114,7 @@ function uuid(len, radix) {
         // per rfc4122, sec. 4.1.5
         for (i = 0; i < 36; i++) {
             if (!uuid[i]) {
-                r = 0 | Math.random()*16;
+                r = 0 | Math.random() * 16;
                 uuid[i] = chars[(i == 19) ? (r & 0x3) | 0x8 : r];
             }
         }
@@ -104,8 +122,6 @@ function uuid(len, radix) {
 
     return uuid.join('');
 }
-
-
 
 
 module.exports = router;
