@@ -10,7 +10,6 @@ var ejs = require('ejs');
 var session = require('express-session');
 var flash = require('connect-flash');
 
-
 var mongoose = require('mongoose');
 if (process.env.NODE_ENV == 'dev') {
     mongoose.connect('mongodb://wxms:wxms@192.168.112.94:27017/wxms');

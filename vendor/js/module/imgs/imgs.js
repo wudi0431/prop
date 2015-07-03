@@ -53,7 +53,7 @@ define(['FFF', 'jquery', 'jqui'], function(FFF, $) {
     Imgs.getPubImgs = function() {
         var imgWare = $('#imgWare');
         var imgWareStr = '<li><a class="imgWareHref" href="javascript:;">' +
-            '<img src="/uploadimg/%name%" style="width:100px;height: 200px;"></a>' +
+            '<img src="%path%" style="width:100px;height: 200px;"></a>' +
             '</li>';
         $.ajax({
             method: "GET",
@@ -78,7 +78,7 @@ define(['FFF', 'jquery', 'jqui'], function(FFF, $) {
     Imgs.getImgsByUser = function() {
         var userWare = $('#userWareList');
         var imgWareStr = '<li><a class="imgWareHref" href="javascript:;">' +
-            '<img src="/uploadimg/%name%" style="width:100px;height: 200px;"></a>' +
+            '<img src="%path%" style="width:100px;height: 200px;"></a>' +
             '</li>';
 
 
