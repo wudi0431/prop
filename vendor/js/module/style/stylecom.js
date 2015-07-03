@@ -357,7 +357,7 @@ define(['FFF', 'jquery','spectrum','jqui'], function (FFF, $) {
                             type = 'left';
                             break;
                         case 'uptop':
-                            var indexs = that._getItemIndex()[0];
+                            var indexs = that.getItemIndex()[0];
                             value = indexs + 1;
                             type = 'zIndex';
                             break;
@@ -370,7 +370,7 @@ define(['FFF', 'jquery','spectrum','jqui'], function (FFF, $) {
                             type = 'zIndex';
                             break;
                         case 'upbottom':
-                            var indexs = that._getItemIndex();
+                            var indexs = that.getItemIndex();
                             indexs = indexs[indexs.length - 1] - 1;
                             value = indexs || 1;
                             type = 'zIndex';
@@ -485,11 +485,12 @@ define(['FFF', 'jquery','spectrum','jqui'], function (FFF, $) {
             }
             return {left: g, top: h, right: i, bottom: j, width: i - g, height: j - h}
         },
-        _getItemIndex: function () {
+        getItemIndex: function () {
             var indexs = [];
             $.each($('.W_item'), function (index, item) {
                 var $item = $(item)
                 var style = $item.attr('style');
+                if(style==undefined || style=="") return false;
                 var index = style.match(/z-index: \d/);
                 if (index) {
                     index = +index[0].split(':')[1]
@@ -499,6 +500,9 @@ define(['FFF', 'jquery','spectrum','jqui'], function (FFF, $) {
             indexs = indexs.sort(function (a, b) {
                 return b - a
             })
+            if(indexs.length===0){
+                indexs.push(1);
+            }
             return indexs;
         },
         _setShadow: function (type, value) {
