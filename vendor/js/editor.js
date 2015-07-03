@@ -249,6 +249,7 @@ require(['template', 'rotatable', 'html2canvas', 'zepto', 'jquery', 'spectrum', 
                 if ($(item).hasClass('select')) {
                     $(item).removeClass('select').resizable('destroy');
                     $(item).removeClass('select').rotatable('destroy');
+                    $(item).removeClass('select').draggable('destroy');
                 }
             });
             if (issWich) {
