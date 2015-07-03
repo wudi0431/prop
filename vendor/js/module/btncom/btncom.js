@@ -35,6 +35,7 @@ define(['FFF', 'zepto', 'jquery','stylecom'], function (FFF, $, jq,Stylecom) {
     F.extend(Btncom, Widget, {
         renderUI: function () {
             var that = this;
+            that.stylecom =  new Stylecom();
             that._addBtncom(that._bindUI);
         },
 
@@ -56,8 +57,7 @@ define(['FFF', 'zepto', 'jquery','stylecom'], function (FFF, $, jq,Stylecom) {
             var that = this;
             var data = that.getData();
             var $box = that.getBoundingBox();
-            var stylecom =  new Stylecom();
-            stylecom.render();
+            that.stylecom.render();
             that.$box=$box;
             that.$curbtn = that.$box.children('button');
             that.$box.on('click', function (e) {
@@ -66,7 +66,7 @@ define(['FFF', 'zepto', 'jquery','stylecom'], function (FFF, $, jq,Stylecom) {
                     $('#J_btncomContent').show().siblings('.W_editItem').hide();
                     $('#J_btncomStyle').show().siblings('.W_editItem').hide();
                     F.trigger('renderBtncomContent', that.getData());
-                    stylecom.initStylecomData('btncom','btncomStyleChange',that.getData());
+                    that.stylecom.initStylecomData('btncom','btncomStyleChange',that.getData());
                     F.trigger('setAniMateDate', that.getData());
                     F.trigger('setDataSouceData', that.getData());
                 }
@@ -114,7 +114,7 @@ define(['FFF', 'zepto', 'jquery','stylecom'], function (FFF, $, jq,Stylecom) {
                     data['top'] = val.position.top+'px';
                     data['left'] = val.position.left+'px';
                     that.setData(data);
-                    stylecom.initStylecomData('btncom','btncomStyleChange',that.getData());
+                    that.stylecom.initStylecomData('btncom','btncomStyleChange',that.getData());
                     that.update();
                 }
             });
@@ -126,7 +126,7 @@ define(['FFF', 'zepto', 'jquery','stylecom'], function (FFF, $, jq,Stylecom) {
                     data['width'] = val.size.width +'px';
                     data['height'] = val.size.height+'px';
                     that.setData(data);
-                    stylecom.initStylecomData('btncom','btncomStyleChange',that.getData());
+                    that.stylecom.initStylecomData('btncom','btncomStyleChange',that.getData());
                     that.update();
                 }
             });
@@ -136,7 +136,7 @@ define(['FFF', 'zepto', 'jquery','stylecom'], function (FFF, $, jq,Stylecom) {
                 if (that.$box.hasClass('select')  && val.type=='btncom') {
                     data['transform'] = 'rotate(' + val.deg + 'deg)';
                     that.setData(data);
-                    stylecom.initStylecomData('btncom','btncomStyleChange',that.getData());
+                    that.stylecom.initStylecomData('btncom','btncomStyleChange',that.getData());
                     that.update();
                 }
             });
@@ -241,10 +241,11 @@ define(['FFF', 'zepto', 'jquery','stylecom'], function (FFF, $, jq,Stylecom) {
                 that._renderBtncom(that.getData(), next);
             } else {
                 var pageId = that.getPageId();
+                var zIndex =that.stylecom.getItemIndex()[0]+1;
                 var btncomEntity = {
-                    context: '按钮'
+                    context: '按钮',
+                    zIndex:zIndex
                 };
-
                 jq.ajax({
                     method: "POST",
                     url: "/addBtncom",

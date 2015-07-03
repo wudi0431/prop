@@ -35,6 +35,7 @@ define(['FFF', 'zepto', 'jquery','stylecom'], function (FFF, $, jq,Stylecom) {
     F.extend(Textcom, Widget, {
         renderUI: function () {
             var that = this;
+            that.stylecom =  new Stylecom();
             that._addTextcom(that._bindUI);
         },
 
@@ -56,8 +57,7 @@ define(['FFF', 'zepto', 'jquery','stylecom'], function (FFF, $, jq,Stylecom) {
             var that = this;
             var data = that.getData();
             var $box = that.getBoundingBox();
-            var stylecom =  new Stylecom();
-            stylecom.render();
+            that.stylecom.render();
             that.$box=$box;
             that.$boxContent = that.$box.children('div');
             that.$box.on('click', function (e) {
@@ -66,7 +66,7 @@ define(['FFF', 'zepto', 'jquery','stylecom'], function (FFF, $, jq,Stylecom) {
                     $('#J_textcomContent').show().siblings('.W_editItem').hide();
                     $('#J_textcomStyle').show().siblings('.W_editItem').hide();
                     F.trigger('renderTextcomContent', that.getData());
-                    stylecom.initStylecomData('textcom','textcomStyleChange',that.getData());
+                    that.stylecom.initStylecomData('textcom','textcomStyleChange',that.getData());
                     F.trigger('setAniMateDate',that.getData());
                 }
 
@@ -106,7 +106,7 @@ define(['FFF', 'zepto', 'jquery','stylecom'], function (FFF, $, jq,Stylecom) {
                     data['width'] = val.size.width +'px';
                     data['height'] = val.size.height+'px';
                     that.setData(data);
-                    stylecom.initStylecomData('textcom','textcomStyleChange',that.getData());
+                    that.stylecom.initStylecomData('textcom','textcomStyleChange',that.getData());
                     that.update();
                 }
             });
@@ -118,7 +118,7 @@ define(['FFF', 'zepto', 'jquery','stylecom'], function (FFF, $, jq,Stylecom) {
                     data['top'] = val.position.top +'px';
                     data['left'] = val.position.left+'px';
                     that.setData(data);
-                    stylecom.initStylecomData('textcom','textcomStyleChange',that.getData());
+                    that.stylecom.initStylecomData('textcom','textcomStyleChange',that.getData());
                     that.update();
                 }
             });
@@ -127,7 +127,7 @@ define(['FFF', 'zepto', 'jquery','stylecom'], function (FFF, $, jq,Stylecom) {
                 if (that.$box.hasClass('select') && val.type=='textcom') {
                     data['transform'] = 'rotate(' + val.deg + 'deg)';
                     that.setData(data);
-                    stylecom.initStylecomData('textcom','textcomStyleChange',that.getData());
+                    that.stylecom.initStylecomData('textcom','textcomStyleChange',that.getData());
                     that.update();
                 }
             });
@@ -236,8 +236,10 @@ define(['FFF', 'zepto', 'jquery','stylecom'], function (FFF, $, jq,Stylecom) {
                 that._renderTextcom(that.getData(), next);
             } else {
                 var pageId = that.getPageId();
+                var zIndex =that.stylecom.getItemIndex()[0]+1;
                 var textcomEntity = {
-                    context: that.getContext()
+                    context: that.getContext(),
+                    zIndex:zIndex
                 };
 
                 jq.ajax({
