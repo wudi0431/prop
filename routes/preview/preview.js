@@ -158,7 +158,11 @@ router.get('/jsonp', function (req, res, next) {
 
         if (pageList) {
             pageList.forEach(function (o) {
-                var onePage = o;
+                var onePage = mixObject(o);
+                onePage.btncomtList = [];
+                onePage.imgcomList = [];
+                onePage.textcomList = [];
+
                 //Btncom
                 Btncom.getBtncomListByPageId(o._id, function (err, btncomList) {
 
@@ -202,5 +206,34 @@ router.get('/jsonp', function (req, res, next) {
 
 });
 
+
+function mixObject(obj) {
+    var tmpObj = {};
+    for (var key in obj) {
+        if (type(obj[key]) == 'string' || type(obj[key]) == 'number' || type(obj[key]) == 'array') {
+            tmpObj[key] = obj[key];
+        }
+    }
+    return tmpObj;
+}
+
+function type(o) {
+    var TYPES = {
+        'undefined': 'undefined',
+        'number': 'number',
+        'boolean': 'boolean',
+        'string': 'string',
+        '[object String]': 'string',
+        '[object Number]': 'number',
+        '[object Function]': 'function',
+        '[object RegExp]': 'regexp',
+        '[object Array]': 'array',
+        '[object Date]': 'date',
+        '[object Error]': 'error'
+    };
+
+    var TOSTRING = Object.prototype.toString;
+    return TYPES[typeof o] || TYPES[TOSTRING.call(o)] || (o ? 'object' : 'null');
+}
 
 module.exports = router;
