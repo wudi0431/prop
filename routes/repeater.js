@@ -9,10 +9,12 @@ router.get('/', function (req, res, next) {
     var dataurl = req.query.dataurl;
     var dataMethod = req.query.dataMethod || 'GET';
     var dataParams = req.query.dataParams || {};
+    var headers = req.headers || {};
     if (dataurl) {
         request(dataurl, {
             method: dataMethod,
-            form: dataParams
+            form: dataParams,
+            headers:headers
         }, function () {
             if (arguments.length == 3) {
                 res.jsonp(arguments[2]);

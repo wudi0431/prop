@@ -3,6 +3,7 @@ var path = require('path');
 var ejs = require('ejs');
 var fs = require('fs');
 var router = express.Router();
+var config = require('../../config');
 var filter = require('../passport.js');
 var Project = require('../../db/project');
 var Page = require('../../db/page');
@@ -118,7 +119,7 @@ function createHTML(uid, projectId, allPage, res) {
         } else {
             previewSrc = writeHTML();
         }
-        res.render('preview', {previewSrc: previewSrc})
+        res.render('preview', {previewSrc: config.domain+'/wx/index.html?projectId='+projectId})
     });
 
     function writeHTML() {
