@@ -97,7 +97,7 @@ define(['FFF', 'zepto', 'jquery','stylecom'], function (FFF, $, jq,Stylecom) {
                     that.setData(data);
                     that.update();
                 }
-            });
+            },that);
 
             F.on('resizeCom', function (val) {
                 if (that.$box.hasClass('select') && val.type=='textcom') {
@@ -109,7 +109,7 @@ define(['FFF', 'zepto', 'jquery','stylecom'], function (FFF, $, jq,Stylecom) {
                     that.stylecom.initStylecomData('textcom','textcomStyleChange',that.getData());
                     that.update();
                 }
-            });
+            },that);
 
             F.on('dragCom', function (val) {
                 if (that.$box.hasClass('select') && val.type=='textcom') {
@@ -121,7 +121,7 @@ define(['FFF', 'zepto', 'jquery','stylecom'], function (FFF, $, jq,Stylecom) {
                     that.stylecom.initStylecomData('textcom','textcomStyleChange',that.getData());
                     that.update();
                 }
-            });
+            },that);
 
             F.on('rotateCom', function (val) {
                 if (that.$box.hasClass('select') && val.type=='textcom') {
@@ -130,13 +130,13 @@ define(['FFF', 'zepto', 'jquery','stylecom'], function (FFF, $, jq,Stylecom) {
                     that.stylecom.initStylecomData('textcom','textcomStyleChange',that.getData());
                     that.update();
                 }
-            });
+            },that);
 
             F.on('textcomContextChange', function (val) {
                 if (that.$box.hasClass('select')) {
                     that.setContext(val);
                 }
-            });
+            },that);
 
 
             F.on('textcomStyleChange', function (obj) {
@@ -161,7 +161,7 @@ define(['FFF', 'zepto', 'jquery','stylecom'], function (FFF, $, jq,Stylecom) {
                     that.setData(data);
                     that.update();
                 }
-            });
+            },that);
 
 
         },
