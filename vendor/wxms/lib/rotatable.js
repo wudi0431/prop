@@ -128,7 +128,7 @@
 
 
             cursor = $(".ui-rotatable-" + this.axis).css("cursor");
-            $("body").css("cursor", cursor == "auto" ? 'url(/img/mouserotate.ico),alias' : cursor);
+            $("body").css("cursor", cursor == "auto" ? 'url(/wxms/img/mouserotate.ico),alias' : cursor);
 
             el.addClass("ui-rotatable-rotating");
             that._propagate("start", event);

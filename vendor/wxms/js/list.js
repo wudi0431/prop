@@ -6,8 +6,8 @@
  */
 require.config({
     paths: {
-        jquery: '/lib/jqueryui/external/jquery/jquery',
-        jqui: '/lib/jqueryui/jquery-ui'
+        jquery: '/wxms/lib/jqueryui/external/jquery/jquery',
+        jqui: '/wxms/lib/jqueryui/jquery-ui'
     },
     shim: {
         'jqui': {
@@ -58,7 +58,7 @@ require(['jquery', 'jqui'], function ($) {
 
     var str = "<div data-project=\"%_id%\" class=\"list_main\">" +
         "<div class=\"list_img_main\">" +
-        "<img src=\"img/list_main_img.png\" class=\"list_project_img\" alt=\"\"/></div>" +
+        "<img src=\"/wxms/img/list_main_img.png\" class=\"list_project_img\" alt=\"\"/></div>" +
         " <div class=\"list_info_main\">" +
         "    <div class=\"list_info_title\">%name%</div>" +
         "                    <div class=\"list_info_intro\">%description%</div>" +
@@ -68,10 +68,10 @@ require(['jquery', 'jqui'], function ($) {
         "                </div>" +
         "                <div class=\"list_main_btn_main\">" +
         "                    <a href=\"#\">" +
-        "                        <img src=\"img/bianji.svg\" alt=\"编辑\" title=\"编辑\" data-roe=\"editor\" class=\"list_project_btn\"/>" +
+        "                        <img src=\"/wxms/img/bianji.svg\" alt=\"编辑\" title=\"编辑\" data-roe=\"editor\" class=\"list_project_btn\"/>" +
         "                    </a>" +
         "                    <a href=\"#\">" +
-        "                        <img src=\"img/shanchu.svg\" alt=\"删除\"  title=\"删除\"  data-roe=\"remove\" class=\"list_project_btn\"/>" +
+        "                        <img src=\"/wxms/img/shanchu.svg\" alt=\"删除\"  title=\"删除\"  data-roe=\"remove\" class=\"list_project_btn\"/>" +
         "                    </a>" +
         "                </div>" +
         "            </div>";

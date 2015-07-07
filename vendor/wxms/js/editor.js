@@ -1,29 +1,29 @@
 require.config({
     paths: {
-        jquery: '/lib/jqueryui/external/jquery/jquery',
-        spectrum: '/lib/jquerycolorpicker/spectrum',
-        html2canvas: '/lib/html2canvas',
-        jqui: '/lib/jqueryui/jquery-ui',
-        btncom: '/js/module/btncom/btncom',
-        btncom_content: '/js/module/btncom/btncom_content',
-        btncom_style: '/js/module/btncom/btncom_style',
-        imgcom: '/js/module/imgcom/imgcom',
-        imgcom_content: '/js/module/imgcom/imgcom_content',
-        imgcom_style: '/js/module/imgcom/imgcom_style',
-        textcom: '/js/module/textcom/textcom',
-        textcom_content: '/js/module/textcom/textcom_content',
-        textcom_style: '/js/module/textcom/textcom_style',
-        imgs: '/js/module/imgs/imgs',
-        pagecom: '/js/module/page/pagecom',
-        pagecom_content: '/js/module/page/pagecom_content',
-        imgcut: '/js/module/page/imgcut',
-        animatecom: '/js/module/animate/animatecom',
-        datasourcecom: '/js/module/datasource/datasourcecom',
-        stylecom: '/js/module/style/stylecom',
-        template: '/js/module/template/template',
-        rotatable: '/lib/rotatable',
-        transit: '/lib/jquery.transit',
-        imgcom_cut: '/js/module/imgcom/imgcut'
+        jquery: '/wxms/lib/jqueryui/external/jquery/jquery',
+        spectrum: '/wxms/lib/jquerycolorpicker/spectrum',
+        html2canvas: '/wxms/lib/html2canvas',
+        jqui: '/wxms/lib/jqueryui/jquery-ui',
+        btncom: '/wxms/js/module/btncom/btncom',
+        btncom_content: '/wxms/js/module/btncom/btncom_content',
+        btncom_style: '/wxms/js/module/btncom/btncom_style',
+        imgcom: '/wxms/js/module/imgcom/imgcom',
+        imgcom_content: '/wxms/js/module/imgcom/imgcom_content',
+        imgcom_style: '/wxms/js/module/imgcom/imgcom_style',
+        textcom: '/wxms/js/module/textcom/textcom',
+        textcom_content: '/wxms/js/module/textcom/textcom_content',
+        textcom_style: '/wxms/js/module/textcom/textcom_style',
+        imgs: '/wxms/js/module/imgs/imgs',
+        pagecom: '/wxms/js/module/page/pagecom',
+        pagecom_content: '/wxms/js/module/page/pagecom_content',
+        imgcut: '/wxms/js/module/page/imgcut',
+        animatecom: '/wxms/js/module/animate/animatecom',
+        datasourcecom: '/wxms/js/module/datasource/datasourcecom',
+        stylecom: '/wxms/js/module/style/stylecom',
+        template: '/wxms/js/module/template/template',
+        rotatable: '/wxms/lib/rotatable',
+        transit: '/wxms/lib/jquerytransit',
+        imgcom_cut: '/wxms/js/module/imgcom/imgcut'
     },
     shim: {
         html2canvas: {
@@ -39,7 +39,7 @@ require.config({
             deps: ['jquery']
         },
         rotatable: {
-            deps: ['jqui', 'transit']
+            deps: ['jqui']
         }
 
     }

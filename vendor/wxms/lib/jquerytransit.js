@@ -12,7 +12,7 @@
 ;(function (root, factory) {
 
   if (typeof define === 'function' && define.amd) {
-    define(['jquery.transit'], factory);
+    define(['jquerytransit.js'], factory);
   } else if (typeof exports === 'object') {
     module.exports = factory(require('jquery'));
   } else {

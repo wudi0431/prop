@@ -6,8 +6,8 @@
  */
 require.config({
     paths: {
-        jquery: '/lib/jqueryui/external/jquery/jquery',
-        jqui: '/lib/jqueryui/jquery-ui'
+        jquery: '/wxms/lib/jqueryui/external/jquery/jquery',
+        jqui: '/wxms/lib/jqueryui/jquery-ui'
     },
     shim: {
         'jqui': {

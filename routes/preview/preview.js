@@ -119,7 +119,7 @@ function createHTML(uid, projectId, allPage, res) {
         } else {
             previewSrc = writeHTML();
         }
-        res.render('preview', {previewSrc: config.domain+'/wx/index.html?projectId='+projectId})
+        res.render('preview', {previewSrc: config.domain+'/wx/index.html?projectId='+projectId});
     });
 
     function writeHTML() {

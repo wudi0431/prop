@@ -6,15 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="initial-scale=1.0, maximum-scale=1.0" name="viewport">
     <title>微信传播-预览页</title>
-    <link rel="stylesheet" href="wxms/css/reset.css"/>
-    <link rel="stylesheet" href="wxms/css/fonts.css">
-    <link rel="stylesheet" href="wxms/css/common.css">
-    <link rel="stylesheet" href="wxms/css/preview.css">
+    <link rel="stylesheet" href="/wxms/css/reset.css"/>
+    <link rel="stylesheet" href="/wxms/css/fonts.css">
+    <link rel="stylesheet" href="/wxms/css/common.css">
+    <link rel="stylesheet" href="/wxms/css/preview.css">
 </head>
 <body>
 
 <div class="preview-body-wrapper clearfix">
-    <div class="iframe-wrapper fl"><img src="/img/iphone.png" width="358" height="677" alt="预览背景">
+    <div class="iframe-wrapper fl"><img src="/wxms/img/iphone.png" width="358" height="677" alt="预览背景">
         <iframe src="<%= previewSrc %>" id="previewIframe"></iframe>
     </div>
     <div class="scroll-wrapper fl">
@@ -35,7 +35,7 @@
     </div>
 </div>
 <script type='text/javascript' src='http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js'></script>
-<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery-qrcode/1.0.0/jquery.qrcode.js"></script>
+<script type="text/javascript" src="http://cdn.staticfile.org/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
 <script>
     $(function () {
         var $body = $('body');

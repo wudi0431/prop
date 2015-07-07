@@ -52,7 +52,7 @@ a:hover {
 }
 
 .topbar .logo {
-    background: url(/resource/img/home_logo.png?v=8d5ad.png);
+
     height: 60px;
     width: 270px
 }
@@ -590,7 +590,7 @@ a:hover {
 }
 
 .shop-nav-wrapper .topbar .logo {
-    background: url(/resource/img/shop_logo.png?v=17c0a.png);
+
     height: 62px;
     margin-top: 0;
     width: 261px
