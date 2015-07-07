@@ -87,7 +87,7 @@ define(['FFF', 'zepto', 'jquery','stylecom'], function (FFF, $, jq,Stylecom) {
                     that.setData(data);
                     that.update();
                 }
-            });
+            },that);
             F.on('getDataSouceData', function (val) {
                 if (that.$box.hasClass('select')) {
                     data['dataurl'] = val.dataurl;
@@ -95,7 +95,7 @@ define(['FFF', 'zepto', 'jquery','stylecom'], function (FFF, $, jq,Stylecom) {
                     that.setData(data);
                     that.update();
                 }
-            });
+            },that);
 
             F.on('dragCom', function (val) {
                 if (that.$box.hasClass('select') && val.type=='imgcom') {
@@ -107,7 +107,7 @@ define(['FFF', 'zepto', 'jquery','stylecom'], function (FFF, $, jq,Stylecom) {
                     that.stylecom.initStylecomData('imgcom','imgcomStyleChange',that.getData());
                     that.update();
                 }
-            });
+            },that);
 
             F.on('resizeCom', function (val) {
                 if (that.$box.hasClass('select') && val.type=='imgcom') {
@@ -119,7 +119,7 @@ define(['FFF', 'zepto', 'jquery','stylecom'], function (FFF, $, jq,Stylecom) {
                     that.stylecom.initStylecomData('imgcom','imgcomStyleChange',that.getData());
                     that.update();
                 }
-            });
+            },that);
 
             F.on('rotateCom', function (val) {
                 if (that.$box.hasClass('select')&& val.type=='imgcom') {
@@ -128,7 +128,7 @@ define(['FFF', 'zepto', 'jquery','stylecom'], function (FFF, $, jq,Stylecom) {
                     that.stylecom.initStylecomData('imgcom','imgcomStyleChange',that.getData());
                     that.update();
                 }
-            });
+            },that);
 
 
             F.on('imgcomContextChange', function (val) {
@@ -138,7 +138,7 @@ define(['FFF', 'zepto', 'jquery','stylecom'], function (FFF, $, jq,Stylecom) {
                     that.setData(data);
                     that.update();
                 }
-            });
+            },that);
 
             F.on('imgcomStyleChange', function (obj) {
                 if (that.$box.hasClass('select')) {
@@ -155,7 +155,7 @@ define(['FFF', 'zepto', 'jquery','stylecom'], function (FFF, $, jq,Stylecom) {
                     that.setData(data);
                     that.update();
                 }
-            });
+            },that);
 
 
         },

@@ -88,7 +88,7 @@ define(['FFF', 'zepto', 'jquery','stylecom'], function (FFF, $, jq,Stylecom) {
                         "-webkit-animation-delay": val.animateDelay,
                         "animation-iteration-count":val.animateCount,
                         "-webkit-animation-iteration-count": val.animateCount
-                })
+                });
                 data['animationDuration'] = val.animateDuration;
                 data['animationDelay'] = val.animateDelay;
                 data['animationCount'] = val.animateCount;
@@ -96,7 +96,7 @@ define(['FFF', 'zepto', 'jquery','stylecom'], function (FFF, $, jq,Stylecom) {
                 that.setData(data);
                 that.update();
                 }
-            });
+            },that);
 
             F.on('getDataSouceData', function (val) {
                 if (that.$box.hasClass('select')) {
@@ -105,7 +105,7 @@ define(['FFF', 'zepto', 'jquery','stylecom'], function (FFF, $, jq,Stylecom) {
                     that.setData(data);
                     that.update();
                 }
-            });
+            },that);
 
             F.on('dragCom', function (val) {
                 if (that.$box.hasClass('select') && val.type=='btncom') {
@@ -117,7 +117,7 @@ define(['FFF', 'zepto', 'jquery','stylecom'], function (FFF, $, jq,Stylecom) {
                     that.stylecom.initStylecomData('btncom','btncomStyleChange',that.getData());
                     that.update();
                 }
-            });
+            },that);
 
             F.on('resizeCom', function (val) {
                 if (that.$box.hasClass('select') && val.type=='btncom') {
@@ -129,7 +129,7 @@ define(['FFF', 'zepto', 'jquery','stylecom'], function (FFF, $, jq,Stylecom) {
                     that.stylecom.initStylecomData('btncom','btncomStyleChange',that.getData());
                     that.update();
                 }
-            });
+            },that);
 
 
             F.on('rotateCom', function (val) {
@@ -139,13 +139,13 @@ define(['FFF', 'zepto', 'jquery','stylecom'], function (FFF, $, jq,Stylecom) {
                     that.stylecom.initStylecomData('btncom','btncomStyleChange',that.getData());
                     that.update();
                 }
-            });
+            },that);
 
             F.on('btncomContextChange', function (val) {
                 if (that.$box.hasClass('select')) {
                     that.setContext(val);
                 }
-            });
+            },that);
 
 
             F.on('btncomStyleChange', function (obj) {
@@ -168,7 +168,7 @@ define(['FFF', 'zepto', 'jquery','stylecom'], function (FFF, $, jq,Stylecom) {
                     that.setData(data);
                     that.update();
                 }
-            });
+            },that);
 
 
         },
