@@ -1,7 +1,7 @@
 var config = {
     port:9898,
-    passport: 'http://203.110.175.179/passport',
-    domain:'http://203.110.175.179'
+    passport: 'http://120.132.50.71/passport',
+    domain:'http://120.132.50.71'
 };
 
 module.exports = config;
