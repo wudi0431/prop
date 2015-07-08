@@ -76,7 +76,7 @@ require(['wxms_config','template', 'rotatable', 'html2canvas', 'zepto', 'jquery'
 
         var projectId = getQueryString("projectId");
         var j_preview_app = $('.j_preview_app');
-        j_preview_app.on('click', function () {
+        j_preview_app.review?projectId=' + projectId);on('click', function () {
             window.open(WXMS_config.domain +'/preview?projectId=' + projectId);
         });
 

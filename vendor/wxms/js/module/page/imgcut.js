@@ -3,7 +3,7 @@
  */
 
 
-define(['jquery'], function ($) {
+define(['jquery','wxms_config'], function ($,WXMS_config) {
     // variables
     var canvas, ctx;
     var image;
@@ -95,7 +95,7 @@ define(['jquery'], function ($) {
         $.ajax({
             cache: false,
             type: 'post',
-            url: '/upLoadImg',
+            url: WXMS_config.domain+'/upLoadImg',
             data: idata, 
             success: function (msg) {
                 var curpagedata = curpagecom.getSelectPageData();

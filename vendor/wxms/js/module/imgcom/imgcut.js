@@ -1,9 +1,7 @@
 /**
  * Created by wudi on 15/6/3.
  */
-
-
-define(['jquery','FFF'], function ($,FFF) {
+define(['jquery','FFF','wxms_config'], function ($,FFF,WXMS_config) {
     // variables
     var canvas, ctx;
     var image;
@@ -95,7 +93,7 @@ define(['jquery','FFF'], function ($,FFF) {
         $.ajax({
             cache: false,
             type: 'post',
-            url: '/upLoadImg',
+            url: WXMS_config.domain+'/upLoadImg',
             data: idata, 
             success: function (msg) {
                 F.trigger('imgcomContextChange', '/uploadimg/'+msg.model.name);

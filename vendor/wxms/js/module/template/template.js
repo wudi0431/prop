@@ -1,4 +1,4 @@
-define(['FFF', 'jquery', 'jqui'], function (FFF, $) {
+define(['FFF', 'jquery', 'jqui','wxms_config'], function (FFF, $,jqui,WXMS_config) {
 
     var Template = {};
     var str = '<li><img class="W_tpl" data-uid="%uid%" src="%realImgUrl%"></li>';
@@ -68,7 +68,7 @@ define(['FFF', 'jquery', 'jqui'], function (FFF, $) {
     Template.delTpl = function (templateId, $tpl) {
         $.ajax({
             method: "POST",
-            url: "/deleteTemplate",
+            url: WXMS_config.domain+"/deleteTemplate",
             data: {
                 templateId: templateId
             }
@@ -87,7 +87,7 @@ define(['FFF', 'jquery', 'jqui'], function (FFF, $) {
 
         $.ajax({
             type: 'GET',
-            url: '/getPubTpl',
+            url: WXMS_config.domain+'/getPubTpl',
             success: function (data) {
                 var tplList = data.TemplateList || [];
                 var html = '';
@@ -115,7 +115,7 @@ define(['FFF', 'jquery', 'jqui'], function (FFF, $) {
         var userTplWare = $('#userTplWare');
         $.ajax({
             type: 'GET',
-            url: '/getTplByUser',
+            url: WXMS_config.domain+'/getTplByUser',
             success: function (data) {
                 var tplList = data.TemplateList || [];
                 var html = '';
