@@ -23,7 +23,7 @@ require(['jquery', 'jqui'], function ($) {
         login.on('click', function (e) {
             e.preventDefault();
             if(islogin=="false"){
-                window.location.href = '/login';
+                window.location.href = '/wxms/login';
             }
         })
         if(username!=""){
@@ -33,9 +33,9 @@ require(['jquery', 'jqui'], function ($) {
         $(page).on('click', function (e) {
             e.preventDefault();
             if(islogin=="false"){
-                window.location.href = '/login';
+                window.location.href = '/wxms/login';
             }else{
-                window.location.href = '/list';
+                window.location.href = '/wxms/list';
             }
         })
     })
@@ -43,10 +43,10 @@ require(['jquery', 'jqui'], function ($) {
     $loginout.on('click', function () {
         $.ajax({
             method: "get",
-            url: "/logout"
+            url: "/wxms/logout"
         }).done(function (msg) {
             if(msg.success){
-                window.location.href = '/index';
+                window.location.href = '/wxms/index';
                 window.localStorage.setItem('username',"");
             }
         }).fail(function (msg) {
