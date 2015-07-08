@@ -6,7 +6,7 @@ var config = require('../config');
 var filter = require('./passport.js');
 filter.init(router, {
     passport: config.passport,
-    backUrl: filter.getIP(config.port)
+    backUrl: config.domain || filter.getIP(config.port)
 });
 
 
