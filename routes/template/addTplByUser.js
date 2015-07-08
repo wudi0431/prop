@@ -5,9 +5,7 @@ var path = require('path');
 var filter = require('../passport.js');
 var Template = require('../../db/template');
 /* GET home page. */
-router.get('/', function (req, res, next) {
-    res.redirect('/');
-});
+
 
 router.post('/', function (req, res, next) {
     filter.authorize(req, res, function (req, res) {
