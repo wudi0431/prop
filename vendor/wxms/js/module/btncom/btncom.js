@@ -1,4 +1,4 @@
-define(['FFF', 'zepto', 'jquery','stylecom'], function (FFF, $, jq,Stylecom) {
+define(['FFF', 'zepto', 'jquery','stylecom','wxms_config'], function (FFF, $, jq,Stylecom,WXMS_config) {
     var F = FFF.FFF,
         Widget = F.Widget,
         Stylecom = Stylecom.Stylecom;
@@ -44,7 +44,7 @@ define(['FFF', 'zepto', 'jquery','stylecom'], function (FFF, $, jq,Stylecom) {
             var btncomEntity = that.getData();
             jq.ajax({
                 method: "POST",
-                url: "/updateBtncom",
+                url: WXMS_config.domain+"/updateBtncom",
                 data: btncomEntity
             }).done(function (msg) {
                 if (msg.success) {
@@ -179,7 +179,7 @@ define(['FFF', 'zepto', 'jquery','stylecom'], function (FFF, $, jq,Stylecom) {
             var btncomEntity = that.getData();
             jq.ajax({
                 method: "POST",
-                url: "/deleteBtncom",
+                url:WXMS_config.domain+"/deleteBtncom",
                 data: {
                     btncomId: btncomEntity._id
                 }
@@ -248,7 +248,7 @@ define(['FFF', 'zepto', 'jquery','stylecom'], function (FFF, $, jq,Stylecom) {
                 };
                 jq.ajax({
                     method: "POST",
-                    url: "/addBtncom",
+                    url: WXMS_config.domain+"/addBtncom",
                     data: {
                         pageId: pageId,
                         btncom: btncomEntity

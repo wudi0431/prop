@@ -1,4 +1,4 @@
-define(['FFF', 'zepto', 'jquery','stylecom'], function (FFF, $, jq,Stylecom) {
+define(['FFF', 'zepto', 'jquery','stylecom','wxms_config'], function (FFF, $, jq,Stylecom,WXMS_config) {
     var F = FFF.FFF,
         Widget = F.Widget,
         Stylecom = Stylecom.Stylecom;
@@ -33,7 +33,7 @@ define(['FFF', 'zepto', 'jquery','stylecom'], function (FFF, $, jq,Stylecom) {
             var imgcomEntity = that.getData();
             jq.ajax({
                 method: "POST",
-                url: "/updateImgcom",
+                url: WXMS_config.domain+"/updateImgcom",
                 data: imgcomEntity
             }).done(function (msg) {
                 if (msg.success) {
@@ -166,7 +166,7 @@ define(['FFF', 'zepto', 'jquery','stylecom'], function (FFF, $, jq,Stylecom) {
             var imgcomEntity = that.getData();
             jq.ajax({
                 method: "POST",
-                url: "/deleteImgcom",
+                url: WXMS_config.domain+"/deleteImgcom",
                 data: {
                     imgcomId: imgcomEntity._id
                 }
@@ -232,7 +232,7 @@ define(['FFF', 'zepto', 'jquery','stylecom'], function (FFF, $, jq,Stylecom) {
 
                 jq.ajax({
                     method: "POST",
-                    url: "/addImgcom",
+                    url: WXMS_config.domain+"/addImgcom",
                     data: {
                         pageId: pageId,
                         imgcom: imgcomEntity

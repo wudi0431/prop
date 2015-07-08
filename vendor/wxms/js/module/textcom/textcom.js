@@ -1,4 +1,4 @@
-define(['FFF', 'zepto', 'jquery','stylecom'], function (FFF, $, jq,Stylecom) {
+define(['FFF', 'zepto', 'jquery','stylecom','wxms_config'], function (FFF, $, jq,Stylecom,WXMS_config) {
     var F = FFF.FFF,
         Widget = F.Widget,
        Stylecom = Stylecom.Stylecom;
@@ -44,7 +44,7 @@ define(['FFF', 'zepto', 'jquery','stylecom'], function (FFF, $, jq,Stylecom) {
             var textcomEntity = that.getData();
             jq.ajax({
                 method: "POST",
-                url: "/updateTextcom",
+                url: WXMS_config.domain+"/updateTextcom",
                 data: textcomEntity
             }).done(function (msg) {
                 if (msg.success) {
@@ -172,7 +172,7 @@ define(['FFF', 'zepto', 'jquery','stylecom'], function (FFF, $, jq,Stylecom) {
             var textcomEntity = that.getData();
             jq.ajax({
                 method: "POST",
-                url: "/deleteTextcom",
+                url: WXMS_config.domain+"/deleteTextcom",
                 data: {
                     textcomId: textcomEntity._id
                 }
@@ -244,7 +244,7 @@ define(['FFF', 'zepto', 'jquery','stylecom'], function (FFF, $, jq,Stylecom) {
 
                 jq.ajax({
                     method: "POST",
-                    url: "/addTextcom",
+                    url: WXMS_config.domain+"/addTextcom",
                     data: {
                         pageId: pageId,
                         textcom: textcomEntity
