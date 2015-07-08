@@ -1,6 +1,9 @@
 /**
  * Created by wudi on 15/5/27.
  */
+
+var wxmsDomain = 'http://120.132.50.71/wxms';
+
 require.config({
     waitSeconds: 30,
     paths: {
@@ -14,29 +17,30 @@ require.config({
     }
 });
 require(['jquery', 'jqui'], function ($) {
-     var islogin = $('#islogin').val(),username = $('#username').val(),
-         login=$('#login'),createrpage =$('.createrpage'),$loginout = $('#logout');;
-        if(islogin=="false"){
-            $loginout.hide();
-        }else{
-            $loginout.show();
+    var islogin = $('#islogin').val(), username = $('#username').val(),
+        login = $('#login'), createrpage = $('.createrpage'), $loginout = $('#logout');
+    ;
+    if (islogin == "false") {
+        $loginout.hide();
+    } else {
+        $loginout.show();
+    }
+    login.on('click', function (e) {
+        e.preventDefault();
+        if (islogin == "false") {
+            window.location.href = wxmsDomain + '/login';
         }
-        login.on('click', function (e) {
-            e.preventDefault();
-            if(islogin=="false"){
-                window.location.href = '/wxms/login';
-            }
-        })
-        if(username!=""){
-            window.localStorage.setItem('username',username)
-        }
-    $.each(createrpage, function (index,page) {
+    })
+    if (username != "") {
+        window.localStorage.setItem('username', username)
+    }
+    $.each(createrpage, function (index, page) {
         $(page).on('click', function (e) {
             e.preventDefault();
-            if(islogin=="false"){
-                window.location.href = '/wxms/login';
-            }else{
-                window.location.href = '/wxms/list';
+            if (islogin == "false") {
+                window.location.href = wxmsDomain + '/login';
+            } else {
+                window.location.href = wxmsDomain + '/list';
             }
         })
     })
@@ -46,9 +50,9 @@ require(['jquery', 'jqui'], function ($) {
             method: "get",
             url: "/wxms/logout"
         }).done(function (msg) {
-            if(msg.success){
-                window.location.href = '/wxms/index';
-                window.localStorage.setItem('username',"");
+            if (msg.success) {
+                window.location.href = wxmsDomain + '/index';
+                window.localStorage.setItem('username', "");
             }
         }).fail(function (msg) {
 
@@ -60,14 +64,14 @@ require(['jquery', 'jqui'], function ($) {
         var body_scoll_height = document.body.scrollHeight;
         var percentage = body_scoll / body_scoll_height;
         console.log(percentage);
-        if(percentage > 0.1){
-            $(".footer_left").addClass('zoomInLeft') ;
-            $(".footer_right").addClass('zoomInRight') ;
-        }else{
-            $(".footer_left").removeClass('zoomInLeft') ;
-            $(".footer_right").removeClass('zoomInRight') ;
+        if (percentage > 0.1) {
+            $(".footer_left").addClass('zoomInLeft');
+            $(".footer_right").addClass('zoomInRight');
+        } else {
+            $(".footer_left").removeClass('zoomInLeft');
+            $(".footer_right").removeClass('zoomInRight');
         }
-    }) ;
+    });
 
     $(".header_title_logo").hover(function () {
         $(this).addClass("bounce");
@@ -79,11 +83,6 @@ require(['jquery', 'jqui'], function ($) {
     }, function () {
         $(this).removeClass("rubberBand");
     });
-
-
-
-
-
 
 
 });

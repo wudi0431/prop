@@ -1,3 +1,6 @@
+
+window.wxmsDomain = 'http://120.132.50.71/wxms';
+
 require.config({
     waitSeconds: 30,
     paths: {

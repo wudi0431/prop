@@ -4,6 +4,9 @@
 /**
  * Created by wudi on 15/5/27.
  */
+
+var wxmsDomain = 'http://120.132.50.71/wxms';
+
 require.config({
     paths: {
         jquery: '/wxms/lib/jqueryui/external/jquery/jquery',
@@ -81,7 +84,7 @@ require(['jquery', 'jqui'], function ($) {
     function drawProjectList() {
         $.ajax({
             method: "GET",
-            url: "/getProjectList"
+            url: wxmsDomain+"/getProjectList"
         }).done(function (msg) {
             var html = '';
             var projectList = msg.model.projectList || [];
@@ -116,11 +119,11 @@ require(['jquery', 'jqui'], function ($) {
                 var pdiv = $that.parent('a').parent('div').parent('div');
                 var projectId = pdiv.data('project');
                 if(roe=='editor'){
-                    window.location.href = '/editor?projectId=' + projectId;
+                    window.location.href = wxmsDomain+'/editor?projectId=' + projectId;
                 }else if(roe=='remove'){
                     $.ajax({
                         method: "POST",
-                        url: "/deleteProject",
+                        url: wxmsDomain+"/deleteProject",
                         data: {
                             projectId: projectId
                         }
@@ -139,10 +142,10 @@ require(['jquery', 'jqui'], function ($) {
     $loginout.on('click', function () {
         $.ajax({
             method: "get",
-            url: "/logout"
+            url: wxmsDomain+"/logout"
         }).done(function (msg) {
            if(msg.success){
-               window.location.href = '/index';
+               window.location.href = wxmsDomain+'/index';
                window.localStorage.setItem('username',"");
            }
         }).fail(function (msg) {
@@ -179,7 +182,7 @@ require(['jquery', 'jqui'], function ($) {
                         };
                         $.ajax({
                             method: "POST",
-                            url: "/addProject",
+                            url: wxmsDomain+"/addProject",
                             data: prodata
                         }).done(function (msg) {
                             drawProjectList();
