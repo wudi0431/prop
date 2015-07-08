@@ -1,4 +1,5 @@
 require.config({
+    waitSeconds: 30,
     paths: {
         jquery: '/wxms/lib/jqueryui/external/jquery/jquery',
         spectrum: '/wxms/lib/jquerycolorpicker/spectrum',

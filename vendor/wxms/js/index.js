@@ -2,6 +2,7 @@
  * Created by wudi on 15/5/27.
  */
 require.config({
+    waitSeconds: 30,
     paths: {
         jquery: '/wxms/lib/jqueryui/external/jquery/jquery',
         jqui: '/wxms/lib/jqueryui/jquery-ui'
