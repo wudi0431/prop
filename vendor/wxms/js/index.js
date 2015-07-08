@@ -5,7 +5,7 @@ require.config({
     waitSeconds: 30,
     paths: {
         jquery: 'http://apps.bdimg.com/libs/jquery/1.10.0/jquery.min',
-        jqui: '/wxms/lib/jqueryui/jquery-ui.min'
+        jqui: '/wxms/lib/jqueryui/jquery-ui'
     },
     shim: {
         'jqui': {
