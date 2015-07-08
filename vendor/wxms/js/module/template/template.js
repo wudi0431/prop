@@ -1,4 +1,4 @@
-define(['FFF', 'jquery', 'jqui','wxms_config'], function (FFF, $,WXMS_config) {
+define(['FFF', 'jquery', 'jqui','wxms_config'], function (FFF, $,jqui,WXMS_config) {
 
     var Template = {};
     var str = '<li><img class="W_tpl" data-uid="%uid%" src="%realImgUrl%"></li>';
