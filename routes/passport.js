@@ -48,7 +48,7 @@ passport.init = function (router, opt) {
             obj = JSON.parse(obj);
             req.session.passportToken = obj.model.token;
             passport.login(req, res, function () {
-                res.redirect('/');
+                res.redirect(passport.opt.backUrl);
             });
 
         });
