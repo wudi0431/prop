@@ -1,9 +1,8 @@
 
-window.wxmsDomain = 'http://120.132.50.71/wxms';
-
 require.config({
     waitSeconds: 30,
     paths: {
+        wxms_config:'/wxms/config',
         jquery: '/wxms/lib/jqueryui/external/jquery/jquery',
         spectrum: '/wxms/lib/jquerycolorpicker/spectrum',
         html2canvas: '/wxms/lib/html2canvas',
@@ -49,9 +48,9 @@ require.config({
     }
 });
 
-require(['template', 'rotatable', 'html2canvas', 'zepto', 'jquery', 'spectrum', 'btncom', 'imgcom', 'textcom', 'btncom_content', 'imgcom_content',
+require(['wxms_config','template', 'rotatable', 'html2canvas', 'zepto', 'jquery', 'spectrum', 'btncom', 'imgcom', 'textcom', 'btncom_content', 'imgcom_content',
         'textcom_content', 'jqui', 'pagecom', 'imgs', 'FFF', 'animatecom', 'datasourcecom'],
-    function (Template, rotatable, Html2canvas, zepto, $, bigcolorpicker, Btncom, Imgcom, Textcom, btncom_content,
+    function (WXMS_config,Template, rotatable, Html2canvas, zepto, $, bigcolorpicker, Btncom, Imgcom, Textcom, btncom_content,
               imgcom_content,textcom_content, jqui, Pagecom, Imgs, FFF, Animatecom, Datasourcecom) {
 
         //根据 url 的名字 获得 值

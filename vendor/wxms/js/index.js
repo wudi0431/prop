@@ -2,11 +2,11 @@
  * Created by wudi on 15/5/27.
  */
 
-var wxmsDomain = 'http://120.132.50.71/wxms';
 
 require.config({
     waitSeconds: 30,
     paths: {
+        wxms_config:'/wxms/config',
         jquery: 'http://apps.bdimg.com/libs/jquery/1.10.0/jquery.min',
         jqui: '/wxms/lib/jqueryui/jquery-ui'
     },
@@ -16,7 +16,7 @@ require.config({
         }
     }
 });
-require(['jquery', 'jqui'], function ($) {
+require(['wxms_config','jquery', 'jqui'], function (WXMS_config,$) {
     var islogin = $('#islogin').val(), username = $('#username').val(),
         login = $('#login'), createrpage = $('.createrpage'), $loginout = $('#logout');
     ;
@@ -28,7 +28,7 @@ require(['jquery', 'jqui'], function ($) {
     login.on('click', function (e) {
         e.preventDefault();
         if (islogin == "false") {
-            window.location.href = wxmsDomain + '/login';
+            window.location.href = WXMS_config.domain + '/login';
         }
     })
     if (username != "") {
@@ -38,9 +38,9 @@ require(['jquery', 'jqui'], function ($) {
         $(page).on('click', function (e) {
             e.preventDefault();
             if (islogin == "false") {
-                window.location.href = wxmsDomain + '/login';
+                window.location.href = WXMS_config.domain + '/login';
             } else {
-                window.location.href = wxmsDomain + '/list';
+                window.location.href = WXMS_config.domain + '/list';
             }
         })
     })
@@ -51,7 +51,7 @@ require(['jquery', 'jqui'], function ($) {
             url: "/wxms/logout"
         }).done(function (msg) {
             if (msg.success) {
-                window.location.href = wxmsDomain + '/index';
+                window.location.href = WXMS_config.domain + '/index';
                 window.localStorage.setItem('username', "");
             }
         }).fail(function (msg) {

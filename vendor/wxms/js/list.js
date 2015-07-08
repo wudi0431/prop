@@ -5,10 +5,11 @@
  * Created by wudi on 15/5/27.
  */
 
-var wxmsDomain = 'http://120.132.50.71/wxms';
 
 require.config({
+    waitSeconds: 30,
     paths: {
+        wxms_config:'/wxms/config',
         jquery: '/wxms/lib/jqueryui/external/jquery/jquery',
         jqui: '/wxms/lib/jqueryui/jquery-ui'
     },
@@ -18,7 +19,7 @@ require.config({
         }
     }
 });
-require(['jquery', 'jqui'], function ($) {
+require(['wxms_config','jquery', 'jqui'], function (WXMS_config,$) {
     Date.prototype.format = function(fmt)
     { //author: meizz
         var o = {
@@ -84,7 +85,7 @@ require(['jquery', 'jqui'], function ($) {
     function drawProjectList() {
         $.ajax({
             method: "GET",
-            url: wxmsDomain+"/getProjectList"
+            url: WXMS_config.domain+"/getProjectList"
         }).done(function (msg) {
             var html = '';
             var projectList = msg.model.projectList || [];
@@ -119,11 +120,11 @@ require(['jquery', 'jqui'], function ($) {
                 var pdiv = $that.parent('a').parent('div').parent('div');
                 var projectId = pdiv.data('project');
                 if(roe=='editor'){
-                    window.location.href = wxmsDomain+'/editor?projectId=' + projectId;
+                    window.location.href = WXMS_config.domain+'/editor?projectId=' + projectId;
                 }else if(roe=='remove'){
                     $.ajax({
                         method: "POST",
-                        url: wxmsDomain+"/deleteProject",
+                        url: WXMS_config.domain+"/deleteProject",
                         data: {
                             projectId: projectId
                         }
@@ -142,10 +143,10 @@ require(['jquery', 'jqui'], function ($) {
     $loginout.on('click', function () {
         $.ajax({
             method: "get",
-            url: wxmsDomain+"/logout"
+            url: WXMS_config.domain+"/logout"
         }).done(function (msg) {
            if(msg.success){
-               window.location.href = wxmsDomain+'/index';
+               window.location.href = WXMS_config.domain+'/index';
                window.localStorage.setItem('username',"");
            }
         }).fail(function (msg) {
@@ -182,7 +183,7 @@ require(['jquery', 'jqui'], function ($) {
                         };
                         $.ajax({
                             method: "POST",
-                            url: wxmsDomain+"/addProject",
+                            url: WXMS_config.domain+"/addProject",
                             data: prodata
                         }).done(function (msg) {
                             drawProjectList();
