@@ -1,4 +1,5 @@
 var pageId = null;
+var wxmsDomain = 'http://120.132.50.71/wxms';
 QUnit.asyncTest('addPage--新增页面', function (assert) {
 
     var projectEntity = {
@@ -10,7 +11,7 @@ QUnit.asyncTest('addPage--新增页面', function (assert) {
 
     $.ajax({
         method: "POST",
-        url: "/addProject",
+        url: wxmsDomain+"/addProject",
         data: projectEntity
     }).done(function (msg) {
         var projectId = msg.model._id;
@@ -31,7 +32,7 @@ function testAddPage(projectId,assert){
 
     $.ajax({
         method: "POST",
-        url: "/addPage",
+        url: wxmsDomain+"/addPage",
         data: {
             projectId:projectId,
             page:pageEntity
@@ -56,7 +57,7 @@ function testDeletePage(){
     QUnit.asyncTest('deletePage--删除页面', function (assert) {
         $.ajax({
             method: "POST",
-            url: "/deletePage",
+            url: wxmsDomain+"/deletePage",
             data: {
                 pageId: pageId
             }
@@ -76,7 +77,7 @@ function testGetPage(){
     QUnit.asyncTest('getPage--获取单个页面详情', function (assert) {
         $.ajax({
             method: "GET",
-            url: "/getPage",
+            url: wxmsDomain+"/getPage",
             data: {
                 pageId: pageId
             }
@@ -98,7 +99,7 @@ function testGetPageList(projectId) {
     QUnit.asyncTest('getPageList--获取页面列表', function (assert) {
         $.ajax({
             method: "GET",
-            url: "/getPageList",
+            url: wxmsDomain+"/getPageList",
             data:{
                 projectId:projectId
             }
@@ -122,7 +123,7 @@ function testUpdatePage(pageEntity) {
     QUnit.asyncTest('updatePage--更新单个页面', function (assert) {
         $.ajax({
             method: "POST",
-            url: "/updatePage",
+            url: wxmsDomain+"/updatePage",
             data:pageEntity
         }).done(function (msg) {
             assert.equal(msg.model.name, '11111', '更新单个页面成功');

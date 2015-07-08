@@ -1,4 +1,4 @@
-define(['FFF', 'jquery', 'jqui'], function(FFF, $) {
+define(['FFF', 'jquery', 'jqui','wxms_config'], function(FFF, $,WXMS_config) {
     var F = FFF.FFF;
 
     var Imgs = {};
@@ -18,7 +18,7 @@ define(['FFF', 'jquery', 'jqui'], function(FFF, $) {
             $.ajax({
                 cache: false,
                 type: 'post',
-                url: '/upLoadImg',
+                url: WXMS_config.domain+'/upLoadImg',
                 data: data,
                 contentType: false,
                 processData: false,
@@ -57,7 +57,7 @@ define(['FFF', 'jquery', 'jqui'], function(FFF, $) {
             '</li>';
         $.ajax({
             method: "GET",
-            url: "/getPubImgs"
+            url: WXMS_config.domain+"/getPubImgs"
         }).done(function(msg) {
             var imgList = msg.model.imgList || [];
             var html = '';
@@ -84,7 +84,7 @@ define(['FFF', 'jquery', 'jqui'], function(FFF, $) {
 
         $.ajax({
             method: "GET",
-            url: "/getImgsByUser"
+            url: WXMS_config.domain+"/getImgsByUser"
         }).done(function(msg) {
             var imgList = msg.model.imgList || [];
             var html = '';

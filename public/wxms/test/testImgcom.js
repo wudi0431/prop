@@ -1,4 +1,5 @@
 var imgcomId =null;
+var wxmsDomain = 'http://120.132.50.71/wxms';
 QUnit.asyncTest('addImgcom--新增单个图片组件', function (assert) {
 
     var projectEntity = {
@@ -10,7 +11,7 @@ QUnit.asyncTest('addImgcom--新增单个图片组件', function (assert) {
 
     $.ajax({
         method: "POST",
-        url: "/addProject",
+        url: wxmsDomain+"/addProject",
         data: projectEntity
     }).done(function (msg) {
         var projectId = msg.model._id;
@@ -32,7 +33,7 @@ function testImgAddPage(projectId,assert) {
 
     $.ajax({
         method: "POST",
-        url: "/addPage",
+        url: wxmsDomain+"/addPage",
         data: {
             projectId: projectId,
             page: pageEntity
@@ -86,7 +87,7 @@ function addImgcom(pageId,assert){
 
     $.ajax({
         method: "POST",
-        url: "/addImgcom",
+        url: wxmsDomain+"/addImgcom",
         data: {
             pageId:pageId,
             imgcom:imgcomEntity
@@ -114,7 +115,7 @@ function getImgcom(pageId){
     QUnit.asyncTest('getImgcom--查询图片组件', function (assert) {
         $.ajax({
             method: "GET",
-            url: "/getImgcom",
+            url: wxmsDomain+"/getImgcom",
             data: {
                 imgcomId: imgcomId
             }
@@ -137,7 +138,7 @@ function getImgcom(pageId){
         QUnit.asyncTest('getImgcomListByPageId--查询同一pageid的图片组件', function (assert) {
             $.ajax({
                 method: "GET",
-                url: "/getImgcomListByPageId",
+                url: wxmsDomain+"/getImgcomListByPageId",
                 data: {
                     pageId:pageId
                 }
@@ -161,7 +162,7 @@ function getImgcom(pageId){
         QUnit.asyncTest('updateImgcom--更新单个图片组件', function (assert) {
             $.ajax({
                 method: "POST",
-                url: "/updateImgcom",
+                url: wxmsDomain+"/updateImgcom",
                 data:imgcomEntity
             }).done(function (msg) {
                 assert.equal(msg.model.imgurl, 'http://img.yhd.com/test2', '更新单个图片组件成功');
@@ -180,7 +181,7 @@ function deleteImgcom(){
     QUnit.asyncTest('deleteImgcom--删除单个图片组件', function (assert) {
         $.ajax({
             method: "POST",
-            url: "/deleteImgcom",
+            url: wxmsDomain+"/deleteImgcom",
             data: {
                 imgcomId: imgcomId
             }

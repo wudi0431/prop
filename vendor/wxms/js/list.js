@@ -106,7 +106,7 @@ require(['wxms_config','jquery', 'jqui'], function (WXMS_config,$) {
                 $contain_main.html('');
             }
         }).fail(function (msg) {
-            alert(msg);
+
         });
     }
 

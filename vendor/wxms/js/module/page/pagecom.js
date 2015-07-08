@@ -1,8 +1,8 @@
 /**
  * Created by wudi on 15/5/27.
  */
-define(['jquery','jqui','zepto','pagecom_content','FFF','imgcut','template'],
-    function($,jqui,zepto,pagecom_content,FFF,imgcut,Template) {
+define(['jquery','jqui','zepto','pagecom_content','FFF','imgcut','template','wxms_config'],
+    function($,jqui,zepto,pagecom_content,FFF,imgcut,Template,WXMS_config) {
 
 
 var index = 0,
@@ -27,7 +27,7 @@ Pagecom.prototype={
         that.$showbox =$('#showbox');
         $.ajax({
             method: "GET",
-            url: "/getPageList?projectId="+projectId
+            url: WXMS_config.domain+"/getPageList?projectId="+projectId
         }).done(function (msg) {
 
             if(msg.success){
@@ -72,7 +72,7 @@ Pagecom.prototype={
         var that =this;
         $.ajax({
             method: "GET",
-            url: "/getBtncomListByPageId?pageId="+id
+            url: WXMS_config.domain+"/getBtncomListByPageId?pageId="+id
         }).done(function (msg) {
             //console.log(msg);
             if(msg.success && index===1){
@@ -95,7 +95,7 @@ Pagecom.prototype={
 
         $.ajax({
             method: "GET",
-            url: "/getImgcomListByPageId?pageId="+id
+            url: WXMS_config.domain+"/getImgcomListByPageId?pageId="+id
         }).done(function (msg) {
             if(msg.success && index===1){
                 if(that.ops.Imgcom){
@@ -117,7 +117,7 @@ Pagecom.prototype={
 
         $.ajax({
             method: "GET",
-            url: "/getTextcomListByPageId?pageId="+id
+            url: WXMS_config.domain+"/getTextcomListByPageId?pageId="+id
         }).done(function (msg) {
             if(msg.success && index===1){
                 if(that.ops.Textcom){
@@ -222,7 +222,7 @@ Pagecom.prototype={
 
             $.ajax({
                 type: 'POST',
-                url: '/generationPage',
+                url: WXMS_config.domain+'/generationPage',
                 data:{
                     allData:tplData,
                     projectId:projectId
@@ -288,7 +288,7 @@ Pagecom.prototype={
         };
         $.ajax({
             method: "POST",
-            url: "/addPage",
+            url: WXMS_config.domain+"/addPage",
             data: {
                 projectId:projectId,
                 page:pageEntity
@@ -309,7 +309,7 @@ Pagecom.prototype={
         var that =this;
         $.ajax({
             method: "POST",
-            url: "/updatePage",
+            url:WXMS_config.domain+ "/updatePage",
             data:pageEntity
         }).done(function (msg) {
             isSetSytle && that.setPageStyle(msg.model);
@@ -324,7 +324,7 @@ Pagecom.prototype={
         var that =this;
         $.ajax({
             method: "POST",
-            url: "/deletePage",
+            url: WXMS_config.domain+"/deletePage",
             data: {
                 pageId: pageId
             }
@@ -637,7 +637,7 @@ Pagecom.prototype={
         }
         $.ajax({
             type: 'POST',
-            url: '/generationPage',
+            url:WXMS_config.domain+'/generationPage',
             data:{
                 allData:tpldata,
                 projectId:projectId

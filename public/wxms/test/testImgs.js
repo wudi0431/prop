@@ -1,8 +1,8 @@
 QUnit.asyncTest('getImgsByUser--获得用户图片', function (assert) {
-    
+    var wxmsDomain = 'http://120.132.50.71/wxms';
     $.ajax({
         method: "GET",
-        url: "/getImgsByUser"
+        url: wxmsDomain+"/getImgsByUser"
     }).done(function (msg) {
         assert.ok(true, '获得用户图片成功');
         QUnit.start();

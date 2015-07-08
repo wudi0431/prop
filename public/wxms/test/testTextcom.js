@@ -1,4 +1,5 @@
 var textcomId =null;
+var wxmsDomain = 'http://120.132.50.71/wxms';
 QUnit.asyncTest('addTextcom--新增单个文本组件', function (assert) {
 
     var projectEntity = {
@@ -10,7 +11,7 @@ QUnit.asyncTest('addTextcom--新增单个文本组件', function (assert) {
 
     $.ajax({
         method: "POST",
-        url: "/addProject",
+        url: wxmsDomain+"/addProject",
         data: projectEntity
     }).done(function (msg) {
         var projectId = msg.model._id;
@@ -32,7 +33,7 @@ function testTextAddPage(projectId,assert) {
 
     $.ajax({
         method: "POST",
-        url: "/addPage",
+        url: wxmsDomain+"/addPage",
         data: {
             projectId: projectId,
             page: pageEntity
@@ -98,7 +99,7 @@ function addTectcom(pageId,assert){
 
     $.ajax({
         method: "POST",
-        url: "/addTextcom",
+        url: wxmsDomain+"/addTextcom",
         data: {
             pageId:pageId,
             textcom:textcomEntity
@@ -126,7 +127,7 @@ function getTextcom(pageId){
     QUnit.asyncTest('getTextcom--获取单个文本组件详情', function (assert) {
         $.ajax({
             method: "GET",
-            url: "/getTextcom",
+            url: wxmsDomain+"/getTextcom",
             data: {
                 textcomId: textcomId
             }
@@ -149,7 +150,7 @@ function getTextcom(pageId){
         QUnit.asyncTest('getTextcomListByPageId--获取单个同一pageid的文本组件', function (assert) {
             $.ajax({
                 method: "GET",
-                url: "/getTextcomListByPageId",
+                url: wxmsDomain+"/getTextcomListByPageId",
                 data: {
                     pageId:pageId
                 }
@@ -174,7 +175,7 @@ function getTextcom(pageId){
         QUnit.asyncTest('updateTextcom--更新单个文本组件', function (assert) {
             $.ajax({
                 method: "POST",
-                url: "/updateTextcom",
+                url: wxmsDomain+"/updateTextcom",
                 data:textcomEntity
             }).done(function (msg) {
                 assert.equal(msg.model.context, '跟新单个文本组件', '更新单个文本组件成功');
@@ -193,7 +194,7 @@ function deleteTextcomById(){
     QUnit.asyncTest('deleteTextcom--删除单个文本组件', function (assert) {
         $.ajax({
             method: "POST",
-            url: "/deleteTextcom",
+            url: wxmsDomain+"/deleteTextcom",
             data: {
                 textcomId: textcomId
             }

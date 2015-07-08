@@ -1,4 +1,5 @@
 var btncomId =null;
+var wxmsDomain = 'http://120.132.50.71/wxms';
 QUnit.asyncTest('addBtncom--新增单个按钮组件', function (assert) {
 
     var projectEntity = {
@@ -10,7 +11,7 @@ QUnit.asyncTest('addBtncom--新增单个按钮组件', function (assert) {
 
     $.ajax({
         method: "POST",
-        url: "/addProject",
+        url: wxmsDomain+"/addProject",
         data: projectEntity
     }).done(function (msg) {
         var projectId = msg.model._id;
@@ -32,7 +33,7 @@ function testBtnAddPage(projectId,assert) {
 
     $.ajax({
         method: "POST",
-        url: "/addPage",
+        url: wxmsDomain+"/addPage",
         data: {
             projectId: projectId,
             page: pageEntity
@@ -58,7 +59,7 @@ function addBtncom(pageId,assert){
 
     $.ajax({
         method: "POST",
-        url: "/addBtncom",
+        url: wxmsDomain+"/addBtncom",
         data: {
             pageId:pageId,
             btncom:btncomEntity
@@ -86,7 +87,7 @@ function getBtncom(btncomId){
     QUnit.asyncTest('getBtncom--查询按钮组件', function (assert) {
         $.ajax({
             method: "GET",
-            url: "/getBtncom",
+            url: wxmsDomain+"/getBtncom",
             data: {
                 btncomId: btncomId
             }
@@ -109,7 +110,7 @@ function getBtncom(btncomId){
         QUnit.asyncTest('getBtncomListByPageId--查询同一pageid的按钮组件', function (assert) {
             $.ajax({
                 method: "GET",
-                url: "/getBtncomListByPageId",
+                url: wxmsDomain+"/getBtncomListByPageId",
                 data: {
                     pageId:pageId
                 }
@@ -131,7 +132,7 @@ function getBtncom(btncomId){
         QUnit.asyncTest('updateBtncom--更新单个按钮组件', function (assert) {
             $.ajax({
                 method: "POST",
-                url: "/updateBtncom",
+                url: wxmsDomain+"/updateBtncom",
                 data:btncomEntity
             }).done(function (msg) {
                 assert.equal(msg.model.btnurl, '更新单个按钮组件成功');
@@ -151,7 +152,7 @@ function deleteBtncom(){
     QUnit.asyncTest('deleteBtncom--删除单个按钮组件', function (assert) {
         $.ajax({
             method: "POST",
-            url: "/deleteBtncom",
+            url: wxmsDomain+"/deleteBtncom",
             data: {
                 btncomId: btncomId
             }

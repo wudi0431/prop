@@ -77,7 +77,7 @@ require(['wxms_config','template', 'rotatable', 'html2canvas', 'zepto', 'jquery'
         var projectId = getQueryString("projectId");
         var j_preview_app = $('.j_preview_app');
         j_preview_app.on('click', function () {
-            window.open('/preview?projectId=' + projectId);
+            window.open(WXMS_config.domain+'/preview?projectId=' + projectId);
         });
 
         var j_saveTpl = $('.j_saveTpl');
@@ -88,7 +88,7 @@ require(['wxms_config','template', 'rotatable', 'html2canvas', 'zepto', 'jquery'
                     imgData = imgData.split(',')[1];
                     $.ajax({
                         method: "POST",
-                        url: "/addTplByUser",
+                        url: WXMS_config.domain+"/addTplByUser",
                         data: {
                             pageId: pageId,
                             imgData: imgData
