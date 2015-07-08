@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 
 var TextComSchema = new mongoose.Schema({
     context: {type: String, default: '这里是文本'},
-    textAlign: {type: String, default: 'left'},
+    textAlign: {type: String, default: 'center'},
     zIndex: {type:Number,default:1},
     top: {type: String, default: '200px'},
     left: {type: String, default: '100px'},
