@@ -29,7 +29,7 @@ app.use(session({
 
 
 app.use(multer({
-    dest: __dirname + '/public/uploadimg/',
+    dest: __dirname + '/public/wxms/uploadimg/',
     rename: function (fieldname, filename) {
         return filename;
     },

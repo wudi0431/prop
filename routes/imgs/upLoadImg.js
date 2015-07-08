@@ -58,7 +58,7 @@ router.post('/', function (req, res, next) {
             var imgData = req.body.imgData;
             var dataBuffer = new Buffer(imgData, 'base64');
             var imgname = uuid(8, 16) + '.png';
-            var imgpath = path.join(__dirname, '../public/uploadimg/');
+            var imgpath = path.join(__dirname, '../public/wxms/uploadimg/');
             fs.writeFile(imgpath + imgname, dataBuffer, function (err) {
                 if (err) {
                     res.send(err);

@@ -48,7 +48,7 @@ require(['wxms_config','jquery', 'jqui'], function (WXMS_config,$) {
     $loginout.on('click', function () {
         $.ajax({
             method: "get",
-            url: "/wxms/logout"
+            url: WXMS_config.domain +"/logout"
         }).done(function (msg) {
             if (msg.success) {
                 window.location.href = WXMS_config.domain + '/index';
