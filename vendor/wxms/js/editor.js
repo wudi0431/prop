@@ -2,6 +2,7 @@
 require.config({
     waitSeconds: 30,
     paths: {
+        dialog:'/wxms/lib/dialog-min',
         wxms_config:'/wxms/config',
         jquery: '/wxms/lib/jqueryui/external/jquery/jquery',
         spectrum: '/wxms/lib/jquerycolorpicker/spectrum',
@@ -27,10 +28,16 @@ require.config({
         rotatable: '/wxms/lib/rotatable',
         transit: '/wxms/lib/jquerytransit',
         imgcom_cut: '/wxms/js/module/imgcom/imgcut',
-        weixin: 'http://res.wx.qq.com/open/js/jweixin-1.0.0.js',
-        webchat: '/wxms/webchat'
+        weixin: 'http://res.wx.qq.com/open/js/jweixin-1.0.0',
+        webchat: '/wxms/js/webchat'
     },
     shim: {
+        webchat: {
+            deps: ['weixin']
+        },
+        dialog: {
+            deps: ['jquery']
+        },
         html2canvas: {
             exports: 'html2canvas'
         },
@@ -50,9 +57,9 @@ require.config({
     }
 });
 
-require(['webchat','wxms_config','template', 'rotatable', 'html2canvas', 'zepto', 'jquery', 'spectrum', 'btncom', 'imgcom', 'textcom', 'btncom_content', 'imgcom_content',
+require(['webchat','dialog','wxms_config','template', 'rotatable', 'html2canvas', 'zepto', 'jquery', 'spectrum', 'btncom', 'imgcom', 'textcom', 'btncom_content', 'imgcom_content',
         'textcom_content', 'jqui', 'pagecom', 'imgs', 'FFF', 'animatecom', 'datasourcecom'],
-    function (webchat,WXMS_config,Template, rotatable, Html2canvas, zepto, $, bigcolorpicker, Btncom, Imgcom, Textcom, btncom_content,
+    function (webchat,Dialog,WXMS_config,Template, rotatable, Html2canvas, zepto, $, bigcolorpicker, Btncom, Imgcom, Textcom, btncom_content,
               imgcom_content,textcom_content, jqui, Pagecom, Imgs, FFF, Animatecom, Datasourcecom) {
 
         //根据 url 的名字 获得 值
@@ -79,7 +86,17 @@ require(['webchat','wxms_config','template', 'rotatable', 'html2canvas', 'zepto'
         var projectId = getQueryString("projectId");
         var j_preview_app = $('.j_preview_app');
         j_preview_app.on('click', function () {
-            window.open(WXMS_config.domain+'/preview?projectId=' + projectId);
+            var d = dialog({
+                width:250,
+                height:50,
+                content: '预览页面'
+            });
+            d.show();
+            setTimeout(function () {
+                d.close().remove();
+            }, 2000);
+
+            //window.open(WXMS_config.domain+'/preview?projectId=' + projectId);
         });
 
         var j_saveTpl = $('.j_saveTpl');
@@ -301,9 +318,47 @@ require(['webchat','wxms_config','template', 'rotatable', 'html2canvas', 'zepto'
         });
 
 
-        var wxshare = $('#wxshare');
+        var $wxshare = $('#wxshare'),$wxsharedailog = $('#wxsharedailog');
+
+        $wxshare.on('click', function () {
+            $wxsharedailog.dialog({
+                resizable: false,
+                title:'分享微信',
+                height:280,
+                modal: true,
+                buttons: {
+                    "确定": function() {
+                        var name = $wxsharedailog.find('#name')
+                        var description = $wxsharedailog.find('#description')
+                        if(name.val()==''){
+                            name.focus();
+                            name.addClass('eorr');
+                        }else if(description.val()==''){
+                            description.focus();
+                            description.addClass('eorr');
+                        }
+                        else{
+                            name.removeClass('eorr');
+                            description.removeClass('eorr');
+                            $( this ).dialog( "close" );
+                            var prodata ={
+                                name:name.val(),
+                                description:description.val(),
+                                proid:getQueryString('projectId')||''
+                            };
+                            webchat.init(prodata);
+
+                        }
+
+                    },
+                    '退出': function() {
+                        $( this ).dialog( "close" );
+                    }
+                }
+            })
 
 
+        })
 
 
 

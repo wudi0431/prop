@@ -11,12 +11,15 @@
     <link rel="stylesheet" href="/wxms/lib/jqueryui/jquery-ui.min.css"/>
     <link rel="stylesheet" href="/wxms/lib/jquerycolorpicker/spectrum.css"/>
     <link rel="stylesheet" href="/wxms/css/resetjqueryui.css"/>
+    <link rel="stylesheet" href="/wxms/css/ui-dialog.css"/>
     <link rel="stylesheet" href="/wxms/css/editor.css"/>
     <script src="http://apps.bdimg.com/libs/require.js/2.1.11/require.min.js"></script>
     <script src="http://image.yihaodianimg.com/mobile-ued/FFF/v0.1.2/yhd_mxc.js"></script>
     <script src="/wxms/js/editor.js"></script>
 </head>
 <body class="flexbox flexbox-v">
+<div class="maps_centerShowContainerLoading"></div>
+
 <div class="nav clearfix">
     <a class="title fl" href="javascript:;"> <span class="name fl"></span> <span class="desc fl">编辑器</span> </a>
 
@@ -74,6 +77,8 @@
 <% include templeate_content.html %>
 
 <% include select_img.html %>
+
+<% include wxshare.html %>
 
 </body>
 </html>

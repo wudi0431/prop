@@ -3,11 +3,15 @@
  */
 define(['zepto','weixin'], function($,wx) {
     var foo = {
+        init: function (data) {
+            this.data = data;
+            this.getConfig()
+        },
         getConfig: function () {//白名单验证
             var wxConfigUrl = "http://wechat.yhd.com/wechat/getWeixinConfig.do";
             var appId, timestamp, nonceStr, signature,shareData;
             var that = this;
-            $.getJSON("http://wechat.yhd.com/wechat/getWeixinConfig.do?url=" + encodeURIComponent(window.location.href)
+            $.getJSON("http://wechat.yhd.com/wechat/getWeixinConfig.do?url=" + encodeURIComponent('http://mxc.yhd.com/')
                 + "&callback=?", function(msg) {
                 if (parseInt(msg.rtn_code) == 1) {
                     var data = msg.data;
@@ -36,26 +40,22 @@ define(['zepto','weixin'], function($,wx) {
         },
         share: function () {
             var that = this;
-            var title = json.data.shareTitle,
-                text = json.data.shareDesc;
-
             that.shareJson = {
-                "title":title,
-                "text":text
-
+                "title": that.data.name,
+                "text": that.data.description
             }
             //that.getConfig();
             //分享接口调用
             wx.onMenuShareAppMessage({
-                title:foo.shareJson.title,
-                link:window.location.href,
-                desc:foo.shareJson.text
+                title:that.shareJson.title,
+                link:'http://mxc.yhd.com/wxms_client/preview.html?projectId='+that.data.proid,
+                desc:that.shareJson.text
 
             });
             wx.onMenuShareTimeline({
-                title:foo.shareJson.title,
-                link:window.location.href,
-                desc:foo.shareJson.text
+                title:that.shareJson.title,
+                link:'http://mxc.yhd.com/wxms_client/preview.html?projectId='+that.data.proid,
+                desc:that.shareJson.text
             });
         }
 

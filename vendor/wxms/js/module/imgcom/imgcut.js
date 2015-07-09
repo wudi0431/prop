@@ -8,6 +8,8 @@ define(['jquery','FFF','wxms_config'], function ($,FFF,WXMS_config) {
     var iMouseX, iMouseY = 1;
     var theSelection;
     var F = FFF.FFF;
+    WXMS_config.domain = WXMS_config.domain || '';
+
 
 // define Selection constructor
     function Selection(x, y, w, h){

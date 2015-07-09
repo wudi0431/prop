@@ -1,7 +1,11 @@
+//var config = {
+//    port:9898,
+//    passport: 'http://120.132.50.71/passport',
+//    domain:'http://120.132.50.71/wxms'
+//};
 var config = {
     port:9898,
-    passport: 'http://120.132.50.71/passport',
-    domain:'http://120.132.50.71/wxms'
+    passport: 'http://120.132.50.71/passport'
 };
 
 if ( typeof module === "object" && typeof module.exports === "object" ) {

@@ -5,7 +5,8 @@ var config = require('../../config');
 /* GET home page. */
 router.get('/', function (req, res) {
     filter.authorize(req, res,function(){
-        res.redirect(config.domain);
+        var url = config.domain || filter.getIP(config.port);
+        res.redirect(url);
     });
 });
 
