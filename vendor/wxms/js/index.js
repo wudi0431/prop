@@ -19,7 +19,7 @@ require.config({
 require(['wxms_config','jquery', 'jqui'], function (WXMS_config,$) {
     var islogin = $('#islogin').val(), username = $('#username').val(),
         login = $('#login'), createrpage = $('.createrpage'), $loginout = $('#logout');
-    ;
+    WXMS_config.domain = WXMS_config.domain || '';
     if (islogin == "false") {
         $loginout.hide();
     } else {

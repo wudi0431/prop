@@ -20,6 +20,7 @@ require.config({
     }
 });
 require(['wxms_config','jquery', 'jqui'], function (WXMS_config,$) {
+    WXMS_config.domain = WXMS_config.domain || '';
     Date.prototype.format = function(fmt)
     { //author: meizz
         var o = {

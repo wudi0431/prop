@@ -2,6 +2,7 @@
 require.config({
     waitSeconds: 30,
     paths: {
+        dialog:'/wxms/lib/dialog-min',
         wxms_config:'/wxms/config',
         jquery: '/wxms/lib/jqueryui/external/jquery/jquery',
         spectrum: '/wxms/lib/jquerycolorpicker/spectrum',
@@ -29,6 +30,9 @@ require.config({
         imgcom_cut: '/wxms/js/module/imgcom/imgcut'
     },
     shim: {
+        dialog: {
+            deps: ['jquery']
+        },
         html2canvas: {
             exports: 'html2canvas'
         },
@@ -48,11 +52,11 @@ require.config({
     }
 });
 
-require(['wxms_config','template', 'rotatable', 'html2canvas', 'zepto', 'jquery', 'spectrum', 'btncom', 'imgcom', 'textcom', 'btncom_content', 'imgcom_content',
+require(['dialog','wxms_config','template', 'rotatable', 'html2canvas', 'zepto', 'jquery', 'spectrum', 'btncom', 'imgcom', 'textcom', 'btncom_content', 'imgcom_content',
         'textcom_content', 'jqui', 'pagecom', 'imgs', 'FFF', 'animatecom', 'datasourcecom'],
-    function (WXMS_config,Template, rotatable, Html2canvas, zepto, $, bigcolorpicker, Btncom, Imgcom, Textcom, btncom_content,
+    function (Dialog,WXMS_config,Template, rotatable, Html2canvas, zepto, $, bigcolorpicker, Btncom, Imgcom, Textcom, btncom_content,
               imgcom_content,textcom_content, jqui, Pagecom, Imgs, FFF, Animatecom, Datasourcecom) {
-
+        WXMS_config.domain = WXMS_config.domain || '';
         //根据 url 的名字 获得 值
         function getQueryString(name) {
             var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
@@ -77,6 +81,16 @@ require(['wxms_config','template', 'rotatable', 'html2canvas', 'zepto', 'jquery'
         var projectId = getQueryString("projectId");
         var j_preview_app = $('.j_preview_app');
         j_preview_app.on('click', function () {
+            var d = dialog({
+                width:250,
+                height:50,
+                content: '预览页面'
+            });
+            d.show();
+            setTimeout(function () {
+                d.close().remove();
+            }, 2000);
+
             //window.open(WXMS_config.domain+'/preview?projectId=' + projectId);
         });
 

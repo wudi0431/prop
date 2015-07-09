@@ -1,5 +1,6 @@
 define(['FFF', 'jquery', 'jqui','wxms_config'], function(FFF, $,jqui,WXMS_config) {
     var F = FFF.FFF;
+    WXMS_config.domain = WXMS_config.domain || '';
 
     var Imgs = {};
     

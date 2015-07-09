@@ -8,6 +8,9 @@ define(['jquery','jqui','zepto','pagecom_content','FFF','imgcut','template','wxm
 var index = 0,
     F = FFF.FFF;
 
+        WXMS_config.domain = WXMS_config.domain || '';
+
+
 var projectId =  getQueryString("projectId");
 
 function Pagecom(){
@@ -25,6 +28,7 @@ Pagecom.prototype={
         var that =this;
         that.ops=ops;
         that.$showbox =$('#showbox');
+        $('.maps_centerShowContainerLoading').addClass('show');
         $.ajax({
             method: "GET",
             url: WXMS_config.domain+"/getPageList?projectId="+projectId
@@ -45,6 +49,9 @@ Pagecom.prototype={
                 pagecom_content({curpage:that});
 
                 that.addSelectPage(1);
+                setTimeout(function(){
+                    $('.maps_centerShowContainerLoading').removeClass('show');
+                },300)
             }
         }).fail(function (msg) {
             console.log(msg)
