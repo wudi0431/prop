@@ -132,7 +132,7 @@ require(['wxms_config','jquery', 'jqui'], function (WXMS_config,$) {
                     }).done(function (msg) {
                         pdiv.remove();
                     }).fail(function (msg) {
-                        alert(msg);
+
                     });
                 }
             })

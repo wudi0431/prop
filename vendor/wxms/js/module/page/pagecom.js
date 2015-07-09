@@ -56,7 +56,7 @@ Pagecom.prototype={
         }).fail(function (msg) {
             console.log(msg)
         });
-
+        that._setWeixinShare();
 
     },
     _initCom: function (isTpl) {
@@ -662,6 +662,22 @@ Pagecom.prototype={
             }
         });
 
+    },
+    //设置分享
+    _setWeixinShare: function () {
+        $.ajax({
+            method: "GET",
+            url: WXMS_config.domain+"/getWeiXinShareByProjectId?projectId="+projectId
+        }).done(function (msg) {
+            if(msg.success){
+              var $weixinshare  = $('#wxsharedailog');
+                $weixinshare.find('#name').val(msg.model[0].title)
+                $weixinshare.find('#description').val(msg.model[0].desc)
+                $weixinshare.find('#description').attr('shareid',msg.model[0]._id)
+            }
+        }).fail(function (msg) {
+            console.log(msg)
+        });
     }
 }
 //根据 url 的名字 获得 值

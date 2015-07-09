@@ -95,6 +95,9 @@ var preview = require('./routes/preview/preview');
 
 var repeater = require('./routes/repeater');
 
+var addWeiXinShare = require('./routes/weixinshare/addWeiXinShare');
+var getWeiXinShareByProjectId = require('./routes/weixinshare/getWeiXinShareByProjectId');
+
 
 
 // view engine setup
@@ -173,6 +176,9 @@ app.use('/generationPage',generationPage);
 app.use('/preview', preview);
 
 app.use('/repeater', repeater);
+
+app.use('/addWeiXinShare', addWeiXinShare);
+app.use('/getWeiXinShareByProjectId', getWeiXinShareByProjectId);
 
 
 

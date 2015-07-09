@@ -328,6 +328,7 @@ require(['webchat','dialog','wxms_config','template', 'rotatable', 'html2canvas'
                 modal: true,
                 buttons: {
                     "确定": function() {
+                        var that = this;
                         var name = $wxsharedailog.find('#name')
                         var description = $wxsharedailog.find('#description')
                         if(name.val()==''){
@@ -340,13 +341,29 @@ require(['webchat','dialog','wxms_config','template', 'rotatable', 'html2canvas'
                         else{
                             name.removeClass('eorr');
                             description.removeClass('eorr');
-                            $( this ).dialog( "close" );
                             var prodata ={
-                                name:name.val(),
-                                description:description.val(),
-                                proid:getQueryString('projectId')||''
+                                title:name.val(),
+                                desc:description.val()
                             };
-                            webchat.init(prodata);
+                            var projectId = getQueryString('projectId')||'';
+
+                            var shareid = description.attr('shareid');
+
+                            if (projectId !=undefined && projectId!=''){
+                                $.ajax({
+                                    method: "POST",
+                                    url: WXMS_config.domain+"/addWeiXinShare",
+                                    data: {
+                                        projectId: projectId,
+                                        shareid: shareid,
+                                        wexinshare:prodata
+                                    }
+                                }).done(function (msg) {
+                                    $(that).dialog( "close" );
+                                }).fail(function (msg) {
+
+                                });
+                            }
 
                         }
 
