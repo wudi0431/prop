@@ -14,7 +14,10 @@ router.get('/', function (req, res, next) {
                 }
             });
         } else {
-            res.jsonp(wexinshareEntity);
+            res.jsonp({
+                success: true,
+                model: wexinshareEntity
+            });
         }
     });
 });

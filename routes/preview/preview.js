@@ -193,7 +193,10 @@ router.get('/jsonp', function (req, res, next) {
                                         return -1;
                                     }
                                 });
-                                res.jsonp(allPage);
+                                res.jsonp({
+                                    success: true,
+                                    model: allPage
+                                });
                             }
                         });
                         //Textcom End
