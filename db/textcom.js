@@ -114,7 +114,9 @@ TextComSchema.static('updateTextcom', function (textcom, cb) {
     return this.findOneAndUpdate({
         _id: textcomId
     }, textcom, {'new': true}, function (err, textcomEntity) {
-        Page.updateProjectTime(textcomEntity.page);
+        if(textcomEntity){
+            Page.updateProjectTime(textcomEntity.page);
+        }
         if (cb) {
             cb(err, textcomEntity);
         }
