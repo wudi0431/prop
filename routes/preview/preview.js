@@ -11,8 +11,7 @@ var Btncom = require('../../db/btncom');
 var Imgcom = require('../../db/imgcom');
 var Textcom = require('../../db/textcom');
 var View = require('../../db/view');
-var previewPath = path.resolve(__dirname, '../../public/preview');
-var previewTPL = path.resolve(__dirname, 'preview.html');
+
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
