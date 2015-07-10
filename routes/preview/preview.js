@@ -147,9 +147,8 @@ router.get('/jsonp', function (req, res, next) {
     var allPage = [];
     Page.getPageList(projectId, function (err, pageList) {
         if (err || !pageList.length) {
-            res.status('404');
-            res.send({
-                success: false, // 标记失败
+            res.jsonp({
+                success: false,
                 model: {
                     error: '系统错误'
                 }
@@ -194,7 +193,6 @@ router.get('/jsonp', function (req, res, next) {
                                         return -1;
                                     }
                                 });
-                                res.status('200');
                                 res.jsonp(allPage);
                             }
                         });
