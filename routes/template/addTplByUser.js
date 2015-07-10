@@ -9,6 +9,7 @@ var Template = require('../../db/template');
 
 router.post('/', function (req, res, next) {
     filter.authorize(req, res, function (req, res) {
+        console.log(33333333333333333);
         var pageId = req.body.pageId;
 
         var imgData = req.body.imgData;
