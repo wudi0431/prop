@@ -3,7 +3,7 @@ define(['FFF', 'jquery', 'jqui','wxms_config'], function (FFF, $,jqui,WXMS_confi
     var Template = {};
     var str = '<li><img class="W_tpl" data-uid="%uid%" src="%realImgUrl%"></li>';
     var userStr = '<li><img class="W_tpl" data-uid="%uid%" src="%realImgUrl%"><i class="W_delItem">X</i></li>';
-
+    WXMS_config.domain = WXMS_config.domain || '';
 
     Template.init = function () {
         var that = this;
@@ -94,7 +94,7 @@ define(['FFF', 'jquery', 'jqui','wxms_config'], function (FFF, $,jqui,WXMS_confi
                 if (tplList.length > 0) {
                     that.pubTplList = tplList;
                     tplList.forEach(function (o) {
-                        o.realImgUrl = '/uploadimg/' + o.imgUrl;
+                        o.realImgUrl = '/wxms/uploadimg/' + o.imgUrl;
                         var t = str.replace(/(%(\w+)%)/g, function ($1, $2, $3) {
                             return o[$3] ? o[$3] : '';
                         });
@@ -122,7 +122,7 @@ define(['FFF', 'jquery', 'jqui','wxms_config'], function (FFF, $,jqui,WXMS_confi
                 if (tplList.length > 0) {
                     that.userTplList = tplList;
                     tplList.forEach(function (o) {
-                        o.realImgUrl = '/uploadimg/' + o.imgUrl;
+                        o.realImgUrl = '/wxms/uploadimg/' + o.imgUrl;
                         var t = userStr.replace(/(%(\w+)%)/g, function ($1, $2, $3) {
                             return o[$3] ? o[$3] : '';
                         });

@@ -101,9 +101,9 @@ define(['jquery','wxms_config'], function ($,WXMS_config) {
             data: idata, 
             success: function (msg) {
                 var curpagedata = curpagecom.getSelectPageData();
-                curpagedata.backgroundimage='/uploadimg/'+msg.model.name;
+                curpagedata.backgroundimage='/wxms/uploadimg/'+msg.model.name;
                 curpagecom.updataPage(curpagedata,true);
-                initImgCut('/uploadimg/'+msg.model.name);
+                initImgCut('/wxms/uploadimg/'+msg.model.name);
             }
         });
 
