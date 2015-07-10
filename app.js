@@ -174,7 +174,7 @@ app.use('/generationPage',generationPage);
 
 
 
-app.use('/preview', preview);
+app.use('/show', preview);
 
 app.use('/repeater', repeater);
 

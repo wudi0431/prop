@@ -94,7 +94,7 @@ require(['dialog','wxms_config','template', 'rotatable', 'html2canvas', 'zepto',
                 d.close().remove();
             }, 2000);
 
-            window.open(WXMS_config.domain+'/preview?projectId=' + projectId);
+            window.open(WXMS_config.domain+'/show?projectId=' + projectId);
         });
 
         var j_saveTpl = $('.j_saveTpl');
