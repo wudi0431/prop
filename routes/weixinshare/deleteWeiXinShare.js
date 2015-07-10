@@ -5,10 +5,8 @@ var Wexinshare = require('../../db/wexinshare');
 
 router.post('/', function (req, res, next) {
     filter.authorize(req, res, function (req, res) {
-        var wexinsharedata = req.body.wexinshare;
-        wexinsharedata.project = req.body.projectId;
-        var newWexinsharedata = new Wexinshare(wexinsharedata);
-        newWexinsharedata.save(function (err, wexinshareEntity) {
+        var shareid = req.body.shareid;
+        Wexinshare.deleteWeiXinShare(shareid,function (err, wexinshareEntity) {
             if (err) {
                 res.status('500');
                 res.send({
@@ -21,11 +19,12 @@ router.post('/', function (req, res, next) {
                 res.status('200');
                 res.send({
                     success: true,
-                    model: wexinshareEntity
+                    model: {
+                        _id: shareid
+                    }
                 });
             }
         });
-
     });
 });
 

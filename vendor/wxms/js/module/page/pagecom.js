@@ -669,7 +669,7 @@ Pagecom.prototype={
             method: "GET",
             url: WXMS_config.domain+"/getWeiXinShareByProjectId?projectId="+projectId
         }).done(function (msg) {
-            if(msg.success){
+            if(msg.success && msg.model.length>0){
               var $weixinshare  = $('#wxsharedailog');
                 $weixinshare.find('#name').val(msg.model[0].title)
                 $weixinshare.find('#description').val(msg.model[0].desc)

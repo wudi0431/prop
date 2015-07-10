@@ -349,13 +349,40 @@ require(['webchat','dialog','wxms_config','template', 'rotatable', 'html2canvas'
 
                             var shareid = description.attr('shareid');
 
-                            if (projectId !=undefined && projectId!=''){
+                            if (projectId !='' && shareid!='' && shareid!=undefined){
+                                $.ajax({
+                                    method: "POST",
+                                    url: WXMS_config.domain+"/deleteWeiXinShare",
+                                    data: {
+                                        shareid: shareid
+                                    }
+                                }).done(function (msg) {
+                                    if(msg.success){
+                                        $.ajax({
+                                            method: "POST",
+                                            url: WXMS_config.domain+"/addWeiXinShare",
+                                            data: {
+                                                projectId: projectId,
+                                                wexinshare:prodata
+                                            }
+                                        }).done(function (msg) {
+                                            $(that).dialog( "close" );
+                                        }).fail(function (msg) {
+
+                                        });
+                                    }
+
+                                }).fail(function (msg) {
+
+                                });
+
+                            }
+                            if(projectId !=''){
                                 $.ajax({
                                     method: "POST",
                                     url: WXMS_config.domain+"/addWeiXinShare",
                                     data: {
                                         projectId: projectId,
-                                        shareid: shareid,
                                         wexinshare:prodata
                                     }
                                 }).done(function (msg) {
@@ -363,6 +390,7 @@ require(['webchat','dialog','wxms_config','template', 'rotatable', 'html2canvas'
                                 }).fail(function (msg) {
 
                                 });
+
                             }
 
                         }

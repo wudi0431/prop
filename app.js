@@ -97,6 +97,7 @@ var repeater = require('./routes/repeater');
 
 var addWeiXinShare = require('./routes/weixinshare/addWeiXinShare');
 var getWeiXinShareByProjectId = require('./routes/weixinshare/getWeiXinShareByProjectId');
+var deleteWeiXinShare = require('./routes/weixinshare/deleteWeiXinShare');
 
 
 
@@ -179,6 +180,7 @@ app.use('/repeater', repeater);
 
 app.use('/addWeiXinShare', addWeiXinShare);
 app.use('/getWeiXinShareByProjectId', getWeiXinShareByProjectId);
+app.use('/deleteWeiXinShare', deleteWeiXinShare);
 
 
 

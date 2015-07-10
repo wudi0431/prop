@@ -12,7 +12,7 @@ var WeiXinShareSchema = new mongoose.Schema({
 });
 
 
-WeiXinShareSchema.static('deleteWeiXinShareByProjectId', function (shareid, cb) {
+WeiXinShareSchema.static('deleteWeiXinShare', function (shareid, cb) {
     return this.findByIdAndRemove(shareid, function (err, weixinshareEntity) {
             if (cb) {
                 cb(err, weixinshareEntity);
