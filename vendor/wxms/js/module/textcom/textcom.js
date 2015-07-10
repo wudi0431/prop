@@ -2,6 +2,7 @@ define(['FFF', 'zepto', 'jquery','stylecom','wxms_config'], function (FFF, $, jq
     var F = FFF.FFF,
         Widget = F.Widget,
        Stylecom = Stylecom.Stylecom;
+    WXMS_config.domain = WXMS_config.domain || '';
 
     function Textcom() {
         Widget.apply(this, arguments);

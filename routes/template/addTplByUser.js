@@ -14,8 +14,8 @@ router.post('/', function (req, res, next) {
         var imgData = req.body.imgData;
         var dataBuffer = new Buffer(imgData, 'base64');
         var imgname = uuid(8,16)+'.png';
-        var imgpath =path.join(__dirname,'../../public/uploadimg/');
-        fs.writeFile(imgpath+imgname, dataBuffer);
+        var imgpath =path.join(__dirname,'../../public/wxms/uploadimg/');
+        fs.writeFileSync(imgpath+imgname, dataBuffer);
 
 
 
