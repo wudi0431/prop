@@ -110,7 +110,9 @@ BtnComSchema.static('updateBtncom', function (btncom, cb) {
     return this.findOneAndUpdate({
         _id: btncomId
     }, btncom, {'new': true}, function (err, btncomEntity) {
-        Page.updateProjectTime(btncomEntity.page);
+        if(btncomEntity){
+            Page.updateProjectTime(btncomEntity.page);
+        }
         if (cb) {
             cb(err, btncomEntity);
         }

@@ -42,7 +42,9 @@ var ImgComSchema = new mongoose.Schema({
 
 ImgComSchema.static('deleteImgcom', function (imgcomId, cb) {
     return this.findByIdAndRemove(imgcomId, function (err, imgcomEntity) {
-        Page.updateProjectTime(imgcomEntity.page);
+        if(imgcomEntity){
+            Page.updateProjectTime(imgcomEntity.page);
+        }
         if (cb) {
             cb(err, imgcomEntity);
         }
