@@ -15,6 +15,7 @@ var View = require('../../db/view');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
+    console.log(111111111);
     filter.authorize(req, res, function (req, res) {
         var projectId = req.query.projectId;
         res.render('preview', {previewSrc: 'http://mxc.yhd.com/wx/index.html?projectId=' + projectId});
