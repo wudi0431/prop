@@ -9,21 +9,13 @@ var Template = require('../../db/template');
 
 router.post('/', function (req, res, next) {
     filter.authorize(req, res, function (req, res) {
-        console.log(33333333333333333);
         var pageId = req.body.pageId;
 
         var imgData = req.body.imgData;
         var dataBuffer = new Buffer(imgData, 'base64');
         var imgname = uuid(8,16)+'.png';
-        console.log(111111);
         var imgpath =path.join(__dirname,'../../public/wxms/uploadimg/');
-
-        console.log(22222222222,imgpath+imgname)
-        try{
         fs.writeFileSync(imgpath+imgname, dataBuffer);
-        }catch(e){
-
-        }
 
 
 
