@@ -364,6 +364,7 @@ require(['dialog','wxms_config','template', 'rotatable', 'html2canvas', 'zepto',
                                                 wexinshare:prodata
                                             }
                                         }).done(function (msg) {
+                                            description.attr('shareid',msg.model._id)
                                             $(that).dialog( "close" );
                                         }).fail(function (msg) {
 
@@ -375,7 +376,7 @@ require(['dialog','wxms_config','template', 'rotatable', 'html2canvas', 'zepto',
                                 });
 
                             }
-                            if(projectId !=''){
+                            if(projectId !='' && shareid==undefined){
                                 $.ajax({
                                     method: "POST",
                                     url: WXMS_config.domain+"/addWeiXinShare",
@@ -384,6 +385,7 @@ require(['dialog','wxms_config','template', 'rotatable', 'html2canvas', 'zepto',
                                         wexinshare:prodata
                                     }
                                 }).done(function (msg) {
+                                    description.attr('shareid',msg.model._id)
                                     $(that).dialog( "close" );
                                 }).fail(function (msg) {
 
