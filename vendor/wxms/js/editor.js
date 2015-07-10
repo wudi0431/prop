@@ -27,9 +27,7 @@ require.config({
         template: '/wxms/js/module/template/template',
         rotatable: '/wxms/lib/rotatable',
         transit: '/wxms/lib/jquerytransit',
-        imgcom_cut: '/wxms/js/module/imgcom/imgcut',
-        weixin: 'http://res.wx.qq.com/open/js/jweixin-1.0.0',
-        webchat: '/wxms/js/webchat'
+        imgcom_cut: '/wxms/js/module/imgcom/imgcut'
     },
     shim: {
         webchat: {
@@ -57,9 +55,9 @@ require.config({
     }
 });
 
-require(['webchat','dialog','wxms_config','template', 'rotatable', 'html2canvas', 'zepto', 'jquery', 'spectrum', 'btncom', 'imgcom', 'textcom', 'btncom_content', 'imgcom_content',
+require(['dialog','wxms_config','template', 'rotatable', 'html2canvas', 'zepto', 'jquery', 'spectrum', 'btncom', 'imgcom', 'textcom', 'btncom_content', 'imgcom_content',
         'textcom_content', 'jqui', 'pagecom', 'imgs', 'FFF', 'animatecom', 'datasourcecom'],
-    function (webchat,Dialog,WXMS_config,Template, rotatable, Html2canvas, zepto, $, bigcolorpicker, Btncom, Imgcom, Textcom, btncom_content,
+    function (Dialog,WXMS_config,Template, rotatable, Html2canvas, zepto, $, bigcolorpicker, Btncom, Imgcom, Textcom, btncom_content,
               imgcom_content,textcom_content, jqui, Pagecom, Imgs, FFF, Animatecom, Datasourcecom) {
 
         //根据 url 的名字 获得 值
