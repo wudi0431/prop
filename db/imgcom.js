@@ -103,7 +103,9 @@ ImgComSchema.static('updateImgcom', function (imgcom, cb) {
     return this.findOneAndUpdate({
         _id: imgcomId
     }, imgcom, {'new': true}, function (err, imgcomEntity) {
-        Page.updateProjectTime(imgcomEntity.page);
+        if(imgcomEntity) {
+            Page.updateProjectTime(imgcomEntity.page);
+        }
         if (cb) {
             cb(err, imgcomEntity);
         }
