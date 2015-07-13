@@ -17,7 +17,7 @@ var View = require('../../db/view');
 router.get('/', function (req, res, next) {
     filter.authorize(req, res, function (req, res) {
         var projectId = req.query.projectId;
-        res.render('preview', {previewSrc: 'http://mxc.yhd.com/wx/index.html?projectId=' + projectId});
+        res.render('preview', {previewSrc: config.previewDomain+'/index.html?projectId=' + projectId});
     });
 });
 
