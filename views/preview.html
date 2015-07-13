@@ -44,7 +44,7 @@
         $body.find('.qrcode-img').qrcode({
             width: 195,
             height: 195,
-            text: window.location.origin+"<%= previewSrc %>",
+            text: "<%= previewSrc %>",
             foreground: '#000000'
         });
         $('.ico-up').on('click',function () {
