@@ -317,18 +317,31 @@ require(['dialog','wxms_config','template', 'rotatable', 'html2canvas', 'zepto',
 
 
         var $wxshare = $('#wxshare'),$wxsharedailog = $('#wxsharedailog');
+        var $selectImgUrl = $('#selectImgUrl');var $imgUrl = $('#imgUrl');
+
+        $selectImgUrl.on('click',function(){
+            Imgs.onImgSelect = function (imgSrc) {
+                $imgUrl.attr('src',imgSrc);
+            };
+            Imgs.show();
+        });
+
+
+
 
         $wxshare.on('click', function () {
             $wxsharedailog.dialog({
                 resizable: false,
                 title:'分享微信',
-                height:280,
+                width:400,
+                height:400,
                 modal: true,
                 buttons: {
                     "确定": function() {
                         var that = this;
-                        var name = $wxsharedailog.find('#name')
-                        var description = $wxsharedailog.find('#description')
+                        var name = $wxsharedailog.find('#name');
+                        var description = $wxsharedailog.find('#description');
+                        var imgUrl = $wxsharedailog.find('#imgUrl');
                         if(name.val()==''){
                             name.focus();
                             name.addClass('eorr');
@@ -341,7 +354,8 @@ require(['dialog','wxms_config','template', 'rotatable', 'html2canvas', 'zepto',
                             description.removeClass('eorr');
                             var prodata ={
                                 title:name.val(),
-                                desc:description.val()
+                                desc:description.val(),
+                                imgUrl:imgUrl.attr('src')
                             };
                             var projectId = getQueryString('projectId')||'';
 

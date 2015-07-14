@@ -1,10 +1,17 @@
 <div id="wxsharedailog" style="display: none">
     <form id="projectForm">
         <fieldset>
+            <label>分享标题:</label>
             <input placeholder='分享标题' id="name" type="text" name="name" required="" autofocus="">
         </fieldset>
         <fieldset>
+            <label>分享描述:</label>
             <textarea placeholder="分享描述" id="description" name="description" required=""></textarea>
+        </fieldset>
+        <fieldset>
+            <label>分享图片:</label>
+            <button type="button" id="selectImgUrl">选择图片</button>
+            <img placeholder="分享图片" src=""  style="width: 60px;height: 80px;vertical-align: middle;" id="imgUrl" name="imgUrl" required=""  />
         </fieldset>
     </form>
 </div>
