@@ -674,6 +674,7 @@ Pagecom.prototype={
                 $weixinshare.find('#name').val(msg.model[0].title)
                 $weixinshare.find('#description').val(msg.model[0].desc)
                 $weixinshare.find('#description').attr('shareid',msg.model[0]._id)
+                $weixinshare.find('#imgUrl').attr('src',msg.model[0].imgUrl);
             }
         }).fail(function (msg) {
             console.log(msg)
