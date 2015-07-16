@@ -1,7 +1,7 @@
 var config = {
     port:9898,
     passport: 'http://yhd.adanghome.com/passport',
-    domain:'http://yhd.adanghome.com/wxms',
+    domain:'http://120.132.50.71/wxms',
     previewDomain:'http://mxc.yhd.com/wxms_client'
 };
 
