@@ -36,7 +36,7 @@ Pagecom.prototype={
 
             if(msg.success){
                 if(msg.model.pageList.length===0){
-                    that.addFirstPage();
+                    //that.addFirstPage();
                 }else{
                     that.isfistadd=false;
                     msg.model.pageList.map(function(page){
@@ -410,10 +410,10 @@ Pagecom.prototype={
                         that.clearIphone();
                         that.delePageListByIndex(null,pageid);
                         if(that.pageList.length===0){
-                            index =  that.pageList.length;
-                            that.index =that.pageList.length;
-                            that.isfistadd=true;
-                            that.addFirstPage();
+                            //index =  that.pageList.length;
+                            //that.index =that.pageList.length;
+                            //that.isfistadd=true;
+                            //that.addFirstPage();
                         }else{
                             var  $a = curitem.children().first();
                             if($a.hasClass('cur-sort-page')){
