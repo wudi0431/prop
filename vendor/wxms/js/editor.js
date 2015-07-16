@@ -417,7 +417,20 @@ require(['dialog','wxms_config','template', 'rotatable', 'html2canvas', 'zepto',
 
         })
 
+         var $gohome = $('#gohome');
 
+        $gohome.on('click',function(){
+            $.ajax({
+                method: "get",
+                url: WXMS_config.domain+"/logout"
+            }).done(function (msg) {
+                if (msg.success) {
+                    window.location.href = WXMS_config.domain + '/index';
+                    window.localStorage.setItem('username', "");
+                }
+            }).fail(function (msg) {
 
+            });
+        });
 
     });

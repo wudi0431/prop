@@ -369,6 +369,8 @@ Pagecom.prototype={
         that.$pagelist.disableSelection();
 
         that.$items.on('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
             var curitem =$(this);
             var pindex =+curitem.attr('data-index');
             var pageid =curitem.attr('data-pageid');
@@ -413,8 +415,10 @@ Pagecom.prototype={
                             that.isfistadd=true;
                             that.addFirstPage();
                         }else{
-                            var nextpindex =pindex-1;
-                            that.addSelectPage(nextpindex==0?1:nextpindex);
+                            var  $a = curitem.children().first();
+                            if($a.hasClass('cur-sort-page')){
+                                that.addSelectPage(pindex-1);
+                            }
                         }
 
                     }
@@ -449,6 +453,7 @@ Pagecom.prototype={
                     that.isfistadd=true;
                     that.addFirstPage();
                 }else{
+
                     var nextpindex =curpagedata.sortindex-1;
                     that.addSelectPage(nextpindex==0?1:nextpindex);
                 }
@@ -608,7 +613,11 @@ Pagecom.prototype={
     //复制页面
     copePage: function (pagedata) {
         var that=this,btncomtLis=[],imgcomList=[],textcomList=[];
+        if(that.copyid && that.copyid==pagedata._id) return false;
+        console.log('that.copyid++++'+that.copyid)
         var pageid = pagedata._id;
+        that.copyid=pageid;
+
         that.btnComList.forEach(function (btn) {
             if(btn.page===pageid){
                 btncomtLis.push(btn)
@@ -633,11 +642,11 @@ Pagecom.prototype={
             name: pagedata.name,
             textcomList:textcomList
         }
-
-        var cindex =++that.index;
-
+        var $list = $('.page-item');
+        var linstindex = +$($list[$list.length-1]).attr('data-index');
+        var cindex =linstindex+1;
+        that.index=cindex
         tpldata.sortindex=cindex;
-
         if(tpldata.name.indexOf('第')!=-1){
             var n  ="第"+cindex+"页";
             tpldata.name=n;
@@ -658,6 +667,7 @@ Pagecom.prototype={
                     that.pageList.push(msg.model);
                     that.bindUI();
                     that._initCom(true);
+                    that.copyid=null;
                 }
             }
         });
