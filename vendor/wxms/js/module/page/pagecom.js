@@ -172,7 +172,7 @@ Pagecom.prototype={
                     if (img._id === obj.comData._id) {
                         img = obj.comData;
                         if (obj.isRemove) {
-                            that.btnComList.splice(index, 1);
+                            that.imgComtList.splice(index, 1);
                         }
                     }
                 });
