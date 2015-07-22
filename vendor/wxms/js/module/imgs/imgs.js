@@ -49,6 +49,18 @@ define(['FFF', 'jquery', 'jqui','wxms_config'], function(FFF, $,jqui,WXMS_config
             }
             that.$selectImgDialog.dialog('close');
         });
+
+        $('#imgurlbtn').on('click', function () {
+            var imgurl  = $('#imgurlval').val();
+            if(imgurl!=undefined && imgurl!=""){
+                if (that.onImgSelect) {
+                    that.onImgSelect(imgurl);
+                }
+                that.$selectImgDialog.dialog('close');
+
+            }
+        })
+
     };
 
     Imgs.getPubImgs = function() {
@@ -105,7 +117,8 @@ define(['FFF', 'jquery', 'jqui','wxms_config'], function(FFF, $,jqui,WXMS_config
 
     Imgs.show = function() {
         var that = this;
-
+        $('#imgurlval').val("");
+        $('#file').val("");
         that.$selectImgDialog.dialog('open');
     };
 
