@@ -92,7 +92,9 @@ define(['FFF', 'jquery', 'jqui','wxms_config'], function (FFF, $,jqui,WXMS_confi
                 var tplList = data.TemplateList || [];
                 var html = '';
                 if (tplList.length > 0) {
-                    that.pubTplList = tplList;
+                    that.pubTplList = tplList.sort(function (a,b) {
+                        return a.uid > b.uid;
+                    });
                     tplList.forEach(function (o) {
                         o.realImgUrl = '/wxms/uploadimg/' + o.imgUrl;
                         var t = str.replace(/(%(\w+)%)/g, function ($1, $2, $3) {
