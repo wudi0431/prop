@@ -49,7 +49,7 @@ require.config({
             deps: ['jquery']
         },
         rotatable: {
-            deps: ['jqui']
+            deps: ['jqui','transit']
         }
 
     }
