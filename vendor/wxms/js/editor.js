@@ -45,11 +45,8 @@ require.config({
         spectrum: {
             deps: ['jquery']
         },
-        transit: {
-            deps: ['jquery']
-        },
         rotatable: {
-            deps: ['jqui']
+            deps: ['jqui','transit']
         }
 
     }
