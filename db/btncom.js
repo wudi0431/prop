@@ -51,7 +51,10 @@ var BtnComSchema = new mongoose.Schema({
 
 BtnComSchema.static('deleteBtncom', function (btncomId, cb) {
     return this.findByIdAndRemove(btncomId, function (err, btncom) {
-        Page.updateProjectTime(btncom.page);
+        if(btncom){
+            Page.updateProjectTime(btncom.page);
+        }
+        
         if (cb) {
             cb(err, btncom);
         }
