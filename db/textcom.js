@@ -52,7 +52,9 @@ var TextComSchema = new mongoose.Schema({
 
 TextComSchema.static('deleteTextcom', function (textcomId, cb) {
     return this.findByIdAndRemove(textcomId, function (err, textcom) {
-        Page.updateProjectTime(textcom.page);
+        if(textcom){
+            Page.updateProjectTime(textcom.page);
+        }
         if (cb) {
             cb(err, textcom);
         }

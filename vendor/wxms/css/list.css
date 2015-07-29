@@ -88,13 +88,13 @@ body {
 }
 .list_info_intro {
     color: #757575;
-    font-size: 0.7rem;
+    font-size: 1.2rem;
     margin-top: 2%;
     border-right: 1px solid #CCCACA;
 }
 .list_info_time {
     color: #bbbbbb;
-    font-size: 0.7rem;
+    font-size: 1.2rem;
     margin-top: 5%;
     display: -webkit-box;
     display: -webkit-flex;

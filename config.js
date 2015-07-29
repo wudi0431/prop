@@ -1,12 +1,14 @@
 var config = {
     port:9898,
-    passport: 'http://120.132.50.71/passport',
-    domain:'http://120.132.50.71/wxms'
+    passport: 'http://yhd.adanghome.com/passport',
+    domain:'http://120.132.50.71/wxms',
+    previewDomain:'http://mxc.yhd.com/wxms_client'
 };
 
 //var config = {
-//    port:9898,
-//    passport: 'http://120.132.50.71/passport'
+//    port: 9898,
+//    passport: 'http://yhd.adanghome.com/passport',
+//    previewDomain: 'http://mxc.yhd.com/wxms_client'
 //};
 
 if ( typeof module === "object" && typeof module.exports === "object" ) {
