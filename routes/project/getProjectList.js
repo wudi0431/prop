@@ -32,4 +32,29 @@ router.get('/', function (req, res, next) {
 });
 
 
+router.get('/jsonp', function (req, res) {
+    var userId = req.query.userId;
+    var userName = req.query.userName;
+    Project.getProjectList({
+        id: userId,
+        name: userName
+    }, function (err, projectList) {
+        if (err) {
+            res.jsonp({
+                success: false,
+                model: {
+                    error: '系统错误'
+                }
+            });
+        } else {
+            res.jsonp({
+                success: true,
+                model: projectList
+            });
+        }
+    });
+
+});
+
+
 module.exports = router;
