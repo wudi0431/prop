@@ -32,11 +32,13 @@
             <span>添加图片</span> </a>
         <a href="javascript:;" class="ni j_new_button" id="addbutton"> <i class="fa fa-square"></i> <span>添加按钮</span>
         </a>
+        <a href="javascript:;" class="ni j_new_audiio" id="addaudiio"> <i class="fa fa-file-audio-o"></i> <span>背景音乐</span>
+        </a>
         <a class="ni nav-border"></a>
     </div>
     <div class="tool fr">
         <div class="dropdown j_global_panel ti">
-            <a href="javascript:;" id="wxshare" class="ti-a"> <i class="fa fa-save"></i> <span>分享</span> </a>
+            <a href="javascript:;" id="wxshare" class="ti-a"> <i class="fa fa-share-square-o"></i> <span>分享</span> </a>
         </div>
         <div class="ti j_elem_preview">
             <a href="javascript:;" class="ti-a j_preview_app"> <i class="fa fa-eye"></i> <span>预览</span> </a>
@@ -82,7 +84,9 @@
 <div class="W_wx_pageWarp"></div>
 <% include templeate_content.html %>
 
-<% include select_img.html %>
+<% include select_img.html
+
+<% include select_audio.html %>
 
 <% include wxshare.html %>
 

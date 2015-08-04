@@ -63,6 +63,9 @@ passport.login = function (req, res, cb) {
     }, function (re, rs, obj) {
         obj = JSON.parse(obj);
         if (obj.success) {
+            if(obj.model.user.__v!=undefined){
+                delete obj.model.user.__v;
+            }
             req.session.user = obj.model.user;
             cb(obj);
         } else {
