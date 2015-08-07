@@ -4,7 +4,7 @@ var Audio = require('../../db/audio');
 var filter = require('../passport.js');
 router.get('/', function(req, res, next) {
     filter.authorize(req, res, function (req, res) {
-        Audio.getPubAudio(function (err, audioEntity) {
+        Audio.getPubAudios(function (err, audioEntity) {
             if (err) {
                 res.status('500');
                 res.send({

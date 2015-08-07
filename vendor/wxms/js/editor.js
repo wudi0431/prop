@@ -27,7 +27,8 @@ require.config({
         template: '/wxms/js/module/template/template',
         rotatable: '/wxms/lib/rotatable',
         transit: '/wxms/lib/jquerytransit',
-        imgcom_cut: '/wxms/js/module/imgcom/imgcut'
+        imgcom_cut: '/wxms/js/module/imgcom/imgcut',
+        audio: '/wxms/js/module/audio/audio'
     },
     shim: {
         webchat: {
@@ -52,9 +53,9 @@ require.config({
     }
 });
 
-require(['dialog','wxms_config','template', 'rotatable', 'html2canvas', 'zepto', 'jquery', 'spectrum', 'btncom', 'imgcom', 'textcom', 'btncom_content', 'imgcom_content',
+require(['audio','dialog','wxms_config','template', 'rotatable', 'html2canvas', 'zepto', 'jquery', 'spectrum', 'btncom', 'imgcom', 'textcom', 'btncom_content', 'imgcom_content',
         'textcom_content', 'jqui', 'pagecom', 'imgs', 'FFF', 'animatecom', 'datasourcecom'],
-    function (Dialog,WXMS_config,Template, rotatable, Html2canvas, zepto, $, bigcolorpicker, Btncom, Imgcom, Textcom, btncom_content,
+    function (Audio,Dialog,WXMS_config,Template, rotatable, Html2canvas, zepto, $, bigcolorpicker, Btncom, Imgcom, Textcom, btncom_content,
               imgcom_content,textcom_content, jqui, Pagecom, Imgs, FFF, Animatecom, Datasourcecom) {
 
         //根据 url 的名字 获得 值
@@ -126,6 +127,8 @@ require(['dialog','wxms_config','template', 'rotatable', 'html2canvas', 'zepto',
         pagecom.initPage({Btncom: Btncom, Imgcom: Imgcom, Textcom: Textcom});
         var selectImgDialog = $('#selectImgDialog');
         selectImgDialog.tabs();
+        var selectAudioDialog = $('#selectAudioDialog');
+        selectAudioDialog.tabs();
 
         $('#prototype-content').tabs({
             beforeActivate: function (event, ui) {
@@ -158,11 +161,21 @@ require(['dialog','wxms_config','template', 'rotatable', 'html2canvas', 'zepto',
         var addtext = $('#addtext');
         var addimage = $('#addimage');
         var addbutton = $('#addbutton');
+        var addaudio = $('#addaudio');
         var addpages = $('.add-page-list');
 
         addpages.on('click', function (e) {
             e.stopPropagation();
             pagecom.addPage();
+        });
+        addaudio.on('click', function () {
+
+            Audio.onAudioSelect = function (audioSrc) {
+                var pageId = pagecom.getSelectPage();
+
+            };
+            Audio.show();
+
         });
         addimage.on('click', function () {
 

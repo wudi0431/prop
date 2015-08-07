@@ -1603,3 +1603,18 @@ body .cp-color-picker, body .colpick {
 #projectForm .eorr{
     border: 1px solid red;
 }
+
+.audio_span{
+    display: block;
+    float: right;
+}
+
+#audiouserWareList li{
+    cursor: pointer;
+}
+#audiouserWareList li:nth-child(even){
+    background: #f7f7f7;
+}
+#audiouserWareList li:hover{
+    background: #cceeed;
+}

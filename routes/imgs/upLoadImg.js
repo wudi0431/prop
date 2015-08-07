@@ -8,6 +8,7 @@ var os = require('os');
 var config = require('../../config');
 var domain = config.domain || getIpAddress(config.port);
 
+
 function getIpAddress(port) {
     var ifaces = os.networkInterfaces();
     var ipAddress = 'localhost';
@@ -32,7 +33,7 @@ router.post('/', function (req, res, next) {
         if (!isbase64) {
             img.name = req.files.codecsv.name;
             img.updatetime = new Date();
-            img.path = domain + '/uploadimg/' + img.name;
+            img.path = process.env.uploadsrc+ img.name;
             img.category = 1;
             img.user = req.session.user;
 
@@ -65,7 +66,7 @@ router.post('/', function (req, res, next) {
                 } else {
                     img.name = imgname;
                     img.updatetime = new Date();
-                    img.path = domain + '/uploadimg/' + img.name;
+                    img.path = process.env.uploadsrc + img.name;
                     img.category = 1;
                     img.user = req.session.user;
                     img.save(function (err, imgEntity) {

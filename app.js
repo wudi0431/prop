@@ -9,9 +9,11 @@ var path = require('path');
 var ejs = require('ejs');
 var session = require('express-session');
 var flash = require('connect-flash');
-
+var config = require('./config');
+process.env.uploadsrc = config.domain+'/';
 var mongoose = require('mongoose');
 if (process.env.NODE_ENV == 'dev') {
+    process.env.uploadsrc=config.domain+'/wxms/uploadimg/';
     mongoose.connect('mongodb://wxms:wxms@192.168.112.94:27017/wxms');
 } else {
     mongoose.connect('mongodb://127.0.0.1:27017/wxms');
@@ -27,7 +29,6 @@ app.use(session({
     cookie: {maxAge: 1000 * 60 * 60 * 24 * 30}//30 days
 }));
 
-
 app.use(multer({
     dest: __dirname + '/public/wxms/uploadimg/',
     rename: function (fieldname, filename) {
@@ -38,6 +39,7 @@ app.use(multer({
     },
     onFileUploadComplete: function (file) {
         console.log(file.fieldname + ' uploaded to  ' + file.path);
+        console.log(' file.size  ' + (file.size/1024/1024).toFixed(1));
     }
 }));
 
@@ -55,6 +57,9 @@ var getImgsByUser = require('./routes/imgs/getImgsByUser');
 var upLoadImg = require('./routes/imgs/upLoadImg');
 var getPubImgs = require('./routes/imgs/getPubImgs');
 
+var getAudiosByUser = require('./routes/audio/getAudiosByUser');
+var upLoadAudio= require('./routes/audio/upLoadAudio');
+var getPubAudios = require('./routes/audio/getPubIAudios');
 
 var addProject = require('./routes/project/addProject');
 var getProjectList = require('./routes/project/getProjectList');
@@ -130,6 +135,9 @@ app.use('/getImgsByUser', getImgsByUser);
 app.use('/upLoadImg', upLoadImg);
 app.use('/getPubImgs', getPubImgs);
 
+app.use('/getAudiosByUser', getAudiosByUser);
+app.use('/upLoadAudio', upLoadAudio);
+app.use('/getPubAudios', getPubAudios);
 
 app.use('/addBtncom', addBtncom);
 app.use('/deleteBtncom', deleteBtncom);

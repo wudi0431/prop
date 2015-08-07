@@ -1,16 +1,22 @@
-define(['FFF', 'jquery', 'jqui','wxms_config'], function(FFF, $,jqui,WXMS_config) {
+define(['FFF', 'jquery', 'jqui', 'wxms_config'], function (FFF, $, jqui, WXMS_config) {
     var F = FFF.FFF;
     WXMS_config.domain = WXMS_config.domain || '';
 
     var Audio = {};
 
-    Audio.init = function() {
+    Audio.close= function () {
+        $.each($("#selectAudioDialog > audio"), function (i,audio){
+            audio.pause()
+        })
+    }
+
+    Audio.init = function () {
         var that = this;
         //文件上传
-        $('#file_upload').on('click', function() {
+        $('#audiofile_upload').on('click', function () {
 
             var data = new FormData();
-            var files = $('#file')[0].files;
+            var files = $('#audiofile')[0].files;
             if (files.length === 0) {
                 alert('请选图片')
                 return false;
@@ -19,108 +25,155 @@ define(['FFF', 'jquery', 'jqui','wxms_config'], function(FFF, $,jqui,WXMS_config
             $.ajax({
                 cache: false,
                 type: 'post',
-                url: WXMS_config.domain+'/upLoadImg',
+                url: WXMS_config.domain + '/upLoadAudio',
                 data: data,
                 contentType: false,
                 processData: false,
-                success: function(data) {
-                    that.getImgsByUser();
+                success: function (data) {
+                    that.getAudiosByUser();
                 }
             })
         });
 
-        that.$selectImgDialog = $('#selectImgDialog').dialog({
+        that.$selectAudioDialog = $('#selectAudioDialog').dialog({
             autoOpen: false,
             resizable: false,
             width: 500,
             height: 600,
-            title: "选择图片",
-            modal: true
+            title: "选择背景音乐",
+            modal: true,
+            close: function( event, ui ) {
+                that.close()
+            }
         });
 
-        that.getPubImgs();
-        that.getImgsByUser();
+        that.getPubAudios();
+        that.getAudiosByUser();
 
-        $('#selectImgDialog').on('click', '.imgWareHref', function() {
+        $('#selectAudioDialog').on('click', '.audioWareHref', function () {
             var $that = $(this);
             var img = $that.children('img');
-            if (that.onImgSelect) {
-                that.onImgSelect(img.attr('src'));
+            if (that.onAudioSelect) {
+                that.onAudioSelect(img.attr('src'));
             }
-            that.$selectImgDialog.dialog('close');
+            that.$selectAudioDialog.dialog('close');
         });
 
-        $('#imgurlbtn').on('click', function () {
-            var imgurl  = $('#imgurlval').val();
-            if(imgurl!=undefined && imgurl!=""){
-                if (that.onImgSelect) {
-                    that.onImgSelect(imgurl);
+        $('#audiourlbtn').on('click', function () {
+            var audiourl = $('#audiourlval').val();
+            if (audiourl != undefined && audiourl != "") {
+                if (that.onAudioSelect) {
+                    that.onAudioSelect(audiourl);
                 }
-                that.$selectImgDialog.dialog('close');
+                that.$selectAudioDialog.dialog('close');
 
             }
         })
 
     };
 
-    Audio.getPubImgs = function() {
-        var imgWare = $('#imgWare');
-        var imgWareStr = '<li><a class="imgWareHref" href="javascript:;">' +
-            '<img src="%path%" style="width:100px;height: 200px;"></a>' +
+    Audio.getPubAudios = function () {
+        var audioWare = $('#audioWare');
+        var audioWareStr = '<li><a class="audioWareHref" href="javascript:;">' +
+            '<span src="%path%" style="width:100px;height: 200px;"></a>' +
             '</li>';
         $.ajax({
             method: "GET",
-            url: WXMS_config.domain+"/getPubImgs"
-        }).done(function(msg) {
-            var imgList = msg.model.imgList || [];
+            url: WXMS_config.domain + "/getPubAudios"
+        }).done(function (msg) {
+            var audioList = msg.model.audioList || [];
             var html = '';
-            if (imgList.length > 0) {
-                imgList.forEach(function(o, i) {
-                    var t = imgWareStr.replace(/(%(\w+)%)/g, function($1, $2, $3) {
+            if (audioList.length > 0) {
+                audioList.forEach(function (o, i) {
+                    var t = audioWare.replace(/(%(\w+)%)/g, function ($1, $2, $3) {
                         return o[$3] ? o[$3] : '';
                     });
                     html += t;
                 });
-                imgWare.html('').html(html);
+                audioWare.html('').html(html);
             } else {
-                imgWare.html('');
+                audioWare.html('');
             }
-        }).fail(function(msg) {});
+        }).fail(function (msg) {
+        });
     };
 
-    Audio.getImgsByUser = function() {
-        var userWare = $('#userWareList');
-        var imgWareStr = '<li><a class="imgWareHref" href="javascript:;">' +
-            '<img src="%path%" style="width:100px;height: 200px;"></a>' +
-            '</li>';
-
-
+    Audio.getAudiosByUser = function () {
+        var userWare = $('#audiouserWareList');
+        var audiohtml = '';
         $.ajax({
             method: "GET",
-            url: WXMS_config.domain+"/getImgsByUser"
-        }).done(function(msg) {
-            var imgList = msg.model.imgList || [];
+            url: WXMS_config.domain + "/getAudiosByUser"
+        }).done(function (msg) {
+            var audioList = msg.model.audioList || [];
             var html = '';
-            if (imgList.length > 0) {
-                imgList.forEach(function(o, i) {
-                    var t = imgWareStr.replace(/(%(\w+)%)/g, function($1, $2, $3) {
-                        return o[$3] ? o[$3] : '';
-                    });
-                    html += t;
+            if (audioList.length > 0) {
+                audioList.forEach(function (o, i) {
+                    var audioWareStr = '<li><span class="audio_span"><em>'+(o.size/1024/1024).toFixed(1)+'M</em><a href="javascript:;" data-src="'+ o.path+'" class="ti-a faremove"> <i  class="fa fa-remove"></i></a><a href="javascript:;" data-src="'+ o.path+'" class="ti-a faplay"> <i  class="fa fa-play"></i><audio style="display:none;"></audio></a></span>'
+                       +'<div class="linkName ng-binding" title="'+o.name+'">'+o.name+'</div>'
+                       +'</li>';
+                    html += audioWareStr;
                 });
                 userWare.html('').html(html);
+
+                $.each($('.faremove'), function (index,remove) {
+                    var $remove =$(remove);
+                    $remove.on('click', function () {
+                        $(this).parent('span').parent('li').remove()
+                    })
+                })
+                $.each($('.faplay'), function (index,play) {
+                    var $play =$(play);
+                    $play.on('click', function () {
+                        var src =$(this).data('src');
+                        var $paly =  $(this).children('audio');
+                        var $$paly = $paly.get(0);
+                        var $i = $(this).children('i');
+                        if($$paly.paused){
+                            $.each($("#selectAudioDialog audio"), function (i,audio){
+                                if(!audio.paused){
+                                    audio.pause()
+                                    $(audio).prev('i').removeClass('fa-play').addClass('fa-pause');
+                                }
+                            })
+                             var oldsrc = $paly.attr('src');
+                            if(oldsrc==undefined){
+                                $paly.attr('src',src);
+                            }
+                            $$paly.play();
+                            if($i.hasClass('fa-play')){
+                                $i.removeClass('fa-play').addClass('fa-pause');
+                            }else{
+                                $i.removeClass('fa-pause').addClass('fa-play');
+                            }
+
+
+                        }else{
+                            $$paly.pause();
+                            $i.removeClass('fa-play').addClass('fa-pause');
+                        }
+
+                    })
+                })
+
             } else {
                 userWare.html('');
             }
-        }).fail(function(msg) {});
+
+        }).fail(function (msg) {
+        });
+
+
     };
 
-    Audio.show = function() {
+    Audio.show = function () {
         var that = this;
-        $('#imgurlval').val("");
-        $('#file').val("");
-        that.$selectImgDialog.dialog('open');
+        $('#audiourlval').val("");
+        $('#audiofile').val("");
+        that.$selectAudioDialog.dialog('open');
     };
+
+
 
 
     Audio.init();

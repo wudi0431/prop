@@ -27,7 +27,8 @@ router.post('/', function (req, res, next) {
         var audio = new Audio();
         audio.name = req.files.codecsv.name;
         audio.updatetime = new Date();
-        audio.path = domain + '/uploadimg/' + audio.name;
+        audio.size = req.files.codecsv.size;
+        audio.path = process.env.uploadsrc+ audio.name;
         audio.category = 1;
         audio.user = req.session.user;
         audio.save(function (err, audioEntity) {

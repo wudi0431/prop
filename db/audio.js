@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 
 var AudioSchema = new mongoose.Schema({
     name: String,
+    size:Number,
     updatetime: Date,
     category: Number,
     path: String,
@@ -11,13 +12,13 @@ var AudioSchema = new mongoose.Schema({
     }
 });
 
-AudioSchema.static('getAudioByUser', function (user, cb) {
+AudioSchema.static('getAudiosByUser', function (user, cb) {
     return this.find({
         user: user
     }, cb);
 });
 
-AudioSchema.static('getPubAudio', function (cb) {
+AudioSchema.static('getPubAudios', function (cb) {
     return this.find({}).exec(function (err, obj) {
         if(obj){
             obj = obj.filter(function (o) {
