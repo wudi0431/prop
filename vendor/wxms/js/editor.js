@@ -28,7 +28,8 @@ require.config({
         rotatable: '/wxms/lib/rotatable',
         transit: '/wxms/lib/jquerytransit',
         imgcom_cut: '/wxms/js/module/imgcom/imgcut',
-        audio: '/wxms/js/module/audio/audio'
+        audio: '/wxms/js/module/audio/audio',
+        context_menu: '/wxms/lib/jquerycontextmenu/jquery.contextMenu'
     },
     shim: {
         webchat: {
@@ -43,6 +44,9 @@ require.config({
         jqui: {
             deps: ['jquery']
         },
+        context_menu:{
+            deps: ['jqui']
+        },
         spectrum: {
             deps: ['jquery']
         },
@@ -53,9 +57,9 @@ require.config({
     }
 });
 
-require(['audio','dialog','wxms_config','template', 'rotatable', 'html2canvas', 'zepto', 'jquery', 'spectrum', 'btncom', 'imgcom', 'textcom', 'btncom_content', 'imgcom_content',
+require(['context_menu','audio','dialog','wxms_config','template', 'rotatable', 'html2canvas', 'zepto', 'jquery', 'spectrum', 'btncom', 'imgcom', 'textcom', 'btncom_content', 'imgcom_content',
         'textcom_content', 'jqui', 'pagecom', 'imgs', 'FFF', 'animatecom', 'datasourcecom'],
-    function (Audio,Dialog,WXMS_config,Template, rotatable, Html2canvas, zepto, $, bigcolorpicker, Btncom, Imgcom, Textcom, btncom_content,
+    function (context_menu,Audio,Dialog,WXMS_config,Template, rotatable, Html2canvas, zepto, $, bigcolorpicker, Btncom, Imgcom, Textcom, btncom_content,
               imgcom_content,textcom_content, jqui, Pagecom, Imgs, FFF, Animatecom, Datasourcecom) {
 
         //根据 url 的名字 获得 值
@@ -445,4 +449,19 @@ require(['audio','dialog','wxms_config','template', 'rotatable', 'html2canvas', 
             });
         });
 
+
+        //TODO 右键菜单
+        $.contextMenu({
+            selector: '.W_item',
+            callback: function(key, options) {
+                var m = "clicked: " + key;
+                window.console && console.log(m) || alert(m);
+            },
+            items: {
+                "copy": {name: "Copy", icon: "copy"},
+                "paste": {name: "Paste", icon: "paste"}
+            }
+        });
+
+        //TODO 右键菜单
     });
