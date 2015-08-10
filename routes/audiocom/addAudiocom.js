@@ -7,8 +7,8 @@ router.post('/', function (req, res, next) {
     filter.authorize(req, res, function (req, res) {
         req.body.user = req.session.user;
         var reqtext = req.body.audiocom;
-
         reqtext.project = req.body.projectId;
+        reqtext.audio = req.body.audioId;
 
         var audiocom = new Audiocom(reqtext);
 

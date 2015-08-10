@@ -12,6 +12,10 @@ var AudioComSchema = new mongoose.Schema({
     project: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Project'
+    },
+    audio: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Audio'
     }
 });
 
@@ -75,6 +79,7 @@ AudioComSchema.static('updateAudiocom', function (Audiocom, cb) {
     delete Audiocom._id;
     delete Audiocom.__v;
     delete Audiocom.project;
+    delete Audiocom.audio;
     return this.findOneAndUpdate({
         _id: AudiocomId
     }, Audiocom, {'new': true}, function (err, AudiocomEntity) {

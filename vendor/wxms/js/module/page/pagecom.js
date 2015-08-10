@@ -232,11 +232,11 @@ Pagecom.prototype={
         }).done(function (msg) {
             if(msg.success && msg.model.length>0){
                 if(that.ops.Audiocom){
-                    new that.ops.Audiocom({data:msg.model,Audio:Audio}).render({
+                    new that.ops.Audiocom({data:msg.model[0],Audio:Audio, audioId:msg.model[0].audio}).render({
                         container:zepto('#showbox')
                     });
-                    that.audioCom=msg.model;
-                    Audio.setData(msg.model);
+                    that.audioCom=msg.model[0];
+                    Audio.setData(msg.model[0]);
                 }
             }
 

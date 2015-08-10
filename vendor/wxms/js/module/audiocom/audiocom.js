@@ -21,6 +21,9 @@ define(['FFF', 'zepto', 'jquery','stylecom','wxms_config'], function (FFF, $, jq
         audioSrc:{
             value:''
         },
+        audioId:{
+            value:''
+        },
         audio:{
             value:''
         }
@@ -36,8 +39,8 @@ define(['FFF', 'zepto', 'jquery','stylecom','wxms_config'], function (FFF, $, jq
         update: function () {
             var that = this;
             var audiocomEntity = that.getData() || that.audio.getData();
-            audiocomEntity = jq.isArray(audiocomEntity) ? audiocomEntity[0]:audiocomEntity;
             audiocomEntity.audiourl= that.getAudioSrc();
+            audiocomEntity.audio= that.getAudioId();
             jq.ajax({
                 method: "POST",
                 url: WXMS_config.domain+"/updateAudiocom",
@@ -45,6 +48,8 @@ define(['FFF', 'zepto', 'jquery','stylecom','wxms_config'], function (FFF, $, jq
             }).done(function (msg) {
                 if (msg.success) {
                     F.trigger('comChange', {type: 'Audiocom', comData: msg.model, isUpdate: true});
+
+                    that.$j_tool_audio.attr('data-id',that.getAudioId());
                 }
             }).fail(function (msg) {
             });
@@ -52,16 +57,18 @@ define(['FFF', 'zepto', 'jquery','stylecom','wxms_config'], function (FFF, $, jq
         _bindUI: function () {
             var that = this;
             var data = that.getData() || that.audio.getData();
-            data = jq.isArray(data) ? data[0]:data;
             if(data.audiourl){
                 that.$j_tool_audio.removeClass('item-visible').children('i').removeClass('item-visible');
                 that.$j_tool_audio_remove.removeClass('item-visible').children('i').removeClass('item-visible');
+                that.$j_tool_audio.attr('data-id',that.getAudioId());
             }
             that.$j_tool_audio.on('click',function(){
-                that.audio.show();
+                var id = $(this).data('id');
+                that.audio.show(id);
                 if(that.audio.onAudioSelect==undefined){
-                    that.audio.onAudioSelect= function (src) {
+                    that.audio.onAudioSelect= function (src,id) {
                         that.setAudioSrc(src);
+                        that.setAudioId(id);
                         that._addAudiocom(that._bindUI);
                     }
                 }
@@ -78,7 +85,6 @@ define(['FFF', 'zepto', 'jquery','stylecom','wxms_config'], function (FFF, $, jq
         delSelf: function () {
             var that = this;
             var AudiocomEntity = that.getData() ||  that.audio.getData();
-            AudiocomEntity = jq.isArray(AudiocomEntity) ? AudiocomEntity[0]:AudiocomEntity;
             jq.ajax({
                 method: "POST",
                 url: WXMS_config.domain+"/deleteAudiocom",
@@ -121,6 +127,7 @@ define(['FFF', 'zepto', 'jquery','stylecom','wxms_config'], function (FFF, $, jq
                     url: WXMS_config.domain+"/addAudiocom",
                     data: {
                         projectId: projectId,
+                        audioId:that.getAudioId(),
                         audiocom: AudiocomEntity
                     }
                 }).done(function (msg) {
