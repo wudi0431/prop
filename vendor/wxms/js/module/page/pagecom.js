@@ -1,8 +1,8 @@
 /**
  * Created by wudi on 15/5/27.
  */
-define(['jquery','jqui','zepto','pagecom_content','FFF','imgcut','template','wxms_config'],
-    function($,jqui,zepto,pagecom_content,FFF,imgcut,Template,WXMS_config) {
+define(['jquery','jqui','zepto','pagecom_content','FFF','imgcut','template','wxms_config','audio'],
+    function($,jqui,zepto,pagecom_content,FFF,imgcut,Template,WXMS_config,Audio) {
 
 
 var index = 0,
@@ -19,6 +19,7 @@ function Pagecom(){
     this.btnComList=[];
     this.imgComtList = [];
     this.textComtList = [];
+    this.audioCom=null;
     this.isfistadd=true;
 };
 Pagecom.prototype={
@@ -68,6 +69,7 @@ Pagecom.prototype={
             that.pageList.forEach(function (page,index) {
                 that._getComData(page._id,page.sortindex);
             });
+            that.initAuidocom();
             F.on('comChange', function (obj) {
                 that.updateCom(obj);
             });
@@ -190,6 +192,12 @@ Pagecom.prototype={
                     }
                 });
             }
+        }else if(obj.type=='Audiocom') {
+            if (obj.isRemove) {
+                that.audioCom=null;
+            } else {
+                that.audioCom=obj.comData;
+            }
         }
     },
     _addCom: function (pageid) {
@@ -215,6 +223,26 @@ Pagecom.prototype={
                 });
             }
         })
+    },
+    initAuidocom: function () {
+        var that =this;
+        $.ajax({
+            method: "GET",
+            url: WXMS_config.domain+"/getAudiocomListByprojectId?projectId="+projectId
+        }).done(function (msg) {
+            if(msg.success && msg.model.length>0){
+                if(that.ops.Audiocom){
+                    new that.ops.Audiocom({data:msg.model,Audio:Audio}).render({
+                        container:zepto('#showbox')
+                    });
+                    that.audioCom=msg.model;
+                    Audio.setData(msg.model);
+                }
+            }
+
+        }).fail(function (msg) {
+            console.log(msg)
+        });
     },
     // 添加页面
     addPage:function(istpl){

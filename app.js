@@ -60,6 +60,7 @@ var getPubImgs = require('./routes/imgs/getPubImgs');
 var getAudiosByUser = require('./routes/audio/getAudiosByUser');
 var upLoadAudio= require('./routes/audio/upLoadAudio');
 var getPubAudios = require('./routes/audio/getPubIAudios');
+var deleteAudio = require('./routes/audio/deleteAudio');
 
 var addProject = require('./routes/project/addProject');
 var getProjectList = require('./routes/project/getProjectList');
@@ -94,6 +95,11 @@ var getTplByUser = require('./routes/template/getTplByUser');
 var generationPage = require('./routes/template/generationPage');
 var deleteTemplate = require('./routes/template/deleteTemplate');
 
+
+var addAudiocom = require('./routes/audiocom/addAudiocom');
+var deleteAudiocom = require('./routes/audiocom/deleteAudiocom');
+var updateAudiocom = require('./routes/audiocom/updateAudiocom');
+var getAudiocomListByprojectId = require('./routes/audiocom/getAudiocomListByprojectId');
 
 
 var preview = require('./routes/preview/preview');
@@ -138,6 +144,7 @@ app.use('/getPubImgs', getPubImgs);
 app.use('/getAudiosByUser', getAudiosByUser);
 app.use('/upLoadAudio', upLoadAudio);
 app.use('/getPubAudios', getPubAudios);
+app.use('/deleteAudio', deleteAudio);
 
 app.use('/addBtncom', addBtncom);
 app.use('/deleteBtncom', deleteBtncom);
@@ -180,7 +187,10 @@ app.use('/getTplByUser',getTplByUser);
 app.use('/deleteTemplate',deleteTemplate);
 app.use('/generationPage',generationPage);
 
-
+app.use('/addAudiocom', addAudiocom);
+app.use('/deleteAudiocom', deleteAudiocom);
+app.use('/updateAudiocom', updateAudiocom);
+app.use('/getAudiocomListByprojectId', getAudiocomListByprojectId);
 
 app.use('/show', preview);
 
