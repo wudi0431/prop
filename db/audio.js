@@ -29,6 +29,13 @@ AudioSchema.static('getPubAudios', function (cb) {
     });
 });
 
+AudioSchema.static('deleteAudio', function (AudiocomId, cb) {
+    return this.findByIdAndRemove(AudiocomId, function (err, AudiocomEntity) {
+        if (cb) {
+            cb(err, AudiocomEntity);
+        }
+    })
+});
 
 var AudioModel = mongoose.model('Audio', AudioSchema);
 module.exports = AudioModel;

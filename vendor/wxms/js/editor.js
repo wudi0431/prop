@@ -28,7 +28,8 @@ require.config({
         rotatable: '/wxms/lib/rotatable',
         transit: '/wxms/lib/jquerytransit',
         imgcom_cut: '/wxms/js/module/imgcom/imgcut',
-        audio: '/wxms/js/module/audio/audio'
+        audio: '/wxms/js/module/audio/audio',
+        audiocom: '/wxms/js/module/audiocom/audiocom'
     },
     shim: {
         webchat: {
@@ -53,9 +54,9 @@ require.config({
     }
 });
 
-require(['audio','dialog','wxms_config','template', 'rotatable', 'html2canvas', 'zepto', 'jquery', 'spectrum', 'btncom', 'imgcom', 'textcom', 'btncom_content', 'imgcom_content',
+require(['audiocom','audio','dialog','wxms_config','template', 'rotatable', 'html2canvas', 'zepto', 'jquery', 'spectrum', 'btncom', 'imgcom', 'textcom', 'btncom_content', 'imgcom_content',
         'textcom_content', 'jqui', 'pagecom', 'imgs', 'FFF', 'animatecom', 'datasourcecom'],
-    function (Audio,Dialog,WXMS_config,Template, rotatable, Html2canvas, zepto, $, bigcolorpicker, Btncom, Imgcom, Textcom, btncom_content,
+    function (Audiocom,Audio,Dialog,WXMS_config,Template, rotatable, Html2canvas, zepto, $, bigcolorpicker, Btncom, Imgcom, Textcom, btncom_content,
               imgcom_content,textcom_content, jqui, Pagecom, Imgs, FFF, Animatecom, Datasourcecom) {
 
         //根据 url 的名字 获得 值
@@ -69,6 +70,7 @@ require(['audio','dialog','wxms_config','template', 'rotatable', 'html2canvas', 
         var F = FFF.FFF;
         var Btncom = Btncom.Btncom;
         var Imgcom = Imgcom.Imgcom;
+        var Audiocom = Audiocom.Audiocom;
         var Textcom = Textcom.Textcom;
         var Animatecom = Animatecom.Animatecom;
         var Datasourcecom = Datasourcecom.DataSourcecom;
@@ -124,7 +126,7 @@ require(['audio','dialog','wxms_config','template', 'rotatable', 'html2canvas', 
         var procon = $('#prototype-content');
         procon.tabs();
         var pagecom = new Pagecom();
-        pagecom.initPage({Btncom: Btncom, Imgcom: Imgcom, Textcom: Textcom});
+        pagecom.initPage({Btncom: Btncom, Imgcom: Imgcom, Textcom: Textcom,Audiocom:Audiocom});
         var selectImgDialog = $('#selectImgDialog');
         selectImgDialog.tabs();
         var selectAudioDialog = $('#selectAudioDialog');
@@ -171,12 +173,19 @@ require(['audio','dialog','wxms_config','template', 'rotatable', 'html2canvas', 
         addaudio.on('click', function () {
 
             Audio.onAudioSelect = function (audioSrc) {
-                var pageId = pagecom.getSelectPage();
-
+                var audiocom = new Audiocom({
+                    projectId: projectId,
+                    audioSrc: audioSrc,
+                    Audio:Audio
+                });
+                audiocom.render({
+                    container: zepto('#showbox')
+                });
             };
             Audio.show();
 
         });
+
         addimage.on('click', function () {
 
             Imgs.onImgSelect = function (imgSrc) {

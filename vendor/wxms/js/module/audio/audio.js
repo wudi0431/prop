@@ -4,8 +4,8 @@ define(['FFF', 'jquery', 'jqui', 'wxms_config'], function (FFF, $, jqui, WXMS_co
 
     var Audio = {};
 
-    Audio.close= function () {
-        $.each($("#selectAudioDialog > audio"), function (i,audio){
+    Audio.close = function () {
+        $.each($("#selectAudioDialog audio"), function (i, audio) {
             audio.pause()
         })
     }
@@ -31,6 +31,7 @@ define(['FFF', 'jquery', 'jqui', 'wxms_config'], function (FFF, $, jqui, WXMS_co
                 processData: false,
                 success: function (data) {
                     that.getAudiosByUser();
+                    $('#audiofile').val("");
                 }
             })
         });
@@ -42,7 +43,7 @@ define(['FFF', 'jquery', 'jqui', 'wxms_config'], function (FFF, $, jqui, WXMS_co
             height: 600,
             title: "选择背景音乐",
             modal: true,
-            close: function( event, ui ) {
+            close: function (event, ui) {
                 that.close()
             }
         });
@@ -52,9 +53,9 @@ define(['FFF', 'jquery', 'jqui', 'wxms_config'], function (FFF, $, jqui, WXMS_co
 
         $('#selectAudioDialog').on('click', '.audioWareHref', function () {
             var $that = $(this);
-            var img = $that.children('img');
+            var src = $that.data('src');
             if (that.onAudioSelect) {
-                that.onAudioSelect(img.attr('src'));
+                that.onAudioSelect(src);
             }
             that.$selectAudioDialog.dialog('close');
         });
@@ -109,46 +110,60 @@ define(['FFF', 'jquery', 'jqui', 'wxms_config'], function (FFF, $, jqui, WXMS_co
             var html = '';
             if (audioList.length > 0) {
                 audioList.forEach(function (o, i) {
-                    var audioWareStr = '<li><span class="audio_span"><em>'+(o.size/1024/1024).toFixed(1)+'M</em><a href="javascript:;" data-src="'+ o.path+'" class="ti-a faremove"> <i  class="fa fa-remove"></i></a><a href="javascript:;" data-src="'+ o.path+'" class="ti-a faplay"> <i  class="fa fa-play"></i><audio style="display:none;"></audio></a></span>'
-                       +'<div class="linkName ng-binding" title="'+o.name+'">'+o.name+'</div>'
-                       +'</li>';
+                    var audioWareStr = '<li><span class="audio_span"><em>' + (o.size / 1024 / 1024).toFixed(1) + 'M</em><a href="javascript:;" data-src="' + o.path + '" class="ti-a faplay"> <i  class="fa fa-play"></i><audio style="display:none;"></audio></a><a href="javascript:;" data-id="' + o._id + '" class="ti-a faremove"> <i  class="fa fa-remove"></i></a></span>'
+                        + '<div class="audioWareHref"  data-src="' + o.path + '" title="' + o.name + '">' + o.name + '</div>'
+                        + '</li>';
                     html += audioWareStr;
                 });
                 userWare.html('').html(html);
 
-                $.each($('.faremove'), function (index,remove) {
-                    var $remove =$(remove);
+                $.each($('.faremove'), function (index, remove) {
+                    var $remove = $(remove);
                     $remove.on('click', function () {
-                        $(this).parent('span').parent('li').remove()
+                        var that = $(this);
+                        var audioId = $(this).data('id') || "";
+                        if (audioId != "") {
+                            $.ajax({
+                                method: "POST",
+                                url: WXMS_config.domain + "/deleteAudio",
+                                data: {
+                                    audioId: audioId
+                                }
+                            }).done(function (msg) {
+                                that.parent('span').parent('li').remove();
+                            }).fail(function (msg) {
+                                console.log(msg);
+                            });
+                        }
                     })
                 })
-                $.each($('.faplay'), function (index,play) {
-                    var $play =$(play);
+                $.each($('.faplay'), function (index, play) {
+                    var $play = $(play);
                     $play.on('click', function () {
-                        var src =$(this).data('src');
-                        var $paly =  $(this).children('audio');
+                        var src = $(this).data('src');
+                        var $paly = $(this).children('audio');
                         var $$paly = $paly.get(0);
                         var $i = $(this).children('i');
-                        if($$paly.paused){
-                            $.each($("#selectAudioDialog audio"), function (i,audio){
-                                if(!audio.paused){
+                        if ($$paly.paused) {
+                            $.each($("#selectAudioDialog audio"), function (i, audio) {
+                                if (!audio.paused) {
                                     audio.pause()
                                     $(audio).prev('i').removeClass('fa-play').addClass('fa-pause');
                                 }
                             })
-                             var oldsrc = $paly.attr('src');
-                            if(oldsrc==undefined){
-                                $paly.attr('src',src);
+                            var oldsrc = $paly.attr('src');
+                            if (oldsrc == undefined) {
+                                $paly.attr('src', src);
                             }
                             $$paly.play();
-                            if($i.hasClass('fa-play')){
+                            if ($i.hasClass('fa-play')) {
                                 $i.removeClass('fa-play').addClass('fa-pause');
-                            }else{
+                            } else {
                                 $i.removeClass('fa-pause').addClass('fa-play');
                             }
 
 
-                        }else{
+                        } else {
                             $$paly.pause();
                             $i.removeClass('fa-play').addClass('fa-pause');
                         }
@@ -173,11 +188,23 @@ define(['FFF', 'jquery', 'jqui', 'wxms_config'], function (FFF, $, jqui, WXMS_co
         that.$selectAudioDialog.dialog('open');
     };
 
+    Audio.getData = function () {
+        if (this.data && this.data != "") {
+            return this.data;
+        } else{
+            this.data=null;
+            return false;
+    }
+};
+
+Audio.setData = function (data) {
+    this.data = data || "";
+};
 
 
+Audio.init();
 
-    Audio.init();
 
-
-    return Audio;
-});
+return Audio;
+})
+;

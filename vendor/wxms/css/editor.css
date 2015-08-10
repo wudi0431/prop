@@ -901,7 +901,7 @@ body .cp-color-picker, body .colpick {
 }
 
 .item-visible {
-    display: none;
+    display: none!important;
 }
 
 .plugin-page .page-edit input {
@@ -1617,4 +1617,32 @@ body .cp-color-picker, body .colpick {
 }
 #audiouserWareList li:hover{
     background: #cceeed;
+}
+
+#audio_btn {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    z-index: 200;
+    display: none;
+    width: 50px;
+    height: 50px;
+    background-repeat: no-repeat
+}
+.off {
+    background-image: url(../img/music_off.png);
+    background-size: 30px 30px;
+    background-repeat: no-repeat;
+    background-position: center center
+}
+.nr {
+    background-color: #000;
+    position: relative;
+    cursor: pointer;
+    height: 486px;
+    border-right: 1px solid #f6f6f6;
+    border-left: 1px solid #F6F6F6;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    -webkit-user-select: none
 }
