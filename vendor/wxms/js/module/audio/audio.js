@@ -54,8 +54,9 @@ define(['FFF', 'jquery', 'jqui', 'wxms_config'], function (FFF, $, jqui, WXMS_co
         $('#selectAudioDialog').on('click', '.audioWareHref', function () {
             var $that = $(this);
             var src = $that.data('src');
+            var id = $that.parent('li').data('id');
             if (that.onAudioSelect) {
-                that.onAudioSelect(src);
+                that.onAudioSelect(src,id);
             }
             that.$selectAudioDialog.dialog('close');
         });
@@ -110,7 +111,7 @@ define(['FFF', 'jquery', 'jqui', 'wxms_config'], function (FFF, $, jqui, WXMS_co
             var html = '';
             if (audioList.length > 0) {
                 audioList.forEach(function (o, i) {
-                    var audioWareStr = '<li><span class="audio_span"><em>' + (o.size / 1024 / 1024).toFixed(1) + 'M</em><a href="javascript:;" data-src="' + o.path + '" class="ti-a faplay"> <i  class="fa fa-play"></i><audio style="display:none;"></audio></a><a href="javascript:;" data-id="' + o._id + '" class="ti-a faremove"> <i  class="fa fa-remove"></i></a></span>'
+                    var audioWareStr = '<li data-id="'+ o._id+'"><span class="audio_span"><em>' + (o.size / 1024 / 1024).toFixed(1) + 'M</em><a href="javascript:;" data-src="' + o.path + '" class="ti-a faplay"> <i  class="fa fa-play"></i><audio style="display:none;"></audio></a><a href="javascript:;" data-id="' + o._id + '" class="ti-a faremove"> <i  class="fa fa-remove"></i></a></span>'
                         + '<div class="audioWareHref"  data-src="' + o.path + '" title="' + o.name + '">' + o.name + '</div>'
                         + '</li>';
                     html += audioWareStr;
@@ -181,10 +182,20 @@ define(['FFF', 'jquery', 'jqui', 'wxms_config'], function (FFF, $, jqui, WXMS_co
 
     };
 
-    Audio.show = function () {
+    Audio.show = function (oid) {
         var that = this;
         $('#audiourlval').val("");
         $('#audiofile').val("");
+        if(oid){
+            $('#audiouserWareList').children('li').each(function(index,item){
+                var id =  $(item).data('id');
+                if(id==oid){
+                    $(item).addClass('selectaudiobk')
+                }else{
+                    $(item).removeClass('selectaudiobk')
+                }
+            })
+        }
         that.$selectAudioDialog.dialog('open');
     };
 

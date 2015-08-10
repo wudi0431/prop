@@ -1615,9 +1615,10 @@ body .cp-color-picker, body .colpick {
 #audiouserWareList li:nth-child(even){
     background: #f7f7f7;
 }
-#audiouserWareList li:hover{
-    background: #cceeed;
+#audiouserWareList li:hover,.selectaudiobk{
+    background: #cceeed!important;
 }
+
 
 #audio_btn {
     position: absolute;

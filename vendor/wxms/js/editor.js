@@ -176,15 +176,17 @@ require(['context_menu','audiocom','audio','dialog','wxms_config','template', 'r
         });
         addaudio.on('click', function () {
 
-            Audio.onAudioSelect = function (audioSrc) {
+            Audio.onAudioSelect = function (audioSrc,audioId) {
                 var audiocom = new Audiocom({
                     projectId: projectId,
                     audioSrc: audioSrc,
-                    Audio:Audio
+                    Audio:Audio,
+                    audioId:audioId
                 });
                 audiocom.render({
                     container: zepto('#showbox')
                 });
+
             };
             Audio.show();
 
