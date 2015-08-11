@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 var TextComSchema = new mongoose.Schema({
     context: {type: String, default: '这里是文本'},
     textAlign: {type: String, default: 'center'},
-    zIndex: {type:Number,default:1},
+    zIndex: {type: Number, default: 1},
     top: {type: String, default: '200px'},
     left: {type: String, default: '100px'},
     right: {type: String, default: '0px'},
@@ -18,8 +18,8 @@ var TextComSchema = new mongoose.Schema({
     borderWidth: {type: String, default: '0px'},
     borderStyle: {type: String, default: 'none'},
     borderRadius: {type: String, default: '0px;'},
-    boxShadow:{type: String, default: '0px 0px 0px 0px rgb(221,221,221)'},
-    textShadow:{type: String, default: '0px 0px 0px rgb(221,221,221)'},
+    boxShadow: {type: String, default: '0px 0px 0px 0px rgb(221,221,221)'},
+    textShadow: {type: String, default: '0px 0px 0px rgb(221,221,221)'},
     paddingTop: {type: String, default: '0px'},
     paddingLeft: {type: String, default: '0px'},
     paddingRight: {type: String, default: '0px'},
@@ -52,7 +52,7 @@ var TextComSchema = new mongoose.Schema({
 
 TextComSchema.static('deleteTextcom', function (textcomId, cb) {
     return this.findByIdAndRemove(textcomId, function (err, textcom) {
-        if(textcom){
+        if (textcom) {
             Page.updateProjectTime(textcom.page);
         }
         if (cb) {
@@ -106,6 +106,15 @@ TextComSchema.static('getTextcomListByTemplateId', function (templateId, cb) {
     }, cb)
 });
 
+TextComSchema.static('copyItem', function (textcomId, pageId, cb) {
+    return this.findById(textcomId, function (err, textcomEntity) {
+        if (textcomEntity) {
+            textcomEntity = mixObject(textcomEntity);
+            textcomEntity.page = pageId;
+            new TextComModel(textcomEntity).save(cb);
+        }
+    });
+});
 
 
 TextComSchema.static('updateTextcom', function (textcom, cb) {
@@ -116,7 +125,7 @@ TextComSchema.static('updateTextcom', function (textcom, cb) {
     return this.findOneAndUpdate({
         _id: textcomId
     }, textcom, {'new': true}, function (err, textcomEntity) {
-        if(textcomEntity){
+        if (textcomEntity) {
             Page.updateProjectTime(textcomEntity.page);
         }
         if (cb) {
@@ -125,6 +134,37 @@ TextComSchema.static('updateTextcom', function (textcom, cb) {
     });
 });
 
+
+function type(o) {
+    var TYPES = {
+        'undefined': 'undefined',
+        'number': 'number',
+        'boolean': 'boolean',
+        'string': 'string',
+        '[object String]': 'string',
+        '[object Number]': 'number',
+        '[object Function]': 'function',
+        '[object RegExp]': 'regexp',
+        '[object Array]': 'array',
+        '[object Date]': 'date',
+        '[object Error]': 'error'
+    };
+
+    var TOSTRING = Object.prototype.toString;
+    return TYPES[typeof o] || TYPES[TOSTRING.call(o)] || (o ? 'object' : 'null');
+}
+
+function mixObject(obj) {
+    var tmpObj = {};
+    for (var key in obj) {
+        if (type(obj[key]) == 'string' || type(obj[key]) == 'number' || type(obj[key]) == 'array') {
+            tmpObj[key] = obj[key];
+        }
+    }
+    delete tmpObj.id;
+    delete tmpObj.__v;
+    return tmpObj;
+}
 
 var TextComModel = mongoose.model('TextCom', TextComSchema);
 module.exports = TextComModel;

@@ -189,6 +189,7 @@ define(['FFF', 'zepto', 'jquery','stylecom','wxms_config'], function (FFF, $, jq
         _renderTextcom: function (data, next) {
             var that = this;
             var $box = that.getBoundingBox();
+            $box.data('itemId',data._id);
             var tpl = '<div class="W_text">' + data.context + '</div>';
             tpl += '<i class="W_delItem">X</i>';
             $box.append(tpl);

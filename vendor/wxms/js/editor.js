@@ -464,13 +464,54 @@ require(['context_menu','audiocom','audio','dialog','wxms_config','template', 'r
         //TODO 右键菜单
         $.contextMenu({
             selector: '.W_item',
-            callback: function(key, options) {
-                var m = "clicked: " + key;
-                window.console && console.log(m) || alert(m);
-            },
             items: {
-                "copy": {name: "Copy", icon: "copy"},
-                "paste": {name: "Paste", icon: "paste"}
+                "copy": {
+                    name: "Copy",
+                    icon: "copy",
+                    callback: function (key, opt) {
+                        var itemId = opt.$trigger.data('itemId');
+                        var type = opt.$trigger.data('type');
+                        $('#showbox').data('cutWidget', itemId);
+                        $('#showbox').data('cutWidgetType', type);
+                    }
+                },
+                "paste": {
+                    name: "Paste",
+                    icon: "paste",
+                    callback: function (key, opt) {
+                        var pageId = pagecom.getSelectPage();
+                        var type = $('#showbox').data('cutWidgetType');
+                        $.ajax({
+                            method: "post",
+                            url: WXMS_config.domain + "/copyItem",
+                            data: {
+                                itemId: $('#showbox').data('cutWidget'),
+                                type: type,
+                                pageId: pageId
+                            }
+                        }).done(function (msg) {
+                            if (msg.success) {
+                                if (type == 'textcom') {
+                                    msg.model.top = parseFloat(msg.model.top,10)+10;
+                                    msg.model.left = parseFloat(msg.model.left,10)+10;
+                                    msg.model.top +='px';
+                                    msg.model.left +='px';
+                                    new Textcom({
+                                        data: msg.model
+                                    }).render({
+                                        container: zepto('#showbox')
+                                    });
+                                }
+                            }
+                        }).fail(function (msg) {
+
+                        });
+
+                    },
+                    disabled: function (key, opt) {
+                        return !$('#showbox').data('cutWidget');
+                    }
+                }
             }
         });
 

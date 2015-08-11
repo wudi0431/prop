@@ -22,7 +22,7 @@ PageSchema.static('deletePage', function (pageId, cb) {
             PageModel.updateProjectTime(page._id);
             if (cb) {
                 cb(err, page);
-             }
+            }
         }
     });
 });
@@ -74,6 +74,14 @@ PageSchema.static('updateProjectTime', function (pageId) {
             Project.updateProjectTime(page.project);
         }
     });
+});
+
+PageSchema.static('copyItem', function (itemId, type,pageId, cb) {
+    switch (type) {
+        case 'textcom':
+            return Textcom.copyItem(itemId,pageId, cb);
+    }
+
 });
 
 
