@@ -76,9 +76,7 @@ define(['FFF', 'jquery', 'jqui', 'wxms_config'], function (FFF, $, jqui, WXMS_co
 
     Audio.getPubAudios = function () {
         var audioWare = $('#audioWare');
-        var audioWareStr = '<li><a class="audioWareHref" href="javascript:;">' +
-            '<span src="%path%" style="width:100px;height: 200px;"></a>' +
-            '</li>';
+
         $.ajax({
             method: "GET",
             url: WXMS_config.domain + "/getPubAudios"
@@ -87,10 +85,10 @@ define(['FFF', 'jquery', 'jqui', 'wxms_config'], function (FFF, $, jqui, WXMS_co
             var html = '';
             if (audioList.length > 0) {
                 audioList.forEach(function (o, i) {
-                    var t = audioWare.replace(/(%(\w+)%)/g, function ($1, $2, $3) {
-                        return o[$3] ? o[$3] : '';
-                    });
-                    html += t;
+                    var audioWareStr = '<li data-id="'+ o._id+'"><span class="audio_span"><em>' + (o.size / 1024 / 1024).toFixed(1) + 'M</em></span>'
+                        + '<div class="audioWareHref"  data-src="' + o.path + '" title="' + o.name + '">' + o.name + '</div>'
+                        + '</li>';
+                    html += audioWareStr;
                 });
                 audioWare.html('').html(html);
             } else {
@@ -102,7 +100,6 @@ define(['FFF', 'jquery', 'jqui', 'wxms_config'], function (FFF, $, jqui, WXMS_co
 
     Audio.getAudiosByUser = function () {
         var userWare = $('#audiouserWareList');
-        var audiohtml = '';
         $.ajax({
             method: "GET",
             url: WXMS_config.domain + "/getAudiosByUser"
@@ -187,7 +184,7 @@ define(['FFF', 'jquery', 'jqui', 'wxms_config'], function (FFF, $, jqui, WXMS_co
         $('#audiourlval').val("");
         $('#audiofile').val("");
         if(oid){
-            $('#audiouserWareList').children('li').each(function(index,item){
+            $('#audiouserWareList,#audioWare').children('li').each(function(index,item){
                 var id =  $(item).data('id');
                 if(id==oid){
                     $(item).addClass('selectaudiobk')

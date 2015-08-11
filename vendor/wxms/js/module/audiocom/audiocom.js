@@ -49,7 +49,7 @@ define(['FFF', 'zepto', 'jquery','stylecom','wxms_config'], function (FFF, $, jq
                 if (msg.success) {
                     F.trigger('comChange', {type: 'Audiocom', comData: msg.model, isUpdate: true});
 
-                    that.$j_tool_audio.attr('data-id',that.getAudioId());
+                    $('.j_tool_audio').attr('data-id',that.getAudioId());
                 }
             }).fail(function (msg) {
             });
