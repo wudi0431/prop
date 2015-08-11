@@ -80,6 +80,10 @@ PageSchema.static('copyItem', function (itemId, type,pageId, cb) {
     switch (type) {
         case 'textcom':
             return Textcom.copyItem(itemId,pageId, cb);
+        case 'btncom':
+            return Btncom.copyItem(itemId,pageId, cb);
+        case 'imgcom':
+            return Imgcom.copyItem(itemId,pageId, cb);
     }
 
 });

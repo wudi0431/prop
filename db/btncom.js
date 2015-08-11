@@ -104,6 +104,16 @@ BtnComSchema.static('getBtncomListByTemplateId', function (templateId, cb) {
     }, cb);
 });
 
+BtnComSchema.static('copyItem', function (btncomId, pageId, cb) {
+    return this.findById(btncomId, function (err, btncomEntity) {
+        if (btncomEntity) {
+            btncomEntity = mixObject(btncomEntity);
+            btncomEntity.page = pageId;
+            new BtnComModel(btncomEntity).save(cb);
+        }
+    });
+});
+
 
 BtnComSchema.static('updateBtncom', function (btncom, cb) {
     var btncomId = btncom._id;
@@ -121,6 +131,37 @@ BtnComSchema.static('updateBtncom', function (btncom, cb) {
         }
     });
 });
+
+function type(o) {
+    var TYPES = {
+        'undefined': 'undefined',
+        'number': 'number',
+        'boolean': 'boolean',
+        'string': 'string',
+        '[object String]': 'string',
+        '[object Number]': 'number',
+        '[object Function]': 'function',
+        '[object RegExp]': 'regexp',
+        '[object Array]': 'array',
+        '[object Date]': 'date',
+        '[object Error]': 'error'
+    };
+
+    var TOSTRING = Object.prototype.toString;
+    return TYPES[typeof o] || TYPES[TOSTRING.call(o)] || (o ? 'object' : 'null');
+}
+
+function mixObject(obj) {
+    var tmpObj = {};
+    for (var key in obj) {
+        if (type(obj[key]) == 'string' || type(obj[key]) == 'number' || type(obj[key]) == 'array') {
+            tmpObj[key] = obj[key];
+        }
+    }
+    delete tmpObj.id;
+    delete tmpObj.__v;
+    return tmpObj;
+}
 
 var BtnComModel = mongoose.model('BtnCom', BtnComSchema);
 module.exports = BtnComModel;

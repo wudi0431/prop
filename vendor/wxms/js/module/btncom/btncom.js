@@ -196,6 +196,7 @@ define(['FFF', 'zepto', 'jquery','stylecom','wxms_config'], function (FFF, $, jq
         _renderBtncom: function (data, next) {
             var that = this;
             var $box = that.getBoundingBox();
+            $box.data('itemId',data._id);
             var tpl = '<button type="button" class="W_btn">' + data.context + '</button>';
             tpl += '<i class="W_delItem">X</i>';
             $box.append(tpl);

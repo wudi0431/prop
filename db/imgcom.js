@@ -94,6 +94,16 @@ ImgComSchema.static('getImgcomListByTemplateId', function (templateId, cb) {
     }, cb)
 });
 
+ImgComSchema.static('copyItem', function (imgcomId, pageId, cb) {
+    return this.findById(imgcomId, function (err, imgcomEntity) {
+        if (imgcomEntity) {
+            imgcomEntity = mixObject(imgcomEntity);
+            imgcomEntity.page = pageId;
+            new ImgComModel(imgcomEntity).save(cb);
+        }
+    });
+});
+
 
 ImgComSchema.static('updateImgcom', function (imgcom, cb) {
     var imgcomId = imgcom._id;
@@ -111,6 +121,37 @@ ImgComSchema.static('updateImgcom', function (imgcom, cb) {
         }
     })
 });
+
+function type(o) {
+    var TYPES = {
+        'undefined': 'undefined',
+        'number': 'number',
+        'boolean': 'boolean',
+        'string': 'string',
+        '[object String]': 'string',
+        '[object Number]': 'number',
+        '[object Function]': 'function',
+        '[object RegExp]': 'regexp',
+        '[object Array]': 'array',
+        '[object Date]': 'date',
+        '[object Error]': 'error'
+    };
+
+    var TOSTRING = Object.prototype.toString;
+    return TYPES[typeof o] || TYPES[TOSTRING.call(o)] || (o ? 'object' : 'null');
+}
+
+function mixObject(obj) {
+    var tmpObj = {};
+    for (var key in obj) {
+        if (type(obj[key]) == 'string' || type(obj[key]) == 'number' || type(obj[key]) == 'array') {
+            tmpObj[key] = obj[key];
+        }
+    }
+    delete tmpObj.id;
+    delete tmpObj.__v;
+    return tmpObj;
+}
 
 var ImgComModel = mongoose.model('ImgCom', ImgComSchema);
 module.exports = ImgComModel;

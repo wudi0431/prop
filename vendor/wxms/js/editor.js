@@ -501,6 +501,109 @@ require(['context_menu','audiocom','audio','dialog','wxms_config','template', 'r
                                     }).render({
                                         container: zepto('#showbox')
                                     });
+                                    F.trigger('comChange', {type: 'textcom', comData: msg.model, isAdd: true});
+                                }
+
+                                if (type == 'btncom') {
+                                    msg.model.top = parseFloat(msg.model.top,10)+10;
+                                    msg.model.left = parseFloat(msg.model.left,10)+10;
+                                    msg.model.top +='px';
+                                    msg.model.left +='px';
+                                    new Btncom({
+                                        data: msg.model
+                                    }).render({
+                                            container: zepto('#showbox')
+                                        });
+                                    F.trigger('comChange', {type: 'btncom', comData: msg.model, isAdd: true});
+                                }
+
+                                if (type == 'imgcom') {
+                                    msg.model.top = parseFloat(msg.model.top,10)+10;
+                                    msg.model.left = parseFloat(msg.model.left,10)+10;
+                                    msg.model.top +='px';
+                                    msg.model.left +='px';
+                                    new Imgcom({
+                                        data: msg.model
+                                    }).render({
+                                            container: zepto('#showbox')
+                                        });
+                                    F.trigger('comChange', {type: 'imgcom', comData: msg.model, isAdd: true});
+                                }
+                            }
+                        }).fail(function (msg) {
+
+                        });
+
+                    },
+                    disabled: function (key, opt) {
+                        return !$('#showbox').data('cutWidget');
+                    }
+                }
+            }
+        });
+
+
+        $.contextMenu({
+            selector: '#showbox',
+            items: {
+                "copy": {
+                    name: "Copy",
+                    icon: "copy",
+                    disabled:true
+                },
+                "paste": {
+                    name: "Paste",
+                    icon: "paste",
+                    callback: function (key, opt) {
+                        var pageId = pagecom.getSelectPage();
+                        var type = $('#showbox').data('cutWidgetType');
+                        $.ajax({
+                            method: "post",
+                            url: WXMS_config.domain + "/copyItem",
+                            data: {
+                                itemId: $('#showbox').data('cutWidget'),
+                                type: type,
+                                pageId: pageId
+                            }
+                        }).done(function (msg) {
+                            if (msg.success) {
+                                if (type == 'textcom') {
+                                    msg.model.top = parseFloat(msg.model.top,10)+10;
+                                    msg.model.left = parseFloat(msg.model.left,10)+10;
+                                    msg.model.top +='px';
+                                    msg.model.left +='px';
+                                    new Textcom({
+                                        data: msg.model
+                                    }).render({
+                                            container: zepto('#showbox')
+                                        });
+                                    F.trigger('comChange', {type: 'textcom', comData: msg.model, isAdd: true});
+                                }
+
+                                if (type == 'btncom') {
+                                    msg.model.top = parseFloat(msg.model.top,10)+10;
+                                    msg.model.left = parseFloat(msg.model.left,10)+10;
+                                    msg.model.top +='px';
+                                    msg.model.left +='px';
+                                    new Btncom({
+                                        data: msg.model
+                                    }).render({
+                                            container: zepto('#showbox')
+                                        });
+                                    F.trigger('comChange', {type: 'btncom', comData: msg.model, isAdd: true});
+                                }
+
+                                if (type == 'imgcom') {
+                                    msg.model.top = parseFloat(msg.model.top,10)+10;
+                                    msg.model.left = parseFloat(msg.model.left,10)+10;
+                                    msg.model.top +='px';
+                                    msg.model.left +='px';
+                                    new Imgcom({
+                                        data: msg.model
+                                    }).render({
+                                            container: zepto('#showbox')
+                                        });
+                                    F.trigger('comChange', {type: 'imgcom', comData: msg.model, isAdd: true});
                                 }
                             }
                         }).fail(function (msg) {

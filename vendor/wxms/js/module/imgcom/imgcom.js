@@ -183,6 +183,7 @@ define(['FFF', 'zepto', 'jquery','stylecom','wxms_config'], function (FFF, $, jq
         _renderImgcom: function (data, next) {
             var that = this;
             var $box = that.getBoundingBox();
+            $box.data('itemId',data._id);
             var tpl = '<img class="W_imgcom" src="' + data.imgurl + '"/>';
             tpl += '<i class="W_delItem">X</i>';
             $box.append(tpl);
