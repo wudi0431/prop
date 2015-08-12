@@ -9,6 +9,7 @@ router.post('/', function (req, res, next) {
         var reqtext = req.body.imgcom;
 
         reqtext.page = req.body.pageId;
+        reqtext.img = req.body.imgId;
 
         var imgcom = new Imgcom(reqtext);
 

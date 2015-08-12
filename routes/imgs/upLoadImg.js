@@ -34,7 +34,7 @@ router.post('/', function (req, res, next) {
             img.name = req.files.codecsv.name;
             img.updatetime = new Date();
             img.path = process.env.uploadsrc+ img.name;
-            img.category = 1;
+            img.category = req.body.categoryvalue;
             img.user = req.session.user;
 
             img.save(function (err, imgEntity) {

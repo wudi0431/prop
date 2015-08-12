@@ -132,10 +132,10 @@ define(['FFF', 'zepto', 'jquery','stylecom','wxms_config'], function (FFF, $, jq
             },that);
 
 
-            F.on('imgcomContextChange', function (val) {
+            F.on('imgcomContextChange', function (obj) {
                 if (that.$box.hasClass('select')) {
-                    that.$boxContent.attr('src',val);
-                    data.imgurl = val;
+                    that.$boxContent.attr('src',obj.path);
+                    data.imgurl = obj.path;
                     that.setData(data);
                     that.update();
                 }
@@ -184,7 +184,7 @@ define(['FFF', 'zepto', 'jquery','stylecom','wxms_config'], function (FFF, $, jq
             var that = this;
             var $box = that.getBoundingBox();
             $box.data('itemId',data._id);
-            var tpl = '<img class="W_imgcom" src="' + data.imgurl + '"/>';
+            var tpl = '<img class="W_imgcom" data-mid="'+data.img+'" src="' + data.imgurl + '"/>';
             tpl += '<i class="W_delItem">X</i>';
             $box.append(tpl);
             that.$box = $box;
