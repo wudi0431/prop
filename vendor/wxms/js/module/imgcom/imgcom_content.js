@@ -30,8 +30,8 @@ define(['FFF', 'jquery', 'imgcom_cut', 'imgs'], function (FFF, $, imgcom_cut, Im
 
 
     J_imgcomContent.on('click', '.j_select_bgImgcom', function (e) {
-        Imgs.onImgSelect = function (imgSrc) {
-            F.trigger('imgcomContextChange', imgSrc);
+        Imgs.onImgSelect = function (imgSrc,imgid) {
+            F.trigger('imgcomContextChange', imgSrc,imgid);
             imgcom_cut.initImgCut(imgSrc);
         };
         Imgs.show();

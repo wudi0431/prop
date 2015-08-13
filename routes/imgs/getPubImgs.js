@@ -4,7 +4,8 @@ var Imgs = require('../../db/imgs');
 var filter = require('../passport.js');
 router.get('/', function(req, res, next) {
     filter.authorize(req, res, function (req, res) {
-        Imgs.getPubImgs(function (err, imgsEntity) {
+        var category = req.query.category;
+        Imgs.getPubImgs(category,function (err, imgsEntity) {
             if (err) {
                 res.status('500');
                 res.send({

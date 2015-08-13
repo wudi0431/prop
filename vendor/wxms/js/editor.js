@@ -193,7 +193,6 @@ require(['context_menu','audiocom','audio','dialog','wxms_config','template', 'r
         });
 
         addimage.on('click', function () {
-
             Imgs.onImgSelect = function (imgSrc) {
                 var pageId = pagecom.getSelectPage();
                 var imgcom = new Imgcom({

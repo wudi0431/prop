@@ -1,13 +1,13 @@
-define(['FFF', 'jquery', 'jqui','wxms_config'], function(FFF, $,jqui,WXMS_config) {
+define(['FFF', 'jquery', 'jqui', 'wxms_config'], function (FFF, $, jqui, WXMS_config) {
     var F = FFF.FFF;
     WXMS_config.domain = WXMS_config.domain || '';
 
     var Imgs = {};
-    
-    Imgs.init = function() {
+
+    Imgs.init = function () {
         var that = this;
         //文件上传
-        $('#file_upload').on('click', function() {
+        $('#file_upload').on('click', function () {
 
             var data = new FormData();
             var files = $('#file')[0].files;
@@ -16,15 +16,18 @@ define(['FFF', 'jquery', 'jqui','wxms_config'], function(FFF, $,jqui,WXMS_config
                 return false;
             }
             data.append('codecsv', files[0]);
+            data.append('categoryvalue', parseInt(that.categoryvalue) || 1);
             $.ajax({
                 cache: false,
                 type: 'post',
-                url: WXMS_config.domain+'/upLoadImg',
+                url: WXMS_config.domain + '/upLoadImg',
                 data: data,
                 contentType: false,
                 processData: false,
-                success: function(data) {
+                success: function (data) {
                     that.getImgsByUser();
+                    $('#file').val("");
+
                 }
             })
         });
@@ -37,11 +40,11 @@ define(['FFF', 'jquery', 'jqui','wxms_config'], function(FFF, $,jqui,WXMS_config
             title: "选择图片",
             modal: true
         });
-
+        that.addSelectDom()
         that.getPubImgs();
         that.getImgsByUser();
 
-        $('#selectImgDialog').on('click', '.imgWareHref', function() {
+        $('#selectImgDialog').on('click', '.imgWareHref', function () {
             var $that = $(this);
             var img = $that.children('img');
             if (that.onImgSelect) {
@@ -51,8 +54,8 @@ define(['FFF', 'jquery', 'jqui','wxms_config'], function(FFF, $,jqui,WXMS_config
         });
 
         $('#imgurlbtn').on('click', function () {
-            var imgurl  = $('#imgurlval').val();
-            if(imgurl!=undefined && imgurl!=""){
+            var imgurl = $('#imgurlval').val();
+            if (imgurl != undefined && imgurl != "") {
                 if (that.onImgSelect) {
                     that.onImgSelect(imgurl);
                 }
@@ -61,22 +64,59 @@ define(['FFF', 'jquery', 'jqui','wxms_config'], function(FFF, $,jqui,WXMS_config
             }
         })
 
+        $('#imgCategory').children('li').each(function (index, item) {
+            var $item = $(item);
+            $item.on('click', function () {
+                $item.siblings().each(function (n, li) {
+                    if ($(li).hasClass('cur')) {
+                        $(li).removeClass('cur');
+                    }
+                })
+                if (!$item.hasClass('cur')) {
+                    $item.addClass('cur')
+                }
+                var category = $(this).data('category');
+                that.getPubImgs(category)
+            })
+        })
+
+        $('#selectcategory').change(function () {
+            that.categoryvalue = $(this).children('option:selected').val();
+        })
+
+
+        $('#userWareList').on('mousemove', 'li', function () {
+            $(this).children('i').css('display', 'block');
+        }).on('mouseout', 'li', function () {
+            $(this).children('i').css('display', 'none');
+        });
+
+        $('#selectImgDialog').on('click', '.W_delItem', function () {
+            var $that = $(this);
+            var $li = $that.parent('li');
+            var $img = $that.prev('a').children('img');
+            var mid = $img.data('mid');
+            that.delImgsByUser(mid, $li);
+        });
+
+
     };
 
-    Imgs.getPubImgs = function() {
+    Imgs.getPubImgs = function (category) {
         var imgWare = $('#imgWare');
         var imgWareStr = '<li><a class="imgWareHref" href="javascript:;">' +
-            '<img src="%path%" style="width:100px;height: 200px;"></a>' +
+            '<img src="%path%" data-mid="%_id%" style="width:100px;height: 200px;"></a>' +
             '</li>';
+        category = category || 1;
         $.ajax({
             method: "GET",
-            url: WXMS_config.domain+"/getPubImgs"
-        }).done(function(msg) {
+            url: WXMS_config.domain + "/getPubImgs?category=" + category
+        }).done(function (msg) {
             var imgList = msg.model.imgList || [];
             var html = '';
             if (imgList.length > 0) {
-                imgList.forEach(function(o, i) {
-                    var t = imgWareStr.replace(/(%(\w+)%)/g, function($1, $2, $3) {
+                imgList.forEach(function (o, i) {
+                    var t = imgWareStr.replace(/(%(\w+)%)/g, function ($1, $2, $3) {
                         return o[$3] ? o[$3] : '';
                     });
                     html += t;
@@ -85,42 +125,78 @@ define(['FFF', 'jquery', 'jqui','wxms_config'], function(FFF, $,jqui,WXMS_config
             } else {
                 imgWare.html('');
             }
-        }).fail(function(msg) {});
+        }).fail(function (msg) {
+        });
     };
 
-    Imgs.getImgsByUser = function() {
+    Imgs.getImgsByUser = function () {
         var userWare = $('#userWareList');
         var imgWareStr = '<li><a class="imgWareHref" href="javascript:;">' +
-            '<img src="%path%" style="width:100px;height: 200px;"></a>' +
+            '<img src="%path%" data-mid="%_id%" style="width:100px;height: 200px;"></a>' +
+            '<i class="W_delItem">X</i>' +
             '</li>';
-
-
         $.ajax({
             method: "GET",
-            url: WXMS_config.domain+"/getImgsByUser"
-        }).done(function(msg) {
+            url: WXMS_config.domain + "/getImgsByUser"
+        }).done(function (msg) {
             var imgList = msg.model.imgList || [];
             var html = '';
             if (imgList.length > 0) {
-                imgList.forEach(function(o, i) {
-                    var t = imgWareStr.replace(/(%(\w+)%)/g, function($1, $2, $3) {
+                imgList.forEach(function (o, i) {
+                    var t = imgWareStr.replace(/(%(\w+)%)/g, function ($1, $2, $3) {
                         return o[$3] ? o[$3] : '';
                     });
+
                     html += t;
                 });
                 userWare.html('').html(html);
             } else {
                 userWare.html('');
             }
-        }).fail(function(msg) {});
+        }).fail(function (msg) {
+        });
     };
 
-    Imgs.show = function() {
+
+    Imgs.delImgsByUser = function (imgId, $li) {
+        $.ajax({
+            method: "POST",
+            url: WXMS_config.domain + "/deleteImg",
+            data: {
+                imgId: imgId
+            }
+        }).done(function (msg) {
+            $li.remove();
+        }).fail(function (msg) {
+            //alert(msg);
+        });
+    }
+
+    Imgs.show = function () {
         var that = this;
         $('#imgurlval').val("");
         $('#file').val("");
         that.$selectImgDialog.dialog('open');
     };
+
+    Imgs.addSelectDom = function () {
+
+        var username = window.localStorage.getItem('username');
+
+        if (username === 'admin') {
+            var shtml = '<select id="selectcategory">' +
+                '<option value="1" selected>全部</option>' +
+                '<option value="2">背景</option>' +
+                '<option value="3">元素</option>' +
+                '<option value="4">表情</option>' +
+                '<option value="5">文字</option>' +
+                '</select>';
+            $('#userWare').prepend(shtml);
+
+        }
+
+
+    }
 
 
     Imgs.init();

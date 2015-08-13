@@ -1,15 +1,15 @@
+/**
+ * Created by wudi on 15/8/7.
+ */
 var express = require('express');
 var router = express.Router();
 var filter = require('../passport.js');
-var Imgcom = require('../../db/imgcom');
-
-
+var Imgs = require('../../db/imgs');
 
 router.post('/', function (req, res, next) {
     filter.authorize(req, res, function (req, res) {
-        var imgcom = req.body;
-        console.log(imgcom)
-        Imgcom.updateImgcom(imgcom, function (err, imgcomEntity) {
+        var imgId = req.body.imgId;
+        Imgs.deleteImg(imgId,function (err, imgEntity) {
             if (err) {
                 res.status('500');
                 res.send({
@@ -22,7 +22,9 @@ router.post('/', function (req, res, next) {
                 res.status('200');
                 res.send({
                     success: true,
-                    model: imgcomEntity
+                    model: {
+                        _id: imgEntity._id
+                    }
                 });
             }
         });

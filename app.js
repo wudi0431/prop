@@ -56,6 +56,7 @@ var updateBtncom = require('./routes/btncom/updateBtncom');
 var getImgsByUser = require('./routes/imgs/getImgsByUser');
 var upLoadImg = require('./routes/imgs/upLoadImg');
 var getPubImgs = require('./routes/imgs/getPubImgs');
+var deleteImg = require('./routes/imgs/deleteImg');
 
 var getAudiosByUser = require('./routes/audio/getAudiosByUser');
 var upLoadAudio= require('./routes/audio/upLoadAudio');
@@ -182,6 +183,7 @@ app.use('/deleteImgcom', deleteImgcom);
 app.use('/getImgcom', getImgcom);
 app.use('/getImgcomListByPageId', getImgcomListByPageId);
 app.use('/updateImgcom', updateImgcom);
+app.use('/deleteImg', deleteImg);
 
 
 app.use('/addTplByUser',addTplByUser);

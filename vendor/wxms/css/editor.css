@@ -1278,11 +1278,13 @@ body .cp-color-picker, body .colpick {
 #userWareList li {
     display: inline-flex;
     margin: 5px 5px;
+    position: relative;
 }
 
 .imgWareHref:hover img {
     opacity: 0.5;
 }
+
 
 .W_delItem {
     display: none;
@@ -1646,4 +1648,18 @@ body .cp-color-picker, body .colpick {
     overflow-x: hidden;
     overflow-y: hidden;
     -webkit-user-select: none
+}
+
+#imgCategory li{
+    float: left;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 20px;
+    cursor: pointer;
+}
+#imgCategory li.cur{
+    background: #c9c9c9;
+}
+#selectcategory{
+    width: 120px;
 }

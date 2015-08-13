@@ -98,8 +98,8 @@ define(['jquery','FFF','wxms_config'], function ($,FFF,WXMS_config) {
             url: WXMS_config.domain+'/upLoadImg',
             data: idata, 
             success: function (msg) {
-                F.trigger('imgcomContextChange', WXMS_config.domain + '/uploadimg/'+msg.model.name);
-                initImgCut('/wxms/uploadimg/'+msg.model.name);
+                F.trigger('imgcomContextChange',msg.model);
+                initImgCut(msg.model.path);
             }
         });
 
