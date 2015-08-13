@@ -409,11 +409,11 @@ Pagecom.prototype={
                     $.each(that.$items,function(index,item){
                         $(item).find('[data-role="title-edit"]').hide();
                     });
-                    $ed.show();
+                    $ed.css('display','inline-block');
                     $ed.nextAll().addClass("item-visible");
                     break;
                 case "btn-edit-cancel":
-                    $ed.hide();
+                    $ed.css('display','none');
                     $ed.nextAll().removeClass("item-visible");
                     break;
                 case "btn-edit-post":
