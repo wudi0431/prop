@@ -22,7 +22,7 @@ WeiXinShareSchema.static('deleteWeiXinShare', function (shareid, cb) {
 });
 
 WeiXinShareSchema.static('getWeiXinShareByProjectId', function (projectId, cb) {
-    return this.find({
+    return this.findOne({
         project: projectId
     }, cb);
 });
