@@ -6,7 +6,7 @@ var TemplateSchema = new Schema({
     name: String,
     backgroundcolor: String,//页面背景
     backgroundimage: String,
-    category: Number,
+    category: Number,//1:全部，2：版式，3：风格，4：互动
     imgUrl: String,
     user: {
         id: String,
@@ -15,13 +15,14 @@ var TemplateSchema = new Schema({
 });
 
 
-TemplateSchema.static('addTplByUser', function (pageId, user, imgUrl, cb) {
+TemplateSchema.static('addTplByUser', function (pageId, user, imgUrl,category, cb) {
     return Page.getPage(pageId, function (err, pageEntity) {
         if (pageEntity) {
             var tplEntity = mixObject(pageEntity);
 
             tplEntity.user = user;
             tplEntity.imgUrl = imgUrl;
+            tplEntity.category = category;
 
             var tpl = new TemplateModel(tplEntity);
             tpl.save(function (err, templateEntity) {
@@ -81,8 +82,8 @@ function mixObject(obj) {
 }
 
 
-TemplateSchema.static('getPubTpl', function (cb) {
-    return this.find({}).exec(function (err, templateList) {
+TemplateSchema.static('getPubTpl', function (category,cb) {
+    return this.find({category:category}).exec(function (err, templateList) {
 
         if (templateList) {
             templateList = templateList.filter(function (o) {

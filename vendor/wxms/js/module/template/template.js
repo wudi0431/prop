@@ -19,7 +19,16 @@ define(['FFF', 'jquery', 'jqui','wxms_config'], function (FFF, $,jqui,WXMS_confi
             modal: true
         });
 
-        $('#selectTplDialog').tabs();
+        $('#selectTplDialog').tabs({
+            activate: function( event, ui ) {
+                console.log(ui)
+                if(ui.newTab.context.hash=='#userTplWare'){
+                    $('#tplCategory').hide();
+                }else{
+                    $('#tplCategory').show();
+                }
+            }
+        });
 
         that.drawPubTpl();
         that.drawUserTpl();
@@ -62,6 +71,24 @@ define(['FFF', 'jquery', 'jqui','wxms_config'], function (FFF, $,jqui,WXMS_confi
             var uid = $img.data('uid');
             that.delTpl(uid, $tpl);
         });
+
+        $('#tplCategory').children('li').each(function (index, item) {
+            var $item = $(item);
+            $item.on('click', function () {
+                $item.siblings().each(function (n, li) {
+                    if ($(li).hasClass('cur')) {
+                        $(li).removeClass('cur');
+                    }
+                })
+                if (!$item.hasClass('cur')) {
+                    $item.addClass('cur')
+                }
+                var category = $(this).data('category');
+                that.drawPubTpl(category)
+            })
+        })
+
+
     };
 
 
@@ -80,14 +107,17 @@ define(['FFF', 'jquery', 'jqui','wxms_config'], function (FFF, $,jqui,WXMS_confi
 
     };
 
-    Template.drawPubTpl = function () {
+    Template.drawPubTpl = function (category) {
         var that = this;
 
         var tplWare = $('#tplWare');
 
+        var category = category || 1;
+
+
         $.ajax({
             type: 'GET',
-            url: WXMS_config.domain+'/getPubTpl',
+            url: WXMS_config.domain+'/getPubTpl?category='+category,
             success: function (data) {
                 var tplList = data.TemplateList || [];
                 var html = '';

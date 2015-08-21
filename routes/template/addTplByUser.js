@@ -10,7 +10,7 @@ var Template = require('../../db/template');
 router.post('/', function (req, res, next) {
     filter.authorize(req, res, function (req, res) {
         var pageId = req.body.pageId;
-
+        var category = req.body.category;
         var imgData = req.body.imgData;
         var dataBuffer = new Buffer(imgData, 'base64');
         var imgname = uuid(8,16)+'.png';
@@ -19,7 +19,7 @@ router.post('/', function (req, res, next) {
 
 
 
-        Template.addTplByUser(pageId, req.session.user, imgname, function (err, tplEntity) {
+        Template.addTplByUser(pageId, req.session.user, imgname,category, function (err, tplEntity) {
             if (err) {
                 res.status('500');
                 res.send({

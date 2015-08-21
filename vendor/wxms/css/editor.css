@@ -1657,9 +1657,19 @@ body .cp-color-picker, body .colpick {
     padding: 0 20px;
     cursor: pointer;
 }
-#imgCategory li.cur{
+#tplCategory li{
+
+    height: 30px!important;
+    line-height: 30px!important;
+    padding: 0 20px!important;
+    cursor: pointer!important;
+}
+#imgCategory li.cur,#tplCategory li.cur{
     background: #c9c9c9;
 }
-#selectcategory{
+#selectcategory,#tempateSelect{
     width: 120px;
+}
+#tplWare{
+
 }

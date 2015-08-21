@@ -6,7 +6,8 @@ var Template = require('../../db/template');
 
 router.get('/', function (req, res, next) {
     filter.authorize(req, res, function (req, res) {
-        Template.getPubTpl(function (err, templateList) {
+        var category = req.query.category;
+        Template.getPubTpl(category,function (err, templateList) {
             if (err) {
                 res.status('500');
                 res.send({

@@ -102,27 +102,47 @@ require(['context_menu','audiocom','audio','dialog','wxms_config','template', 'r
         });
 
         var j_saveTpl = $('.j_saveTpl');
+
+        var category = 1;
+
+        var $selecttTempateDialog = $('#selecttTempateDialog').dialog({
+            autoOpen: false,
+            resizable: false,
+            width: 300,
+            height: 300,
+            title: "选择模板类型",
+            modal: true,
+            close: function (event, ui) {
+                var pageId = pagecom.getSelectPage();
+                Html2canvas($('#showbox')).then(function (canvas) {
+                        var imgData = canvas.toDataURL();
+                        imgData = imgData.split(',')[1];
+                        $.ajax({
+                            method: "POST",
+                            url: WXMS_config.domain+"/addTplByUser",
+                            data: {
+                                pageId: pageId,
+                                imgData: imgData,
+                                category:category
+                            }
+                        }).done(function (msg) {
+                            if (msg.success) {
+                                Template.drawPubTpl();
+                                Template.drawUserTpl();
+                            }
+                        }).fail(function (msg) {
+                        });
+                    }
+                );
+            }
+        });
+
+
         j_saveTpl.on('click', function () {
-            var pageId = pagecom.getSelectPage();
-            Html2canvas($('#showbox')).then(function (canvas) {
-                    var imgData = canvas.toDataURL();
-                    imgData = imgData.split(',')[1];
-                    $.ajax({
-                        method: "POST",
-                        url: WXMS_config.domain+"/addTplByUser",
-                        data: {
-                            pageId: pageId,
-                            imgData: imgData
-                        }
-                    }).done(function (msg) {
-                        if (msg.success) {
-                            Template.drawPubTpl();
-                            Template.drawUserTpl();
-                        }
-                    }).fail(function (msg) {
-                    });
-                }
-            );
+            $selecttTempateDialog.dialog('open');
+            $('#tempateSelect').on('change', function () {
+                category = $(this).val();
+            })
 
         });
 
