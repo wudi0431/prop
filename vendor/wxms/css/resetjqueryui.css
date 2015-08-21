@@ -72,7 +72,7 @@
 }
 .ui-widget-header {
     border: none;
-    background: rgba(193, 193, 193, 0.5);
+    background: #ececec;
     color: #222;
     font-weight: bold;
 }
@@ -130,4 +130,8 @@
     top: 10px;
     margin-left: 4px;
     left: 0;
+}
+
+.ui-dialog{
+    padding: 0;
 }

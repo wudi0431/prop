@@ -79,6 +79,14 @@ define(['FFF', 'zepto', 'jquery','stylecom','wxms_config'], function (FFF, $, jq
             });
 
 
+            F.on('textcomHrefChange', function (val) {
+                if (that.$box.hasClass('select')) {
+                    data['href'] = val;
+                    that.setData(data);
+                    that.update();
+                }
+            },that);
+
             F.on('getAniMateDate', function (val) {
                 if (that.$box.hasClass('select')) {
                     that.$box.css({
