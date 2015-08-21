@@ -707,12 +707,12 @@ Pagecom.prototype={
             method: "GET",
             url: WXMS_config.domain+"/getWeiXinShareByProjectId?projectId="+projectId
         }).done(function (msg) {
-            if(msg.success && msg.model.length>0){
+            if(msg.success && msg.model){
               var $weixinshare  = $('#wxsharedailog');
-                $weixinshare.find('#name').val(msg.model[0].title)
-                $weixinshare.find('#description').val(msg.model[0].desc)
-                $weixinshare.find('#description').attr('shareid',msg.model[0]._id)
-                $weixinshare.find('#imgUrl').attr('src',msg.model[0].imgUrl);
+                $weixinshare.find('#name').val(msg.model.title)
+                $weixinshare.find('#description').val(msg.model.desc)
+                $weixinshare.find('#description').attr('shareid',msg.model._id)
+                $weixinshare.find('#imgUrl').attr('src',msg.model.imgUrl);
             }
         }).fail(function (msg) {
             console.log(msg)
