@@ -228,15 +228,15 @@ Pagecom.prototype={
         var that =this;
         $.ajax({
             method: "GET",
-            url: WXMS_config.domain+"/getAudiocomListByprojectId?projectId="+projectId
+            url: WXMS_config.domain+"/getAudiocomByprojectId?projectId="+projectId
         }).done(function (msg) {
-            if(msg.success && msg.model.length>0){
+            if(msg.success && msg.model){
                 if(that.ops.Audiocom){
-                    new that.ops.Audiocom({data:msg.model[0],Audio:Audio, audioId:msg.model[0].audio}).render({
+                    new that.ops.Audiocom({data:msg.model,Audio:Audio, audioId:msg.model.audio}).render({
                         container:zepto('#showbox')
                     });
-                    that.audioCom=msg.model[0];
-                    Audio.setData(msg.model[0]);
+                    that.audioCom=msg.model;
+                    Audio.setData(msg.model);
                 }
             }
 

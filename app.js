@@ -100,7 +100,7 @@ var deleteTemplate = require('./routes/template/deleteTemplate');
 var addAudiocom = require('./routes/audiocom/addAudiocom');
 var deleteAudiocom = require('./routes/audiocom/deleteAudiocom');
 var updateAudiocom = require('./routes/audiocom/updateAudiocom');
-var getAudiocomListByprojectId = require('./routes/audiocom/getAudiocomListByprojectId');
+var getAudiocomByprojectId = require('./routes/audiocom/getAudiocomByprojectId');
 
 
 var preview = require('./routes/preview/preview');
@@ -195,7 +195,7 @@ app.use('/generationPage',generationPage);
 app.use('/addAudiocom', addAudiocom);
 app.use('/deleteAudiocom', deleteAudiocom);
 app.use('/updateAudiocom', updateAudiocom);
-app.use('/getAudiocomListByprojectId', getAudiocomListByprojectId);
+app.use('/getAudiocomByprojectId', getAudiocomByprojectId);
 
 app.use('/show', preview);
 

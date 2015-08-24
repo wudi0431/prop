@@ -5,7 +5,7 @@ var Audiocom = require('../../db/audiocom');
 router.get('/', function (req, res, next) {
   filter.authorize(req, res, function (req, res) {
     var projectId = req.query.projectId;
-    Audiocom.getAudiocomListByprojectId(projectId, function (err, audiocom) {
+    Audiocom.getAudiocomByprojectId(projectId, function (err, audiocom) {
       if (err) {
         res.status('500');
         res.send({
@@ -30,7 +30,7 @@ router.get('/', function (req, res, next) {
 
 router.get('/jsonp', function (req, res, next) {
   var projectId = req.query.projectId;
-  Audiocom.getAudiocomListByprojectId(projectId, function (err, audiocom) {
+  Audiocom.getAudiocomByprojectId(projectId, function (err, audiocom) {
     if (err) {
       res.jsonp({
         success: false,

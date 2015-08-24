@@ -61,8 +61,8 @@ AudioComSchema.static('getAudiocom', function (AudiocomId, cb) {
     return this.findById(AudiocomId, cb)
 });
 
-AudioComSchema.static('getAudiocomListByprojectId', function (projectId, cb) {
-    return this.find({
+AudioComSchema.static('getAudiocomByprojectId', function (projectId, cb) {
+    return this.findOne({
         project: projectId
     }, cb)
 });
