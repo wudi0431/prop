@@ -63,8 +63,8 @@ hr {
 .nav {
   background: #333333;
   color: #fff;
-  height: 55px;
-  line-height: 55px;
+  height: 56px;
+  line-height: 56px;
   position: relative;
   width: 100%;
   z-index: 100
@@ -107,7 +107,6 @@ hr {
 }
 
 .nav .cate {
-  height: 100%;
   left: 50%;
   margin-left: -200px;
   position: absolute
@@ -141,7 +140,7 @@ hr {
   color: #fff;
   float: left;
   height: 100%;
-  line-height: 22px;
+  line-height: 28px;
   text-align: center;
   width: 80px;
 }
@@ -684,7 +683,7 @@ body .cp-color-picker, body .colpick {
   color: #fff;
   display: block;
   height: 100%;
-  line-height: 41px;
+  line-height: 28px;
   text-align: center;
   width: 100%
 }
