@@ -232,7 +232,6 @@ hr {
   position: relative
 }
 
-
 .panel-cont {
   padding: 15px 8px
 }
@@ -634,16 +633,33 @@ body .cp-color-picker, body .colpick {
 }
 
 .sbox .stools a {
-  background-color: #fff;
+  background-color: #ececec;
   border: 1px solid #afafaf;
-  color: #333;
+  color: #757575;
   display: block;
   height: 30px;
   line-height: 30px;
   margin-bottom: 15px;
   overflow: hidden;
   text-align: center;
-  width: 30px
+  width: 30px;
+  border-radius: 5px;
+}
+
+.sbox .stools a.j_tool_audio {
+  border-radius: 5px 5px 0 0;
+}
+
+.sbox .stools a.j_tool_audio_remove {
+  border-radius: 0 0 5px 5px;
+}
+
+.sbox .stools a .iconfont {
+  font-size: 14px;
+}
+
+.sbox .stools a .icon-shanchu {
+  font-size: 18px;
 }
 
 .s-item input:focus {
@@ -877,6 +893,7 @@ body .cp-color-picker, body .colpick {
 }
 
 .page-item a[data-role=scene-copy] {
+  font-size: 16px;
   magin-right: 0 !important
 }
 
@@ -913,13 +930,8 @@ body .cp-color-picker, body .colpick {
 .page-item a[data-role] {
   margin-right: 10px !important;
   float: right;
-  background-image: url(../img/scene-index-icon.png);
-  margin-top: 13px;
-  width: 14px;
-  height: 14px;
-  background-repeat: no-repeat;
-  background-size: auto 14px;
   visibility: hidden;
+  color: #01cfaf;
 }
 
 .page-item a[data-role=btn-edit-post] {
@@ -1677,12 +1689,12 @@ body .cp-color-picker, body .colpick {
 
 }
 
-.wxms-fileset{
+.wxms-fileset {
   padding: 10px 30px 0;
   background-color: #fff;
   margin-bottom: 10px;
 }
 
-#prototype-content{
+#prototype-content {
   background-color: #ececec;
 }
