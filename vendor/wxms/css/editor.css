@@ -112,12 +112,8 @@ hr {
   position: absolute
 }
 
-.nav .title .name {
-  background: url(../images/log.svg) no-repeat;
-  height: 26px;
-  margin-top: 12px;
-  width: 50px;
-  background-size: contain;
+.nav .title .name.icon-log{
+    font-size: 30px;
 }
 
 .nav .title .desc {
