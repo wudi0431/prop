@@ -16,6 +16,8 @@
   -webkit-text-stroke-width: 0.2px;
   -moz-osx-font-smoothing: grayscale;
 }
+.icon-check:before { content: "\e612"; }
+.icon-close:before { content: "\e613"; }
 .icon-shanchu:before { content: "\e609"; }
 .icon-plus:before { content: "\e60c"; }
 .icon-bianji:before { content: "\e60a"; }

@@ -861,7 +861,6 @@ body .cp-color-picker, body .colpick {
 
 .page-edit {
   position: relative;
-  width: 100%;
   top: -54px;
   left: 0;
   box-sizing: border-box;
@@ -883,12 +882,21 @@ body .cp-color-picker, body .colpick {
   font-size: 14px;
 }
 
+.page-item a[data-role] {
+  margin-right: 10px !important;
+  float: right;
+  visibility: hidden;
+  color: #01cfaf;
+}
+
 .page-item a[data-role=btn-edit-cancel] {
-  margin-right: 39px !important
+  margin-left: 30px !important;
+  margin-right: 0 !important;
 }
 
 .page-item a[data-role=btn-edit-post] {
-  margin-right: 30px !important
+  margin-left: 20px !important;
+  margin-right: 0 !important;
 }
 
 .page-item a[data-role=scene-copy] {
@@ -922,40 +930,9 @@ body .cp-color-picker, body .colpick {
   width: 145px;
 }
 
-.page-item a[data-role=btn-edit-cancel] {
-  margin-right: 39px !important;
-}
 
-.page-item a[data-role] {
-  margin-right: 10px !important;
-  float: right;
-  visibility: hidden;
-  color: #01cfaf;
-}
 
-.page-item a[data-role=btn-edit-post] {
-  margin-right: 30px !important;
-}
 
-.page-item .ico-del {
-  background-position-x: -42px;
-}
-
-.page-item .ico-right {
-  background-position-x: -56px;
-}
-
-.page-item .ico-copy {
-  background-position-x: -14px;
-}
-
-.page-item .ico-fav {
-  background-position-x: -70px;
-}
-
-.page-item .ico-edit {
-  background-position-x: -28px;
-}
 
 .dd-global-set h3 {
   font-weight: 700;
