@@ -1227,7 +1227,7 @@ body .cp-color-picker, body .colpick {
 
 .W_editItem {
   display: none;
-  /* margin: 0px; */
+  padding: 0;
 }
 
 .mod_animate {
@@ -1696,5 +1696,6 @@ body .cp-color-picker, body .colpick {
 }
 
 #prototype-content {
+  background: none;
   background-color: #ececec;
 }
