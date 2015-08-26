@@ -1,88 +1,108 @@
 <!DOCTYPE html>
 <html>
 <head lang="en">
-    <meta charset="UTF-8">
-    <title>微信传播</title>
-    <link rel="stylesheet" href="/wxms/css/reset.css"/>
-    <link rel="stylesheet" href="/wxms/css/common.css"/>
-    <link rel="stylesheet" href="/wxms/css/fonts.css"/>
-    <link rel="stylesheet" href="/wxms/css/wxui.css"/>
-    <link rel="stylesheet" href="/wxms/css/animate.css"/>
-    <link rel="stylesheet" href="/wxms/lib/jqueryui/jquery-ui.min.css"/>
-    <link rel="stylesheet" href="/wxms/lib/jquerycolorpicker/spectrum.css"/>
-    <link rel="stylesheet" href="/wxms/css/resetjqueryui.css"/>
-    <link rel="stylesheet" href="/wxms/css/ui-dialog.css"/>
-    <link rel="stylesheet" href="/wxms/css/editor.css"/>
-    <link rel="stylesheet" href="/wxms/lib/jquerycontextmenu/jquery.contextMenu.css"/>
-    <script src="http://apps.bdimg.com/libs/require.js/2.1.11/require.min.js"></script>
-    <script src="http://image.yihaodianimg.com/mobile-ued/FFF/v0.1.2/yhd_mxc.js"></script>
-    <script src="/wxms/js/editor.js"></script>
+  <meta charset="UTF-8">
+  <title>微信传播</title>
+  <link rel="stylesheet" href="/wxms/css/reset.css"/>
+  <link rel="stylesheet" href="/wxms/css/common.css"/>
+  <link rel="stylesheet" href="/wxms/css/font/fonts.css"/>
+  <link rel="stylesheet" href="/wxms/css/wxui.css"/>
+  <link rel="stylesheet" href="/wxms/css/animate.css"/>
+  <link rel="stylesheet" href="/wxms/lib/jqueryui/jquery-ui.min.css"/>
+  <link rel="stylesheet" href="/wxms/lib/jquerycolorpicker/spectrum.css"/>
+  <link rel="stylesheet" href="/wxms/css/resetjqueryui.css"/>
+  <link rel="stylesheet" href="/wxms/css/ui-dialog.css"/>
+  <link rel="stylesheet" href="/wxms/css/editor.css"/>
+  <link rel="stylesheet" href="/wxms/lib/jquerycontextmenu/jquery.contextMenu.css"/>
+  <script src="http://apps.bdimg.com/libs/require.js/2.1.11/require.min.js"></script>
+  <script src="http://image.yihaodianimg.com/mobile-ued/FFF/v0.1.2/yhd_mxc.js"></script>
+  <script src="/wxms/js/editor.js"></script>
 </head>
 <body class="flexbox flexbox-v">
 <div class="maps_centerShowContainerLoading"></div>
 
 <div class="nav clearfix">
-    <a class="title fl" href="javascript:;"> <span class="name fl"></span> <span class="desc fl">编辑器</span> </a>
+  <a class="title fl" href="javascript:;">
+    <span class="fl name iconfont icon-log"></span>
+    <span class="fl desc">微信传播模板</span>
+  </a>
 
-    <div class="ppt fl dropdown j_tmpl_panel"></div>
-    <div class="cate fl">
-        <a class="ni nav-border"></a>
-        <a href="javascript:;" class="ni j_new_text" id="addtext"> <i class="fa fa-file-text"></i> <span>添加文本</span>
-        </a>
-        <a href="javascript:;" class="ni j_new_image" id="addimage"> <i class="fa fa-file-picture-o"></i>
-            <span>添加图片</span> </a>
-        <a href="javascript:;" class="ni j_new_button" id="addbutton"> <i class="fa fa-square"></i> <span>添加按钮</span>
-        </a>
-        <a href="javascript:;" class="ni j_new_audiio" id="addaudio"> <i class="fa fa-music"></i> <span>背景音乐</span>
-        </a>
-        <a class="ni nav-border"></a>
+  <div class="ppt fl dropdown j_tmpl_panel"></div>
+  <div class="cate fl">
+    <a href="javascript:;" class="ni j_new_text" id="addtext"> <i class="iconfont icon-addtext"></i> <span>添加文本</span>
+    </a>
+    <a href="javascript:;" class="ni j_new_image" id="addimage"> <i class="iconfont icon-addimg"></i>
+      <span>添加图片</span> </a>
+    <a href="javascript:;" class="ni j_new_button" id="addbutton"> <i class="iconfont icon-addbtn"></i>
+      <span>添加按钮</span>
+    </a>
+    <a href="javascript:;" class="ni j_new_audiio" id="addaudio"> <i class="iconfont icon-addmusic"></i>
+      <span>背景音乐</span>
+    </a>
+  </div>
+  <div class="tool fr">
+    <div class="ti">
+      <a href="" class="ti-a"> <i class="iconfont icon-release"></i> <span>发布</span> </a>
     </div>
-    <div class="tool fr">
-        <div class="dropdown j_global_panel ti">
-            <a href="javascript:;" id="wxshare" class="ti-a"> <i class="fa fa-share-square-o"></i> <span>分享</span> </a>
-        </div>
-        <div class="ti j_elem_preview">
-            <a href="javascript:;" class="ti-a j_preview_app"> <i class="fa fa-eye"></i> <span>预览</span> </a>
-        </div>
-        <div class="ti">
-            <a href="mailto:MXC_wireless@yhd.com?subject=问题反馈和建议" class="ti-a"> <i class="fa fa-question-circle"></i> <span>反馈</span> </a>
-        </div>
-        <div class="ti">
-            <a href="javascript:;" id="gohome" class="ti-a"> <i class="fa fa-home"></i> <span>退出</span> </a>
-        </div>
+    <div class="dropdown j_global_panel ti">
+      <a href="javascript:;" id="wxshare" class="ti-a"> <i class="iconfont icon-share"></i> <span>分享</span> </a>
     </div>
+    <div class="ti j_elem_preview">
+      <a href="javascript:;" class="ti-a j_preview_app"> <i class="iconfont icon-preview"></i> <span>预览</span> </a>
+    </div>
+    <div class="ti">
+      <a href="mailto:MXC_wireless@yihaodian.com?subject=问题反馈和建议" class="ti-a"> <i class="iconfont icon-feedback"></i>
+        <span>反馈</span> </a>
+    </div>
+    <div class="ti">
+      <a href="javascript:;" id="gohome" class="ti-a"> <i class="iconfont icon-exit"></i> <span>退出</span> </a>
+    </div>
+  </div>
 </div>
 <div class="doc flexbox-1">
-    <div class="col minimap always-visible ps-container ps-active-y" id="minimap">
-        <div class="page-list">
-            <div class="add-page-list">+</div>
-        </div>
+  <div class="col minimap always-visible ps-container ps-active-y" id="minimap">
+    <div class="page-list">
+      <div class="add-page-list">+</div>
+    </div>
 
-    </div>
-    <div class="col sbox">
-        <div class="phone">
-            <div class="sbox-wrapper clearfix">
-                <div class="showbox" id="showbox"></div>
-                <div class="stools">
-                    <a href="javascript:;" title="复制当前页" class="j_tool_page_copy"> <i class="fa fa-copy"></i> </a>
-                    <a href="javascript:;" title="删除当前页" class="j_tool_page_remove"><i class="fa fa-remove"></i> </a>
-                    <a href="javascript:;" title="背景音乐" class="j_tool_audio item-visible" style="border-bottom: 0;margin-bottom: 0;"><i class="fa fa-music item-visible"></i></a>
-                    <a href="javascript:;" title="删除背景音乐" class="j_tool_audio_remove item-visible" style="border-top: 0;"><i class="fa fa-times item-visible"></i></a>
-                </div>
-                <div class="stools stools-bottom">
-                    <a href="javascript:;" title="预览" class="j_preview_app"> <i class="fa fa-eye"></i> </a>
-                    <a href="javascript:;" title="保存模板" class="j_saveTpl"> <i class="fa fa-save"></i> </a>
-                </div>
-            </div>
+  </div>
+  <div class="col sbox">
+    <div class="phone">
+      <div class="sbox-wrapper clearfix">
+        <div class="showbox" id="showbox"></div>
+        <div class="stools">
+          <a href="javascript:;" title="复制当前页" class="j_tool_page_copy">
+            <i class="iconfont icon-copy"></i>
+          </a>
+          <a href="javascript:;" title="删除当前页" class="j_tool_page_remove">
+            <i class="iconfont icon-shanchu"></i>
+          </a>
+          <a href="javascript:;" title="背景音乐" class="j_tool_audio item-visible"
+             style="border-bottom: 0;margin-bottom: 0;">
+            <i class="iconfont icon-music item-visible"></i>
+          </a>
+          <a href="javascript:;" title="删除背景音乐" class="j_tool_audio_remove item-visible">
+            <i class="iconfont icon-del item-visible"></i>
+          </a>
         </div>
-    </div>
-    <div class="col setting">
-        <div class="set-wrapper j_page_set ps-container" style="display: block;">
-            <div id="prototype-content">
-                <% include prototype_content.html %>
-            </div>
+        <div class="stools stools-bottom">
+          <a href="javascript:;" title="预览" class="j_preview_app">
+            <i class="iconfont icon-preview"></i>
+          </a>
+          <a href="javascript:;" title="保存模板" class="j_saveTpl">
+            <i class="iconfont icon-savetpl"></i>
+          </a>
         </div>
+      </div>
     </div>
+  </div>
+  <div class="col setting">
+    <div class="set-wrapper j_page_set ps-container" style="display: block;">
+      <div id="prototype-content">
+        <% include prototype_content.html %>
+      </div>
+    </div>
+  </div>
 </div>
 <div class="W_wx_pageWarp"></div>
 <% include templeate_content.html %>

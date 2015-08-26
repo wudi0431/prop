@@ -156,3 +156,16 @@
   background: none;
   overflow: auto;
 }
+
+
+.ui-tabs .ui-tabs-nav li{
+  margin: 0;
+  border: none;
+}
+
+.ui-tabs .ui-tabs-nav{
+  padding: .4em 0 0 0;
+}
+
+
+

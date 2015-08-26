@@ -1,5 +1,5 @@
 @charset "utf-8";html,body {
-    font: 14px/1.5 "Microsoft YaHei","宋体",arial,Helvetica,sans-serif
+    font: 14px/1.5 "Helvetica Neue", Helvetica, STHeiTi, sans-serif;
 }
 
 .clearfix,.gmod {
@@ -45,6 +45,10 @@ ul,ol {
 
 a:hover {
     color: #f40
+}
+
+a{
+  outline: none;
 }
 
 .topbar .gmod {
