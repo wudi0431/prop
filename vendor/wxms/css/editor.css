@@ -232,9 +232,6 @@ hr {
   position: relative
 }
 
-.bg-panel {
-  padding: 10px 30px 0;
-}
 
 .panel-cont {
   padding: 15px 8px
@@ -402,6 +399,7 @@ body .cp-color-picker, body .colpick {
   left: 0;
   width: 275px;
   overflow-y: auto;
+  padding: 10px 10px;
 }
 
 .doc .setting {
@@ -808,19 +806,18 @@ body .cp-color-picker, body .colpick {
   width: 100%;
   height: 40px;
   background: #3db39e;
-  position: relative;
-  top: 2px;
-  color: white;
-  line-height: 40px;
+  color: #FFF;
+  line-height: 30px;
   font-size: 50px;
   text-align: center;
+  display: inline-block;
 }
 
 .page-list .page-item {
   line-height: 40px;
   height: 40px;
   background-color: #ffffff;
-  border-bottom: solid 1px rgba(200, 200, 200, 0.6);
+  margin: 0 0 10px;
 }
 
 .page-item a.sort-page {
@@ -1678,4 +1675,14 @@ body .cp-color-picker, body .colpick {
 
 #tplWare {
 
+}
+
+.wxms-fileset{
+  padding: 10px 30px 0;
+  background-color: #fff;
+  margin-bottom: 10px;
+}
+
+#prototype-content{
+  background-color: #ececec;
 }

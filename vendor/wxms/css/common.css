@@ -47,6 +47,10 @@ a:hover {
     color: #f40
 }
 
+a{
+  outline: none;
+}
+
 .topbar .gmod {
     height: 100%
 }
