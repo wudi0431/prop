@@ -40,4 +40,14 @@ router.get('/list', function(req, res, next) {
     res.render('list');
 });
 
+//TODO 预览
+router.get('/newPreview', function(req, res, next) {
+    res.render('newPreview');
+});
+
+//TODO 发布
+router.get('/release', function(req, res, next) {
+    res.render('release');
+});
+
 module.exports = router;

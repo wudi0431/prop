@@ -153,7 +153,7 @@ require(['wxms_config','jquery', 'jqui'], function (WXMS_config,$) {
         }).fail(function (msg) {
 
         });
-    })
+    });
 
 
     $project_add.on('click', function () {
@@ -200,10 +200,15 @@ require(['wxms_config','jquery', 'jqui'], function (WXMS_config,$) {
         })
 
 
-    })
+    });
 
 
+    var $productBox = $('.product_box');
 
-
+    $productBox.hover(function(){
+        $(this).find('.product_ewm').addClass('show');
+    },function(){
+        $(this).find('.product_ewm').removeClass('show');
+    });
 
 });
