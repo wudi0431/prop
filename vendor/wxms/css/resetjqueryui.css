@@ -163,9 +163,36 @@
   border: none;
 }
 
-.ui-tabs .ui-tabs-nav{
+.ui-tabs .ui-tabs-nav {
   padding: .4em 0 0 0;
+}
+
+#selectTplDialog .ui-state-default{
+  width: 48%;
+  background: #ececec;
 }
 
 
 
+#selectTplDialog .ui-state-default, #selectTplDialog .ui-widget-content .ui-state-default, #selectTplDialog .ui-widget-header .ui-state-default{
+  background: #ececec;
+}
+
+#selectTplDialog .ui-tabs-anchor{
+  width: 100%;
+  text-align: center;
+}
+
+#selectTplDialog .ui-state-active .ui-tabs-anchor{
+  border-bottom:2px solid #01cfaf;
+}
+
+#selectTplDialog .ui-widget-content {
+  border:none;
+  background: #fff;
+  color: #222;
+}
+#selectTplDialog .ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset{
+  float: none;
+  text-align: center;
+}

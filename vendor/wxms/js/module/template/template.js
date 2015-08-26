@@ -16,7 +16,21 @@ define(['FFF', 'jquery', 'jqui','wxms_config'], function (FFF, $,jqui,WXMS_confi
             width: 500,
             height: 600,
             title: "选择模板",
-            modal: true
+            modal: true,
+            buttons: [
+                {
+                    text: "确定",
+                    click: function() {
+                        $( this ).dialog( "close" );
+                    }
+                },
+                {
+                    text: "取消",
+                    click: function() {
+                        $( this ).dialog( "close" );
+                    }
+                }
+            ]
         });
 
         $('#selectTplDialog').tabs({
