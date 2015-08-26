@@ -187,9 +187,10 @@ hr {
   background: url(../img/iphone.svg) center no-repeat transparent;
   background-size: 358px 677px;
   height: 734px;
-  margin-left: -350px;
+  margin-left: -300px;
   margin-top: -360px;
-  width: 520px
+  width: 520px;
+
 }
 
 .phone, .sbox .sbox-wrapper {
@@ -394,14 +395,13 @@ body .cp-color-picker, body .colpick {
   left: 0;
   width: 275px;
   overflow-y: auto;
-  padding: 10px 10px;
 }
 
 .doc .setting {
   background-color: #ececec;
   border-left: 1px solid #ccc;
   right: 0;
-  width: 340px
+  width: 340px;
 }
 
 .doc .sbox {
@@ -411,7 +411,7 @@ body .cp-color-picker, body .colpick {
   overflow: hidden;
   position: absolute;
   top: 0;
-  width: 100%
+  width: 100%;
 }
 
 .sbox .sbox-wrapper {
@@ -441,7 +441,9 @@ body .cp-color-picker, body .colpick {
   margin: 0 auto;
   overflow: hidden;
   position: relative;
-  width: 320px
+  width: 320px;
+  top: 4px;
+  left: 2px;
 }
 
 .setting-nav .item {
