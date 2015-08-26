@@ -135,3 +135,24 @@
 .ui-dialog{
     padding: 0;
 }
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active{
+  border: none;
+  background: #fff;
+  border-radius: 3px 3px 0 0;
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default{
+  border: none;
+  border-radius: 3px 3px 0 0;
+}
+.ui-draggable .ui-dialog-titlebar {
+  cursor: move;
+  display: none;
+}
+.ui-dialog .ui-dialog-content {
+  position: relative;
+  border: 0;
+  padding: 0;
+  background: none;
+  overflow: auto;
+}

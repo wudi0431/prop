@@ -113,10 +113,10 @@ hr {
 }
 
 .nav .title .name {
-    background: url(../img/wxms.svg) no-repeat;
-    height: 60px;
-    margin-top: 12px;
-    width: 30px;
+    background: url(../img/logo1.png) no-repeat;
+    height: 52px;
+    /*margin-top: 12px;*/
+    width: 102px;
 }
 
 .nav .title .desc {
