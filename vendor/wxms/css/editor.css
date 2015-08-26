@@ -112,12 +112,8 @@ hr {
   position: absolute
 }
 
-.nav .title .name {
-  background: url(../images/log.svg) no-repeat;
-  height: 26px;
-  margin-top: 12px;
-  width: 50px;
-  background-size: contain;
+.nav .title .name.icon-log{
+    font-size: 30px;
 }
 
 .nav .title .desc {
@@ -188,12 +184,13 @@ hr {
 }
 
 .phone {
-  background: url(../img/iphone.png) center no-repeat transparent;
+  background: url(../img/iphone.svg) center no-repeat transparent;
   background-size: 358px 677px;
   height: 734px;
-  margin-left: -350px;
+  margin-left: -300px;
   margin-top: -360px;
-  width: 520px
+  width: 520px;
+
 }
 
 .phone, .sbox .sbox-wrapper {
@@ -230,10 +227,6 @@ hr {
   height: 100%;
   overflow: hidden;
   position: relative
-}
-
-.bg-panel {
-  padding: 10px 30px 0;
 }
 
 .panel-cont {
@@ -402,13 +395,14 @@ body .cp-color-picker, body .colpick {
   left: 0;
   width: 275px;
   overflow-y: auto;
+  padding: 10px 10px;
 }
 
 .doc .setting {
   background-color: #ececec;
   border-left: 1px solid #ccc;
   right: 0;
-  width: 340px
+  width: 340px;
 }
 
 .doc .sbox {
@@ -418,7 +412,7 @@ body .cp-color-picker, body .colpick {
   overflow: hidden;
   position: absolute;
   top: 0;
-  width: 100%
+  width: 100%;
 }
 
 .sbox .sbox-wrapper {
@@ -448,7 +442,9 @@ body .cp-color-picker, body .colpick {
   margin: 0 auto;
   overflow: hidden;
   position: relative;
-  width: 320px
+  width: 320px;
+  top: 4px;
+  left: 2px;
 }
 
 .setting-nav .item {
@@ -636,16 +632,33 @@ body .cp-color-picker, body .colpick {
 }
 
 .sbox .stools a {
-  background-color: #fff;
+  background-color: #ececec;
   border: 1px solid #afafaf;
-  color: #333;
+  color: #757575;
   display: block;
   height: 30px;
   line-height: 30px;
   margin-bottom: 15px;
   overflow: hidden;
   text-align: center;
-  width: 30px
+  width: 30px;
+  border-radius: 5px;
+}
+
+.sbox .stools a.j_tool_audio {
+  border-radius: 5px 5px 0 0;
+}
+
+.sbox .stools a.j_tool_audio_remove {
+  border-radius: 0 0 5px 5px;
+}
+
+.sbox .stools a .iconfont {
+  font-size: 14px;
+}
+
+.sbox .stools a .icon-shanchu {
+  font-size: 18px;
 }
 
 .s-item input:focus {
@@ -808,19 +821,18 @@ body .cp-color-picker, body .colpick {
   width: 100%;
   height: 40px;
   background: #3db39e;
-  position: relative;
-  top: 2px;
-  color: white;
-  line-height: 40px;
+  color: #FFF;
+  line-height: 30px;
   font-size: 50px;
   text-align: center;
+  display: inline-block;
 }
 
 .page-list .page-item {
   line-height: 40px;
   height: 40px;
   background-color: #ffffff;
-  border-bottom: solid 1px rgba(200, 200, 200, 0.6);
+  margin: 0 0 10px;
 }
 
 .page-item a.sort-page {
@@ -849,7 +861,6 @@ body .cp-color-picker, body .colpick {
 
 .page-edit {
   position: relative;
-  width: 100%;
   top: -54px;
   left: 0;
   box-sizing: border-box;
@@ -871,15 +882,25 @@ body .cp-color-picker, body .colpick {
   font-size: 14px;
 }
 
+.page-item a[data-role] {
+  margin-right: 10px !important;
+  float: right;
+  visibility: hidden;
+  color: #01cfaf;
+}
+
 .page-item a[data-role=btn-edit-cancel] {
-  margin-right: 39px !important
+  margin-left: 30px !important;
+  margin-right: 0 !important;
 }
 
 .page-item a[data-role=btn-edit-post] {
-  margin-right: 30px !important
+  margin-left: 20px !important;
+  margin-right: 0 !important;
 }
 
 .page-item a[data-role=scene-copy] {
+  font-size: 16px;
   magin-right: 0 !important
 }
 
@@ -909,45 +930,9 @@ body .cp-color-picker, body .colpick {
   width: 145px;
 }
 
-.page-item a[data-role=btn-edit-cancel] {
-  margin-right: 39px !important;
-}
 
-.page-item a[data-role] {
-  margin-right: 10px !important;
-  float: right;
-  background-image: url(../img/scene-index-icon.png);
-  margin-top: 13px;
-  width: 14px;
-  height: 14px;
-  background-repeat: no-repeat;
-  background-size: auto 14px;
-  visibility: hidden;
-}
 
-.page-item a[data-role=btn-edit-post] {
-  margin-right: 30px !important;
-}
 
-.page-item .ico-del {
-  background-position-x: -42px;
-}
-
-.page-item .ico-right {
-  background-position-x: -56px;
-}
-
-.page-item .ico-copy {
-  background-position-x: -14px;
-}
-
-.page-item .ico-fav {
-  background-position-x: -70px;
-}
-
-.page-item .ico-edit {
-  background-position-x: -28px;
-}
 
 .dd-global-set h3 {
   font-weight: 700;
@@ -1218,7 +1203,7 @@ body .cp-color-picker, body .colpick {
 
 .W_editItem {
   display: none;
-  /* margin: 0px; */
+  padding: 0;
 }
 
 .mod_animate {
@@ -1678,4 +1663,15 @@ body .cp-color-picker, body .colpick {
 
 #tplWare {
 
+}
+
+.wxms-fileset {
+  padding: 10px 30px 0;
+  background-color: #fff;
+  margin-bottom: 10px;
+}
+
+#prototype-content {
+  background: none;
+  background-color: #ececec;
 }

@@ -41,7 +41,7 @@ define(['FFF', 'jquery', 'jqui', 'wxms_config'], function (FFF, $, jqui, WXMS_co
             resizable: false,
             width: 500,
             height: 600,
-            title: "选择背景音乐",
+            closeOnEscape: false,
             modal: true,
             close: function (event, ui) {
                 that.close()

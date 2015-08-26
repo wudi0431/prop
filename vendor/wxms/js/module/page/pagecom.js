@@ -302,12 +302,12 @@ Pagecom.prototype={
             '<span data-set="selected" class="disp">'+defname+'</span>'+
             '<div class="page-edit" style="display: none;" data-role="title-edit">'+
             '<input data-role="input" placeholder="请输入不超过100个字" maxlength="100" class="edit" type="text" value="'+defname+'">'+
-            '<a data-role="btn-edit-cancel" title="取消" class="ico-del" href="javascript:;" style="text-decoration: none;"></a>'+
-            '<a data-role="btn-edit-post" title="确定" class="ico-right" href="javascript:;" style="text-decoration: none;"></a>'+
+            '<a data-role="btn-edit-cancel" title="取消" class="iconfont icon-close" href="javascript:;" style="text-decoration: none;"></a>'+
+            '<a data-role="btn-edit-post" title="确定" class="iconfont icon-check" href="javascript:;" style="text-decoration: none;"></a>'+
             '</div>'+
-            '<a data-role="btn-del-scene" title="删除" class="ico-del" href="javascript:;"></a>'+
-            ' <a data-role="scene-copy" title="复制" class="ico-copy" href="javascript:;"></a>'+
-            '<a data-role="btn-edit-scene" title="修改" class="ico-edit" href="javascript:;"></a>'+
+            '<a data-role="btn-del-scene" title="删除" class="iconfont icon-shanchu" href="javascript:;"></a>'+
+            ' <a data-role="scene-copy" title="复制" class="iconfont icon-copy" href="javascript:;"></a>'+
+            '<a data-role="btn-edit-scene" title="修改" class="iconfont icon-bianji" href="javascript:;"></a>'+
             '</div>');
 
         that.addpage.before(html);
