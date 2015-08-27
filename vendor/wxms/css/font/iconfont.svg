@@ -2,11 +2,7 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
 <svg xmlns="http://www.w3.org/2000/svg">
 <metadata>
-<<<<<<< HEAD
-Created by FontForge 20120731 at Tue Aug 25 16:41:20 2015
-=======
-Created by FontForge 20120731 at Wed Aug 26 15:42:55 2015
->>>>>>> c0d7e1e5f1336a53182ba33319e3a8a85ee7f0ad
+Created by FontForge 20120731 at Thu Aug 27 11:08:23 2015
  By Ads
 </metadata>
 <defs>
@@ -23,11 +19,7 @@ Created by FontForge 20120731 at Wed Aug 26 15:42:55 2015
     bbox="-0.5 -212 2007.22 813.014"
     underline-thickness="50"
     underline-position="-100"
-<<<<<<< HEAD
-    unicode-range="U+0078-E60C"
-=======
     unicode-range="U+0078-E613"
->>>>>>> c0d7e1e5f1336a53182ba33319e3a8a85ee7f0ad
   />
 <missing-glyph horiz-adv-x="374" 
 d="M34 0v682h272v-682h-272zM68 34h204v614h-204v-614z" />
@@ -97,8 +89,6 @@ t-23.5 -44t-34.5 -35t-44.5 -23t-51 -8zM1135 144q-47 0 -82.5 -29t-45.5 -73l-2 -8q
     <glyph glyph-name="uniE60C" unicode="&#xe60c;" 
 d="M104 352q-11 0 -20 -5.5t-14 -14.5t-5 -19v-50q0 -16 11.5 -27.5t27.5 -11.5h816q16 0 27.5 11.5t11.5 27.5v50q0 16 -11.5 27.5t-27.5 11.5h-816zM577 696q0 11 -5 20t-14 14t-20 5h-49q-17 0 -28 -11.5t-11 -27.5v-816q0 -16 11 -27.5t28 -11.5h49q16 0 27.5 11.5
 t11.5 27.5v816z" />
-<<<<<<< HEAD
-=======
     <glyph glyph-name="uniE60D" unicode="&#xe60d;" 
 d="M964 153q-2 -5 -7 -11h-1v-2l-341 -341q-3 -2 -6 -4.5t-7 -3.5l-6 -2q-4 -1 -8 -1h-417q-47 0 -80.5 33.5t-33.5 80.5v796q0 47 33.5 80.5t80.5 33.5h682q47 0 80.5 -33.5t33.5 -80.5v-531v-3q0 -2 -1 -4v-4q-1 -2 -2 -3zM626 -83l212 212h-174q-6 0 -12 -2t-10.5 -5.5
 t-8 -8t-5.5 -10t-2 -12.5v-174zM853 736h-682q-8 0 -15 -3t-12 -8t-8 -12t-3 -15v-796q0 -8 3 -15t8 -12t12 -8t15 -3h379v227q0 47 33.5 80.5t80.5 33.5h227v493q0 16 -11 27t-27 11zM740 319h-456q-10 0 -18.5 5t-13.5 14t-5 19q0 8 3 15t8 12t12 8t14 3h456q10 0 18.5 -5
@@ -120,6 +110,5 @@ d="M888 514q-6 6 -14.5 8t-16.5 -0.5t-14 -9.5l-427 -454l-233 230q-10 9 -23 9t-22.
     <glyph glyph-name="uniE613" unicode="&#xe613;" 
 d="M557 299l266 264q9 9 9 22t-9 23q-6 6 -14.5 8.5t-16.5 0t-15 -8.5l-265 -264l-263 264q-9 9 -22.5 9t-23 -9t-9.5 -22.5t10 -22.5l263 -264l-265 -264q-10 -9 -10 -22.5t9.5 -22.5t22.5 -9t23 9l265 264l265 -267q10 -9 23 -9q3 0 6 0.5t6 1.5t5.5 3t5.5 4q9 10 9 23
 t-9 23z" />
->>>>>>> c0d7e1e5f1336a53182ba33319e3a8a85ee7f0ad
   </font>
 </defs></svg>
