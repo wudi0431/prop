@@ -8,18 +8,16 @@
 }
 
 .iconfont {
+  display: block;
   font-family:"iconfont" !important;
-  font-size:16px;
+  font-size:20px;
   font-style:normal;
   -webkit-font-smoothing: antialiased;
   -webkit-text-stroke-width: 0.2px;
   -moz-osx-font-smoothing: grayscale;
 }
-<<<<<<< HEAD
-=======
 .icon-check:before { content: "\e612"; }
 .icon-close:before { content: "\e613"; }
->>>>>>> c0d7e1e5f1336a53182ba33319e3a8a85ee7f0ad
 .icon-shanchu:before { content: "\e609"; }
 .icon-plus:before { content: "\e60c"; }
 .icon-bianji:before { content: "\e60a"; }
@@ -33,11 +31,8 @@
 .icon-release:before { content: "\e607"; }
 .icon-share:before { content: "\e608"; }
 .icon-log:before { content: "\e60b"; }
-<<<<<<< HEAD
-=======
 .icon-copy:before { content: "\e60d"; }
 .icon-del:before { content: "\e60e"; }
 .icon-play:before { content: "\e60f"; }
 .icon-savetpl:before { content: "\e610"; }
 .icon-music:before { content: "\e611"; }
->>>>>>> c0d7e1e5f1336a53182ba33319e3a8a85ee7f0ad
