@@ -135,6 +135,11 @@
 .ui-dialog{
     padding: 0;
 }
+
+
+
+
+
 .ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active{
   border: none;
   background: #fff;
@@ -145,10 +150,14 @@
   border: none;
   border-radius: 3px 3px 0 0;
 }
-.ui-draggable .ui-dialog-titlebar {
+
+div[aria-describedby="selectTplDialog"].ui-draggable .ui-dialog-titlebar,
+div[aria-describedby="selectAudioDialog"].ui-draggable .ui-dialog-titlebar,
+div[aria-describedby="selectImgDialog"].ui-draggable .ui-dialog-titlebar {
   cursor: move;
   display: none;
 }
+
 .ui-dialog .ui-dialog-content {
   position: relative;
   border: 0;
@@ -167,32 +176,85 @@
   padding: .4em 0 0 0;
 }
 
-#selectTplDialog .ui-state-default{
+#selectTplDialog .ui-state-default,
+#selectAudioDialog .ui-state-default,
+#selectImgDialog .ui-state-default
+{
   width: 48%;
   background: #ececec;
 }
 
 
 
-#selectTplDialog .ui-state-default, #selectTplDialog .ui-widget-content .ui-state-default, #selectTplDialog .ui-widget-header .ui-state-default{
+#selectTplDialog .ui-state-default,
+#selectTplDialog .ui-widget-content .ui-state-default,
+#selectTplDialog .ui-widget-header .ui-state-default,
+#selectAudioDialog .ui-state-default,
+#selectAudioDialog .ui-widget-content .ui-state-default,
+#selectAudioDialog .ui-widget-header .ui-state-default,
+#selectImgDialog .ui-state-default,
+#selectImgDialog .ui-widget-content .ui-state-default,
+#selectImgDialog .ui-widget-header .ui-state-default
+{
   background: #ececec;
 }
 
-#selectTplDialog .ui-tabs-anchor{
+#selectTplDialog .ui-tabs-anchor,
+#selectAudioDialog .ui-tabs-anchor,
+#selectImgDialog .ui-tabs-anchor
+{
   width: 100%;
   text-align: center;
 }
 
-#selectTplDialog .ui-state-active .ui-tabs-anchor{
+#selectTplDialog .ui-state-active .ui-tabs-anchor,
+#selectAudioDialog .ui-state-active .ui-tabs-anchor,
+#selectImgDialog .ui-state-active .ui-tabs-anchor
+{
   border-bottom:2px solid #01cfaf;
 }
 
-#selectTplDialog .ui-widget-content {
+#selectTplDialog +.ui-widget-content,
+#selectAudioDialog +.ui-widget-content,
+#selectImgDialog +.ui-widget-content
+{
   border:none;
   background: #fff;
   color: #222;
 }
-#selectTplDialog .ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset{
+#selectTplDialog +.ui-dialog-buttonpane .ui-dialog-buttonset,
+#selectAudioDialog +.ui-dialog-buttonpane .ui-dialog-buttonset,
+#selectImgDialog +.ui-dialog-buttonpane .ui-dialog-buttonset
+{
   float: none;
   text-align: center;
+}
+#selectTplDialog +.ui-widget-content .ui-state-default,
+#selectAudioDialog +.ui-widget-content .ui-state-default,
+#selectImgDialog +.ui-widget-content .ui-state-default
+{
+     border: none;
+    border-radius: 3px;
+    background: #01cfaf;
+    font-weight: normal;
+    color: #fff;
+}
+#selectTplDialog +.ui-widget-content .ui-state-default:nth-child(2n),
+#selectAudioDialog +.ui-widget-content .ui-state-default:nth-child(2n),
+#selectImgDialog +.ui-widget-content .ui-state-default:nth-child(2n)
+{
+    background: red;
+}
+
+#selectTplDialog +.ui-dialog-buttonpane .ui-button-text-only .ui-button-text,
+#selectAudioDialog +.ui-dialog-buttonpane .ui-button-text-only .ui-button-text,
+#selectImgDialog +.ui-dialog-buttonpane .ui-button-text-only .ui-button-text
+{
+    padding: .7em 5em;
+}
+#selectTplDialog +.ui-dialog-buttonpane .ui-button-text-only .ui-button-text,
+#selectAudioDialog +.ui-dialog-buttonpane .ui-button-text-only .ui-button-text,
+#selectImgDialog +.ui-dialog-buttonpane .ui-button-text-only .ui-button-text
+{
+    padding: .7em 5em;
 }

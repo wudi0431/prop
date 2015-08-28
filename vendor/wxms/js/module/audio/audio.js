@@ -43,9 +43,20 @@ define(['FFF', 'jquery', 'jqui', 'wxms_config'], function (FFF, $, jqui, WXMS_co
             height: 600,
             closeOnEscape: false,
             modal: true,
-            close: function (event, ui) {
-                that.close()
-            }
+            buttons: [
+                {
+                    text: "确定",
+                    click: function() {
+                        $( this ).dialog( "close" );
+                    }
+                },
+                {
+                    text: "取消",
+                    click: function() {
+                        $( this ).dialog( "close" );
+                    }
+                }
+            ]
         });
 
         that.getPubAudios();
