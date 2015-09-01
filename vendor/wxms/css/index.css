@@ -713,3 +713,11 @@ body {
   top: 75%;
   width: 25px;
 }
+#login{
+  padding-right: 0;
+}
+#logout{
+  padding: 0;
+}
+
+
