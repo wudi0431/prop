@@ -9,7 +9,7 @@ body {
 a{text-decoration:none;}
 
 .layout1024{
-    width:1024px;
+    width:1020px;
     margin:0 auto;
 }
 .color_green{
@@ -77,20 +77,19 @@ a{text-decoration:none;}
 }
 .list_content .product_list{
     width:100%;
-    font-size:0;
-    text-align:justify;
+    clear:both;
+    overflow:hidden;
 }
 .list_content .product_box{
+    float:left;
     display:inline-block;
     width:245px;
     height:400px;
-}
-.list_content .justify{
-  display: inline-block;
-  width: 245px;
-  height:0; 
-  padding:0; 
-  overflow:hidden;
+    margin:0 5px;
+    /*-webkit-box-flex:1;
+    -webkit-flex:1;
+    -ms-flex:1;
+    flex:1;*/
 }
 .product_box .product_top{
     display:inline-block;
