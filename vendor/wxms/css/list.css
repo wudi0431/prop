@@ -45,6 +45,7 @@ a{text-decoration:none;}
 .list_header .logo_box .logo_icon{
     padding-right:10px;
     font-size:35px;
+    float: left;
 }
 .list_header .logo_box .logo_text{
     font-family:"Microsoft YaHei";
@@ -69,6 +70,7 @@ a{text-decoration:none;}
     padding-right:5px;
     font-size:22px;
     vertical-align:middle;
+    display: inline;
 }
 .list_content .add_btn .btn_text{
     font-size:14px;
@@ -135,6 +137,7 @@ a{text-decoration:none;}
     padding-left:20px;
     color:#bdbdbd;
     font-size:14px;
+    display: inline;
 }
 .product_box .product_edit .delete,.product_box .product_edit .editor{
     font-size:20px;
