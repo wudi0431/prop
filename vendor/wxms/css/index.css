@@ -20,8 +20,7 @@
 
 .project-list li:hover{
     background-color: #47ee19;
-}
-@font-face {
+}@font-face {
   font-family: 'iconfont';
   src: url('//at.alicdn.com/t/font_1440568463_1353846.eot');
   /* IE9*/
@@ -103,19 +102,19 @@ body {
   0%,
   50%,
   100% {
-    -webkit-transform: translate(0, 0);
-    -moz-transform: translate(0, 0);
-    -ms-transform: translate(0, 0);
-    -o-transform: translate(0, 0);
-    transform: translate(0, 0);
+    -webkit-transform: translate(0, 0) rotate(0deg);
+    -moz-transform: translate(0, 0) rotate(0deg);
+    -ms-transform: translate(0, 0) rotate(0deg);
+    -o-transform: translate(0, 0) rotate(0deg);
+    transform: translate(0, 0) rotate(0deg);
   }
   25% {
-    -webkit-transform: translate(25%, -10%);
-    transform: translate(25%, -10%);
+    -webkit-transform: translate(25%, -10%) rotate(-20deg);
+    transform: translate(25%, -10%) rotate(-20deg);
   }
   75% {
-    -webkit-transform: translate(-25%, -10%);
-    transform: translate(-25%, -10%);
+    -webkit-transform: translate(-25%, -10%) rotate(20deg);
+    transform: translate(-25%, -10%) rotate(20deg);
   }
 }
 @keyframes indexLampLine {
@@ -128,13 +127,13 @@ body {
   }
   25% {
     transform-origin: top left;
-    -webkit-transform: rotate(-20deg) scale(0.95);
-    transform: rotate(-20deg) scale(0.95);
+    -webkit-transform: rotate(-20deg) scale(0.9);
+    transform: rotate(-20deg) scale(0.9);
   }
   75% {
     transform-origin: top left;
-    -webkit-transform: rotate(20deg) scale(0.95);
-    transform: rotate(20deg) scale(0.95);
+    -webkit-transform: rotate(20deg) scale(0.9);
+    transform: rotate(20deg) scale(0.9);
   }
 }
 .XB_index_lamp {
