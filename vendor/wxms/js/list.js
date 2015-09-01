@@ -7,208 +7,200 @@
 
 
 require.config({
-    waitSeconds: 30,
-    paths: {
-        wxms_config:'/wxms/config',
-        jquery: '/wxms/lib/jqueryui/external/jquery/jquery',
-        jqui: '/wxms/lib/jqueryui/jquery-ui'
-    },
-    shim: {
-        'jqui': {
-            deps: ['jquery']
-        }
+  waitSeconds: 30,
+  paths: {
+    wxms_config: '/wxms/config',
+    jquery: '/wxms/lib/jqueryui/external/jquery/jquery',
+    jqui: '/wxms/lib/jqueryui/jquery-ui'
+  },
+  shim: {
+    'jqui': {
+      deps: ['jquery']
     }
+  }
 });
-require(['wxms_config','jquery', 'jqui'], function (WXMS_config,$) {
-    WXMS_config.domain = WXMS_config.domain || '';
-    Date.prototype.format = function(fmt)
-    { //author: meizz
-        var o = {
-            "M+" : this.getMonth()+1,                 //月份
-            "d+" : this.getDate(),                    //日
-            "h+" : this.getHours(),                   //小时
-            "m+" : this.getMinutes(),                 //分
-            "s+" : this.getSeconds(),                 //秒
-            "q+" : Math.floor((this.getMonth()+3)/3), //季度
-            "S"  : this.getMilliseconds()             //毫秒
-        };
-        if(/(y+)/.test(fmt))
-            fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));
-        for(var k in o)
-            if(new RegExp("("+ k +")").test(fmt))
-                fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));
-        return fmt;
-    }
+require(['wxms_config', 'jquery', 'jqui'], function (WXMS_config, $) {
+  WXMS_config.domain = WXMS_config.domain || '';
+  Date.prototype.format = function (fmt) { //author: meizz
+    var o = {
+      "M+": this.getMonth() + 1,                 //月份
+      "d+": this.getDate(),                    //日
+      "h+": this.getHours(),                   //小时
+      "m+": this.getMinutes(),                 //分
+      "s+": this.getSeconds(),                 //秒
+      "q+": Math.floor((this.getMonth() + 3) / 3), //季度
+      "S": this.getMilliseconds()             //毫秒
+    };
+    if (/(y+)/.test(fmt))
+      fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+    for (var k in o)
+      if (new RegExp("(" + k + ")").test(fmt))
+        fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+    return fmt;
+  }
 
 
-
-    var $projectForm = $('#projectForm');
-
+  var $projectForm = $('#projectForm');
 
 
-    var $username = $('#username');
+  var $username = $('#username');
 
-    var $contain_main = $('.contain_main');
+  var $contain_main = $('.contain_main');
 
-    var $project_add = $('.project_add');
+  var $project_add = $('.project_add');
 
-    var $createrProject= $('#createrProject');
+  var $createrProject = $('#createrProject');
 
-    var $loginout = $('#loginout');
+  var $loginout = $('#loginout');
 
-    var username = window.localStorage.getItem('username')
+  var username = window.localStorage.getItem('username')
 
-    $username.text(username);
+  $username.text(username);
 
 
-    var str = "<div data-project=\"%_id%\" class=\"list_main\">" +
-        "<div class=\"list_img_main\">" +
-        "<img src=\"/wxms/img/list_main_img.png\" class=\"list_project_img\" alt=\"\"/></div>" +
-        " <div class=\"list_info_main\">" +
-        "    <div class=\"list_info_title\">%name%</div>" +
-        "                    <div class=\"list_info_intro\">%description%</div>" +
-        "                    <div class=\"list_info_time\">" +
-        "                        <div class=\"list_info_time_change\">最后修改时间：%updatetime%</div>" +
-        "                    </div>" +
-        "                </div>" +
-        "                <div class=\"list_main_btn_main\">" +
-        "                    <a href=\"#\">" +
-        "                        <img src=\"/wxms/img/bianji.svg\" alt=\"编辑\" title=\"编辑\" data-roe=\"editor\" class=\"list_project_btn\"/>" +
-        "                    </a>" +
-        "                    <a href=\"#\">" +
-        "                        <img src=\"/wxms/img/shanchu.svg\" alt=\"删除\"  title=\"删除\"  data-roe=\"remove\" class=\"list_project_btn\"/>" +
-        "                    </a>" +
-        "                </div>" +
-        "            </div>";
+  var str = '<div data-project="%_id%" class="product_box">' +
+    '<div class="product_top">' +
+    '<div class="product_pic">' +
+    '<img src="http://ww3.sinaimg.cn/square/94d54821gw1evexc0ha5gj20c809pglz.jpg" />' +
+    '</div>' +
+    '<div class="product_edit">' +
+    '<a href="javascript:;" class="iconfont preview">&#xe606;</a>' +
+    '<a href="javascript:;" class="iconfont delete list_project_btn" data-roe="remove">&#xe609;</a>' +
+    '<a href="javascript:;" class="iconfont editor list_project_btn" data-roe="editor">&#xe60a;</a>' +
+    '</div>' +
+    '<div class="product_ewm">' +
+    '<img src="http://ww4.sinaimg.cn/square/94d54821gw1evexc0tr80j20c80gnt9k.jpg" />' +
+    '</div>' +
+    '</div>' +
+    '<div class="product_title">%description%</div>' +
+    '<div class="product_date">最新修改时间：%updatetime%</div>' +
+    '</div>';
 
-    drawProjectList();
+  drawProjectList();
 
-    function drawProjectList() {
-        $.ajax({
-            method: "GET",
-            url: WXMS_config.domain+"/getProjectList"
-        }).done(function (msg) {
-            var html = '';
-            var projectList = msg.model.projectList || [];
-            if (projectList.length > 0) {
-                projectList.forEach(function (o, i) {
-                    var t = str.replace(/(%(\w+)%)/g, function ($1, $2, $3) {
-                        if($3=='updatetime'){
-                            var time1 = new Date(o[$3]).format("yyyy-MM-dd");
-                            return time1;
-                        }
-                        return o[$3] ? o[$3] : '';
-                    });
-                    html += t;
-                });
-                $contain_main.html('').html(html);
-                bindEnent();
-            } else {
-                $contain_main.html('');
+  function drawProjectList() {
+    $.ajax({
+      method: "GET",
+      url: WXMS_config.domain + "/getProjectList"
+    }).done(function (msg) {
+      var html = '';
+      var projectList = msg.model.projectList || [];
+      if (projectList.length > 0) {
+        projectList.forEach(function (o, i) {
+          var t = str.replace(/(%(\w+)%)/g, function ($1, $2, $3) {
+            if ($3 == 'updatetime') {
+              var time1 = new Date(o[$3]).format("yyyy-MM-dd");
+              return time1;
             }
-        }).fail(function (msg) {
-
+            return o[$3] ? o[$3] : '';
+          });
+          html += t;
         });
-    }
+        $contain_main.html('').html(html);
+        bindEnent();
+      } else {
+        $contain_main.html('');
+      }
+    }).fail(function (msg) {
 
-
-
-    function bindEnent(){
-        $.each($('.list_project_btn'), function (index,btn) {
-            $(btn).on('click',function () {
-                var $that = $(this);
-                var roe = $that.data('roe');
-                var pdiv = $that.parent('a').parent('div').parent('div');
-                var projectId = pdiv.data('project');
-                if(roe=='editor'){
-                    window.location.href = WXMS_config.domain+'/editor?projectId=' + projectId;
-                }else if(roe=='remove'){
-                    $.ajax({
-                        method: "POST",
-                        url: WXMS_config.domain+"/deleteProject",
-                        data: {
-                            projectId: projectId
-                        }
-                    }).done(function (msg) {
-                        pdiv.remove();
-                    }).fail(function (msg) {
-
-                    });
-                }
-            })
-        })
-
-    }
-
-
-    $loginout.on('click', function () {
-        $.ajax({
-            method: "get",
-            url: WXMS_config.domain+"/logout"
-        }).done(function (msg) {
-           if(msg.success){
-               window.location.href = WXMS_config.domain+'/index';
-               window.localStorage.setItem('username',"");
-           }
-        }).fail(function (msg) {
-
-        });
     });
+  }
 
 
-    $project_add.on('click', function () {
-        $createrProject.dialog({
-            resizable: false,
-            title:'创建项目',
-            height:280,
-            modal: true,
-            buttons: {
-                "确定": function() {
-
-                    var name = $projectForm.find('#name')
-                    var description = $projectForm.find('#description')
-                    if(name.val()==''){
-                        name.focus();
-                        name.addClass('eorr');
-                    }else if(description.val()==''){
-                        description.focus();
-                        description.addClass('eorr');
-                    }
-                    else{
-                        name.removeClass('eorr');
-                        description.removeClass('eorr');
-                        $( this ).dialog( "close" );
-                        var prodata ={
-                            name:name.val(),
-                            description:description.val()
-                        };
-                        $.ajax({
-                            method: "POST",
-                            url: WXMS_config.domain+"/addProject",
-                            data: prodata
-                        }).done(function (msg) {
-                            drawProjectList();
-                        }).fail(function (msg) {
-                        });
-                    }
-
-                },
-                '退出': function() {
-                    $( this ).dialog( "close" );
-                }
+  function bindEnent() {
+    $.each($('.list_project_btn'), function (index, btn) {
+      $(btn).on('click', function () {
+        var $that = $(this);
+        var roe = $that.data('roe');
+        var pdiv = $that.parents('.product_box');
+        var projectId = pdiv.data('project');
+        if (roe == 'editor') {
+          window.location.href = WXMS_config.domain + '/editor?projectId=' + projectId;
+        } else if (roe == 'remove') {
+          $.ajax({
+            method: "POST",
+            url: WXMS_config.domain + "/deleteProject",
+            data: {
+              projectId: projectId
             }
-        })
+          }).done(function (msg) {
+            pdiv.remove();
+          }).fail(function (msg) {
 
+          });
+        }
+      })
+    })
+
+  }
+
+
+  $loginout.on('click', function () {
+    $.ajax({
+      method: "get",
+      url: WXMS_config.domain + "/logout"
+    }).done(function (msg) {
+      if (msg.success) {
+        window.location.href = WXMS_config.domain + '/index';
+        window.localStorage.setItem('username', "");
+      }
+    }).fail(function (msg) {
 
     });
+  });
 
 
-    var $productBox = $('.product_box');
+  $project_add.on('click', function () {
+    $createrProject.dialog({
+      resizable: false,
+      title: '创建项目',
+      height: 280,
+      modal: true,
+      buttons: {
+        "确定": function () {
 
-    $productBox.hover(function(){
-        $(this).find('.product_ewm').addClass('show');
-    },function(){
-        $(this).find('.product_ewm').removeClass('show');
-    });
+          var name = $projectForm.find('#name')
+          var description = $projectForm.find('#description')
+          if (name.val() == '') {
+            name.focus();
+            name.addClass('eorr');
+          } else if (description.val() == '') {
+            description.focus();
+            description.addClass('eorr');
+          }
+          else {
+            name.removeClass('eorr');
+            description.removeClass('eorr');
+            $(this).dialog("close");
+            var prodata = {
+              name: name.val(),
+              description: description.val()
+            };
+            $.ajax({
+              method: "POST",
+              url: WXMS_config.domain + "/addProject",
+              data: prodata
+            }).done(function (msg) {
+              drawProjectList();
+            }).fail(function (msg) {
+            });
+          }
+
+        },
+        '退出': function () {
+          $(this).dialog("close");
+        }
+      }
+    })
+
+
+  });
+
+
+  $contain_main.on('mouseenter', '.product_box', function () {
+    $(this).find('.product_ewm').addClass('show');
+  }).on('mouseleave', '.product_box', function () {
+    $(this).find('.product_ewm').removeClass('show');
+  });
 
 });
