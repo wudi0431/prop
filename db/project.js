@@ -6,6 +6,7 @@ var ProjectSchema = new Schema({
     name: String,
     description: String,
     updatetime: Date,
+    projectImgUrl:String,
     user: {
         id: String,
         name: String

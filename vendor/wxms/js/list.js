@@ -11,15 +11,19 @@ require.config({
   paths: {
     wxms_config: '/wxms/config',
     jquery: '/wxms/lib/jqueryui/external/jquery/jquery',
-    jqui: '/wxms/lib/jqueryui/jquery-ui'
+    jqui: '/wxms/lib/jqueryui/jquery-ui',
+    qrcode:'http://cdn.staticfile.org/jquery.qrcode/1.0/jquery.qrcode.min'
   },
   shim: {
     'jqui': {
       deps: ['jquery']
+    },
+    qrcode:{
+      deps: ['jquery']
     }
   }
 });
-require(['wxms_config', 'jquery', 'jqui'], function (WXMS_config, $) {
+require(['wxms_config', 'jquery', 'jqui','qrcode'], function (WXMS_config, $) {
   WXMS_config.domain = WXMS_config.domain || '';
   Date.prototype.format = function (fmt) { //author: meizz
     var o = {
@@ -61,15 +65,14 @@ require(['wxms_config', 'jquery', 'jqui'], function (WXMS_config, $) {
   var str = '<div data-project="%_id%" class="product_box">' +
     '<div class="product_top">' +
     '<div class="product_pic">' +
-    '<img src="http://ww3.sinaimg.cn/square/94d54821gw1evexc0ha5gj20c809pglz.jpg" />' +
+    '<img src="%projectImgUrl%" />' +
     '</div>' +
     '<div class="product_edit">' +
-    '<a href="javascript:;" class="iconfont preview">&#xe606;</a>' +
+    '<a href="javascript:;" class="iconfont preview list_project_btn" data-roe="preview">&#xe606;</a>' +
     '<a href="javascript:;" class="iconfont delete list_project_btn" data-roe="remove">&#xe609;</a>' +
     '<a href="javascript:;" class="iconfont editor list_project_btn" data-roe="editor">&#xe60a;</a>' +
     '</div>' +
-    '<div class="product_ewm">' +
-    '<img src="http://ww4.sinaimg.cn/square/94d54821gw1evexc0tr80j20c80gnt9k.jpg" />' +
+    '<div class="product_ewm" data-preview="%preview%">' +
     '</div>' +
     '</div>' +
     '<div class="product_title">%description%</div>' +
@@ -87,6 +90,7 @@ require(['wxms_config', 'jquery', 'jqui'], function (WXMS_config, $) {
       var projectList = msg.model.projectList || [];
       if (projectList.length > 0) {
         projectList.forEach(function (o, i) {
+          o.preview = WXMS_config.previewDomain+'/index.html?projectId=' + o._id;
           var t = str.replace(/(%(\w+)%)/g, function ($1, $2, $3) {
             if ($3 == 'updatetime') {
               var time1 = new Date(o[$3]).format("yyyy-MM-dd");
@@ -108,6 +112,8 @@ require(['wxms_config', 'jquery', 'jqui'], function (WXMS_config, $) {
 
 
   function bindEnent() {
+
+
     $.each($('.list_project_btn'), function (index, btn) {
       $(btn).on('click', function () {
         var $that = $(this);
@@ -116,7 +122,9 @@ require(['wxms_config', 'jquery', 'jqui'], function (WXMS_config, $) {
         var projectId = pdiv.data('project');
         if (roe == 'editor') {
           window.location.href = WXMS_config.domain + '/editor?projectId=' + projectId;
-        } else if (roe == 'remove') {
+        } else if(roe == 'preview'){
+          window.open(WXMS_config.domain+'/show?projectId=' + projectId);
+        }else if (roe == 'remove') {
           $.ajax({
             method: "POST",
             url: WXMS_config.domain + "/deleteProject",
@@ -198,7 +206,14 @@ require(['wxms_config', 'jquery', 'jqui'], function (WXMS_config, $) {
 
 
   $contain_main.on('mouseenter', '.product_box', function () {
-    $(this).find('.product_ewm').addClass('show');
+    var $product_ewm = $(this).find('.product_ewm');
+    $product_ewm.qrcode({
+      width: 225,
+      height: 225,
+      text: $product_ewm.data('preview'),
+      foreground: '#000000'
+    });
+    $product_ewm.addClass('show');
   }).on('mouseleave', '.product_box', function () {
     $(this).find('.product_ewm').removeClass('show');
   });
