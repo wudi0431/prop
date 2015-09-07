@@ -318,7 +318,7 @@ Pagecom.prototype={
         var pageEntity = {
             name: "第"+ this.index+"页",
             sortindex:this.index,
-            backgroundcolor:'#fff',
+            backgroundcolor:'#bdbdbd',
             backgroundimage:""
         };
         $.ajax({
@@ -616,9 +616,9 @@ Pagecom.prototype={
             that.$showbox.attr('data-color',curpage.backgroundcolor);
         }else{
             that.$showbox.css({
-                "background-color":"#fff"
+                "background-color":"#bdbdbd"
             });
-            that.$showbox.attr('data-color','#fff');
+            that.$showbox.attr('data-color','#bdbdbd');
         }
         if(curpage.backgroundimage && curpage.backgroundimage!=""){
             that.$showbox.css({
