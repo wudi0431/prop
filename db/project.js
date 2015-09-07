@@ -6,7 +6,7 @@ var ProjectSchema = new Schema({
     name: String,
     description: String,
     updatetime: Date,
-    projectImgUrl:String,
+    projectImgUrl:{type: String, default: 'http://d9.yihaodianimg.com/N02/M02/40/EB/CgQCsFLVBOOAE0boAAAK5UNpfUI56300.png'},
     user: {
         id: String,
         name: String
