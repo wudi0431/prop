@@ -1301,6 +1301,11 @@ body .cp-color-picker, body .colpick {
   border: 1px #3db39e solid;
 }
 
+.W_tplSelect{
+  opacity: 1;
+  border: 1px #0520b3 solid;
+}
+
 .W_tpl:hover {
   opacity: 1;
 }
@@ -1673,4 +1678,21 @@ body .cp-color-picker, body .colpick {
 #prototype-content {
   background: none;
   background-color: #ececec;
+}
+
+
+.tplDraw{
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(2, 2, 2, 0.75);
+  top: 0;
+  left: 0;
+}
+
+.showPage{
+  height: 504px;
+  width: 320px;
+  margin: 10px auto 0 auto;
 }

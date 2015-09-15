@@ -1,8 +1,8 @@
 /**
  * Created by wudi on 15/5/27.
  */
-define(['jquery','jqui','zepto','pagecom_content','FFF','imgcut','template','wxms_config','audio'],
-    function($,jqui,zepto,pagecom_content,FFF,imgcut,Template,WXMS_config,Audio) {
+define(['jquery','jqui','zepto','pagecom_content','FFF','imgcut','tpl','wxms_config','audio'],
+    function($,jqui,zepto,pagecom_content,FFF,imgcut,TPL,WXMS_config,Audio) {
 
 
 var index = 0,
@@ -248,7 +248,7 @@ Pagecom.prototype={
     addPage:function(istpl){
         var that =this;
         //TODO 模板数据处理
-        Template.onTplSelect = function (tplData) {
+        TPL.onTplSelect = function (tplData) {
             var cindex =++that.index;
 
             tplData.sortindex=cindex;
@@ -275,7 +275,7 @@ Pagecom.prototype={
                 }
             });
         };
-        Template.show();
+        TPL.show();
 
     },
     // 默认添加页面

@@ -24,13 +24,14 @@ require.config({
         animatecom: '/wxms/js/module/animate/animatecom',
         datasourcecom: '/wxms/js/module/datasource/datasourcecom',
         stylecom: '/wxms/js/module/style/stylecom',
-        template: '/wxms/js/module/template/template',
+        tpl: '/wxms/js/module/template/template',
         rotatable: '/wxms/lib/rotatable',
         transit: '/wxms/lib/jquerytransit',
         imgcom_cut: '/wxms/js/module/imgcom/imgcut',
         audio: '/wxms/js/module/audio/audio',
         audiocom: '/wxms/js/module/audiocom/audiocom',
-        context_menu: '/wxms/lib/jquerycontextmenu/jquery.contextMenu'
+        context_menu: '/wxms/lib/jquerycontextmenu/jquery.contextMenu',
+        template_native:'/wxms/lib/template-native'
     },
     shim: {
         webchat: {
@@ -58,9 +59,9 @@ require.config({
     }
 });
 
-require(['context_menu','audiocom','audio','dialog','wxms_config','template', 'rotatable', 'html2canvas', 'zepto', 'jquery', 'spectrum', 'btncom', 'imgcom', 'textcom', 'btncom_content', 'imgcom_content',
+require(['context_menu','audiocom','audio','dialog','wxms_config','tpl', 'rotatable', 'html2canvas', 'zepto', 'jquery', 'spectrum', 'btncom', 'imgcom', 'textcom', 'btncom_content', 'imgcom_content',
         'textcom_content', 'jqui', 'pagecom', 'imgs', 'FFF', 'animatecom', 'datasourcecom'],
-    function (context_menu,Audiocom,Audio,Dialog,WXMS_config,Template, rotatable, Html2canvas, zepto, $, bigcolorpicker, Btncom, Imgcom, Textcom, btncom_content,
+    function (context_menu,Audiocom,Audio,Dialog,WXMS_config,TPL, rotatable, Html2canvas, zepto, $, bigcolorpicker, Btncom, Imgcom, Textcom, btncom_content,
               imgcom_content,textcom_content, jqui, Pagecom, Imgs, FFF, Animatecom, Datasourcecom) {
 
         //根据 url 的名字 获得 值
@@ -127,8 +128,8 @@ require(['context_menu','audiocom','audio','dialog','wxms_config','template', 'r
                             }
                         }).done(function (msg) {
                             if (msg.success) {
-                                Template.drawPubTpl();
-                                Template.drawUserTpl();
+                                TPL.drawPubTpl();
+                                TPL.drawUserTpl();
                             }
                         }).fail(function (msg) {
                         });

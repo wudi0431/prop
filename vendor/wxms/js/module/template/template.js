@@ -1,4 +1,62 @@
-define(['FFF', 'jquery', 'jqui','wxms_config'], function (FFF, $,jqui,WXMS_config) {
+define(['FFF', 'jquery', 'jqui','wxms_config','template_native'], function (FFF, $,jqui,WXMS_config,Tejs) {
+
+
+    var tplDraw = '<div id="<%= page.uid %>" class="showPage" style="background-color:<%= page.backgroundcolor %>;' +
+      ' background-image:url(<%=page.backgroundimage%>); background-size: cover; background-position: 50% 50%;"> ' +
+      '<% page.imgcomList.forEach(function(img){ %>' +
+      ' <div id="<%=img._id %>" class="<%=img.animationName %> animated" data-type="img" style="position: absolute; ' +
+      'z-index: <%=img.zIndex %>;left: <%=sizeFormat(img.left,page.initWidth)%>; right: <%=sizeFormat(img.right,page.initWidth) %>; ' +
+      'top: <%=sizeFormat(img.top,page.initHeight) %>; bottom: <%=sizeFormat(img.bottom,page.initHeight) %>; ' +
+      'width: <%=sizeFormat(img.width,page.initWidth) %>; height: <%=sizeFormat(img.height,page.initHeight)%>;' +
+      ' -webkit-animation-duration: <%=img.animationDuration %>; animation-duration: <%=img.animationDuration %>; ' +
+      '-webkit-animation-iteration-count: <%=img.animationCount %>; animation-iteration-count: <%=img.animationCount %>; ' +
+      'animation-delay:<%=img.animationDelay %>; -webkit-animation-delay:<%=img.animationDelay %>; ' +
+      ' background-repeat: no-repeat;"> <div style="transform:<%=img.transform %>;-webkit-transform:<%=img.transform %>;' +
+      'background-color:transparent;" class="item-image-full"> <img class="W_item" data-href="<%=img.href%>" ' +
+      'src="<%=img.imgurl %>" data-dataurl="<%=img.dataurl %>" data-datamapping="<%=img.datamapping %>" ' +
+      'width="100%" height="100%" style="-webkit-border-radius:<%=img.borderRadius %>;border-radius:<%=img.borderRadius %>; ' +
+      'box-shadow:<%=img.boxShadow %>;opacity:<%=img.opacity %>; border-color:<%=img.borderColor %>;' +
+      'border-style:<%=img.borderStyle %>;border-width: <%=img.borderWidth %>;border-radius: <%=img.borderRadius %> ;' +
+      'padding: <%=img.paddingTop %> <%=img.paddingRight %> <%=img.paddingBottom %> ' +
+      '<%=img.paddingLeft %>;"> </div>' +
+      ' </div> <% }) %> ' +
+      '<% page.textcomList.forEach(function(txt){ %> <div id="<%=txt._id %>" class="<%=txt.animationName%> animated" ' +
+      'data-type="text" style="position: absolute; display: table; width: <%=sizeFormat(txt.width,page.initWidth) %>;' +
+      ' height: <%=sizeFormat(txt.height,page.initHeight) %>; font-style: <%=txt.fontStyle %>; ' +
+      'font-weight: <%=txt.fontWeight %>; font-family: <%=txt.fontFamily %>; font-size: <%=txt.fontSize %>; ' +
+      'color:  <%=txt.color %>; text-align: <%=txt.textAlign%>; line-height:<%=txt.lineHeight%>; ' +
+      'z-index: <%=txt.zIndex %>;left: <%=sizeFormat(txt.left,page.initWidth) %>; ' +
+      'right: <%=sizeFormat(txt.right,page.initWidth) %>;' +
+      ' top: <%=sizeFormat(txt.top,page.initHeight) %>; bottom: <%=sizeFormat(txt.bottom,page.initHeight) %>;' +
+      ' opacity: <%=txt.opacity %>; -webkit-animation-duration: <%=txt.animationDuration %>; animation-duration: <%=txt.animationDuration %>;' +
+      ' -webkit-animation-iteration-count: <%=txt.animationCount %>; animation-iteration-count: <%=txt.animationCount %>; ' +
+      'animation-delay:<%=txt.animationDelay %>; -webkit-animation-delay:<%=txt.animationDelay %>; ' +
+      'transform:<%=txt.transform %>;-webkit-transform:<%=txt.transform %>;"> <div class="item-table"> ' +
+      '<div data-href="<%=txt.href%>" style="display: table-cell;text-decoration:<%=txt.textDecoration %>;' +
+      'vertical-align:<%=txt.verticalAlign %>;color:<%=txt.color %>; box-shadow:<%=txt.boxShadow %> ; ' +
+      'text-shadow:<%=txt.textShadow %>;background-color:<%=txt.backgroundColor %>; border-color:<%=txt.borderColor %>;' +
+      'border-style:<%=txt.borderStyle %>;border-width: <%=txt.borderWidth %>;border-radius: <%=txt.borderRadius %> ;" ' +
+      'class="item-table-cell W_item" data-dataurl="<%=txt.dataurl %>" data-datamapping="<%=txt.datamapping %>"> <%=txt.context %>' +
+      ' </div> </div> ' +
+      '</div> <% }) %> ' +
+      '<% page.btncomtList.forEach(function(btn){ %> <div id="<%= btn._id %>" class="W_item <%=btn.animationName%> animated" ' +
+      'data-type="btn" style="position: absolute;width: <%=sizeFormat(btn.width,page.initWidth) %>; ' +
+      'height: <%=sizeFormat(btn.height,page.initHeight) %>;z-index: <%=btn.zIndex %>;left: <%=sizeFormat(btn.left,page.initWidth) %>; ' +
+      'right: <%=sizeFormat(btn.right,page.initWidth) %>; top: <%=sizeFormat(btn.top,page.initHeight) %>; ' +
+      'bottom: <%=sizeFormat(btn.bottom,page.initHeight) %>; -webkit-animation-duration: <%=btn.animationDuration %>; ' +
+      'animation-duration: <%=btn.animationDuration %>; -webkit-animation-iteration-count: <%=btn.animationCount %>; ' +
+      'animation-iteration-count: <%=btn.animationCount %>; animation-delay:<%=btn.animationDelay %>; ' +
+      '-webkit-animation-delay:<%=btn.animationDelay %>; background-repeat: no-repeat;"> <div class="item-table">' +
+      ' <button type="button" data-href="<%=btn.href%>" style="transform:<%=btn.transform %>;-webkit-transform:<%=btn.transform %>;' +
+      'background-color:<%=btn.backgroundColor %>; border-color:<%=btn.borderColor %>;border-style:<%=btn.borderStyle %>;' +
+      'border-width: <%=btn.borderWidth %>;border-radius: <%=btn.borderRadius %> ; box-shadow:<%=btn.boxShadow %> ; ' +
+      'text-shadow:<%=btn.textShadow %> ; color:  <%=btn.color %>;font-style: <%=btn.fontStyle %>; font-weight: <%=btn.fontWeight %>;' +
+      ' font-family: <%=btn.fontFamily %>; font-size: <%=btn.fontSize %>;  text-align: <%=btn.textAlign%>; line-height:<%=btn.lineHeight%>;" ' +
+      'class="W_btn W_item" data-dataurl="<%=btn.dataurl %>" data-datamapping="<%=btn.datamapping %>"> ' +
+      '<%= btn.context %> </button> </div> ' +
+      '</div> <% }) %> ' +
+      '</div>';
+
 
     var Template = {};
     var str = '<li><img class="W_tpl" data-uid="%uid%" src="%realImgUrl%"></li>';
@@ -9,6 +67,7 @@ define(['FFF', 'jquery', 'jqui','wxms_config'], function (FFF, $,jqui,WXMS_confi
         var that = this;
         that.pubTplList = [];
         that.userTplList = [];
+        that.selectTpl = null;
 
         that.$selectTplDialog = $('#selectTplDialog').dialog({
             autoOpen: false,
@@ -21,13 +80,18 @@ define(['FFF', 'jquery', 'jqui','wxms_config'], function (FFF, $,jqui,WXMS_confi
                 {
                     text: "确定",
                     click: function() {
-                        $( this ).dialog( "close" );
+                      if(that.selectTpl){
+                        that.selectAction(that.selectTpl);
+                      }else{
+                        alert('请选择模板');
+                      }
                     }
                 },
                 {
                     text: "取消",
                     click: function() {
                         $( this ).dialog( "close" );
+                        $('.tplDraw').html('').hide();
                     }
                 }
             ]
@@ -47,30 +111,71 @@ define(['FFF', 'jquery', 'jqui','wxms_config'], function (FFF, $,jqui,WXMS_confi
         that.drawPubTpl();
         that.drawUserTpl();
 
+      $('.tplDraw').on('click',function(){
+        $('.tplDraw').html('').hide();
+      });
+
 
         $('#selectTplDialog').on('click', '.W_tpl', function () {
             var $that = $(this);
-            var allData = that.pubTplList.concat(that.userTplList);
-            var uid = $that.data('uid');
-            var curTpl = allData.filter(function (tpl) {
-                if (tpl.uid == uid) {
-                    return true;
-                } else {
-                    return false;
-                }
-            });
+             var uid = $that.data('uid');
+            $('.W_tpl').removeClass('W_tplSelect');
+            $that.addClass('W_tplSelect');
+            that.selectTpl = $that;
 
-            if (curTpl.length > 0) {
-                curTpl = curTpl[0];
-            } else {
-                curTpl = null;
-            }
+          Tejs.helper('sizeFormat', function (oldSize, size) {
+            return (parseInt(oldSize, 10) / size) * 100 + '%';
+          });
 
-            if (that.onTplSelect) {
-                that.onTplSelect(curTpl);
+          var render = Tejs.compile(tplDraw);
+          var html = '预览失败';
+          $.ajax({
+            method: "GET",
+            url: WXMS_config.domain+"/getOneTpl",
+            data: {
+              tplId: uid
             }
-            that.$selectTplDialog.dialog('close');
+          }).done(function (msg) {
+            if(msg.success){
+              var data = msg.model;
+              data.initWidth = 320;
+              data.initHeight = 504;
+              html = render({
+                page: data
+              });
+            }
+            $('.tplDraw').html(html).show();
+          }).fail(function (msg) {
+            alert(msg);
+          });
+
+
         });
+
+      Template.selectAction = function ($tpl) {
+        var allData = that.pubTplList.concat(that.userTplList);
+        var uid = $tpl.data('uid');
+        var curTpl = allData.filter(function (tpl) {
+          if (tpl.uid == uid) {
+            return true;
+          } else {
+            return false;
+          }
+        });
+
+        if (curTpl.length > 0) {
+          curTpl = curTpl[0];
+        } else {
+          curTpl = null;
+        }
+
+        if (that.onTplSelect) {
+          that.onTplSelect(curTpl);
+        }
+        that.$selectTplDialog.dialog('close');
+        $('.tplDraw').html('').hide();
+      };
+
 
         $('#userTplWare').on('mousemove', 'li', function () {
             $(this).addClass('W_tplHover');
@@ -186,7 +291,7 @@ define(['FFF', 'jquery', 'jqui','wxms_config'], function (FFF, $,jqui,WXMS_confi
 
     Template.show = function () {
         var that = this;
-
+        that.selectTpl = null;
         that.$selectTplDialog.dialog('open');
     };
 
