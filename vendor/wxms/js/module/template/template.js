@@ -76,18 +76,23 @@ define(['FFF', 'jquery', 'jqui','wxms_config','template_native'], function (FFF,
             title: "选择模板",
             modal: true,
             buttons: [
-                {
-                    text: "确定",
-                    click: function() {
-                        $( this ).dialog( "close" );
-                    }
-                },
-                {
-                    text: "取消",
-                    click: function() {
-                        $( this ).dialog( "close" );
-                    }
+              {
+                text: "确定",
+                click: function() {
+                  if(that.selectTpl){
+                    that.selectAction(that.selectTpl);
+                  }else{
+                    alert('请选择模板');
+                  }
                 }
+              },
+              {
+                text: "取消",
+                click: function() {
+                  $( this ).dialog( "close" );
+                  $('.tplDraw').html('').hide();
+                }
+              }
             ]
         });
 
@@ -327,6 +332,7 @@ define(['FFF', 'jquery', 'jqui','wxms_config','template_native'], function (FFF,
                 var p=1;
               var ispageone=true
                 if (tplList.length > 0) {
+                  userTplWare.show()
                     that.userTplList = tplList;
                   tplList.forEach(function (o,len) {
                         o.realImgUrl = '/wxms/uploadimg/' + o.imgUrl;
@@ -348,6 +354,10 @@ define(['FFF', 'jquery', 'jqui','wxms_config','template_native'], function (FFF,
                       }else if(ispageone==false && tplList.length==(len+1)){
                         p++;
                         wraphtml = '<div class="page-'+p+' item-visible">'+html+'</div>';
+                        userTplWare.append(wraphtml);
+                      }else if(ispageone==true && tplList.length==(len+1)){
+                        p++;
+                        wraphtml = '<div class="page-'+p+'">'+html+'</div>';
                         userTplWare.append(wraphtml);
                       }
 
