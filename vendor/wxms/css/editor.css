@@ -1660,8 +1660,8 @@ body .cp-color-picker, body .colpick {
   width: 120px;
 }
 
-#tplWare {
-
+#tplWare ,#userTplWare{
+  margin-left: 14px;
 }
 
 .wxms-fileset {
@@ -1673,4 +1673,36 @@ body .cp-color-picker, body .colpick {
 #prototype-content {
   background: none;
   background-color: #ececec;
+}
+
+/* demo pag1 ---------------------------------------------------------------- */
+.container1 {
+width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+
+.slider1 {
+  width: 400px;
+  margin: 10px auto;
+}
+
+.rows-per-page1 {
+  display: inline-block !important;
+  background: url("../img/page.png") no-repeat left center !important;
+  padding: 0px 0px 0px 20px !important;
+  margin: 3px 10px 3px 10px !important;
+  width: 30px;
+  vertical-align: middle;
+  height: 18px !important;
+}
+
+.goto-page1 {
+  display: inline-block !important;
+  background: url("../img/bullet_go.png") no-repeat left center !important;
+  padding: 0px 0px 0px 20px !important;
+  margin: 3px 10px 3px 10px !important;
+  width: 30px;
+  vertical-align: middle;
+  height: 18px !important;
 }

@@ -178,11 +178,14 @@ div[aria-describedby="selectImgDialog"].ui-draggable .ui-dialog-titlebar {
 
 #selectTplDialog .ui-state-default,
 #selectAudioDialog .ui-state-default,
+#selecttTempateDialog .ui-state-default,
 #selectImgDialog .ui-state-default
 {
   width: 48%;
   background: #ececec;
 }
+
+
 
 
 
@@ -194,13 +197,17 @@ div[aria-describedby="selectImgDialog"].ui-draggable .ui-dialog-titlebar {
 #selectAudioDialog .ui-widget-header .ui-state-default,
 #selectImgDialog .ui-state-default,
 #selectImgDialog .ui-widget-content .ui-state-default,
-#selectImgDialog .ui-widget-header .ui-state-default
+#selectImgDialog .ui-widget-header .ui-state-default,
+#selecttTempateDialog .ui-state-default,
+#selecttTempateDialog .ui-widget-content .ui-state-default,
+#selecttTempateDialog .ui-widget-header .ui-state-default
 {
   background: #ececec;
 }
 
 #selectTplDialog .ui-tabs-anchor,
 #selectAudioDialog .ui-tabs-anchor,
+#selecttTempateDialog .ui-tabs-anchor,
 #selectImgDialog .ui-tabs-anchor
 {
   width: 100%;
@@ -209,6 +216,7 @@ div[aria-describedby="selectImgDialog"].ui-draggable .ui-dialog-titlebar {
 
 #selectTplDialog .ui-state-active .ui-tabs-anchor,
 #selectAudioDialog .ui-state-active .ui-tabs-anchor,
+#selecttTempateDialog .ui-state-active .ui-tabs-anchor,
 #selectImgDialog .ui-state-active .ui-tabs-anchor
 {
   border-bottom:2px solid #01cfaf;
@@ -216,6 +224,7 @@ div[aria-describedby="selectImgDialog"].ui-draggable .ui-dialog-titlebar {
 
 #selectTplDialog +.ui-widget-content,
 #selectAudioDialog +.ui-widget-content,
+#selecttTempateDialog +.ui-widget-content,
 #selectImgDialog +.ui-widget-content
 {
   border:none;
@@ -224,6 +233,7 @@ div[aria-describedby="selectImgDialog"].ui-draggable .ui-dialog-titlebar {
 }
 #selectTplDialog +.ui-dialog-buttonpane .ui-dialog-buttonset,
 #selectAudioDialog +.ui-dialog-buttonpane .ui-dialog-buttonset,
+#selecttTempateDialog +.ui-dialog-buttonpane .ui-dialog-buttonset,
 #selectImgDialog +.ui-dialog-buttonpane .ui-dialog-buttonset
 {
   float: none;
@@ -231,6 +241,7 @@ div[aria-describedby="selectImgDialog"].ui-draggable .ui-dialog-titlebar {
 }
 #selectTplDialog +.ui-widget-content .ui-state-default,
 #selectAudioDialog +.ui-widget-content .ui-state-default,
+#selecttTempateDialog +.ui-widget-content .ui-state-default,
 #selectImgDialog +.ui-widget-content .ui-state-default
 {
      border: none;
@@ -241,6 +252,7 @@ div[aria-describedby="selectImgDialog"].ui-draggable .ui-dialog-titlebar {
 }
 #selectTplDialog +.ui-widget-content .ui-state-default:nth-child(2n),
 #selectAudioDialog +.ui-widget-content .ui-state-default:nth-child(2n),
+#selecttTempateDialog +.ui-widget-content .ui-state-default:nth-child(2n),
 #selectImgDialog +.ui-widget-content .ui-state-default:nth-child(2n)
 {
     background: red;
@@ -248,13 +260,34 @@ div[aria-describedby="selectImgDialog"].ui-draggable .ui-dialog-titlebar {
 
 #selectTplDialog +.ui-dialog-buttonpane .ui-button-text-only .ui-button-text,
 #selectAudioDialog +.ui-dialog-buttonpane .ui-button-text-only .ui-button-text,
+#selecttTempateDialog +.ui-dialog-buttonpane .ui-button-text-only .ui-button-text,
 #selectImgDialog +.ui-dialog-buttonpane .ui-button-text-only .ui-button-text
 {
     padding: .7em 5em;
 }
 #selectTplDialog +.ui-dialog-buttonpane .ui-button-text-only .ui-button-text,
 #selectAudioDialog +.ui-dialog-buttonpane .ui-button-text-only .ui-button-text,
+#selecttTempateDialog +.ui-dialog-buttonpane .ui-button-text-only .ui-button-text,
 #selectImgDialog +.ui-dialog-buttonpane .ui-button-text-only .ui-button-text
 {
     padding: .7em 5em;
+}
+
+#tplWarepo .ui-state-default,
+#userTplWarepo .ui-state-default
+{
+  width:auto;
+  background: #ececec;
+}
+
+#tplWarepo .ui-corner-all
+#userTplWarepo .ui-corner-all,
+{
+  color: #ccc;
+}
+
+#tplWarepo .ui-state-highlight,
+#userTplWarepo .ui-state-highlight
+{
+  color: #000000;
 }

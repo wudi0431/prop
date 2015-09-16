@@ -573,7 +573,7 @@ body {
 }
 .XB_footer {
   position: absolute;
-  bottom: 0;
+  bottom: 25px;
   left: 0;
   right: 0;
 }
@@ -713,3 +713,11 @@ body {
   top: 75%;
   width: 25px;
 }
+#login{
+  padding-right: 0;
+}
+#logout{
+  padding: 0;
+}
+
+
