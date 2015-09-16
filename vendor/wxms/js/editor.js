@@ -9,6 +9,7 @@ require.config({
         html2canvas: '/wxms/lib/html2canvas',
         jqui: '/wxms/lib/jqueryui/jquery-ui',
         btncom: '/wxms/js/module/btncom/btncom',
+        tpl: '/wxms/js/module/template/template',
         btncom_content: '/wxms/js/module/btncom/btncom_content',
         btncom_style: '/wxms/js/module/btncom/btncom_style',
         imgcom: '/wxms/js/module/imgcom/imgcom',
