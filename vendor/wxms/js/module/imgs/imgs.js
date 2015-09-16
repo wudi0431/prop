@@ -38,21 +38,21 @@ define(['FFF', 'jquery', 'jqui', 'wxms_config'], function (FFF, $, jqui, WXMS_co
             width: 500,
             height: 600,
             title: "选择图片",
-            modal: true,
-            buttons: [
-                {
-                    text: "确定",
-                    click: function() {
-                        $( this ).dialog( "close" );
-                    }
-                },
-                {
-                    text: "取消",
-                    click: function() {
-                        $( this ).dialog( "close" );
-                    }
-                }
-            ]
+            modal: true
+            //buttons: [
+            //    {
+            //        text: "确定",
+            //        click: function() {
+            //            $( this ).dialog( "close" );
+            //        }
+            //    },
+            //    {
+            //        text: "取消",
+            //        click: function() {
+            //            $( this ).dialog( "close" );
+            //        }
+            //    }
+            //]
         });
         that.addSelectDom()
         that.getPubImgs();
@@ -121,6 +121,8 @@ define(['FFF', 'jquery', 'jqui', 'wxms_config'], function (FFF, $, jqui, WXMS_co
         var imgWareStr = '<li><a class="imgWareHref" href="javascript:;">' +
             '<img src="%path%" data-mid="%_id%" style="width:100px;height: 200px;"></a>' +
             '</li>';
+         var imgWarepo = $('#imgWarepo');
+             imgWarepo.html('');
         category = category || 1;
         $.ajax({
             method: "GET",
@@ -128,14 +130,82 @@ define(['FFF', 'jquery', 'jqui', 'wxms_config'], function (FFF, $, jqui, WXMS_co
         }).done(function (msg) {
             var imgList = msg.model.imgList || [];
             var html = '';
+            var wraphtml ='';
+            var n =0;
+            var p=1;
+            var ispageone=true;
             if (imgList.length > 0) {
-                imgList.forEach(function (o, i) {
+                imgList.forEach(function (o,len) {
                     var t = imgWareStr.replace(/(%(\w+)%)/g, function ($1, $2, $3) {
                         return o[$3] ? o[$3] : '';
                     });
                     html += t;
+                    n++;
+                  if(ispageone==false && n/8==1){
+                    p++;
+                    wraphtml = '<div class="page-'+p+' item-visible">'+html+'</div>';
+                    html='';
+                    imgWare.append(wraphtml);
+                  }else if(n==8 && ispageone){
+                    wraphtml = '<div class="page-'+p+'">'+html+'</div>';
+                    html='';
+                    imgWare.html('').append(wraphtml);
+                    ispageone=false;
+                  }else if(ispageone==false && imgList.length==(len+1)){
+                    p++;
+                    wraphtml = '<div class="page-'+p+' item-visible">'+html+'</div>';
+                    imgWare.append(wraphtml);
+                  }else if(ispageone==true && imgList.length==(len+1)){
+                    p++;
+                    wraphtml = '<div class="page-'+p+'">'+html+'</div>';
+                    imgWare.append(wraphtml);
+                  }
+
+
+
+
                 });
-                imgWare.html('').html(html);
+
+
+              imgWarepo.jui_pagination('destroy')
+
+              imgWarepo.jui_pagination({
+                currentPage: 1,
+                visiblePageLinks:5,
+                rowsPerPage: 8,
+                totalPages: Imgs.gettotalPages(imgList),
+                containerClass: 'container1',
+                showNavButtons:true,
+                disableSelectionNavPane: true,
+                showPreferences:false,
+                navRowsPerPageClass: 'rows-per-page1  ui-state-default ui-corner-all',
+                navGoToPageClass: 'goto-page1 ui-state-default ui-corner-all',
+                onChangePage: function(event, page_num) {
+                  if(isNaN(page_num) || page_num <= 0) {
+                    alert('Invalid page' + ' (' + page_num + ')');
+                  } else {
+                    $('.page-'+page_num).removeClass('item-visible').siblings('div').addClass('item-visible');
+                  }
+                },
+                onSetRowsPerPage: function(event, rpp) {
+                  if(isNaN(rpp) || rpp <= 0) {
+                    alert('Invalid rows per page' + ' (' + rpp + ')');
+                  } else {
+                    alert('rows per page successfully changed' + ' (' + rpp + ')');
+                    $(this).jui_pagination({
+                      rowsPerPage: rpp
+                    })
+                  }
+                },
+                onDisplay: function() {
+                  var showRowsInfo = $(this).jui_pagination('getOption', 'showRowsInfo');
+                  if(showRowsInfo) {
+                    var prefix = $(this).jui_pagination('getOption', 'nav_rows_info_id_prefix');
+                    $("#" + prefix + $(this).attr("id")).text('Total rows: XXX');
+                  }
+                }
+              });
+              imgWarepo.jui_pagination('setOption', 'currentPage',1)
             } else {
                 imgWare.html('');
             }
@@ -149,21 +219,86 @@ define(['FFF', 'jquery', 'jqui', 'wxms_config'], function (FFF, $, jqui, WXMS_co
             '<img src="%path%" data-mid="%_id%" style="width:100px;height: 200px;"></a>' +
             '<i class="W_delItem">X</i>' +
             '</li>';
+        var userWareListpo = $('#userWareListpo');
+            userWareListpo.html('');
         $.ajax({
             method: "GET",
             url: WXMS_config.domain + "/getImgsByUser"
         }).done(function (msg) {
-            var imgList = msg.model.imgList || [];
-            var html = '';
-            if (imgList.length > 0) {
-                imgList.forEach(function (o, i) {
-                    var t = imgWareStr.replace(/(%(\w+)%)/g, function ($1, $2, $3) {
-                        return o[$3] ? o[$3] : '';
-                    });
+          var imgList = msg.model.imgList || [];
+          var html = '';
+          var wraphtml ='';
+          var n =0;
+          var p=1;
+          var ispageone=true;
+          if (imgList.length > 0) {
+            imgList.forEach(function (o,len) {
+              var t = imgWareStr.replace(/(%(\w+)%)/g, function ($1, $2, $3) {
+                return o[$3] ? o[$3] : '';
+              });
+              html += t;
+              n++;
+              if(ispageone==false && n/8==1){
+                p++;
+                wraphtml = '<div class="page-'+p+' item-visible">'+html+'</div>';
+                html='';
+                userWare.append(wraphtml);
+              }else if(n==8 && ispageone){
+                wraphtml = '<div class="page-'+p+'">'+html+'</div>';
+                html='';
+                userWare.html('').append(wraphtml);
+                ispageone=false;
+              }else if(ispageone==false && imgList.length==(len+1)){
+                p++;
+                wraphtml = '<div class="page-'+p+' item-visible">'+html+'</div>';
+                userWare.append(wraphtml);
+              }else if(ispageone==true && imgList.length==(len+1)){
+                p++;
+                wraphtml = '<div class="page-'+p+'">'+html+'</div>';
+                userWare.append(wraphtml);
+              }
 
-                    html += t;
-                });
-                userWare.html('').html(html);
+            });
+
+            userWareListpo.jui_pagination('destroy')
+
+            userWareListpo.jui_pagination({
+              currentPage: 1,
+              visiblePageLinks:5,
+              rowsPerPage: 8,
+              totalPages: Imgs.gettotalPages(imgList),
+              containerClass: 'container1',
+              showNavButtons:true,
+              disableSelectionNavPane: true,
+              showPreferences:false,
+              navRowsPerPageClass: 'rows-per-page1  ui-state-default ui-corner-all',
+              navGoToPageClass: 'goto-page1 ui-state-default ui-corner-all',
+              onChangePage: function(event, page_num) {
+                if(isNaN(page_num) || page_num <= 0) {
+                  alert('Invalid page' + ' (' + page_num + ')');
+                } else {
+                  $('.page-'+page_num).removeClass('item-visible').siblings('div').addClass('item-visible');
+                }
+              },
+              onSetRowsPerPage: function(event, rpp) {
+                if(isNaN(rpp) || rpp <= 0) {
+                  alert('Invalid rows per page' + ' (' + rpp + ')');
+                } else {
+                  alert('rows per page successfully changed' + ' (' + rpp + ')');
+                  $(this).jui_pagination({
+                    rowsPerPage: rpp
+                  })
+                }
+              },
+              onDisplay: function() {
+                var showRowsInfo = $(this).jui_pagination('getOption', 'showRowsInfo');
+                if(showRowsInfo) {
+                  var prefix = $(this).jui_pagination('getOption', 'nav_rows_info_id_prefix');
+                  $("#" + prefix + $(this).attr("id")).text('Total rows: XXX');
+                }
+              }
+            });
+            userWareListpo.jui_pagination('setOption', 'currentPage',1)
             } else {
                 userWare.html('');
             }
@@ -211,7 +346,16 @@ define(['FFF', 'jquery', 'jqui', 'wxms_config'], function (FFF, $, jqui, WXMS_co
 
 
     }
-
+    Imgs.gettotalPages=function(data){
+      var len = data.length-1;
+      var p =0;
+      var chu = len/8;
+      if(chu <=1){
+        return p=1;
+      }else{
+        return p = Math.round(chu+1);
+      }
+    }
 
     Imgs.init();
 

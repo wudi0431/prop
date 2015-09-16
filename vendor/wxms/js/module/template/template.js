@@ -263,6 +263,10 @@ define(['FFF', 'jquery', 'jqui','wxms_config','template_native'], function (FFF,
                   p++;
                   wraphtml = '<div class="page-'+p+' item-visible">'+html+'</div>';
                   tplWare.append(wraphtml);
+                }else if(ispageone==true && tplList.length==(len+1)){
+                  p++;
+                  wraphtml = '<div class="page-'+p+'">'+html+'</div>';
+                  tplWare.append(wraphtml);
                 }
 
               });

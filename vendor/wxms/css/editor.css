@@ -1310,6 +1310,12 @@ body .cp-color-picker, body .colpick {
   opacity: 1;
 }
 
+#selectTplDialog,#selectImgDialog,#selectAudioDialog{
+  overflow: hidden;
+}
+#imgWarebox,#userWare {
+  padding:0;
+}
 #selectTplDialog li {
   position: relative;
   display: inline-flex;
@@ -1727,4 +1733,8 @@ width: 100%;
   width: 30px;
   vertical-align: middle;
   height: 18px !important;
+}
+
+#imgWare{
+  display: inline-block;
 }

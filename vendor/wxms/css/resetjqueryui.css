@@ -274,20 +274,28 @@ div[aria-describedby="selectImgDialog"].ui-draggable .ui-dialog-titlebar {
 }
 
 #tplWarepo .ui-state-default,
+#imgWarepo .ui-state-default,
+#userWareListpo .ui-state-default,
 #userTplWarepo .ui-state-default
 {
   width:auto;
   background: #ececec;
 }
 
-#tplWarepo .ui-corner-all
-#userTplWarepo .ui-corner-all,
+#tplWarepo .ui-corner-all,
+#imgWarepo .ui-corner-all,
+#userWareListpo .ui-corner-all,
+#userTplWarepo .ui-corner-all
 {
   color: #ccc;
 }
 
 #tplWarepo .ui-state-highlight,
+#imgWarepo .ui-state-highlight,
+#userWareListpo .ui-state-highlight,
 #userTplWarepo .ui-state-highlight
 {
   color: #000000;
 }
+
+
