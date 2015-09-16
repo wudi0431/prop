@@ -95,6 +95,7 @@ var getPubTpl = require('./routes/template/getPubTpl');
 var getTplByUser = require('./routes/template/getTplByUser');
 var generationPage = require('./routes/template/generationPage');
 var deleteTemplate = require('./routes/template/deleteTemplate');
+var getOneTpl = require('./routes/template/getOneTpl');
 
 
 var addAudiocom = require('./routes/audiocom/addAudiocom');
@@ -191,6 +192,8 @@ app.use('/getPubTpl',getPubTpl);
 app.use('/getTplByUser',getTplByUser);
 app.use('/deleteTemplate',deleteTemplate);
 app.use('/generationPage',generationPage);
+app.use('/getOneTpl',getOneTpl);
+
 
 app.use('/addAudiocom', addAudiocom);
 app.use('/deleteAudiocom', deleteAudiocom);

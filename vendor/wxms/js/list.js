@@ -12,18 +12,22 @@ require.config({
     wxms_config: '/wxms/config',
     jquery: '/wxms/lib/jqueryui/external/jquery/jquery',
     jqui: '/wxms/lib/jqueryui/jquery-ui',
-    qrcode:'http://cdn.staticfile.org/jquery.qrcode/1.0/jquery.qrcode.min'
+    qrcode: 'http://cdn.staticfile.org/jquery.qrcode/1.0/jquery.qrcode.min',
+    dialog: '/wxms/lib/dialog-min'
   },
   shim: {
     'jqui': {
       deps: ['jquery']
     },
-    qrcode:{
+    qrcode: {
+      deps: ['jquery']
+    },
+    dialog: {
       deps: ['jquery']
     }
   }
 });
-require(['wxms_config', 'jquery', 'jqui','qrcode'], function (WXMS_config, $) {
+require(['wxms_config', 'jquery', 'dialog', 'jqui', 'qrcode'], function (WXMS_config, $) {
   WXMS_config.domain = WXMS_config.domain || '';
   Date.prototype.format = function (fmt) { //author: meizz
     var o = {
@@ -90,7 +94,7 @@ require(['wxms_config', 'jquery', 'jqui','qrcode'], function (WXMS_config, $) {
       var projectList = msg.model.projectList || [];
       if (projectList.length > 0) {
         projectList.forEach(function (o, i) {
-          o.preview = WXMS_config.previewDomain+'/index.html?projectId=' + o._id;
+          o.preview = WXMS_config.previewDomain + '/index.html?projectId=' + o._id;
           var t = str.replace(/(%(\w+)%)/g, function ($1, $2, $3) {
             if ($3 == 'updatetime') {
               var time1 = new Date(o[$3]).format("yyyy-MM-dd");
@@ -122,9 +126,9 @@ require(['wxms_config', 'jquery', 'jqui','qrcode'], function (WXMS_config, $) {
         var projectId = pdiv.data('project');
         if (roe == 'editor') {
           window.location.href = WXMS_config.domain + '/editor?projectId=' + projectId;
-        } else if(roe == 'preview'){
-          window.open(WXMS_config.domain+'/show?projectId=' + projectId);
-        }else if (roe == 'remove') {
+        } else if (roe == 'preview') {
+          window.open(WXMS_config.domain + '/show?projectId=' + projectId);
+        } else if (roe == 'remove') {
           $.ajax({
             method: "POST",
             url: WXMS_config.domain + "/deleteProject",
@@ -167,8 +171,10 @@ require(['wxms_config', 'jquery', 'jqui','qrcode'], function (WXMS_config, $) {
       buttons: {
         "确定": function () {
 
-          var name = $projectForm.find('#name')
-          var description = $projectForm.find('#description')
+          var name = $projectForm.find('#name');
+          var description = $projectForm.find('#description');
+          var projectImgUrl = $projectForm.find('#projectImgUrl');
+
           if (name.val() == '') {
             name.focus();
             name.addClass('eorr');
@@ -182,7 +188,8 @@ require(['wxms_config', 'jquery', 'jqui','qrcode'], function (WXMS_config, $) {
             $(this).dialog("close");
             var prodata = {
               name: name.val(),
-              description: description.val()
+              description: description.val(),
+              projectImgUrl: projectImgUrl.val()
             };
             $.ajax({
               method: "POST",
@@ -202,6 +209,41 @@ require(['wxms_config', 'jquery', 'jqui','qrcode'], function (WXMS_config, $) {
     })
 
 
+  });
+
+  //文件上传
+  $('#file_upload').on('click', function () {
+
+    var data = new FormData();
+    var files = $('#file')[0].files;
+    if (files.length === 0) {
+      alert('请选图片')
+      return false;
+    }
+    data.append('codecsv', files[0]);
+    data.append('categoryvalue', 1);
+    $.ajax({
+      cache: false,
+      type: 'post',
+      url: WXMS_config.domain + '/upLoadImg',
+      data: data,
+      contentType: false,
+      processData: false,
+      success: function (data) {
+        if (data.success) {
+          var d = dialog({
+            width: 250,
+            height: 50,
+            content: '上传成功'
+          });
+          d.show();
+          setTimeout(function () {
+            d.close().remove();
+          }, 2000);
+          $('#projectImgUrl').val(data.model.path);
+        }
+      }
+    })
   });
 
 

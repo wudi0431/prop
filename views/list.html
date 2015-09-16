@@ -1,45 +1,52 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>微信传播</title>
-    <link rel="stylesheet" href="/wxms/css/reset.css"/>
-    <link rel="stylesheet" href="/wxms/css/animate.css"/>
-    <link rel="stylesheet" href="/wxms/lib/jqueryui/jquery-ui.min.css"/>
-    <link rel="stylesheet" href="/wxms/css/resetjqueryui.css"/>
-    <link rel="stylesheet" href="/wxms/css/list.css"/>
-    <link rel="stylesheet" href="/wxms/css/font/fonts.css"/>
-    <script src="http://apps.bdimg.com/libs/require.js/2.1.11/require.min.js"></script>
-    <script src="http://image.yihaodianimg.com/mobile-ued/FFF/v0.1.2/yhd_mxc.js"></script>
+  <title>微信传播</title>
+  <link rel="stylesheet" href="/wxms/css/reset.css"/>
+  <link rel="stylesheet" href="/wxms/css/animate.css"/>
+  <link rel="stylesheet" href="/wxms/lib/jqueryui/jquery-ui.min.css"/>
+  <link rel="stylesheet" href="/wxms/css/resetjqueryui.css"/>
+  <link rel="stylesheet" href="/wxms/css/list.css"/>
+  <link rel="stylesheet" href="/wxms/css/font/fonts.css"/>
+  <link rel="stylesheet" href="/wxms/css/ui-dialog.css"/>
+  <script src="http://apps.bdimg.com/libs/require.js/2.1.11/require.min.js"></script>
+  <script src="http://image.yihaodianimg.com/mobile-ued/FFF/v0.1.2/yhd_mxc.js"></script>
 </head>
 <body>
 
 <div class="list_header">
-    <a class="logo_box" href=""><span class="iconfont logo_icon">&#xe60b;</span><span class="logo_text">微信传播模板</span></a>
-    <a href="">用户案例</a>
-    <div class="login_info">
-      <span id="username"></span>
-      <a href="javascript:;" id="loginout">&#166;退出</a>
-    </div>
-    <a href="">申请账号</a>
+  <a class="logo_box" href=""><span class="iconfont logo_icon">&#xe60b;</span><span class="logo_text">微信传播模板</span></a>
+  <a href="">用户案例</a>
+
+  <div class="login_info">
+    <span id="username"></span>
+    <a href="javascript:;" id="loginout">&#166;退出</a>
+  </div>
+  <a href="">申请账号</a>
 </div>
 <div class="list_content layout1024">
-    <div class="btn_box">
-        <a href="javascript:;" class="add_btn project_add">
-            <span class="iconfont">&#xe60c;</span>
-            <span class="btn_text">创建新项目</span>
-        </a>
-    </div>
-    <div class="product_list contain_main">
-    </div>
+  <div class="btn_box">
+    <a href="javascript:;" class="add_btn project_add">
+      <span class="iconfont">&#xe60c;</span>
+      <span class="btn_text">创建新项目</span>
+    </a>
+  </div>
+  <div class="product_list contain_main">
+  </div>
 </div>
 
 <div id="createrProject" style="display: none">
   <form id="projectForm">
     <fieldset>
       <input placeholder='项目名称' id="name" type="text" name="name" required="" autofocus="">
+      <input id="projectImgUrl" type="hidden" name="projectImgUrl">
     </fieldset>
     <fieldset>
       <textarea placeholder="项目简介" id="description" name="description" required=""></textarea>
+    </fieldset>
+    <fieldset>
+      <input id='file_upload' type="button" class="button" value="上传">
+      <input id='file' type="file" size="30">
     </fieldset>
   </form>
 </div>

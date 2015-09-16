@@ -1,8 +1,8 @@
 /**
  * Created by wudi on 15/5/27.
  */
-define(['jquery','jqui','zepto','pagecom_content','FFF','imgcut','template','wxms_config','audio'],
-    function($,jqui,zepto,pagecom_content,FFF,imgcut,Template,WXMS_config,Audio) {
+define(['jquery','jqui','zepto','pagecom_content','FFF','imgcut','tpl','wxms_config','audio'],
+    function($,jqui,zepto,pagecom_content,FFF,imgcut,TPL,WXMS_config,Audio) {
 
 
 var index = 0,
@@ -248,7 +248,7 @@ Pagecom.prototype={
     addPage:function(istpl){
         var that =this;
         //TODO 模板数据处理
-        Template.onTplSelect = function (tplData) {
+        TPL.onTplSelect = function (tplData) {
             var cindex =++that.index;
 
             tplData.sortindex=cindex;
@@ -275,7 +275,7 @@ Pagecom.prototype={
                 }
             });
         };
-        Template.show();
+        TPL.show();
 
     },
     // 默认添加页面
@@ -318,7 +318,7 @@ Pagecom.prototype={
         var pageEntity = {
             name: "第"+ this.index+"页",
             sortindex:this.index,
-            backgroundcolor:'#fff',
+            backgroundcolor:'#bdbdbd',
             backgroundimage:""
         };
         $.ajax({
@@ -616,9 +616,9 @@ Pagecom.prototype={
             that.$showbox.attr('data-color',curpage.backgroundcolor);
         }else{
             that.$showbox.css({
-                "background-color":"#fff"
+                "background-color":"#bdbdbd"
             });
-            that.$showbox.attr('data-color','#fff');
+            that.$showbox.attr('data-color','#bdbdbd');
         }
         if(curpage.backgroundimage && curpage.backgroundimage!=""){
             that.$showbox.css({
