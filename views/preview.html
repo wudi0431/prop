@@ -30,7 +30,8 @@
         </div>
         <div class="op-wrapper">
             <a id="back" href="javascript:;">返回编辑</a>
-            <a style="margin-left: 45px" href="<%= previewSrc %>">分享地址</a>
+            <a id="wxrelease"  class="item-visible" href="javascript:;">发  布</a>
+            <a class="marginleft" href="<%= previewSrc %>">分享地址</a>
         </div>
     </div>
 </div>
@@ -54,6 +55,18 @@
                 iframeWindow.boxer.next();
         });
         $('#back').attr('href','/editor?'+window.location.href.split("?")[1]);
+
+      //根据 url 的名字 获得 值
+      function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null)return unescape(r[2]);
+        return null;
+      }
+      var wxRelease = getQueryString('pagetype')
+      if(wxRelease=="wxrelease"){
+        $('#wxrelease').removeClass('item-visible').next('a').removeClass('marginleft')
+      }
     });
 </script>
 </body>
