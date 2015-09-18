@@ -94,6 +94,7 @@ require(['jquery', 'jqui', 'jui_pagination', 'context_menu', 'audiocom', 'audio'
 
         var projectId = getQueryString("projectId");
         var j_preview_app = $('.j_preview_app');
+        var wxrelease = $('#wxrelease');
         j_preview_app.on('click', function () {
             var d = dialog({
                 width:250,
@@ -106,6 +107,9 @@ require(['jquery', 'jqui', 'jui_pagination', 'context_menu', 'audiocom', 'audio'
             }, 2000);
 
             window.open(WXMS_config.domain+'/show?projectId=' + projectId);
+        });
+        wxrelease.on('click', function () {
+          window.open(WXMS_config.domain+'/show?projectId=' + projectId+"&pagetype=wxrelease");
         });
 
         var j_saveTpl = $('.j_saveTpl');
@@ -645,4 +649,10 @@ require(['jquery', 'jqui', 'jui_pagination', 'context_menu', 'audiocom', 'audio'
         });
 
         //TODO 右键菜单
+
+
+
+
+
+
     });
