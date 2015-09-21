@@ -306,7 +306,7 @@ Pagecom.prototype={
             '<a data-role="btn-edit-post" title="确定" class="iconfont icon-check" href="javascript:;" style="text-decoration: none;"></a>'+
             '</div>'+
             '<a data-role="btn-del-scene" title="删除" class="iconfont icon-shanchu" href="javascript:;"></a>'+
-            ' <a data-role="scene-copy" title="复制" class="iconfont icon-copy" href="javascript:;"></a>'+
+            ' <a data-role="scene-copy" title="复制" class="iconfont icon-yhdcopy" href="javascript:;"></a>'+
             '<a data-role="btn-edit-scene" title="修改" class="iconfont icon-bianji" href="javascript:;"></a>'+
             '</div>');
 

@@ -496,7 +496,7 @@ require(['jquery', 'jqui', 'jui_pagination', 'context_menu', 'audiocom', 'audio'
             selector: '.W_item',
             items: {
                 "copy": {
-                    name: "Copy",
+                    name: "复制",
                     icon: "copy",
                     callback: function (key, opt) {
                         var itemId = opt.$trigger.data('itemId');
@@ -506,7 +506,7 @@ require(['jquery', 'jqui', 'jui_pagination', 'context_menu', 'audiocom', 'audio'
                     }
                 },
                 "paste": {
-                    name: "Paste",
+                    name: "粘贴",
                     icon: "paste",
                     callback: function (key, opt) {
                         var pageId = pagecom.getSelectPage();
@@ -577,12 +577,12 @@ require(['jquery', 'jqui', 'jui_pagination', 'context_menu', 'audiocom', 'audio'
             selector: '#showbox',
             items: {
                 "copy": {
-                    name: "Copy",
+                    name: "复制",
                     icon: "copy",
                     disabled:true
                 },
                 "paste": {
-                    name: "Paste",
+                    name: "粘贴",
                     icon: "paste",
                     callback: function (key, opt) {
                         var pageId = pagecom.getSelectPage();
