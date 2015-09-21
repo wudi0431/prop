@@ -189,7 +189,7 @@ require(['wxms_config', 'jquery', 'dialog', 'jqui', 'qrcode'], function (WXMS_co
             var prodata = {
               name: name.val(),
               description: description.val(),
-              projectImgUrl: projectImgUrl.val()
+              projectImgUrl: projectImgUrl.val()||'http://d9.yihaodianimg.com/N02/M02/40/EB/CgQCsFLVBOOAE0boAAAK5UNpfUI56300.png'
             };
             $.ajax({
               method: "POST",
