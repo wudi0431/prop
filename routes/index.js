@@ -44,9 +44,13 @@ router.get('/list', function(req, res, next) {
   res.render('list',{username:username,islogin:islogin,isShowAddPro:false});
 });
 
-//TODO 预览
-router.get('/newPreview', function(req, res, next) {
-    res.render('newPreview');
+//TODO 用户案例
+router.get('/userShow', function(req, res, next) {
+  if(req.session.user){
+    username = req.session.user.name;
+    islogin=true;
+  }
+  res.render('user_show',{username:username,islogin:islogin,isShowAddPro:false});
 });
 
 //TODO 发布

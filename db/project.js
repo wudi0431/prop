@@ -20,6 +20,11 @@ ProjectSchema.static('getProjectList', function (user, cb) {
     }).sort({updatetime: -1}).exec(cb);
 });
 
+ProjectSchema.static('getProjectStateList', function (prostate, cb) {
+  return this.find({
+    prostate:prostate ||"0"
+  }).sort({updatetime: -1}).exec(cb);
+});
 
 ProjectSchema.static('updateProjectState', function (projectId,prostate,cb) {
   return this.findOneAndUpdate({
