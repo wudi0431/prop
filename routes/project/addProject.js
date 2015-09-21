@@ -10,6 +10,7 @@ router.post('/', function (req, res, next) {
         req.body.user = req.session.user;
         req.body.updatetime = new Date();
 
+
         var project = new Project(req.body);
 
         project.save(function (err, projectEntity) {

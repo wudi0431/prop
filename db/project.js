@@ -6,6 +6,7 @@ var ProjectSchema = new Schema({
     name: String,
     description: String,
     updatetime: Date,
+    prostate:{type:String, default:"0"},
     projectImgUrl:{type: String, default: 'http://d9.yihaodianimg.com/N02/M02/40/EB/CgQCsFLVBOOAE0boAAAK5UNpfUI56300.png'},
     user: {
         id: String,
@@ -13,10 +14,10 @@ var ProjectSchema = new Schema({
     }
 });
 
-ProjectSchema.static('getProjectList', function (user, cb) {
+ProjectSchema.static('getProjectList', function (user,prostate, cb) {
     return this.find({
         user: user
-    }).sort({updatetime: -1}).exec(cb);
+    },{ prostate:prostate||0}).sort({updatetime: -1}).exec(cb);
 });
 
 ProjectSchema.static('updateProjectTime', function (projectId) {
