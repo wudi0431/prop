@@ -67,6 +67,7 @@ var addProject = require('./routes/project/addProject');
 var getProjectList = require('./routes/project/getProjectList');
 var deleteProject = require('./routes/project/deleteProject');
 var getProject = require('./routes/project/getProject');
+var updateProjectState = require('./routes/project/updateProjectState');
 
 var createHtml = require('./routes/view/createHtml');
 var downLoadHtml = require('./routes/view/downLoadHtml');
@@ -105,6 +106,7 @@ var getAudiocomByprojectId = require('./routes/audiocom/getAudiocomByprojectId')
 
 
 var preview = require('./routes/preview/preview');
+
 
 var repeater = require('./routes/repeater');
 
@@ -161,6 +163,7 @@ app.use('/addProject', addProject);
 app.use('/getProjectList', getProjectList);
 app.use('/deleteProject', deleteProject);
 app.use('/getProject', getProject);
+app.use('/updateProjectState', updateProjectState);
 
 app.use('/addPage', addPage);
 app.use('/deletePage', deletePage);
@@ -201,6 +204,8 @@ app.use('/updateAudiocom', updateAudiocom);
 app.use('/getAudiocomByprojectId', getAudiocomByprojectId);
 
 app.use('/show', preview);
+
+
 
 app.use('/repeater', repeater);
 

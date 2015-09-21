@@ -14,10 +14,19 @@ var ProjectSchema = new Schema({
     }
 });
 
-ProjectSchema.static('getProjectList', function (user,prostate, cb) {
+ProjectSchema.static('getProjectList', function (user, cb) {
     return this.find({
         user: user
-    },{ prostate:prostate||0}).sort({updatetime: -1}).exec(cb);
+    }).sort({updatetime: -1}).exec(cb);
+});
+
+
+ProjectSchema.static('updateProjectState', function (projectId,prostate,cb) {
+  return this.findOneAndUpdate({
+    _id: projectId
+  }, {
+    prostate:prostate ||"0"
+  }, {'new': true}).exec(cb);
 });
 
 ProjectSchema.static('updateProjectTime', function (projectId) {

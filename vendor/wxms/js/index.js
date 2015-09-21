@@ -23,6 +23,7 @@ require(['wxms_config','jquery', 'jqui'], function (WXMS_config,$) {
     if (islogin == "false") {
         $loginout.hide();
     } else {
+        login.text(username)
         $loginout.show();
     }
     login.on('click', function (e) {
@@ -51,8 +52,11 @@ require(['wxms_config','jquery', 'jqui'], function (WXMS_config,$) {
             url: WXMS_config.domain +"/logout"
         }).done(function (msg) {
             if (msg.success) {
+              login.text('登录')
+              $loginout.hide();
                 window.location.href = WXMS_config.domain + '/index';
                 window.localStorage.setItem('username', "");
+
             }
         }).fail(function (msg) {
 

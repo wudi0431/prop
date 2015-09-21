@@ -19,7 +19,7 @@ router.get('/', function(req, res, next) {
         username = req.session.user.name;
         islogin=true;
     }
-    res.render('index',{username:username,islogin:islogin});
+    res.render('index',{username:username,islogin:islogin,isShowAddPro:true});
 });
 
 
@@ -37,7 +37,11 @@ router.get('/editor', function(req, res, next) {
 
 //TODO 编辑
 router.get('/list', function(req, res, next) {
-    res.render('list');
+  if(req.session.user){
+    username = req.session.user.name;
+    islogin=true;
+  }
+  res.render('list',{username:username,islogin:islogin,isShowAddPro:false});
 });
 
 //TODO 预览
@@ -47,7 +51,11 @@ router.get('/newPreview', function(req, res, next) {
 
 //TODO 发布
 router.get('/release', function(req, res, next) {
-    res.render('release');
+  if(req.session.user){
+    username = req.session.user.name;
+    islogin=true;
+  }
+  res.render('release',{username:username,islogin:islogin,isShowAddPro:false});
 });
 
 module.exports = router;
