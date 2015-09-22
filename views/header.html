@@ -42,11 +42,15 @@
   #login {
     padding-right: 0;
   }
+  .XB_header_logo a{
+    color: #999;
+    text-decoration: none;
+  }
 </style>
 <input type="hidden" id="islogin" value="<%=islogin%>" />
 <input type="hidden" id="username" value="<%=username%>" />
 <div class="XB_header">
-  <div class="XB_header_logo"><span>微信传播模板</span></div>
+  <div class="XB_header_logo"><a href="/index"><span>微信传播模板</span></a></div>
   <% if(isShowAddPro){%>
   <div class="XB_header_item XB_active"><a href="#" class="createrpage">添加项目</a></div>
   <%}%>
