@@ -8,19 +8,9 @@
     <script src="http://image.yihaodianimg.com/mobile-ued/FFF/v0.1.2/yhd_mxc.js"></script>
 </head>
 <body>
-<input type="hidden" id="islogin" value="<%=islogin%>" />
-<input type="hidden" id="username" value="<%=username%>" />
+
 <div class="XB_container">
-  <div class="XB_header">
-    <div class="XB_header_logo">&#xe60b;<span>微信传播模板</span></div>
-    <div class="XB_header_item XB_active"><a href="#" class="createrpage">添加项目</a></div>
-    <div class="XB_header_item "><a href="#">用户案例</a> </div>
-    <div class="XB_header_item">
-      <a id="login" href="javascript:;"><%=username%></a>
-      <a href="javascript:;" id="logout">&#166;退出</a>
-    </div>
-    <div class="XB_header_item"><a href="mailto:MXC_wireless@yhd.com?subject=申请账号">申请账号</a></div>
-  </div>
+  <% include header.html %>
   <div class="XB_content">
     <div class="XB_index_lamp">
       <div class="XB_index_lamp_backend"><img src="/wxms/img/index_lamp_backend.png" alt=""/></div>
@@ -69,8 +59,6 @@
       <div class="XB_footer_info">移动化的社交时代，轻快，优雅，我们完美呈现</div>
     </div>
   </div>
-
 </div>
-<script src="/wxms/js/index.js"></script>
 </body>
 </html>

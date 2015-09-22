@@ -1,0 +1,64 @@
+<style>
+  .XB_header {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    height: 5.4rem;
+  }
+  .XB_header_logo {
+    -webkit-box-flex: 7;
+    -webkit-flex: 7;
+    -ms-flex: 7;
+    flex: 7;
+    width: 100%;
+    font-family: iconfont;
+    font-size: 3rem;
+    margin-left: 3rem;
+    line-height: 5.4rem;
+  }
+  .XB_header_logo span {
+    font-size: 1.2rem;
+    margin-left: 10px;
+    color: #757575;
+  }
+  .XB_header_item {
+    line-height: 5.4rem;
+    text-align: center;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    width: 100%;
+  }
+  .XB_header_item a {
+    color: #757575 ;
+    text-decoration: none;
+    padding: 10%;
+  }
+  .XB_header_item.XB_active a {
+    border-bottom: 3px solid #01cfaf;
+  }
+  #login {
+    padding-right: 0;
+  }
+  .XB_header_logo a{
+    color: #999;
+    text-decoration: none;
+  }
+</style>
+<input type="hidden" id="islogin" value="<%=islogin%>" />
+<input type="hidden" id="username" value="<%=username%>" />
+<div class="XB_header">
+  <div class="XB_header_logo"><a href="/index"><span>微信传播模板</span></a></div>
+  <% if(isShowAddPro){%>
+  <div class="XB_header_item XB_active"><a href="#" class="createrpage">添加项目</a></div>
+  <%}%>
+  <div class="XB_header_item "><a href="/userShow">用户案例</a> </div>
+  <div class="XB_header_item">
+    <a id="login"  href="javascript:;">登录</a>
+    <a href="javascript:;" style="display: none" id="logout">| 退出</a>
+  </div>
+  <div class="XB_header_item"><a href="mailto:MXC_wireless@yhd.com?subject=申请账号">申请账号</a></div>
+</div>
+<script src="/wxms/js/index.js"></script>

@@ -1,73 +1,98 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="renderer" content="webkit">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta content="initial-scale=1.0, maximum-scale=1.0" name="viewport">
-    <title>微信传播-预览页</title>
-    <link rel="stylesheet" href="/wxms/css/reset.css"/>
-    <link rel="stylesheet" href="/wxms/css/fonts.css">
-    <link rel="stylesheet" href="/wxms/css/common.css">
-    <link rel="stylesheet" href="/wxms/css/preview.css">
+  <meta charset="UTF-8">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta content="initial-scale=1.0, maximum-scale=1.0" name="viewport">
+  <title>微信传播-预览页</title>
+  <link rel="stylesheet" href="/wxms/css/reset.css"/>
+  <link rel="stylesheet" href="/wxms/css/font/fonts.css">
+  <link rel="stylesheet" href="/wxms/css/common.css">
+  <link rel="stylesheet" href="/wxms/css/preview.css">
 </head>
 <body>
 
 <div class="preview-body-wrapper clearfix">
-    <div class="iframe-wrapper fl"><img src="/wxms/img/iphone.png" width="358" height="677" alt="预览背景">
-        <iframe src="<%= previewSrc %>" id="previewIframe"></iframe>
-    </div>
-    <div class="scroll-wrapper fl" style="display: none;">
-        <p><i class="ico ico-up" data-double-click="0"></i></p>
+  <div class="iframe-wrapper fl"><img src="/wxms/img/iphone.png" width="358" height="677" alt="预览背景">
+    <iframe src="<%= previewSrc %>" id="previewIframe"></iframe>
+  </div>
+  <div class="scroll-wrapper fl" style="display: none;">
+    <p><i class="ico ico-up" data-double-click="0"></i></p>
 
-        <p><i class="ico ico-down" data-double-click="0"></i></p>
+    <p><i class="ico ico-down" data-double-click="0"></i></p>
+  </div>
+  <div class="operate-wrapper fl">
+    <div class="qrcode-wrapper">
+      <div class="qrcode-img">
+      </div>
+      <p class="qrcode-tips">手机预览，请扫描二维码</p>
     </div>
-    <div class="operate-wrapper fl">
-        <div class="qrcode-wrapper">
-            <div class="qrcode-img">
-            </div>
-            <p class="qrcode-tips">手机预览，请扫描二维码</p>
-        </div>
-        <div class="op-wrapper">
-            <a id="back" href="javascript:;">返回编辑</a>
-            <a id="wxrelease"  class="item-visible" href="javascript:;">发  布</a>
-            <a class="marginleft" href="<%= previewSrc %>">分享地址</a>
-        </div>
+    <div class="op-wrapper">
+      <a id="back" href="javascript:;">返回编辑</a>
+      <a id="wxrelease" class="item-visible" href="javascript:;">发 布</a>
+      <a class="marginleft" href="<%= previewSrc %>">分享地址</a>
     </div>
+  </div>
 </div>
 <script type='text/javascript' src='http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js'></script>
 <script type="text/javascript" src="http://cdn.staticfile.org/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+<script src="../wxms/config.js"></script>
 <script>
-    $(function () {
-        var $body = $('body');
-        var iframeWindow = document.getElementById("previewIframe").contentWindow;
-        //生成二维码
-        $body.find('.qrcode-img').qrcode({
-            width: 195,
-            height: 195,
-            text: "<%= previewSrc %>",
-            foreground: '#000000'
-        });
-        $('.ico-up').on('click',function () {
-                iframeWindow.boxer.prev();
-        });
-        $('.ico-down').on('click',function () {
-                iframeWindow.boxer.next();
-        });
-        $('#back').attr('href','/editor?'+window.location.href.split("?")[1]);
-
-      //根据 url 的名字 获得 值
-      function getQueryString(name) {
-        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
-        var r = window.location.search.substr(1).match(reg);
-        if (r != null)return unescape(r[2]);
-        return null;
-      }
-      var wxRelease = getQueryString('pagetype')
-      if(wxRelease=="wxrelease"){
-        $('#wxrelease').removeClass('item-visible').next('a').removeClass('marginleft')
-      }
+  $(function () {
+    var $body = $('body');
+    var iframeWindow = document.getElementById("previewIframe").contentWindow;
+    //生成二维码
+    $body.find('.qrcode-img').qrcode({
+      width: 195,
+      height: 195,
+      text: "<%= previewSrc %>",
+      foreground: '#000000'
     });
+    $('.ico-up').on('click', function () {
+      iframeWindow.boxer.prev();
+    });
+    $('.ico-down').on('click', function () {
+      iframeWindow.boxer.next();
+    });
+    $('#back').attr('href', '/editor?' + window.location.href.split("?")[1]);
+
+    //根据 url 的名字 获得 值
+    function getQueryString(name) {
+      var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+      var r = window.location.search.substr(1).match(reg);
+      if (r != null)return unescape(r[2]);
+      return null;
+    }
+
+    var wxRelease = getQueryString('pagetype')
+    var projectid = getQueryString('projectId')
+    var $wxrelease = $('#wxrelease');
+    if (wxRelease == "wxrelease") {
+      $wxrelease.removeClass('item-visible').next('a').removeClass('marginleft');
+      $wxrelease.on('click', function () {
+        if (projectid) {
+          $.ajax({
+            method: "POST",
+            url:config.domain + "/updateProjectState",
+            data: {projectId: projectid, prostate: "1"}
+          }).done(function (msg) {
+              if(msg.success){
+                window.location.href = config.domain + '/release';
+              }
+          }).fail(function (msg) {
+          });
+        }
+      })
+
+    }
+  });
+
+
+
+
+
+
 </script>
 </body>
 </html>

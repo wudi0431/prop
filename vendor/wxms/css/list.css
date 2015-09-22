@@ -148,6 +148,7 @@ a{text-decoration:none;}
 }
 .product_box .product_preview .preview{
     padding-right:5px;
+  display: inline-block;
 }
 .product_title{
     display: -webkit-box;
