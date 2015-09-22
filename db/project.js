@@ -6,6 +6,7 @@ var ProjectSchema = new Schema({
     name: String,
     description: String,
     updatetime: Date,
+    viewtimes:{type:String, default:"0"},
     prostate:{type:String, default:"0"},
     projectImgUrl:{type: String, default: 'http://d9.yihaodianimg.com/N02/M02/40/EB/CgQCsFLVBOOAE0boAAAK5UNpfUI56300.png'},
     user: {
@@ -33,6 +34,15 @@ ProjectSchema.static('updateProjectState', function (projectId,prostate,cb) {
     prostate:prostate ||"0"
   }, {'new': true}).exec(cb);
 });
+
+ProjectSchema.static('updateProjectViewTimes', function (projectId,times,cb) {
+  return this.findOneAndUpdate({
+    _id: projectId
+  }, {
+    viewtimes:times
+  }, {'new': true}).exec(cb);
+});
+
 
 ProjectSchema.static('updateProjectTime', function (projectId) {
     return this.findOneAndUpdate({

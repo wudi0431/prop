@@ -51,7 +51,7 @@ require(['wxms_config', 'jquery', 'dialog', 'jqui', 'qrcode'], function (WXMS_co
 
 
   var $contain_main = $('.contain_main');
-   var $username = $('#username').val()
+
 
 
 
@@ -61,15 +61,15 @@ require(['wxms_config', 'jquery', 'dialog', 'jqui', 'qrcode'], function (WXMS_co
     '<div class="product_pic">' +
     '<img src="%projectImgUrl%" />' +
     '</div>' +
-    '<a href="" class="product_preview">' +
-    '<span class="iconfont preview">&#xe606;</span>' +
-    '<span class="preview_text">34432</span>' +
+    '<a href="javascript:;"  class="product_preview">' +
+    '<span data-roe="preview" class="iconfont preview list_project_btn">&#xe606;</span>' +
+    '<span id="preview_time" class="preview_text">%viewtimes%</span>' +
     '</a>'+
     '<div class="product_ewm" data-preview="%preview%">' +
     '</div>' +
     '</div>' +
     '<div class="product_title">%description%</div>' +
-    '<div class="product_date">'+$username+'</div>' +
+    '<div class="product_date">%username%</div>' +
     '</div>';
 
   drawProjectList();
@@ -85,12 +85,19 @@ require(['wxms_config', 'jquery', 'dialog', 'jqui', 'qrcode'], function (WXMS_co
         projectList.forEach(function (o, i) {
           o.preview = WXMS_config.previewDomain + '/index.html?projectId=' + o._id;
           var t = str.replace(/(%(\w+)%)/g, function ($1, $2, $3) {
+            if ($3 == 'username') {
+              var username="";
+              if(o.user){
+                return username=o.user.name;
+              }
+              return username
+            }
             return o[$3] ? o[$3] : '';
           });
           html += t;
         });
         $contain_main.html('').html(html);
-
+        bindEnent()
       } else {
         $contain_main.html('');
       }
@@ -109,18 +116,19 @@ require(['wxms_config', 'jquery', 'dialog', 'jqui', 'qrcode'], function (WXMS_co
         var roe = $that.data('roe');
         var pdiv = $that.parents('.product_box');
         var projectId = pdiv.data('project');
+        var $preview_time =$('#preview_time');
         if (roe == 'editor') {
           window.location.href = WXMS_config.domain + '/editor?projectId=' + projectId;
         } else if (roe == 'preview') {
           if (projectId) {
+            var time = +$preview_time.text()+1;
             $.ajax({
               method: "POST",
-              url:WXMS_config.domain + "/updateProjectState",
-              data: {projectId: projectId, prostate: "0"}
+              url:WXMS_config.domain + "/updateProjectViewTimes",
+              data: {projectId: projectId, times: time.toString()}
             }).done(function (msg) {
               if(msg.success){
-               var product_datespan = $that.parent('div').parent('div').parent('div').find('.product_date').children('span')
-                product_datespan.removeClass('color_green').addClass('color_red').text('未发布');
+                $preview_time.text(msg.model.viewtimes)
               }
             }).fail(function (msg) {
             });

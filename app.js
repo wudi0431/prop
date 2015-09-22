@@ -69,6 +69,7 @@ var deleteProject = require('./routes/project/deleteProject');
 var getProject = require('./routes/project/getProject');
 var updateProjectState = require('./routes/project/updateProjectState');
 var getProjectStateList = require('./routes/project/getProjectStateList');
+var updateProjectViewTimes = require('./routes/project/updateProjectViewTimes');
 
 var createHtml = require('./routes/view/createHtml');
 var downLoadHtml = require('./routes/view/downLoadHtml');
@@ -166,6 +167,7 @@ app.use('/deleteProject', deleteProject);
 app.use('/getProject', getProject);
 app.use('/updateProjectState', updateProjectState);
 app.use('/getProjectStateList', getProjectStateList);
+app.use('/updateProjectViewTimes', updateProjectViewTimes);
 
 app.use('/addPage', addPage);
 app.use('/deletePage', deletePage);
