@@ -178,3 +178,48 @@ a{text-decoration:none;}
 .login_info #loginout{
   padding: 0;
 }
+
+#projectForm{
+  margin: 10px 20px;
+}
+
+#projectForm fieldset {
+  border: medium none !important;
+  margin: 0 0 10px;
+  min-width: 100%;
+  padding: 0;
+  width: 100%;
+}
+
+#projectForm textarea {
+  border: 1px solid #CCC;
+  background: #FFF;
+  margin: 0 0 5px;
+  padding: 10px;
+  resize: none;
+  outline: none;
+}
+
+#projectForm input {
+  border: 1px solid #CCC;
+  background: #FFF;
+  margin: 0 0 5px;
+  padding: 10px;
+  outline: none;
+}
+
+#projectForm button {
+  border: 1px solid #CCC;
+  background: #15E234;
+  margin: 0 0 5px;
+  padding: 10px;
+  outline: none;
+}
+
+#projectForm input:focus, #projectForm textarea:focus {
+  border: 1px solid #3db39e;
+}
+
+#projectForm .eorr {
+  border: 1px solid red;
+}

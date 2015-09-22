@@ -6,9 +6,10 @@
   <link rel="stylesheet" href="/wxms/css/animate.css"/>
   <link rel="stylesheet" href="/wxms/lib/jqueryui/jquery-ui.min.css"/>
   <link rel="stylesheet" href="/wxms/css/resetjqueryui.css"/>
-  <link rel="stylesheet" href="/wxms/css/list.css"/>
   <link rel="stylesheet" href="/wxms/css/font/fonts.css"/>
+  <link rel="stylesheet" href="/wxms/css/resetjqueryui.css"/>
   <link rel="stylesheet" href="/wxms/css/ui-dialog.css"/>
+  <link rel="stylesheet" href="/wxms/css/list.css"/>
   <script src="http://apps.bdimg.com/libs/require.js/2.1.11/require.min.js"></script>
   <script src="http://image.yihaodianimg.com/mobile-ued/FFF/v0.1.2/yhd_mxc.js"></script>
 </head>
@@ -38,14 +39,19 @@
 <div id="createrProject" style="display: none">
   <form id="projectForm">
     <fieldset>
+      <label>项目名称:</label>
       <input placeholder='项目名称' id="name" type="text" name="name" required="" autofocus="">
       <input id="projectImgUrl" type="hidden" name="projectImgUrl">
     </fieldset>
+
     <fieldset>
+      <label>项目简介:</label>
       <textarea placeholder="项目简介" id="description" name="description" required=""></textarea>
     </fieldset>
+    <label>项目封面:</label>
+
     <fieldset>
-      <input id='file_upload' type="button" class="button" value="上传">
+      <button id='file_upload' type="button">上传</button>
       <input id='file' type="file" size="30">
     </fieldset>
   </form>

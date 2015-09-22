@@ -86,9 +86,12 @@ body {
   text-decoration: none;
   padding: 10%;
 }
-.XB_header_item.XB_active a {
+
+
+.XB_header_item:hover{
   border-bottom: 3px solid #01cfaf;
 }
+
 .XB_content {
   position: relative;
   background: url("../img/index_bg_column.png");

@@ -129,17 +129,32 @@ require(['wxms_config', 'jquery', 'dialog', 'jqui', 'qrcode'], function (WXMS_co
         } else if (roe == 'preview') {
           window.open(WXMS_config.domain + '/show?projectId=' + projectId);
         } else if (roe == 'remove') {
-          $.ajax({
-            method: "POST",
-            url: WXMS_config.domain + "/deleteProject",
-            data: {
-              projectId: projectId
-            }
-          }).done(function (msg) {
-            pdiv.remove();
-          }).fail(function (msg) {
 
+          var d = dialog({
+            title: '提示',
+            width:200,
+            content: '确定删除?',
+            okValue: '确定',
+            ok: function () {
+              $.ajax({
+                method: "POST",
+                url: WXMS_config.domain + "/deleteProject",
+                data: {
+                  projectId: projectId
+                }
+              }).done(function (msg) {
+                pdiv.remove();
+              }).fail(function (msg) {
+
+              });
+            },
+            cancelValue: '取消',
+            cancel: function () {}
           });
+          d.show();
+
+
+
         }
       })
     })
@@ -166,7 +181,8 @@ require(['wxms_config', 'jquery', 'dialog', 'jqui', 'qrcode'], function (WXMS_co
     $createrProject.dialog({
       resizable: false,
       title: '创建项目',
-      height: 280,
+      height: 320,
+      width:500,
       modal: true,
       buttons: {
         "确定": function () {
