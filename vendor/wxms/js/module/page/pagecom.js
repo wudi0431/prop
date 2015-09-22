@@ -432,24 +432,38 @@ Pagecom.prototype={
                     $(e.target).focus();
                     break;
                 case "btn-del-scene":
-                    if(curPageData){
-                       that.deletePage(curPageData._id,pindex);
+                  var d = dialog({
+                    id: 'dialog-del-scene',
+                    title: '提示',
+                    width:200,
+                    content: '确定删除?',
+                    okValue: '确定',
+                    ok: function () {
+                      if(curPageData){
+                        that.deletePage(curPageData._id,pindex);
                         curitem.remove();
                         that.clearIphone();
                         that.delePageListByIndex(null,pageid);
                         if(that.pageList.length===0){
-                            index =  that.pageList.length;
-                            that.index =that.pageList.length;
-                            that.isfistadd=true;
-                            that.addFirstPage();
+                          index =  that.pageList.length;
+                          that.index =that.pageList.length;
+                          that.isfistadd=true;
+                          that.addFirstPage();
                         }else{
-                            var  $a = curitem.children().first();
-                            if($a.hasClass('cur-sort-page')){
-                                that.addSelectPage(pindex-1);
-                            }
+                          var  $a = curitem.children().first();
+                          if($a.hasClass('cur-sort-page')){
+                            that.addSelectPage(pindex-1);
+                          }
                         }
 
+                      }
+                    },
+                    cancelValue: '取消',
+                    cancel: function () {
+
                     }
+                  });
+                  d.show();
                     break;
                 default :
                     that.addSelectPage(pindex);
@@ -463,30 +477,47 @@ Pagecom.prototype={
         });
 
         that.faremove.on('click', function () {
-            var curpagedata = that.getSelectPageData();
-            if(curpagedata){
+          var d = dialog({
+            id: 'dialog-faremove',
+            title: '提示',
+            width:200,
+            content: '确定删除?',
+            okValue: '确定',
+            ok: function () {
+              var curpagedata = that.getSelectPageData();
+              if(curpagedata){
                 that.deletePage(curpagedata._id,curpagedata.sortindex);
                 $.each(that.$items, function (index,item) {
-                    var curitem =$(item);
-                    var pageid =curitem.attr('data-pageid');
-                    if(pageid==curpagedata._id){
-                        curitem.remove();
-                    }
-                })
+                  var curitem =$(item);
+                  var pageid =curitem.attr('data-pageid');
+                  if(pageid==curpagedata._id){
+                    curitem.remove();
+                  }
+                });
                 that.clearIphone();
                 that.delePageListByIndex(null,curpagedata._id);
                 if(that.pageList.length===0){
-                    index =  that.pageList.length;
-                    that.index =that.pageList.length;
-                    that.isfistadd=true;
-                    that.addFirstPage();
+                  index =  that.pageList.length;
+                  that.index =that.pageList.length;
+                  that.isfistadd=true;
+                  that.addFirstPage();
                 }else{
 
-                    var nextpindex =curpagedata.sortindex-1;
-                    that.addSelectPage(nextpindex==0?1:nextpindex);
+                  var nextpindex =curpagedata.sortindex-1;
+                  that.addSelectPage(nextpindex==0?1:nextpindex);
                 }
 
+              }
+            },
+            cancelValue: '取消',
+            cancel: function () {
+
             }
+          });
+          d.show();
+
+
+
         });
 
 
