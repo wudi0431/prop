@@ -11,6 +11,7 @@
    domain:'http://120.132.50.71/wxms',
    previewDomain:'http://mxc.yhd.com/wxms_client'
  };
+config.uploadimgsrc = config.domain+'/uploadimg/';
 
 if ( typeof module === "object" && typeof module.exports === "object" ) {
     module.exports = config;
