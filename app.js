@@ -10,7 +10,7 @@ var ejs = require('ejs');
 var session = require('express-session');
 var flash = require('connect-flash');
 var config = require('./config');
-process.env.uploadsrc = config.domain+'/';
+process.env.uploadsrc = config.domain+'/uploadimg/';
 var mongoose = require('mongoose');
 if (process.env.NODE_ENV == 'dev') {
     process.env.uploadsrc=config.domain+'/wxms/uploadimg/';
