@@ -98,12 +98,12 @@ define(['jquery','wxms_config'], function ($,WXMS_config) {
             cache: false,
             type: 'post',
             url: WXMS_config.domain+'/upLoadImg',
-            data: idata, 
+            data: idata,
             success: function (msg) {
                 var curpagedata = curpagecom.getSelectPageData();
-                curpagedata.backgroundimage=WXMS_config.uploadimgsrc+msg.model.name;
+                curpagedata.backgroundimage=process.env.uploadsrc +msg.model.name;
                 curpagecom.updataPage(curpagedata,true);
-                initImgCut(WXMS_config.uploadimgsrc+msg.model.name);
+                initImgCut(process.env.uploadsrc +msg.model.name);
             }
         });
 
