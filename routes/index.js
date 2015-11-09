@@ -22,6 +22,14 @@ router.get('/', function(req, res, next) {
     res.render('index',{username:username,islogin:islogin,isShowAddPro:true});
 });
 
+router.get('/wxms/index', function(req, res, next) {
+    var username='登录',islogin=false;
+    if(req.session.user){
+        username = req.session.user.name;
+        islogin=true;
+    }
+    res.render('index',{username:username,islogin:islogin,isShowAddPro:true});
+});
 
 //TODO 单元测试
 router.get('/test', function(req, res, next) {
@@ -46,7 +54,7 @@ router.get('/list', function(req, res, next) {
 });
 
 //TODO 用户案例
-router.get('/userShow', function(req, res, next) {
+router.get('/wxms/userShow', function(req, res, next) {
   var username='登录',islogin=false;
   if(req.session.user){
     username = req.session.user.name;
