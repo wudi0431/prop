@@ -141,7 +141,7 @@ body {
 }
 .XB_index_lamp {
   position: absolute;
-  left: calc((100%- 137px)/2);
+  left: 46%;
   top: 0;
 }
 .XB_index_lamp_backend {
@@ -149,7 +149,7 @@ body {
 }
 .XB_index_lamp_line {
   position: absolute;
-  left: calc((100%- 2px)/2);
+  left: 46%;
   top: 30px;
   -webkit-animation: indexLampLine 2s ease-in infinite;
   animation: indexLampLine 2s ease-in infinite;
