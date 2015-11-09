@@ -1,0 +1,17 @@
+[master] start master...
+[worker] start worker ...2
+worker2
+1447035878541 'Express server listening on port 9898'
+[master] listening: worker2,pid:23547, Address:0.0.0.0:9898
+[worker] start worker ...3
+worker3
+1447035878575 'Express server listening on port 9898'
+[master] listening: worker3,pid:23549, Address:0.0.0.0:9898
+[worker] start worker ...1
+worker1
+1447035878595 'Express server listening on port 9898'
+[master] listening: worker1,pid:23545, Address:0.0.0.0:9898
+[worker] start worker ...4
+worker4
+1447035878691 'Express server listening on port 9898'
+[master] listening: worker4,pid:23551, Address:0.0.0.0:9898
