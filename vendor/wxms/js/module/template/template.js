@@ -270,7 +270,7 @@ define(['FFF', 'jquery', 'jqui','wxms_config','template_native'], function (FFF,
                 }
 
               });
-              tplWarepo.jui_pagination('destroy')
+              tplWarepo.jui_pagination && tplWarepo.jui_pagination('destroy')
 
               tplWarepo.jui_pagination({
                 currentPage: 1,
@@ -405,7 +405,7 @@ define(['FFF', 'jquery', 'jqui','wxms_config','template_native'], function (FFF,
                       }
                     }
                   });
-                  userTplWarepo.jui_pagination('setOption', 'currentPage',1)
+                    userTplWarepo.jui_pagination && userTplWarepo.jui_pagination('setOption', 'currentPage',1)
 
                 } else {
                     userTplWare.html('');
