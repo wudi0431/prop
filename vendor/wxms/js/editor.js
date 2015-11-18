@@ -50,7 +50,7 @@ require.config({
             deps: ['jquery']
         },
         jui_pagination: {
-          deps: ['pagination_en']
+          deps: ['jquery','pagination_en']
         },
         context_menu:{
             deps: ['jqui']
