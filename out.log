@@ -49,3 +49,209 @@ worker4
 worker1
 1447826539860 'Express server listening on port 9898'
 [master] listening: worker1,pid:7218, Address:0.0.0.0:9898
+[master] start master...
+[worker] start worker ...1
+worker1
+1447827694941 'Express server listening on port 9898'
+[master] listening: worker1,pid:8301, Address:0.0.0.0:9898
+[worker] start worker ...2
+[worker] start worker ...3
+worker2
+1447827695003 'Express server listening on port 9898'
+[master] listening: worker2,pid:8302, Address:0.0.0.0:9898
+worker3
+1447827695005 'Express server listening on port 9898'
+[master] listening: worker3,pid:8304, Address:0.0.0.0:9898
+[worker] start worker ...4
+worker4
+1447827695067 'Express server listening on port 9898'
+[master] listening: worker4,pid:8306, Address:0.0.0.0:9898
+[master] start master...
+[worker] start worker ...2
+[worker] start worker ...3
+[worker] start worker ...1
+[worker] start worker ...4
+[master] start master...
+[worker] start worker ...3
+worker3
+1447827928611 'Express server listening on port 9898'
+[master] listening: worker3,pid:8669, Address:0.0.0.0:9898
+[worker] start worker ...2
+[worker] start worker ...1
+worker2
+1447827928638 'Express server listening on port 9898'
+[master] listening: worker2,pid:8667, Address:0.0.0.0:9898
+worker1
+1447827928641 'Express server listening on port 9898'
+[master] listening: worker1,pid:8666, Address:0.0.0.0:9898
+[worker] start worker ...4
+worker4
+1447827928648 'Express server listening on port 9898'
+[master] listening: worker4,pid:8670, Address:0.0.0.0:9898
+[master] start master...
+[worker] start worker ...3
+[worker] start worker ...2
+worker3
+worker2
+1447828061971 'Express server listening on port 9898'
+1447828061972 'Express server listening on port 9898'
+[master] listening: worker3,pid:8869, Address:0.0.0.0:9898
+[master] listening: worker2,pid:8867, Address:0.0.0.0:9898
+[worker] start worker ...4
+worker4
+1447828062056 'Express server listening on port 9898'
+[master] listening: worker4,pid:8871, Address:0.0.0.0:9898
+[worker] start worker ...1
+worker1
+1447828062073 'Express server listening on port 9898'
+[master] listening: worker1,pid:8866, Address:0.0.0.0:9898
+[master] start master...
+[worker] start worker ...1
+worker1
+1447828270046 'Express server listening on port 9898'
+[master] listening: worker1,pid:9167, Address:0.0.0.0:9898
+[worker] start worker ...3
+worker3
+1447828270063 'Express server listening on port 9898'
+[master] listening: worker3,pid:9170, Address:0.0.0.0:9898
+[worker] start worker ...2
+worker2
+1447828270074 'Express server listening on port 9898'
+[master] listening: worker2,pid:9168, Address:0.0.0.0:9898
+[worker] start worker ...4
+worker4
+1447828270107 'Express server listening on port 9898'
+[master] listening: worker4,pid:9172, Address:0.0.0.0:9898
+[master] start master...
+[worker] start worker ...1
+worker1
+1447829076032 'Express server listening on port 9898'
+[master] listening: worker1,pid:9928, Address:0.0.0.0:9898
+[worker] start worker ...3
+worker3
+1447829076084 'Express server listening on port 9898'
+[master] listening: worker3,pid:9931, Address:0.0.0.0:9898
+[worker] start worker ...2
+worker2
+1447829076099 'Express server listening on port 9898'
+[master] listening: worker2,pid:9930, Address:0.0.0.0:9898
+[worker] start worker ...4
+worker4
+1447829076142 'Express server listening on port 9898'
+[master] listening: worker4,pid:9933, Address:0.0.0.0:9898
+[master] start master...
+[worker] start worker ...3
+worker3
+1447829238162 'Express server listening on port 9898'
+[worker] start worker ...1
+[master] listening: worker3,pid:10183, Address:0.0.0.0:9898
+worker1
+1447829238167 'Express server listening on port 9898'
+[master] listening: worker1,pid:10180, Address:0.0.0.0:9898
+[worker] start worker ...2
+worker2
+1447829238201 'Express server listening on port 9898'
+[master] listening: worker2,pid:10181, Address:0.0.0.0:9898
+[worker] start worker ...4
+worker4
+1447829238226 'Express server listening on port 9898'
+[master] listening: worker4,pid:10185, Address:0.0.0.0:9898
+[master] start master...
+[worker] start worker ...1
+worker1
+1447829627694 'Express server listening on port 9898'
+[master] listening: worker1,pid:10595, Address:0.0.0.0:9898
+[worker] start worker ...3
+worker3
+1447829627703 'Express server listening on port 9898'
+[master] listening: worker3,pid:10598, Address:0.0.0.0:9898
+[worker] start worker ...2
+worker2
+1447829627722 'Express server listening on port 9898'
+[master] listening: worker2,pid:10597, Address:0.0.0.0:9898
+[worker] start worker ...4
+worker4
+1447829627760 'Express server listening on port 9898'
+[master] listening: worker4,pid:10600, Address:0.0.0.0:9898
+[master] start master...
+[worker] start worker ...1
+worker1
+1447829745642 'Express server listening on port 9898'
+[master] listening: worker1,pid:10806, Address:0.0.0.0:9898
+[worker] start worker ...3
+worker3
+1447829745663 'Express server listening on port 9898'
+[master] listening: worker3,pid:10809, Address:0.0.0.0:9898
+[worker] start worker ...4
+worker4
+1447829745689 'Express server listening on port 9898'
+[master] listening: worker4,pid:10811, Address:0.0.0.0:9898
+[worker] start worker ...2
+worker2
+1447829745705 'Express server listening on port 9898'
+[master] listening: worker2,pid:10807, Address:0.0.0.0:9898
+git.jpg
+codecsv uploaded to  /home/ubuntu/workspace/wxms/public/wxms/uploadimg/git.jpg
+ file.size  0.5
+{ __v: '0',
+  page: '564bf4bec03ac82a78260204',
+  _id: '564c421c503cd1362a703171',
+  imgurl: 'http://yzued.111.com.cn/wxms/uploadimg/git.jpg',
+  datamapping: '',
+  dataurl: '',
+  hrefType: '',
+  href: '',
+  verticalAlign: 'middle',
+  animationCount: '1',
+  animationDelay: '0s',
+  animationDuration: '1.3s',
+  animationName: 'none',
+  paddingBottom: '0px',
+  paddingRight: '0px',
+  paddingLeft: '0px',
+  paddingTop: '0px',
+  boxShadow: '0px 0px 0px 0px rgb(221,221,221)',
+  borderRadius: '0px',
+  borderStyle: 'none',
+  borderWidth: '4px',
+  borderColor: '#ffffff',
+  transform: 'rotate(0deg)',
+  opacity: '1',
+  height: '150px',
+  width: '200px',
+  bottom: '0px',
+  right: '0px',
+  left: '50px',
+  top: '209px',
+  zIndex: '3' }
+{ __v: '0',
+  page: '564c210408345f3b2a5fb201',
+  _id: '564c4249503cd1362a703173',
+  imgurl: 'http://yzued.111.com.cn/wxms/uploadimg/git.jpg',
+  datamapping: '',
+  dataurl: '',
+  hrefType: '',
+  href: '',
+  verticalAlign: 'middle',
+  animationCount: '1',
+  animationDelay: '0s',
+  animationDuration: '1.3s',
+  animationName: 'none',
+  paddingBottom: '0px',
+  paddingRight: '0px',
+  paddingLeft: '0px',
+  paddingTop: '0px',
+  boxShadow: '0px 0px 0px 0px rgb(221,221,221)',
+  borderRadius: '0px',
+  borderStyle: 'none',
+  borderWidth: '4px',
+  borderColor: '#ffffff',
+  transform: 'rotate(0deg)',
+  opacity: '1',
+  height: '150px',
+  width: '200px',
+  bottom: '0px',
+  right: '0px',
+  left: '48px',
+  top: '213px',
+  zIndex: '3' }
