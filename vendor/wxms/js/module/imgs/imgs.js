@@ -167,7 +167,7 @@ define(['FFF', 'jquery', 'jqui', 'wxms_config'], function (FFF, $, jqui, WXMS_co
                 });
 
 
-              imgWarepo.jui_pagination('destroy')
+                imgWarepo.jui_pagination && imgWarepo.jui_pagination('destroy')
 
               imgWarepo.jui_pagination({
                 currentPage: 1,
@@ -260,7 +260,7 @@ define(['FFF', 'jquery', 'jqui', 'wxms_config'], function (FFF, $, jqui, WXMS_co
 
             });
 
-            userWareListpo.jui_pagination('destroy')
+            userWareListpo.jui_pagination && userWareListpo.jui_pagination('destroy')
 
             userWareListpo.jui_pagination({
               currentPage: 1,
