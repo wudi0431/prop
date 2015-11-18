@@ -67,7 +67,7 @@ require.config({
 
 require(['jquery', 'jqui', 'jui_pagination', 'context_menu', 'audiocom', 'audio', 'dialog', 'wxms_config', 'template', 'rotatable', 'html2canvas', 'zepto', 'spectrum', 'btncom', 'imgcom', 'textcom', 'btncom_content', 'imgcom_content',
     'textcom_content', 'pagecom', 'imgs', 'FFF', 'animatecom', 'datasourcecom'],
-  function ($, jqui, jui_pagination, context_menu, Audiocom, Audio, Dialog, WXMS_config, Template, rotatable, Html2canvas, zepto, bigcolorpicker, Btncom, Imgcom, Textcom, btncom_content,
+  function ($, jqui, jui_pagination, context_menu, Audiocom, Audio, Dialog, WXMS_config, WTemplate, rotatable, Html2canvas, zepto, bigcolorpicker, Btncom, Imgcom, Textcom, btncom_content,
             imgcom_content, textcom_content, Pagecom, Imgs, FFF, Animatecom, Datasourcecom) {
 
         //根据 url 的名字 获得 值
@@ -138,8 +138,8 @@ require(['jquery', 'jqui', 'jui_pagination', 'context_menu', 'audiocom', 'audio'
                             }
                         }).done(function (msg) {
                             if (msg.success) {
-                                Template.drawPubTpl();
-                                Template.drawUserTpl();
+                                WTemplate.drawPubTpl();
+                                WTemplate.drawUserTpl();
                             }
                         }).fail(function (msg) {
                         });
