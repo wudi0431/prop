@@ -289,3 +289,20 @@ worker4
 worker2
 1447841967983 'Express server listening on port 9898'
 [master] listening: worker2,pid:21980, Address:0.0.0.0:9898
+[master] start master...
+[worker] start worker ...3
+[worker] start worker ...4
+worker3
+1447899746950 'Express server listening on port 9898'
+[master] listening: worker3,pid:15348, Address:0.0.0.0:9898
+worker4
+1447899746952 'Express server listening on port 9898'
+[master] listening: worker4,pid:15351, Address:0.0.0.0:9898
+[worker] start worker ...1
+worker1
+1447899746986 'Express server listening on port 9898'
+[master] listening: worker1,pid:15345, Address:0.0.0.0:9898
+[worker] start worker ...2
+worker2
+1447899747010 'Express server listening on port 9898'
+[master] listening: worker2,pid:15346, Address:0.0.0.0:9898
