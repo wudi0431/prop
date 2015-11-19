@@ -91,7 +91,7 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
         }
     };
     F.extend(Animatecom, Widget, {
-        renderUI: function () {
+        renderUI: function (obj, next) {
             var that = this;
             that.isgetAniMateDate=false;
             var $box = that.getBoundingBox();
@@ -137,10 +137,10 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
 
             that.$moreIcons = $box.find('.more_icon');
 
-
+            next();
 
         },
-        bindUI: function () {
+        bindUI: function (obj,next) {
             var that = this;
             $.each(that.$rangeInputs, function (index, rangeipt) {
                 $(rangeipt).on('change', function () {
@@ -198,7 +198,7 @@ define(['FFF', 'zepto', 'jquery'], function (FFF, $, jq) {
                 that.setAniMateDate(data);
             });
 
-
+            next();
         },
         _setProValue: function (typename, value) {
             var that = this;
