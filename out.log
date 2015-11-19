@@ -255,3 +255,37 @@ codecsv uploaded to  /home/ubuntu/workspace/wxms/public/wxms/uploadimg/git.jpg
   left: '48px',
   top: '213px',
   zIndex: '3' }
+[master] start master...
+[worker] start worker ...1
+worker1
+1447839290749 'Express server listening on port 9898'
+[master] listening: worker1,pid:19573, Address:0.0.0.0:9898
+[worker] start worker ...4
+worker4
+1447839290779 'Express server listening on port 9898'
+[master] listening: worker4,pid:19578, Address:0.0.0.0:9898
+[worker] start worker ...3
+[worker] start worker ...2
+worker3
+1447839290790 'Express server listening on port 9898'
+worker2
+[master] listening: worker3,pid:19576, Address:0.0.0.0:9898
+1447839290791 'Express server listening on port 9898'
+[master] listening: worker2,pid:19575, Address:0.0.0.0:9898
+[master] start master...
+[worker] start worker ...1
+worker1
+1447841967959 'Express server listening on port 9898'
+[master] listening: worker1,pid:21979, Address:0.0.0.0:9898
+[worker] start worker ...3
+[worker] start worker ...4
+worker3
+worker4
+1447841967970 'Express server listening on port 9898'
+1447841967971 'Express server listening on port 9898'
+[master] listening: worker3,pid:21982, Address:0.0.0.0:9898
+[master] listening: worker4,pid:21984, Address:0.0.0.0:9898
+[worker] start worker ...2
+worker2
+1447841967983 'Express server listening on port 9898'
+[master] listening: worker2,pid:21980, Address:0.0.0.0:9898
