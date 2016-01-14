@@ -28,7 +28,6 @@ function getIpAddress(port) {
 
 
 passport.authorize = function (req, res, next) {
-  console.log(req.session.passportToken)
     if (req.session.passportToken) {
         next(req, res);
     } else {
@@ -39,7 +38,6 @@ passport.authorize = function (req, res, next) {
 
 passport.init = function (router, opt) {
     passport.opt = opt;
-
     router.get('/passportAuth', function (req, res) {
         var code = req.query.code;
         request(passport.opt.passport + '/token', {
@@ -60,6 +58,7 @@ passport.init = function (router, opt) {
 passport.login = function (req, res, cb) {
     var passportToken = req.session.passportToken;
   console.log(passportToken)
+  console.log(passport.opt.passport)
     request(passport.opt.passport + '/user', {
         method: 'GET',
         form: {token: passportToken}
