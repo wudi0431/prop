@@ -59,7 +59,7 @@ passport.login = function (req, res, cb) {
     var passportToken = req.session.passportToken;
   console.log(passportToken)
   console.log(passport.opt.passport)
-    request(passport.opt.passport + '/user', {
+    request(passport.opt.passport+'/user', {
         method: 'GET',
         form: {token: passportToken}
     }, function (re, rs, obj) {
