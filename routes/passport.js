@@ -60,6 +60,7 @@ passport.login = function (req, res, cb) {
         method: 'GET',
         form: {token: passportToken}
     }, function (re, rs, obj) {
+        console.log("~~~~obj~~~~~"+obj)
         obj = JSON.parse(obj);
         if (obj.success) {
             if(obj.model.user.__v!=undefined){
