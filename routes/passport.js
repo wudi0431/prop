@@ -28,6 +28,8 @@ function getIpAddress(port) {
 
 
 passport.authorize = function (req, res, next) {
+  console.log('req.session.passportToken:::'+req.session.passportToken);
+  console.log('req.session.user:::'+req.session.user);
     if (req.session.passportToken) {
         next(req, res);
     } else {
@@ -40,10 +42,11 @@ passport.init = function (router, opt) {
     passport.opt = opt;
     router.get('/passportAuth', function (req, res) {
         var code = req.query.code;
-        request(passport.opt.passport + '/token', {
+        request(passport.opt.passport+'/token', {
             method: 'POST',
             form: {code: code}
         }, function (re, rs, obj) {
+          console.log("objobj:::"+obj)
             obj = JSON.parse(obj);
             req.session.passportToken = obj.model.token;
             passport.login(req, res, function () {
@@ -56,11 +59,15 @@ passport.init = function (router, opt) {
 
 passport.login = function (req, res, cb) {
     var passportToken = req.session.passportToken;
-    request(passport.opt.passport + '/user', {
-        method: 'GET',
-        form: {token: passportToken}
-    }, function (re, rs, obj) {
-        obj = JSON.parse(obj);
+  console.log(passportToken)
+  console.log(passport.opt.passport)
+  var url=passport.opt.passport+"/user?token="+passportToken
+  console.log("url::"+url)
+    request({uri:url}, function (error, response, body) {
+      console.log("error:"+error)
+      console.log("response:"+response)
+      console.log("body::"+body)
+        obj = JSON.parse(body);
         if (obj.success) {
             if(obj.model.user.__v!=undefined){
                 delete obj.model.user.__v;

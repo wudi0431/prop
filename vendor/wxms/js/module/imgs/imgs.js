@@ -166,49 +166,50 @@ define(['FFF', 'jquery', 'jqui', 'wxms_config'], function (FFF, $, jqui, WXMS_co
 
                 });
 
-
-                imgWarepo.jui_pagination && imgWarepo.jui_pagination('destroy')
-
-              imgWarepo.jui_pagination({
-                currentPage: 1,
-                visiblePageLinks:5,
-                rowsPerPage: 8,
-                totalPages: Imgs.gettotalPages(imgList),
-                containerClass: 'container1',
-                showNavButtons:true,
-                disableSelectionNavPane: true,
-                showPreferences:false,
-                navRowsPerPageClass: 'rows-per-page1  ui-state-default ui-corner-all',
-                navGoToPageClass: 'goto-page1 ui-state-default ui-corner-all',
-                onChangePage: function(event, page_num) {
-                  if(isNaN(page_num) || page_num <= 0) {
-                    alert('Invalid page' + ' (' + page_num + ')');
-                  } else {
-                    $('.page-'+page_num).removeClass('item-visible').siblings('div').addClass('item-visible');
-                  }
-                },
-                onSetRowsPerPage: function(event, rpp) {
-                  if(isNaN(rpp) || rpp <= 0) {
-                    alert('Invalid rows per page' + ' (' + rpp + ')');
-                  } else {
-                    alert('rows per page successfully changed' + ' (' + rpp + ')');
-                    $(this).jui_pagination({
-                      rowsPerPage: rpp
-                    })
-                  }
-                },
-                onDisplay: function() {
-                  var showRowsInfo = $(this).jui_pagination('getOption', 'showRowsInfo');
-                  if(showRowsInfo) {
-                    var prefix = $(this).jui_pagination('getOption', 'nav_rows_info_id_prefix');
-                    $("#" + prefix + $(this).attr("id")).text('Total rows: XXX');
-                  }
-                }
-              });
-              imgWarepo.jui_pagination('setOption', 'currentPage',1)
-            } else {
-                imgWare.html('');
+            if(imgWarepo.jui_pagination) {
+                imgWarepo.jui_pagination('destroy')
+                imgWarepo.jui_pagination({
+                    currentPage: 1,
+                    visiblePageLinks: 5,
+                    rowsPerPage: 8,
+                    totalPages: Imgs.gettotalPages(imgList),
+                    containerClass: 'container1',
+                    showNavButtons: true,
+                    disableSelectionNavPane: true,
+                    showPreferences: false,
+                    navRowsPerPageClass: 'rows-per-page1  ui-state-default ui-corner-all',
+                    navGoToPageClass: 'goto-page1 ui-state-default ui-corner-all',
+                    onChangePage: function (event, page_num) {
+                        if (isNaN(page_num) || page_num <= 0) {
+                            alert('Invalid page' + ' (' + page_num + ')');
+                        } else {
+                            $('.page-' + page_num).removeClass('item-visible').siblings('div').addClass('item-visible');
+                        }
+                    },
+                    onSetRowsPerPage: function (event, rpp) {
+                        if (isNaN(rpp) || rpp <= 0) {
+                            alert('Invalid rows per page' + ' (' + rpp + ')');
+                        } else {
+                            alert('rows per page successfully changed' + ' (' + rpp + ')');
+                            $(this).jui_pagination({
+                                rowsPerPage: rpp
+                            })
+                        }
+                    },
+                    onDisplay: function () {
+                        var showRowsInfo = $(this).jui_pagination('getOption', 'showRowsInfo');
+                        if (showRowsInfo) {
+                            var prefix = $(this).jui_pagination('getOption', 'nav_rows_info_id_prefix');
+                            $("#" + prefix + $(this).attr("id")).text('Total rows: XXX');
+                        }
+                    }
+                });
+                imgWarepo.jui_pagination('setOption', 'currentPage', 1);
             }
+                } else {
+                    imgWare.html('');
+            }
+
         }).fail(function (msg) {
         });
     };
@@ -259,46 +260,47 @@ define(['FFF', 'jquery', 'jqui', 'wxms_config'], function (FFF, $, jqui, WXMS_co
               }
 
             });
+            if(userWareListpo.jui_pagination) {
+                userWareListpo.jui_pagination('destroy')
 
-            userWareListpo.jui_pagination && userWareListpo.jui_pagination('destroy')
-
-            userWareListpo.jui_pagination({
-              currentPage: 1,
-              visiblePageLinks:5,
-              rowsPerPage: 8,
-              totalPages: Imgs.gettotalPages(imgList),
-              containerClass: 'container1',
-              showNavButtons:true,
-              disableSelectionNavPane: true,
-              showPreferences:false,
-              navRowsPerPageClass: 'rows-per-page1  ui-state-default ui-corner-all',
-              navGoToPageClass: 'goto-page1 ui-state-default ui-corner-all',
-              onChangePage: function(event, page_num) {
-                if(isNaN(page_num) || page_num <= 0) {
-                  alert('Invalid page' + ' (' + page_num + ')');
-                } else {
-                  $('.page-'+page_num).removeClass('item-visible').siblings('div').addClass('item-visible');
-                }
-              },
-              onSetRowsPerPage: function(event, rpp) {
-                if(isNaN(rpp) || rpp <= 0) {
-                  alert('Invalid rows per page' + ' (' + rpp + ')');
-                } else {
-                  alert('rows per page successfully changed' + ' (' + rpp + ')');
-                  $(this).jui_pagination({
-                    rowsPerPage: rpp
-                  })
-                }
-              },
-              onDisplay: function() {
-                var showRowsInfo = $(this).jui_pagination('getOption', 'showRowsInfo');
-                if(showRowsInfo) {
-                  var prefix = $(this).jui_pagination('getOption', 'nav_rows_info_id_prefix');
-                  $("#" + prefix + $(this).attr("id")).text('Total rows: XXX');
-                }
-              }
-            });
-            userWareListpo.jui_pagination('setOption', 'currentPage',1)
+                userWareListpo.jui_pagination({
+                    currentPage: 1,
+                    visiblePageLinks: 5,
+                    rowsPerPage: 8,
+                    totalPages: Imgs.gettotalPages(imgList),
+                    containerClass: 'container1',
+                    showNavButtons: true,
+                    disableSelectionNavPane: true,
+                    showPreferences: false,
+                    navRowsPerPageClass: 'rows-per-page1  ui-state-default ui-corner-all',
+                    navGoToPageClass: 'goto-page1 ui-state-default ui-corner-all',
+                    onChangePage: function (event, page_num) {
+                        if (isNaN(page_num) || page_num <= 0) {
+                            alert('Invalid page' + ' (' + page_num + ')');
+                        } else {
+                            $('.page-' + page_num).removeClass('item-visible').siblings('div').addClass('item-visible');
+                        }
+                    },
+                    onSetRowsPerPage: function (event, rpp) {
+                        if (isNaN(rpp) || rpp <= 0) {
+                            alert('Invalid rows per page' + ' (' + rpp + ')');
+                        } else {
+                            alert('rows per page successfully changed' + ' (' + rpp + ')');
+                            $(this).jui_pagination({
+                                rowsPerPage: rpp
+                            })
+                        }
+                    },
+                    onDisplay: function () {
+                        var showRowsInfo = $(this).jui_pagination('getOption', 'showRowsInfo');
+                        if (showRowsInfo) {
+                            var prefix = $(this).jui_pagination('getOption', 'nav_rows_info_id_prefix');
+                            $("#" + prefix + $(this).attr("id")).text('Total rows: XXX');
+                        }
+                    }
+                });
+                userWareListpo.jui_pagination('setOption', 'currentPage', 1)
+            }
             } else {
                 userWare.html('');
             }
