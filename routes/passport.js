@@ -59,10 +59,9 @@ passport.login = function (req, res, cb) {
     var passportToken = req.session.passportToken;
   console.log(passportToken)
   console.log(passport.opt.passport)
-    request(passport.opt.passport+'/user', {
-        method: 'GET',
-        form: {token: passportToken}
-    }, function (error, response, body) {
+  var url=passport.opt.passport+"/user?token="+passportToken
+  console.log("url::"+url)
+    request({uri:url}, function (error, response, body) {
       console.log("error:"+error)
       console.log("response:"+response)
       console.log("body::"+body)
