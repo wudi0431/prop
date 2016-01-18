@@ -6,7 +6,7 @@ var Project = require('../../db/project');
 router.get('/', function (req, res, next) {
     filter.authorize(req, res, function (req, res) {
         var user = req.session.user;
-      console.log(user);
+      console.log("user:::::"+user);
       Project.getProjectList(user, function (err, projectList) {
             if (err) {
                 res.status('500');
