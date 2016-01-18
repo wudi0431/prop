@@ -40,10 +40,8 @@ passport.init = function (router, opt) {
     passport.opt = opt;
     router.get('/passportAuth', function (req, res) {
         var code = req.query.code;
-        request(passport.opt.passport + '/token', {
-            method: 'POST',
-            form: {code: code}
-        }, function (re, rs, obj) {
+      var url=passport.opt.passport+"/?code="+code;
+        request({uri:url}, function (re, rs, obj) {
           console.log(obj)
             obj = JSON.parse(obj);
             req.session.passportToken = obj.model.token;
