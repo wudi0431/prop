@@ -28,6 +28,7 @@ function getIpAddress(port) {
 
 
 passport.authorize = function (req, res, next) {
+  console.log('req.session.passportToken:::'+req.session.passportToken);
     if (req.session.passportToken) {
         next(req, res);
     } else {
