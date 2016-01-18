@@ -59,14 +59,11 @@ passport.login = function (req, res, cb) {
     var passportToken = req.session.passportToken;
   console.log(passportToken)
   console.log(passport.opt.passport)
-    request(passport.opt.passport+'/user', {
-        method: 'GET',
-        form: {token: passportToken}
-    }, function (error, response, body) {
+    request.get(passport.opt.passport+'/user?token='+passportToken, function (error, response, body) {
       console.log("error:"+error)
       console.log("response:"+response)
       console.log("body::"+body)
-        obj = JSON.parse(obj);
+        obj = JSON.parse(body);
         if (obj.success) {
             if(obj.model.user.__v!=undefined){
                 delete obj.model.user.__v;
