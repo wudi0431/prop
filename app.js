@@ -16,7 +16,7 @@ if (process.env.NODE_ENV == 'dev') {
     process.env.uploadsrc=config.domain+'/wxms/uploadimg/';
     mongoose.connect('mongodb://115.159.93.161:27017/wxms');
 } else {
-  mongoose.connect('mongodb://115.159.93.161:27017/wxms');
+    mongoose.connect('mongodb://127.0.0.1:27017/wxms');
 }
 var MongoStore = require('connect-mongo')(session);
 
