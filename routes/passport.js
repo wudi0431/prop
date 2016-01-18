@@ -45,7 +45,7 @@ passport.init = function (router, opt) {
             method: 'POST',
             form: {code: code}
         }, function (re, rs, obj) {
-          console.log(obj)
+          console.log("objobj:::"+obj)
             obj = JSON.parse(obj);
             req.session.passportToken = obj.model.token;
             passport.login(req, res, function () {
