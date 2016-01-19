@@ -120,7 +120,7 @@ define(['FFF', 'zepto', 'jquery','stylecom','wxms_config'], function (FFF, $, jq
             },that);
 
             F.on('dragCom', function (val) {
-                if (that.$box.hasClass('select') && val.type=='btncom') {
+                if (that.$box.hasClass('ui-resizable') && val.type=='btncom') {
                     that.$box.css('top', val.position.top);
                     that.$box.css('left', val.position.left);
                     data['top'] = val.position.top+'px';
@@ -132,7 +132,7 @@ define(['FFF', 'zepto', 'jquery','stylecom','wxms_config'], function (FFF, $, jq
             },that);
 
             F.on('resizeCom', function (val) {
-                if (that.$box.hasClass('select') && val.type=='btncom') {
+                if (that.$box.hasClass('ui-resizable') && val.type=='btncom') {
                     that.$box.css('width', val.size.width);
                     that.$box.css('height', val.size.height);
                     data['width'] = val.size.width +'px';
@@ -145,7 +145,7 @@ define(['FFF', 'zepto', 'jquery','stylecom','wxms_config'], function (FFF, $, jq
 
 
             F.on('rotateCom', function (val) {
-                if (that.$box.hasClass('select')  && val.type=='btncom') {
+                if (that.$box.hasClass('ui-resizable')  && val.type=='btncom') {
                     data['transform'] = 'rotate(' + val.deg + 'deg)';
                     that.setData(data);
                     that.stylecom.initStylecomData('btncom','btncomStyleChange',that.getData());
