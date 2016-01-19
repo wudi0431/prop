@@ -11,7 +11,7 @@ var config = {
     domain: 'http://115.159.93.161/wxms',
     previewDomain: 'http://115.159.93.161/wx'
 };
-config.uploadimgsrc = config.domain + '/uploadimg/';
+config.uploadimgsrc = config.domain+'/uploadimg/';
 
 if (typeof module === "object" && typeof module.exports === "object") {
     module.exports = config;
