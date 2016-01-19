@@ -5,12 +5,14 @@
 //   previewDomain:'http://mxc.yhd.com/wxms_client'
 //};
 
+
  var config = {
-   port:9898,
-   passport: 'http://yzued.111.com.cn/passport',
-   domain:'http://yzued.111.com.cn/wxms',
-   previewDomain:'http://yzued.111.com.cn/wx'
+     port:9898,
+     passport: 'http://115.159.93.161/passport',
+     domain:'http://115.159.93.161/wxms',
+     previewDomain:'http://115.159.93.161/wx'
  };
+
 config.uploadimgsrc = config.domain+'/uploadimg/';
 
 if ( typeof module === "object" && typeof module.exports === "object" ) {
