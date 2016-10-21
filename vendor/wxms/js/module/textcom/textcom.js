@@ -23,7 +23,7 @@ define(['FFF', 'zepto', 'jquery','stylecom','wxms_config'], function (FFF, $, jq
             changeFn: function (args) {
                 var that = this;
                 var data = that.getData();
-                if (args.value !== args.prevValue) {
+                if (args.value !== args.preValue) {
                     that.$boxContent.html(args.value);
                     data.context = args.value;
                     that.setData(data);
@@ -39,7 +39,6 @@ define(['FFF', 'zepto', 'jquery','stylecom','wxms_config'], function (FFF, $, jq
             that.stylecom =  new Stylecom();
             that._addTextcom(that._bindUI);
         },
-
         update: function () {
             var that = this;
             var textcomEntity = that.getData();
@@ -62,6 +61,7 @@ define(['FFF', 'zepto', 'jquery','stylecom','wxms_config'], function (FFF, $, jq
             that.$box=$box;
             that.$boxContent = that.$box.children('div');
             that.$box.on('click', function (e) {
+                e.preventDefault()
                 var $$curTarget = e.target;
                 if ($$curTarget === that.$boxContent[0]) {
                     $('#J_textcomContent').show().siblings('.W_editItem').hide();
@@ -72,7 +72,7 @@ define(['FFF', 'zepto', 'jquery','stylecom','wxms_config'], function (FFF, $, jq
                 }
 
                 if ($$curTarget === that.$boxDel[0]) {
-                    that.delSelf();
+                    that.delSelf(that);
                 }
 
 
@@ -109,7 +109,8 @@ define(['FFF', 'zepto', 'jquery','stylecom','wxms_config'], function (FFF, $, jq
             },that);
 
             F.on('resizeCom', function (val) {
-                if (that.$box.hasClass('ui-resizable') && val.type=='textcom') {
+                var curitemid = that.$box.attr('data-item-id')
+                if (curitemid == val.itemids && val.type=='textcom') {
                     that.$box.css('width', val.size.width);
                     that.$box.css('height', val.size.height);
                     data['width'] = val.size.width +'px';
@@ -118,10 +119,11 @@ define(['FFF', 'zepto', 'jquery','stylecom','wxms_config'], function (FFF, $, jq
                     that.stylecom.initStylecomData('textcom','textcomStyleChange',that.getData());
                     that.update();
                 }
-            },that);
+            });
 
             F.on('dragCom', function (val) {
-                if (that.$box.hasClass('ui-resizable') && val.type=='textcom') {
+                var curitemid = that.$box.attr('data-item-id')
+                if (curitemid == val.itemids && val.type=='textcom') {
                     that.$box.css('top', val.position.top);
                     that.$box.css('left', val.position.left);
                     data['top'] = val.position.top +'px';
@@ -130,16 +132,17 @@ define(['FFF', 'zepto', 'jquery','stylecom','wxms_config'], function (FFF, $, jq
                     that.stylecom.initStylecomData('textcom','textcomStyleChange',that.getData());
                     that.update();
                 }
-            },that);
+            });
 
             F.on('rotateCom', function (val) {
-                if (that.$box.hasClass('ui-resizable') && val.type=='textcom') {
+                var curitemid = that.$box.attr('data-item-id')
+                if (curitemid == val.itemids && val.type=='textcom') {
                     data['transform'] = 'rotate(' + val.deg + 'deg)';
                     that.setData(data);
                     that.stylecom.initStylecomData('textcom','textcomStyleChange',that.getData());
                     that.update();
                 }
-            },that);
+            });
 
             F.on('textcomContextChange', function (val) {
                 if (that.$box.hasClass('select')) {
@@ -174,10 +177,7 @@ define(['FFF', 'zepto', 'jquery','stylecom','wxms_config'], function (FFF, $, jq
 
 
         },
-
-
-        delSelf: function () {
-            var that = this;
+        delSelf: function (that) {
             var textcomEntity = that.getData();
             jq.ajax({
                 method: "POST",
@@ -193,7 +193,6 @@ define(['FFF', 'zepto', 'jquery','stylecom','wxms_config'], function (FFF, $, jq
             });
 
         },
-
         _renderTextcom: function (data, next) {
             var that = this;
             var $box = that.getBoundingBox();
@@ -239,7 +238,6 @@ define(['FFF', 'zepto', 'jquery','stylecom','wxms_config'], function (FFF, $, jq
 
             next.call(that);
         },
-
         _addTextcom: function (next) {
             var that = this;
             if (that.getData()) {

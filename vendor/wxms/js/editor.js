@@ -11,13 +11,13 @@ require.config({
         btncom: '/wxms/js/module/btncom/btncom',
         tpl: '/wxms/js/module/template/template',
         btncom_content: '/wxms/js/module/btncom/btncom_content',
-        btncom_style: '/wxms/js/module/btncom/btncom_style',
+        //btncom_style: '/wxms/js/module/btncom/btncom_style',
         imgcom: '/wxms/js/module/imgcom/imgcom',
         imgcom_content: '/wxms/js/module/imgcom/imgcom_content',
-        imgcom_style: '/wxms/js/module/imgcom/imgcom_style',
+        //imgcom_style: '/wxms/js/module/imgcom/imgcom_style',
         textcom: '/wxms/js/module/textcom/textcom',
         textcom_content: '/wxms/js/module/textcom/textcom_content',
-        textcom_style: '/wxms/js/module/textcom/textcom_style',
+        //textcom_style: '/wxms/js/module/textcom/textcom_style',
         imgs: '/wxms/js/module/imgs/imgs',
         pagecom: '/wxms/js/module/page/pagecom',
         pagecom_content: '/wxms/js/module/page/pagecom_content',
@@ -267,8 +267,11 @@ require(['jquery', 'jqui', 'jui_pagination', 'context_menu', 'audiocom', 'audio'
 
         });
         var selecttype = null;
-        $('#showbox').on('click', '.W_item', function (e) {
+        $('#showbox').on('click','.W_item', function (e) {
+            e.preventDefault()
+            e.stopPropagation()
             var $that = $(this);
+            var itemid = $that.attr('data-item-id');
             $('#J_pageContent').hide();
             var siblings = $that.siblings();
             $that.addClass('select');
@@ -278,7 +281,7 @@ require(['jquery', 'jqui', 'jui_pagination', 'context_menu', 'audiocom', 'audio'
                 cancel: false,
                 stop: function (e, drag) {
                     var type = $(e.target).data('type');
-                    F.trigger('dragCom', {position:drag.position,type:type});
+                    F.trigger('dragCom', {position:drag.position,type:type,itemids:itemid});
                     return false;
                 }
             });
@@ -288,7 +291,7 @@ require(['jquery', 'jqui', 'jui_pagination', 'context_menu', 'audiocom', 'audio'
                 minHeight: 20,
                 stop: function (e, resize) {
                     var type = $(e.target).data('type');
-                    F.trigger('resizeCom', {size:resize.size,type:type});
+                    F.trigger('resizeCom', {size:resize.size,type:type,itemids:itemid});
                     return false;
                 }
             });
@@ -296,7 +299,7 @@ require(['jquery', 'jqui', 'jui_pagination', 'context_menu', 'audiocom', 'audio'
             $that.rotatable({
                 stop: function (e, rotate) {
                     var type = $(e.target).data('type');
-                    F.trigger('rotateCom', {deg:rotate.deg,type:type});
+                    F.trigger('rotateCom', {deg:rotate.deg,type:type,itemids:itemid});
                     return false;
                 }
             });
@@ -316,18 +319,7 @@ require(['jquery', 'jqui', 'jui_pagination', 'context_menu', 'audiocom', 'audio'
                 }
 
             });
-        });
-        $('#showbox').on('click', function (e) {
-            var issWich = true;
-            var $Witem = $(e.target).children();
-            $.each($Witem, function (index, item) {
-                if ($(item).hasClass('select')) {
-                    $(item).removeClass('select').resizable('destroy');
-                    $(item).removeClass('select').rotatable('destroy');
-                    $(item).removeClass('select').draggable('destroy');
-                }
-            });
-            if (issWich) {
+
                 var $li = procon.children('ul').children('li');
                 var $div = procon.children('div');
                 var $jp = procon.find('#J_pageContent');
@@ -361,8 +353,20 @@ require(['jquery', 'jqui', 'jui_pagination', 'context_menu', 'audiocom', 'audio'
                         $jt.show();
                     }
                 }
-            }
-            e.stopPropagation();
+
+        });
+        $('#showbox').on('click', function (e) {
+            e.preventDefault()
+            e.stopPropagation()
+            var issWich = true;
+            var $Witem = $(e.target).children();
+            $.each($Witem, function (index, item) {
+                if ($(item).hasClass('select')) {
+                    $(item).removeClass('select').resizable('destroy');
+                    $(item).removeClass('select').rotatable('destroy');
+                    $(item).removeClass('select').draggable('destroy');
+                }
+            });
         });
 
         $('#accordion_btncomStyle,#accordion_imgcomStyle,#accordion_textcomStyle').accordion({

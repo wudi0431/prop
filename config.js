@@ -5,11 +5,17 @@
 //  previewDomain:'http://mxc.yhd.com/wxms_client'
 //};
 
+//var config = {
+//    port: 9898,
+//    passport: 'http://115.159.93.161/passport',
+//    domain: 'http://115.159.93.161/wxms',
+//    previewDomain: 'http://115.159.93.161/wx'
+//};
 var config = {
     port: 9898,
-    passport: 'http://115.159.93.161/passport',
-    domain: 'http://115.159.93.161/wxms',
-    previewDomain: 'http://115.159.93.161/wx'
+    passport: 'http://10.6.80.207/passport',
+    domain: 'http://127.0.0.1:9898',
+    previewDomain: 'http://10.6.80.207/wx'
 };
 config.uploadimgsrc = config.domain+'/uploadimg/';
 

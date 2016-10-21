@@ -280,195 +280,196 @@ define(['FFF', 'jquery','spectrum','jqui'], function (FFF, $) {
         },
         _initChangeDom: function () {
             var that = this;
-            $.each($('.J_textcom'), function (index, textcom) {
-                var $textcom = $(textcom);
-                $textcom.on('change', function () {
-                    var type = $textcom.data('type');
-                    var value = $textcom.val();
-                    if (value == "" || value == undefined || value == null ||
-                        type == 'color' || type == 'backgroundColor' || type == 'borderColor' || type == 'boxShadowColor'
-                        || type == 'boxShadow' || type == 'textShadow'
-                    ) {
-                        return false;
-                    }
-                    switch (type) {
-                        case 'transform':
-                            $textcom.attr('deg', value)
-                            value = 'rotate(' + value + 'deg)';
-                            break;
-                        case 'opacity':
-                            value = parseInt(value) / 100;
-                            value = value.toString();
-                            break;
-                        default :
-                            value = value + that.uitl;
-                    }
-                    that._textcomStyleChange(value, type);
-                })
-            })
+          var uitl = 'px';
+          $('.J_textcom').off().on('change', function (e) {
+            e.stopPropagation()
+            e.preventDefault()
+            var $textcom=$(this)
+            var type = $textcom.data('type');
+            var value = $textcom.val();
+            if (value == "" || value == undefined || value == null ||
+              type == 'color' || type == 'backgroundColor' || type == 'borderColor' || type == 'boxShadowColor'
+              || type == 'boxShadow' || type == 'textShadow'
+            ) {
+              return false;
+            }
+            switch (type) {
+              case 'transform':
+                $textcom.attr('deg', value)
+                value = 'rotate(' + value + 'deg)';
+                break;
+              case 'opacity':
+                value = parseInt(value) / 100;
+                value = value.toString();
+                break;
+              default :
+                value = value + that.uitl;
+            }
+            that._textcomStyleChange(value, type);
+          })
 
-            $.each($('.J_atextcom'), function (index, textcom) {
-                var $textcom = $(textcom);
-                $textcom.on('click', function (e) {
-                    console.log(e.target.tagName)
-                    e.stopPropagation()
-                    e.preventDefault()
-                    var type = $textcom.data('type');
-                    var value = $textcom.val();
-                    var curcom = $('.select');
-                    var w = curcom.width(), h = curcom.height();
-                    var p = curcom.position();
-                    var f = curcom.attr('style');
-                    f = f.match(/\d+deg/)[0].replace('deg', '');
-                    var style = curcom.attr('style');
-                    var index = style.match(/z-index: \d/);
-                    if (index) {
-                        index = +index[0].split(':')[1];
-                    } else {
-                        index = 1;
-                    }
-                    var h = that._getRotateSize(p.top, p.left, p.left + w, p.top + h, f);
-                    if (value == undefined || value == null) {
-                        return false;
-                    }
-                    switch (type) {
-                        case 'totop':
-                            value = 0 - (h.top - p.top) + that.uitl;
-                            type = 'top';
-                            break;
-                        case 'tomiddle':
-                            value = 255 - h.height / 2 - (h.top - p.top) + that.uitl;
-                            type = 'top';
-                            break;
-                        case 'tobottom':
-                            value = 510 - h.height - (h.top - p.top) + that.uitl;
-                            type = 'top';
-                            break;
-                        case 'toleft':
-                            value = 0 - (h.left - p.left) + that.uitl;
-                            type = 'left';
-                            break;
-                        case 'toright':
-                            value = 320 - h.width - (h.left - p.left) + that.uitl;
-                            type = 'left';
-                            break;
-                        case 'tocenter':
-                            value = 160 - h.width / 2 - (h.left - p.left) + that.uitl;
-                            type = 'left';
-                            break;
-                        case 'uptop':
-                            var indexs = that.getItemIndex()[0];
-                            value = indexs + 1;
-                            type = 'zIndex';
-                            break;
-                        case 'up':
-                            value = index + 1;
-                            type = 'zIndex';
-                            break;
-                        case 'down':
-                            value = index - 1 || 1;
-                            type = 'zIndex';
-                            break;
-                        case 'upbottom':
-                            var indexs = that.getItemIndex();
-                            indexs = indexs[indexs.length - 1] - 1;
-                            value = indexs || 1;
-                            type = 'zIndex';
-                            break;
-                        case 'alignleft':
-                            value ='left';
-                            type = 'textAlign';
-                            break;
-                        case 'aligncenter':
-                            value ='center';
-                            type = 'textAlign';
-                            break;
-                        case 'alignright':
-                            value ='right';
-                            type = 'textAlign';
-                            break;
-                        case 'valigntop':
-                            value ='top';
-                            type = 'verticalAlign';
-                            break;
-                        case 'valignmiddle':
-                            value ='middle';
-                            type = 'verticalAlign';
-                            break;
-                        case 'valignbottom':
-                            value ='bottom';
-                            type = 'verticalAlign';
-                            break;
-                        case 'fontWeight':
-                            value ='bold';
-                            var res = that._isHasValue($textcom,type,value)
-                            if(!res){
-                                value ='normal';
-                            }
-                            break;
-                        case 'fontStyle':
-                            value ='italic';
-                            var res = that._isHasValue($textcom,type,value)
-                            if(!res){
-                                value ='normal';
-                            }
-                            break;
-                        case 'textDecoration':
-                            value ='underline';
-                            var res = that._isHasValue($textcom,type,value)
-                            if(!res){
-                                value ='none';
-                            }
-                            break;
-                    }
-                    if (value != "" && value != undefined && value != null) {
-                        that._textcomStyleChange(value, type);
-                    }
-                })
-            })
 
-            $.each($('.J_Btextcom'), function (index, textcom) {
-                var $textcom = $(textcom);
-                $textcom.on('change', function () {
-                    var type = $textcom.data('type');
-                    var value = $textcom.val();
-                    switch (type) {
-                        case 'boxShadowSP':
-                            that._setShadow(type,value);
-                            break;
-                        case 'boxShadowBL':
-                            that._setShadow(type,value);
-                            break;
-                        case 'boxShadowY':
-                            that._setShadow(type,value);
-                            break;
-                        case 'boxShadowX':
-                            that._setShadow(type,value);
-                            $textcom.attr('deg',value);
-                            break;
-                    }
-                })
-            })
+          $('.J_atextcom').off().on('click',function (e) {
+            e.stopPropagation()
+            e.preventDefault()
+            var $textcom = $(this)
+            var type = $textcom.data('type');
+            var value = $textcom.val();
+            var curcom = $('.select');
+            var w = curcom.width(), h = curcom.height();
+            var p = curcom.position();
+            var f = curcom.attr('style');
+            f = f.match(/\d+deg/)[0].replace('deg', '');
+            var style = curcom.attr('style');
+            var index = style.match(/z-index: \d/);
+            if (index) {
+              index = +index[0].split(':')[1];
+            } else {
+              index = 1;
+            }
+            var h = that._getRotateSize(p.top, p.left, p.left + w, p.top + h, f);
+            if (value == undefined || value == null) {
+              return false;
+            }
+            switch (type) {
+              case 'totop':
+                value = 0 - (h.top - p.top) + uitl;
+                type = 'top';
+                break;
+              case 'tomiddle':
+                value = 255 - h.height / 2 - (h.top - p.top) + uitl;
+                type = 'top';
+                break;
+              case 'tobottom':
+                value = 510 - h.height - (h.top - p.top) + uitl;
+                type = 'top';
+                break;
+              case 'toleft':
+                value = 0 - (h.left - p.left) + uitl;
+                type = 'left';
+                break;
+              case 'toright':
+                value = 320 - h.width - (h.left - p.left) + uitl;
+                type = 'left';
+                break;
+              case 'tocenter':
+                value = 160 - h.width / 2 - (h.left - p.left) + uitl;
+                type = 'left';
+                break;
+              case 'uptop':
+                var indexs = that.getItemIndex()[0];
+                value = indexs + 1;
+                type = 'zIndex';
+                break;
+              case 'up':
+                value = index + 1;
+                type = 'zIndex';
+                break;
+              case 'down':
+                value = index - 1 || 1;
+                type = 'zIndex';
+                break;
+              case 'upbottom':
+                var indexs = that.getItemIndex();
+                indexs = indexs[indexs.length - 1] - 1;
+                value = indexs || 1;
+                type = 'zIndex';
+                break;
+              case 'alignleft':
+                value = 'left';
+                type = 'textAlign';
+                break;
+              case 'aligncenter':
+                value = 'center';
+                type = 'textAlign';
+                break;
+              case 'alignright':
+                value = 'right';
+                type = 'textAlign';
+                break;
+              case 'valigntop':
+                value = 'top';
+                type = 'verticalAlign';
+                break;
+              case 'valignmiddle':
+                value = 'middle';
+                type = 'verticalAlign';
+                break;
+              case 'valignbottom':
+                value = 'bottom';
+                type = 'verticalAlign';
+                break;
+              case 'fontWeight':
+                value = 'bold';
+                var res = that._isHasValue($textcom, type, value)
+                if (!res) {
+                  value = 'normal';
+                }
+                break;
+              case 'fontStyle':
+                value = 'italic';
+                var res = that._isHasValue($textcom, type, value)
+                if (!res) {
+                  value = 'normal';
+                }
+                break;
+              case 'textDecoration':
+                value = 'underline';
+                var res = that._isHasValue($textcom, type, value)
+                if (!res) {
+                  value = 'none';
+                }
+                break;
+            }
+            if (value != "" && value != undefined && value != null) {
+              that._textcomStyleChange(value, type);
+            }
+          })
 
-            $.each($('.J_Ttextcom'), function (index, textcom) {
-                var $textcom = $(textcom);
-                $textcom.on('change', function () {
-                    var type = $textcom.data('type');
-                    var value = $textcom.val();
-                    switch (type) {
-                        case 'TextShadowSP':
-                            that._setTextShadow(type,value);
-                            break;
-                        case 'TextShadowBL':
-                            that._setTextShadow(type,value);
-                            break;
-                        case 'TextShadowX':
-                            that._setTextShadow(type,value);
-                            $textcom.attr('deg',value);
-                            break;
-                    }
-                })
-            })
+          $('.J_Btextcom').off().on('change', function (e) {
+            var $textcom = $(this);
+            e.stopPropagation()
+            e.preventDefault()
+            var type = $textcom.data('type');
+            var value = $textcom.val();
+            switch (type) {
+              case 'boxShadowSP':
+                that._setShadow(type,value);
+                break;
+              case 'boxShadowBL':
+                that._setShadow(type,value);
+                break;
+              case 'boxShadowY':
+                that._setShadow(type,value);
+                break;
+              case 'boxShadowX':
+                that._setShadow(type,value);
+                $textcom.attr('deg',value);
+                break;
+            }
+          })
+
+          $('.J_Ttextcom').off().on('change', function (e) {
+            e.stopPropagation()
+            e.preventDefault()
+            var $textcom = $(this);
+            var type = $textcom.data('type');
+            var value = $textcom.val();
+            switch (type) {
+              case 'TextShadowSP':
+                that._setTextShadow(type,value);
+                break;
+              case 'TextShadowBL':
+                that._setTextShadow(type,value);
+                break;
+              case 'TextShadowX':
+                that._setTextShadow(type,value);
+                $textcom.attr('deg',value);
+                break;
+            }
+          })
+
+
         },
         _d: function (a, b, c) {
             return {
